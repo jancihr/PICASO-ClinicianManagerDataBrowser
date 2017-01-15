@@ -32,11 +32,14 @@ export const routes: Routes = [
             {
                 path: 'narratives-manager',
                 loadChildren: 'app/modules/narratives-manager/narratives-manager.module#NarrativesManagerModule'
-            }
-            ,
+            },
             {
                 path: 'data-resource-browser',
                 loadChildren: 'app/modules/data-resource-browser/data-resource-browser.module#DataResourceBrowserModule'
+            },
+            {
+                path: 'risk-manager',
+                loadChildren: 'app/modules/risk-manager/risk-manager.module#RiskManagerModule'
             }
 
         ]
