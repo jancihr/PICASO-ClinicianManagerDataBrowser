@@ -1,4 +1,6 @@
-# rogue-board
+# PICASO Health Care Dashboard 
+
+This is a software produced under [PICASO EU Horizon2020 project](http://www.picaso-project.eu/). 
 
 This project is based on the [Core UI Angular 2 Template](https://github.com/mrholek/CoreUI-Free-Bootstrap-Admin-Template/tree/master/Angular2_CLI_Starter)
 
