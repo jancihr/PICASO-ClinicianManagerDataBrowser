@@ -6,6 +6,8 @@ import { Routes,
 import { FullLayoutComponent }      from './layouts/full-layout.component';
 import { SimpleLayoutComponent }    from './layouts/simple-layout.component';
 
+import { NarrativesManagerComponent }    from './modules/narratives-manager/narratives-manager.component';
+
 export const routes: Routes = [
     {
         path: '',
@@ -23,6 +25,10 @@ export const routes: Routes = [
                 path: 'dashboard',
                 loadChildren: 'app/dashboard/dashboard.module#DashboardModule'
             },
+            {
+                path: 'narratives-manager',
+                loadChildren: 'app/modules/narratives-manager/narratives-manager.module#NarrativesManagerModule'
+            }
         ]
     },
     {
