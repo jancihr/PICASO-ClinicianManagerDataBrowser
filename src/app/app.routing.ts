@@ -28,12 +28,17 @@ export const routes: Routes = [
             {
                 path: 'clinician-dashboard',
                 loadChildren: 'app/modules/clinician-dashboard/clinician-dashboard.module#ClinicianDashboardModule'
-            }
-            ,
+            },
             {
                 path: 'narratives-manager',
                 loadChildren: 'app/modules/narratives-manager/narratives-manager.module#NarrativesManagerModule'
             }
+            ,
+            {
+                path: 'data-resource-browser',
+                loadChildren: 'app/modules/data-resource-browser/data-resource-browser.module#DataResourceBrowserModule'
+            }
+
         ]
     },
     {
