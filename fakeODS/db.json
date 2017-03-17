@@ -290,7 +290,7 @@
   "observations": [{
     "name": "Resting Heartrate",
     "label": "beats/min",
-    "color": "#7D2700",
+    "color": "#A44400",
     "type": "line",
     "values": [
       {
@@ -483,7 +483,7 @@
     {
       "name": "Activity",
       "label": "steps",
-      "color": "#a46800",
+      "color": "#FFB200",
       "type": "bar",
       "values": [
         {

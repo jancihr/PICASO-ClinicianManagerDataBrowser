@@ -43,7 +43,7 @@ export class PatientMoriskyResultsComponent implements OnInit {
                 top: 20,
                 right: 25,
                 bottom: 20,
-                left: 40
+                left: 25
             },
             x: function (d) {
                 return new Date(d.x);
@@ -80,7 +80,7 @@ export class PatientMoriskyResultsComponent implements OnInit {
                 axisLabel: '',
                 tickValues:[1,2],
                 tickFormat: function (d) {
-                    if (d<1.5) {return "Ja"} else {return "Nein"}
+                    return d;
                 },
                 axisLabelDistance: -10,
                 showMaxMin: false
@@ -104,7 +104,7 @@ export class PatientMoriskyResultsComponent implements OnInit {
                 top: 20,
                 right: 25,
                 bottom: 20,
-                left: 100
+                left: 25
             },
             x: function (d) {
                 return new Date(d.x);
@@ -128,7 +128,7 @@ export class PatientMoriskyResultsComponent implements OnInit {
                 axisLabel: '',
                 tickValues:[1,2,3],
                 tickFormat: function (d) {
-                    if (d<1.5) {return "Ja"} else if (d<2.5) {return "mit Mühe"} else {return "mit Hilfe"}
+                    return d;
                 },
                 axisLabelDistance: -10,
                 showMaxMin: false
@@ -152,7 +152,7 @@ export class PatientMoriskyResultsComponent implements OnInit {
                 top: 20,
                 right: 25,
                 bottom: 20,
-                left: 40
+                left: 25
             },
             x: function (d) {
                 return new Date(d.x);
@@ -173,7 +173,7 @@ export class PatientMoriskyResultsComponent implements OnInit {
 
                 tickValues: [0,1,2,3,4,5,6,7,8,9,10],
                 tickFormat: function (d) {
-                   d
+                   return d;
                 },
                 axisLabelDistance: -10,
                 showMaxMin: false
@@ -257,7 +257,7 @@ export class PatientMoriskyResultsComponent implements OnInit {
 
         this.dataRADAIq1 = [{
             values: [],
-            key: "RADAI q1",
+            key: "RADAI",
             color: "0D00D0",
             area: false
         }];
@@ -314,7 +314,7 @@ export class PatientMoriskyResultsComponent implements OnInit {
 
         this.dataa1 = [{
             values: [],
-            key: "Morisky q1",
+            key: "Morisky",
             color: "0D00D0",
             area: false
         }];
@@ -375,7 +375,7 @@ export class PatientMoriskyResultsComponent implements OnInit {
 
         this.datab1 = [{
             values: [],
-            key: "FFbH q1",
+            key: "FFbH",
             color: "0D00D0",
             area: false
         }];

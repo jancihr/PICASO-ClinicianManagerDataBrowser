@@ -4,5 +4,6 @@ export class PatientObservationGroup {
     name: string;
     label: string;
     color: string;
+    type: string;
     values: PatientObservation[];
 }
