@@ -1,14 +1,17 @@
+import {VisModule} from "ng2-vis";
+import {HttpModule} from "@angular/http";
+
 import { NgModule }                 from '@angular/core';
-import { ChartsModule }             from 'ng2-charts/ng2-charts';
 
 import { DataResourceBrowserComponent }       from './data-resource-browser.component';
 import { DataResourceBrowserRoutingModule }   from './data-resource-browser-routing.module';
+import {DataResourceBrowserCardComponent} from "./cards/data-resource-browser-card.component";
+import {CommonModule} from "@angular/common";
 
 @NgModule({
     imports: [
-        DataResourceBrowserRoutingModule,
-        ChartsModule
+        DataResourceBrowserRoutingModule,VisModule, HttpModule, CommonModule
     ],
-    declarations: [ DataResourceBrowserComponent ]
+    declarations: [ DataResourceBrowserCardComponent, DataResourceBrowserComponent ]
 })
 export class DataResourceBrowserModule { }
