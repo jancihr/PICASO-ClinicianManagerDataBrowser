@@ -1,0 +1,29 @@
+<div class="card">
+    <div class="card-header">
+        <div i18n="Patient Visits History"><i class="fa fa-hospital-o"></i> Patient Visits History</div>
+        <div class="card-actions">
+
+        </div>
+    </div>
+    <div class="card-block">
+        <div>
+            <div [visTimeline]="visTimelineChecks"
+                 [visTimelineItems]="visTimelineItemsChecks"
+                 [visTimelineOptions]="visTimelineChecksOptions"
+                 (initialized)="timelineInitialized()">
+
+            </div>
+
+            <div class="w3-tiny w3-right">Click inside the diagram area to enable mouse interactions (zoom,
+                scroll left/right, click for detail)
+            </div>
+
+            <button type="button"
+                    class="btn btn-default"
+                    (click)="focusVisChecks()" i18n="Focus all">
+                Focus all
+            </button>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="card-header w3-amber">
+        <div i18n="Patient Imaging Data">Patient Imaging Data</div>
+        <div class="card-actions">
+
+        </div>
+    </div>
+    <div class="card-block" style="overflow-x: auto">
+
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th i18n="Type of Exam">Name</th>
+                <th i18n="exist">Exist</th>
+                <th i18n="List of Dates">List of Dates</th>
+                <th i18n="Report">Report</th>
+                <th i18n="URL to Images">URL to Images</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+
+
+                <tr *ngFor="let image of imaging">
+                    <td>{{image.type}}</td>
+                    <td>{{image.exist}}</td>
+                    <td>{{image.dates}}</td>
+                    <td>{{image.report}}</td>
+                    <td>{{image.url}}</td>
+
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+</div>

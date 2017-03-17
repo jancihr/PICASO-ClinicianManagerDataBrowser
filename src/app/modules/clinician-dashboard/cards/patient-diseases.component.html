@@ -1,0 +1,39 @@
+<div class="card">
+    <div class="card-header w3-light-blue">
+        <div i18n="Patient Diseases">Patient Diseases</div>
+        <div class="card-actions">
+
+        </div>
+    </div>
+    <div class="card-block" style="overflow-x: auto">
+
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th i18n="Name">Name</th>
+                <th i18n="Date of Onset">Date of Onset</th>
+                <th i18n="Severity">Severity</th>
+                <th i18n="Side of Onset">Side of Onset</th>
+                <th i18n="Clinical Phenotype">Clinical Phenotype</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+
+
+                <tr *ngFor="let disease of diseases">
+                    <td>{{disease.name}}</td>
+                    <td>{{disease.dateOfOnset}}</td>
+                    <td>{{disease.severity}}</td>
+                    <td>{{disease.sideOfOnset}}</td>
+                    <td>{{disease.clinicalPhenotype}}</td>
+
+                </tr>
+
+            </tbody>
+        </table>
+
+    </div>
+</div>

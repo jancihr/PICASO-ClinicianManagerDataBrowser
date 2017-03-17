@@ -1,0 +1,24 @@
+<div class="card">
+    <div class="card-header w3-green">
+
+        <div i18n="Average daily observations"><i class="fa fa-heartbeat"></i> Average daily observations</div>
+        <div class="card-actions">
+
+        </div>
+    </div>
+    <div class="card-block">
+
+
+        <div class="row">
+
+            <div>
+                <nvd3 [options]="options" [data]="data"></nvd3>
+            </div>
+
+            <div class="w3-tiny w3-right w3-full">Hover mouse over the diagram for values. Click
+                series names above the diagram to view/hide series. Select range in the bottom overview graph to view only part of the time series in the main graph.
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,154 @@
+
+
+
+<div class="card " *ngIf="patientData">
+    <div class="card-header w3-orange">
+        <div i18n="PatientData Info"><i class="fa fa-user"></i>
+        PatientData Info - {{patientData.name}}</div>
+    </div>
+    <div class="card-block">
+
+        <div class="animated fadeIn">
+            <div class="row">
+
+
+
+                <div class="col-xs-12 col-lg-6">
+                    <div class="card">
+                        <div class="card-block p-0 clearfix">
+
+                            <div class="h5 text-primary mb-0 pt-1">{{patientData.name}}</div>
+
+                        </div>
+                        <div class="text-muted text-uppercase font-weight-bold font-xs" i18n="Name"> Name</div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-lg-6">
+                    <div class="card">
+                        <div class="card-block p-0 clearfix">
+
+                            <div class="h5 text-primary mb-0 pt-1">{{patientData.id}}</div>
+
+                        </div>
+                        <div class="text-muted text-uppercase font-weight-bold font-xs" i18n="Id">ID</div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-xs-12 col-lg-6">
+                    <div class="card">
+                        <div class="card-block p-0 clearfix">
+
+                            <div class="h5 text-primary mb-0 pt-1">{{patientData.bloodType}}</div>
+
+                        </div>
+                        <div class="text-muted text-uppercase font-weight-bold font-xs" i18n="bloodType">blood type</div>
+                    </div>
+                </div>
+
+
+                <div class="col-xs-12 col-lg-6">
+                    <div class="card">
+                        <div class="card-block p-0 clearfix">
+
+                            <div class="h5 text-primary mb-0 pt-1">{{patientData.dob}}</div>
+
+                        </div>
+                        <div class="text-muted text-uppercase font-weight-bold font-xs" i18n="DOB">Date Of Birth</div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-lg-6">
+                    <div class="card">
+                        <div class="card-block p-0 clearfix">
+
+                            <div class="h5 text-primary mb-0 pt-1">{{patientData.height}}</div>
+
+                        </div>
+                        <div class="text-muted text-uppercase font-weight-bold font-xs" i18n="height">height</div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-lg-6">
+                    <div class="card">
+                        <div class="card-block p-0 clearfix">
+
+                            <div class="h5 text-primary mb-0 pt-1">{{patientData.gender}}</div>
+
+                        </div>
+                        <div class="text-muted text-uppercase font-weight-bold font-xs" i18n="gender">gender</div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-lg-6">
+                    <div class="card">
+                        <div class="card-block p-0 clearfix">
+
+                            <div class="h5 text-primary mb-0 pt-1">{{patientData.insurer}}</div>
+
+                        </div>
+                        <div class="text-muted text-uppercase font-weight-bold font-xs" i18n="insurer">insurer</div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-lg-6">
+                    <div class="card">
+                        <div class="card-block p-0 clearfix">
+
+                            <div class="h5 text-primary mb-0 pt-1">{{patientData.insurerId}}</div>
+
+                        </div>
+                        <div class="text-muted text-uppercase font-weight-bold font-xs" i18n="insurer ID">insurer ID</div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-lg-6">
+                    <div class="card">
+                        <div class="card-block p-0 clearfix">
+
+                            <div class="h5 text-primary mb-0 pt-1">{{patientData.occupancy}}</div>
+
+                        </div>
+                        <div class="text-muted text-uppercase font-weight-bold font-xs" i18n="occupancy">occupancy</div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-lg-6">
+                    <div class="card">
+                        <div class="card-block p-0 clearfix">
+
+                            <div class="h5 text-primary mb-0 pt-1">{{patientData.livesAlone==="true"? "Yes":"No" }}</div>
+
+                        </div>
+                        <div class="text-muted text-uppercase font-weight-bold font-xs" i18n="lives alone">lives alone</div>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-lg-6">
+                    <div class="card">
+                        <div class="card-block p-0 clearfix">
+
+                            <div class="h5 text-primary mb-0 pt-1">{{patientData.address1}}</div>
+                            <div class="h5 text-primary mb-0 pt-1">{{patientData.address2}}</div>
+                            <div class="h5 text-primary mb-0 pt-1">{{patientData.address3}}</div>
+                            <div class="h5 text-primary mb-0 pt-1">{{patientData.address4}}</div>
+                        </div>
+                        <div class="text-muted text-uppercase font-weight-bold font-xs" i18n="Address"> Patient Address</div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <button (click)="reloadPatient()">Reload Patient</button>
+
+    </div>
+</div>

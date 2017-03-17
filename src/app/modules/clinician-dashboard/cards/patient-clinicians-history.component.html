@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="card-header w3-green">
+        <div i18n="Patient Clinicians History">Patient Clinicians History</div>
+        <div class="card-actions">
+
+        </div>
+    </div>
+    <div class="card-block" style="overflow-x: auto">
+
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th i18n="Name">Name</th>
+                <th i18n="Institution">Institution</th>
+                <th i18n="Speciality">Speciality</th>
+                <th i18n="Start Date">Start Date</th>
+                <th i18n="End Date">End Date</th>
+
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr *ngFor="let clinician of clinicians">
+
+                    <td>{{clinician.name}}</td>
+                    <td>{{clinician.institution}}</td>
+                    <td>{{clinician.speciality}}</td>
+                    <td>{{clinician.startDate}}</td>
+                    <td>{{clinician.endDate}}</td>
+
+                </tr>
+
+            </tbody>
+        </table>
+
+
+    </div>
+</div>
