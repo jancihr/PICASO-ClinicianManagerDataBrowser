@@ -1,6 +1,8 @@
 import { NgModule }                 from '@angular/core';
 import { Routes,
-         RouterModule }             from '@angular/router';
+    RouterModule }             from '@angular/router';
+
+import { CdSharedModelService } from './_services/cd-shared-model.service'
 
 //Layouts
 import { FullLayoutComponent }      from './layouts/full-layout.component';
@@ -11,7 +13,7 @@ import { NarrativesManagerComponent }    from './modules/narratives-manager/narr
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'clinician-dashboard',
+        redirectTo: 'patient-id',
         pathMatch: 'full',
     },
     {
@@ -21,6 +23,10 @@ export const routes: Routes = [
             title: 'Home'
         },
         children: [
+            {
+                path: 'patient-id',
+                loadChildren: 'app/modules/patient-id/patient-id.module#PatientIdModule'
+            },
             {
                 path: 'dashboard',
                 loadChildren: 'app/dashboard/dashboard.module#DashboardModule'
@@ -61,6 +67,8 @@ export const routes: Routes = [
 
 @NgModule({
     imports: [ RouterModule.forRoot(routes) ],
-    exports: [ RouterModule ]
+    exports: [ RouterModule ],
+    providers: [CdSharedModelService]
+
 })
 export class AppRoutingModule {}
