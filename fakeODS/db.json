@@ -290,7 +290,8 @@
   "observations": [{
     "name": "Resting Heartrate",
     "label": "beats/min",
-    "color": "#7D2700",
+    "color": "#A44400",
+    "type": "line",
     "values": [
       {
         "id": "asdsdsa",
@@ -338,6 +339,7 @@
       "name": "Blood Pressure SYS",
       "label": "mmHg",
       "color": "#d0000a",
+      "type": "line",
       "values": [
         {
           "id": "asdsdsa",
@@ -385,6 +387,7 @@
       "name": "Blood Pressure DIA",
       "label": "mmHg",
       "color": "#d0000a",
+      "type": "line",
       "values": [
         {
           "id": "asdsdsa",
@@ -432,6 +435,7 @@
       "name": "Weight",
       "label": "kg",
       "color": "#000000",
+      "type": "line",
       "values": [
         {
           "id": "asdsdsa",
@@ -455,7 +459,7 @@
         },
         {
           "id": "asdsdsa",
-          "value": "60",
+          "value": "68",
           "date": "2016-05-14T05:41:19.000Z"
         },
         {
@@ -475,10 +479,60 @@
         }
       ]
     },
+
+    {
+      "name": "Activity",
+      "label": "steps",
+      "color": "#FFB200",
+      "type": "bar",
+      "values": [
+        {
+          "id": "asdsdsa",
+          "value": "2540",
+          "date": "2016-05-10T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "3000",
+          "date": "2016-05-11T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "4800",
+          "date": "2016-05-12T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "10200",
+          "date": "2016-05-13T10:41:19.000Z"
+        },
+        {
+          "id": "asdsdsa",
+          "value": "3000",
+          "date": "2016-05-14T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "256",
+          "date": "2016-05-15T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "61",
+          "date": "2016-05-16T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "1456",
+          "date": "2016-05-17T10:41:19.000Z"
+        }
+      ]
+    },
     {
       "name": "Blood Sugar Levels",
       "label": "mmol/l",
       "color": "#C200D0",
+      "type": "line",
       "values": [
         {
           "id": "asdsdsa",
@@ -527,6 +581,7 @@
       "name": "Saturation",
       "label": "%",
       "color": "#00AAD0",
+      "type": "line",
       "values": [
         {
           "id": "asdsdsa",
@@ -574,6 +629,7 @@
       "name": "H&Y score",
       "label": "",
       "color": "#0d00d0",
+      "type": "line",
       "values": [
         {
           "id": "asdsdsa",
@@ -621,6 +677,7 @@
       "name": "UPDRSIII score",
       "label": "",
       "color": "#0d00d0",
+      "type": "line",
       "values": [
         {
           "id": "asdsdsa",
@@ -669,6 +726,7 @@
       "name": "MMSE score",
       "label": "",
       "color": "#0d00d0",
+      "type": "line",
       "values": [
         {
           "id": "asdsdsa",

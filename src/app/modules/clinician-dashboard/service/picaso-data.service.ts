@@ -11,24 +11,24 @@ import {PatientMedication} from "../model/patient-medication";
 import {PatientDisease} from "../model/patient-disease";
 import {PatientClinician} from "../model/patient-clinician";
 import {PatientCheck} from "../model/patient-check";
-import {PatientMoriskyResultsComponent} from "../cards/patient-morisky-results.component";
 import {PatientFFbHResult} from "../model/patient-ffbh-result";
 import {PatientRADAIResult} from "../model/patient-RADAI-result";
 import {PatientImage} from "../model/patient-image";
 
+
 @Injectable()
 export class PicasoDataService {
 
-    private patientDataServiceURL = 'http://localhost:3000/info';  // URL to web api
-    private observationsDataServiceURL = 'http://localhost:3000/observations';  // URL to web api
-    private patientMedicationDataServiceURL = 'http://localhost:3000/medications';
-    private patientCliniciansServiceURL = 'http://localhost:3000/clinicians';
-    private patientDiseasesServiceURL = 'http://localhost:3000/diseases';
-    private patientChecksDataServiceURL = 'http://localhost:3000/checks';
-    private patientMoriskyDataServiceURL = 'http://localhost:3000/morisky';
-    private patientFFbHDataServiceURL = 'http://localhost:3000/ffbh';
-    private patientRADAIServiceURL = 'http://localhost:3000/radai';
-    private patientImagingServiceURL = 'http://localhost:3000/imaging';
+    private patientDataServiceURL = 'http://147.232.202.101:9004/info';  // URL to web api
+    private observationsDataServiceURL = 'http://147.232.202.101:9004/observations';  // URL to web api
+    private patientMedicationDataServiceURL = 'http://147.232.202.101:9004/medications';
+    private patientCliniciansServiceURL = 'http://147.232.202.101:9004/clinicians';
+    private patientDiseasesServiceURL = 'http://147.232.202.101:9004/diseases';
+    private patientChecksDataServiceURL = 'http://147.232.202.101:9004/checks';
+    private patientMoriskyDataServiceURL = 'http://147.232.202.101:9004/morisky';
+    private patientFFbHDataServiceURL = 'http://147.232.202.101:9004/ffbh';
+    private patientRADAIServiceURL = 'http://147.232.202.101:9004/radai';
+    private patientImagingServiceURL = 'http://147.232.202.101:9004/imaging';
 
     constructor(private http: Http) {
     }
@@ -49,6 +49,8 @@ export class PicasoDataService {
     }
 
     getClinicians(): Observable<PatientClinician[]> {
+
+
         return this.http.get(this.patientCliniciansServiceURL)
             .map(this.extractData)
             .catch(this.handleError)
@@ -94,6 +96,7 @@ export class PicasoDataService {
     }
 
     getCheckHistory(startDate: Date, endDate: Date): Observable<PatientCheck[]> {
+
         return this.http.get(this.patientChecksDataServiceURL)
             .map(this.extractData)
             .catch(this.handleError)
@@ -102,19 +105,21 @@ export class PicasoDataService {
 
 
     getPatient(): Observable<PatientData> {
+
         return this.http.get(this.patientDataServiceURL)
             .map(this.extractData)
             .catch(this.handleError)
             ;
     }
 
-    private extractData(res: Response) {
+    private  extractData(res: Response) {
+
 
         return res.json();
     }
 
 
-    private handleError(error: Response | any) {
+    private  handleError(error: Response | any) {
         // In a real world app, we might use a remote logging infrastructure
         let errMsg: string;
         if (error instanceof Response) {

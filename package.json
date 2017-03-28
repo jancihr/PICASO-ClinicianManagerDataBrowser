@@ -54,9 +54,10 @@
     },
     "angular-cli": { },
     "scripts": {
-        "start": "ng serve",
+        "start": "ng serve --port 9005",
         "lint": "tslint \"src/**/*.ts\"",
         "test": "ng test",
+        "build": "ng build",
         "pree2e": "webdriver-manager update",
         "e2e": "protractor"
     },
