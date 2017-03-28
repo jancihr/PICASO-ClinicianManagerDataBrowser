@@ -3,4 +3,6 @@ export class PatientDisease {
   name: string;
   dateOfOnset: Date;
   severity: string;
+  sideOfOnset: Date;
+  clinicalPhenotype: string;
 }

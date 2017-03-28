@@ -3,6 +3,7 @@ export class PatientCheck {
   clinician: string;
   startDate: Date;
   endDate: Date;
-  colour: string;
+  color: string;
+  visitReason: string;
   //type: string;
 }

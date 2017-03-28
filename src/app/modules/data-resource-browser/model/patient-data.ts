@@ -7,9 +7,11 @@ export class PatientData {
   address3: string;
   address4: string;
   bloodType: string;
-  dob: string;
+  dob: Date;
   height: string;
   gender: string;
   insurer: string;
   insurerId: string;
+  occupancy: string;
+  livesAlone: boolean;
 }

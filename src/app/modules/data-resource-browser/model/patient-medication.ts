@@ -6,6 +6,7 @@ export class PatientMedication {
   dosage: string;
   frequency: string;
   stopReason: string;
-  colour: string;
+  color: string;
   disease: string;
+  prescribedBy: string;
 }
