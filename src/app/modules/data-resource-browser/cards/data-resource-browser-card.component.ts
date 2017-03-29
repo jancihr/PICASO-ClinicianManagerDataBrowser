@@ -1,7 +1,7 @@
 ///<reference path="../../../../../node_modules/ng2-vis/components/network/index.d.ts"/>
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
-    Routes,
+     Routes,
     RouterModule, RouterLink, Router
 }             from '@angular/router';
 import { DataResourceBrowserRoutingModule }   from '../data-resource-browser-routing.module';
