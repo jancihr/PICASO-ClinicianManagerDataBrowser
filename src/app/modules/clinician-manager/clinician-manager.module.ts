@@ -16,12 +16,14 @@ import {PatientCheckHistoryComponent} from "./cards/patient-check-history.compon
 import {nvD3} from "ng2-nvd3";
 import {PatientMoriskyResultsComponent} from "./cards/patient-morisky-results.component";
 import {PatientImagingComponent} from "./cards/patient-imaging.component";
+import {NgDateRangePickerModule} from "ng-daterangepicker";
 
 @NgModule({
     imports: [
         ClinicianManagerRoutingModule,
         ChartsModule, VisModule, HttpModule, CommonModule,
-        Ng2Bs3ModalModule
+        Ng2Bs3ModalModule, NgDateRangePickerModule
+
     ],
     declarations: [ClinicianManagerComponent,
         PatientOverviewComponent,
