@@ -1,7 +1,13 @@
 <div class="animated fadeIn">
+
+
+    <my-date-range-picker [options]="myDateRangePickerOptions"
+                          (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
+
+
     <h3 class="w3-tag">Clinician Manager - Patient Data Overview</h3>
 
-    <ng-daterangepicker [(ngModel)]="value" [options]="options"></ng-daterangepicker>
+
     <div>
 
 
