@@ -11,7 +11,7 @@ import { NarrativesManagerComponent }    from './modules/narratives-manager/narr
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'clinician-dashboard',
+        redirectTo: 'clinician-manager',
         pathMatch: 'full',
     },
     {
@@ -26,8 +26,8 @@ export const routes: Routes = [
                 loadChildren: 'app/dashboard/dashboard.module#DashboardModule'
             },
             {
-                path: 'clinician-dashboard',
-                loadChildren: 'app/modules/clinician-dashboard/clinician-dashboard.module#ClinicianDashboardModule'
+                path: 'clinician-manager',
+                loadChildren: 'app/modules/clinician-manager/clinician-manager.module#ClinicianManagerModule'
             },
             {
                 path: 'narratives-manager',
