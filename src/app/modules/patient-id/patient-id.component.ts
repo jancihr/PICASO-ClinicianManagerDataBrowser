@@ -1,5 +1,5 @@
 import {Component, ElementRef}    from '@angular/core';
-import { PatientService } from './_services/patient.service'
+import {PatientService} from './_services/patient.service'
 import {CdSharedModelService}   from '../../_services/cd-shared-model.service';
 
 @Component({
