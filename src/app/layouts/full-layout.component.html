@@ -8,12 +8,14 @@
             </li>
         </ul>
         <ul class="nav navbar-nav float-xs-right hidden-md-down">
+            <!--
             <li class="nav-item">
                 <a class="nav-link" href="#"><i class="icon-bell"></i><span class="tag tag-pill tag-danger">5</span></a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#"><i class="icon-list"></i></a>
             </li>
+
             <li class="nav-item">
                 <a class="nav-link" href="#"><i class="icon-location-pin"></i></a>
             </li>
@@ -49,6 +51,20 @@
             <li class="nav-item">
                 <a class="nav-link navbar-toggler aside-toggle" href="#">&#9776;</a>
             </li>
+            -->
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['/patient-id']"><i class="fa fa-user-plus"></i> Patient:
+                    {{cdSharedObject.patient.display}} </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#" [routerLink]="['/user-manage']"><i class="fa fa-user"></i> Clinician:
+                    {{cdSharedObject.clinician.display}} </a>
+            </li>
+            <!--
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fa fa-user"></i>  with roles: {{cdSharedObject.clinicianRoles}}</a>
+            </li>
+-->
         </ul>
     </div>
 </header>
@@ -56,35 +72,59 @@
 <div class="sidebar">
     <nav class="sidebar-nav">
         <ul class="nav">
+            <!--
             <li class="nav-item">
-                <a class="nav-link" routerLinkActive="active" [routerLink]="['/clinician-dashboard']"><i class="icon-speedometer"></i>Clinician Manager</a>
+                <a class="nav-link" routerLinkActive="active" [routerLink]="['/patient-id']"><i class="icon-info"></i>Select Patient</a>
+            </li>
+            -->
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/clinician-manager']"><i class="icon-speedometer"></i>Patient data
+                    viewer</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/data-resource-browser']"><i class="icon-folder"></i>Resource Browser</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/narratives-manager']"><i class="icon-briefcase"></i>Narratives Manager</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" [routerLink]="['/risk-manager']"><i class="icon-bell"></i>Risk Manager</a>
+                <a class="nav-link" [routerLink]="['/data-resource-browser']"><i class="icon-folder"></i>Care
+                    setting</a>
             </li>
             <li class="nav-item nav-dropdown">
-                <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> Pages</a>
+                <a class="nav-link nav-dropdown-toggle" [routerLink]="['/narratives-manager']"><i
+                        class="icon-briefcase"></i>Care plan manager</a>
+                <!--
                 <ul class="nav-dropdown-items">
                     <li class="nav-item">
-                        <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/login']"><i class="icon-star"></i> Login</a>
+                        <a class="nav-link" routerLinkActive="active" [routerLink]="['/narratives-manager/nm-careplan']"><i class="icon-info"></i> Config</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/register']"><i class="icon-star"></i> Register</a>
+                        <a class="nav-link" [routerLink]="['/narratives-manager/nm-template']"><i class="icon-bell"></i> Template</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/404']"><i class="icon-star"></i> Error 404</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/500']"><i class="icon-star"></i> Error 500</a>
+                        <a class="nav-link" [routerLink]="['/narratives-manager/nm-access']"><i class="icon-key"></i> Access Control</a>
                     </li>
                 </ul>
+                -->
             </li>
+            <!--
+                        <li class="nav-item">
+                            <a class="nav-link" [routerLink]="['/risk-manager']"><i class="icon-bell"></i>Risk Manager</a>
+                        </li>
+
+                        <li class="nav-item nav-dropdown">
+                            <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-star"></i> Pages</a>
+                            <ul class="nav-dropdown-items">
+                                <li class="nav-item">
+                                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/login']"><i class="icon-star"></i> Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/register']"><i class="icon-star"></i> Register</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/404']"><i class="icon-star"></i> Error 404</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" routerLinkActive="active" [routerLink]="['/pages/500']"><i class="icon-star"></i> Error 500</a>
+                                </li>
+                            </ul>
+                        </li>
+                        -->
         </ul>
     </nav>
 </div>
@@ -102,12 +142,13 @@
     </div>
     <!-- /.conainer-fluid -->
 </main>
-
+<!--
 <footer class="footer">
     <span class="text-left">
-        <a href="http://coreui.io">CoreUI</a> &copy; 2016 creativeLabs.
+        <a href="http://www.picaso-project.eu/">PICASO</a>
     </span>
     <span class="float-xs-right">
         Powered by <a href="http://coreui.io">CoreUI</a>
     </span>
 </footer>
+-->

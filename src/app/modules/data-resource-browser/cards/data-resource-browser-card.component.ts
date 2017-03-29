@@ -1,10 +1,9 @@
 ///<reference path="../../../../../node_modules/ng2-vis/components/network/index.d.ts"/>
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {
-     Routes,
-    RouterModule, RouterLink, Router
+    Routes,
+    RouterModule, RouterLink,
 }             from '@angular/router';
-import { DataResourceBrowserRoutingModule }   from '../data-resource-browser-routing.module';
 //import {PicasoDataService} from "../service/picaso-data.service";
 //import {LastGraphDisplayed} from "../model/last-graph-displayed";
 
@@ -28,10 +27,9 @@ const appRoutes: Routes = [
 */
 
 
-class PicasoNetworkData implements VisNetworkData{
+class PicasoNetworkData implements VisNetworkData {
     public nodes: VisNodes;
     public edges: VisEdges;
-   // public router: Router
 }
 
 @Component({
@@ -39,7 +37,6 @@ class PicasoNetworkData implements VisNetworkData{
     selector: 'resource-browser-tag',
     templateUrl: './data-resource-browser-card.component.html',
     styleUrls: ['./data-resource-browser-card.component.css']
-
 })
 
 export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
@@ -49,7 +46,6 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
     public visNetworkOptions: VisNetworkOptions;
     public visEdgeOptions: VisEdgeOptions;
     public visFitOptions: VisFitOptions;
-    public router: Router
     public allDisplayed: boolean;
     public homeDisplayed: boolean;
     public planDisplayed: boolean;
@@ -67,8 +63,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
     //public lastGraph : any; // LastGraphDisplayed;
 
 
-    public constructor(private visNetworkService: VisNetworkService, router: Router) {
-        this.router = router
+    public constructor(private visNetworkService: VisNetworkService) {
     }
 
     private carersSubGraphDisplay(){
@@ -1205,29 +1200,69 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         this.visNetworkService.click
             .subscribe((eventData: any[]) => {
             if (eventData[0] === this.visNetwork) {
+                //console.log(eventData[1].nodes);
                 // CARERS
                 if (eventData[1].nodes=="carers"){
-                    if(!this.carersDisplayed) {   this.carersSubGraphDisplay() }
+                  //  this.networkInitialized();
+                    if(!this.carersDisplayed
+                        /*!(this.visNetworkData.nodes.getById('cardiologist')
+                        || this.visNetworkData.nodes.getById('rheumatologist')
+                        || this.visNetworkData.nodes.getById('neurologist')
+                        || this.visNetworkData.nodes.getById('neuropschologist')
+                        || this.visNetworkData.nodes.getById('radiologist')
+                        || this.visNetworkData.nodes.getById('gp'))*/
+                    ) {   this.carersSubGraphDisplay() }
                     else{ this.carersCollapse() }
                 }
                 // HOME
                 if (eventData[1].nodes=="home"){
-                    if(!this.homeDisplayed) { this.homeSubGraphDisplay(); }
+                    if(!this.homeDisplayed
+                        /*!(this.visNetworkData.nodes.getById('sugarHistory')
+                        || this.visNetworkData.nodes.getById('saturationHistory')
+                        || this.visNetworkData.nodes.getById('lungHistory')
+                        || this.visNetworkData.nodes.getById('respirationHistory')
+                        || this.visNetworkData.nodes.getById('weightHistory')
+                        || this.visNetworkData.nodes.getById('homeHeart')
+                        || this.visNetworkData.nodes.getById('homeActivity')
+                        || this.visNetworkData.nodes.getById('questionnaireHome')
+                        )*/
+                    ) { this.homeSubGraphDisplay(); }
                     else{ this.homeCollapse() }
                 }
                 //plan
                 if (eventData[1].nodes=="plan"){
-                    if(!this.planDisplayed) { this.planSubGraphDisplay(); }
+                    if(!this.planDisplayed
+                        /*!(this.visNetworkData.nodes.getById('appointment')
+                            || this.visNetworkData.nodes.getById('medicationPlan')
+                            || this.visNetworkData.nodes.getById('activityPlan')
+                            || this.visNetworkData.nodes.getById('questionnairePlan')
+                        )*/
+                    ) { this.planSubGraphDisplay(); }
                     else{ this.planCollapse() }
                 }
                 //questionnaires
                 if (eventData[1].nodes=="questionnaires"){
-                    if(!this.questionairesDisplayed) { this.questionnaireSubGraphDisplay(); }
+                    if(!this.questionairesDisplayed
+                        /*!(this.visNetworkData.nodes.getById('questionnaireFFbhHAQHome')
+                            || this.visNetworkData.nodes.getById('questionnaireRADAIHome')
+                            || this.visNetworkData.nodes.getById('questionnaireFFbhHAQClinic')
+                            || this.visNetworkData.nodes.getById('questionnaireRADAIClinic')
+                            || this.visNetworkData.nodes.getById('questionnaireMoriskyClinic')
+                        )*/
+                    ) { this.questionnaireSubGraphDisplay(); }
                     else{ this.questionnaireCollapse() }
                 }
                 //PSYCHOTEST//
                 if (eventData[1].nodes=="psychoTest"){
-                    if(!this.psychoDisplayed) { this.psychoTestSubGraphDisplay(); }
+                    //this.visNetworkData.edges.remove('Patient3');
+                   // this.visNetworkData.nodes.remove('home');
+                    if(!this.psychoDisplayed
+                        /*!(this.visNetworkData.nodes.getById('memory')
+                            || this.visNetworkData.nodes.getById('attention')
+                            || this.visNetworkData.nodes.getById('language')
+                            || this.visNetworkData.nodes.getById('psychoHealth')
+                        )*/
+                    ) { this.psychoTestSubGraphDisplay(); }
                     else {
                         if(this.memoryDisplayed) { this.memoryCollapse() }
                         if(this.attentionDisplayed) { this.attentionCollapse() }
@@ -1238,66 +1273,84 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                 }
                 // MEMORY //
                 if (eventData[1].nodes=="memory"){
-                    if(!this.memoryDisplayed) { this.memorySubGraphDisplay(); }
+                    if(!this.memoryDisplayed /*!(this.visNetworkData.nodes.getById('15words')
+                            || this.visNetworkData.nodes.getById('figureRecall')
+                            || this.visNetworkData.nodes.getById('praxia')
+                            || this.visNetworkData.nodes.getById('simpleDivided')
+                        )*/
+                    ) { this.memorySubGraphDisplay(); }
                     else {  this.memoryCollapse() }
                 }
                 // ATTENTION //
                 if (eventData[1].nodes=="attention"){
-                    if(!this.attentionDisplayed) { this.attentionSubGraphDisplay(); }
+                    if(!this.attentionDisplayed
+                        /*!(this.visNetworkData.nodes.getById('stroop')
+                            || this.visNetworkData.nodes.getById('trial')
+                        )*/
+                    ) { this.attentionSubGraphDisplay(); }
                     else{ this.attentionCollapse() }
                 }
                 // LANGUAGE //
                 if (eventData[1].nodes=="language"){
-                    if(!this.languageDisplayed) { this.languageSubGrpahDisplay(); }
+                    if(!this.languageDisplayed /*!(this.visNetworkData.nodes.getById('fluency')
+                            || this.visNetworkData.nodes.getById('cardSorting')
+                        )*/
+                    ) { this.languageSubGrpahDisplay(); }
                     else{ this.languageCollapse() }
                 }
+
                 // PSYCHO HEALTH //
                 if (eventData[1].nodes=="psychoHealth"){
-                    if(!this.psyHealthDisplayed) { this.psychoHealthSubGraphDisplay(); }
+                    if(!this.psyHealthDisplayed /*!(this.visNetworkData.nodes.getById('hamiltonDepression')
+                            || this.visNetworkData.nodes.getById('beckDepression')
+                            || this.visNetworkData.nodes.getById('s-hPleasure')
+                            || this.visNetworkData.nodes.getById('angerExpression')
+                            || this.visNetworkData.nodes.getById('parkinsonPsychosis')
+                            || this.visNetworkData.nodes.getById('euroquol')
+                        )*/
+                    ) { this.psychoHealthSubGraphDisplay(); }
                     else{ this.psychohealthCollapse() }
                 }
                 //IMAGE
                 if (eventData[1].nodes=="image"){
-                    if(!this.imagesDisplayed) { this.imageSubGraphDisplay(); }
+                    if(!this.imagesDisplayed
+                        /*!(this.visNetworkData.nodes.getById('MRI')
+                            || this.visNetworkData.nodes.getById('DAT')
+                            || this.visNetworkData.nodes.getById('PET')
+                            || this.visNetworkData.nodes.getById('SPECT')
+                        )*/
+                    ) { this.imageSubGraphDisplay(); }
                     else{ this.imageCollapse() }
                 }
                 // cliMeasurements ECG, EEG
                 if (eventData[1].nodes=="cliMeasurements"){
-                    if(!this.cliMeasurementsDisplayed) { this.cliMeasurementsSubGraphDisplay(); }
+                    if(!this.cliMeasurementsDisplayed/*!(this.visNetworkData.nodes.getById('ECG')
+                            || this.visNetworkData.nodes.getById('EEG')
+                        )*/
+                    ) { this.cliMeasurementsSubGraphDisplay(); }
                     else{ this.cliMeasurementsCollapse() }
                 }
                 // SCREENING
                 if (eventData[1].nodes=="screening"){
-                    if(!this.screeningsDisplayed) { this.screeningSubGraphDisplay(); }
+                    if(!this.screeningsDisplayed /*!(this.visNetworkData.nodes.getById('painRating')
+                            || this.visNetworkData.nodes.getById('wellBeing')
+                        )*/
+                    ) { this.screeningSubGraphDisplay(); }
                     else{ this.screeningCollapse() }
                 }
                 // LAB
                 if (eventData[1].nodes=="lab"){
                     // console.log(eventData[1].nodes);
-                    if(!this.labDisplayed) { this.labSubgraphDisplay() }
+                    if(!this.labDisplayed /*!(this.visNetworkData.nodes.getById('bloodTest')
+                            || this.visNetworkData.nodes.getById('urineTest')
+                            || this.visNetworkData.nodes.getById('histTest')
+                        )*/
+                    ) { this.labSubgraphDisplay() }
                     else{ this.labCollapse() }
                 }
                 this.updateLastDispalayedGraphSetUp()
                 console.log(eventData[1].nodes);
-                if(eventData[1].nodes=="patient"
-                    || eventData[1].nodes==""
-                    || eventData[1].nodes=="lab"
-                    || eventData[1].nodes=="screening"
-                    || eventData[1].nodes=="cliMeasurements"
-                    || eventData[1].nodes=="image"
-                    || eventData[1].nodes=="psychoHealth"
-                    || eventData[1].nodes=="language"
-                    || eventData[1].nodes=="attention"
-                    || eventData[1].nodes=="memory"
-                    || eventData[1].nodes=="psychoTest"
-                    || eventData[1].nodes=="questionnaires"
-                    || eventData[1].nodes=="plan"
-                    || eventData[1].nodes=="carers"
-                    || eventData[1].nodes=="home"
-                ){
-                    this.visNetworkService.fit(this.visNetwork)
-                }
-
+                this.visNetworkService.fit(this.visNetwork);
              //   this.visNetworkService.redraw(this.visNetwork)
             }
         });
@@ -1421,6 +1474,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                         this.displayLast();
 
                     }
+
                     if (eventData[1].nodes=="sugarHistory"
                         || eventData[1].nodes=="saturationHistory"
                         || eventData[1].nodes=="lungHistory"
@@ -1430,39 +1484,24 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                         || eventData[1].nodes=="homeActivity"
                         || eventData[1].nodes=="questionnaireHome"
                     ){
-                        this.router.navigate(['/clinician-dashboard'])
-                        // TODO navigation towards Clinitian Manager - specifically for Home monitoring
-                    }
-                    //heree
-                    if (eventData[1].nodes=="questionnaireFFbhHAQHome"
-                    || eventData[1].nodes=="questionnaireRADAIHome"
-                    || eventData[1].nodes=="questionnaireFFbhHAQClinic"
-                    || eventData[1].nodes=="questionnaireRADAIClinic"
-                    || eventData[1].nodes=="questionnaireMoriskyClinic"
-                    || eventData[1].nodes=="MRI"
-                    || eventData[1].nodes=="DAT"
-                    || eventData[1].nodes=="PET"
-                    || eventData[1].nodes=="SPECT"
-                    || eventData[1].nodes=="ECG"
-                    || eventData[1].nodes=="EEG"
-                    || eventData[1].nodes=="painRating"
-                    || eventData[1].nodes=="wellBeing"
-                    || eventData[1].nodes=="bloodTest"
-                    || eventData[1].nodes=="urineTest"
-                    || eventData[1].nodes=="histTest"
+                        //region Description
+                     /*   this.visNetworkService.blurEdge
+                        this.visNetworkService.blurNode*/
+                        //endregion
+                        // console.log(eventData[1].nodes);
+                        // TODO navigation towards Clinitian Manager
+                        // this.visNetworkService.fit(this.visNetwork);
 
-                    ){
-                        this.router.navigate(['/clinician-dashboard'])
-                        // TODO navigation towards Clinitian Manager - specifically for Home monitoring
                     }
                     if (eventData[1].nodes=="appointment"
                         || eventData[1].nodes=="medicationPlan"
                         || eventData[1].nodes=="activityPlan"
                         || eventData[1].nodes=="questionnairePlan"
                     ){
-                        this.router.navigate(['/narratives-manager'])
-
+                        // console.log(eventData[1].nodes);
                         // TODO navigation towards Narrative Manager
+                        //this.visNetworkService.fit(this.visNetwork);
+
                     }
                 }
                 this.updateLastDispalayedGraphSetUp()

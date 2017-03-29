@@ -1,8 +1,8 @@
 import { NgModule }                 from '@angular/core';
 import { ChartsModule }             from 'ng2-charts/ng2-charts';
 
-import { ClinicianDashboardComponent }       from './clinician-dashboard.component';
-import { ClinicianDashboardRoutingModule }   from './clinician-dashboard-routing.module';
+import {ClinicianManagerComponent}       from './clinician-manager.component';
+import {ClinicianManagerRoutingModule}   from './clinician-manager-routing.module';
 import {VisModule} from "ng2-vis";
 import {HttpModule} from "@angular/http";
 import {CommonModule} from "@angular/common";
@@ -16,14 +16,16 @@ import {PatientCheckHistoryComponent} from "./cards/patient-check-history.compon
 import {nvD3} from "ng2-nvd3";
 import {PatientMoriskyResultsComponent} from "./cards/patient-morisky-results.component";
 import {PatientImagingComponent} from "./cards/patient-imaging.component";
+import {NgDateRangePickerModule} from "ng-daterangepicker";
 
 @NgModule({
     imports: [
-        ClinicianDashboardRoutingModule,
+        ClinicianManagerRoutingModule,
         ChartsModule, VisModule, HttpModule, CommonModule,
-        Ng2Bs3ModalModule
+        Ng2Bs3ModalModule, NgDateRangePickerModule
+
     ],
-    declarations: [ ClinicianDashboardComponent,
+    declarations: [ClinicianManagerComponent,
         PatientOverviewComponent,
         PatientDailyAverageObservationsComponent,
         PatientMedicationHistoryComponent,
@@ -33,4 +35,5 @@ import {PatientImagingComponent} from "./cards/patient-imaging.component";
         nvD3
     ]
 })
-export class ClinicianDashboardModule { }
+export class ClinicianManagerModule {
+}

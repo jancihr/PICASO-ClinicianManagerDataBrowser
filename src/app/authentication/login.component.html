@@ -6,25 +6,28 @@
                     <div class="card p-2">
                         <div class="card-block">
                             <h1>Login</h1>
-                            <p class="text-muted">Sign In to your account</p>
-                            <div class="input-group mb-1">
+                            <form role="form" (submit)="login($event, username.value, password.value)">
+
+                                <p class="text-muted">Sign In to your account</p>
+                                <div class="input-group mb-1">
                                 <span class="input-group-addon"><i class="icon-user"></i>
                                 </span>
-                                <input type="text" class="form-control" placeholder="Username">
-                            </div>
-                            <div class="input-group mb-2">
+                                    <input #username type="text" class="form-control" placeholder="Username">
+                                </div>
+                                <div class="input-group mb-2">
                                 <span class="input-group-addon"><i class="icon-lock"></i>
                                 </span>
-                                <input type="password" class="form-control" placeholder="Password">
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-6">
-                                    <button type="button" class="btn btn-primary px-2">Login</button>
+                                    <input #password type="password" class="form-control" placeholder="Password">
                                 </div>
-                                <div class="col-xs-6 text-xs-right">
-                                    <button type="button" class="btn btn-link px-0">Forgot password?</button>
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <button type="submit" class="btn btn-primary px-2">Login</button>
+                                    </div>
+                                    <div class="col-xs-6 text-xs-right">
+                                        <button type="button" class="btn btn-link px-0">Forgot password?</button>
+                                    </div>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                     <!--

@@ -1,4 +1,4 @@
-# PICASO Health Care Dashboard 
+# PICASO Clinician Dashboard UI 
 
 This is a software produced under [PICASO EU Horizon2020 project](http://www.picaso-project.eu/). 
 
