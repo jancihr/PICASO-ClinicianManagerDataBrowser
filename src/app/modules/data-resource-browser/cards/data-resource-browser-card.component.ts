@@ -1456,7 +1456,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                         || eventData[1].nodes=="homeActivity"
                         || eventData[1].nodes=="questionnaireHome"
                     ){
-                        this.router.navigate(['/clinician-dashboard'])
+                        this.router.navigate(['/clinician-manager'])
                         // TODO navigation towards Clinitian Manager - specifically for Home monitoring
                     }
                     //heree
@@ -1478,7 +1478,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                         || eventData[1].nodes == "histTest"
 
                     ) {
-                        this.router.navigate(['/clinician-dashboard'])
+                        this.router.navigate(['/clinician-manager'])
                         // TODO navigation towards Clinitian Manager - specifically for Home monitoring
                     }
                     if (eventData[1].nodes=="appointment"
