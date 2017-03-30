@@ -1387,6 +1387,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
 
                         // TODO navigation towards Clinitian Manager
                         //  templateUrl: './data-resource-browser-card.component.html',
+gfhf hfhgf
 
                         //this.visNetworkService.fit(this.visNetwork);
 
