@@ -1,10 +1,9 @@
 import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
 
-import {VisTimelineService, VisTimelineItems, VisTimelineItem, VisTimelineOptions, VisDate} from 'ng2-vis/ng2-vis';
+import {VisTimelineService, VisTimelineItems, VisTimelineItem, VisTimelineOptions} from 'ng2-vis/ng2-vis';
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientMedication} from "../model/patient-medication";
 import {ModalComponent} from 'ng2-bs3-modal/ng2-bs3-modal';
-import {IMyDateRangeModel} from "mydaterangepicker";
 
 
 @Component({
@@ -18,7 +17,7 @@ import {IMyDateRangeModel} from "mydaterangepicker";
 
 export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
-    @ViewChild('myModal')
+    @ViewChild('myMedicationModal')
     myModal: ModalComponent;
 
     close() {
@@ -87,10 +86,9 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
     }
 
 
-    public refreshRange(range: IMyDateRangeModel): void {
-        console.log("zmena datumu v medications: ");
+    public refreshRange(start: Date, end: Date): void {
 
-        this.visTimelineService.setWindow('medicationTimelineGraph', range.beginJsDate, range.endJsDate);
+        this.visTimelineService.setWindow('medicationTimelineGraph', start, end);
 
     }
 
@@ -137,10 +135,9 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
                     style: "background: #"+item.color,
 
                     content: `<div>
-    <div class="w3-large">${item.name}</div>
-    <div class="w3-small">${item.dosage} - ${item.frequency} - ${item.stopReason}</div>
-   
-</div>`
+                              <div class="w3-large">${item.name}</div>
+                              <div class="w3-small">${item.dosage} - ${item.frequency} - ${item.stopReason}</div>
+                              </div>`
                     ,
                     start: item.startDate,
                     end: item.endDate

@@ -27,3 +27,26 @@
         </div>
     </div>
 </div>
+
+<modal [animation]="animationsEnabled" #myCheckModal>
+    <div *ngIf="selectedCheck">
+        <modal-header [show-close]="true">
+            <h4 class="modal-title">Patient medication details</h4>
+        </modal-header>
+        <modal-body>
+
+            <div class="w3-container w3-border w3-border-lime w3-round-large">
+
+                <h2>{{selectedCheck.name}}</h2>
+                <p>Clinician: {{selectedCheck.clinician}}</p>
+                <p>Visit reason: {{selectedCheck.visitReason}}</p>
+                <p>Visit results: {{selectedCheck.visitResults}}</p>
+                <p>From: {{selectedCheck.startDate}}</p>
+                <p>To: {{selectedCheck.endDate}}</p>
+            </div>
+
+        </modal-body>
+        <modal-footer [show-default-buttons]="false"></modal-footer>
+
+    </div>
+</modal>

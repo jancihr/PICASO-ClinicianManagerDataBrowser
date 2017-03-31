@@ -28,7 +28,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     observationGroups: PatientObservationGroup[];
 
 
-
     constructor(private picasoDataService: PicasoDataService) {
     };
 
@@ -37,7 +36,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         this.endDate = new Date();
         this.startDate = new Date();
         this.startDate.setFullYear(this.endDate.getFullYear() - 1);
-
+        this.setOptions();
         this.getObservations();
 
 
@@ -57,9 +56,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     }
 
 
-    setPatientObservations(observations: PatientObservationGroup[]) {
-
-        this.observationGroups = observations;
+    setOptions(): void {
 
         this.options = {
             chart: {
@@ -112,26 +109,29 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                     axisLabelDistance: -10
                 },
                 callback: function (chart) {
-                    console.log("!!! lineChart callback !!!");
+                    //console.log("!!! lineChart callback !!!");
                 }
             }
         };
+    }
+
+    setPatientObservations(observations: PatientObservationGroup[]) {
+
+        this.observationGroups = observations;
 
 
         this.data = [];
 
         for (var group of observations) {
 
-            var sortedValues = group.values.sort(function(a, b) {
+            var sortedValues = group.values.sort(function (a, b) {
                 return new Date(a.date).getTime() - new Date(b.date).getTime();
             });
 
             var newValues = [];
 
 
-
-
-            var i=0;
+            var i = 0;
             for (var observation of sortedValues) {
 
                 //newValues.push({x: i++, y: i});
@@ -141,7 +141,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
             this.data.push({
                 values: newValues,
-                key: group.name+ " / " + group.label,
+                key: group.name + " / " + group.label,
                 color: group.color,
                 //area: false,
                 //mean: 120,
@@ -154,16 +154,14 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
         for (var group of observations) {
 
-            var sortedValues = group.values.sort(function(a, b) {
+            var sortedValues = group.values.sort(function (a, b) {
                 return new Date(a.date).getTime() - new Date(b.date).getTime();
             });
 
             var newValues = [];
 
 
-
-
-            var i=0;
+            var i = 0;
             for (var observation of sortedValues) {
 
                 //newValues.push({x: i++, y: i});
@@ -173,7 +171,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
             this.data.push({
                 values: newValues,
-                key: group.name+ " / " + group.label ,
+                key: group.name + " / " + group.label,
                 color: group.color,
                 //area: false,
                 //mean: 120,
@@ -186,9 +184,13 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
     }
 
+    public refreshRange(start: Date, end: Date): void {
 
+        this.startDate = start;
+        this.endDate = end;
+        this.getObservations();
 
-
+    }
 
 
 }

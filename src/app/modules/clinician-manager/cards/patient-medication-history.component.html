@@ -28,7 +28,7 @@
     </div>
 </div>
 
-<modal [animation]="animationsEnabled" (onClose)="onClose($event)" #myModal>
+<modal [animation]="animationsEnabled" #myMedicationModal>
     <div *ngIf="selectedMedication">
     <modal-header [show-close]="true">
         <h4 class="modal-title">Patient medication details</h4>

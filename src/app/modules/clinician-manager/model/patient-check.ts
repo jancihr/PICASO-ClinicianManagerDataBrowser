@@ -5,5 +5,6 @@ export class PatientCheck {
   endDate: Date;
   color: string;
   visitReason: string;
+  visitResults: string;
   //type: string;
 }
