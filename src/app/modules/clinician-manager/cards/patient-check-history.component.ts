@@ -2,8 +2,8 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 
 import {VisTimelineService, VisTimelineItems, VisTimelineOptions} from 'ng2-vis/ng2-vis';
 import {PicasoDataService} from "../service/picaso-data.service";
-import {PatientMedication} from "../model/patient-medication";
 import {PatientCheck} from "../model/patient-check";
+import {IMyDateRangeModel} from "mydaterangepicker";
 
 @Component({
     selector: 'patient-checks',
@@ -40,6 +40,14 @@ export class PatientCheckHistoryComponent implements OnInit, OnDestroy {
 
         // now we can use the service to register on events
         this.visTimelineService.on(this.visTimelineChecks, 'click');
+
+    }
+
+    public refreshRange(range: IMyDateRangeModel): void {
+
+
+        this.visTimelineService.setWindow('visTimelineGraph', range.beginJsDate, range.endJsDate);
+
 
     }
 

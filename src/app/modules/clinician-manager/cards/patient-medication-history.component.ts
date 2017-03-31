@@ -1,9 +1,10 @@
 import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
 
-import {VisTimelineService, VisTimelineItems, VisTimelineItem, VisTimelineOptions} from 'ng2-vis/ng2-vis';
+import {VisTimelineService, VisTimelineItems, VisTimelineItem, VisTimelineOptions, VisDate} from 'ng2-vis/ng2-vis';
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientMedication} from "../model/patient-medication";
 import {ModalComponent} from 'ng2-bs3-modal/ng2-bs3-modal';
+import {IMyDateRangeModel} from "mydaterangepicker";
 
 
 @Component({
@@ -50,6 +51,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
     medications: PatientMedication[];
 
 
+
     public visTimelineMedications: string = 'medicationTimelineGraph';
     public visTimelineItemsMedications: VisTimelineItems;
     public visTimelineMedicationsOptions: VisTimelineOptions;
@@ -84,6 +86,13 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
             });
     }
 
+
+    public refreshRange(range: IMyDateRangeModel): void {
+        console.log("zmena datumu v medications: ");
+
+        this.visTimelineService.setWindow('medicationTimelineGraph', range.beginJsDate, range.endJsDate);
+
+    }
 
     public ngOnInit(): void {
 

@@ -1,8 +1,6 @@
 <div class="animated fadeIn">
 
 
-    <my-date-range-picker [options]="myDateRangePickerOptions"
-                          (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
 
 
     <h3 class="w3-tag">Clinician Manager - Patient Data Overview</h3>
@@ -47,6 +45,11 @@
                 </patient-checks>
 
             </div>
+
+
+            <my-date-range-picker [options]="myDateRangePickerOptions"
+                                  (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
+
 
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
