@@ -6,4 +6,6 @@ export class PatientObservationGroup {
     color: string;
     type: string;
     values: PatientObservation[];
+    showLeft: boolean = false;
+    showRight: boolean = false;
 }
