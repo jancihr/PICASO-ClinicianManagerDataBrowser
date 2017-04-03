@@ -1,9 +1,9 @@
-import {Component, OnInit, OnDestroy} from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
 
 import {VisTimelineService, VisTimelineItems, VisTimelineOptions} from 'ng2-vis/ng2-vis';
 import {PicasoDataService} from "../service/picaso-data.service";
-import {PatientMedication} from "../model/patient-medication";
 import {PatientCheck} from "../model/patient-check";
+import {ModalComponent} from "ng2-bs3-modal/components/modal";
 
 @Component({
     selector: 'patient-checks',
@@ -15,12 +15,30 @@ import {PatientCheck} from "../model/patient-check";
 })
 
 export class PatientCheckHistoryComponent implements OnInit, OnDestroy {
+    @ViewChild('myCheckModal')
+    myModal: ModalComponent;
 
+    close() {
+        this.myModal.close();
+    }
+
+    openModal() {
+        for (var check of this.checks) {
+            if (check.id === this.selectedId) {
+                this.selectedCheck = check;
+                break
+            }
+        }
+
+        this.myModal.open();
+    }
 
     public startDate: Date;
     public endDate: Date;
 
     selectedItem: string;
+    selectedId: string;
+    selectedCheck: PatientCheck;
 
     listOfItems: string[];
 
@@ -40,6 +58,33 @@ export class PatientCheckHistoryComponent implements OnInit, OnDestroy {
 
         // now we can use the service to register on events
         this.visTimelineService.on(this.visTimelineChecks, 'click');
+
+
+        this.visTimelineService.click
+            .subscribe((eventData: any[]) => {
+                if (eventData[0] === this.visTimelineChecks) {
+
+
+
+                    //console.log(itemId);
+                    //console.log(this.selectedItem);
+
+
+                    this.selectedId = eventData[1].item;
+                    //console.log("itemid: ", eventData[1].item);
+                    if (eventData[1].item !== null) this.openModal();
+
+
+                }
+            });
+
+    }
+
+    public refreshRange(start: Date, end: Date): void {
+
+
+        this.visTimelineService.setWindow('visTimelineGraph', start, end);
+
 
     }
 
@@ -83,9 +128,9 @@ export class PatientCheckHistoryComponent implements OnInit, OnDestroy {
                     id: item.id,
                     style: "background: #" + item.color,
                     content: `<div>
-                    <div class="w3-large">${item.clinician}</div>
-                    <div class="w3-small">${item.visitReason} </div>
-                    </div>`,
+                              <div class="w3-large">${item.clinician}</div>
+                              <div class="w3-small">${item.visitReason} </div>
+                              </div>`,
                     start: item.startDate,
                     type: 'box'
                 });
@@ -93,10 +138,9 @@ export class PatientCheckHistoryComponent implements OnInit, OnDestroy {
                 this.visTimelineItemsChecks.add({
                     id: item.id,
                     content: `<div>
-    <div class="w3-large">${item.clinician}</div>
-    <div class="w3-small">${item.visitReason} </div>
-    
-</div>`,
+                              <div class="w3-large">${item.clinician}</div>
+                              <div class="w3-small">${item.visitReason} </div>
+                              </div>`,
 
                     start: item.startDate,
                     end: item.endDate,

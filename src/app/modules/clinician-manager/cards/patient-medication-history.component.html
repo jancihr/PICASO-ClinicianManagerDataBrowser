@@ -14,7 +14,8 @@
 
             </div>
             <div class="w3-tiny w3-right">Click inside the diagram area to enable mouse interactions (zoom,
-                scroll left/right, click for detail)
+                scroll left/right, click for detail). Click on chosen medication to view more details in a pop up
+                window.
             </div>
 
             <button type="button"
@@ -28,7 +29,7 @@
     </div>
 </div>
 
-<modal #myModal>
+<modal [animation]="animationsEnabled" #myMedicationModal>
     <div *ngIf="selectedMedication">
     <modal-header [show-close]="true">
         <h4 class="modal-title">Patient medication details</h4>

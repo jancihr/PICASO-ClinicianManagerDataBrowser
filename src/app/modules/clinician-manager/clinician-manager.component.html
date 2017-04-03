@@ -1,11 +1,7 @@
 <div class="animated fadeIn">
 
 
-    <my-date-range-picker [options]="myDateRangePickerOptions"
-                          (dateRangeChanged)="onDateRangeChanged($event)"></my-date-range-picker>
 
-
-    <h3 class="w3-tag">Clinician Manager - Patient Data Overview</h3>
 
 
     <div>
@@ -13,12 +9,61 @@
 
         <div class="row">
 
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div i18n="Patient Data Viewer"><i class="fa fa-calendar-check-o"></i> Patient Data Viewer</div>
+                        <div class="card-actions">
+
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <div>
+
+                            <h3 class="w3-tag">Patient Data Viewer</h3>
+
+                            <div class="w3-tiny w3-right">Below you can see different cards containing several available
+                                patient data from all available sources.
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+                <div class="card">
+                    <div class="card-header">
+                        <div i18n="Data date range"><i class="fa fa-calendar-check-o"></i> Data date range</div>
+                        <div class="card-actions">
+
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <div>
+
+                            <my-date-range-picker [options]="myDateRangePickerOptions"
+                                                  (dateRangeChanged)="onDateRangeChanged($event)">
+                            </my-date-range-picker>
+
+                            <div class="w3-tiny w3-right">Choose if you want to change the dates for which the data is
+                                loaded.
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
                 <patient-overview>
                 </patient-overview>
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
                 <patient-diseases>
                 </patient-diseases>
@@ -26,7 +71,7 @@
 
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
                 <patient-imaging>
 
@@ -34,7 +79,7 @@
 
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-8">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
                 <patient-clinicians-history>
                 </patient-clinicians-history>
@@ -47,6 +92,7 @@
                 </patient-checks>
 
             </div>
+
 
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 

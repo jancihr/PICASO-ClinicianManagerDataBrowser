@@ -31,9 +31,9 @@ export class PatientOverviewComponent implements OnInit {
             patient => this.patientData = patient,
             error => this.errorMessage = <any>error);
 
-        console.log("webservice called");
-        console.log(this.patientData);
-        console.log(this.errorMessage);
+        //console.log("webservice called");
+        //console.log(this.patientData);
+        //console.log(this.errorMessage);
 
 
     }

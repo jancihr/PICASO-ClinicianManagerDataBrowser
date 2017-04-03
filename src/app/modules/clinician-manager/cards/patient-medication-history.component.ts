@@ -17,7 +17,7 @@ import {ModalComponent} from 'ng2-bs3-modal/ng2-bs3-modal';
 
 export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
-    @ViewChild('myModal')
+    @ViewChild('myMedicationModal')
     myModal: ModalComponent;
 
     close() {
@@ -48,6 +48,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
     errorMessage: string;
     medications: PatientMedication[];
+
 
 
     public visTimelineMedications: string = 'medicationTimelineGraph';
@@ -84,6 +85,12 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
             });
     }
 
+
+    public refreshRange(start: Date, end: Date): void {
+
+        this.visTimelineService.setWindow('medicationTimelineGraph', start, end);
+
+    }
 
     public ngOnInit(): void {
 
@@ -128,10 +135,9 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
                     style: "background: #"+item.color,
 
                     content: `<div>
-    <div class="w3-large">${item.name}</div>
-    <div class="w3-small">${item.dosage} - ${item.frequency} - ${item.stopReason}</div>
-   
-</div>`
+                              <div class="w3-large">${item.name}</div>
+                              <div class="w3-small">${item.dosage} - ${item.frequency} - ${item.stopReason}</div>
+                              </div>`
                     ,
                     start: item.startDate,
                     end: item.endDate

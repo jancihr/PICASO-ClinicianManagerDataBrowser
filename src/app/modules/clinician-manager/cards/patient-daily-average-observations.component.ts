@@ -17,16 +17,13 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
     errorMessage: string;
 
-
     endDate: Date;
     startDate: Date;
-
 
     options;
     data;
 
     observationGroups: PatientObservationGroup[];
-
 
 
     constructor(private picasoDataService: PicasoDataService) {
@@ -37,7 +34,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         this.endDate = new Date();
         this.startDate = new Date();
         this.startDate.setFullYear(this.endDate.getFullYear() - 1);
-
+        this.setOptions();
         this.getObservations();
 
 
@@ -57,14 +54,13 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     }
 
 
-    setPatientObservations(observations: PatientObservationGroup[]) {
-
-        this.observationGroups = observations;
+    setOptions(): void {
 
         this.options = {
             chart: {
+                noData: 'Choose some data series from choices above.',
                 type: 'multiChart',
-                height: 450,
+                height: 600,
 
                 legendRightAxisHint: " (right axis)",
                 interpolate: "linear",
@@ -91,104 +87,185 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                 },
 
                 xAxis: {
-                    axisLabel: 'Time',
+                    //axisLabel: 'Time',
                     tickFormat: function (d) {
                         return new Date(d).toLocaleDateString();
                     },
                 },
 
                 yAxis1: {
-                    axisLabel: 'Value',
+                    //axisLabel: 'Value',
                     tickFormat: function (d) {
                         return d;
                     },
-                    axisLabelDistance: -10
+                    //axisLabelDistance: -10
                 },
                 yAxis2: {
-                    axisLabel: 'Value',
+                    //axisLabel: 'Value',
                     tickFormat: function (d) {
                         return d;
                     },
-                    axisLabelDistance: -10
+                    //axisLabelDistance: -10
                 },
                 callback: function (chart) {
-                    console.log("!!! lineChart callback !!!");
+                    //console.log("!!! lineChart callback !!!");
                 }
             }
         };
+    }
+
+    setPatientObservations(observations: PatientObservationGroup[]) {
+
+        this.observationGroups = observations;
+        if (this.observationGroups !== undefined && this.observationGroups.length > 1) {
+            this.observationGroups[0].showLeft = true;
+            this.observationGroups[1].showRight = true;
+        }
+
+        this.reloadDataToGraph();
+
+    }
+
+    reloadDataToGraph() {
 
 
         this.data = [];
 
-        for (var group of observations) {
+        for (var group of this.observationGroups) {
 
-            var sortedValues = group.values.sort(function(a, b) {
-                return new Date(a.date).getTime() - new Date(b.date).getTime();
-            });
-
-            var newValues = [];
+            if (group.showLeft) {
 
 
+                var sortedValues = group.values.sort(function (a, b) {
+                    return new Date(a.date).getTime() - new Date(b.date).getTime();
+                });
+
+                var newValues = [];
 
 
-            var i=0;
-            for (var observation of sortedValues) {
+                var i = 0;
+                for (var observation of sortedValues) {
 
-                //newValues.push({x: i++, y: i});
+                    //newValues.push({x: i++, y: i});
 
-                newValues.push({"x": new Date(observation.date).getTime(), "y": observation.value})
+                    newValues.push({"x": new Date(observation.date).getTime(), "y": observation.value})
+                }
+
+                this.data.push({
+                    values: newValues,
+                    key: group.name + " / " + group.label,
+                    color: group.color,
+                    //area: false,
+                    //mean: 120,
+                    disabled: false,
+                    yAxis: 1,
+                    type: group.type
+                })
+
             }
-
-            this.data.push({
-                values: newValues,
-                key: group.name+ " / " + group.label,
-                color: group.color,
-                //area: false,
-                //mean: 120,
-                yAxis: 1,
-                type: group.type
-            })
-
-
         }
 
-        for (var group of observations) {
+        for (var group of this.observationGroups) {
 
-            var sortedValues = group.values.sort(function(a, b) {
-                return new Date(a.date).getTime() - new Date(b.date).getTime();
-            });
+            if (group.showRight) {
 
-            var newValues = [];
+                var
+                    sortedValues = group.values.sort(function (a, b) {
+                        return new Date(a.date).getTime() - new Date(b.date).getTime();
+                    });
+
+                var
+                    newValues = [];
 
 
+                var
+                    i = 0;
 
+                for (
 
-            var i=0;
-            for (var observation of sortedValues) {
+                    var
+                        observation
+                    of
+                    sortedValues
+                    ) {
 
-                //newValues.push({x: i++, y: i});
+                    //newValues.push({x: i++, y: i});
 
-                newValues.push({"x": new Date(observation.date).getTime(), "y": observation.value})
+                    newValues
+                        .push({
+                                "x": new Date
+
+                                (
+                                    observation
+                                        .
+                                        date
+                                ).getTime()
+
+                                ,
+                                "y": observation.value
+                            }
+                        )
+                }
+
+                this.data.push({
+                    values: newValues,
+                    key: group.name + " / " + group.label,
+                    color: group.color,
+                    disabled: false,
+                    //area: false,
+                    //mean: 120,
+                    yAxis: 2,
+                    type: group.type
+                })
+
             }
-
-            this.data.push({
-                values: newValues,
-                key: group.name+ " / " + group.label ,
-                color: group.color,
-                //area: false,
-                //mean: 120,
-                yAxis: 2,
-                type: group.type
-            })
-
-
         }
 
     }
 
+    public
+    refreshRange(start: Date, end: Date): void {
+
+        this.startDate = start;
+        this.endDate = end;
+        this.getObservations();
+
+    }
+
+    public toggleLeft(id: string, name: string) {
+
+        for (var i = 0; i < this.observationGroups.length; i++) {
+
+            if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
+                this.observationGroups[i].showLeft = !this.observationGroups[i].showLeft;
+                if (this.observationGroups[i].showLeft) {
+                    this.observationGroups[i].showRight = false;
+                }
+                break;
+            }
 
 
+        }
+        this.reloadDataToGraph()
 
+    }
+
+    public toggleRight(id: string, name: string) {
+        for (var i = 0; i < this.observationGroups.length; i++) {
+
+            if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
+                this.observationGroups[i].showRight = !this.observationGroups[i].showRight;
+                if (this.observationGroups[i].showRight) {
+                    this.observationGroups[i].showLeft = false;
+                }
+                break;
+            }
+
+
+        }
+
+        this.reloadDataToGraph()
+    }
 
 
 }
