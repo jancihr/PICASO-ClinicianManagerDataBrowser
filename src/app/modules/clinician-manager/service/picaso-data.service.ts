@@ -19,31 +19,33 @@ import {PatientImage} from "../model/patient-image";
 @Injectable()
 export class PicasoDataService {
 
-    private patientDataServiceURL = 'http://147.232.202.101:9004/info';  // URL to web api
-    private observationsDataServiceURL = 'http://147.232.202.101:9004/observations';  // URL to web api
-    private patientMedicationDataServiceURL = 'http://147.232.202.101:9004/medications';
-    private patientCliniciansServiceURL = 'http://147.232.202.101:9004/clinicians';
-    private patientDiseasesServiceURL = 'http://147.232.202.101:9004/diseases';
-    private patientChecksDataServiceURL = 'http://147.232.202.101:9004/checks';
-    private patientMoriskyDataServiceURL = 'http://147.232.202.101:9004/morisky';
-    private patientFFbHDataServiceURL = 'http://147.232.202.101:9004/ffbh';
-    private patientRADAIServiceURL = 'http://147.232.202.101:9004/radai';
-    private patientImagingServiceURL = 'http://147.232.202.101:9004/imaging';
+    private patientODSServiceURL = 'assets/fakeODS/db.json';
+
+    //private patientDataServiceURL = 'http://147.232.202.101:9004/info';  // URL to web api
+    //private observationsDataServiceURL = 'http://147.232.202.101:9004/observations';  // URL to web api
+    //private patientMedicationDataServiceURL = 'http://147.232.202.101:9004/medications';
+    //private patientCliniciansServiceURL = 'http://147.232.202.101:9004/clinicians';
+    //private patientDiseasesServiceURL = 'http://147.232.202.101:9004/diseases';
+    //private patientChecksDataServiceURL = 'http://147.232.202.101:9004/checks';
+    //private patientMoriskyDataServiceURL = 'http://147.232.202.101:9004/morisky';
+    //private patientFFbHDataServiceURL = 'http://147.232.202.101:9004/ffbh';
+    //private patientRADAIServiceURL = 'http://147.232.202.101:9004/radai';
+    //private patientImagingServiceURL = 'http://147.232.202.101:9004/imaging';
 
     constructor(private http: Http) {
     }
 
 
     getDiseases(): Observable<PatientDisease[]> {
-        return this.http.get(this.patientDiseasesServiceURL)
-            .map(this.extractData)
+        return this.http.get(this.patientODSServiceURL)
+            .map(this.extractDataDiseases)
             .catch(this.handleError)
             ;
     }
 
     getImaging(): Observable<PatientImage[]> {
-        return this.http.get(this.patientImagingServiceURL)
-            .map(this.extractData)
+        return this.http.get(this.patientODSServiceURL)
+            .map(this.extractDataImaging)
             .catch(this.handleError)
             ;
     }
@@ -51,29 +53,29 @@ export class PicasoDataService {
     getClinicians(): Observable<PatientClinician[]> {
 
 
-        return this.http.get(this.patientCliniciansServiceURL)
-            .map(this.extractData)
+        return this.http.get(this.patientODSServiceURL)
+            .map(this.extractDataClinicians)
             .catch(this.handleError)
             ;
     }
 
     getMoriskyResults(startDate: Date, endDate: Date): Observable<PatientMoriskyResult[]> {
-        return this.http.get(this.patientMoriskyDataServiceURL)
-            .map(this.extractData)
+        return this.http.get(this.patientODSServiceURL)
+            .map(this.extractDataMorisky)
             .catch(this.handleError)
             ;
     }
 
     getFFbHResults(startDate: Date, endDate: Date): Observable<PatientFFbHResult[]> {
-        return this.http.get(this.patientFFbHDataServiceURL)
-            .map(this.extractData)
+        return this.http.get(this.patientODSServiceURL)
+            .map(this.extractDataFfbh)
             .catch(this.handleError)
             ;
     }
 
     getRADAIResults(startDate: Date, endDate): Observable<PatientRADAIResult[]>{
-        return this.http.get(this.patientRADAIServiceURL)
-            .map(this.extractData)
+        return this.http.get(this.patientODSServiceURL)
+            .map(this.extractDataRadai)
             .catch(this.handleError)
             ;
     }
@@ -81,24 +83,24 @@ export class PicasoDataService {
     getObservations(startDate: Date, endDate: Date): Observable<PatientObservationGroup[]> {
 
 
-        return this.http.get(this.observationsDataServiceURL)
-            .map(this.extractData)
+        return this.http.get(this.patientODSServiceURL)
+            .map(this.extractDataObservations)
             .catch(this.handleError)
             ;
     }
 
 
     getMedicationHistory(startDate: Date, endDate: Date): Observable<PatientMedication[]> {
-        return this.http.get(this.patientMedicationDataServiceURL)
-            .map(this.extractData)
+        return this.http.get(this.patientODSServiceURL)
+            .map(this.extractDataMedications)
             .catch(this.handleError)
             ;
     }
 
     getCheckHistory(startDate: Date, endDate: Date): Observable<PatientCheck[]> {
 
-        return this.http.get(this.patientChecksDataServiceURL)
-            .map(this.extractData)
+        return this.http.get(this.patientODSServiceURL)
+            .map(this.extractDataChecks)
             .catch(this.handleError)
             ;
     }
@@ -106,16 +108,54 @@ export class PicasoDataService {
 
     getPatient(): Observable<PatientData> {
 
-        return this.http.get(this.patientDataServiceURL)
-            .map(this.extractData)
+        return this.http.get(this.patientODSServiceURL)
+            .map(this.extractDataInfo)
             .catch(this.handleError)
             ;
     }
 
-    private  extractData(res: Response) {
+    //private  extractData(res: Response) {
+    //    return res.json();
+    //}
 
+    private  extractDataInfo(res: Response) {
+        return res.json().info;
+    }
 
-        return res.json();
+    private  extractDataRadai(res: Response) {
+        return res.json().radai;
+    }
+
+    private  extractDataMorisky(res: Response) {
+        return res.json().morisky;
+    }
+
+    private  extractDataFfbh(res: Response) {
+        return res.json().ffbh;
+    }
+
+    private  extractDataObservations(res: Response) {
+        return res.json().observations;
+    }
+
+    private  extractDataMedications(res: Response) {
+        return res.json().medications;
+    }
+
+    private  extractDataClinicians(res: Response) {
+        return res.json().clinicians;
+    }
+
+    private  extractDataChecks(res: Response) {
+        return res.json().checks;
+    }
+
+    private  extractDataDiseases(res: Response) {
+        return res.json().diseases;
+    }
+
+    private  extractDataImaging(res: Response) {
+        return res.json().imaging;
     }
 
 
