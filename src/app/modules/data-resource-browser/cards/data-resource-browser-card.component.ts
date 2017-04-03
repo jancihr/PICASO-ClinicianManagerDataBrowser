@@ -59,11 +59,13 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
     public screeningsDisplayed: boolean;
     public cliMeasurementsDisplayed: boolean;
     public labDisplayed: boolean;
+    public bloodDisplayed: boolean;
     public psychoDisplayed: boolean;
     public memoryDisplayed: boolean;
     public attentionDisplayed: boolean;
     public languageDisplayed: boolean;
     public psyHealthDisplayed: boolean;
+    public scaleOfGraph: any
     //public lastGraph : any; // LastGraphDisplayed;
 
 
@@ -235,12 +237,12 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         });
         this.visNetworkData.edges.add({from: 'questionnaireRADAIClinic', to: 'questionnaires', id: 'quest04'});
 
-        this.visNetworkData.nodes.add({
+/*        this.visNetworkData.nodes.add({
             id: 'questionnaireMoriskyClinic',
             label: 'Morisky (at clinic)\n' + '01.03.2017',
             group: 'QuestionnaireClinic'
         });
-        this.visNetworkData.edges.add({from: 'questionnaireMoriskyClinic', to: 'questionnaires', id: 'quest05'});
+        this.visNetworkData.edges.add({from: 'questionnaireMoriskyClinic', to: 'questionnaires', id: 'quest05'});*/
     }
 
     private psychoTestSubGraphDisplay(){
@@ -400,7 +402,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
 
         this.visNetworkData.nodes.add({
             id: 'DAT',
-            label: 'DAT\n' + '21.02.2017',
+            label: 'Dat Scan\n' + '21.02.2017',
             group: 'PictureOrScan'
         });
         this.visNetworkData.edges.add({from: 'DAT', to: 'image', id: 'image02'});
@@ -413,11 +415,11 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         this.visNetworkData.edges.add({from: 'PET', to: 'image', id: 'image03'});
 
         this.visNetworkData.nodes.add({
-            id: 'SPECT',
-            label: 'SPECT\n' + '10.01.2017',
+            id: 'MYSC',
+            label: 'Myocardial scintigraphy\n' + '10.01.2017',
             group: 'PictureOrScan'
         });
-        this.visNetworkData.edges.add({from: 'SPECT', to: 'image', id: 'image04'});
+        this.visNetworkData.edges.add({from: 'MYSC', to: 'image', id: 'image04'});
     }
 
     private cliMeasurementsSubGraphDisplay(){
@@ -461,6 +463,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         this.visNetworkData.nodes.add({
             id: 'bloodTest',
             label: 'Blood Analysis:\n' + fakeLab,
+            title: 'Blood anaysis data category\n - Click to see sub-categories',
             group: 'BloodTest'
         });
         this.visNetworkData.edges.add({from: 'bloodTest', to: 'lab', id: 'lab01'});
@@ -474,9 +477,26 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         this.visNetworkData.nodes.add({
             id: 'histTest',
             label: 'Histology:\n' + '31.10.2015',
-            group: 'BloodTest'
+            group: 'HistTest'
         });
         this.visNetworkData.edges.add({from: 'histTest', to: 'lab', id: 'lab03'});
+    }
+
+    private bloodSubgraphDisplay(){
+        this.bloodDisplayed = true
+        let fakeLab = '21.02.2017';
+        this.visNetworkData.nodes.add({
+            id: 'hemoChrome',
+            label: 'Hemochrome\n' + fakeLab,
+            group: 'BloodTest'
+        });
+        this.visNetworkData.edges.add({from: 'hemoChrome', to: 'bloodTest', id: 'blood01'});
+        this.visNetworkData.nodes.add({
+            id: 'Thyroid',
+            label: 'Thyroid hormones\n' + fakeLab,
+            group: 'BloodTest'
+        });
+        this.visNetworkData.edges.add({from: 'Thyroid', to: 'bloodTest', id: 'blood02'});
     }
 
     private coreGraphDispaly(){
@@ -511,7 +531,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         this.visNetworkData.nodes.add({id: 'image', label: 'Images\n'+fakeDateLab, title: 'Images - Click to see sub-categories', group: 'PictureOrScan'});
         this.visNetworkData.edges.add({from: 'patient', to: 'image', id: 'Patient05'});
 
-        this.visNetworkData.nodes.add({id: 'questionnaires', label: 'Questionnaires\n' + '11.03.2017', title: 'Questionnaires \n - Click to see sub-categories',group: 'Questionnaires'});
+        this.visNetworkData.nodes.add({id: 'questionnaires', label: 'RA-Questionnaires\n' + '11.03.2017', title: 'Questionnaires \n - Click to see sub-categories',group: 'Questionnaires'});
         this.visNetworkData.edges.add({from: 'questionnaires', to: 'patient', id: 'Patient06' });
 
         this.visNetworkData.nodes.add({id: 'psychoTest', label: 'Psychological and \nNeuropsychological Testing\n' + '15.10.2016', title: 'Psychological and Neuropsychological Testing\n - Click to see sub-categories', group: 'PsychologicalTest'});
@@ -558,6 +578,9 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                 width: 1,
                 shadow: shadowOn,
                 smooth: true,
+            },
+            "physics": {
+                "minVelocity": 0.85
             },
 
             /*    physics: {
@@ -634,7 +657,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                     icon: {
                         face: 'FontAwesome',
                         code: '\uf183',
-                        size: 137.5,
+                        size: 125,
                         color: '#8C001A'//color blind schema #c2bc00
                     },
                     borderWidth: 2,
@@ -838,6 +861,15 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                         color: '#8b0000'
                     }
                 },
+                HistTest: {
+                    shape: 'icon',
+                    icon: {
+                        face: 'FontAwesome',
+                        code: '\uf0c3', //&#xf1c0;
+                        size: 50,
+                        color: '#D0926E'
+                    }
+                },
                 UrineTest: {
                     shape: 'icon',
                     icon: {
@@ -854,7 +886,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
 
     }
 
-
+    // memory - what graph was displayed
     private updateLastDispalayedGraphSetUp() {
         //console.log(this.homeDisplayed )
         //console.log(this.homeDisplayed ? 'Displayed' : 'Inactive');
@@ -866,6 +898,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         sessionStorage.setItem("screeningsDisplayed", this.screeningsDisplayed ? 'Displayed' : 'Inactive');
         sessionStorage.setItem("cliMeasurementsDisplayed", this.cliMeasurementsDisplayed ? 'Displayed' : 'Inactive');
         sessionStorage.setItem("labDisplayed", this.labDisplayed ? 'Displayed' : 'Inactive');
+        sessionStorage.setItem("bloodDisplayed", this.bloodDisplayed ? 'Displayed' : 'Inactive');
         sessionStorage.setItem("psychoDisplayed", this.psychoDisplayed ? 'Displayed' : 'Inactive');
         sessionStorage.setItem("memoryDisplayed", this.memoryDisplayed ? 'Displayed' : 'Inactive');
         sessionStorage.setItem("attentionDisplayed", this.attentionDisplayed ? 'Displayed' : 'Inactive');sessionStorage.setItem("languageDisplayed", this.languageDisplayed ? 'Displayed' : 'Inactive');
@@ -883,6 +916,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         this.screeningsDisplayed = sessionStorage.getItem("screeningsDisplayed") == 'Displayed' ? true : false;
         this.cliMeasurementsDisplayed = sessionStorage.getItem("cliMeasurementsDisplayed") == 'Displayed' ? true : false;
         this.labDisplayed = sessionStorage.getItem("labDisplayed") == 'Displayed' ? true : false;
+        this.bloodDisplayed = sessionStorage.getItem("bloodDisplayed") == 'Displayed' ? true : false;
         this.psychoDisplayed = sessionStorage.getItem("psychoDisplayed") == 'Displayed' ? true : false;
         this.memoryDisplayed = sessionStorage.getItem("memoryDisplayed") == 'Displayed' ? true : false;
         this.attentionDisplayed = sessionStorage.getItem("attentionDisplayed") == 'Displayed' ? true : false;
@@ -1020,7 +1054,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         this.visNetworkData.nodes.remove('MRI');
         this.visNetworkData.nodes.remove('DAT');
         this.visNetworkData.nodes.remove('PET');
-        this.visNetworkData.nodes.remove('SPECT');
+        this.visNetworkData.nodes.remove('MYSC');
         this.visNetworkData.edges.remove('image01');
         this.visNetworkData.edges.remove('image02');
         this.visNetworkData.edges.remove('image03');
@@ -1052,6 +1086,14 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         this.visNetworkData.edges.remove('lab01');
         this.visNetworkData.edges.remove('lab02');
         this.visNetworkData.edges.remove('lab03');
+    }
+
+    private bloodCollapse(){
+        this.visNetworkData.nodes.remove('hemoChrome');
+        this.visNetworkData.nodes.remove('Thyroid');
+        this.visNetworkData.edges.remove('blood01');
+        this.visNetworkData.edges.remove('blood02');
+        this.bloodDisplayed = false
     }
 
     private coreCollapse(){
@@ -1108,6 +1150,8 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         if (this.screeningsDisplayed) { this.screeningSubGraphDisplay(); }
         // LAB
         if (this.labDisplayed) { this.labSubgraphDisplay(); }
+        //blood
+        if (this.bloodDisplayed) { this.bloodSubgraphDisplay(); }
 
         // this.visNetwork.fontsize(24).link('http://localhost:4200/#/clinician-dashboard')
 
@@ -1147,6 +1191,8 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         if (!this.screeningsDisplayed) { this.screeningSubGraphDisplay(); }
         // LAB
         if (!this.labDisplayed) { this.labSubgraphDisplay(); }
+        // blood
+        if (!this.bloodDisplayed) { this.bloodSubgraphDisplay(); }
         this.allDisplayed = true;
         this.updateLastDispalayedGraphSetUp()
 
@@ -1183,6 +1229,8 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         if(this.screeningsDisplayed) { this.screeningCollapse() }
         // LAB
         if(this.labDisplayed) { this.labCollapse()  }
+        //blood
+        if(this.bloodDisplayed) { this.bloodCollapse() }
 
         this.allDisplayed = false;
         this.updateLastDispalayedGraphSetUp()
@@ -1199,9 +1247,41 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         this.visNetworkService.on(this.visNetwork, 'click');
         //doubleClick
         this.visNetworkService.on(this.visNetwork, 'doubleClick');
+        this.visNetworkService.on(this.visNetwork, 'zoom');
         this.visNetworkService.on(this.visNetwork, 'stabilizationIterationsDone')
 
-        // open your console/dev tools to see the click params
+        //on zoom, OnZoom
+        this.visNetworkService.zoom
+            .subscribe((eventData: any[]) => {
+                if (eventData[0] === this.visNetwork) {
+                    console.log(eventData[1])
+                    if(eventData[1].direction == '-'){
+                        if( eventData[1].scale > 0.25){
+                            //console.log(eventData[1] + '  -')
+                            //this.scaleOfGraph = eventData[1].scale
+                        }else {
+                            //eventData[1].scale = this.scaleOfGraph
+                            //this.visNetworkService.redraw(this.visNetwork)
+                            //console.log(eventData[1])
+                        }
+                    }
+                    else{
+                        if( eventData[1].scale < 3.0){
+                            this.scaleOfGraph = eventData[1].scale
+                            //console.log(eventData[1] + '  +')
+                        }else {
+                            //eventData[1].scale = this.scaleOfGraph
+                           // this.visNetworkService.redraw(this.visNetwork)
+
+                        }
+
+                    }
+
+                }
+
+            });
+
+        //on click, OnClick
         this.visNetworkService.click
             .subscribe((eventData: any[]) => {
                 if (eventData[0] === this.visNetwork) {
@@ -1333,6 +1413,18 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                         }
                         else {
                             this.labCollapse()
+                            if (this.bloodDisplayed) {
+                                this.bloodCollapse()
+                            }
+                        }
+                    }
+                    if (eventData[1].nodes == "bloodTest") {
+                        // console.log(eventData[1].nodes);
+                        if (!this.bloodDisplayed) {
+                            this.bloodSubgraphDisplay()
+                        }
+                        else {
+                            this.bloodCollapse()
                         }
                     }
                     this.updateLastDispalayedGraphSetUp()
@@ -1366,7 +1458,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         this.visNetworkService.doubleClick
             .subscribe((eventData: any[]) => {
                 if (eventData[0] === this.visNetwork) {
-                    console.log(eventData[1].nodes);
+                    //console.log(eventData[1].nodes);
 
                     if (eventData[1].nodes=="patient"){
                         // console.log(eventData[1].nodes);
@@ -1500,12 +1592,13 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                         || eventData[1].nodes == "MRI"
                         || eventData[1].nodes == "DAT"
                         || eventData[1].nodes == "PET"
-                        || eventData[1].nodes == "SPECT"
+                        || eventData[1].nodes == "MYSC"
                         || eventData[1].nodes == "ECG"
                         || eventData[1].nodes == "EEG"
                         || eventData[1].nodes == "painRating"
                         || eventData[1].nodes == "wellBeing"
-                        || eventData[1].nodes == "bloodTest"
+                        || eventData[1].nodes == "hemoChrome"
+                        || eventData[1].nodes == "Thyroid"
                         || eventData[1].nodes == "urineTest"
                         || eventData[1].nodes == "histTest"
 
