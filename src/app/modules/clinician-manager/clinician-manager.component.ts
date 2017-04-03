@@ -14,6 +14,11 @@ export class ClinicianManagerComponent implements OnInit {
 
 
     private myDateRangePickerOptions: IMyOptions;
+    private dateRange;
+    endDate: Date = new Date();
+    startDate: Date = new Date();
+
+    private model;
 
 
 
@@ -30,13 +35,24 @@ export class ClinicianManagerComponent implements OnInit {
 
     ngOnInit(): void {
 
+        this.startDate.setFullYear(this.endDate.getFullYear() - 1);
 
         this.myDateRangePickerOptions = {
             // other options...
             dateFormat: 'dd.mm.yyyy',
             firstDayOfWeek: "mo"
-
         };
+
+        this.model = {
+            beginDate: {
+                year: this.startDate.getFullYear(),
+                month: this.startDate.getMonth(),
+                day: this.startDate.getDay()
+            },
+            endDate: {year: this.endDate.getFullYear(), month: this.endDate.getMonth(), day: this.endDate.getDay()}
+        };
+
+
         
     }
 

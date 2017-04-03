@@ -44,7 +44,8 @@
                         <div>
 
                             <my-date-range-picker [options]="myDateRangePickerOptions"
-                                                  (dateRangeChanged)="onDateRangeChanged($event)">
+                                                  (dateRangeChanged)="onDateRangeChanged($event)"
+                                                  [selDateRange]="model">
                             </my-date-range-picker>
 
                             <div class="w3-tiny w3-right">Choose if you want to change the dates for which the data is

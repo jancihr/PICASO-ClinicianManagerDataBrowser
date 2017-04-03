@@ -22,7 +22,7 @@ export class PatientCliniciansComponent implements OnInit {
     }
 
     getClinicians(): void {
-        this.picasoDataService.getClinicians().
+        this.picasoDataService.getClinicians(undefined, undefined).
         subscribe(clinicians => this.clinicians = clinicians,
             error => this.errorMessage = <any>error);
 
