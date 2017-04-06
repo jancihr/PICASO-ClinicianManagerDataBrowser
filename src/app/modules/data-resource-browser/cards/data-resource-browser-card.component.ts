@@ -66,6 +66,8 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
     public languageDisplayed: boolean;
     public psyHealthDisplayed: boolean;
     public scaleOfGraph: any
+    nodesAsArray = new Array ({subGraphId: 'graphPart', parrentGraph: 'parrent graph', id: 'id', label: 'Label', title: 'title', group: 'Group', isDisplayed: false});
+    edgesAsArray = new Array ({subGraphId: 'graphPart', parrentGraph: 'parrent graph', id: 'id', from: 'from', to: 'to', isDisplayed: false});
     //public lastGraph : any; // LastGraphDisplayed;
 
 
@@ -488,6 +490,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         this.visNetworkData.nodes.add({
             id: 'hemoChrome',
             label: 'Hemochrome\n' + fakeLab,
+            title: '3 hemochrome tests found',
             group: 'BloodTest'
         });
         this.visNetworkData.edges.add({from: 'hemoChrome', to: 'bloodTest', id: 'blood01'});
@@ -499,10 +502,58 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         this.visNetworkData.edges.add({from: 'Thyroid', to: 'bloodTest', id: 'blood02'});
     }
 
+    private mapSourceDataToNetworkData(){
+        let patientID = '11010111'
+        let fakeDateCP = '11.02.2017';
+        let fakeDateHome = '12.03.2017';
+        let fakeDatePlan = '01.02.2017';
+        let fakeDateLab = '21.02.2017';
+
+
+        //getters based on the data for all parameters above
+
+        //core graph
+        //nodes
+        this.nodesAsArray.push({subGraphId: 'core', parrentGraph: '', id: 'patient', label: 'Peter Patient\nID: ' +  patientID , title: 'Patient', group: 'Patient', isDisplayed: true})
+        this.nodesAsArray.push({subGraphId: 'core', parrentGraph: '', id: 'carers', label: 'Care Professionals\n' + fakeDateCP, title: 'Care professionals category\n - Click to see sub-categories', group: 'groupCarers', isDisplayed: true})
+        this.nodesAsArray.push({subGraphId: 'core', parrentGraph: '', id: 'home', label: 'Home Measurements\n and Recording\n'+fakeDateHome, title: 'Home monitoring data category\n - Click to see sub-categories', group: 'DataHome', isDisplayed: true})
+        this.nodesAsArray.push({subGraphId: 'core', parrentGraph: '', id: 'plan', label: 'Care Plans\n'+fakeDatePlan, title: 'Care plans data category\n - Click to see sub-categories', group: 'Plan', isDisplayed: true})
+        this.nodesAsArray.push({subGraphId: 'core', parrentGraph: '', id: 'lab', label: 'Lab tests\n'+fakeDateLab,  title: 'Lab tests data category\n - Click to see sub-categories',  group: 'LabData', isDisplayed: true})
+        this.nodesAsArray.push({subGraphId: 'core', parrentGraph: '', id: 'image', label: 'Images\n'+fakeDateLab, title: 'Images - Click to see sub-categories', group: 'PictureOrScan', isDisplayed: true})
+        this.nodesAsArray.push({subGraphId: 'core', parrentGraph: '', id: 'questionnaires', label: 'RA-Questionnaires\n' + '11.03.2017', title: 'Questionnaires \n - Click to see sub-categories',group: 'Questionnaires', isDisplayed: true})
+        this.nodesAsArray.push({subGraphId: 'core', parrentGraph: '', id: 'psychoTest', label: 'Psychological and \nNeuropsychological Testing\n' + '15.10.2016', title: 'Psychological and Neuropsychological Testing\n - Click to see sub-categories', group: 'PsychologicalTest', isDisplayed: true})
+        this.nodesAsArray.push({subGraphId: 'core', parrentGraph: '', id: 'cliMeasurements', label: 'Clinical measurements\n' + '15.11.2016', title: 'Clinical measurements\n - Click to see sub-categories', group: 'CliMeasurement', isDisplayed: true})
+        this.nodesAsArray.push({subGraphId: 'core', parrentGraph: '', id: 'surgery', label: 'Surgeries\n' + '(no data)', title: 'Surgery\n - Click to see sub-categories', group: 'Surgery', isDisplayed: true})
+        this.nodesAsArray.push({subGraphId: 'core', parrentGraph: '', id: 'screening', label: 'Screening\n' + '05.01.2017', title: 'Screening\n - Click to see sub-categories', group: 'Screening', isDisplayed: true})
+        //edges
+        this.edgesAsArray.push({subGraphId: 'core', parrentGraph: '', isDisplayed: true, from: 'patient', to: 'carers', id: 'Patient01'})
+        this.edgesAsArray.push({subGraphId: 'core', parrentGraph: '', isDisplayed: true, from: 'patient', to: 'home', id: 'Patient02'})
+        this.edgesAsArray.push({subGraphId: 'core', parrentGraph: '', isDisplayed: true, from: 'patient', to: 'plan', id: 'Patient03'})
+        this.edgesAsArray.push({subGraphId: 'core', parrentGraph: '', isDisplayed: true, from: 'patient', to: 'lab', id: 'Patient04'})
+        this.edgesAsArray.push({subGraphId: 'core', parrentGraph: '', isDisplayed: true, from: 'patient', to: 'image', id: 'Patient05'})
+        this.edgesAsArray.push({subGraphId: 'core', parrentGraph: '', isDisplayed: true, from: 'questionnaires', to: 'patient', id: 'Patient06'})
+        this.edgesAsArray.push({subGraphId: 'core', parrentGraph: '', isDisplayed: true, from: 'psychoTest', to: 'patient', id: 'Patient07'})
+        this.edgesAsArray.push({subGraphId: 'core', parrentGraph: '', isDisplayed: true, from: 'cliMeasurements', to: 'patient', id: 'Patient08'})
+        this.edgesAsArray.push({subGraphId: 'core', parrentGraph: '', isDisplayed: true, from: 'surgery', to: 'patient', id: 'Patient09'})
+        this.edgesAsArray.push({subGraphId: 'core', parrentGraph: '', isDisplayed: true, from: 'screening', to: 'patient', id: 'Patient10'})
+
+
+
+  /*      while(subGraphNodesArray.hasNext) {
+            oneNode = subGraphNodesArray.getNext()
+            console.log(oneNode)
+
+        }*/
+
+
+    }
+
     private coreGraphDispaly(){
         //this.visNetworkService.
         let nodes = new VisNodes();
         let edges = new VisEdges();
+
+
 
         this.visNetworkData = {
             nodes: nodes,
@@ -514,37 +565,65 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         let fakeDatePlan = '01.02.2017';
         let fakeDateLab = '21.02.2017';
 
-        this.visNetworkData.nodes.add({id: 'patient', label: 'Peter Patient\nID: 11010111', title: 'Patient', group: 'Patient'/*, x: 100, y: 100*/ });
 
-        this.visNetworkData.nodes.add({id: 'carers', label: 'Care Professionals\n' + fakeDateCP, title: 'Care professionals category\n - Click to see sub-categories', group: 'groupCarers'});
-        this.visNetworkData.edges.add({from: 'patient', to: 'carers', id: 'Patient01'});
+        let  subGraphNodesArray: any;
+        let  subGraphEdgesArray: any;
+        //console.log(this.nodesAsArray)
 
-        this.visNetworkData.nodes.add({id: 'home', label: 'Home Measurements\n and Recording\n'+fakeDateHome, title: 'Home monitoring data category\n - Click to see sub-categories', group: 'DataHome'});
-        this.visNetworkData.edges.add({from: 'patient', to: 'home', id: 'Patient02'});
+        //this.nodesAsArray.sort()
+        //console.log(this.nodesAsArray)
+        subGraphNodesArray = this.nodesAsArray.filter(item => item.subGraphId === 'core' && item.isDisplayed === true) //find() //find find(subGraphId: 'core')
+        //console.log(subGraphNodesArray)
 
-        this.visNetworkData.nodes.add({id: 'plan', label: 'Care Plans\n'+fakeDatePlan, title: 'Care plans data category\n - Click to see sub-categories', group: 'Plan'});
-        this.visNetworkData.edges.add({from: 'patient', to: 'plan', id: 'Patient03'});
+        for(var i = 0; i < subGraphNodesArray.length; i++) {
+            if(subGraphNodesArray[i]) {
+                console.log(subGraphNodesArray[i])
+                this.visNetworkData.nodes.add({id: subGraphNodesArray[i].id, label: subGraphNodesArray[i].label, title: subGraphNodesArray[i].title, group: subGraphNodesArray[i].group/*, x: 100, y: 100*/ });
+            }
 
-        this.visNetworkData.nodes.add({id: 'lab', label: 'Lab tests\n'+fakeDateLab,  title: 'Lab tests data category\n - Click to see sub-categories',  group: 'LabData'});
-        this.visNetworkData.edges.add({from: 'patient', to: 'lab', id: 'Patient04'});
+        }
+        subGraphEdgesArray = this.edgesAsArray.filter(item => item.subGraphId === 'core' && item.isDisplayed === true) //find() //find find(subGraphId: 'core')
+        //console.log(subGraphNodesArray)
+        for(var i = 0; i < subGraphEdgesArray.length; i++) {
+            if(subGraphEdgesArray[i]) {
+                console.log(subGraphEdgesArray[i])
+                this.visNetworkData.edges.add({id: subGraphEdgesArray[i].id, from: subGraphEdgesArray[i].from, to: subGraphEdgesArray[i].to});
+            }
 
-        this.visNetworkData.nodes.add({id: 'image', label: 'Images\n'+fakeDateLab, title: 'Images - Click to see sub-categories', group: 'PictureOrScan'});
-        this.visNetworkData.edges.add({from: 'patient', to: 'image', id: 'Patient05'});
+        }
 
-        this.visNetworkData.nodes.add({id: 'questionnaires', label: 'RA-Questionnaires\n' + '11.03.2017', title: 'Questionnaires \n - Click to see sub-categories',group: 'Questionnaires'});
-        this.visNetworkData.edges.add({from: 'questionnaires', to: 'patient', id: 'Patient06' });
 
-        this.visNetworkData.nodes.add({id: 'psychoTest', label: 'Psychological and \nNeuropsychological Testing\n' + '15.10.2016', title: 'Psychological and Neuropsychological Testing\n - Click to see sub-categories', group: 'PsychologicalTest'});
-        this.visNetworkData.edges.add({from: 'psychoTest', to: 'patient', id: 'Patient07' });
+        //this.visNetworkData.nodes.add({id: 'patient', label: 'Peter Patient\nID: 11010111', title: 'Patient', group: 'Patient'/*, x: 100, y: 100*/ });
 
-        this.visNetworkData.nodes.add({id: 'cliMeasurements', label: 'Clinical measurements\n' + '15.11.2016', title: 'Clinical measurements\n - Click to see sub-categories', group: 'CliMeasurement'});
-        this.visNetworkData.edges.add({from: 'cliMeasurements', to: 'patient', id: 'Patient08' });
+        //this.visNetworkData.nodes.add({id: 'carers', label: 'Care Professionals\n' + fakeDateCP, title: 'Care professionals category\n - Click to see sub-categories', group: 'groupCarers'});
+      //  this.visNetworkData.edges.add({from: 'patient', to: 'carers', id: 'Patient01'});
 
-        this.visNetworkData.nodes.add({id: 'surgery', label: 'Surgeries\n' + '(no data)', title: 'Surgery\n - Click to see sub-categories', group: 'Surgery'});
-        this.visNetworkData.edges.add({from: 'surgery', to: 'patient', id: 'Patient09' });
+        //this.visNetworkData.nodes.add({id: 'home', label: 'Home Measurements\n and Recording\n'+fakeDateHome, title: 'Home monitoring data category\n - Click to see sub-categories', group: 'DataHome'});
+       // this.visNetworkData.edges.add({from: 'patient', to: 'home', id: 'Patient02'});
 
-        this.visNetworkData.nodes.add({id: 'screening', label: 'Screening\n' + '05.01.2017', title: 'Screening\n - Click to see sub-categories', group: 'Screening'});
-        this.visNetworkData.edges.add({from: 'screening', to: 'patient', id: 'Patient10' });
+        //this.visNetworkData.nodes.add({id: 'plan', label: 'Care Plans\n'+fakeDatePlan, title: 'Care plans data category\n - Click to see sub-categories', group: 'Plan'});
+        //this.visNetworkData.edges.add({from: 'patient', to: 'plan', id: 'Patient03'});
+
+       // this.visNetworkData.nodes.add({id: 'lab', label: 'Lab tests\n'+fakeDateLab,  title: 'Lab tests data category\n - Click to see sub-categories',  group: 'LabData'});
+       // this.visNetworkData.edges.add({from: 'patient', to: 'lab', id: 'Patient04'});
+
+      //  this.visNetworkData.nodes.add({id: 'image', label: 'Images\n'+fakeDateLab, title: 'Images - Click to see sub-categories', group: 'PictureOrScan'});
+       // this.visNetworkData.edges.add({from: 'patient', to: 'image', id: 'Patient05'});
+
+        //this.visNetworkData.nodes.add({id: 'questionnaires', label: 'RA-Questionnaires\n' + '11.03.2017', title: 'Questionnaires \n - Click to see sub-categories',group: 'Questionnaires'});
+       // this.visNetworkData.edges.add({from: 'questionnaires', to: 'patient', id: 'Patient06' });
+
+        //this.visNetworkData.nodes.add({id: 'psychoTest', label: 'Psychological and \nNeuropsychological Testing\n' + '15.10.2016', title: 'Psychological and Neuropsychological Testing\n - Click to see sub-categories', group: 'PsychologicalTest'});
+      //  this.visNetworkData.edges.add({from: 'psychoTest', to: 'patient', id: 'Patient07' });
+
+       // this.visNetworkData.nodes.add({id: 'cliMeasurements', label: 'Clinical measurements\n' + '15.11.2016', title: 'Clinical measurements\n - Click to see sub-categories', group: 'CliMeasurement'});
+       // this.visNetworkData.edges.add({from: 'cliMeasurements', to: 'patient', id: 'Patient08' });
+
+        //this.visNetworkData.nodes.add({id: 'surgery', label: 'Surgeries\n' + '(no data)', title: 'Surgery\n - Click to see sub-categories', group: 'Surgery'});
+      //  this.visNetworkData.edges.add({from: 'surgery', to: 'patient', id: 'Patient09' });
+
+        //this.visNetworkData.nodes.add({id: 'screening', label: 'Screening\n' + '05.01.2017', title: 'Screening\n - Click to see sub-categories', group: 'Screening'});
+      //  this.visNetworkData.edges.add({from: 'screening', to: 'patient', id: 'Patient10' });
 
     }
 
@@ -1257,9 +1336,12 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                     console.log(eventData[1])
                     if(eventData[1].direction == '-'){
                         if( eventData[1].scale > 0.25){
+                            console.log(this.visNetworkService.getScale(this.visNetwork))
                             //console.log(eventData[1] + '  -')
-                            //this.scaleOfGraph = eventData[1].scale
+                            this.scaleOfGraph = eventData[1].scale
                         }else {
+
+
                             //eventData[1].scale = this.scaleOfGraph
                             //this.visNetworkService.redraw(this.visNetwork)
                             //console.log(eventData[1])
@@ -1625,8 +1707,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
 
     public ngOnInit() {
 
-
-        //  double click presmerovanie parked
+        this.mapSourceDataToNetworkData()
         this.readLastDispalyedGraphSetUp()
         this.displayLast();
         this.setNetworkOptions();
