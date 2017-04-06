@@ -44,7 +44,8 @@
                         <div>
 
                             <my-date-range-picker [options]="myDateRangePickerOptions"
-                                                  (dateRangeChanged)="onDateRangeChanged($event)">
+                                                  (dateRangeChanged)="onDateRangeChanged($event)"
+                                                  [selDateRange]="model">
                             </my-date-range-picker>
 
                             <div class="w3-tiny w3-right">Choose if you want to change the dates for which the data is
@@ -63,7 +64,7 @@
                 </patient-overview>
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
 
                 <patient-diseases>
                 </patient-diseases>
@@ -71,7 +72,7 @@
 
             </div>
 
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
 
                 <patient-imaging>
 

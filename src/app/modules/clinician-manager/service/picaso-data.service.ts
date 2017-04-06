@@ -36,21 +36,21 @@ export class PicasoDataService {
     }
 
 
-    getDiseases(): Observable<PatientDisease[]> {
+    getDiseases(startDate: Date, endDate: Date): Observable<PatientDisease[]> {
         return this.http.get(this.patientODSServiceURL)
             .map(this.extractDataDiseases)
             .catch(this.handleError)
             ;
     }
 
-    getImaging(): Observable<PatientImage[]> {
+    getImaging(startDate: Date, endDate: Date): Observable<PatientImage[]> {
         return this.http.get(this.patientODSServiceURL)
             .map(this.extractDataImaging)
             .catch(this.handleError)
             ;
     }
 
-    getClinicians(): Observable<PatientClinician[]> {
+    getClinicians(startDate: Date, endDate: Date): Observable<PatientClinician[]> {
 
 
         return this.http.get(this.patientODSServiceURL)

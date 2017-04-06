@@ -14,7 +14,7 @@ import {RegisterComponent} from './authentication/register.component'
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'patient-id',
+        redirectTo: 'data-resource-browser',
         pathMatch: 'full',
         canActivate: [AuthGuard]
     },
@@ -22,7 +22,7 @@ export const routes: Routes = [
     {path: 'register', component: RegisterComponent},
     {
         path: 'home',
-        redirectTo: 'patient-id',
+        redirectTo: 'data-resource-browser',
         pathMatch: 'full',
         canActivate: [AuthGuard]
     },
@@ -36,10 +36,6 @@ export const routes: Routes = [
             {
                 path: 'patient-id',
                 loadChildren: 'app/modules/patient-id/patient-id.module#PatientIdModule'
-            },
-            {
-                path: 'dashboard',
-                loadChildren: 'app/dashboard/dashboard.module#DashboardModule'
             },
             {
                 path: 'clinician-manager',

@@ -23,6 +23,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     options;
     data;
 
+
     observationGroups: PatientObservationGroup[];
 
 
@@ -264,6 +265,22 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
         }
 
+        this.reloadDataToGraph()
+    }
+
+    public resetLeft() {
+
+        for (var i = 0; i < this.observationGroups.length; i++) {
+            this.observationGroups[i].showLeft = false;
+        }
+        this.reloadDataToGraph()
+
+    }
+
+    public resetRight() {
+        for (var i = 0; i < this.observationGroups.length; i++) {
+            this.observationGroups[i].showRight = false;
+        }
         this.reloadDataToGraph()
     }
 

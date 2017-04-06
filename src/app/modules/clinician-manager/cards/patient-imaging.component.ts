@@ -24,7 +24,7 @@ export class PatientImagingComponent implements OnInit {
 
     getImaging(): void {
 
-        this.picasoDataService.getImaging().
+        this.picasoDataService.getImaging(undefined, undefined).
         subscribe(imaging => this.imaging = imaging,
             error => this.errorMessage = <any>error);
 

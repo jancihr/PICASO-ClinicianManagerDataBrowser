@@ -23,7 +23,7 @@ export class PatientDiseasesComponent implements OnInit {
 
     getDiseases(): void {
 
-        this.picasoDataService.getDiseases().
+        this.picasoDataService.getDiseases(undefined, undefined).
         subscribe(diseases => this.diseases = diseases,
             error => this.errorMessage = <any>error);
 
