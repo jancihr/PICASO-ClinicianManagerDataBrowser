@@ -514,7 +514,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
 
         //core graph
         //nodes
-        this.nodesAsArray.push({subGraphId: 'core', parrentGraph: '', id: 'patient', label: 'Peter Patient\nID: ' +  patientID , title: 'Patient', group: 'Patient', isDisplayed: true})
+        this.nodesAsArray.push({subGraphId: 'core', parrentGraph: '', id: 'patient', label: 'Peter Patient\nID: ' +  patientID , title: 'Patient', group: 'Patient', isDisplayed: true})//is displayed is solved based on authorisation and preferences as well as dates
         this.nodesAsArray.push({subGraphId: 'core', parrentGraph: '', id: 'carers', label: 'Care Professionals\n' + fakeDateCP, title: 'Care professionals category\n - Click to see sub-categories', group: 'groupCarers', isDisplayed: true})
         this.nodesAsArray.push({subGraphId: 'core', parrentGraph: '', id: 'home', label: 'Home Measurements\n and Recording\n'+fakeDateHome, title: 'Home monitoring data category\n - Click to see sub-categories', group: 'DataHome', isDisplayed: true})
         this.nodesAsArray.push({subGraphId: 'core', parrentGraph: '', id: 'plan', label: 'Care Plans\n'+fakeDatePlan, title: 'Care plans data category\n - Click to see sub-categories', group: 'Plan', isDisplayed: true})
@@ -538,14 +538,6 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         this.edgesAsArray.push({subGraphId: 'core', parrentGraph: '', isDisplayed: true, from: 'screening', to: 'patient', id: 'Patient10'})
 
 
-
-  /*      while(subGraphNodesArray.hasNext) {
-            oneNode = subGraphNodesArray.getNext()
-            console.log(oneNode)
-
-        }*/
-
-
     }
 
     private coreGraphDispaly(){
@@ -553,22 +545,19 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         let nodes = new VisNodes();
         let edges = new VisEdges();
 
-
-
         this.visNetworkData = {
             nodes: nodes,
             edges: edges
         };
 
-        let fakeDateCP = '11.02.2017';
-        let fakeDateHome = '12.03.2017';
-        let fakeDatePlan = '01.02.2017';
-        let fakeDateLab = '21.02.2017';
+        // let fakeDateCP = '11.02.2017';
+        // let fakeDateHome = '12.03.2017';
+        // let fakeDatePlan = '01.02.2017';
+        // let fakeDateLab = '21.02.2017';
 
 
         let  subGraphNodesArray: any;
         let  subGraphEdgesArray: any;
-        //console.log(this.nodesAsArray)
 
         //this.nodesAsArray.sort()
         //console.log(this.nodesAsArray)
@@ -583,7 +572,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
 
         }
         subGraphEdgesArray = this.edgesAsArray.filter(item => item.subGraphId === 'core' && item.isDisplayed === true) //find() //find find(subGraphId: 'core')
-        //console.log(subGraphNodesArray)
+        //console.log(subGraphEdgesArray)
         for(var i = 0; i < subGraphEdgesArray.length; i++) {
             if(subGraphEdgesArray[i]) {
                 console.log(subGraphEdgesArray[i])
