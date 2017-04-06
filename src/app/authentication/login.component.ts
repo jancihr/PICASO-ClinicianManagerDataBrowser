@@ -1,22 +1,46 @@
-import { Component }        from '@angular/core';
+import {Component}        from '@angular/core';
 import {UserService} from "./_services/user.service";
-import { Router } from '@angular/router';
+import {Router} from '@angular/router';
+import {FormBuilder, Validators} from "@angular/forms";
+import {CdSharedModelService} from "../_services/cd-shared-model.service";
 
 @Component({
     templateUrl: 'login.component.html'
 })
 export class LoginComponent {
+    error: any;
+    public loginForm = this.fb.group({
+        username: ["test", Validators.required],
+        password: ["test", Validators.required]
+    });
 
-    constructor(private userService: UserService,  public router: Router) { }
-    login(event, username, password) {
-        event.preventDefault();
-        if(this.userService.login(username, password))
-            this.router.navigate(['home']);
+    constructor(public fb: FormBuilder, private authService: UserService, private router: Router, private shared: CdSharedModelService) {
 
     }
 
-    signup(event) {
-        event.preventDefault();
-        //this.router.navigate(['register']);
+    doLogin(event) {
+        let value = this.loginForm.value;
+        this.authService.login(value.username, value.password).subscribe(
+            success => {
+                if (success){
+                    this.authService.identify(this.authService.getLoginData().cookie[0].value).subscribe(r =>{
+                        if(r.success){
+                            let data = this.shared.get();
+                            data.clinician = r.data;
+                            this.shared.update(data);
+                        }
+                    });
+                    this.router.navigate(['home']);
+
+                }
+            },
+            (err) => {
+                console.log(err);
+                if(err.status ===401){
+                    this.error = err;
+                }
+            }
+        );
     }
+
 }

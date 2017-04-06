@@ -7,7 +7,7 @@
                     <dt>Patient Display</dt>
                     <dd>{{ data.patient.display }}</dd>
                     <dt>Patient id</dt>
-                    <dd>{{ data.patient.pId }}</dd>
+                    <dd>{{ data.patient.UPID }}</dd>
                 </dl>
             </div>
         </div>
@@ -25,7 +25,7 @@
                 <div class="suggestions" *ngIf="filteredList.length > 0">
                     <ul *ngFor="let item of filteredList" class="list-group">
                         <li class="list-group-item">
-                            <a (click)="select(item)">{{item['Name']}}</a>
+                            <a (click)="select(item)">{{item['display']}}</a>
                         </li>
                     </ul>
                 </div>
