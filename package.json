@@ -1,10 +1,10 @@
 {
-  "name": "picaso-clinician-dashboard-ui",
+  "name": "rougue-board",
   "version": "0.1.0",
-  "description": "PICASO Clinician Dashboard",
+  "description": "Web-based dashboard based upon CoreUI",
   "author": {
-    "name": "PICASO Project",
-    "email": ""
+    "name": "Web Compliance Center",
+    "email": "webcc@fit.fraunhofer.de"
   },
   "homepage": "https://imergo.com/solutions/opensource.html",
   "license": "Apache-2.0",
