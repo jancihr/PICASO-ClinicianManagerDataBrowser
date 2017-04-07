@@ -1,0 +1,943 @@
+{
+  "info": {
+    "id": "758923/8976",
+    "name": "Peter Moskowitch",
+    "address1": "Great Street 2",
+    "address2": "Supercity",
+    "address3": "04001",
+    "address4": "",
+    "bloodType": "AB normal",
+    "dob": "1960-05-10",
+    "height": "180cm",
+    "gender": "M",
+    "insurer": "Obamacare",
+    "insurerId": "OBMCR",
+    "occupancy": "Retired",
+    "livesAlone": "false"
+  },
+
+  "radai":[
+    {"id":"rad1",
+      "date":"2016-05-10",
+      "q1":"1",
+      "q2":"1",
+      "q3":"1",
+      "q4":"-1"},
+    {"id":"rad2",
+      "date":"2016-05-11",
+      "q1":"0",
+      "q2":"10",
+      "q3":"-1",
+      "q4":"10"},
+    {"id":"rad3",
+      "date":"2016-05-12",
+      "q1":"10",
+      "q2":"0",
+      "q3":"10",
+      "q4":"0"},
+    {"id":"rad4",
+      "date":"2016-05-13",
+      "q1":"2",
+      "q2":"2",
+      "q3":"2",
+      "q4":"2"},
+    {"id":"rad5",
+      "date":"2016-05-14",
+      "q1":"1",
+      "q2":"2",
+      "q3":"1",
+      "q4":"2",
+      "q5":"2"},
+    {"id":"rad6",
+      "date":"2016-05-15T13:41:19.000Z",
+      "q1":"2",
+      "q2":"2",
+      "q3":"1",
+      "q4":"1",
+      "q5":"1"},
+    {"id":"rad7",
+      "date":"2016-05-16T13:41:19.000Z",
+      "q1":"1",
+      "q2":"2",
+      "q3":"1",
+      "q4":"2",
+      "q5":"2"}
+  ],
+
+
+
+  "morisky":[
+    {"id":"mor1",
+    "date":"2016-05-10",
+    "q1":"1",
+    "q2":"1",
+      "q3":"1",
+      "q4":"1",
+      "q5":"2"},
+    {"id":"mor2",
+      "date":"2016-05-11",
+      "q1":"1",
+      "q2":"2",
+      "q3":"2",
+      "q4":"2",
+    "q5":"1"},
+    {"id":"mor2",
+      "date":"2016-05-12",
+      "q1":"1",
+      "q2":"2",
+      "q3":"2",
+      "q4":"1",
+      "q5":"1"},
+    {"id":"mor2",
+      "date":"2016-05-13",
+      "q1":"2",
+      "q2":"2",
+      "q3":"2",
+      "q4":"2",
+      "q5":"2"},
+    {"id":"mor2",
+      "date":"2016-05-14",
+      "q1":"1",
+      "q2":"2",
+      "q3":"1",
+      "q4":"2",
+      "q5":"2"},
+    {"id":"mor2",
+      "date":"2016-05-15T13:41:19.000Z",
+      "q1":"2",
+      "q2":"2",
+      "q3":"1",
+      "q4":"1",
+      "q5":"1"},
+    {"id":"mor2",
+      "date":"2016-05-16T13:41:19.000Z",
+      "q1":"1",
+      "q2":"2",
+      "q3":"1",
+      "q4":"2",
+      "q5":"2"}
+  ],
+
+  "ffbh":[
+    {"id":"mor1",
+      "date":"2016-05-10",
+      "q1":"1",
+      "q2":"1",
+      "q3":"1",
+      "q4":"1",
+      "q5":"2",
+      "q6":"1",
+      "q7":"1",
+      "q8":"1",
+      "q9":"1",
+      "q10":"1",
+      "q11":"1",
+      "q12":"1",
+      "q13":"1",
+      "q14":"1",
+      "q15":"1",
+      "q16":"1",
+      "q17":"1",
+      "q18":"1"},
+
+    {"id":"mor1",
+      "date":"2016-05-11",
+      "q1":"1",
+      "q2":"1",
+      "q3":"1",
+      "q4":"1",
+      "q5":"2",
+      "q6":"1",
+      "q7":"1",
+      "q8":"1",
+      "q9":"1",
+      "q10":"1",
+      "q11":"1",
+      "q12":"1",
+      "q13":"1",
+      "q14":"1",
+      "q15":"1",
+      "q16":"1",
+      "q17":"1",
+      "q18":"1"},
+
+    {"id":"mor1",
+      "date":"2016-05-12",
+      "q1":"1",
+      "q2":"1",
+      "q3":"1",
+      "q4":"1",
+      "q5":"2",
+      "q6":"1",
+      "q7":"1",
+      "q8":"1",
+      "q9":"1",
+      "q10":"1",
+      "q11":"1",
+      "q12":"1",
+      "q13":"1",
+      "q14":"1",
+      "q15":"1",
+      "q16":"1",
+      "q17":"1",
+      "q18":"1"},
+
+    {"id":"mor1",
+      "date":"2016-05-13",
+      "q1":"1",
+      "q2":"1",
+      "q3":"1",
+      "q4":"1",
+      "q5":"2",
+      "q6":"1",
+      "q7":"1",
+      "q8":"2",
+      "q9":"1",
+      "q10":"1",
+      "q11":"3",
+      "q12":"1",
+      "q13":"1",
+      "q14":"3",
+      "q15":"1",
+      "q16":"1",
+      "q17":"1",
+      "q18":"1"},
+
+    {"id":"mor1",
+      "date":"2016-05-14",
+      "q1":"1",
+      "q2":"1",
+      "q3":"1",
+      "q4":"1",
+      "q5":"2",
+      "q6":"1",
+      "q7":"1",
+      "q8":"1",
+      "q9":"1",
+      "q10":"1",
+      "q11":"1",
+      "q12":"1",
+      "q13":"1",
+      "q14":"1",
+      "q15":"1",
+      "q16":"1",
+      "q17":"1",
+      "q18":"1"},
+
+    {"id":"mor1",
+      "date":"2016-05-15",
+      "q1":"1",
+      "q2":"1",
+      "q3":"1",
+      "q4":"2",
+      "q5":"2",
+      "q6":"3",
+      "q7":"3",
+      "q8":"1",
+      "q9":"1",
+      "q10":"1",
+      "q11":"1",
+      "q12":"1",
+      "q13":"1",
+      "q14":"1",
+      "q15":"1",
+      "q16":"1",
+      "q17":"1",
+      "q18":"1"},
+
+    {"id":"mor1",
+      "date":"2016-05-16",
+      "q1":"1",
+      "q2":"1",
+      "q3":"1",
+      "q4":"1",
+      "q5":"3",
+      "q6":"3",
+      "q7":"3",
+      "q8":"1",
+      "q9":"1",
+      "q10":"1",
+      "q11":"2",
+      "q12":"1",
+      "q13":"2",
+      "q14":"3",
+      "q15":"1",
+      "q16":"2",
+      "q17":"1",
+      "q18":"1"},
+
+    {"id":"mor1",
+      "date":"2016-05-17",
+      "q1":"1",
+      "q2":"1",
+      "q3":"1",
+      "q4":"1",
+      "q5":"2",
+      "q6":"1",
+      "q7":"1",
+      "q8":"1",
+      "q9":"1",
+      "q10":"3",
+      "q11":"1",
+      "q12":"3",
+      "q13":"1",
+      "q14":"3",
+      "q15":"1",
+      "q16":"3",
+      "q17":"1",
+      "q18":"1"}
+  ],
+  "observations": [{
+    "name": "Resting Heartrate",
+    "label": "beats/min",
+    "color": "#A44400",
+    "type": "line",
+    "values": [
+      {
+        "id": "asdsdsa",
+        "value": "64",
+        "date": "2016-05-10T05:41:19.000Z"
+      },
+      {
+        "id": "asdsdsax",
+        "value": "80",
+        "date": "2016-05-11T05:41:19.000Z"
+      },
+      {
+        "id": "asdsdsaasx",
+        "value": "70",
+        "date": "2016-05-12T05:41:19.000Z"
+      },
+      {
+        "id": "asdsdsaasxasxa",
+        "value": "72",
+        "date": "2016-05-13T10:41:19.000Z"
+      },
+      {
+        "id": "asdsdsa",
+        "value": "64",
+        "date": "2016-05-14T05:41:19.000Z"
+      },
+      {
+        "id": "asdsdsax",
+        "value": "60",
+        "date": "2016-05-15T05:41:19.000Z"
+      },
+      {
+        "id": "asdsdsaasx",
+        "value": "76",
+        "date": "2016-05-16T05:41:19.000Z"
+      },
+      {
+        "id": "asdsdsaasxasxa",
+        "value": "72",
+        "date": "2016-05-17T10:41:19.000Z"
+      }
+    ]
+  },
+    {
+      "name": "Blood Pressure SYS",
+      "label": "mmHg",
+      "color": "#d0000a",
+      "type": "line",
+      "values": [
+        {
+          "id": "asdsdsa",
+          "value": "120",
+          "date": "2016-05-10T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "122",
+          "date": "2016-05-11T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "130",
+          "date": "2016-05-12T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "120",
+          "date": "2016-05-13T10:41:19.000Z"
+        },
+        {
+          "id": "asdsdsa",
+          "value": "145",
+          "date": "2016-05-14T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "132",
+          "date": "2016-05-15T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "170",
+          "date": "2016-05-16T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "120",
+          "date": "2016-05-17T10:41:19.000Z"
+        }
+      ]
+    },
+    {
+      "name": "Blood Pressure DIA",
+      "label": "mmHg",
+      "color": "#d0000a",
+      "type": "line",
+      "values": [
+        {
+          "id": "asdsdsa",
+          "value": "80",
+          "date": "2016-05-10T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "85",
+          "date": "2016-05-11T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "82",
+          "date": "2016-05-12T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "70",
+          "date": "2016-05-13T10:41:19.000Z"
+        },
+        {
+          "id": "asdsdsa",
+          "value": "80",
+          "date": "2016-05-14T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "85",
+          "date": "2016-05-15T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "82",
+          "date": "2016-05-16T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "70",
+          "date": "2016-05-17T10:41:19.000Z"
+        }
+      ]
+    },
+    {
+      "name": "Weight",
+      "label": "kg",
+      "color": "#000000",
+      "type": "line",
+      "values": [
+        {
+          "id": "asdsdsa",
+          "value": "60",
+          "date": "2016-05-10T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "61",
+          "date": "2016-05-11T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "61",
+          "date": "2016-05-12T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "62",
+          "date": "2016-05-13T10:41:19.000Z"
+        },
+        {
+          "id": "asdsdsa",
+          "value": "68",
+          "date": "2016-05-14T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "61",
+          "date": "2016-05-15T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "61",
+          "date": "2016-05-16T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "62",
+          "date": "2016-05-17T10:41:19.000Z"
+        }
+      ]
+    },
+
+    {
+      "name": "Activity",
+      "label": "steps",
+      "color": "#FFB200",
+      "type": "bar",
+      "values": [
+        {
+          "id": "asdsdsa",
+          "value": "2540",
+          "date": "2016-05-10T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "3000",
+          "date": "2016-05-11T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "4800",
+          "date": "2016-05-12T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "10200",
+          "date": "2016-05-13T10:41:19.000Z"
+        },
+        {
+          "id": "asdsdsa",
+          "value": "3000",
+          "date": "2016-05-14T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "256",
+          "date": "2016-05-15T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "61",
+          "date": "2016-05-16T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "1456",
+          "date": "2016-05-17T10:41:19.000Z"
+        }
+      ]
+    },
+    {
+      "name": "Blood Sugar Levels",
+      "label": "mmol/l",
+      "color": "#C200D0",
+      "type": "line",
+      "values": [
+        {
+          "id": "asdsdsa",
+          "value": "5.2",
+          "date": "2016-05-10T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "7.3",
+          "date": "2016-05-11T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "7",
+          "date": "2016-05-12T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "5",
+          "date": "2016-05-13T10:41:19.000Z"
+        },
+        {
+          "id": "asdsdsa",
+          "value": "5.2",
+          "date": "2016-05-14T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "7.3",
+          "date": "2016-05-15T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "7",
+          "date": "2016-05-16T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "5",
+          "date": "2016-05-17T10:41:19.000Z"
+        }
+      ]
+    }
+  ,
+    {
+      "name": "Saturation",
+      "label": "%",
+      "color": "#00AAD0",
+      "type": "line",
+      "values": [
+        {
+          "id": "asdsdsa",
+          "value": "91",
+          "date": "2016-05-10T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "90",
+          "date": "2016-05-11T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "95",
+          "date": "2016-05-12T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "96",
+          "date": "2016-05-13T10:41:19.000Z"
+        },
+        {
+          "id": "asdsdsa",
+          "value": "91",
+          "date": "2016-05-14T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "90",
+          "date": "2016-05-15T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "95",
+          "date": "2016-05-16T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "96",
+          "date": "2016-05-17T10:41:19.000Z"
+        }
+      ]
+    },
+    {
+      "name": "H&Y score",
+      "label": "",
+      "color": "#0d00d0",
+      "type": "line",
+      "values": [
+        {
+          "id": "asdsdsa",
+          "value": "1.5",
+          "date": "2016-05-10T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "2",
+          "date": "2016-05-11T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "2",
+          "date": "2016-05-12T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "2.5",
+          "date": "2016-05-13T10:41:19.000Z"
+        },
+        {
+          "id": "asdsdsa",
+          "value": "2",
+          "date": "2016-05-14T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "2",
+          "date": "2016-05-15T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "1",
+          "date": "2016-05-16T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "2.5",
+          "date": "2016-05-17T10:41:19.000Z"
+        }
+      ]
+    },
+    {
+      "name": "UPDRSIII score",
+      "label": "",
+      "color": "#0d00d0",
+      "type": "line",
+      "values": [
+        {
+          "id": "asdsdsa",
+          "value": "10",
+          "date": "2016-05-10T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "20",
+          "date": "2016-05-11T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "14",
+          "date": "2016-05-12T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "30",
+          "date": "2016-05-13T10:41:19.000Z"
+        },
+        {
+          "id": "asdsdsa",
+          "value": "11",
+          "date": "2016-05-14T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "26",
+          "date": "2016-05-15T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "14",
+          "date": "2016-05-16T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "30",
+          "date": "2016-05-17T10:41:19.000Z"
+        }
+      ]
+    },
+
+    {
+      "name": "MMSE score",
+      "label": "",
+      "color": "#0d00d0",
+      "type": "line",
+      "values": [
+        {
+          "id": "asdsdsa",
+          "value": "20",
+          "date": "2016-05-10T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "25",
+          "date": "2016-05-11T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "10",
+          "date": "2016-05-12T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "29",
+          "date": "2016-05-13T10:41:19.000Z"
+        },
+        {
+          "id": "asdsdsa",
+          "value": "2",
+          "date": "2016-05-14T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsax",
+          "value": "6",
+          "date": "2016-05-15T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasx",
+          "value": "10",
+          "date": "2016-05-16T05:41:19.000Z"
+        },
+        {
+          "id": "asdsdsaasxasxa",
+          "value": "29",
+          "date": "2016-05-17T10:41:19.000Z"
+        }
+      ]
+    }
+  ],
+  "medications": [
+    {
+      "id": "ID",
+      "name": "Candesartan",
+      "startDate": "2017-01-01T10:41:19.000Z",
+      "endDate": "2017-01-17T10:41:19.000Z",
+      "dosage": "23mg",
+      "frequency": "3 times a day",
+      "stopReason": "Not working well",
+      "color": "f86c6b",
+      "disease": "jhaskds",
+      "prescribedBy": "DoctorWho - GP"
+    },
+
+    {
+      "id": "IDdfsd",
+      "name": "Candesartan",
+      "startDate": "2017-02-01T10:41:19.000Z",
+      "endDate": "2017-02-17T10:41:19.000Z",
+      "dosage": "23mg",
+      "frequency": "3 times a day",
+      "stopReason": "Not working well",
+      "color": "f86c6b",
+      "disease": "jhaskds",
+      "prescribedBy": "DoctorWho - GP"
+    },
+
+    {
+      "id": "IDa",
+      "name": "Ramipril",
+      "startDate": "2017-01-01T10:41:19.000Z",
+      "endDate": "2017-01-04T10:41:19.000Z",
+      "dosage": "23mg",
+      "frequency": "3 times a day",
+      "stopReason": "Not working well",
+      "color": "f8cb00",
+      "disease": "jhaskds",
+      "prescribedBy": "Doctor Strange - Diabethologist"
+    },
+    {
+      "id": "IDb",
+      "name": "Simvastatin",
+      "startDate": "2017-01-12T10:41:19.000Z",
+      "endDate": "2017-01-17T10:41:19.000Z",
+      "dosage": "23mg",
+      "frequency": "3 times a day",
+      "stopReason": "Not working well",
+      "color": "20a8d8",
+      "disease": "jhaskds",
+      "prescribedBy": "Doctor Strange - Diabethologist"
+    }
+  ],
+  "clinicians": [
+    {
+      "id":"ID",
+      "name":"Doctor Who",
+      "institution":"Institution name, desc",
+      "speciality":"Doctor of magic",
+      "startDate":"2017-01-12T10:41:19.000Z",
+      "endDate":"2017-01-20T10:41:19.000Z"
+    },
+    {
+      "id":"ID2",
+      "name":"Doctor Strange",
+      "institution":"Institution name, desc",
+      "speciality":"Doctor of strange",
+      "startDate":"2017-01-12T10:41:19.000Z",
+      "endDate":"2017-01-20T10:41:19.000Z"
+    }
+  ],
+  "checks":[
+    {
+      "id":"ID1",
+      "clinician":"GP",
+      "startDate":"2017-01-20T10:41:19.000Z",
+      "visitReason":"weekly check",
+      "color":"7777ff"
+    },
+    {
+      "id":"ID1ghg",
+      "clinician":"GP",
+      "startDate":"2017-03-25T10:41:19.000Z",
+      "visitReason":"planned check",
+      "color":"7777ff"
+    },
+    {
+      "id":"ID2",
+      "clinician":"GP",
+      "startDate":"2017-01-30T10:41:19.000Z",
+      "visitReason":"feeling bad",
+      "color":"7777ff"
+    },
+    {
+      "id":"IDa",
+      "clinician":"Lab Test",
+      "startDate":"2017-02-02T10:41:19.000Z",
+      "visitReason":"Blood tests",
+      "color":"D04300"
+    },
+    {
+      "id":"ID3",
+      "clinician":"Kardiologist",
+      "startDate":"2017-01-20T10:41:19.000Z",
+      "color":"aa77ff"
+    },
+    {
+      "id":"ID4",
+      "clinician":"Kardiologist",
+      "startDate":"2017-01-27T10:41:19.000Z",
+      "color":"aa77ff"
+    },
+    {
+      "id":"ID5c",
+      "clinician":"MRI scan",
+      "startDate":"2017-01-22T10:41:19.000Z",
+      "color":"0BD000"
+    },
+    {
+      "id":"ID5cd",
+      "clinician":"Perfusional scintgraphy",
+      "startDate":"2017-01-28T10:41:19.000Z",
+
+      "color":"0BD000"
+    },
+
+    {
+      "id":"ID5",
+      "clinician":"Hospital1",
+      "startDate":"2017-01-20T10:41:19.000Z",
+      "endDate":"2017-02-05T10:41:19.000Z",
+      "color":"00DB26"
+    }
+  ],
+  "diseases":[
+    {
+      "id":"ID1",
+      "name":"Parkinson's Disease",
+      "doateOfOnset":"2017-01-20T10:41:19.000Z",
+      "sideOfOnset":"right",
+      "clinicalPhenotype":"mixed",
+      "severity": "severity"
+    },
+    {
+      "id":"ID2",
+      "name":"Diabetes",
+      "doateOfOnset":"2017-01-20T10:41:19.000Z",
+      "severity": "severity"
+    }
+  ],
+
+
+  "imaging":[
+    {
+      "id":"ID1",
+      "type":"MTI",
+      "exist":"yes",
+      "dates":"1.2.2017, 2.3.2017",
+      "report":"taken during visit at ...",
+      "url": "http://imageurl.com/image"
+    },
+    {
+      "id":"ID2",
+      "type":"CTI",
+      "exist":"yes",
+      "dates":"1.2.2017, 2.3.2017",
+      "report":"taken during visit at ...",
+      "url": "http://imageurl.com/image2"
+    }
+  ]
+}

@@ -1,27 +1,28 @@
 import { NgModule }                 from '@angular/core';
 import { Routes,
-    RouterModule }             from '@angular/router';
+    RouterModule
+}             from '@angular/router';
 
-import { CdSharedModelService } from './_services/cd-shared-model.service'
+import {CdSharedModelService} from './_services/cd-shared-model.service'
 
 //Layouts
 import { FullLayoutComponent }      from './layouts/full-layout.component';
-import { AuthGuard } from './authentication/auth.guard';
-import { LoginComponent } from './authentication/login.component'
-import { RegisterComponent } from './authentication/register.component'
+import {AuthGuard} from './authentication/auth.guard';
+import {LoginComponent} from './authentication/login.component'
+import {RegisterComponent} from './authentication/register.component'
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'patient-id',
+        redirectTo: 'data-resource-browser',
         pathMatch: 'full',
         canActivate: [AuthGuard]
     },
-    { path: 'login',  component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
+    {path: 'login', component: LoginComponent},
+    {path: 'register', component: RegisterComponent},
     {
         path: 'home',
-        redirectTo: 'patient-id',
+        redirectTo: 'data-resource-browser',
         pathMatch: 'full',
         canActivate: [AuthGuard]
     },
@@ -37,12 +38,8 @@ export const routes: Routes = [
                 loadChildren: 'app/modules/patient-id/patient-id.module#PatientIdModule'
             },
             {
-                path: 'dashboard',
-                loadChildren: 'app/dashboard/dashboard.module#DashboardModule'
-            },
-            {
-                path: 'clinician-dashboard',
-                loadChildren: 'app/modules/clinician-dashboard/clinician-dashboard.module#ClinicianDashboardModule'
+                path: 'clinician-manager',
+                loadChildren: 'app/modules/clinician-manager/clinician-manager.module#ClinicianManagerModule'
             },
             {
                 path: 'narratives-manager',
@@ -60,13 +57,13 @@ export const routes: Routes = [
         ],
         canActivate: [AuthGuard]
     },
-    { path: '**',     component: LoginComponent },
+    {path: '**', component: LoginComponent},
 
 ];
 
 @NgModule({
     imports: [ RouterModule.forRoot(routes) ],
-    exports: [ RouterModule ],
+    exports: [RouterModule],
     providers: [CdSharedModelService]
 
 })

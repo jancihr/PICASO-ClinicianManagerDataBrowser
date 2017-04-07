@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit}    from '@angular/core';
+import {Component, ElementRef}    from '@angular/core';
 import { PatientService } from './_services/patient.service'
 import {CdSharedModelService}   from '../../_services/cd-shared-model.service';
 
@@ -6,7 +6,7 @@ import {CdSharedModelService}   from '../../_services/cd-shared-model.service';
     templateUrl: 'patient-id.component.html',
     providers: [PatientService]
 })
-export class PatientIdComponent implements OnInit {
+export class PatientIdComponent {
 
     query = '';
     selectedPatient: any;
@@ -18,9 +18,7 @@ export class PatientIdComponent implements OnInit {
         this.elementRef = myElement;
         this.data = this.cdSharedModelService.get();
     }
-    ngOnInit(): void {
-        this.patientService.loadPatients(this.data.clinician.pid).subscribe();
-    }
+
     filter() {
         if (this.query !== "") {
             this.filteredList = this.patientService.filter(this.query);
@@ -30,11 +28,25 @@ export class PatientIdComponent implements OnInit {
     }
 
     select(item) {
-        this.query = item.Display;
+        this.query = item.Name;
         this.selectedPatient = item;
         this.filteredList = [];
-        this.data.patient = item;
+        console.log(item);
+        this.data.patient.display = item.Name;
         this.cdSharedModelService.update(this.data);
     }
 
+    handleClick(event) {
+        var clickedComponent = event.target;
+        var inside = false;
+        do {
+            if (clickedComponent === this.elementRef.nativeElement) {
+                inside = true;
+            }
+            clickedComponent = clickedComponent.parentNode;
+        } while (clickedComponent);
+        if (!inside) {
+            this.filteredList = [];
+        }
+    }
 }
