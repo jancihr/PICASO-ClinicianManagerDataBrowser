@@ -1,19 +1,6 @@
 {
   "info": {
-    "id": "758923/8976",
-    "name": "Peter Moskowitch",
-    "address1": "Great Street 2",
-    "address2": "Supercity",
-    "address3": "04001",
-    "address4": "",
-    "bloodType": "AB normal",
-    "dob": "1960-05-10",
-    "height": "180cm",
-    "gender": "M",
-    "insurer": "Obamacare",
-    "insurerId": "OBMCR",
-    "occupancy": "Retired",
-    "livesAlone": "false"
+    "id" : "758923/8976","name" : "Peter Moskowitch with a loooong looooong name to fit in the form","address1" : "Great Street 2","address2" : "Supercity","address3" : "04001","address4" : "","bloodType" : "AB normal","dob" : "1960-05-10","height" : "180cm","gender" : "M","insurer" : "Obamacare","insurerId" : "OBMCR","occupancy" : "Retired","livesAlone" : "false"
   },
 
   "radai":[
@@ -288,11 +275,7 @@
       "q18":"1"}
   ],
   "observations": [{
-    "name": "Resting Heartrate",
-    "label": "beats/min",
-    "color": "#A44400",
-    "type": "line",
-    "values": [
+    "name" : "Resting Heartrate","label" : "beats/min","color" : "#2E5CA4","type" : "line","values" : [
       {
         "id": "asdsdsa",
         "value": "64",
