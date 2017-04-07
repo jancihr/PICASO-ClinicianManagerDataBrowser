@@ -4,7 +4,7 @@ const config = {
         "FHIR_CODING_URL": "https://localhost:8080/api/fhir/coding/",
         "FHIR_RESOURCE_URL": "https://localhost:8080/api/picaso/resource/",
         "CLINICIAN_DASHBOARD_URL": "https://localhost:8080/api/",
-        "AUTHENTICATION_URL": "https://localhost:8080/api//picaso/authenticate/login",
+        "AUTHENTICATION_URL": "https://localhost:8080/api/picaso/authenticate/login",
         "IDENTITY_URL": "https://localhost:8080/api/picaso/authenticate/identify",
         "PATIENTS_URL": "https://localhost:8080/api/picaso/authenticate/patients",
     },
