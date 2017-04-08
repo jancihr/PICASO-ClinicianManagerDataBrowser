@@ -1,12 +1,12 @@
-
+const BASE_API_URL = "https://picaso.fit.fraunhofer.de/api/";
 const config = {
+    "CLINICIAN_DASHBOARD_URL": BASE_API_URL + "cd/",
     "API": {
-        "FHIR_CODING_URL": "https://localhost:8080/api/fhir/coding/",
-        "FHIR_RESOURCE_URL": "https://localhost:8080/api/picaso/resource/",
-        "CLINICIAN_DASHBOARD_URL": "https://localhost:8080/api/",
-        "AUTHENTICATION_URL": "https://localhost:8080/api/picaso/authenticate/login",
-        "IDENTITY_URL": "https://localhost:8080/api/picaso/authenticate/identify",
-        "PATIENTS_URL": "https://localhost:8080/api/picaso/authenticate/patients",
+        "FHIR_CODING_URL": BASE_API_URL + "fhir/coding/",
+        "FHIR_RESOURCE_URL": BASE_API_URL + "picaso/resource/",
+        "AUTHENTICATION_URL": BASE_API_URL + "picaso/authenticate/login",
+        "IDENTITY_URL": BASE_API_URL + "picaso/authenticate/identify",
+        "PATIENTS_URL": BASE_API_URL + "picaso/authenticate/patients",
     },
     "common": {
         "defaultHttpReqOptions": null
