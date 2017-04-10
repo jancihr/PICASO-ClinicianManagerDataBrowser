@@ -14,6 +14,7 @@ import {PatientCheck} from "../model/patient-check";
 import {PatientFFbHResult} from "../model/patient-ffbh-result";
 import {PatientRADAIResult} from "../model/patient-RADAI-result";
 import {PatientImage} from "../model/patient-image";
+import {ProgressHttp} from "angular-progress-http";
 
 
 @Injectable()
@@ -32,19 +33,25 @@ export class PicasoDataService {
     //private patientRADAIServiceURL = 'http://147.232.202.101:9004/radai';
     //private patientImagingServiceURL = 'http://147.232.202.101:9004/imaging';
 
-    constructor(private http: Http) {
+    constructor(private http: ProgressHttp) {
     }
 
 
     getDiseases(startDate: Date, endDate: Date): Observable<PatientDisease[]> {
-        return this.http.get(this.patientODSServiceURL)
+        return this.http.withDownloadProgressListener(progress => {
+            console.log(`Loading ${progress.percentage}%`);
+        })
+            .get(this.patientODSServiceURL)
             .map(this.extractDataDiseases)
             .catch(this.handleError)
             ;
     }
 
     getImaging(startDate: Date, endDate: Date): Observable<PatientImage[]> {
-        return this.http.get(this.patientODSServiceURL)
+        return this.http.withDownloadProgressListener(progress => {
+            console.log(`Loading ${progress.percentage}%`);
+        })
+            .get(this.patientODSServiceURL)
             .map(this.extractDataImaging)
             .catch(this.handleError)
             ;
@@ -53,28 +60,40 @@ export class PicasoDataService {
     getClinicians(startDate: Date, endDate: Date): Observable<PatientClinician[]> {
 
 
-        return this.http.get(this.patientODSServiceURL)
+        return this.http.withDownloadProgressListener(progress => {
+            console.log(`Loading ${progress.percentage}%`);
+        })
+            .get(this.patientODSServiceURL)
             .map(this.extractDataClinicians)
             .catch(this.handleError)
             ;
     }
 
     getMoriskyResults(startDate: Date, endDate: Date): Observable<PatientMoriskyResult[]> {
-        return this.http.get(this.patientODSServiceURL)
+        return this.http.withDownloadProgressListener(progress => {
+            console.log(`Loading ${progress.percentage}%`);
+        })
+            .get(this.patientODSServiceURL)
             .map(this.extractDataMorisky)
             .catch(this.handleError)
             ;
     }
 
     getFFbHResults(startDate: Date, endDate: Date): Observable<PatientFFbHResult[]> {
-        return this.http.get(this.patientODSServiceURL)
+        return this.http.withDownloadProgressListener(progress => {
+            console.log(`Loading ${progress.percentage}%`);
+        })
+            .get(this.patientODSServiceURL)
             .map(this.extractDataFfbh)
             .catch(this.handleError)
             ;
     }
 
     getRADAIResults(startDate: Date, endDate): Observable<PatientRADAIResult[]>{
-        return this.http.get(this.patientODSServiceURL)
+        return this.http.withDownloadProgressListener(progress => {
+            console.log(`Loading ${progress.percentage}%`);
+        })
+            .get(this.patientODSServiceURL)
             .map(this.extractDataRadai)
             .catch(this.handleError)
             ;
@@ -83,7 +102,10 @@ export class PicasoDataService {
     getObservations(startDate: Date, endDate: Date): Observable<PatientObservationGroup[]> {
 
 
-        return this.http.get(this.patientODSServiceURL)
+        return this.http.withDownloadProgressListener(progress => {
+            console.log(`Loading ${progress.percentage}%`);
+        })
+            .get(this.patientODSServiceURL)
             .map(this.extractDataObservations)
             .catch(this.handleError)
             ;
@@ -91,7 +113,10 @@ export class PicasoDataService {
 
 
     getMedicationHistory(startDate: Date, endDate: Date): Observable<PatientMedication[]> {
-        return this.http.get(this.patientODSServiceURL)
+        return this.http.withDownloadProgressListener(progress => {
+            console.log(`Loading ${progress.percentage}%`);
+        })
+            .get(this.patientODSServiceURL)
             .map(this.extractDataMedications)
             .catch(this.handleError)
             ;
@@ -99,7 +124,10 @@ export class PicasoDataService {
 
     getCheckHistory(startDate: Date, endDate: Date): Observable<PatientCheck[]> {
 
-        return this.http.get(this.patientODSServiceURL)
+        return this.http.withDownloadProgressListener(progress => {
+            console.log(`Loading ${progress.percentage}%`);
+        })
+            .get(this.patientODSServiceURL)
             .map(this.extractDataChecks)
             .catch(this.handleError)
             ;
@@ -108,7 +136,10 @@ export class PicasoDataService {
 
     getPatient(): Observable<PatientData> {
 
-        return this.http.get(this.patientODSServiceURL)
+        return this.http.withDownloadProgressListener(progress => {
+            console.log(`Loading ${progress.percentage}%`);
+        })
+            .get(this.patientODSServiceURL)
             .map(this.extractDataInfo)
             .catch(this.handleError)
             ;

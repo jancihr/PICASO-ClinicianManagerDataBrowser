@@ -921,6 +921,63 @@
       "dates":"1.2.2017, 2.3.2017",
       "report":"taken during visit at ...",
       "url": "http://imageurl.com/image2"
+    },
+    {
+      "id" : "ID2","type" : "CTI","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/image2"
+    },
+    {
+      "id" : "ID2","type" : "CTI","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/image2"
+    },
+    {
+      "id" : "ID2","type" : "CTI","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/image2"
+    },
+    {
+      "id" : "ID2","type" : "CTI","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/image2"
+    },
+    {
+      "id" : "ID2","type" : "CTI","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/image2"
+    },
+    {
+      "id" : "ID2","type" : "CTI","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/image2"
+    },
+    {
+      "id" : "ID2","type" : "CTI","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/image2"
+    },
+    {
+      "id" : "ID2","type" : "CTI","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/image2"
+    },
+    {
+      "id" : "ID2","type" : "CTI","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/image2"
+    },
+    {
+      "id" : "ID2","type" : "CTI","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/image2"
+    },
+    {
+      "id" : "ID2","type" : "CTI","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/image2"
+    },
+    {
+      "id" : "ID2","type" : "CTI","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/image2"
+    },
+    {
+      "id" : "ID2","type" : "CTI","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/image2"
+    },
+    {
+      "id" : "ID2","type" : "CTI","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/image2"
+    },
+    {
+      "id" : "ID2","type" : "CTI","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/image2"
+    },
+    {
+      "id" : "ID2","type" : "photo","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/image2"
+    },
+    {
+      "id" : "ID2","type" : "photo","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/image2"
+    },
+    {
+      "id" : "ID2","type" : "MRI","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/imagex"
+    },
+    {
+      "id" : "ID2","type" : "MRI","exist" : "yes","dates" : "1.2.2017, 2.3.2017","report" : "taken during visit at ...","url" : "http://imageurl.com/imagexsdasd"
     }
   ]
 }

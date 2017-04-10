@@ -15,6 +15,11 @@ export class PatientImagingComponent implements OnInit {
     errorMessage: string;
     imaging: PatientImage[];
 
+    public filterQuery = "";
+    public rowsOnPage = 5;
+    public sortBy = "type";
+    public sortOrder = "asc";
+
     constructor(private picasoDataService: PicasoDataService) {
     };
 
