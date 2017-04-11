@@ -14,6 +14,11 @@ export class PatientDiseasesComponent implements OnInit {
     errorMessage: string;
     diseases: PatientDisease[];
 
+    public filterQuery = "";
+    public rowsOnPage = 5;
+    public sortBy = "name";
+    public sortOrder = "asc";
+
     constructor(private picasoDataService: PicasoDataService) {
     };
 
