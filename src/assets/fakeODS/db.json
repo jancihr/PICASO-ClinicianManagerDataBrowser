@@ -930,7 +930,7 @@
     {
       "id": "ID1",
       "name": "Parkinson's Disease",
-      "doateOfOnset": "2017-01-20T10:41:19.000Z",
+      "dateOfOnset": "2017-01-20T10:41:19.000Z",
       "sideOfOnset": "right",
       "clinicalPhenotype": "mixed",
       "severity": "severity"
@@ -938,7 +938,43 @@
     {
       "id": "ID2",
       "name": "Diabetes",
-      "doateOfOnset": "2017-01-20T10:41:19.000Z",
+      "dateOfOnset": "2017-01-20T10:41:19.000Z",
+      "severity": "severity"
+    },
+    {
+      "id": "ID2",
+      "name": "Flu",
+      "dateOfOnset": "2017-01-20T10:41:19.000Z",
+      "severity": "severity"
+    },
+    {
+      "id": "ID2",
+      "name": "Heart problems",
+      "dateOfOnset": "2017-01-20T10:41:19.000Z",
+      "severity": "severity"
+    },
+    {
+      "id": "ID2",
+      "name": "Angina",
+      "dateOfOnset": "2017-01-20T10:41:19.000Z",
+      "severity": "severity"
+    },
+    {
+      "id": "ID2",
+      "name": "Disease 1",
+      "dateOfOnset": "2017-01-20T10:41:19.000Z",
+      "severity": "severity"
+    },
+    {
+      "id": "ID2",
+      "name": "Disease 2",
+      "dateOfOnset": "2017-01-20T10:41:19.000Z",
+      "severity": "severity"
+    },
+    {
+      "id": "ID2",
+      "name": "Diseae 3",
+      "dateOfOnset": "2017-01-20T10:41:19.000Z",
       "severity": "severity"
     }
   ],
@@ -961,7 +997,7 @@
     },
     {
       "id": "ID2",
-      "type": "CTI",
+      "type": "CTI1",
       "exist": "yes",
       "dates": "1.2.2017, 2.3.2017",
       "report": "taken during visit at ...",
@@ -969,7 +1005,7 @@
     },
     {
       "id": "ID2",
-      "type": "CTI",
+      "type": "CTI2",
       "exist": "yes",
       "dates": "1.2.2017, 2.3.2017",
       "report": "taken during visit at ...",
@@ -977,7 +1013,7 @@
     },
     {
       "id": "ID2",
-      "type": "CTI",
+      "type": "CTI3",
       "exist": "yes",
       "dates": "1.2.2017, 2.3.2017",
       "report": "taken during visit at ...",
@@ -985,7 +1021,7 @@
     },
     {
       "id": "ID2",
-      "type": "CTI",
+      "type": "CTI4",
       "exist": "yes",
       "dates": "1.2.2017, 2.3.2017",
       "report": "taken during visit at ...",
@@ -993,7 +1029,7 @@
     },
     {
       "id": "ID2",
-      "type": "CTI",
+      "type": "CTI5",
       "exist": "yes",
       "dates": "1.2.2017, 2.3.2017",
       "report": "taken during visit at ...",
@@ -1001,7 +1037,7 @@
     },
     {
       "id": "ID2",
-      "type": "CTI",
+      "type": "CTI6",
       "exist": "yes",
       "dates": "1.2.2017, 2.3.2017",
       "report": "taken during visit at ...",
@@ -1009,7 +1045,7 @@
     },
     {
       "id": "ID2",
-      "type": "CTI",
+      "type": "CTI7",
       "exist": "yes",
       "dates": "1.2.2017, 2.3.2017",
       "report": "taken during visit at ...",
@@ -1017,7 +1053,7 @@
     },
     {
       "id": "ID2",
-      "type": "CTI",
+      "type": "CTI8",
       "exist": "yes",
       "dates": "1.2.2017, 2.3.2017",
       "report": "taken during visit at ...",
@@ -1025,7 +1061,7 @@
     },
     {
       "id": "ID2",
-      "type": "CTI",
+      "type": "CTI9",
       "exist": "yes",
       "dates": "1.2.2017, 2.3.2017",
       "report": "taken during visit at ...",
@@ -1033,7 +1069,7 @@
     },
     {
       "id": "ID2",
-      "type": "CTI",
+      "type": "CTI10",
       "exist": "yes",
       "dates": "1.2.2017, 2.3.2017",
       "report": "taken during visit at ...",
@@ -1041,7 +1077,7 @@
     },
     {
       "id": "ID2",
-      "type": "CTI",
+      "type": "CTI11",
       "exist": "yes",
       "dates": "1.2.2017, 2.3.2017",
       "report": "taken during visit at ...",
@@ -1049,7 +1085,7 @@
     },
     {
       "id": "ID2",
-      "type": "CTI",
+      "type": "CTI12",
       "exist": "yes",
       "dates": "1.2.2017, 2.3.2017",
       "report": "taken during visit at ...",
@@ -1057,7 +1093,7 @@
     },
     {
       "id": "ID2",
-      "type": "CTI",
+      "type": "CTI13",
       "exist": "yes",
       "dates": "1.2.2017, 2.3.2017",
       "report": "taken during visit at ...",
@@ -1065,7 +1101,7 @@
     },
     {
       "id": "ID2",
-      "type": "CTI",
+      "type": "CTI14",
       "exist": "yes",
       "dates": "1.2.2017, 2.3.2017",
       "report": "taken during visit at ...",
@@ -1073,7 +1109,7 @@
     },
     {
       "id": "ID2",
-      "type": "CTI",
+      "type": "CTI15",
       "exist": "yes",
       "dates": "1.2.2017, 2.3.2017",
       "report": "taken during visit at ...",
