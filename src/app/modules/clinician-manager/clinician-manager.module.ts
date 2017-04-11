@@ -17,12 +17,16 @@ import {nvD3} from "ng2-nvd3";
 import {PatientMoriskyResultsComponent} from "./cards/patient-morisky-results.component";
 import {PatientImagingComponent} from "./cards/patient-imaging.component";
 import {MyDateRangePickerModule} from "mydaterangepicker";
+import {ProgressHttpModule} from "angular-progress-http";
+import {DataTableModule} from "angular2-datatable";
+import {FormsModule} from "@angular/forms";
+
 
 @NgModule({
     imports: [
-        ClinicianManagerRoutingModule,
+        ClinicianManagerRoutingModule, FormsModule,
         ChartsModule, VisModule, HttpModule, CommonModule,
-        Ng2Bs3ModalModule, MyDateRangePickerModule
+        Ng2Bs3ModalModule, MyDateRangePickerModule, ProgressHttpModule, DataTableModule
 
     ],
     declarations: [ClinicianManagerComponent,

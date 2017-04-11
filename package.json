@@ -1,15 +1,69 @@
 {
-  "name"            : "rougue-board","version" : "0.1.0","description" : "Web-based dashboard based upon CoreUI","author" : {
-  "name" : "Web Compliance Center","email" : "webcc@fit.fraunhofer.de"
-},"homepage"        : "https://imergo.com/solutions/opensource.html","license" : "Apache-2.0","repository" : {
-  "type" : "git","url" : "https://github.com/webcc/rogue-board.git"
-},"readmeFilename"  : "README.md","dependencies" : {
-  "@angular/common" : "2.1.2","@angular/compiler" : "2.1.2","@angular/compiler-cli" : "2.1.2","@angular/core" : "2.1.2","@angular/forms" : "2.1.2","@angular/http" : "2.1.2","@angular/platform-browser" : "2.1.2","@angular/platform-browser-dynamic" : "2.1.2","@angular/router" : "3.1.2","@angular/upgrade" : "2.1.2","chart.js" : "2.3.0","core-js" : "2.4.1","moment" : "2.15.2","mydaterangepicker" : "^1.4.3","ng2-bootstrap" : "1.1.16","ng2-bs3-modal" : "0.10.4","ng2-charts" : "1.4.1","ng2-nvd3" : "1.1.3","ng2-vis" : "0.0.5","nvd3" : "1.8.5","rxjs" : "5.0.0-rc.1","ts-helpers" : "1.1.2","vis" : "4.17.0","zone.js" : "0.6.26"
-},"devDependencies" : {
-  "@angular/compiler-cli" : "2.1.2","@ngtools/webpack" : "^1.2.0","@types/jasmine" : "2.5.37","angular-cli" : "1.0.0-beta.19-3","codelyzer" : "1.0.0-beta.3","jasmine-core" : "2.5.2","jasmine-spec-reporter" : "2.7.0","karma" : "1.3.0","karma-chrome-launcher" : "2.0.0","karma-jasmine" : "1.0.2","karma-remap-istanbul" : "0.2.1","protractor" : "4.0.10","ts-node" : "1.6.1","tslint" : "3.15.1","typescript" : "2.0.6"
-},"angular-cli"     : {},"scripts" : {
-  "start" : "open http://localhost:9005 && ng serve --port 9005","lint" : "tslint \"src/**/*.ts\"","test" : "ng test","build" : "ng build","pree2e" : "webdriver-manager update","e2e" : "protractor"
-},"engines"         : {
-  "node" : ">=6.9.2"
-}
+  "name": "picaso-clinician-dashboard-ui",
+  "version": "0.1.0",
+  "description": "PICASO Clinician Dashboard",
+  "author": {
+    "name": "PICASO Project",
+    "email": ""
+  },
+  "homepage": "https://imergo.com/solutions/opensource.html",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/webcc/rogue-board.git"
+  },
+  "readmeFilename": "README.md",
+  "dependencies": {
+    "@angular/common": "2.1.2",
+    "@angular/compiler": "2.1.2",
+    "@angular/core": "2.1.2",
+    "@angular/forms": "2.1.2",
+    "@angular/http": "2.1.2",
+    "@angular/platform-browser": "2.1.2",
+    "@angular/platform-browser-dynamic" : "2.1.2",
+    "@angular/router"                   : "3.1.2",
+    "@angular/upgrade"                  : "2.1.2",
+    "angular2-uuid"                     : "^1.1.1",
+    "chart.js"                          : "2.3.0",
+    "core-js"                           : "2.4.1",
+    "moment"                            : "2.15.2",
+    "ng2-bootstrap"                     : "1.1.16",
+    "ng2-charts"                        : "1.4.1",
+    "rxjs"                              : "5.0.0-rc.1",
+    "ts-helpers"                        : "1.1.2",
+    "uuid"                              : "^3.0.1",
+    "zone.js"                           : "0.6.26",
+    "ng2-bs3-modal"                     : "0.10.4",
+    "ng2-nvd3"                          : "1.1.3",
+    "ng2-vis"                           : "0.0.5",
+    "vis"                               : "4.17.0",
+    "nvd3"                              : "1.8.5","mydaterangepicker" : "^1.4.3","angular-progress-http" : "^0.4.1"
+  },
+  "devDependencies": {
+    "@types/jasmine": "2.5.37",
+    "angular-cli": "1.0.0-beta.19-3",
+    "codelyzer": "1.0.0-beta.3",
+    "jasmine": "^2.5.3",
+    "jasmine-core": "2.5.2",
+    "jasmine-spec-reporter": "2.7.0",
+    "karma": "1.3.0",
+    "karma-chrome-launcher": "2.0.0",
+    "karma-jasmine": "1.0.2",
+    "karma-remap-istanbul": "0.2.1",
+    "protractor": "4.0.10",
+    "ts-node": "1.6.1",
+    "tslint": "3.15.1",
+    "typescript": "2.0.6"
+  },
+  "angular-cli": {},
+  "scripts": {
+    "start": "ng serve",
+    "lint": "tslint \"src/**/*.ts\"",
+    "test": "ng test",
+    "pree2e": "webdriver-manager update",
+    "e2e": "protractor"
+  },
+  "engines": {
+    "node": ">=6.9.2"
+  }
 }

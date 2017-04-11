@@ -22,6 +22,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
     options;
     data;
+    showAllRight = false;
+    showAllLeft = false;
 
 
     observationGroups: PatientObservationGroup[];
@@ -118,9 +120,10 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     setPatientObservations(observations: PatientObservationGroup[]) {
 
         this.observationGroups = observations;
-        if (this.observationGroups !== undefined && this.observationGroups.length > 1) {
+        if (this.observationGroups !== undefined && this.observationGroups.length > 2) {
             this.observationGroups[0].showLeft = true;
             this.observationGroups[1].showRight = true;
+            this.observationGroups[2].showRight = true;
         }
 
         this.reloadDataToGraph();
@@ -270,16 +273,19 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
     public resetLeft() {
 
+        this.showAllLeft = !this.showAllLeft;
         for (var i = 0; i < this.observationGroups.length; i++) {
-            this.observationGroups[i].showLeft = false;
+
+            this.observationGroups[i].showLeft = this.showAllLeft;
         }
         this.reloadDataToGraph()
 
     }
 
     public resetRight() {
+        this.showAllRight = !this.showAllRight;
         for (var i = 0; i < this.observationGroups.length; i++) {
-            this.observationGroups[i].showRight = false;
+            this.observationGroups[i].showRight = this.showAllRight;
         }
         this.reloadDataToGraph()
     }

@@ -50,7 +50,6 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
     medications: PatientMedication[];
 
 
-
     public visTimelineMedications: string = 'medicationTimelineGraph';
     public visTimelineItemsMedications: VisTimelineItems;
     public visTimelineMedicationsOptions: VisTimelineOptions;

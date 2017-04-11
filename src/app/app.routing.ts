@@ -1,28 +1,27 @@
 import { NgModule }                 from '@angular/core';
 import { Routes,
-    RouterModule
-}             from '@angular/router';
+    RouterModule }             from '@angular/router';
 
-import {CdSharedModelService} from './_services/cd-shared-model.service'
+import { CdSharedModelService } from './_services/cd-shared-model.service'
 
 //Layouts
 import { FullLayoutComponent }      from './layouts/full-layout.component';
-import {AuthGuard} from './authentication/auth.guard';
-import {LoginComponent} from './authentication/login.component'
-import {RegisterComponent} from './authentication/register.component'
+import { AuthGuard } from './authentication/auth.guard';
+import { LoginComponent } from './authentication/login.component'
+import { RegisterComponent } from './authentication/register.component'
 
 export const routes: Routes = [
     {
         path: '',
-        redirectTo: 'data-resource-browser',
+        redirectTo: 'patient-id',
         pathMatch: 'full',
         canActivate: [AuthGuard]
     },
-    {path: 'login', component: LoginComponent},
-    {path: 'register', component: RegisterComponent},
+    { path: 'login',  component: LoginComponent },
+    { path: 'register', component: RegisterComponent },
     {
         path: 'home',
-        redirectTo: 'data-resource-browser',
+        redirectTo: 'patient-id',
         pathMatch: 'full',
         canActivate: [AuthGuard]
     },
@@ -36,6 +35,10 @@ export const routes: Routes = [
             {
                 path: 'patient-id',
                 loadChildren: 'app/modules/patient-id/patient-id.module#PatientIdModule'
+            },
+            {
+                path: 'dashboard',
+                loadChildren: 'app/dashboard/dashboard.module#DashboardModule'
             },
             {
                 path: 'clinician-manager',
@@ -57,13 +60,13 @@ export const routes: Routes = [
         ],
         canActivate: [AuthGuard]
     },
-    {path: '**', component: LoginComponent},
+    { path: '**',     component: LoginComponent },
 
 ];
 
 @NgModule({
     imports: [ RouterModule.forRoot(routes) ],
-    exports: [RouterModule],
+    exports: [ RouterModule ],
     providers: [CdSharedModelService]
 
 })

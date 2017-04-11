@@ -10,9 +10,13 @@ This project extends general functionallity of [rogue-board](https://github.com/
 npm install
 ```
 
+Known issues / dirty fix after clean install : node_modules/@ngtools/webpack/src/index.js:27:11 remove if
+
 ## Development server
 
 Run `ng serve` and navigate to `http://localhost:4200/`.
+
+Run also clinician-dashboard-sv (npm start)
 
 ## Build
 
