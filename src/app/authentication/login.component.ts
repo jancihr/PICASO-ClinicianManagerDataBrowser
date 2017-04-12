@@ -2,7 +2,7 @@ import {Component}        from '@angular/core';
 import {UserService} from "./_services/user.service";
 import {Router} from '@angular/router';
 import {FormBuilder, Validators} from "@angular/forms";
-import {CdSharedModelService} from "../_services/cd-shared-model.service";
+import {CdSharedModelService} from "../picaso-cd-common/_services/cd-shared-model.service";
 
 @Component({
     templateUrl: 'login.component.html'
@@ -28,10 +28,11 @@ export class LoginComponent {
                             let data = this.shared.get();
                             data.clinician = r.data;
                             this.shared.update(data);
+                            console.log("this.shared.get()");
+                            console.log(this.shared.get());
                         }
                     });
                     this.router.navigate(['home']);
-
                 }
             },
             (err) => {

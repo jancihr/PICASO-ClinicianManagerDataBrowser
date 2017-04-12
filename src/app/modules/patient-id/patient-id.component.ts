@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit}    from '@angular/core';
 import { PatientService } from './_services/patient.service'
-import {CdSharedModelService}   from '../../_services/cd-shared-model.service';
+import {CdSharedModelService}   from '../../picaso-cd-common/_services/cd-shared-model.service';
 
 @Component({
     templateUrl: 'patient-id.component.html',

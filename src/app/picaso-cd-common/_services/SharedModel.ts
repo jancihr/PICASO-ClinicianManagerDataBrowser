@@ -4,10 +4,8 @@ export class SharedModel {
 
     constructor() {
         this.clinician = {
-            pid: "id",
-            domain: "UTV",
-            roles: ["guest"],
-            display: "guest"
+            UPID : "id",
+            roles: ["guest"]
         };
         this.patient = {
             pId: "",

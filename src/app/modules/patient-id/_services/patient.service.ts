@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import {ConfigurationService} from "../../../_services/configuration.service";
+import {ConfigurationService} from "../../../picaso-cd-common/_services/configuration.service";
 import {Headers, Http} from "@angular/http";
 
 @Injectable()

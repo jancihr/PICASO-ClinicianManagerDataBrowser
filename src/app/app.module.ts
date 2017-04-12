@@ -22,7 +22,9 @@ import {AppRoutingModule}             from './app.routing';
 import {FullLayoutComponent}          from './layouts/full-layout.component';
 import {SimpleLayoutComponent}        from './layouts/simple-layout.component';
 import {AuthenticationModule} from "./authentication/authentication.module";
-import {ConfigurationService} from "./_services/configuration.service";
+import {PicasoCdModule} from "./picaso-cd-common/picaso-cd-common.module";
+import {ConfigurationService} from "./picaso-cd-common/_services/configuration.service";
+import {CdSharedModelService} from "./picaso-cd-common/_services/cd-shared-model.service";
 
 @NgModule({
     imports: [
@@ -30,6 +32,7 @@ import {ConfigurationService} from "./_services/configuration.service";
         AppRoutingModule,
         Ng2BootstrapModule,
         ChartsModule,
+        PicasoCdModule,
         AuthenticationModule
     ],
     declarations: [
@@ -44,7 +47,7 @@ import {ConfigurationService} from "./_services/configuration.service";
     providers: [{
         provide: LocationStrategy,
         useClass: HashLocationStrategy
-    }, ConfigurationService, AuthGuard],
+    }, ConfigurationService, CdSharedModelService,  AuthGuard],
     bootstrap: [AppComponent]
 })
 export class AppModule {

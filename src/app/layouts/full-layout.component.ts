@@ -1,5 +1,5 @@
 import {Component, OnInit}            from '@angular/core';
-import {CdSharedModelService} from '../_services/cd-shared-model.service'
+import {CdSharedModelService} from '../picaso-cd-common/_services/cd-shared-model.service'
 @Component({
     selector: 'app-dashboard',
     templateUrl: './full-layout.component.html'

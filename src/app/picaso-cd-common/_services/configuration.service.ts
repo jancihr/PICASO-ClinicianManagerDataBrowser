@@ -4,6 +4,7 @@ const config = {
     "API": {
         "FHIR_CODING_URL": BASE_API_URL + "fhir/coding/",
         "FHIR_RESOURCE_URL": BASE_API_URL + "picaso/resource/",
+        "FHIR_CAREPLAN_URL": BASE_API_URL + "picaso/resource/careplan/",
         "AUTHENTICATION_URL": BASE_API_URL + "picaso/authenticate/login",
         "IDENTITY_URL": BASE_API_URL + "picaso/authenticate/identify",
         "PATIENTS_URL": BASE_API_URL + "picaso/authenticate/patients",
