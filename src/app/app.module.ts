@@ -33,7 +33,8 @@ import {CdSharedModelService} from "./picaso-cd-common/_services/cd-shared-model
         Ng2BootstrapModule,
         ChartsModule,
         PicasoCdModule,
-        AuthenticationModule
+        AuthenticationModule,
+        PicasoCdModule
     ],
     declarations: [
         AppComponent,
