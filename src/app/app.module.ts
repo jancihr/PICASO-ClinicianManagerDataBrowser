@@ -32,7 +32,6 @@ import {CdSharedModelService} from "./picaso-cd-common/_services/cd-shared-model
         AppRoutingModule,
         Ng2BootstrapModule,
         ChartsModule,
-        PicasoCdModule,
         AuthenticationModule,
         PicasoCdModule
     ],
