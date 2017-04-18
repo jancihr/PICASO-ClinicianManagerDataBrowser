@@ -2,7 +2,7 @@ import { NgModule }                 from '@angular/core';
 import { Routes,
     RouterModule }             from '@angular/router';
 
-import { CdSharedModelService } from './_services/cd-shared-model.service'
+import { CdSharedModelService } from './picaso-cd-common/_services/cd-shared-model.service'
 
 //Layouts
 import { FullLayoutComponent }      from './layouts/full-layout.component';
@@ -66,8 +66,7 @@ export const routes: Routes = [
 
 @NgModule({
     imports: [ RouterModule.forRoot(routes) ],
-    exports: [ RouterModule ],
-    providers: [CdSharedModelService]
+    exports: [ RouterModule ]
 
 })
 export class AppRoutingModule {}
