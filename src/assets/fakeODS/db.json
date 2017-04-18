@@ -654,7 +654,7 @@
     },
     {
       "name": "H&Y score",
-      "label": "",
+      "label": "score",
       "color": "#0d00d0",
       "type": "line",
       "values": [
@@ -702,7 +702,7 @@
     },
     {
       "name": "UPDRSIII score",
-      "label": "",
+      "label": "score",
       "color": "#0d00d0",
       "type": "line",
       "values": [
@@ -750,7 +750,7 @@
     },
     {
       "name": "MMSE score",
-      "label": "",
+      "label": "score",
       "color": "#0d00d0",
       "type": "line",
       "values": [
