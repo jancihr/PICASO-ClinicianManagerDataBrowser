@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import {ConfigurationService} from "../../../picaso-cd-common/_services/configuration.service";
 import {Headers, Http} from "@angular/http";
+import {ConfigurationService} from "../../../picaso-cd-common/_services/configuration.service";
 
 @Injectable()
 export class PatientService {
@@ -29,9 +29,9 @@ export class PatientService {
             });
         }
         else {
-            return <Observable<any>>this.http.post(this.config.get().API.PATIENTS_URL, req, {
+            return this.http.post(this.config.get().API.PATIENTS_URL, req, {
                 headers: headers
-            }).map(res => {
+            }).subscribe(res => {
                 if (res.text().trim().length > 0)
                     this.patients = res.json();
                 return this.patients;
@@ -42,6 +42,8 @@ export class PatientService {
     filter(query) {
         let filteredList = [];
         if (query !== "") {
+            if(query === "*")
+                return this.patients;
             filteredList = this.patients.filter(function (el) {
                 return el["display"].toLowerCase().indexOf(query.toLowerCase()) > -1;
             });
