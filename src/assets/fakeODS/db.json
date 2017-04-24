@@ -938,43 +938,43 @@
     {
       "id": "ID2",
       "name": "Diabetes",
-      "dateOfOnset": "2017-01-20T10:41:19.000Z",
+      "dateOfOnset": "2017-01-01T10:41:19.000Z",
       "severity": "severity"
     },
     {
       "id": "ID2",
       "name": "Flu",
-      "dateOfOnset": "2017-01-20T10:41:19.000Z",
+      "dateOfOnset": "2017-03-20T10:41:19.000Z",
       "severity": "severity"
     },
     {
       "id": "ID2",
       "name": "Heart problems",
-      "dateOfOnset": "2017-01-20T10:41:19.000Z",
+      "dateOfOnset": "2017-04-20T10:41:19.000Z",
       "severity": "severity"
     },
     {
       "id": "ID2",
       "name": "Angina",
-      "dateOfOnset": "2017-01-20T10:41:19.000Z",
+      "dateOfOnset": "2017-02-13T10:41:19.000Z",
       "severity": "severity"
     },
     {
       "id": "ID2",
       "name": "Disease 1",
-      "dateOfOnset": "2017-01-20T10:41:19.000Z",
+      "dateOfOnset": "2017-03-01T10:41:19.000Z",
       "severity": "severity"
     },
     {
       "id": "ID2",
       "name": "Disease 2",
-      "dateOfOnset": "2017-01-20T10:41:19.000Z",
+      "dateOfOnset": "2017-01-04T10:41:19.000Z",
       "severity": "severity"
     },
     {
       "id": "ID2",
       "name": "Diseae 3",
-      "dateOfOnset": "2017-01-20T10:41:19.000Z",
+      "dateOfOnset": "2017-01-05T10:41:19.000Z",
       "severity": "severity"
     }
   ],
@@ -1146,6 +1146,19 @@
       "dates": "1.2.2017, 2.3.2017",
       "report": "taken during visit at ...",
       "url": "http://imageurl.com/imagexsdasd"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "ID1",
+      "name": "Change in medication prescribed",
+      "date": "2017-01-20T10:41:19.000Z"
+    },
+    {
+      "id": "ID2",
+      "name": "Change in treatment",
+      "date": "2017-01-20T10:41:19.000Z"
+
     }
   ]
 }
