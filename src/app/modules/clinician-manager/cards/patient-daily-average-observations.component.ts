@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientObservationGroup} from "../model/patient-observation-group";
+import {PatientLoadProgress} from "../model/patient-loadprogress";
 
 declare let d3, nv: any;
 
@@ -25,6 +26,12 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     showAllRight = false;
     showAllLeft = false;
 
+    progress: PatientLoadProgress = {
+        percentage: 0,
+        loaded: 0,
+        total: 0
+    };
+
 
     observationGroups: PatientObservationGroup[];
 
@@ -48,7 +55,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
         this.picasoDataService.getObservations(
             this.startDate,
-            this.endDate
+            this.endDate, this.progress
         ).subscribe(
             observations => this.setPatientObservations(observations),
             error => this.errorMessage = <any>error);

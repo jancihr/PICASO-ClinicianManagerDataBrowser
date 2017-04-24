@@ -6,6 +6,8 @@
             <div i18n="Morisky Scale UDUS results"><i class="fa fa-heartbeat"></i> Morisky Scale UDUS results</div>
             <div class="card-actions">
 
+                <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
+                <div class="w3-text-gray">loaded: {{progress.total}} bytes</div>
             </div>
         </div>
         <div class="card-block">

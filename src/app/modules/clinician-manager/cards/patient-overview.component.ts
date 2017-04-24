@@ -5,6 +5,8 @@
 import {Component, OnInit} from "@angular/core";
 import {PatientData} from "../model/patient-data"
 import {PicasoDataService} from "../service/picaso-data.service";
+import {PatientLoadProgress} from "../model/patient-loadprogress";
+
 
 @Component ({
     selector: "patient-overview",
@@ -18,6 +20,12 @@ export class PatientOverviewComponent implements OnInit {
     errorMessage: string;
     patientData: PatientData;
 
+    progress: PatientLoadProgress = {
+        percentage: 0,
+        loaded: 0,
+        total: 0
+    };
+
     constructor(
         private picasoDataService: PicasoDataService) {
     };
@@ -27,7 +35,7 @@ export class PatientOverviewComponent implements OnInit {
     }
 
     getPatient(): void {
-        this.picasoDataService.getPatient().subscribe(
+        this.picasoDataService.getPatient(this.progress).subscribe(
             patient => this.patientData = patient,
             error => this.errorMessage = <any>error);
 
@@ -35,9 +43,7 @@ export class PatientOverviewComponent implements OnInit {
         //console.log(this.patientData);
         //console.log(this.errorMessage);
 
-
     }
-
 
     reloadPatient(): void {
         this.getPatient();
