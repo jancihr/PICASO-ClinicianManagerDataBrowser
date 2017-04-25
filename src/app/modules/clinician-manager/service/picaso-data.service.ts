@@ -184,9 +184,32 @@ export class PicasoDataService {
     getPatient(progressResult: PatientLoadProgress): Observable<PatientData> {
 
         return this.http.withDownloadProgressListener(progress => {
-            console.log(`Loading ${progress.percentage}%`);
-            progressResult.percentage = progress.percentage;
-            progressResult.total = progress.total;
+
+            //TODO to be deleted later - fake progress
+            setTimeout(() => {
+                progressResult.percentage = 0;
+            }, 1000);
+            setTimeout(() => {
+                progressResult.percentage = 25
+            }, 2000);
+            setTimeout(() => {
+                progressResult.percentage = 50
+            }, 3000);
+            setTimeout(() => {
+                progressResult.percentage = 75
+            }, 4000);
+            setTimeout(() => {
+                progressResult.percentage = 100
+            }, 5000);
+
+            setTimeout(() => {
+                progressResult.total = progress.total
+            }, 6000);
+
+
+            // TODO to be uncommented later - real progress
+            // progressResult.percentage = progress.percentage;
+            // progressResult.total = progress.total;
             progressResult.loaded = progress.loaded;
         })
             .get(this.patientODSServiceURL)
