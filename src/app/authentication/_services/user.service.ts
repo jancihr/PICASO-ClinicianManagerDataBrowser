@@ -1,7 +1,7 @@
 import {Injectable}           from '@angular/core';
 import {Http, Headers}        from '@angular/http';
 import {Observable} from "rxjs";
-import {ConfigurationService} from "../../_services/configuration.service";
+import {ConfigurationService} from "../../picaso-cd-common/_services/configuration.service";
 
 @Injectable()
 export class UserService {

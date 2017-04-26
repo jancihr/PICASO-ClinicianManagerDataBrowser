@@ -1,6 +1,6 @@
 import {Component, ElementRef}    from '@angular/core';
 import { PatientService } from './_services/patient.service'
-import {CdSharedModelService}   from '../../_services/cd-shared-model.service';
+import {CdSharedModelService} from "../../picaso-cd-common/_services/cd-shared-model.service";
 
 @Component({
     templateUrl: 'patient-id.component.html',
@@ -16,9 +16,14 @@ export class PatientIdComponent {
 
     constructor(myElement: ElementRef, public patientService: PatientService, private cdSharedModelService: CdSharedModelService) {
         this.elementRef = myElement;
-        this.data = this.cdSharedModelService.get();
     }
-
+    ngOnInit(): void {
+        this.data = this.cdSharedModelService.get();
+        this.patientService.loadPatients(this.data.clinician.UPID);
+        this.cdSharedModelService.dataChanged$.subscribe(data => {
+            this.data = data;
+        })
+    }
     filter() {
         if (this.query !== "") {
             this.filteredList = this.patientService.filter(this.query);
@@ -32,7 +37,8 @@ export class PatientIdComponent {
         this.selectedPatient = item;
         this.filteredList = [];
         console.log(item);
-        this.data.patient.display = item.Name;
+        this.data.patient.display = item.display;
+        this.data.patient.UPID = item.UPID;
         this.cdSharedModelService.update(this.data);
     }
 

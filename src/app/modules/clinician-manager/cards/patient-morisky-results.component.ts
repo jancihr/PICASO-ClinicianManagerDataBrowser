@@ -3,6 +3,7 @@ import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientMoriskyResult} from "../model/patient-morisky-result";
 import {PatientFFbHResult} from "../model/patient-ffbh-result";
 import {PatientRADAIResult} from "../model/patient-RADAI-result";
+import {PatientLoadProgress} from "../model/patient-loadprogress";
 
 
 declare let d3, nv: any;
@@ -27,6 +28,12 @@ export class PatientMoriskyResultsComponent implements OnInit {
     patientMoriskyResults;
     patientFFbHResults;
     patientRADAIResults;
+
+    progress: PatientLoadProgress = {
+        percentage: 0,
+        loaded: 0,
+        total: 0
+    };
 
 
 
@@ -218,7 +225,7 @@ export class PatientMoriskyResultsComponent implements OnInit {
 
         this.picasoDataService.getRADAIResults(
             this.startDate,
-            this.endDate
+            this.endDate, this.progress
         ).subscribe(
             observations => this.getPatientRADAIResults(observations),
             error => this.errorMessage = <any>error);
@@ -231,7 +238,7 @@ export class PatientMoriskyResultsComponent implements OnInit {
 
         this.picasoDataService.getMoriskyResults(
             this.startDate,
-            this.endDate
+            this.endDate, this.progress
         ).subscribe(
             observations => this.getPatientMoriskyResults(observations),
             error => this.errorMessage = <any>error);
@@ -244,7 +251,7 @@ export class PatientMoriskyResultsComponent implements OnInit {
 
         this.picasoDataService.getFFbHResults(
             this.startDate,
-            this.endDate
+            this.endDate, this.progress
         ).subscribe(
             observations => this.getPatientFFbHResults(observations),
             error => this.errorMessage = <any>error);

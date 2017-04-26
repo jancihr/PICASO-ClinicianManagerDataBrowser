@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientDisease} from "../model/patient-disease";
 import {PatientImage} from "../model/patient-image";
+import {PatientLoadProgress} from "../model/patient-loadprogress";
 
 @Component({
     selector: 'patient-imaging',
@@ -20,6 +21,12 @@ export class PatientImagingComponent implements OnInit {
     public sortBy = "type";
     public sortOrder = "asc";
 
+    progress: PatientLoadProgress = {
+        percentage: 0,
+        loaded: 0,
+        total: 0
+    };
+
     constructor(private picasoDataService: PicasoDataService) {
     };
 
@@ -29,7 +36,7 @@ export class PatientImagingComponent implements OnInit {
 
     getImaging(): void {
 
-        this.picasoDataService.getImaging(undefined, undefined).
+        this.picasoDataService.getImaging(undefined, undefined, this.progress).
         subscribe(imaging => this.imaging = imaging,
             error => this.errorMessage = <any>error);
 

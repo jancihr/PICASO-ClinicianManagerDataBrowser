@@ -4,6 +4,8 @@
         <div i18n="Average daily observations"><i class="fa fa-heartbeat"></i> Average daily observations</div>
         <div class="card-actions">
 
+            <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
+            <div class="w3-text-gray">loaded: {{progress.total}} bytes</div>
         </div>
     </div>
     <div class="card-block" style="overflow-x: auto;">

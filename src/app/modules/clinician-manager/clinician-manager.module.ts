@@ -20,6 +20,7 @@ import {MyDateRangePickerModule} from "mydaterangepicker";
 import {ProgressHttpModule} from "angular-progress-http";
 import {DataTableModule} from "angular2-datatable";
 import {FormsModule} from "@angular/forms";
+import {PatientNotificationsComponent} from "./cards/patient-notifications.component";
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import {FormsModule} from "@angular/forms";
         PatientMedicationHistoryComponent,
         PatientDiseasesComponent,
         PatientCliniciansComponent, PatientCheckHistoryComponent,
-        PatientMoriskyResultsComponent, PatientImagingComponent,
+        PatientMoriskyResultsComponent, PatientImagingComponent, PatientNotificationsComponent,
         nvD3
     ]
 })
