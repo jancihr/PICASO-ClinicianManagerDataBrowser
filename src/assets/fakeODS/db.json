@@ -15,284 +15,313 @@
     "occupancy": "Retired",
     "livesAlone": "false"
   },
-
-  "radai":[
-    {"id":"rad1",
-      "date":"2016-05-10",
-      "q1":"1",
-      "q2":"1",
-      "q3":"1",
-      "q4":"-1"},
-    {"id":"rad2",
-      "date":"2016-05-11",
-      "q1":"0",
-      "q2":"10",
-      "q3":"-1",
-      "q4":"10"},
-    {"id":"rad3",
-      "date":"2016-05-12",
-      "q1":"10",
-      "q2":"0",
-      "q3":"10",
-      "q4":"0"},
-    {"id":"rad4",
-      "date":"2016-05-13",
-      "q1":"2",
-      "q2":"2",
-      "q3":"2",
-      "q4":"2"},
-    {"id":"rad5",
-      "date":"2016-05-14",
-      "q1":"1",
-      "q2":"2",
-      "q3":"1",
-      "q4":"2",
-      "q5":"2"},
-    {"id":"rad6",
-      "date":"2016-05-15T13:41:19.000Z",
-      "q1":"2",
-      "q2":"2",
-      "q3":"1",
-      "q4":"1",
-      "q5":"1"},
-    {"id":"rad7",
-      "date":"2016-05-16T13:41:19.000Z",
-      "q1":"1",
-      "q2":"2",
-      "q3":"1",
-      "q4":"2",
-      "q5":"2"}
+  "radai": [
+    {
+      "id": "rad1",
+      "date": "2016-05-10",
+      "q1": "1",
+      "q2": "1",
+      "q3": "1",
+      "q4": "-1"
+    },
+    {
+      "id": "rad2",
+      "date": "2016-05-11",
+      "q1": "0",
+      "q2": "10",
+      "q3": "-1",
+      "q4": "10"
+    },
+    {
+      "id": "rad3",
+      "date": "2016-05-12",
+      "q1": "10",
+      "q2": "0",
+      "q3": "10",
+      "q4": "0"
+    },
+    {
+      "id": "rad4",
+      "date": "2016-05-13",
+      "q1": "2",
+      "q2": "2",
+      "q3": "2",
+      "q4": "2"
+    },
+    {
+      "id": "rad5",
+      "date": "2016-05-14",
+      "q1": "1",
+      "q2": "2",
+      "q3": "1",
+      "q4": "2",
+      "q5": "2"
+    },
+    {
+      "id": "rad6",
+      "date": "2016-05-15T13:41:19.000Z",
+      "q1": "2",
+      "q2": "2",
+      "q3": "1",
+      "q4": "1",
+      "q5": "1"
+    },
+    {
+      "id": "rad7",
+      "date": "2016-05-16T13:41:19.000Z",
+      "q1": "1",
+      "q2": "2",
+      "q3": "1",
+      "q4": "2",
+      "q5": "2"
+    }
   ],
-
-
-
-  "morisky":[
-    {"id":"mor1",
-    "date":"2016-05-10",
-    "q1":"1",
-    "q2":"1",
-      "q3":"1",
-      "q4":"1",
-      "q5":"2"},
-    {"id":"mor2",
-      "date":"2016-05-11",
-      "q1":"1",
-      "q2":"2",
-      "q3":"2",
-      "q4":"2",
-    "q5":"1"},
-    {"id":"mor2",
-      "date":"2016-05-12",
-      "q1":"1",
-      "q2":"2",
-      "q3":"2",
-      "q4":"1",
-      "q5":"1"},
-    {"id":"mor2",
-      "date":"2016-05-13",
-      "q1":"2",
-      "q2":"2",
-      "q3":"2",
-      "q4":"2",
-      "q5":"2"},
-    {"id":"mor2",
-      "date":"2016-05-14",
-      "q1":"1",
-      "q2":"2",
-      "q3":"1",
-      "q4":"2",
-      "q5":"2"},
-    {"id":"mor2",
-      "date":"2016-05-15T13:41:19.000Z",
-      "q1":"2",
-      "q2":"2",
-      "q3":"1",
-      "q4":"1",
-      "q5":"1"},
-    {"id":"mor2",
-      "date":"2016-05-16T13:41:19.000Z",
-      "q1":"1",
-      "q2":"2",
-      "q3":"1",
-      "q4":"2",
-      "q5":"2"}
+  "morisky": [
+    {
+      "id": "mor1",
+      "date": "2016-05-10",
+      "q1": "1",
+      "q2": "1",
+      "q3": "1",
+      "q4": "1",
+      "q5": "2"
+    },
+    {
+      "id": "mor2",
+      "date": "2016-05-11",
+      "q1": "1",
+      "q2": "2",
+      "q3": "2",
+      "q4": "2",
+      "q5": "1"
+    },
+    {
+      "id": "mor2",
+      "date": "2016-05-12",
+      "q1": "1",
+      "q2": "2",
+      "q3": "2",
+      "q4": "1",
+      "q5": "1"
+    },
+    {
+      "id": "mor2",
+      "date": "2016-05-13",
+      "q1": "2",
+      "q2": "2",
+      "q3": "2",
+      "q4": "2",
+      "q5": "2"
+    },
+    {
+      "id": "mor2",
+      "date": "2016-05-14",
+      "q1": "1",
+      "q2": "2",
+      "q3": "1",
+      "q4": "2",
+      "q5": "2"
+    },
+    {
+      "id": "mor2",
+      "date": "2016-05-15T13:41:19.000Z",
+      "q1": "2",
+      "q2": "2",
+      "q3": "1",
+      "q4": "1",
+      "q5": "1"
+    },
+    {
+      "id": "mor2",
+      "date": "2016-05-16T13:41:19.000Z",
+      "q1": "1",
+      "q2": "2",
+      "q3": "1",
+      "q4": "2",
+      "q5": "2"
+    }
   ],
-
-  "ffbh":[
-    {"id":"mor1",
-      "date":"2016-05-10",
-      "q1":"1",
-      "q2":"1",
-      "q3":"1",
-      "q4":"1",
-      "q5":"2",
-      "q6":"1",
-      "q7":"1",
-      "q8":"1",
-      "q9":"1",
-      "q10":"1",
-      "q11":"1",
-      "q12":"1",
-      "q13":"1",
-      "q14":"1",
-      "q15":"1",
-      "q16":"1",
-      "q17":"1",
-      "q18":"1"},
-
-    {"id":"mor1",
-      "date":"2016-05-11",
-      "q1":"1",
-      "q2":"1",
-      "q3":"1",
-      "q4":"1",
-      "q5":"2",
-      "q6":"1",
-      "q7":"1",
-      "q8":"1",
-      "q9":"1",
-      "q10":"1",
-      "q11":"1",
-      "q12":"1",
-      "q13":"1",
-      "q14":"1",
-      "q15":"1",
-      "q16":"1",
-      "q17":"1",
-      "q18":"1"},
-
-    {"id":"mor1",
-      "date":"2016-05-12",
-      "q1":"1",
-      "q2":"1",
-      "q3":"1",
-      "q4":"1",
-      "q5":"2",
-      "q6":"1",
-      "q7":"1",
-      "q8":"1",
-      "q9":"1",
-      "q10":"1",
-      "q11":"1",
-      "q12":"1",
-      "q13":"1",
-      "q14":"1",
-      "q15":"1",
-      "q16":"1",
-      "q17":"1",
-      "q18":"1"},
-
-    {"id":"mor1",
-      "date":"2016-05-13",
-      "q1":"1",
-      "q2":"1",
-      "q3":"1",
-      "q4":"1",
-      "q5":"2",
-      "q6":"1",
-      "q7":"1",
-      "q8":"2",
-      "q9":"1",
-      "q10":"1",
-      "q11":"3",
-      "q12":"1",
-      "q13":"1",
-      "q14":"3",
-      "q15":"1",
-      "q16":"1",
-      "q17":"1",
-      "q18":"1"},
-
-    {"id":"mor1",
-      "date":"2016-05-14",
-      "q1":"1",
-      "q2":"1",
-      "q3":"1",
-      "q4":"1",
-      "q5":"2",
-      "q6":"1",
-      "q7":"1",
-      "q8":"1",
-      "q9":"1",
-      "q10":"1",
-      "q11":"1",
-      "q12":"1",
-      "q13":"1",
-      "q14":"1",
-      "q15":"1",
-      "q16":"1",
-      "q17":"1",
-      "q18":"1"},
-
-    {"id":"mor1",
-      "date":"2016-05-15",
-      "q1":"1",
-      "q2":"1",
-      "q3":"1",
-      "q4":"2",
-      "q5":"2",
-      "q6":"3",
-      "q7":"3",
-      "q8":"1",
-      "q9":"1",
-      "q10":"1",
-      "q11":"1",
-      "q12":"1",
-      "q13":"1",
-      "q14":"1",
-      "q15":"1",
-      "q16":"1",
-      "q17":"1",
-      "q18":"1"},
-
-    {"id":"mor1",
-      "date":"2016-05-16",
-      "q1":"1",
-      "q2":"1",
-      "q3":"1",
-      "q4":"1",
-      "q5":"3",
-      "q6":"3",
-      "q7":"3",
-      "q8":"1",
-      "q9":"1",
-      "q10":"1",
-      "q11":"2",
-      "q12":"1",
-      "q13":"2",
-      "q14":"3",
-      "q15":"1",
-      "q16":"2",
-      "q17":"1",
-      "q18":"1"},
-
-    {"id":"mor1",
-      "date":"2016-05-17",
-      "q1":"1",
-      "q2":"1",
-      "q3":"1",
-      "q4":"1",
-      "q5":"2",
-      "q6":"1",
-      "q7":"1",
-      "q8":"1",
-      "q9":"1",
-      "q10":"3",
-      "q11":"1",
-      "q12":"3",
-      "q13":"1",
-      "q14":"3",
-      "q15":"1",
-      "q16":"3",
-      "q17":"1",
-      "q18":"1"}
+  "ffbh": [
+    {
+      "id": "mor1",
+      "date": "2016-05-10",
+      "q1": "1",
+      "q2": "1",
+      "q3": "1",
+      "q4": "1",
+      "q5": "2",
+      "q6": "1",
+      "q7": "1",
+      "q8": "1",
+      "q9": "1",
+      "q10": "1",
+      "q11": "1",
+      "q12": "1",
+      "q13": "1",
+      "q14": "1",
+      "q15": "1",
+      "q16": "1",
+      "q17": "1",
+      "q18": "1"
+    },
+    {
+      "id": "mor1",
+      "date": "2016-05-11",
+      "q1": "1",
+      "q2": "1",
+      "q3": "1",
+      "q4": "1",
+      "q5": "2",
+      "q6": "1",
+      "q7": "1",
+      "q8": "1",
+      "q9": "1",
+      "q10": "1",
+      "q11": "1",
+      "q12": "1",
+      "q13": "1",
+      "q14": "1",
+      "q15": "1",
+      "q16": "1",
+      "q17": "1",
+      "q18": "1"
+    },
+    {
+      "id": "mor1",
+      "date": "2016-05-12",
+      "q1": "1",
+      "q2": "1",
+      "q3": "1",
+      "q4": "1",
+      "q5": "2",
+      "q6": "1",
+      "q7": "1",
+      "q8": "1",
+      "q9": "1",
+      "q10": "1",
+      "q11": "1",
+      "q12": "1",
+      "q13": "1",
+      "q14": "1",
+      "q15": "1",
+      "q16": "1",
+      "q17": "1",
+      "q18": "1"
+    },
+    {
+      "id": "mor1",
+      "date": "2016-05-13",
+      "q1": "1",
+      "q2": "1",
+      "q3": "1",
+      "q4": "1",
+      "q5": "2",
+      "q6": "1",
+      "q7": "1",
+      "q8": "2",
+      "q9": "1",
+      "q10": "1",
+      "q11": "3",
+      "q12": "1",
+      "q13": "1",
+      "q14": "3",
+      "q15": "1",
+      "q16": "1",
+      "q17": "1",
+      "q18": "1"
+    },
+    {
+      "id": "mor1",
+      "date": "2016-05-14",
+      "q1": "1",
+      "q2": "1",
+      "q3": "1",
+      "q4": "1",
+      "q5": "2",
+      "q6": "1",
+      "q7": "1",
+      "q8": "1",
+      "q9": "1",
+      "q10": "1",
+      "q11": "1",
+      "q12": "1",
+      "q13": "1",
+      "q14": "1",
+      "q15": "1",
+      "q16": "1",
+      "q17": "1",
+      "q18": "1"
+    },
+    {
+      "id": "mor1",
+      "date": "2016-05-15",
+      "q1": "1",
+      "q2": "1",
+      "q3": "1",
+      "q4": "2",
+      "q5": "2",
+      "q6": "3",
+      "q7": "3",
+      "q8": "1",
+      "q9": "1",
+      "q10": "1",
+      "q11": "1",
+      "q12": "1",
+      "q13": "1",
+      "q14": "1",
+      "q15": "1",
+      "q16": "1",
+      "q17": "1",
+      "q18": "1"
+    },
+    {
+      "id": "mor1",
+      "date": "2016-05-16",
+      "q1": "1",
+      "q2": "1",
+      "q3": "1",
+      "q4": "1",
+      "q5": "3",
+      "q6": "3",
+      "q7": "3",
+      "q8": "1",
+      "q9": "1",
+      "q10": "1",
+      "q11": "2",
+      "q12": "1",
+      "q13": "2",
+      "q14": "3",
+      "q15": "1",
+      "q16": "2",
+      "q17": "1",
+      "q18": "1"
+    },
+    {
+      "id": "mor1",
+      "date": "2016-05-17",
+      "q1": "1",
+      "q2": "1",
+      "q3": "1",
+      "q4": "1",
+      "q5": "2",
+      "q6": "1",
+      "q7": "1",
+      "q8": "1",
+      "q9": "1",
+      "q10": "3",
+      "q11": "1",
+      "q12": "3",
+      "q13": "1",
+      "q14": "3",
+      "q15": "1",
+      "q16": "3",
+      "q17": "1",
+      "q18": "1"
+    }
   ],
-  "observations": [{
-    "name": "Resting Heartrate",
-    "label": "beats/min",
-    "color": "#A44400",
-    "type": "line",
-    "values": [
+  "observations": [
+    {
+    "name" : "Resting Heartrate","label" : "beats/min","color" : "#2E5CA4","type" : "line","values" : [
       {
         "id": "asdsdsa",
         "value": "64",
@@ -479,7 +508,6 @@
         }
       ]
     },
-
     {
       "name": "Activity",
       "label": "steps",
@@ -575,8 +603,7 @@
           "date": "2016-05-17T10:41:19.000Z"
         }
       ]
-    }
-  ,
+    },
     {
       "name": "Saturation",
       "label": "%",
@@ -627,7 +654,7 @@
     },
     {
       "name": "H&Y score",
-      "label": "",
+      "label": "score",
       "color": "#0d00d0",
       "type": "line",
       "values": [
@@ -675,7 +702,7 @@
     },
     {
       "name": "UPDRSIII score",
-      "label": "",
+      "label": "score",
       "color": "#0d00d0",
       "type": "line",
       "values": [
@@ -721,10 +748,9 @@
         }
       ]
     },
-
     {
       "name": "MMSE score",
-      "label": "",
+      "label": "score",
       "color": "#0d00d0",
       "type": "line",
       "values": [
@@ -784,7 +810,6 @@
       "disease": "jhaskds",
       "prescribedBy": "DoctorWho - GP"
     },
-
     {
       "id": "IDdfsd",
       "name": "Candesartan",
@@ -797,7 +822,6 @@
       "disease": "jhaskds",
       "prescribedBy": "DoctorWho - GP"
     },
-
     {
       "id": "IDa",
       "name": "Ramipril",
@@ -825,119 +849,316 @@
   ],
   "clinicians": [
     {
-      "id":"ID",
-      "name":"Doctor Who",
-      "institution":"Institution name, desc",
-      "speciality":"Doctor of magic",
-      "startDate":"2017-01-12T10:41:19.000Z",
-      "endDate":"2017-01-20T10:41:19.000Z"
+      "id": "ID",
+      "name": "Doctor Who",
+      "institution": "Institution name, desc",
+      "speciality": "Doctor of magic",
+      "startDate": "2017-01-12T10:41:19.000Z",
+      "endDate": "2017-01-20T10:41:19.000Z"
     },
     {
-      "id":"ID2",
-      "name":"Doctor Strange",
-      "institution":"Institution name, desc",
-      "speciality":"Doctor of strange",
-      "startDate":"2017-01-12T10:41:19.000Z",
-      "endDate":"2017-01-20T10:41:19.000Z"
+      "id": "ID2",
+      "name": "Doctor Strange",
+      "institution": "Institution name, desc",
+      "speciality": "Doctor of strange",
+      "startDate": "2017-01-12T10:41:19.000Z",
+      "endDate": "2017-01-20T10:41:19.000Z"
     }
   ],
-  "checks":[
+  "checks": [
     {
-      "id":"ID1",
-      "clinician":"GP",
-      "startDate":"2017-01-20T10:41:19.000Z",
-      "visitReason":"weekly check",
-      "color":"7777ff"
+      "id": "ID1",
+      "clinician": "GP",
+      "startDate": "2017-01-20T10:41:19.000Z",
+      "visitReason": "weekly check",
+      "color": "7777ff"
     },
     {
-      "id":"ID1ghg",
-      "clinician":"GP",
-      "startDate":"2017-03-25T10:41:19.000Z",
-      "visitReason":"planned check",
-      "color":"7777ff"
+      "id": "ID1ghg",
+      "clinician": "GP",
+      "startDate": "2017-03-25T10:41:19.000Z",
+      "visitReason": "planned check",
+      "color": "7777ff"
     },
     {
-      "id":"ID2",
-      "clinician":"GP",
-      "startDate":"2017-01-30T10:41:19.000Z",
-      "visitReason":"feeling bad",
-      "color":"7777ff"
+      "id": "ID2",
+      "clinician": "GP",
+      "startDate": "2017-01-30T10:41:19.000Z",
+      "visitReason": "feeling bad",
+      "color": "7777ff"
     },
     {
-      "id":"IDa",
-      "clinician":"Lab Test",
-      "startDate":"2017-02-02T10:41:19.000Z",
-      "visitReason":"Blood tests",
-      "color":"D04300"
+      "id": "IDa",
+      "clinician": "Lab Test",
+      "startDate": "2017-02-02T10:41:19.000Z",
+      "visitReason": "Blood tests",
+      "color": "D04300"
     },
     {
-      "id":"ID3",
-      "clinician":"Kardiologist",
-      "startDate":"2017-01-20T10:41:19.000Z",
-      "color":"aa77ff"
+      "id": "ID3",
+      "clinician": "Kardiologist",
+      "startDate": "2017-01-20T10:41:19.000Z",
+      "color": "aa77ff"
     },
     {
-      "id":"ID4",
-      "clinician":"Kardiologist",
-      "startDate":"2017-01-27T10:41:19.000Z",
-      "color":"aa77ff"
+      "id": "ID4",
+      "clinician": "Kardiologist",
+      "startDate": "2017-01-27T10:41:19.000Z",
+      "color": "aa77ff"
     },
     {
-      "id":"ID5c",
-      "clinician":"MRI scan",
-      "startDate":"2017-01-22T10:41:19.000Z",
-      "color":"0BD000"
+      "id": "ID5c",
+      "clinician": "MRI scan",
+      "startDate": "2017-01-22T10:41:19.000Z",
+      "color": "0BD000"
     },
     {
-      "id":"ID5cd",
-      "clinician":"Perfusional scintgraphy",
-      "startDate":"2017-01-28T10:41:19.000Z",
-
-      "color":"0BD000"
+      "id": "ID5cd",
+      "clinician": "Perfusional scintgraphy",
+      "startDate": "2017-01-28T10:41:19.000Z",
+      "color": "0BD000"
     },
-
     {
-      "id":"ID5",
-      "clinician":"Hospital1",
-      "startDate":"2017-01-20T10:41:19.000Z",
-      "endDate":"2017-02-05T10:41:19.000Z",
-      "color":"00DB26"
+      "id": "ID5",
+      "clinician": "Hospital1",
+      "startDate": "2017-01-20T10:41:19.000Z",
+      "endDate": "2017-02-05T10:41:19.000Z",
+      "color": "00DB26"
     }
   ],
-  "diseases":[
+  "diseases": [
     {
-      "id":"ID1",
-      "name":"Parkinson's Disease",
-      "doateOfOnset":"2017-01-20T10:41:19.000Z",
-      "sideOfOnset":"right",
-      "clinicalPhenotype":"mixed",
+      "id": "ID1",
+      "name": "Parkinson's Disease",
+      "dateOfOnset": "2017-01-20T10:41:19.000Z",
+      "sideOfOnset": "right",
+      "clinicalPhenotype": "mixed",
       "severity": "severity"
     },
     {
-      "id":"ID2",
-      "name":"Diabetes",
-      "doateOfOnset":"2017-01-20T10:41:19.000Z",
+      "id": "ID2",
+      "name": "Diabetes",
+      "dateOfOnset": "2017-01-01T10:41:19.000Z",
+      "severity": "severity"
+    },
+    {
+      "id": "ID2",
+      "name": "Flu",
+      "dateOfOnset": "2017-03-20T10:41:19.000Z",
+      "severity": "severity"
+    },
+    {
+      "id": "ID2",
+      "name": "Heart problems",
+      "dateOfOnset": "2017-04-20T10:41:19.000Z",
+      "severity": "severity"
+    },
+    {
+      "id": "ID2",
+      "name": "Angina",
+      "dateOfOnset": "2017-02-13T10:41:19.000Z",
+      "severity": "severity"
+    },
+    {
+      "id": "ID2",
+      "name": "Disease 1",
+      "dateOfOnset": "2017-03-01T10:41:19.000Z",
+      "severity": "severity"
+    },
+    {
+      "id": "ID2",
+      "name": "Disease 2",
+      "dateOfOnset": "2017-01-04T10:41:19.000Z",
+      "severity": "severity"
+    },
+    {
+      "id": "ID2",
+      "name": "Diseae 3",
+      "dateOfOnset": "2017-01-05T10:41:19.000Z",
       "severity": "severity"
     }
   ],
-
-
-  "imaging":[
+  "imaging": [
     {
-      "id":"ID1",
-      "type":"MTI",
-      "exist":"yes",
-      "dates":"1.2.2017, 2.3.2017",
-      "report":"taken during visit at ...",
+      "id": "ID1",
+      "type": "MTI",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
       "url": "http://imageurl.com/image"
     },
     {
-      "id":"ID2",
-      "type":"CTI",
-      "exist":"yes",
-      "dates":"1.2.2017, 2.3.2017",
-      "report":"taken during visit at ...",
+      "id": "ID2",
+      "type": "CTI",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
       "url": "http://imageurl.com/image2"
+    },
+    {
+      "id": "ID2",
+      "type": "CTI1",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/image2"
+    },
+    {
+      "id": "ID2",
+      "type": "CTI2",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/image2"
+    },
+    {
+      "id": "ID2",
+      "type": "CTI3",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/image2"
+    },
+    {
+      "id": "ID2",
+      "type": "CTI4",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/image2"
+    },
+    {
+      "id": "ID2",
+      "type": "CTI5",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/image2"
+    },
+    {
+      "id": "ID2",
+      "type": "CTI6",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/image2"
+    },
+    {
+      "id": "ID2",
+      "type": "CTI7",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/image2"
+    },
+    {
+      "id": "ID2",
+      "type": "CTI8",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/image2"
+    },
+    {
+      "id": "ID2",
+      "type": "CTI9",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/image2"
+    },
+    {
+      "id": "ID2",
+      "type": "CTI10",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/image2"
+    },
+    {
+      "id": "ID2",
+      "type": "CTI11",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/image2"
+    },
+    {
+      "id": "ID2",
+      "type": "CTI12",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/image2"
+    },
+    {
+      "id": "ID2",
+      "type": "CTI13",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/image2"
+    },
+    {
+      "id": "ID2",
+      "type": "CTI14",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/image2"
+    },
+    {
+      "id": "ID2",
+      "type": "CTI15",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/image2"
+    },
+    {
+      "id": "ID2",
+      "type": "photo",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/image2"
+    },
+    {
+      "id": "ID2",
+      "type": "photo",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/image2"
+    },
+    {
+      "id": "ID2",
+      "type": "MRI",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/imagex"
+    },
+    {
+      "id": "ID2",
+      "type": "MRI",
+      "exist": "yes",
+      "dates": "1.2.2017, 2.3.2017",
+      "report": "taken during visit at ...",
+      "url": "http://imageurl.com/imagexsdasd"
+    }
+  ],
+  "notifications": [
+    {
+      "id": "ID1",
+      "name": "Change in medication prescribed",
+      "date": "2017-01-20T10:41:19.000Z"
+    },
+    {
+      "id": "ID2",
+      "name": "Change in treatment",
+      "date": "2017-01-20T10:41:19.000Z"
+
     }
   ]
 }

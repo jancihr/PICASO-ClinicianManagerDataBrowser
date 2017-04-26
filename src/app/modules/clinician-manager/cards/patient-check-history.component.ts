@@ -4,6 +4,7 @@ import {VisTimelineService, VisTimelineItems, VisTimelineOptions} from 'ng2-vis/
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientCheck} from "../model/patient-check";
 import {ModalComponent} from "ng2-bs3-modal/components/modal";
+import {PatientLoadProgress} from "../model/patient-loadprogress";
 
 @Component({
     selector: 'patient-checks',
@@ -32,6 +33,12 @@ export class PatientCheckHistoryComponent implements OnInit, OnDestroy {
 
         this.myModal.open();
     }
+
+    progress: PatientLoadProgress = {
+        percentage: 0,
+        loaded: 0,
+        total: 0
+    };
 
     public startDate: Date;
     public endDate: Date;
@@ -167,7 +174,7 @@ export class PatientCheckHistoryComponent implements OnInit, OnDestroy {
 
         this.picasoDataService.getCheckHistory(
             this.startDate,
-            this.endDate
+            this.endDate, this.progress
         ).subscribe(
             checks => this.setChecks(checks),
             error => this.errorMessage = <any>error);

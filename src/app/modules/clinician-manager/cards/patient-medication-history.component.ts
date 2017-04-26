@@ -4,6 +4,7 @@ import {VisTimelineService, VisTimelineItems, VisTimelineItem, VisTimelineOption
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientMedication} from "../model/patient-medication";
 import {ModalComponent} from 'ng2-bs3-modal/ng2-bs3-modal';
+import {PatientLoadProgress} from "../model/patient-loadprogress";
 
 
 @Component({
@@ -35,7 +36,11 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
         this.myModal.open();
     }
 
-
+    progress: PatientLoadProgress = {
+        percentage: 0,
+        loaded: 0,
+        total: 0
+    };
 
     public startDate: Date;
     public endDate: Date;
@@ -48,7 +53,6 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
     errorMessage: string;
     medications: PatientMedication[];
-
 
 
     public visTimelineMedications: string = 'medicationTimelineGraph';
@@ -162,7 +166,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
         this.picasoDataService.getMedicationHistory(
             this.startDate,
-            this.endDate
+            this.endDate, this.progress
         ).subscribe(
             medications => this.setMedications(medications),
             error => this.errorMessage = <any>error);
