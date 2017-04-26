@@ -7,6 +7,7 @@ import {Observable}     from 'rxjs/Observable';
 import {ProgressHttp} from "angular-progress-http";
 import {GraphNodesDefinition} from '../model/graph-nodes-definition';
 import {GraphSetUp} from '../model/graph-set-up';
+import {LoadProgress} from "../model/load-progress";
 //import {PatientMoriskyResultsComponent} from "../cards/patient-morisky-results.component";
 
 
@@ -26,9 +27,12 @@ export class DRBDataService {
             .catch(this.handleError)
 
     }
-    getGraphNodes(): Observable<GraphNodesDefinition[]> {
+    getGraphNodes(inProgress: LoadProgress): Observable<GraphNodesDefinition[]> {
         return this.http.withDownloadProgressListener(
-            progress => {console.log(`Loading ${progress.percentage}%`);}
+            progress => {console.log(`Loading ${progress.percentage}%`);
+            inProgress.percentage = progress.percentage;
+            inProgress.total = progress.total;
+            inProgress.loaded = progress.loaded;}
         )
             .get(this.graphServiceURL)
             .map(this.extractGraphNodes)

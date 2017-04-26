@@ -6,4 +6,7 @@ export class GraphNodesDefinition {
     title: string
     group: string
     isDisplayed: boolean
+    isLeaf: boolean
+    x: number
+    y: number
 }

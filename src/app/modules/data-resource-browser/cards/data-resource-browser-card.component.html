@@ -2,6 +2,9 @@
     <div class="card-header">
         Data Resource Browser
         <div class="card-actions">
+            <div *ngIf="progress.percentage<100">Loading: {{progress.percentage}}
+            </div>
+            Loaded: {{progress.total}} bytes
 
         </div>
     </div>
