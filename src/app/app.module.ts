@@ -25,6 +25,8 @@ import {AuthenticationModule} from "./authentication/authentication.module";
 import {PicasoCdModule} from "./picaso-cd-common/picaso-cd-common.module";
 import {ConfigurationService} from "./picaso-cd-common/_services/configuration.service";
 import {CdSharedModelService} from "./picaso-cd-common/_services/cd-shared-model.service";
+import {NarrativesManagerModule} from "./modules/narratives-manager/narratives-manager.module";
+import {FhirCodesModule} from "./modules/fhir-codes/fhir-codes.module";
 
 @NgModule({
     imports: [
@@ -33,6 +35,8 @@ import {CdSharedModelService} from "./picaso-cd-common/_services/cd-shared-model
         Ng2BootstrapModule,
         ChartsModule,
         AuthenticationModule,
+        FhirCodesModule,
+        NarrativesManagerModule,
         PicasoCdModule
     ],
     declarations: [
