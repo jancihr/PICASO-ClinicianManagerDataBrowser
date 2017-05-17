@@ -1,4 +1,5 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {ModalDirective} from "ngx-bootstrap";
 
 @Component({
     selector: 'fhir-codes-manager',
