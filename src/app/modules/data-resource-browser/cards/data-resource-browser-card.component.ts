@@ -796,9 +796,12 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
 
 // Reflect in Visual network - i.e. Create or Remove Visual Network representation (and thus it is (or NOT) displayed after this operation)
     private reflectToVisNetwork(subGraphName: String, redrawGraph: boolean) {
-        if (subGraphName != 'patient' && redrawGraph){
+        if (subGraphName != 'patient' && redrawGraph)
+
+        {
             this.coreGraphReset()
             this.displayLast()
+
         }
         //todo experiment - displaying all nodes after any action to withdraw the dancing/caused by physics
         let subGraphNodesArray: GraphNodesDefinition[];
@@ -824,6 +827,8 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                             x: subGraphNodesArray[i].x,
                             y: subGraphNodesArray[i].y
                         });
+                        console.log(subGraphNodesArray[i].x)
+                        console.log(subGraphNodesArray[i].y)
                         if (subGraphNodesArray[i].parrentGraph != '') {
                             //EDGES
                             let edgeId = subGraphNodesArray[i].subGraphId + '-' + i.toString();
@@ -837,6 +842,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                     }
                 }
             }
+
             else {
                 for (var i = 0; i < this.subGraphsAsArray.length; i++) {
                     //    // for all displayed subgraphs within current subgraph
