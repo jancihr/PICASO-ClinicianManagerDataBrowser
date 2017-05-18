@@ -1,37 +1,28 @@
-<div class="card">
-    <div class="card-header">
-        <div i18n="Patient Visits History"><i class="fa fa-hospital-o"></i> Patient Visits History</div>
-        <div class="card-actions">
+<div class="card w3-light-gray">
+    <div class="card-header w3-dark-grey w3-center">
+        <div i18n="Patient Visits History"><i class="fa fa-arrow-down"></i> <i class="fa fa-hospital-o"></i>
+            Patient Visits History <i class="fa fa-arrow-down"></i>
+
+        </div>
+        <div class="w3-right">
 
             <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
-            <div class="w3-text-gray">loaded: {{progress.total}} bytes</div>
+            <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
         </div>
     </div>
+
     <div class="card-block">
-        <div>
-            <div [visTimeline]="visTimelineChecks"
+
+        <div [visTimeline]="visTimelineChecks"
                  [visTimelineItems]="visTimelineItemsChecks"
                  [visTimelineOptions]="visTimelineChecksOptions"
                  (initialized)="timelineInitialized()">
 
             </div>
 
-
-
-            <button type="button"
-                    class="btn btn-default"
-                    (click)="focusVisChecks()" i18n="Zoom to view all checks">
-                Zoom to view all checks
-            </button>
-
-        </div>
     </div>
 
-    <div class="card-footer">
-        <div class="w3-tiny w3-right">Click inside the diagram area to enable mouse interactions (zoom,
-            scroll left/right, click for detail). Click chosen event to view it's detail in a pop up window.
-        </div>
-    </div>
+
 </div>
 
 <modal [animation]="animationsEnabled" #myCheckModal>

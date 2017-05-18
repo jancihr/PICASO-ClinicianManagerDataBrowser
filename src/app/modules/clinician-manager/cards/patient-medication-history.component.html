@@ -1,38 +1,29 @@
-<div class="card">
-    <div class="card-header">
-        <div i18n="Patient Medication History"><i class="fa fa-medkit"></i> Patient Medication History</div>
-        <div class="card-actions">
+<div class="card w3-light-gray">
+
+    <div class="card-block ">
+
+        <div [visTimeline]="visTimelineMedications"
+             [visTimelineItems]="visTimelineItemsMedications"
+             [visTimelineOptions]="visTimelineMedicationsOptions"
+             (initialized)="timelineInitialized()">
+
+        </div>
+
+
+    </div>
+
+    <div class="card-footer w3-dark-grey w3-center">
+        <div i18n="Patient Medication History"><i class="fa fa-arrow-up"></i> <i class="fa fa-medkit"> </i>
+            Patient Medication History <i class="fa fa-arrow-up"></i>
+
+        </div>
+        <div class="w3-right">
 
             <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
-            <div class="w3-text-gray">loaded: {{progress.total}} bytes</div>
-        </div>
-    </div>
-    <div class="card-block">
-        <div>
-            <div [visTimeline]="visTimelineMedications"
-                 [visTimelineItems]="visTimelineItemsMedications"
-                 [visTimelineOptions]="visTimelineMedicationsOptions"
-                 (initialized)="timelineInitialized()">
-
-            </div>
-
-
-            <button type="button"
-                    class="btn btn-default"
-                    (click)="focusVis()" i18n="Zoom to view all medications">
-                Zoom to view all medications
-            </button>
-
-
+            <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
         </div>
     </div>
 
-    <div class="card-footer">
-        <div class="w3-tiny w3-right">Click inside the diagram area to enable mouse interactions (zoom,
-            scroll left/right, click for detail). Click on chosen medication to view more details in a pop up
-            window.
-        </div>
-    </div>
 </div>
 
 <modal [animation]="animationsEnabled" #myMedicationModal>

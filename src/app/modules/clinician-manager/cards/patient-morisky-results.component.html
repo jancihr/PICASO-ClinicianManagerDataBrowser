@@ -1,13 +1,13 @@
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
 
     <div class="card">
-        <div class="card-header w3-black">
+        <div class="card-header w3-black  w3-center">
 
             <div i18n="Morisky Scale UDUS results"><i class="fa fa-heartbeat"></i> Morisky Scale UDUS results</div>
-            <div class="card-actions">
+            <div class="w3-right">
 
                 <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
-                <div class="w3-text-gray">loaded: {{progress.total}} bytes</div>
+                <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
             </div>
         </div>
         <div class="card-block">
@@ -110,7 +110,7 @@
 
 
     <div class="card">
-        <div class="card-header w3-black">
+        <div class="card-header w3-black  w3-center">
 
             <div i18n="FFbH UDUS"><i class="fa fa-heartbeat"></i> FFbH UDUS</div>
             <div class="card-actions">
@@ -421,7 +421,7 @@
 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-4">
 
     <div class="card">
-        <div class="card-header w3-black">
+        <div class="card-header w3-black  w3-center">
 
             <div i18n="Rheumatoid Arthritis Disease Acitivity Index (RADAI)"><i class="fa fa-heartbeat">
 

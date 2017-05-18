@@ -811,6 +811,18 @@
       "prescribedBy": "DoctorWho - GP"
     },
     {
+      "id": "IDxsdf",
+      "name": "Candesartan",
+      "startDate": "2017-05-12T10:41:19.000Z",
+      "endDate": "2017-07-17T10:41:19.000Z",
+      "dosage": "23mg",
+      "frequency": "3 times a day",
+      "stopReason": "",
+      "color": "f86c6b",
+      "disease": "jhaskds",
+      "prescribedBy": "DoctorWho - GP"
+    },
+    {
       "id": "IDdfsd",
       "name": "Candesartan",
       "startDate": "2017-02-01T10:41:19.000Z",
@@ -835,11 +847,35 @@
       "prescribedBy": "Doctor Strange - Diabethologist"
     },
     {
+      "id": "IDagasjhdgasdj",
+      "name": "Ramipril",
+      "startDate": "2017-03-01T10:41:19.000Z",
+      "endDate": "2017-04-12T10:41:19.000Z",
+      "dosage": "23mg",
+      "frequency": "3 times a day",
+      "stopReason": "Not working well",
+      "color": "f8cb00",
+      "disease": "jhaskds",
+      "prescribedBy": "Doctor Strange - Diabethologist"
+    },
+    {
       "id": "IDb",
       "name": "Simvastatin",
       "startDate": "2017-01-12T10:41:19.000Z",
       "endDate": "2017-01-17T10:41:19.000Z",
       "dosage": "23mg",
+      "frequency": "3 times a day",
+      "stopReason": "too low",
+      "color": "20a8d8",
+      "disease": "jhaskds",
+      "prescribedBy": "Doctor Strange - Diabethologist"
+    },
+    {
+      "id": "IDbdasda",
+      "name": "Simvastatin",
+      "startDate": "2017-04-12T10:41:19.000Z",
+      "endDate": "2017-04-26T10:41:19.000Z",
+      "dosage": "46mg",
       "frequency": "3 times a day",
       "stopReason": "Not working well",
       "color": "20a8d8",
@@ -888,16 +924,43 @@
       "color": "7777ff"
     },
     {
+      "id": "ID2feefdf",
+      "clinician": "GP",
+      "startDate": "2017-02-14T10:41:19.000Z",
+      "visitReason": "feeling bad",
+      "color": "7777ff"
+    },
+    {
+      "id": "ID2sfsgdf",
+      "clinician": "GP",
+      "startDate": "2017-04-12T10:41:19.000Z",
+      "visitReason": "feeling bad",
+      "color": "7777ff"
+    },
+    {
+      "id": "ID2asdfd",
+      "clinician": "GP",
+      "startDate": "2017-05-18T10:41:19.000Z",
+      "visitReason": "feeling bad",
+      "color": "7777ff"
+    },
+    {
       "id": "IDa",
       "clinician": "Lab Test",
-      "startDate": "2017-02-02T10:41:19.000Z",
+      "startDate": "2017-05-02T10:41:19.000Z",
       "visitReason": "Blood tests",
       "color": "D04300"
     },
     {
       "id": "ID3",
       "clinician": "Kardiologist",
-      "startDate": "2017-01-20T10:41:19.000Z",
+      "startDate": "2017-05-20T10:41:19.000Z",
+      "color": "aa77ff"
+    },
+    {
+      "id": "ID3asd",
+      "clinician": "Kardiologist",
+      "startDate": "2017-04-20T10:41:19.000Z",
       "color": "aa77ff"
     },
     {
@@ -909,13 +972,13 @@
     {
       "id": "ID5c",
       "clinician": "MRI scan",
-      "startDate": "2017-01-22T10:41:19.000Z",
+      "startDate": "2017-05-22T10:41:19.000Z",
       "color": "0BD000"
     },
     {
       "id": "ID5cd",
       "clinician": "Perfusional scintgraphy",
-      "startDate": "2017-01-28T10:41:19.000Z",
+      "startDate": "2017-04-28T10:41:19.000Z",
       "color": "0BD000"
     },
     {
