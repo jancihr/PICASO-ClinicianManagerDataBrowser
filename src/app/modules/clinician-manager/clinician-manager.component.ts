@@ -4,10 +4,13 @@ import {IMyOptions, IMyDateRangeModel} from 'mydaterangepicker';
 import {PatientMedicationHistoryComponent} from "./cards/patient-medication-history.component";
 import {PatientCheckHistoryComponent} from "./cards/patient-check-history.component";
 import {PatientDailyAverageObservationsComponent} from "./cards/patient-daily-average-observations.component";
+import {ConfigurationService} from "../../picaso-cd-common/_services/configuration.service";
+import {CdSharedModelService} from "../../picaso-cd-common/_services/cd-shared-model.service";
 
 
 @Component({
-    templateUrl: 'clinician-manager.component.html'
+    templateUrl: 'clinician-manager.component.html',
+    styleUrls: ['clinician-manager.component.css'],
 })
 export class ClinicianManagerComponent implements OnInit {
 
@@ -31,10 +34,10 @@ export class ClinicianManagerComponent implements OnInit {
     @ViewChild(PatientDailyAverageObservationsComponent)
     private observationHistoryComponent: PatientDailyAverageObservationsComponent;
 
-    constructor( ) { }
+    constructor(private config: ConfigurationService, private cdSharedModelService: CdSharedModelService) {
+    }
 
     ngOnInit(): void {
-
         this.startDate = new Date();
         this.endDate = new Date();
 

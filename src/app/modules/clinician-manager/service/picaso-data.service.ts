@@ -17,6 +17,7 @@ import {PatientImage} from "../model/patient-image";
 import {ProgressHttp} from "angular-progress-http";
 import {PatientNotification} from "../model/patient-notification";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
+import {CdSharedModelService} from "../../../picaso-cd-common/_services/cd-shared-model.service";
 
 
 @Injectable()
@@ -35,7 +36,7 @@ export class PicasoDataService {
     //private patientRADAIServiceURL = 'http://147.232.202.101:9004/radai';
     //private patientImagingServiceURL = 'http://147.232.202.101:9004/imaging';
 
-    constructor(private http: ProgressHttp) {
+    constructor(private http: ProgressHttp, private cdSharedModelService: CdSharedModelService) {
     }
 
 
@@ -50,7 +51,11 @@ export class PicasoDataService {
 
         })
             .get(this.patientODSServiceURL)
-            .map(this.extractDataNotifications)
+            .map(response => {
+                    console.log("getting notifications for patient", this.cdSharedModelService.get().patient.display);
+                    return this.extractDataNotifications(response);
+                }
+            )
             .catch(this.handleError)
             ;
     }
@@ -213,7 +218,9 @@ export class PicasoDataService {
             progressResult.loaded = progress.loaded;
         })
             .get(this.patientODSServiceURL)
-            .map(this.extractDataInfo)
+            .map(response => {
+                return this.extractDataInfo(response, this.cdSharedModelService.get().patient.display);
+            })
             .catch(this.handleError)
             ;
     }
@@ -222,8 +229,14 @@ export class PicasoDataService {
     //    return res.json();
     //}
 
-    private  extractDataInfo(res: Response) {
-        return res.json().info;
+    private  extractDataInfo(res: Response, name: string) {
+
+        var result: PatientData = res.json().info;
+
+        result.name = name;
+
+        return result;
+
     }
 
     private  extractDataRadai(res: Response) {

@@ -1,4 +1,4 @@
-import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild, Input} from '@angular/core';
 
 import {VisTimelineService, VisTimelineItems, VisTimelineItem, VisTimelineOptions} from 'ng2-vis/ng2-vis';
 import {PicasoDataService} from "../service/picaso-data.service";
@@ -9,9 +9,9 @@ import {PatientLoadProgress} from "../model/patient-loadprogress";
 
 @Component({
     selector: 'medication-history',
-    template: require('./patient-medication-history.component.html'),
-    styles: [
-        require('./patient-medication-history.component.css')
+    templateUrl: 'patient-medication-history.component.html',
+    styleUrls: [
+        'patient-medication-history.component.css'
     ],
     providers: [PicasoDataService, VisTimelineService]
 })
@@ -19,6 +19,7 @@ import {PatientLoadProgress} from "../model/patient-loadprogress";
 export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
     @ViewChild('myMedicationModal')
+
     myModal: ModalComponent;
 
     close() {
