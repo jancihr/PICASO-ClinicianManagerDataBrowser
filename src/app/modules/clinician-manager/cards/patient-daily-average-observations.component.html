@@ -1,49 +1,30 @@
 <div class="card">
-    <div class="card-header w3-black">
+    <div class="card-header w3-blue  w3-center">
 
         <div i18n="Average daily observations"><i class="fa fa-heartbeat"></i> Average daily observations</div>
-        <div class="card-actions">
+        <div class="w3-right">
 
             <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
-            <div class="w3-text-gray">loaded: {{progress.total}} bytes</div>
+            <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
         </div>
     </div>
     <div class="card-block" style="overflow-x: auto;">
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <table class="table table-striped table-bordered table-sm">
+
+
+                <table class="table-striped table-bordered table-sm" style="margin: 0 auto; float: none;">
                     <thead>
                     <tr>
-                        <th i18n="Value">Observation</th>
+                        <th i18n="Observation">Observation</th>
 
-                        <th i18n="Toggle">Left</th>
-                        <th i18n="Toggle">Right</th>
-                        <th i18n="Value">Unit</th>
+                        <th i18n="Left">Left</th>
+                        <th i18n="Right">Right</th>
+
 
                     </tr>
                     </thead>
                     <tbody>
-
-                    <tr *ngFor="let group of observationGroups">
-
-                        <td>{{group.name}}</td>
-
-                        <td>
-
-                            <input type="checkbox" [checked]="group.showLeft"
-                                   (change)="toggleLeft(group.id, group.name)"/>
-                        </td>
-                        <td>
-
-                            <input type="checkbox" [checked]="group.showRight"
-                                   (change)="toggleRight(group.id, group.name)"/>
-
-                        </td>
-                        <td>{{group.label}}</td>
-
-
-                    </tr>
-
                     <tr>
 
                         <td>
@@ -63,10 +44,36 @@
 
 
                         </td>
-                        <td></td>
 
 
                     </tr>
+
+                    <tr *ngFor="let group of observationGroups">
+
+                        <td> <span *ngIf="group.showLeft || group.showRight" [style.color]="group.color">
+                                <i class="fa fa-circle"></i>
+                            </span> {{group.name}} ({{group.label}})
+
+
+                        </td>
+
+                        <td>
+
+                            <input type="checkbox" [checked]="group.showLeft"
+                                   (change)="toggleLeft(group.id, group.name)"/>
+                        </td>
+                        <td>
+
+                            <input type="checkbox" [checked]="group.showRight"
+                                   (change)="toggleRight(group.id, group.name)"/>
+
+                        </td>
+
+
+
+                    </tr>
+
+
 
                     </tbody>
                 </table>
@@ -83,7 +90,7 @@
         </div>
     </div>
 
-    <div class="card-footer">
+    <div class="card-footer w3-white">
         <div class="w3-tiny w3-right w3-full">Hover mouse over the diagram for values. Click
             series name in the legend above the diagram to view/hide series. Double click a chosen series legend to
             view only this series.
