@@ -251,6 +251,9 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                 this.observationGroups[i].showLeft = !this.observationGroups[i].showLeft;
                 if (this.observationGroups[i].showLeft) {
                     this.observationGroups[i].showRight = false;
+                    this.showAllRight = false;
+                } else {
+                    this.showAllLeft = false;
                 }
                 break;
             }
@@ -268,6 +271,9 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                 this.observationGroups[i].showRight = !this.observationGroups[i].showRight;
                 if (this.observationGroups[i].showRight) {
                     this.observationGroups[i].showLeft = false;
+                    this.showAllLeft = false;
+                } else {
+                    this.showAllRight = false;
                 }
                 break;
             }
@@ -281,6 +287,10 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     public resetLeft() {
 
         this.showAllLeft = !this.showAllLeft;
+        if (this.showAllLeft) {
+            this.showAllRight = true;
+            this.resetRight()
+        }
         for (var i = 0; i < this.observationGroups.length; i++) {
 
             this.observationGroups[i].showLeft = this.showAllLeft;
@@ -291,6 +301,10 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
     public resetRight() {
         this.showAllRight = !this.showAllRight;
+        if (this.showAllRight) {
+            this.showAllLeft = true;
+            this.resetLeft()
+        }
         for (var i = 0; i < this.observationGroups.length; i++) {
             this.observationGroups[i].showRight = this.showAllRight;
         }
