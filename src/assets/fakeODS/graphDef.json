@@ -113,8 +113,8 @@
       "title": "Patient",
       "group": "Patient",
       "isLeaf": false,
-      "x": 580,
-      "y": 265
+      "x": 0,
+      "y": 0
     },
     {
       "subGraphId": "patient",
@@ -125,8 +125,8 @@
       "title": "Care professionals category\n - Click to see sub-categories",
       "group": "GroupCarers",
       "isLeaf": false,
-      "x": 730,
-      "y": 265
+      "x": 160,
+      "y": 0
     },
     {
       "subGraphId": "patient",
@@ -137,8 +137,8 @@
       "title": "Home monitoring data category\n - Click to see sub-categories",
       "group": "GroupHome",
       "isLeaf": false,
-      "x": 680,
-      "y": 330
+      "x": 129,
+      "y": 94
     },
     {
       "subGraphId": "patient",
@@ -149,8 +149,8 @@
       "title": "Care plans data category\n - Click to see sub-categories",
       "group": "GroupPlan",
       "isLeaf": false,
-      "x": 600,
-      "y": 400
+      "x": 49,
+      "y": 152
     },
     {
       "subGraphId": "patient",
@@ -161,8 +161,8 @@
       "title": "Lab tests data category\n - Click to see sub-categories",
       "group": "GroupLab",
       "isLeaf": false,
-      "x": 580,
-      "y": 440
+      "x": -49,
+      "y": 152
     },
     {
       "subGraphId": "patient",
@@ -173,8 +173,8 @@
       "title": "Images - Click to see sub-categories",
       "group": "GroupImage",
       "isLeaf": false,
-      "x": 510,
-      "y": 400
+      "x": -129,
+      "y": 94
     },
     {
       "subGraphId": "patient",
@@ -185,8 +185,8 @@
       "title": "Questionnaires \n - Click to see sub-categories",
       "group": "Questionnaires",
       "isLeaf": false,
-      "x": 440,
-      "y": 300
+      "x": -160,
+      "y": 0
     },
     {
       "subGraphId": "patient",
@@ -197,8 +197,8 @@
       "title": "Psychological and Neuropsychological Testing\n - Click to see sub-categories",
       "group": "PsychologicalTest",
       "isLeaf": false,
-      "x": 400,
-      "y": 265
+      "x": -129,
+      "y": -94
     },
     {
       "subGraphId": "patient",
@@ -209,8 +209,8 @@
       "title": "Clinical measurements\n - Click to see sub-categories",
       "group": "GroupCliMeasurements",
       "isLeaf": false,
-      "x": 440,
-      "y": 225
+      "x": -49,
+      "y": -152
     },
     {
       "subGraphId": "patient",
@@ -221,8 +221,8 @@
       "title": "Surgery\n - Click to see sub-categories",
       "group": "Surgery",
       "isLeaf": false,
-      "x": 500,
-      "y": 150
+      "x": 49,
+      "y": -152
     },
     {
       "subGraphId": "patient",
@@ -233,8 +233,8 @@
       "title": "Screening\n - Click to see sub-categories",
       "group": "GroupScreening",
       "isLeaf": false,
-      "x": 580,
-      "y": 100
+      "x": 129,
+      "y": -94
     },
     {
       "subGraphId": "carers",
@@ -245,8 +245,8 @@
       "label": "Cardiologist\n",
       "group": "GroupCarer",
       "isLeaf": true,
-      "x": 800,
-      "y": 265
+      "x": 400,
+      "y": 0
     },
     {
       "subGraphId": "carers",
@@ -257,8 +257,8 @@
       "label": "Rheumatologists\n",
       "group": "GroupCarer",
       "isLeaf": true,
-      "x": 800,
-      "y": 265
+      "x": 396,
+      "y": 50
     },
     {
       "subGraphId": "carers",
@@ -269,8 +269,8 @@
       "label": "Neurologist\n",
       "group": "GroupCarer",
       "isLeaf": true,
-      "x": 800,
-      "y": 265
+      "x": 387,
+      "y": 100
     },
     {
       "subGraphId": "carers",
@@ -281,8 +281,8 @@
       "label": "Neuropschologist\n",
       "group": "GroupCarer",
       "isLeaf": true,
-      "x": 800,
-      "y": 265
+      "x": 380,
+      "y": 124
     },
     {
       "subGraphId": "carers",
@@ -293,8 +293,8 @@
       "label": "Radiologist\n",
       "group": "GroupCarer",
       "isLeaf": true,
-      "x": 800,
-      "y": 265
+      "x": 360,
+      "y": 170
     },
     {
       "subGraphId": "carers",
@@ -305,8 +305,8 @@
       "label": "General Practitioner\n",
       "group": "GroupCarer",
       "isLeaf": true,
-      "x": 800,
-      "y": 265
+      "x": 338,
+      "y": 214
     },
     {
       "subGraphId": "home",
@@ -317,8 +317,8 @@
       "label": "Blood Sugar Level (Home)\n 19.03.2017",
       "group": "HomeHistory",
       "isLeaf": true,
-      "x": 750,
-      "y": 400
+      "x": 324,
+      "y": 235
     },
     {
       "subGraphId": "home",
@@ -329,8 +329,8 @@
       "label": "Saturation (Home)\n 19.03.2017",
       "group": "HomeHistory",
       "isLeaf": true,
-      "x": 750,
-      "y": 400
+      "x": 308,
+      "y": 255
     },
     {
       "subGraphId": "home",
@@ -341,8 +341,8 @@
       "label": "Lung Capacity (Home)\n 19.03.2017",
       "group": "BarHomeHistory",
       "isLeaf": true,
-      "x": 750,
-      "y": 400
+      "x": 290,
+      "y": 274
     },
     {
       "subGraphId": "home",
@@ -353,8 +353,8 @@
       "label": "Respiration Rate (Home)\n 19.03.2017",
       "group": "BarHomeHistory",
       "isLeaf": true,
-      "x": 750,
-      "y": 400
+      "x": 274,
+      "y": 290
     },
     {
       "subGraphId": "home",
@@ -365,8 +365,8 @@
       "label": "Weight (Home)\n 19.03.2017",
       "group": "WeightHomeHistory",
       "isLeaf": true,
-      "x": 750,
-      "y": 400
+      "x": 255,
+      "y": 308
     },
     {
       "subGraphId": "home",
@@ -377,8 +377,8 @@
       "label": "Blood Pressure and Heart rate \nHome Measurements\n 19.03.2017",
       "group": "HomeHeart",
       "isLeaf": true,
-      "x": 750,
-      "y": 400
+      "x": 235,
+      "y": 323
     },
     {
       "subGraphId": "home",
@@ -389,8 +389,8 @@
       "label": "ActivityMonitoring (Home)\n 19.03.2017",
       "group": "HomeActivity",
       "isLeaf": true,
-      "x": 750,
-      "y": 400
+      "x": 214,
+      "y": 338
     },
     {
       "subGraphId": "home",
@@ -401,8 +401,8 @@
       "label": "Questionnaires Answered (Home)\n 19.03.2017",
       "group": "QuestionnaireHome",
       "isLeaf": false,
-      "x": 750,
-      "y": 400
+      "x": 193,
+      "y": 350
     },
     {
       "subGraphId": "questionnaireHome",
@@ -413,8 +413,8 @@
       "label": "FFbh/HAQ (at home)\n 11.03.2017",
       "group": "QuestionnaireHome",
       "isLeaf": true,
-      "x": 800,
-      "y": 450
+      "x": 400,
+      "y": 500
     },
     {
       "subGraphId": "questionnaireHome",
@@ -425,8 +425,8 @@
       "label": "RADAI (at home)\n 09.03.2017",
       "group": "QuestionnaireHome",
       "isLeaf": true,
-      "x": 800,
-      "y": 450
+      "x": 400,
+      "y": 510
     },
     {
       "subGraphId": "questionnaireHome",
@@ -437,8 +437,8 @@
       "label": "Morisky (at home)\n 19.03.2017",
       "group": "QuestionnaireHome",
       "isLeaf": true,
-      "x": 800,
-      "y": 450
+      "x": 400,
+      "y": 520
     },
     {
       "subGraphId": "plan",
@@ -449,7 +449,7 @@
       "label": "Appointment:\n Discussion on the results\n 12.03.2017",
       "group": "Appointment",
       "isLeaf": true,
-      "x": 630,
+      "x": 0,
       "y": 400
     },
     {
@@ -461,8 +461,8 @@
       "label": "Meedication plan\n 12.03.2017",
       "group": "MedicationPlan",
       "isLeaf": true,
-      "x": 630,
-      "y": 400
+      "x": 124,
+      "y": 380
     },
     {
       "subGraphId": "plan",
@@ -473,8 +473,8 @@
       "label": "Prescribed plan of activities\n 12.03.2017",
       "group": "ActivityPlan",
       "isLeaf": true,
-      "x": 630,
-      "y": 400
+      "x": 74,
+      "y": 393
     },
     {
       "subGraphId": "plan",
@@ -485,8 +485,8 @@
       "label": "Prescribed Questionnaires\n 12.01.2017",
       "group": "QuestionnairePlan",
       "isLeaf": true,
-      "x": 630,
-      "y": 400
+      "x": 25,
+      "y": 399
     },
     {
       "subGraphId": "questionnaires",
@@ -497,8 +497,8 @@
       "label": "FFbh/HAQ (at home)\n 11.03.2017",
       "group": "QuestionnaireHome",
       "isLeaf": true,
-      "x": 580,
-      "y": 460
+      "x": -400,
+      "y": 0
     },
     {
       "subGraphId": "questionnaires",
@@ -509,8 +509,8 @@
       "label": "RADAI (at home)\n 09.03.2017",
       "group": "QuestionnaireHome",
       "isLeaf": true,
-      "x": 580,
-      "y": 460
+      "x": -396,
+      "y": -50
     },
     {
       "subGraphId": "questionnaires",
@@ -521,8 +521,8 @@
       "label": "FFbh/HAQ (at clinic)\n 01.03.2017",
       "group": "QuestionnaireClinic",
       "isLeaf": true,
-      "x": 580,
-      "y": 460
+      "x": -387,
+      "y": -100
     },
     {
       "subGraphId": "questionnaires",
@@ -533,8 +533,8 @@
       "label": "RADAI (at clinic)\n 01.03.2017",
       "group": "QuestionnaireClinic",
       "isLeaf": true,
-      "x": 580,
-      "y": 460
+      "x": -372,
+      "y": -147
     },
     {
       "subGraphId": "psychoTest",
@@ -545,8 +545,8 @@
       "label": "Memory\n 11.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": false,
-      "x": 350,
-      "y": 300
+      "x": -324,
+      "y": -235
     },
     {
       "subGraphId": "psychoTest",
@@ -557,8 +557,8 @@
       "label": "Attention\n 08.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": false,
-      "x": 350,
-      "y": 300
+      "x": -308,
+      "y": -254
     },
     {
       "subGraphId": "psychoTest",
@@ -569,8 +569,8 @@
       "label": "Language\n 03.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": false,
-      "x": 350,
-      "y": 300
+      "x": -292,
+      "y": -274
     },
     {
       "subGraphId": "psychoTest",
@@ -581,8 +581,8 @@
       "label": "Psychological health:\n 15.10.2016",
       "group": "PsychologicalTest",
       "isLeaf": false,
-      "x": 350,
-      "y": 300
+      "x": -274,
+      "y": -292
     },
     {
       "subGraphId": "psychoTest",
@@ -593,8 +593,8 @@
       "label": "Trial Making Test\npart B\n 01.05.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -255,
+      "y": -308
     },
     {
       "subGraphId": "memory",
@@ -605,8 +605,8 @@
       "label": "Learning curve 15 words of Rey\n 11.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -400,
+      "y": -330
     },
     {
       "subGraphId": "memory",
@@ -617,8 +617,8 @@
       "label": "Recall of the figure of Rey - Osterrieth\n 11.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -400,
+      "y": -340
     },
     {
       "subGraphId": "memory",
@@ -629,8 +629,8 @@
       "label": "Rey Auditory Verbal Learning TOT\n 11.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -400,
+      "y": -350
     },
     {
       "subGraphId": "memory",
@@ -641,8 +641,8 @@
       "label": "Recall of Rey Auditory Verbal Learning\n 11.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -400,
+      "y": -360
     },
     {
       "subGraphId": "attention",
@@ -653,8 +653,8 @@
       "label": "Stroop Reduced\n 10.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -380,
+      "y": -400
     },
     {
       "subGraphId": "attention",
@@ -665,8 +665,8 @@
       "label": "Trail Making A\n 10.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -380,
+      "y": -420
     },
     {
       "subGraphId": "language",
@@ -677,8 +677,8 @@
       "label": " Test of Semantic Fluency\n 05.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -350,
+      "y": -480
     },
     {
       "subGraphId": "language",
@@ -689,8 +689,8 @@
       "label": "Test of Phonological Fluency,\n 04.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -350,
+      "y": -490
     },
     {
       "subGraphId": "psychoHealth",
@@ -701,8 +701,8 @@
       "label": "Depression Tests\n 01.02.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -310,
+      "y": -540
     },
     {
       "subGraphId": "psychoHealth",
@@ -713,8 +713,8 @@
       "label": "Anxiety\n(Hamilton Anxiety Scale)\n 01.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -310,
+      "y": -550
     },
     {
       "subGraphId": "psychoHealth",
@@ -725,8 +725,8 @@
       "label": "Snaith-Hamilton Pleasure Scale \n 01.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -310,
+      "y": -560
     },
     {
       "subGraphId": "psychoHealth",
@@ -737,8 +737,8 @@
       "label": "State-Trait Anger Expression Inventory TOT \n 01.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -310,
+      "y": -570
     },
     {
       "subGraphId": "psychoHealth",
@@ -749,8 +749,8 @@
       "label": "Parkinson Psychosis Rating Scale \n 10.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -310,
+      "y": -580
     },
     {
       "subGraphId": "psychoHealth",
@@ -761,8 +761,8 @@
       "label": "Euroquol Rating Scale \n 01.05.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -310,
+      "y": -590
     },
     {
       "subGraphId": "psychoTest",
@@ -773,8 +773,8 @@
       "label": "Executive Functions\n 11.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -254,
+      "y": -308
     },
     {
       "subGraphId": "psychoTest",
@@ -785,8 +785,8 @@
       "label": "Praxia\n 11.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -235,
+      "y": -324
     },
     {
       "subGraphId": "psychoTest",
@@ -797,8 +797,8 @@
       "label": "Global Congnitive Status\n 11.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -214,
+      "y": -338
     },
     {
       "subGraphId": "psychoTest",
@@ -809,8 +809,8 @@
       "label": "PD Severity\n 11.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
-      "x": 350,
-      "y": 300
+      "x": -193,
+      "y": -351
     },
     {
       "subGraphId": "image",
@@ -821,8 +821,8 @@
       "label": "MRI\n 01.02.2017",
       "group": "GroupImage",
       "isLeaf": true,
-      "x": 430,
-      "y": 420
+      "x": -337,
+      "y": 235
     },
     {
       "subGraphId": "image",
@@ -833,8 +833,8 @@
       "label": "Dat Scan\n 21.02.2017",
       "group": "GroupImage",
       "isLeaf": true,
-      "x": 430,
-      "y": 420
+      "x": -362,
+      "y": 170
     },
     {
       "subGraphId": "image",
@@ -845,8 +845,8 @@
       "label": "PET\n 22.03.2016",
       "group": "GroupImage",
       "isLeaf": true,
-      "x": 430,
-      "y": 420
+      "x": -380,
+      "y": 124
     },
     {
       "subGraphId": "image",
@@ -857,8 +857,8 @@
       "label": "Myocardial scintigraphy\n 10.01.2017",
       "group": "GroupImage",
       "isLeaf": true,
-      "x": 430,
-      "y": 420
+      "x": -393,
+      "y": 75
     },
     {
       "subGraphId": "cliMeasurements",
@@ -869,8 +869,8 @@
       "label": "ECG\n 01.02.2015",
       "group": "GroupCliMeasurements",
       "isLeaf": true,
-      "x": 380,
-      "y": 200
+      "x": -147,
+      "y": -372
     },
     {
       "subGraphId": "cliMeasurements",
@@ -881,8 +881,8 @@
       "label": "EEG\n 15.11.2016",
       "group": "GroupCliMeasurements",
       "isLeaf": true,
-      "x": 380,
-      "y": 200
+      "x": 0,
+      "y": -400
     },
     {
       "subGraphId": "screening",
@@ -893,8 +893,8 @@
       "label": "Pain rating\n 03.01.2017",
       "group": "GroupScreening",
       "isLeaf": true,
-      "x": 580,
-      "y": 120
+      "x": 308,
+      "y": -255
     },
     {
       "subGraphId": "screening",
@@ -905,8 +905,8 @@
       "label": "Well-Being rating\n 05.01.2017",
       "group": "GroupScreening",
       "isLeaf": true,
-      "x": 580,
-      "y": 120
+      "x": 338,
+      "y": -214
     },
     {
       "subGraphId": "lab",
@@ -917,8 +917,8 @@
       "title": "Blood anaysis data category\n - Click to see sub-categories",
       "group": "BloodTest",
       "isLeaf": false,
-      "x": 580,
-      "y": 480
+      "x": -124,
+      "y": 380
     },
     {
       "subGraphId": "lab",
@@ -929,8 +929,8 @@
       "label": "Urine exam:\n 21.02.2017",
       "group": "UrineTest",
       "isLeaf": true,
-      "x": 580,
-      "y": 480
+      "x": -170,
+      "y": 362
     },
     {
       "subGraphId": "lab",
@@ -941,8 +941,8 @@
       "label": "Histology:\n 31.10.2015",
       "group": "HistTest",
       "isLeaf": true,
-      "x": 580,
-      "y": 480
+      "x": -214,
+      "y": 338
     },
     {
       "subGraphId": "bloodTest",
@@ -953,8 +953,8 @@
       "title": "3 hemochrome tests found",
       "group": "BloodTest",
       "isLeaf": true,
-      "x": 580,
-      "y": 480
+      "x": -160,
+      "y": 560
     },
     {
       "subGraphId": "bloodTest",
@@ -965,8 +965,8 @@
       "label": "Thyroid hormones\n 21.02.2017",
       "group": "BloodTest",
       "isLeaf": true,
-      "x": 580,
-      "y": 480
+      "x": -160,
+      "y": 570
     }
   ]
 }
