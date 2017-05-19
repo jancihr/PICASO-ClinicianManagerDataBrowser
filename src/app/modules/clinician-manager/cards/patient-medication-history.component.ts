@@ -110,10 +110,11 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
         this.visTimelineItemsMedications = new VisTimelineItems([]);
         this.visTimelineMedicationsOptions = {
             selectable: false,
-            showCurrentTime: true,
+          // showCurrentTime: true,
             //zoomMax: 61556926000, //year
             zoomMin: 86400000, //day
-            clickToUse: true
+          clickToUse: true,
+          rollingMode: false
         };
 
 
