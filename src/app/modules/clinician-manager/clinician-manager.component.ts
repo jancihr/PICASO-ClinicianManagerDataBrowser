@@ -24,6 +24,9 @@ export class ClinicianManagerComponent implements OnInit {
 
     private model;
 
+  private range = "lastyear"; //show all
+  private zoomAll = true;
+
 
 
     @ViewChild(PatientMedicationHistoryComponent)
@@ -60,10 +63,13 @@ export class ClinicianManagerComponent implements OnInit {
         };
 
 
-        
+
     }
 
     focusLastWeek() {
+
+      this.range = "lastweek";
+      this.zoomAll = false;
 
         var endDate: Date = new Date();
         var startDate: Date = new Date();
@@ -75,6 +81,9 @@ export class ClinicianManagerComponent implements OnInit {
     }
 
     focusLastMonth() {
+
+      this.range = "lastmonth";
+      this.zoomAll = false;
         var endDate: Date = new Date();
         var startDate: Date = new Date();
 
@@ -85,6 +94,9 @@ export class ClinicianManagerComponent implements OnInit {
     }
 
     focusLastYear() {
+
+      this.range = "lastyear";
+      this.zoomAll = false;
         var endDate: Date = new Date();
         var startDate: Date = new Date();
 
@@ -96,6 +108,7 @@ export class ClinicianManagerComponent implements OnInit {
 
     focusAll() {
 
+      this.zoomAll = true;
         this.medicationComponent.focusVis();
         this.checkHistoryComponent.focusVisChecks();
         // TODO this.observationHistoryComponent.refreshRange(all);

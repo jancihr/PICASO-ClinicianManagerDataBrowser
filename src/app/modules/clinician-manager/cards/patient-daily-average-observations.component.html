@@ -17,19 +17,21 @@
         <table class="table-striped table-bordered table-sm" style="margin: 0 auto; float: none;">
           <thead>
           <tr>
-            <th rowspan="2" i18n="Observation">Observation</th>
+            <!--   <th rowspan="2" i18n="Observation">Observation</th>
 
-            <th colspan="2" i18n="Axis">Axis</th>
-
-
-          </tr>
-
-          <tr>
+               <th colspan="2" i18n="Axis">Axis</th>
 
 
-            <th i18n="Left">Left</th>
-            <th i18n="Right">Right</th>
+                         </tr>
 
+                         <tr>
+
+
+                                       <th i18n="Left">Left</th>
+                                       <th i18n="Right">Right</th> -->
+
+            <th i18n="Show/Hide">Observation</th>
+            <th i18n="Show/Hide">Show / Hide</th>
 
           </tr>
           </thead>
@@ -47,12 +49,13 @@
 
 
             </td>
-            <td>
-              <input type="checkbox" [checked]="showAllRight"
-                     (change)="resetRight()"/>
+            <!-- <td>
+               <input type="checkbox" [checked]="showAllRight"
+                      (change)="resetRight()"/>
 
 
-            </td>
+             </td>
+             -->
 
 
           </tr>
@@ -71,12 +74,15 @@
               <input type="checkbox" [checked]="group.showLeft"
                      (change)="toggleLeft(group.id, group.name)"/>
             </td>
+            <!--
+
             <td>
 
               <input type="checkbox" [checked]="group.showRight"
                      (change)="toggleRight(group.id, group.name)"/>
 
             </td>
+            -->
 
 
           </tr>
