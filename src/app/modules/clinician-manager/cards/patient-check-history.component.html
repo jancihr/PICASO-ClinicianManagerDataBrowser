@@ -1,17 +1,17 @@
 <div class="card w3-light-gray">
-    <div class="card-header w3-dark-grey w3-center">
-        <div i18n="Patient Visits History"><i class="fa fa-arrow-down"></i> <i class="fa fa-hospital-o"></i>
-            Patient Visits History <i class="fa fa-arrow-down"></i>
 
-        </div>
-        <div class="w3-right">
 
-            <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
-            <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
-        </div>
+  <div class="card-block">
+
+    <div class="w3-center" i18n="Patient Visits History">
+      <i class="fa fa-hospital-o"></i>
+      Patient Visits History
     </div>
 
-    <div class="card-block">
+    <div *ngIf="(progress.percentage < 100)" class="w3-right">
+      <div> loading: {{progress.percentage}}%</div>
+      <div> loaded: {{progress.total}} bytes</div>
+    </div>
 
         <div [visTimeline]="visTimelineChecks"
                  [visTimelineItems]="visTimelineItemsChecks"

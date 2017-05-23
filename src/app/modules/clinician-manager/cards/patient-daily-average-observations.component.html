@@ -1,111 +1,108 @@
 <div class="card">
-    <div class="card-header w3-blue  w3-center">
+  <div class="card-header w3-blue  w3-center">
 
-        <div i18n="Average daily observations"><i class="fa fa-heartbeat"></i> Average daily observations</div>
-        <div class="w3-right">
+    <div i18n="Average daily observations"><i class="fa fa-heartbeat"></i> Average daily observations</div>
+    <div class="w3-right">
 
-            <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
-            <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
-        </div>
+      <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
+      <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
     </div>
-    <div class="card-block" style="overflow-x: auto;">
-        <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+  </div>
+  <div class="card-block" style="overflow-x: auto;">
+
+    <div class="row">
+
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-3">
+
+        <table class="table-striped table-bordered table-sm" style="margin: 0 auto; float: none;">
+          <thead>
+          <tr>
+            <th rowspan="2" i18n="Observation">Observation</th>
+
+            <th colspan="2" i18n="Axis">Axis</th>
 
 
-                <table class="table-striped table-bordered table-sm" style="margin: 0 auto; float: none;">
-                    <thead>
-                    <tr>
-                        <th rowspan="2" i18n="Observation">Observation</th>
+          </tr>
 
-                        <th colspan="2" i18n="Axis">Axis</th>
+          <tr>
 
 
-                    </tr>
-
-                    <tr>
-
-
-                        <th i18n="Left">Left</th>
-                        <th i18n="Right">Right</th>
+            <th i18n="Left">Left</th>
+            <th i18n="Right">Right</th>
 
 
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
 
-                        <td>
-                            All observations
+            <td>
+              All observations
 
-                        </td>
+            </td>
 
-                        <td>
-                            <input type="checkbox" [checked]="showAllLeft"
-                                   (change)="resetLeft()"/>
-
-
-                        </td>
-                        <td>
-                            <input type="checkbox" [checked]="showAllRight"
-                                   (change)="resetRight()"/>
+            <td>
+              <input type="checkbox" [checked]="showAllLeft"
+                     (change)="resetLeft()"/>
 
 
-                        </td>
+            </td>
+            <td>
+              <input type="checkbox" [checked]="showAllRight"
+                     (change)="resetRight()"/>
 
 
-                    </tr>
+            </td>
 
-                    <tr *ngFor="let group of observationGroups">
 
-                        <td> <span *ngIf="group.showLeft || group.showRight" [style.color]="group.color">
+          </tr>
+
+          <tr *ngFor="let group of observationGroups">
+
+            <td> <span *ngIf="group.showLeft || group.showRight" [style.color]="group.color">
                                 <i class="fa fa-circle"></i>
                             </span> {{group.name}} ({{group.label}})
 
 
-                        </td>
+            </td>
 
-                        <td>
+            <td>
 
-                            <input type="checkbox" [checked]="group.showLeft"
-                                   (change)="toggleLeft(group.id, group.name)"/>
-                        </td>
-                        <td>
+              <input type="checkbox" [checked]="group.showLeft"
+                     (change)="toggleLeft(group.id, group.name)"/>
+            </td>
+            <td>
 
-                            <input type="checkbox" [checked]="group.showRight"
-                                   (change)="toggleRight(group.id, group.name)"/>
+              <input type="checkbox" [checked]="group.showRight"
+                     (change)="toggleRight(group.id, group.name)"/>
 
-                        </td>
-
-
-
-                    </tr>
+            </td>
 
 
-
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="row">
-
-            <div>
-                <nvd3 [options]="options" [data]="data"></nvd3>
-            </div>
+          </tr>
 
 
-        </div>
+          </tbody>
+        </table>
+
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+        <nvd3 [options]="options" [data]="data"></nvd3>
+
+      </div>
     </div>
 
-    <div class="card-footer w3-white">
-        <div class="w3-tiny w3-right w3-full">Hover mouse over the diagram for values. Click
-            series name in the legend above the diagram to view/hide series. Double click a chosen series legend to
-            view only this series.
-            If several series are shown on one axis, series are not normalised.
-            Compare values of very different ranges on separate y axes.
 
-        </div>
+  </div>
+
+  <div class="card-footer w3-white">
+    <div class="w3-tiny w3-right w3-full">Hover mouse over the diagram for values. Click
+      series name in the legend above the diagram to view/hide series. Double click a chosen series legend to
+      view only this series.
+      If several series are shown on one axis, series are not normalised.
+      Compare values of very different ranges on separate y axes.
+
     </div>
+  </div>
 </div>
 
