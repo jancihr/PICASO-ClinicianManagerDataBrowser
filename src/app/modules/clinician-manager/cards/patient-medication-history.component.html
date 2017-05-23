@@ -1,29 +1,25 @@
 <div class="card w3-light-gray">
 
-    <div class="card-block ">
+  <div class="card-footer  w3-center">
 
-        <div [visTimeline]="visTimelineMedications"
-             [visTimelineItems]="visTimelineItemsMedications"
-             [visTimelineOptions]="visTimelineMedicationsOptions"
-             (initialized)="timelineInitialized()">
+    <div *ngIf="(progress.percentage < 100)" class="w3-right">
 
-        </div>
+      <div> loading: {{progress.percentage}}%</div>
+      <div> loaded: {{progress.total}} bytes</div>
+    </div>
 
+    <div class="w3-center" i18n="Patient Medication History"><i class="fa fa-medkit"> </i>
+      Patient Medication History
 
     </div>
 
-    <div class="card-footer w3-dark-grey w3-center">
-        <div i18n="Patient Medication History"><i class="fa fa-arrow-up"></i> <i class="fa fa-medkit"> </i>
-            Patient Medication History <i class="fa fa-arrow-up"></i>
+    <div [visTimeline]="visTimelineMedications"
+         [visTimelineItems]="visTimelineItemsMedications"
+         [visTimelineOptions]="visTimelineMedicationsOptions"
+         (initialized)="timelineInitialized()">
 
-        </div>
-        <div class="w3-right">
-
-            <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
-            <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
-        </div>
     </div>
-
+  </div>
 </div>
 
 <modal [animation]="animationsEnabled" #myMedicationModal>
