@@ -71,9 +71,23 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
     this.options = {
       chart: {
-        noData: 'Choose some data series from choices above.',
+        noData: 'No data exists for selected dates and observations.',
         type: 'lineChart',
         height: 600,
+        transitionDuration: 500,
+
+        zoom: {
+          enabled: true,
+          scaleExtent: [
+            1,
+            10
+          ],
+          useFixedDomain: true,
+          useNiceScale: false,
+          horizontalOff: false,
+          verticalOff: false,
+          unzoomEventType: "dblclick.zoom"
+        },
 
         legendRightAxisHint: " (right axis)",
         interpolate: "linear",
@@ -81,6 +95,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         legend: {
           align: false
         },
+        //showDistX: true,
+        //showDistY: true,
 
         //average: function(d) { return d.mean/100; },
         margin: {
@@ -96,7 +112,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           return new Date(d.x);
         },
         y: function (d) {
-          return new Number(d.y);
+          return d.y === null ? null : new Number(d.y);
         },
 
 
@@ -109,6 +125,21 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
         xDomain: [this.startDate.getTime(), this.endDate.getTime()],
         xRange: null,
+
+        interactiveLayer: {
+          tooltip: {
+            contentGenerator: function (d) {
+              var html = d.value;
+
+              d.series.forEach(function (elem) {
+                html += "<div style='color:" + elem.color + "'>"
+                  + elem.key + "</div> : <b>" + (elem.value === null ? "Missing value" : elem.value) + "</b>";
+              });
+
+              return html;
+            }
+          }
+        },
 
         yAxis1: {
           //axisLabel: 'Value',
@@ -154,11 +185,28 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       if (group.showLeft) {
 
 
-        var sortedValues = group.values.sort(function (a, b) {
+        var filteredValues = [];
+
+        for (var el of group.values) {
+
+          //console.log("gettime" + new Date(el.date).getTime());
+
+          if (new Date(el.date).getTime() < this.startDate.getTime() || new Date(el.date).getTime() > this.endDate.getTime()) {
+          }
+          else {
+            filteredValues.push(el)
+          }
+        }
+
+        if (filteredValues.length > 0) {
+
+
+          var sortedValues = filteredValues.sort(function (a, b) {
           return new Date(a.date).getTime() - new Date(b.date).getTime();
         });
 
-        var newValues = [];
+
+          var newGraphValues = [];
 
 
         var i = 0;
@@ -166,11 +214,16 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
           //newValues.push({x: i++, y: i});
 
-          newValues.push({"x": new Date(observation.date).getTime(), "y": observation.value})
+          newGraphValues.push({"x": new Date(observation.date).getTime(), "y": observation.value})
+
+          //if (observation.value === null) console.log("found null");
+
+          //console.log( group.name + " / " + group.label + " " +
+          // observation.date + " " + observation.value);
         }
 
         this.data.push({
-          values: newValues,
+          values: newGraphValues,
           key: group.name + " / " + group.label,
           color: group.color,
           //area: false,
@@ -178,23 +231,30 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           disabled: false,
           yAxis: 1,
           xAxis: 1,
-          type: group.type
+          type: 'line'//group.type
         })
 
+        }
       }
     }
-
+    /*
     for (var group of this.observationGroups) {
 
       if (group.showRight) {
 
-        var
-          sortedValues = group.values.sort(function (a, b) {
-            return new Date(a.date).getTime() - new Date(b.date).getTime();
-          });
+     var filteredValues2 = [];
+
+     for (var el of group.values){
+     if (el.date<this.startDate || el.date>this.endDate) {}
+     else {filteredValues2.push(el)}
+     }
+
+     var sortedValues2 = filteredValues2.sort(function (a, b) {
+     return new Date(a.date).getTime() - new Date(b.date).getTime();
+     });
 
         var
-          newValues = [];
+     newValues2 = [];
 
 
         var
@@ -205,12 +265,12 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           var
             observation
           of
-          sortedValues
+     sortedValues2
           ) {
 
           //newValues.push({x: i++, y: i});
 
-          newValues
+     newValues2
             .push({
                 "x": new Date
 
@@ -226,7 +286,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         }
 
         this.data.push({
-          values: newValues,
+     values: newValues2,
           key: group.name + " / " + group.label,
           color: group.color,
           disabled: false,
@@ -234,11 +294,14 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           //mean: 120,
           yAxis: 2,
           xAxis: 1,
-          type: group.type
+     type: 'line'
+     //type: group.type
         })
 
       }
     }
+
+     */
 
   }
 
