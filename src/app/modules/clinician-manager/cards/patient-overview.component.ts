@@ -2,7 +2,7 @@
  * Created by jan hreno on 9.1.17.
  */
 
-import {Component, OnInit} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {PatientData} from "../model/patient-data"
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientLoadProgress} from "../model/patient-loadprogress";

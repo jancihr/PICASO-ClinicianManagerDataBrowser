@@ -9,7 +9,7 @@ const routes: Routes = [
         path: '',
         component: ClinicianManagerComponent,
         data: {
-            title: 'Clinician Manager'
+            title: 'Patient data viewer'
         }
     }
 ];

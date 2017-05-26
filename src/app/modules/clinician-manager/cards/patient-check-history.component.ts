@@ -114,7 +114,8 @@ export class PatientCheckHistoryComponent implements OnInit, OnDestroy {
             showCurrentTime: true,
             //zoomMax: 61556926000, //year
             zoomMin: 86400000, //day
-            clickToUse: true
+          clickToUse: true,
+          rollingMode: false
         };
 
     }
