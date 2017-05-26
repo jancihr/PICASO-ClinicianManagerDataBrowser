@@ -1,1 +1,62 @@
-<p>Communication</p>
+<h3>Medical Professionals' Communication on selected Patient</h3>
+<label>Show:</label>
+<select>
+  <option selected>comments for my speciality</option>
+  <option>All</option>
+</select>
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title">List of Comments</h4>
+    <div class="card-text">
+      <ul class="list-group">
+        <li class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Summary of comment</h5>
+            <small class="float-sm-right">03/05/2017</small>
+          </div>
+          <p class="mb-1">
+            Comment itself
+          </p>
+          <small>From: Doctor A (speciality: X)</small>
+        </li>
+        <li class="list-group-item list-group-item-action flex-column align-items-start">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">Summary of comment</h5>
+            <small class="float-sm-right">03/05/2017</small>
+          </div>
+          <p class="mb-1">
+            Comment itself
+          </p>
+          <small>From: Doctor A (speciality: X)</small>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-block">
+    <h4 class="card-title">Add Message</h4>
+    <div class="card-text">
+      <textarea dir="auto" name="comment" class="form-control" placeholder="Comment"></textarea>
+      <div class="form-group">
+        <label>Highlight for:</label>
+        <select>
+          <option>GP</option>
+          <option>RIA</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Reference to careplan:</label>
+        <select>
+          <option>CP1</option>
+          <option>CP2</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button class="button btn-primary">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+
