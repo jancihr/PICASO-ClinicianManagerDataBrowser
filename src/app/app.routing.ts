@@ -59,6 +59,14 @@ export const routes: Routes = [
       {
         path: 'codings',
         loadChildren: './modules/fhir-codes/fhir-codes.module#FhirCodesModule'
+      },
+      {
+        path: 'service-catalog',
+        loadChildren: './modules/service-catalog/service-catalog.module#ServiceCatalogModule'
+      },
+      {
+        path: 'careplan-templates',
+        loadChildren: './modules/careplan-templates/careplan-templates.module#CareplanTemplatesModule'
       }
     ],
     canActivate: [AuthGuard]

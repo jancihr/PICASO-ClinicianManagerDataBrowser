@@ -6,7 +6,7 @@ import {
 }         from '@angular/common';
 
 import {AppComponent}                 from './app.component';
-import {Ng2BootstrapModule}           from 'ngx-bootstrap';
+import {BsDropdownModule, Ng2BootstrapModule}           from 'ngx-bootstrap';
 import {NAV_DROPDOWN_DIRECTIVES}      from './shared/nav-dropdown.directive';
 
 import {ChartsModule}                 from 'ng2-charts/ng2-charts';
@@ -30,6 +30,10 @@ import {FhirCodesModule} from "./modules/fhir-codes/fhir-codes.module";
 import {MedCommModule} from "./modules/med-comm/med-comm.module";
 import {PatientIdModule} from "./modules/patient-id/patient-id.module";
 import {ModalModule} from "ngx-bootstrap";
+import {ServiceCatalogModule} from "./modules/service-catalog/service-catalog.module";
+import {PagesModule} from "./pages/pages.module";
+import {CareplanTemplatesService} from "./modules/careplan-templates/careplan-templates.service";
+import {CareplanTemplatesModule} from "./modules/careplan-templates/careplan-templates.module";
 @NgModule({
   imports: [
     BrowserModule,
@@ -42,7 +46,10 @@ import {ModalModule} from "ngx-bootstrap";
     NarrativesManagerModule,
     PicasoCdModule,
     PatientIdModule,
-    MedCommModule
+    MedCommModule,
+    BsDropdownModule.forRoot(),
+    ServiceCatalogModule,
+    CareplanTemplatesModule
   ],
   declarations: [
     AppComponent,
