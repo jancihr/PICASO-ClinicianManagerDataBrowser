@@ -6,25 +6,22 @@ import {PatientIdRoutingModule}   from './patient-id-routing.module';
 
 import {FormsModule}   from '@angular/forms';
 import {CommonModule} from '@angular/common';
+import {TypeaheadModule} from "ngx-bootstrap";
 
 
 @NgModule({
-    imports: [
-        PatientIdRoutingModule,
-        ChartsModule,
-        FormsModule,
-        CommonModule
-    ],
-    declarations: [PatientIdComponent]
+  imports: [
+    PatientIdRoutingModule,
+    ChartsModule,
+    FormsModule,
+    TypeaheadModule.forRoot(),
+    CommonModule
+  ],
+  declarations: [PatientIdComponent]
 })
 
 export class PatientIdModule {
 
-    constructor() {
-    }
-
-    select(id) {
-
-
-    }
+  constructor() {
+  }
 }
