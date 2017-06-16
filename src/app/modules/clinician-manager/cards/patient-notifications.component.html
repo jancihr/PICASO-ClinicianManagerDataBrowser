@@ -1,11 +1,13 @@
 <div class="card">
-    <div class="card-header w3-light-blue">
-        <div i18n="Notifications of Changes in Treatment">Notifications of Changes in Treatment</div>
+    <div class="card-header w3-red  w3-center">
+        <div i18n="Notifications of Changes in Treatment"><i class="fa fa-exclamation-circle"></i> Notifications of
+            Changes in Treatment
+        </div>
 
-        <div class="card-actions">
+        <div class="w3-right">
 
             <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
-            <div class="w3-text-gray">loaded: {{progress.total}} bytes</div>
+            <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
         </div>
 
 

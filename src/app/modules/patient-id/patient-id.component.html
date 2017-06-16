@@ -1,24 +1,12 @@
 <div class="card">
     <div class="card-block">
-        <h4 class="card-title">Selected patient info</h4>
+        <h4 class="card-title">Selection of patient</h4>
         <div class="card-text">
             <div *ngIf="data">
-                <dl>
-                    <dt>Patient Display</dt>
-                    <dd>{{ data.patient.display }}</dd>
-                    <dt>Patient id</dt>
-                    <dd>{{ data.patient.UPID }}</dd>
-                </dl>
+                <p><em>Active: </em> {{ data.patient.display }} (<em>PICASO ID:</em> {{ data.patient.UPID }})</p>
             </div>
-        </div>
-    </div>
-</div>
-<div class="card">
-    <div class="card-block">
-        <h4 class="card-title">Select patient</h4>
-        <div class="card-text">
             <div class="form-group">
-                <label for="patient">Select a new patient</label>
+                <label for="patient">Select a new patient by typing her name (type * for all)</label>
                 <input id="patient" type="text" class="form-control" [(ngModel)]="query" (keyup)="filter()">
             </div>
             <div class="container">

@@ -4,10 +4,14 @@ import {IMyOptions, IMyDateRangeModel} from 'mydaterangepicker';
 import {PatientMedicationHistoryComponent} from "./cards/patient-medication-history.component";
 import {PatientCheckHistoryComponent} from "./cards/patient-check-history.component";
 import {PatientDailyAverageObservationsComponent} from "./cards/patient-daily-average-observations.component";
+import {ConfigurationService} from "../../picaso-cd-common/_services/configuration.service";
+import {CdSharedModelService} from "../../picaso-cd-common/_services/cd-shared-model.service";
+import {DataResourceBrowserCardComponent} from "../data-resource-browser/cards/data-resource-browser-card.component";
 
 
 @Component({
-    templateUrl: 'clinician-manager.component.html'
+    templateUrl: 'clinician-manager.component.html',
+    styleUrls: ['clinician-manager.component.css'],
 })
 export class ClinicianManagerComponent implements OnInit {
 
@@ -20,6 +24,9 @@ export class ClinicianManagerComponent implements OnInit {
 
     private model;
 
+  private range = "lastyear"; //show all
+  private zoomAll = true;
+
 
 
     @ViewChild(PatientMedicationHistoryComponent)
@@ -31,10 +38,10 @@ export class ClinicianManagerComponent implements OnInit {
     @ViewChild(PatientDailyAverageObservationsComponent)
     private observationHistoryComponent: PatientDailyAverageObservationsComponent;
 
-    constructor( ) { }
+    constructor(private config: ConfigurationService, private cdSharedModelService: CdSharedModelService) {
+    }
 
     ngOnInit(): void {
-
         this.startDate = new Date();
         this.endDate = new Date();
 
@@ -56,7 +63,62 @@ export class ClinicianManagerComponent implements OnInit {
         };
 
 
-        
+
+    }
+
+    focusLastWeek() {
+
+      this.range = "lastweek";
+      this.zoomAll = false;
+
+        var endDate: Date = new Date();
+        var startDate: Date = new Date();
+
+        startDate.setDate(endDate.getDate() - 7);
+
+        this.notifyDataChange(startDate, endDate);
+
+    }
+
+    focusLastMonth() {
+
+      this.range = "lastmonth";
+      this.zoomAll = false;
+        var endDate: Date = new Date();
+        var startDate: Date = new Date();
+
+        startDate.setDate(endDate.getDate() - 31);
+
+        this.notifyDataChange(startDate, endDate);
+
+    }
+
+    focusLastYear() {
+
+      this.range = "lastyear";
+      this.zoomAll = false;
+        var endDate: Date = new Date();
+        var startDate: Date = new Date();
+
+        startDate.setFullYear(endDate.getFullYear() - 1);
+
+        this.notifyDataChange(startDate, endDate);
+
+    }
+
+    focusAll() {
+
+      this.zoomAll = true;
+        this.medicationComponent.focusVis();
+        this.checkHistoryComponent.focusVisChecks();
+        // TODO this.observationHistoryComponent.refreshRange(all);
+
+    }
+
+    focusRange() {
+
+        this.notifyDataChange(this.model.beginJsDate, this.model.endJsDate);
+
     }
 
     onDateRangeChanged(event: IMyDateRangeModel) {
@@ -64,9 +126,17 @@ export class ClinicianManagerComponent implements OnInit {
         //console.log('onDateRangeChanged(): Formatted: ', event.formatted);
         //console.log('onDateRangeChanged(): BeginEpoc timestamp: ', event.beginEpoc, ' - endEpoc timestamp: ', event.endEpoc);
 
-        this.medicationComponent.refreshRange(event.beginJsDate, event.endJsDate);
-        this.checkHistoryComponent.refreshRange(event.beginJsDate, event.endJsDate);
-        this.observationHistoryComponent.refreshRange(event.beginJsDate, event.endJsDate);
+        this.notifyDataChange(event.beginJsDate, event.endJsDate);
 
     }
+
+
+    notifyDataChange(startDate: Date, endDate: Date) {
+        this.model.beginDate = startDate;
+        this.model.endDate = endDate;
+        this.medicationComponent.refreshRange(startDate, endDate);
+        this.checkHistoryComponent.refreshRange(startDate, endDate);
+        this.observationHistoryComponent.refreshRange(startDate, endDate);
+    }
+
 }

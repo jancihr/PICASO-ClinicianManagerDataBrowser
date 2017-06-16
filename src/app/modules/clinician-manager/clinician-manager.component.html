@@ -1,109 +1,219 @@
 <div class="animated fadeIn">
 
 
+  <div>
 
 
+    <div class="row">
+      <div class="w3-tiny w3-right">Below you can see different cards containing several available
+        patient data from all available sources for selected dates. The data is not complete as it
+        contains only values from available and accessible sources based on patient privacy
+        settings.
+      </div>
 
-    <div>
+      <h3 i18n="Patient Data Viewer"><i class="fa fa-calendar-check-o"></i> Patient data viewer</h3>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+        <patient-overview>
+        </patient-overview>
+      </div>
+
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+
+        <patient-notifications>
+        </patient-notifications>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+        <patient-diseases>
+        </patient-diseases>
+      </div>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+        <patient-imaging>
+        </patient-imaging>
+      </div>
+    </div>
 
 
-        <div class="row">
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <patient-clinicians-history>
+        </patient-clinicians-history>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class="card">
+          <div class="card-header w3-black w3-center">
+            <span i18n="Patient Events"><i class="fa fa-calendar-times-o"></i></span> Patient Events
+
+
+            <div class="card-actions">
+
+            </div>
+
+          </div>
+          <div class="card-block">
+
+            <div class="row w3-center">
+
+              <!--
+                                         <my-date-range-picker [options]="myDateRangePickerOptions"
+                                                                (dateRangeChanged)="onDateRangeChanged($event)"
+                                                                [selDateRange]="model">
+                                          </my-date-range-picker>
+
+
+                                                                   <button type="button"
+                                                                           class="btn btn-default"
+                                                                           (click)="focusRange()"
+                                                                           i18n="Selected range">
+                                                                       Selected range
+                                                                   </button>
+                                                                    -->
+
+
+            </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <div class="card">
-                    <div class="card-header w3-blue">
-                        <h3 i18n="Patient Data Viewer"><i class="fa fa-calendar-check-o"></i> Patient Data Viewer</h3>
+              <div class=" w3-center">
+                <button type="button"
+                        class="btn btn-default {{zoomAll? 'btn-outline-success' : ''}}"
+                        (click)="focusAll()"
+                        i18n="View all data">
+                  View all
+                </button>
 
-                        Choose data range to be shown:
+                <button type="button"
+                        class="btn btn-default {{range==='lastweek' && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLastWeek()"
+                        i18n="Last week">
+                  Last week
+                </button>
 
-                        <div class="w3-right">
-                            <my-date-range-picker [options]="myDateRangePickerOptions"
-                                                  (dateRangeChanged)="onDateRangeChanged($event)"
-                                                  [selDateRange]="model">
-                            </my-date-range-picker>
-                        </div>
+                <button type="button"
+                        class="btn btn-default {{range==='lastmonth' && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLastMonth()"
+                        i18n="Last month">
+                  Last month
+                </button>
 
-                        <div class="card-actions">
-                        </div>
-                    </div>
-
-                    <div class="card-block">
-
-                        <div class="w3-tiny w3-right">Below you can see different cards containing several available
-                            patient data from all available sources for selected dates. The data is not complete as it
-                            contains only values from available and accessible sources based on patient privacy
-                            settings.
-                        </div>
-                    </div>
-
-
-                </div>
+                <button type="button"
+                        class="btn btn-default {{range==='lastyear' && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLastYear()"
+                        i18n="Last year">
+                  Last year
+                </button>
+              </div>
             </div>
-
-
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-
-                <patient-overview>
-                </patient-overview>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-
-                <patient-notifications>
-                </patient-notifications>
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
-
-                <patient-diseases>
-                </patient-diseases>
-
-
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
-
-                <patient-imaging>
-
-                </patient-imaging>
-
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-
-                <patient-clinicians-history>
-                </patient-clinicians-history>
-
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <patient-checks>
                 </patient-checks>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <div class=" w3-center">
+                <button type="button"
+                        class="btn btn-default {{zoomAll? 'btn-outline-success' : ''}}"
+                        (click)="focusAll()"
+                        i18n="View all data">
+                  View all
+                </button>
 
+                <button type="button"
+                        class="btn btn-default {{range==='lastweek'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLastWeek()"
+                        i18n="Last week">
+                  Last week
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='lastmonth'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLastMonth()"
+                        i18n="Last month">
+                  Last month
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='lastyear'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLastYear()"
+                        i18n="Last year">
+                  Last year
+                </button>
+              </div>
             </div>
 
-
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <medication-history>
                 </medication-history>
-
+              </div>
             </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-
-                <patient-daily-average-observations>
-                </patient-daily-average-observations>
-
+          </div>
+          <div class="card-footer w3-white">
+            <div class="w3-tiny w3-right">Click inside the diagram area to enable mouse interactions (zoom,
+              scroll left/right, click for detail). Click chosen event to view it's detail in a pop up
+              window.
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div class=" w3-center">
+          <span i18n="Patient Events"><i class="fa fa-calendar-times-o"></i></span>
 
+          <button type="button"
+                  class="btn btn-default {{range==='lastweek'? 'btn-outline-success' : ''}}"
+                  (click)="focusLastWeek()"
+                  i18n="Last week">
+            Last week
+          </button>
 
-            <patient-morisky-results>
-            </patient-morisky-results>
+          <button type="button"
+                  class="btn btn-default {{range==='lastmonth'? 'btn-outline-success' : ''}}"
+                  (click)="focusLastMonth()"
+                  i18n="Last month">
+            Last month
+          </button>
+
+          <button type="button"
+                  class="btn btn-default {{range==='lastyear'? 'btn-outline-success' : ''}}"
+                  (click)="focusLastYear()"
+                  i18n="Last year">
+            Last year
+          </button>
 
 
         </div>
+      </div>
 
     </div>
+
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <patient-daily-average-observations>
+        </patient-daily-average-observations>
+      </div>
+    </div>
+
+    <div class="row">
+      <patient-morisky-results>
+      </patient-morisky-results>
+    </div>
+
+
+  </div>
+
+
 </div>
+
