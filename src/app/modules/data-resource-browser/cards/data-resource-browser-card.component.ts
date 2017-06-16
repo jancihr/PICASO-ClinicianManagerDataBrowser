@@ -3,6 +3,7 @@ import {Component, OnInit, OnDestroy} from '@angular/core';
 import {Router /*Routes, RouterModule, RouterLink,*/} from '@angular/router';
 import {
     VisNodes,
+    VisNode,
     VisEdges,
     VisNetworkService,
     VisNetworkData,
@@ -28,6 +29,9 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
     public visNetwork: string = 'networkId1';
     public visNetworkData: PicasoNetworkData;
     public visNetworkOptions: VisNetworkOptions;
+    private coreLevel: number = 2;
+    private R: number = 165;
+    private angleBegin: number = 2/5*(Math.PI/2);
     public router: Router
     // public subGraphsAsArray = new Array({
     //     subGraphId: 'id',
@@ -796,28 +800,120 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
 
 // Reflect in Visual network - i.e. Create or Remove Visual Network representation (and thus it is (or NOT) displayed after this operation)
     private reflectToVisNetwork(subGraphName: String, redrawGraph: boolean) {
-        if (subGraphName != 'patient' && redrawGraph)
 
-        {
-            this.coreGraphReset()
-            this.displayLast()
-
-        }
-        //todo experiment - displaying all nodes after any action to withdraw the dancing/caused by physics
+        //done experiment - displaying all nodes after any action to withdraw the dancing/caused by physics
         let subGraphNodesArray: GraphNodesDefinition[];
-        let index: any;
+        let index: number;
+        let subGraphInfo: GraphSetUp;
         //this.nodesAsArray.sort()
         subGraphNodesArray = this.nodesAsArray.filter(item => item.subGraphId === subGraphName && item.isDisplayed === true)
-        // console.log('dlzka 1:', subGraphNodesArray.length)
+         //console.log('dlzka 1:', subGraphNodesArray.length)
         if (subGraphNodesArray.length > 0 ) {
             index = this.subGraphsAsArray.findIndex(item => item.subGraphId === subGraphName)
-            console.log('A  ' + this.subGraphsAsArray[index].isDisplayed)
-            if ((this.subGraphsAsArray[index].isDisplayed == false || subGraphName === 'patient')) {
-                //
-                this.subGraphsAsArray[index].isDisplayed = true // so show the subgraph .. create Vis network
-                for (var i = 0; i < subGraphNodesArray.length; i++) {
+            subGraphInfo = this.subGraphsAsArray[index];
+            //console.log('A  ' + this.subGraphsAsArray[index])
+            if (subGraphInfo.level >= this.coreLevel && redrawGraph)
+            {
+                this.coreGraphReset()
+                this.displayLast()
+            }
+            if ((subGraphInfo.isDisplayed == false || subGraphInfo.level < this.coreLevel)){ //subGraphName === 'patient' || subGraphName === 'core' )) {
+                this.subGraphsAsArray[index].isDisplayed = true // so show the subgraph .. create Vis network . .and remember the stare
+                //console.log('Unsorted: ',subGraphNodesArray)
+                subGraphNodesArray.sort((left, right): number => {
+                    if(left.label > right.label) return -1;
+                    if(left.label < right.label) return 1;
+                    return 0;
+                });
+                //console.log('Sorted: ',subGraphNodesArray)
+                //number of nodes to be displayed
+                let n: number = 0;
+                n = subGraphNodesArray.length;
+               // console.log('lengthe: ', n)
+                //angles and  x, y
+                let x, y, xParOfPar, yParOfPar, angleIteration, angleBegin: number;
+
+                xParOfPar = x = 0;
+                yParOfPar = y = 0;
+                angleIteration = 0;
+                angleBegin = 0;
+
+                let parrentNode: GraphNodesDefinition;
+              //  console.log('Level: ', subGraphInfo.level)
+
+                if(subGraphInfo.level > 0) {
+
+                    let parGraph : string = subGraphNodesArray[0].subGraphId == 'core' ? subGraphNodesArray[0].parrentGraph : subGraphNodesArray[0].subGraphId
+                   // console.log('trav 1: ', parGraph)
+
+                    let nodeVN: VisNode  = this.visNetworkData.nodes.getById(parGraph)
+                   // console.log('node  :   ', nodeVN)
+
+                    parrentNode = this.nodesAsArray.find(item => item.id === parGraph)
+                    if(subGraphInfo.level > 1) {
+                        let parrentOfParrentNode: GraphNodesDefinition;
+                        let parGraph : string = parrentNode.subGraphId == 'core' ? parrentNode.parrentGraph : parrentNode.subGraphId
+
+                     //   console.log('trav 2: ', parGraph)
+                        parrentOfParrentNode = this.nodesAsArray.find(item => item.id === parGraph)
+                        xParOfPar = parrentOfParrentNode.x == -0 ? 0 : parrentOfParrentNode.x
+                        yParOfPar = parrentOfParrentNode.y == -0 ? 0 : parrentOfParrentNode.y
+                    }
+                }
+                if(subGraphInfo.level === 1 ){ //level === 0 takes initial x and y
+                    angleIteration = 2*Math.PI/n//(n==1 ? 1 : n-1);
+                    angleBegin = this.angleBegin;
+                }
+                if(subGraphInfo.level > 1) {
+                    // a bit less than 1/2 of Circle around [X root node, Y root node] will be evenly/iteratively used
+                    angleIteration = Math.PI/(4/3*(n==1 ? 1 : n-1));
+                    // find azimut of parent node
+                    let parrentX, parrentY: number;
+                    parrentX = parrentNode.x == -0 ? 0 : parrentNode.x;
+                    parrentY = parrentNode.y == -0 ? 0 : parrentNode.y
+
+                    let R: number
+                    R = Math.sqrt(Math.pow((parrentX-xParOfPar),2) + Math.pow((parrentY-yParOfPar),2))
+                    //console.log(R)
+
+                    angleBegin = Math.acos((parrentX - xParOfPar)/R) - Math.PI/2 + Math.PI/(3*2);
+                    if((parrentY - yParOfPar) < 0)
+                    {
+                        if((parrentX - xParOfPar) < 0) {
+                            angleBegin = angleBegin + 1/2 * Math.PI;
+                        }
+                        if((parrentX - xParOfPar) > 0){
+                            angleBegin = angleBegin - 1/6 * Math.PI;
+                        }
+
+                    }
+
+                   // console.log('angleIter:', 180/Math.PI*angleIteration , 'angle begin:', 180/Math.PI*angleBegin, 'par id: ',parrentNode.id,' - parent x: ', parrentX, 'par y: ',parrentY, 'parPar x:', xParOfPar,'parPar y:',yParOfPar, 'Atan: ', 180/Math.PI*Math.atan((parrentY - yParOfPar)/(parrentX - xParOfPar)))
+
+                }
+                for (var i = 0; i < n; i++) {
                     //console.log('B')
                     if (subGraphNodesArray[i]) {
+                        //todo calculation of position -tuning
+                        if(subGraphInfo.level === 1) {
+                            x = Math.cos(angleBegin + i*angleIteration)*this.R  //Root (level = 0) has initial [0. 0]
+                            y =  Math.sin(angleBegin + i*angleIteration)*this.R//the whole circle around [0, 0] position will be used
+                        }
+                        if(subGraphInfo.level > 1) {
+                            x = Math.cos(angleBegin + i*angleIteration)*this.R + parrentNode.x;
+                            y =  Math.sin(angleBegin + i*angleIteration)*this.R  + parrentNode.y ;
+
+                            //console.log('x-par info: ', parrentNode)
+
+                        }
+
+                       // console.log(' x: ',x, ' y: ',y,  ' angle:', 180/Math.PI*(angleBegin +i*angleIteration),' id: ', subGraphNodesArray[i].id, ' label ', subGraphNodesArray[i].label)
+                        //console.log('id: ', subGraphNodesArray[i].id, 'title: ', subGraphNodesArray[i].title)
+                        //TODO - not x and y do not correspond to what is observable
+                        if(x != NaN && y != NaN) {
+                            subGraphNodesArray[i].x = x
+                            subGraphNodesArray[i].y = y
+                        }
                         //Nodes
                         this.visNetworkData.nodes.add({
                             id: subGraphNodesArray[i].id,
@@ -827,28 +923,27 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                             x: subGraphNodesArray[i].x,
                             y: subGraphNodesArray[i].y
                         });
-                        console.log(subGraphNodesArray[i].x)
-                        console.log(subGraphNodesArray[i].y)
+                        //console.log(subGraphNodesArray[i].x)
+                       // console.log(subGraphNodesArray[i].y)
                         if (subGraphNodesArray[i].parrentGraph != '') {
                             //EDGES
                             let edgeId = subGraphNodesArray[i].subGraphId + '-' + i.toString();
-                            //console.log(edgeId) console.log(subGraphNodesArray[i].id) console.log(subGraphNodesArray[i].subGraphId) console.log(subGraphNodesArray[i].parrentGraph)
+                         //   console.log(edgeId) //console.log(subGraphNodesArray[i].id) console.log(subGraphNodesArray[i].subGraphId) console.log(subGraphNodesArray[i].parrentGraph)
                             this.visNetworkData.edges.add({
                                 id: edgeId,
                                 from: subGraphNodesArray[i].id,
-                                to: subGraphNodesArray[i].subGraphId
+                                to: subGraphNodesArray[i].subGraphId == 'core' ? subGraphNodesArray[i].parrentGraph : subGraphNodesArray[i].subGraphId
                             });
                         }
                     }
                 }
             }
-
             else {
                 for (var i = 0; i < this.subGraphsAsArray.length; i++) {
                     //    // for all displayed subgraphs within current subgraph
                     if (this.subGraphsAsArray[i].isDisplayed && this.subGraphsAsArray[i].parrentGraph == subGraphName) {
                         this.reflectToVisNetwork(this.subGraphsAsArray[i].subGraphId, false)
-                        //console.log('C 1')
+                      //  console.log('C 1')
                     }
                 }
                 //console.log('C 0')
@@ -860,7 +955,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                         if (subGraphNodesArray[i].parrentGraph != '') {
                             //EDGES
                             let edgeId = subGraphNodesArray[i].subGraphId + '-' + i.toString();
-                            //console.log(edgeId)
+                           // console.log(edgeId)
                             this.visNetworkData.edges.remove(edgeId)
                         }
                         this.allDisplayed = false
@@ -868,7 +963,9 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                 }
             }
         }
-        if (index != null && this.subGraphsAsArray[index].subGraphId != 'patient') { //patient-core is handled differently since it is displayed allways
+        if (index != null && this.subGraphsAsArray[index].parrentGraph != "") { //patient-core is handled differently since it is displayed allways
+            // remeber the state of displayed subgraphs
+          //  console.log('remembering');
             this.updateLastDispalayedSubGraph(index)
         }
     }
@@ -908,10 +1005,12 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                 title: 'blaaa',
                 width: 1,
                 shadow: shadowOn,
-               // smooth: true,
+                //smooth: true,
             },
-            "physics": {
-                "minVelocity": 0.85
+            physics:
+            {
+
+                "minVelocity": 1.9
             },
 
             /*    physics: {
@@ -1297,7 +1396,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         if (subGraphNodesArray.length > 0) {
             let index = this.subGraphsAsArray.findIndex(item => item.subGraphId === subGraphName)
             if (this.subGraphsAsArray[index].isDisplayed == true) {
-                this.subGraphsAsArray[index].isDisplayed = false // so collapse the subgraph
+                this.subGraphsAsArray[index].isDisplayed = false // so collapse/hide the subgraph
                 for (var i = 0; i < subGraphNodesArray.length; i++) {
                     if (subGraphNodesArray[i]) {
                         //Nodes
@@ -1346,11 +1445,11 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         else{
 
         }
-       // console.log('2 dlzka: ', this.subGraphsAsArray.length)
+        //console.log('2 dlzka: ', this.subGraphsAsArray.length)
         for (var i = 0; i < this.subGraphsAsArray.length; i++) {
             //console.log('2.1 last: ',this.subGraphsAsArray[i].subGraphId )
             //console.log('2.2 last: ',this.subGraphsAsArray[i].isDisplayed)
-            if (this.subGraphsAsArray[i].subGraphId != 'patient' && this.subGraphsAsArray[i].isDisplayed) {
+            if (this.subGraphsAsArray[i].level >= this.coreLevel && this.subGraphsAsArray[i].isDisplayed) { // level 0, 1 are core displayed allways
                 //console.log('3 last: ',this.subGraphsAsArray[i].subGraphId )
                 this.subGraphsAsArray[i].isDisplayed = false //otherwise the mechanism takes it as really dislayed ...
                 this.reflectToVisNetwork(this.subGraphsAsArray[i].subGraphId, false)
@@ -1368,7 +1467,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         this.collapseAll(); // since the building of overall graph starts from 1st node the oscilations are not displayed (desired state)
         //display all subgraphs
         for (var i = 0; i < this.subGraphsAsArray.length; i++) {
-            if (this.subGraphsAsArray[i].subGraphId && this.subGraphsAsArray[i].subGraphId != 'patient') {
+            if (this.subGraphsAsArray[i].subGraphId && this.subGraphsAsArray[i].level >= this.coreLevel) {
                 this.reflectToVisNetwork(this.subGraphsAsArray[i].subGraphId, false)
             }
         }
@@ -1382,12 +1481,25 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         //this.visNetworkService.
         let nodes = new VisNodes();
         let edges = new VisEdges();
+        let subGraphsOnLevel: GraphSetUp[];
 
         this.visNetworkData = {
             nodes: nodes,
             edges: edges
         }
-        this.reflectToVisNetwork('patient', false)
+        let index: number;
+        for(var i = 0; i < this.coreLevel; i++ ){
+            subGraphsOnLevel = this.subGraphsAsArray.filter(item => item.level === i)
+            for (var j = 0; j < subGraphsOnLevel.length; j++){
+                this.reflectToVisNetwork(subGraphsOnLevel[j].subGraphId, false)
+            }
+
+            //this.reflectToVisNetwork(this.subGraphsAsArray[index].subGraphId, false)
+            console.log('core subgraphs',subGraphsOnLevel)
+        }
+
+        // this.reflectToVisNetwork('patient', false)
+        // this.reflectToVisNetwork('core', false)
         this.coreDisplayed = true
     }
 
@@ -1402,7 +1514,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         let anyCollapsingDone = false
         for (var i = 0; i < this.subGraphsAsArray.length; i++) {
             //all subgrpahs displayed except core (is is handeled differently as it is displayed allways)
-            if (this.subGraphsAsArray[i].subGraphId != 'patient' && this.subGraphsAsArray[i].isDisplayed) {
+            if (this.subGraphsAsArray[i].level >= this.coreLevel && this.subGraphsAsArray[i].isDisplayed) {
                 this.reflectToVisNetwork(this.subGraphsAsArray[i].subGraphId, false)
                 anyCollapsingDone = true
             }
@@ -1419,7 +1531,17 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
     }
 
     private coreCollapse() {
-        this.removeVisNetwork('patient')
+        let subGraphsOnLevel: GraphSetUp[];
+        let index: number;
+        for(var i = 0; i < this.coreLevel; i++ ){
+            subGraphsOnLevel = this.subGraphsAsArray.filter(item => item.level === i)
+            for (var j = 0; j < subGraphsOnLevel.length; j++){
+                this.removeVisNetwork(subGraphsOnLevel[j].subGraphId)
+            }
+           // console.log('core subgraph',this.subGraphsAsArray[index].subGraphId)
+        }
+      //  this.removeVisNetwork('core')
+       // this.removeVisNetwork('patient')
         this.coreDisplayed = false
     }
 
@@ -1464,43 +1586,49 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
             .subscribe((eventData: any[]) => {
            // console.log('event: ', eventData[1])
                 if (eventData[0] === this.visNetwork) {
-                    if (!(eventData[1].nodes == "patient"
-                        || eventData[1].nodes == "")) {
-                        let nodeInfo: GraphNodesDefinition[];
-                        let nodeNameString = eventData[1].nodes.toString();
-                        nodeInfo = this.nodesAsArray.filter(item => item.id === nodeNameString )
-                        if(!nodeInfo[0].isLeaf) {
+                    // need infos about node - default it is LEaf or not clivcked to the node happend
+                    let IsLeafNodeOrCLickedOut: boolean = true; //
+                    let nodeNameString: string = eventData[1].nodes.toString();
+                    if (eventData[1].nodes != "") {
+                        let nodeInfo: GraphNodesDefinition;
+                        nodeInfo = this.nodesAsArray.find(item => item.id === nodeNameString)
+                        if (nodeInfo) {
+                            IsLeafNodeOrCLickedOut = nodeInfo.isLeaf //
+                        }
+                    }
+                    if(IsLeafNodeOrCLickedOut) {
+                        //is leaf or clicked next to the network ("" event)
+                        this.visNetworkService.fit(this.visNetwork)
+                    }
+                    else{
+                        // expand or collapse of subGraph is considerable
+                        let subGraphInfo: GraphSetUp;
+                        subGraphInfo = this.subGraphsAsArray.find(item => item.subGraphId === nodeNameString )
+                        if(subGraphInfo.level >= this.coreLevel) {
+                            //within core graph do not reflect clicks, as collapse means you are below core
                             this.reflectToVisNetwork(nodeNameString, true)
                         }
                     }
-                    console.log(eventData[1].nodes);
-                    if (eventData[1].nodes == "patient"
-                        || eventData[1].nodes == ""
-                        || eventData[1].nodes == "lab"
-                        || eventData[1].nodes == "screening"
-                        || eventData[1].nodes == "cliMeasurements"
-                        || eventData[1].nodes == "image"
-                        || eventData[1].nodes == "psychoHealth"
-                        || eventData[1].nodes == "language"
-                        || eventData[1].nodes == "attention"
-                        || eventData[1].nodes == "memory"
-                        || eventData[1].nodes == "psychoTest"
-                        || eventData[1].nodes == "questionnaires"
-                        || eventData[1].nodes == "plan"
-                        || eventData[1].nodes == "carers"
-                        || eventData[1].nodes == "home"
-                    ) {
-                        this.visNetworkService.fit(this.visNetwork)
-                    }
                 }
+                    console.log(eventData[1].nodes, 'one: ', eventData[1]);
+
             });
         // ********** DOUBLE CLICK ********* //
         // open your console/dev tools to see the click params
         this.visNetworkService.doubleClick
             .subscribe((eventData: any[]) => {
                 if (eventData[0] === this.visNetwork) {
-                    //DC Node Patient
-                    if (eventData[1].nodes == "patient") {
+                    //DC Node ) level -> thus A Root node
+                    let parrentGraph: string = "";
+                    if (eventData[1].nodes != ""){
+                        let nodeNameString: string = eventData[1].nodes.toString();
+                        let nodeInfo: GraphNodesDefinition;
+                        nodeInfo = this.nodesAsArray.find(item => item.id === nodeNameString)
+                        if(nodeInfo) {
+                            parrentGraph = nodeInfo.parrentGraph
+                        }
+                    }
+                    if (parrentGraph === "" && eventData[1].nodes == 'patient') { //thus DoubleClicked on the level = 0 node / a Root node
                         // waits(10)
                         if (!this.allDisplayed) {
                             this.displayAll();
@@ -1523,18 +1651,18 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                         };
                         this.visNetworkData.nodes.add({
                             id: 'cardiologist1',
-                            label: 'Cardiologist',
+                            label: 'Cardiologist\n' + '15.02.2015',
                             group: 'GroupCarer'
                         });
                         this.visNetworkData.nodes.add({
                             id: 'medicationPlan1',
-                            label: 'Meedication\n plan' + '22.01.2017',
+                            label: 'Meedication plan\n' + '15.02.2015',
                             group: 'MedicationPlan'
                         });
                         this.visNetworkData.edges.add({from: 'medicationPlan1', to: 'cardiologist1', id: 'card01'});
                         this.visNetworkData.nodes.add({
                             id: 'appointment1',
-                            label: 'Appointment:\n Discussion on the results\n' + '22.01.2017',
+                            label: 'Appointment:\n Discussion on the results\n' + '15.02.2015',
                             group: 'Appointment'
                         });
                         this.visNetworkData.edges.add({from: 'appointment1', to: 'cardiologist1', id: 'card02'});
@@ -1551,18 +1679,18 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                         };
                         this.visNetworkData.nodes.add({
                             id: 'rheumatologist1',
-                            label: 'Rheumatologists',
+                            label: 'Rheumatologists\n' + '31.05.2017',
                             group: 'GroupCarer'
                         });
                         this.visNetworkData.nodes.add({
                             id: 'appointment1',
-                            label: 'Appointment:\n Discussion on the results\n' + '27.02.2017',
+                            label: 'Appointment:\n Discussion on the results\n' + '31.05.2017',
                             group: 'Appointment'
                         });
                         this.visNetworkData.edges.add({from: 'appointment1', to: 'rheumatologist1', id: 'rhe01'});
                         this.visNetworkData.nodes.add({
                             id: 'medicationPlan1',
-                            label: 'Meedication\n plan' + '27.02.2017',
+                            label: 'Meedication plan\n' + '27.02.2017',
                             group: 'MedicationPlan'
                         });
                         this.visNetworkData.edges.add({from: 'medicationPlan1', to: 'rheumatologist1', id: 'rhe02'});
@@ -1574,7 +1702,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                         this.visNetworkData.edges.add({from: 'activityPlan1', to: 'rheumatologist1', id: 'rhe03'});
                         this.visNetworkData.nodes.add({
                             id: 'picture1',
-                            label: 'Image' + '12.10.2016',
+                            label: 'Image\n' + '12.10.2016',
                             title: 'Picture or Scanned document',
                             group: 'GroupImage'
                         });
@@ -1592,6 +1720,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                         this.visNetworkData.edges.remove('rhe02');
                         this.visNetworkData.edges.remove('rhe03');
                         this.visNetworkData.edges.remove('rhe04');
+                        this.coreDisplayed = false
                         this.displayLast();
                         //this.visNetworkService.fit(this.visNetwork);
                     }
@@ -1602,6 +1731,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                         this.visNetworkData.nodes.remove('cardiologist1');
                         this.visNetworkData.edges.remove('card01');
                         this.visNetworkData.edges.remove('card02');
+                        this.coreDisplayed = false
                         this.displayLast();
                     }
                     //DC Navi towards CM (from HM)
