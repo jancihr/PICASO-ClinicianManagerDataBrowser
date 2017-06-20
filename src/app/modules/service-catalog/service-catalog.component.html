@@ -1,0 +1,26 @@
+<h4>Service Catalog</h4>
+
+<tabset *ngIf="services">
+  <tab heading='Table View'>
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>Service ID</th>
+          <th>Display</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let service of services">
+          <td>{{service.category}}</td>
+          <td>{{service.display}}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </tab>
+  <tab heading='JSON View'>
+    <pre>{{servicesJson}}</pre>
+  </tab>
+
+</tabset>
