@@ -6,9 +6,7 @@
 
     <div class="row">
       <div class="w3-tiny w3-right">Below you can see different cards containing several available
-        patient data from all available sources for selected dates. The data is not complete as it
-        contains only values from available and accessible sources based on patient privacy
-        settings.
+        patient data from all available sources for selected dates.
       </div>
 
       <h3 i18n="Patient Data Viewer"><i class="fa fa-calendar-check-o"></i> Patient data viewer</h3>
@@ -82,7 +80,7 @@
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-              <div class=" w3-center">
+              <!-- <div class=" w3-center">
                 <button type="button"
                         class="btn btn-default {{zoomAll? 'btn-outline-success' : ''}}"
                         (click)="focusAll()"
@@ -110,12 +108,12 @@
                         i18n="Last year">
                   Last year
                 </button>
-              </div>
+              </div> -->
             </div>
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <patient-checks>
-                </patient-checks>
+                <patient-treatments>
+                </patient-treatments>
               </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">

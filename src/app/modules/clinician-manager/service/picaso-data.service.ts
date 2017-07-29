@@ -10,7 +10,7 @@ import {PatientObservationGroup} from "../model/patient-observation-group";
 import {PatientMedication} from "../model/patient-medication";
 import {PatientDisease} from "../model/patient-disease";
 import {PatientClinician} from "../model/patient-clinician";
-import {PatientCheck} from "../model/patient-check";
+import {PatientTreatment} from "../model/patient-treatment";
 import {PatientFFbHResult} from "../model/patient-ffbh-result";
 import {PatientRADAIResult} from "../model/patient-RADAI-result";
 import {PatientImage} from "../model/patient-image";
@@ -30,7 +30,7 @@ export class PicasoDataService {
     //private patientMedicationDataServiceURL = 'http://147.232.202.101:9004/medications';
     //private patientCliniciansServiceURL = 'http://147.232.202.101:9004/clinicians';
     //private patientDiseasesServiceURL = 'http://147.232.202.101:9004/diseases';
-    //private patientChecksDataServiceURL = 'http://147.232.202.101:9004/checks';
+  //private patientChecksDataServiceURL = 'http://147.232.202.101:9004/treatments';
     //private patientMoriskyDataServiceURL = 'http://147.232.202.101:9004/morisky';
     //private patientFFbHDataServiceURL = 'http://147.232.202.101:9004/ffbh';
     //private patientRADAIServiceURL = 'http://147.232.202.101:9004/radai';
@@ -171,7 +171,7 @@ export class PicasoDataService {
             ;
     }
 
-    getCheckHistory(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientCheck[]> {
+  getTreatmentsHistory(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientTreatment[]> {
 
         return this.http.withDownloadProgressListener(progress => {
             console.log(`Loading ${progress.percentage}%`);
@@ -264,7 +264,7 @@ export class PicasoDataService {
     }
 
     private  extractDataChecks(res: Response) {
-        return res.json().checks;
+      return res.json().treatments;
     }
 
     private  extractDataDiseases(res: Response) {

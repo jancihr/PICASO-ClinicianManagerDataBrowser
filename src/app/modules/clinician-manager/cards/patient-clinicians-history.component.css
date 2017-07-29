@@ -1,11 +1,29 @@
 .card {
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 .card-footer {
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 .card-header {
-    border-radius: 10px;
+  border-radius: 10px;
+}
+
+
+
+.card-footer {
+  padding: 0.25rem;
+}
+
+.card-block {
+  padding: 0.25rem;
+}
+
+.card-header {
+  padding: 0.25rem;
+}
+
+.card {
+  margin-bottom: 0.35rem;
 }

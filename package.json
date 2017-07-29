@@ -6,12 +6,12 @@
     "name": "PICASO Project",
     "email": ""
   },
-  "url": "http://coreui.io",
-  "homepage": "https://imergo.com/solutions/opensource.html",
+  "url": "",
+  "homepage": "",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/webcc/rogue-board.git"
+    "url": ""
   },
   "readmeFilename": "README.md",
   "angular-cli": {},

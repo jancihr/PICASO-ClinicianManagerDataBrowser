@@ -109,10 +109,10 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         useInteractiveGuideline: true,
 
         x: function (d) {
-          return new Date(d.x);
+          return new Date(d.date);
         },
         y: function (d) {
-          return d.y === null ? null : new Number(d.y);
+          return d.value === null ? null : new Number(d.value);
         },
 
 
@@ -129,14 +129,20 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         interactiveLayer: {
           tooltip: {
             contentGenerator: function (d) {
+
               var html = d.value;
 
               d.series.forEach(function (elem) {
                 html += "<div style='color:" + elem.color + "'>"
-                  + elem.key + "</div> : <b>" + (elem.value === null ? "Missing value" : elem.value) + "</b>";
+                  + elem.key + "</div> : <b>" + (elem.value === null ? "Missing value" : elem.value )
+                  + (elem.data.source ? (" (source: " + elem.data.source + ")") : "") + "</b>";
               });
 
+              //console.log(JSON.stringify(d));
+
               return html;
+
+
             }
           }
         },
@@ -214,7 +220,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
           //newValues.push({x: i++, y: i});
 
-          newGraphValues.push({"x": new Date(observation.date).getTime(), "y": observation.value})
+          newGraphValues.push(observation);//{"x": new Date(observation.date).getTime(), "y": observation.value})
 
           //if (observation.value === null) console.log("found null");
 

@@ -2,20 +2,20 @@ import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
 
 import {VisTimelineService, VisTimelineItems, VisTimelineOptions} from 'ng2-vis/ng2-vis';
 import {PicasoDataService} from "../service/picaso-data.service";
-import {PatientCheck} from "../model/patient-check";
+import {PatientTreatment} from "../model/patient-treatment";
 import {ModalComponent} from "ng2-bs3-modal/components/modal";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 
 @Component({
-    selector: 'patient-checks',
-    template: require('./patient-check-history.component.html'),
+  selector: 'patient-treatments',
+  template: require('./patient-treatment-history.component.html'),
     styles: [
-        require('./patient-check-history.component.css')
+      require('./patient-treatment-history.component.css')
     ],
     providers: [PicasoDataService, VisTimelineService]
 })
 
-export class PatientCheckHistoryComponent implements OnInit, OnDestroy {
+export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
     @ViewChild('myCheckModal')
     myModal: ModalComponent;
 
@@ -26,7 +26,7 @@ export class PatientCheckHistoryComponent implements OnInit, OnDestroy {
     openModal() {
         for (var check of this.checks) {
             if (check.id === this.selectedId) {
-                this.selectedCheck = check;
+              this.selectedTreatment = check;
                 break
             }
         }
@@ -45,16 +45,16 @@ export class PatientCheckHistoryComponent implements OnInit, OnDestroy {
 
     selectedItem: string;
     selectedId: string;
-    selectedCheck: PatientCheck;
+  selectedTreatment: PatientTreatment;
 
     listOfItems: string[];
 
     errorMessage: string;
-    checks: PatientCheck[];
+  checks: PatientTreatment[];
 
-    public visTimelineChecks: string = 'visTimelineGraph';
-    public visTimelineItemsChecks: VisTimelineItems;
-    public visTimelineChecksOptions: VisTimelineOptions;
+  public visTimelineTreatments: string = 'visTimelineGraph';
+  public visTimelineItemsTreatments: VisTimelineItems;
+  public visTimelineTreatmentsOptions: VisTimelineOptions;
 
     public constructor(private visTimelineService: VisTimelineService,
                        private picasoDataService: PicasoDataService) {
@@ -64,12 +64,12 @@ export class PatientCheckHistoryComponent implements OnInit, OnDestroy {
         // console.log('timeline initialized');
 
         // now we can use the service to register on events
-        this.visTimelineService.on(this.visTimelineChecks, 'click');
+      this.visTimelineService.on(this.visTimelineTreatments, 'click');
 
 
         this.visTimelineService.click
             .subscribe((eventData: any[]) => {
-                if (eventData[0] === this.visTimelineChecks) {
+              if (eventData[0] === this.visTimelineTreatments) {
 
 
 
@@ -106,10 +106,10 @@ export class PatientCheckHistoryComponent implements OnInit, OnDestroy {
         this.getChecks();
 
 
-        this.visTimelineItemsChecks = new VisTimelineItems([]);
+      this.visTimelineItemsTreatments = new VisTimelineItems([]);
 
 
-        this.visTimelineChecksOptions = {
+      this.visTimelineTreatmentsOptions = {
             selectable: true,
             showCurrentTime: true,
             //zoomMax: 61556926000, //year
@@ -121,32 +121,32 @@ export class PatientCheckHistoryComponent implements OnInit, OnDestroy {
     }
 
 
-    setChecks(checks: PatientCheck[]): void {
+  setChecks(checks: PatientTreatment[]): void {
 
 
         this.checks = checks;
 
-        this.visTimelineItemsChecks = new VisTimelineItems([]);
+    this.visTimelineItemsTreatments = new VisTimelineItems([]);
 
 
         this.listOfItems = [];
         for (var item of checks) {
             if (item.endDate === undefined)
-                this.visTimelineItemsChecks.add({
+              this.visTimelineItemsTreatments.add({
                     id: item.id,
                     style: "background: #" + item.color,
                     content: `<div>
-                              <div class="w3-large">${item.clinician}</div>
+                              <div class="w3-large">${item.category}</div>
                               <div class="w3-small">${item.visitReason} </div>
                               </div>`,
                     start: item.startDate,
                     type: 'box'
                 });
             else
-                this.visTimelineItemsChecks.add({
+              this.visTimelineItemsTreatments.add({
                     id: item.id,
                     content: `<div>
-                              <div class="w3-large">${item.clinician}</div>
+                              <div class="w3-large">${item.category}</div>
                               <div class="w3-small">${item.visitReason} </div>
                               </div>`,
 
@@ -166,14 +166,14 @@ export class PatientCheckHistoryComponent implements OnInit, OnDestroy {
         var yearsAgo = new Date();
         yearsAgo.setFullYear(today.getFullYear() - 2);
 
-        this.visTimelineChecksOptions.start = yearsAgo;
-        this.visTimelineChecksOptions.end = today;
+    this.visTimelineTreatmentsOptions.start = yearsAgo;
+    this.visTimelineTreatmentsOptions.end = today;
 
     }
 
     getChecks(): void {
 
-        this.picasoDataService.getCheckHistory(
+      this.picasoDataService.getTreatmentsHistory(
             this.startDate,
             this.endDate, this.progress
         ).subscribe(
@@ -189,6 +189,6 @@ export class PatientCheckHistoryComponent implements OnInit, OnDestroy {
 
     public focusVisChecks(): void {
 
-        this.visTimelineService.focusOnIds(this.visTimelineChecks, this.listOfItems)
+      this.visTimelineService.focusOnIds(this.visTimelineTreatments, this.listOfItems)
     }
 }

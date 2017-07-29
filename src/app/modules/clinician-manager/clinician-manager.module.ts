@@ -12,7 +12,7 @@ import {PatientDailyAverageObservationsComponent} from "./cards/patient-daily-av
 import {PatientMedicationHistoryComponent} from "./cards/patient-medication-history.component";
 import {PatientDiseasesComponent} from "./cards/patient-diseases.component";
 import {PatientCliniciansComponent} from "./cards/patient-clinicians-history.component";
-import {PatientCheckHistoryComponent} from "./cards/patient-check-history.component";
+import {PatientTreatmentHistoryComponent} from "./cards/patient-treatment-history.component";
 import {nvD3} from "ng2-nvd3";
 import {PatientMoriskyResultsComponent} from "./cards/patient-morisky-results.component";
 import {PatientImagingComponent} from "./cards/patient-imaging.component";
@@ -35,7 +35,7 @@ import {PatientNotificationsComponent} from "./cards/patient-notifications.compo
         PatientDailyAverageObservationsComponent,
         PatientMedicationHistoryComponent,
         PatientDiseasesComponent,
-        PatientCliniciansComponent, PatientCheckHistoryComponent,
+      PatientCliniciansComponent, PatientTreatmentHistoryComponent,
         PatientMoriskyResultsComponent, PatientImagingComponent, PatientNotificationsComponent,
         nvD3
     ]

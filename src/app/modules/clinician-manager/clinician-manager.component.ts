@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild}    from '@angular/core';
 import { Router }               from '@angular/router';
 import {IMyOptions, IMyDateRangeModel} from 'mydaterangepicker';
 import {PatientMedicationHistoryComponent} from "./cards/patient-medication-history.component";
-import {PatientCheckHistoryComponent} from "./cards/patient-check-history.component";
+import {PatientTreatmentHistoryComponent} from "./cards/patient-treatment-history.component";
 import {PatientDailyAverageObservationsComponent} from "./cards/patient-daily-average-observations.component";
 import {ConfigurationService} from "../../picaso-cd-common/_services/configuration.service";
 import {CdSharedModelService} from "../../picaso-cd-common/_services/cd-shared-model.service";
@@ -32,8 +32,8 @@ export class ClinicianManagerComponent implements OnInit {
     @ViewChild(PatientMedicationHistoryComponent)
     private medicationComponent: PatientMedicationHistoryComponent;
 
-    @ViewChild(PatientCheckHistoryComponent)
-    private checkHistoryComponent: PatientCheckHistoryComponent;
+  @ViewChild(PatientTreatmentHistoryComponent)
+  private treatmentsHistoryComponent: PatientTreatmentHistoryComponent;
 
     @ViewChild(PatientDailyAverageObservationsComponent)
     private observationHistoryComponent: PatientDailyAverageObservationsComponent;
@@ -110,7 +110,7 @@ export class ClinicianManagerComponent implements OnInit {
 
       this.zoomAll = true;
         this.medicationComponent.focusVis();
-        this.checkHistoryComponent.focusVisChecks();
+      this.treatmentsHistoryComponent.focusVisChecks();
         // TODO this.observationHistoryComponent.refreshRange(all);
 
     }
@@ -135,7 +135,7 @@ export class ClinicianManagerComponent implements OnInit {
         this.model.beginDate = startDate;
         this.model.endDate = endDate;
         this.medicationComponent.refreshRange(startDate, endDate);
-        this.checkHistoryComponent.refreshRange(startDate, endDate);
+      this.treatmentsHistoryComponent.refreshRange(startDate, endDate);
         this.observationHistoryComponent.refreshRange(startDate, endDate);
     }
 
