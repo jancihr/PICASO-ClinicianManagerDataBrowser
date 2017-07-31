@@ -27,3 +27,37 @@
 .card {
   margin-bottom: 0.35rem;
 }
+
+.table-sm td {
+  padding: 0.05rem;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+}
+
+.table th,
+.table td {
+  padding: 0.25rem;
+}
+
+.table tfoot {
+  padding: 0.25rem;
+}
+
+.pagination {
+  display: inline-block;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
+}
+
+.pagination-sm {
+  display: inline-block;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
+}
+
+

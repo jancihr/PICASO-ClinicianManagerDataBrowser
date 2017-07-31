@@ -25449,25 +25449,34 @@
       "id": "ID2",
       "name": "Diabetes",
       "dateOfOnset": "2017-01-01T10:41:19.000Z",
-      "severity": "severity"
+      "severity": "severity",
+      "sideOfOnset": "right",
+      "clinicalPhenotype": "mixed"
     },
     {
       "id": "ID2",
       "name": "Flu",
       "dateOfOnset": "2017-03-20T10:41:19.000Z",
-      "severity": "severity"
+      "severity": "severity",
+      "sideOfOnset": "left",
+      "clinicalPhenotype": "mixed"
     },
     {
       "id": "ID2",
       "name": "Heart problems",
       "dateOfOnset": "2017-04-20T10:41:19.000Z",
-      "severity": "severity"
+      "severity": "severity",
+      "sideOfOnset": "left",
+      "clinicalPhenotype": "mixed"
+
     },
     {
       "id": "ID2",
       "name": "Angina",
       "dateOfOnset": "2017-02-13T10:41:19.000Z",
-      "severity": "severity"
+      "severity": "severity",
+      "sideOfOnset": "right",
+      "clinicalPhenotype": "mixed"
     },
     {
       "id": "ID2",

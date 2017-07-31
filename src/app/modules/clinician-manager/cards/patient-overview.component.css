@@ -42,4 +42,8 @@ button:disabled {
   margin-bottom: 0.35rem;
 }
 
+.small-padding {
+  padding: 0.25rem
+}
+
 

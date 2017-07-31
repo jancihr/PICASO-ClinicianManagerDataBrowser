@@ -130,12 +130,33 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           tooltip: {
             contentGenerator: function (d) {
 
-              var html = d.value;
+              var html = ""; //d.value;
 
               d.series.forEach(function (elem) {
-                html += "<div style='color:" + elem.color + "'>"
-                  + elem.key + "</div> : <b>" + (elem.value === null ? "Missing value" : elem.value )
-                  + (elem.data.source ? (" (source: " + elem.data.source + ")") : "") + "</b>";
+                html = html +
+                  (
+                    elem.value === null
+                      ?
+                      "Missing value"
+                      :
+                      elem.value
+                  )
+                  + " <span style='color:" + elem.color + "'>" + elem.key + "</span> " +
+                  (
+                    elem.value === null
+                      ?
+                      ""
+                      :
+                      (
+                        elem.data.source
+                          ?
+                          (" (source: " + elem.data.source + ")")
+                          :
+                          ""
+                      )
+                  )
+                  +
+                  "<br>";
               });
 
               //console.log(JSON.stringify(d));
@@ -208,45 +229,45 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
           var sortedValues = filteredValues.sort(function (a, b) {
-          return new Date(a.date).getTime() - new Date(b.date).getTime();
-        });
+            return new Date(a.date).getTime() - new Date(b.date).getTime();
+          });
 
 
           var newGraphValues = [];
 
 
-        var i = 0;
-        for (var observation of sortedValues) {
+          var i = 0;
+          for (var observation of sortedValues) {
 
-          //newValues.push({x: i++, y: i});
+            //newValues.push({x: i++, y: i});
 
-          newGraphValues.push(observation);//{"x": new Date(observation.date).getTime(), "y": observation.value})
+            newGraphValues.push(observation);//{"x": new Date(observation.date).getTime(), "y": observation.value})
 
-          //if (observation.value === null) console.log("found null");
+            //if (observation.value === null) console.log("found null");
 
-          //console.log( group.name + " / " + group.label + " " +
-          // observation.date + " " + observation.value);
-        }
+            //console.log( group.name + " / " + group.label + " " +
+            // observation.date + " " + observation.value);
+          }
 
-        this.data.push({
-          values: newGraphValues,
-          key: group.name + " / " + group.label,
-          color: group.color,
-          //area: false,
-          //mean: 120,
-          disabled: false,
-          yAxis: 1,
-          xAxis: 1,
-          type: 'line'//group.type
-        })
+          this.data.push({
+            values: newGraphValues,
+            key: group.label + " (" + group.name + ")",
+            color: group.color,
+            //area: false,
+            //mean: 120,
+            disabled: false,
+            yAxis: 1,
+            xAxis: 1,
+            type: 'line'//group.type
+          })
 
         }
       }
     }
     /*
-    for (var group of this.observationGroups) {
+     for (var group of this.observationGroups) {
 
-      if (group.showRight) {
+     if (group.showRight) {
 
      var filteredValues2 = [];
 
@@ -259,53 +280,53 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
      return new Date(a.date).getTime() - new Date(b.date).getTime();
      });
 
-        var
+     var
      newValues2 = [];
 
 
-        var
-          i = 0;
+     var
+     i = 0;
 
-        for (
+     for (
 
-          var
-            observation
-          of
+     var
+     observation
+     of
      sortedValues2
-          ) {
+     ) {
 
-          //newValues.push({x: i++, y: i});
+     //newValues.push({x: i++, y: i});
 
      newValues2
-            .push({
-                "x": new Date
+     .push({
+     "x": new Date
 
-                (
-                  observation
-                    .date
-                ).getTime()
+     (
+     observation
+     .date
+     ).getTime()
 
-                ,
-                "y": observation.value
-              }
-            )
-        }
+     ,
+     "y": observation.value
+     }
+     )
+     }
 
-        this.data.push({
+     this.data.push({
      values: newValues2,
-          key: group.name + " / " + group.label,
-          color: group.color,
-          disabled: false,
-          //area: false,
-          //mean: 120,
-          yAxis: 2,
-          xAxis: 1,
+     key: group.name + " / " + group.label,
+     color: group.color,
+     disabled: false,
+     //area: false,
+     //mean: 120,
+     yAxis: 2,
+     xAxis: 1,
      type: 'line'
      //type: group.type
-        })
+     })
 
-      }
-    }
+     }
+     }
 
      */
 

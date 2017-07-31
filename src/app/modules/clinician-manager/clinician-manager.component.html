@@ -13,12 +13,12 @@
     </div>
 
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+      <div *ngIf="showTab===1 || showTab === 0" class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
         <patient-overview>
         </patient-overview>
       </div>
 
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+      <div *ngIf="showTab===2 || showTab === 0" class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
 
         <patient-notifications>
         </patient-notifications>
@@ -26,11 +26,11 @@
     </div>
 
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+      <div *ngIf="showTab===3 || showTab === 0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
         <patient-diseases>
         </patient-diseases>
       </div>
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+      <div *ngIf="showTab===4 || showTab === 0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
         <patient-imaging>
         </patient-imaging>
       </div>
@@ -38,7 +38,7 @@
 
 
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div *ngIf="showTab===5 || showTab === 0" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <patient-clinicians-history>
         </patient-clinicians-history>
       </div>
@@ -46,8 +46,9 @@
 
 
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <div class="card">
+      <div *ngIf="showTab===6 || showTab === 7 || showTab === 0"
+           class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <div *ngIf="showTab===6 || showTab === 0" class="card">
           <div class="card-header w3-black w3-center">
             <span i18n="Patient Events"><i class="fa fa-calendar-times-o"></i></span> Patient Events
 
@@ -61,21 +62,21 @@
 
             <div class="row w3-center">
 
-              <!--
+
                                          <my-date-range-picker [options]="myDateRangePickerOptions"
                                                                 (dateRangeChanged)="onDateRangeChanged($event)"
                                                                 [selDateRange]="model">
                                           </my-date-range-picker>
 
 
-                                                                   <button type="button"
-                                                                           class="btn btn-default"
-                                                                           (click)="focusRange()"
-                                                                           i18n="Selected range">
-                                                                       Selected range
-                                                                   </button>
-                                                                    -->
+              <!--  <button type="button"
+                        class="btn btn-default"
+                        (click)="focusRange()"
+                        i18n="Selected range">
+                    Selected range
+                </button>
 
+-->
 
             </div>
 
@@ -118,12 +119,7 @@
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
               <div class=" w3-center">
-                <button type="button"
-                        class="btn btn-default {{zoomAll? 'btn-outline-success' : ''}}"
-                        (click)="focusAll()"
-                        i18n="View all data">
-                  View all
-                </button>
+
 
                 <button type="button"
                         class="btn btn-default {{range==='lastweek'  && !zoomAll ? 'btn-outline-success' : ''}}"
@@ -140,10 +136,31 @@
                 </button>
 
                 <button type="button"
+                        class="btn btn-default {{range==='last2months'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLast2Months()"
+                        i18n="Last 2 months">
+                  Last 2 months
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='last6months'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLast6Months()"
+                        i18n="Last 6 months">
+                  Last 6 months
+                </button>
+
+                <button type="button"
                         class="btn btn-default {{range==='lastyear'  && !zoomAll ? 'btn-outline-success' : ''}}"
                         (click)="focusLastYear()"
                         i18n="Last year">
                   Last year
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{zoomAll? 'btn-outline-success' : ''}}"
+                        (click)="focusAll()"
+                        i18n="View all data">
+                  View all
                 </button>
               </div>
             </div>
@@ -164,27 +181,41 @@
         </div>
       </div>
     </div>
-    <div class="row">
+    <div *ngIf="showTab===7 || showTab === 0" class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <div class=" w3-center">
           <span i18n="Patient Events"><i class="fa fa-calendar-times-o"></i></span>
 
           <button type="button"
-                  class="btn btn-default {{range==='lastweek'? 'btn-outline-success' : ''}}"
+                  class="btn btn-default {{range==='lastweek' && !zoomAll ? 'btn-outline-success' : ''}}"
                   (click)="focusLastWeek()"
                   i18n="Last week">
             Last week
           </button>
 
           <button type="button"
-                  class="btn btn-default {{range==='lastmonth'? 'btn-outline-success' : ''}}"
+                  class="btn btn-default {{range==='lastmonth' && !zoomAll ? 'btn-outline-success' : ''}}"
                   (click)="focusLastMonth()"
                   i18n="Last month">
             Last month
           </button>
 
           <button type="button"
-                  class="btn btn-default {{range==='lastyear'? 'btn-outline-success' : ''}}"
+                  class="btn btn-default {{range==='last2months'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                  (click)="focusLast2Months()"
+                  i18n="Last 2 months">
+            Last 2 months
+          </button>
+
+          <button type="button"
+                  class="btn btn-default {{range==='last6months'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                  (click)="focusLast6Months()"
+                  i18n="Last 6 months">
+            Last 6 months
+          </button>
+
+          <button type="button"
+                  class="btn btn-default {{range==='lastyear' && !zoomAll ? 'btn-outline-success' : ''}}"
                   (click)="focusLastYear()"
                   i18n="Last year">
             Last year
@@ -197,7 +228,7 @@
     </div>
 
 
-    <div class="row">
+    <div *ngIf="showTab===8 || showTab === 0" class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <patient-daily-average-observations>
         </patient-daily-average-observations>

@@ -21,13 +21,15 @@ import {ProgressHttpModule} from "angular-progress-http";
 import {DataTableModule} from "angular2-datatable";
 import {FormsModule} from "@angular/forms";
 import {PatientNotificationsComponent} from "./cards/patient-notifications.component";
+import {Ng2SmartTableModule} from "ng2-smart-table";
 
 
 @NgModule({
     imports: [
         ClinicianManagerRoutingModule, FormsModule,
         ChartsModule, VisModule, HttpModule, CommonModule,
-        Ng2Bs3ModalModule, MyDateRangePickerModule, ProgressHttpModule, DataTableModule
+      Ng2Bs3ModalModule, MyDateRangePickerModule, ProgressHttpModule, DataTableModule,
+      Ng2SmartTableModule
 
     ],
     declarations: [ClinicianManagerComponent,

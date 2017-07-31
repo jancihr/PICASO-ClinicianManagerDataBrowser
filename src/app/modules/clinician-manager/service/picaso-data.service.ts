@@ -193,23 +193,23 @@ export class PicasoDataService {
             //TODO to be deleted later - fake progress
             setTimeout(() => {
                 progressResult.percentage = 0;
-            }, 1000);
+            }, 100);
             setTimeout(() => {
                 progressResult.percentage = 25
-            }, 2000);
+            }, 200);
             setTimeout(() => {
                 progressResult.percentage = 50
-            }, 3000);
+            }, 300);
             setTimeout(() => {
                 progressResult.percentage = 75
-            }, 4000);
+            }, 400);
             setTimeout(() => {
                 progressResult.percentage = 100
-            }, 5000);
+            }, 500);
 
             setTimeout(() => {
                 progressResult.total = progress.total
-            }, 6000);
+            }, 600);
 
 
             // TODO to be uncommented later - real progress
