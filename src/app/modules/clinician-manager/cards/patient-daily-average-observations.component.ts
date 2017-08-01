@@ -419,7 +419,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     this.startDate = start;
     this.endDate = end;
 
-    this.options.chart.xDomain = [this.startDate.getTime() - 86400000, this.endDate.getTime() + 86400000];
+    this.options.chart.xDomain = [this.startDate.getTime(), this.endDate.getTime()];
     this.reloadDataToGraph();
 
   }
