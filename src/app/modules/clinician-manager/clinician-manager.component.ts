@@ -7,6 +7,7 @@ import {PatientDailyAverageObservationsComponent} from "./cards/patient-daily-av
 import {ConfigurationService} from "../../picaso-cd-common/_services/configuration.service";
 import {CdSharedModelService} from "../../picaso-cd-common/_services/cd-shared-model.service";
 import {DataResourceBrowserCardComponent} from "../data-resource-browser/cards/data-resource-browser-card.component";
+import {MoriskyDailyAverageObservationsComponent} from "./cards/patient-morisky-results.component";
 
 
 @Component({
@@ -27,7 +28,7 @@ export class ClinicianManagerComponent implements OnInit {
   private showTab = 0;
 
   private range = "lastyear"; //show all
-  private zoomAll = true;
+  private zoomAll = false;
 
 
   @ViewChild(PatientMedicationHistoryComponent)
@@ -39,6 +40,9 @@ export class ClinicianManagerComponent implements OnInit {
   @ViewChild(PatientDailyAverageObservationsComponent)
   private observationHistoryComponent: PatientDailyAverageObservationsComponent;
 
+  @ViewChild(MoriskyDailyAverageObservationsComponent)
+  private moriskyComponent: MoriskyDailyAverageObservationsComponent;
+
   constructor(private config: ConfigurationService, private cdSharedModelService: CdSharedModelService,
               private route: ActivatedRoute) {
   }
@@ -46,6 +50,7 @@ export class ClinicianManagerComponent implements OnInit {
   ngOnInit(): void {
 
     //showTabStr = this.route.snapshot.queryParams["tab"];
+
 
     console.log("################parameter:", this.route.snapshot.queryParams["tab"]);
 
@@ -56,6 +61,7 @@ export class ClinicianManagerComponent implements OnInit {
     this.endDate = new Date();
 
     this.startDate.setFullYear(this.endDate.getFullYear() - 1);
+    this.range = "lastyear";
 
     this.myDateRangePickerOptions = {
       // other options...
@@ -128,6 +134,19 @@ export class ClinicianManagerComponent implements OnInit {
 
   }
 
+  focusNext6Months() {
+
+    this.range = "next6months";
+    this.zoomAll = false;
+    var endDate: Date = new Date();
+    var startDate: Date = new Date();
+
+    endDate.setDate(startDate.getDate() + 183);
+
+    this.notifyDataChange(startDate, endDate);
+
+  }
+
   focusLastYear() {
 
     this.range = "lastyear";
@@ -136,6 +155,19 @@ export class ClinicianManagerComponent implements OnInit {
     var startDate: Date = new Date();
 
     startDate.setFullYear(endDate.getFullYear() - 1);
+
+    this.notifyDataChange(startDate, endDate);
+
+  }
+
+  focusLast2Years() {
+
+    this.range = "last2years";
+    this.zoomAll = false;
+    var endDate: Date = new Date();
+    var startDate: Date = new Date();
+
+    startDate.setFullYear(endDate.getFullYear() - 2);
 
     this.notifyDataChange(startDate, endDate);
 
@@ -175,6 +207,7 @@ export class ClinicianManagerComponent implements OnInit {
     this.medicationComponent.refreshRange(startDate, endDate);
     this.treatmentsHistoryComponent.refreshRange(startDate, endDate);
     this.observationHistoryComponent.refreshRange(startDate, endDate);
+    this.moriskyComponent.refreshRange(startDate, endDate);
 
   }
 

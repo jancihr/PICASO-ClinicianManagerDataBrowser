@@ -8,4 +8,7 @@ export class PatientObservationGroup {
     values: PatientObservation[];
     showLeft: boolean = false;
     showRight: boolean = false;
+  minValue: number = null;
+  maxValue: number = null;
+  midValue: number = null;
 }

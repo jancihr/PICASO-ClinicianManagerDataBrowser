@@ -1,529 +1,423 @@
 import {Component, OnInit} from "@angular/core";
 import {PicasoDataService} from "../service/picaso-data.service";
-import {PatientMoriskyResult} from "../model/patient-morisky-result";
-import {PatientFFbHResult} from "../model/patient-ffbh-result";
-import {PatientRADAIResult} from "../model/patient-RADAI-result";
+import {PatientObservationGroup} from "../model/patient-observation-group";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
-
 
 declare let d3, nv: any;
 
 
 @Component({
-    selector: "patient-morisky-results",
-    template: require("./patient-morisky-results.component.html"),
-    styles: [require("./patient-morisky-results.component.css")],
-    providers: [PicasoDataService],
+  selector: "patient-morisky-results",
+  template: require("./patient-morisky-results.component.html"),
+  styles: [require("./patient-morisky-results.component.css")],
+  providers: [PicasoDataService],
 
 })
 
-export class PatientMoriskyResultsComponent implements OnInit {
+export class MoriskyDailyAverageObservationsComponent implements OnInit {
 
-    errorMessage: string;
+  errorMessage: string;
 
+  endDate: Date;
+  startDate: Date;
 
-    endDate: Date;
-    startDate: Date;
-
-    patientMoriskyResults;
-    patientFFbHResults;
-    patientRADAIResults;
-
-    progress: PatientLoadProgress = {
-        percentage: 0,
-        loaded: 0,
-        total: 0
-    };
+  options;
+  data;
 
 
+  progress: PatientLoadProgress = {
+    percentage: 0,
+    loaded: 0,
+    total: 0
+  };
 
 
-    optionsa = {
-        chart: {
-            type: 'lineChart',
-            showLegend: false,
-            //showLastValue: true,
-
-            height: 200,
-            //width: 300,
-            margin: {
-                top: 20,
-                right: 25,
-                bottom: 20,
-                left: 25
-            },
-            x: function (d) {
-                return new Date(d.x);
-            },
-            y: function (d) {
-                return new Number(d.y);
-            },
+  observationGroups: PatientObservationGroup[];
 
 
+  constructor(private picasoDataService: PicasoDataService) {
+  };
+
+  ngOnInit(): void {
+
+    this.endDate = new Date();
+    this.startDate = new Date();
+    this.startDate.setFullYear(this.endDate.getFullYear() - 1);
+    this.setOptions();
+    this.getObservations();
 
 
-            useInteractiveGuideline: true,
-            dispatch: {
-                stateChange: function (e) {
-                    console.log("stateChange");
-                },
-                changeState: function (e) {
-                    console.log("changeState");
-                },
-                tooltipShow: function (e) {
-                    console.log("tooltipShow");
-                },
-                tooltipHide: function (e) {
-                    console.log("tooltipHide");
+  }
+
+  getObservations(): void {
+
+
+    this.picasoDataService.getMorisky(
+      this.startDate,
+      this.endDate, this.progress
+    ).subscribe(
+      observations => {
+        this.setPatientObservations(observations);
+        this.reloadDataToGraph()
+      },
+      error => this.errorMessage = <any>error);
+
+
+  }
+
+
+  setOptions(): void {
+
+    this.options = {
+      chart: {
+        noData: 'No data exists for selected dates and observations.',
+        type: 'lineChart',
+        height: 600,
+        transitionDuration: 500,
+
+        zoom: {
+          enabled: true,
+          scaleExtent: [
+            1,
+            10
+          ],
+          useFixedDomain: true,
+          useNiceScale: false,
+          horizontalOff: false,
+          verticalOff: false,
+          unzoomEventType: "dblclick.zoom"
+        },
+
+        legendRightAxisHint: " (right axis)",
+        interpolate: "linear",
+        showLegend: false,
+        legend: {
+          align: false
+        },
+        //showDistX: true,
+        //showDistY: true,
+
+        //average: function(d) { return d.mean/100; },
+        margin: {
+          top: 55,
+          right: 55,
+          bottom: 55,
+          left: 55
+        },
+
+        useInteractiveGuideline: true,
+
+        x: function (d) {
+          return new Date(d.date);
+        },
+        y: function (d) {
+          return d.value === null ? null : new Number(d.value);
+        },
+
+
+        xAxis: {
+          //axisLabel: 'Time',
+          tickFormat: function (d) {
+            return new Date(d).toLocaleDateString();
+          },
+        },
+
+        xDomain: [this.startDate.getTime(), this.endDate.getTime()],
+        xRange: null,
+
+        interactiveLayer: {
+          tooltip: {
+            contentGenerator: function (d) {
+
+              var html = ""; //d.value;
+
+              d.series.forEach(function (elem) {
+                if (!elem.key.startsWith("hide")) {
+                  html = html +
+
+                    "<span style='color:" + elem.color + "' > <i class='fa fa-circle'></i> </span> " +
+
+                    elem.data.date + ": <br>" +
+                    (
+                      elem.value === null
+                        ?
+                        "<span class='text-danger'>Missing value</span>"
+                        :
+                        (elem.data.outOfRange ? "<span class='text-danger'>OUT OF RANGE! </span> " : "") + "<b>" + elem.value + "</b>"
+                    )
+                    + " " + elem.key +
+                    (
+                      elem.value === null
+                        ?
+                        ""
+                        :
+                        (
+                          elem.data.source
+                            ?
+                            (" (source: " + elem.data.source + ")")
+                            :
+                            ""
+                        )
+                    )
+                    +
+                    "<br>";
                 }
-            },
-            xAxis: {
-                axisLabel: 'Time',
-                tickFormat: function (d) {
-                    return new Date(d).toLocaleDateString();
-                },
-            },
-            yAxis: {
-                axisLabel: '',
-                tickValues:[1,2],
-                tickFormat: function (d) {
-                    return d;
-                },
-                axisLabelDistance: -10,
-                showMaxMin: false
-            },
-            forceY:[0.8,2.2],
-            callback: function (chart) {
-                console.log("!!! lineChart callback !!!");
+              });
+
+              //console.log(JSON.stringify(d));
+
+              return html;
+
+
             }
+          }
+        },
+
+        yAxis1: {
+          //axisLabel: 'Value',
+          tickFormat: function (d) {
+            return d;
+          },
+          //axisLabelDistance: -10
+        },
+        yAxis2: {
+          //axisLabel: 'Value',
+          tickFormat: function (d) {
+            return d;
+          },
+          //axisLabelDistance: -10
+        },
+        callback: function (chart) {
+          //console.log("!!! lineChart callback !!!");
         }
+      }
     };
+  }
 
-    optionsb = {
-        chart: {
-            type: 'lineChart',
-            showLegend: false,
-            //showLastValue: true,
+  setPatientObservations(observations: PatientObservationGroup[]) {
 
-            height: 200,
-            //width: 300,
-            margin: {
-                top: 20,
-                right: 25,
-                bottom: 20,
-                left: 25
-            },
-            x: function (d) {
-                return new Date(d.x);
-            },
-            y: function (d) {
-                return new Number(d.y);
-            },
-
-
-
-
-            useInteractiveGuideline: true,
-
-            xAxis: {
-                axisLabel: 'Time',
-                tickFormat: function (d) {
-                    return new Date(d).toLocaleDateString();
-                },
-            },
-            yAxis: {
-                axisLabel: '',
-                tickValues:[1,2,3],
-                tickFormat: function (d) {
-                    return d;
-                },
-                axisLabelDistance: -10,
-                showMaxMin: false
-            },
-            forceY:[0.8,3.2],
-            callback: function (chart) {
-                console.log("!!! lineChart callback !!!");
-            }
-        }
-    };
-
-    optionsRADAIa = {
-        chart: {
-            type: 'lineChart',
-            showLegend: false,
-            //showLastValue: true,
-
-            height: 200,
-            //width: 300,
-            margin: {
-                top: 20,
-                right: 25,
-                bottom: 20,
-                left: 25
-            },
-            x: function (d) {
-                return new Date(d.x);
-            },
-            y: function (d) {
-                return new Number(d.y);
-            },
-            useInteractiveGuideline: true,
-
-            xAxis: {
-                axisLabel: 'Time',
-                tickFormat: function (d) {
-                    return new Date(d).toLocaleDateString();
-                },
-            },
-            yAxis: {
-                axisLabel: '',
-
-                tickValues: [0,1,2,3,4,5,6,7,8,9,10],
-                tickFormat: function (d) {
-                   return d;
-                },
-                axisLabelDistance: -10,
-                showMaxMin: false
-            },
-            forceY:[-1.2,10.2],
-            callback: function (chart) {
-                //console.log("!!! lineChart callback !!!");
-            }
-        }
-    };
-
-
-
-    dataa1; dataa2; dataa3; dataa4; dataa5;
-
-    datab1; datab2; datab3; datab4; datab5; datab6; datab7; datab8; datab9; datab10; datab11; datab12;
-    datab13; datab14; datab15; datab16; datab17; datab18;
-
-    dataRADAIq1; dataRADAIq2; dataRADAIq3; dataRADAIq4;
-
-
-
-
-    constructor(private picasoDataService: PicasoDataService) {
-    };
-
-    ngOnInit(): void {
-
-        this.endDate = new Date();
-        this.startDate = new Date();
-        this.startDate.setFullYear(this.endDate.getFullYear() - 1);
-
-        this.getPatientMoriskyResultsFromService();
-        this.getPatientFFbHResultsFromService();
-        this.getPatientRADAIResultsFromService();
-
+    this.observationGroups = observations;
+    if (this.observationGroups !== undefined && this.observationGroups.length > 0) {
+      this.observationGroups[0].showLeft = true;
 
     }
 
-    getPatientRADAIResultsFromService(): void {
+    this.reloadDataToGraph();
+
+  }
+
+  reloadDataToGraph() {
 
 
-        this.picasoDataService.getRADAIResults(
-            this.startDate,
-            this.endDate, this.progress
-        ).subscribe(
-            observations => this.getPatientRADAIResults(observations),
-            error => this.errorMessage = <any>error);
+    this.data = [];
+
+    for (var group of this.observationGroups) {
+
+      if (group.showLeft) {
 
 
-    }
+        var filteredValues = [];
 
-    getPatientMoriskyResultsFromService(): void {
+        for (var el of group.values) {
 
+          if (
+            el.value != null &&
+            (group.minValue != null && el.value < group.minValue) ||
+            (group.maxValue != null && el.value > group.maxValue)
+          ) {
+            el.outOfRange = true;
+          }
 
-        this.picasoDataService.getMoriskyResults(
-            this.startDate,
-            this.endDate, this.progress
-        ).subscribe(
-            observations => this.getPatientMoriskyResults(observations),
-            error => this.errorMessage = <any>error);
+          //console.log("gettime" + new Date(el.date).getTime());
 
-
-    }
-
-    getPatientFFbHResultsFromService(): void {
-
-
-        this.picasoDataService.getFFbHResults(
-            this.startDate,
-            this.endDate, this.progress
-        ).subscribe(
-            observations => this.getPatientFFbHResults(observations),
-            error => this.errorMessage = <any>error);
-
-
-    }
-
-    getPatientRADAIResults(results: PatientRADAIResult[]) {
-
-
-        this.dataRADAIq1 = [{
-            values: [],
-            key: "RADAI",
-            color: "0D00D0",
-            area: false
-        }];
-
-
-        this.dataRADAIq2 = [{
-            values: [],
-            key: "RADAI q2",
-            color: "0D00D0",
-            area: false
-        }];
-        this.dataRADAIq3 = [{
-            values: [],
-            key: "RADAI q3",
-            color: "0D00D0",
-            area: false
-        }];
-        this.dataRADAIq4 = [{
-            values: [],
-            key: "RADAI q4",
-            color: "0D00D0",
-            area: false
-        }];
-
-
-        this.patientRADAIResults = results;
-
-
-
-
-        for (var result of results) {
-            if (result.q1>-1)
-                this.dataRADAIq1[0].values.push({x:result.date, y:result.q1.toString()});
-            if (result.q2>-1)
-            this.dataRADAIq2[0].values.push({x:result.date, y:result.q2.toString()});
-            if (result.q3>-1)
-            this.dataRADAIq3[0].values.push({x:result.date, y:result.q3.toString()});
-            if (result.q4>-1)
-            this.dataRADAIq4[0].values.push({x:result.date, y:result.q4.toString()});
-
-
+          if (new Date(el.date).getTime() < this.startDate.getTime() || new Date(el.date).getTime() > this.endDate.getTime()) {
+          }
+          else {
+            filteredValues.push(el)
+          }
         }
 
+        if (filteredValues.length > 0) {
 
 
+          var sortedValues = filteredValues.sort(function (a, b) {
+            return new Date(a.date).getTime() - new Date(b.date).getTime();
+          });
 
 
-    }
+          var newGraphValues = [];
 
 
+          var i = 0;
+          for (var observation of sortedValues) {
 
-    getPatientMoriskyResults(results: PatientMoriskyResult[]) {
+            //newValues.push({x: i++, y: i});
 
-
-        this.dataa1 = [{
-            values: [],
-            key: "Morisky",
-            color: "0D00D0",
-            area: false
-        }];
+            newGraphValues.push(observation);//{"x": new Date(observation.date).getTime(), "y": observation.value})
 
 
-        this.dataa2 = [{
-            values: [],
-            key: "Morisky q2",
-            color: "0D00D0",
-            area: false
-        }];
-        this.dataa3 = [{
-            values: [],
-            key: "Morisky q3",
-            color: "0D00D0",
-            area: false
-        }];
-        this.dataa4 = [{
-            values: [],
-            key: "Morisky q4",
-            color: "0D00D0",
-            area: false
-        }];
-        this.dataa5 = [{
-            values: [],
-            key: "Morisky q5",
-            color: "0D00D0",
-            area: false
-        }];
+            //if (observation.value === null) console.log("found null");
 
-        this.patientMoriskyResults = results;
+            //console.log( group.name + " / " + group.label + " " +
+            // observation.date + " " + observation.value);
+          }
 
 
+          this.data.push({
+            values: newGraphValues,
+            key: group.label + " (" + group.name + ")",
+            color: group.color,
+            //area: false,
+            //mean: 120,
+            disabled: false,
+            yAxis: 1,
+            xAxis: 1,
+            type: 'line'   //group.type
+
+          });
 
 
-        for (var result of results) {
-
-            this.dataa1[0].values.push({x:result.date, y:result.q1.toString()});
-            this.dataa2[0].values.push({x:result.date, y:result.q2.toString()});
-            this.dataa3[0].values.push({x:result.date, y:result.q3.toString()});
-            this.dataa4[0].values.push({x:result.date, y:result.q4.toString()});
-            this.dataa5[0].values.push({x:result.date, y:result.q5.toString()});
-
-
-        }
-
-
-
-
-
-    }
-
-
-
-
-    getPatientFFbHResults(results: PatientFFbHResult[]) {
+          if (group.minValue != null) {
+            var newGraphValuesMin = [];
+            newGraphValuesMin.push({date: this.startDate, value: group.minValue});
+            newGraphValuesMin.push({date: this.endDate, value: group.minValue});
+            //min value line
+            this.data.push({
+              values: newGraphValuesMin,
+              key: "hidemin" + group.id,
+              color: group.color,
+              //area: false,
+              //mean: 120,
+              disabled: false,
+              yAxis: 1,
+              xAxis: 1,
+              type: 'line',
+              classed: 'mydashed'
+            })
+          }
 
 
-        this.datab1 = [{
-            values: [],
-            key: "FFbH",
-            color: "0D00D0",
-            area: false
-        }];
+          if (group.maxValue != null) {
+            var newGraphValuesMax = [];
+            newGraphValuesMax.push({date: this.endDate, value: group.maxValue});
+            newGraphValuesMax.push({date: this.startDate, value: group.maxValue});
+            //max value line
+            this.data.push({
+              values: newGraphValuesMax,
+              key: "hidemax" + group.id,
+              color: group.color,
+              //area: false,
+              //mean: 120,
+              disabled: false,
+              yAxis: 1,
+              xAxis: 1,
+              type: 'line',
+              classed: 'mydashed'
+            })
+          }
 
-
-        this.datab2 = [{
-            values: [],
-            key: "FFbH q2",
-            color: "0D00D0",
-            area: false
-        }];
-        this.datab3 = [{
-            values: [],
-            key: "FFbH q3",
-            color: "0D00D0",
-            area: false
-        }];
-        this.datab4 = [{
-            values: [],
-            key: "FFbH q4",
-            color: "0D00D0",
-            area: false
-        }];
-        this.datab5 = [{
-            values: [],
-            key: "FFbH q5",
-            color: "0D00D0",
-            area: false
-        }];
-        this.datab6 = [{
-            values: [],
-            key: "FFbH q6",
-            color: "0D00D0",
-            area: false
-        }];
-        this.datab7 = [{
-            values: [],
-            key: "FFbH q7",
-            color: "0D00D0",
-            area: false
-        }];
-        this.datab8 = [{
-            values: [],
-            key: "FFbH q8",
-            color: "0D00D0",
-            area: false
-        }];
-        this.datab9 = [{
-            values: [],
-            key: "FFbH q9",
-            color: "0D00D0",
-            area: false
-        }];
-        this.datab10 = [{
-            values: [],
-            key: "FFbH q10",
-            color: "0D00D0",
-            area: false
-        }];
-        this.datab11 = [{
-            values: [],
-            key: "FFbH q11",
-            color: "0D00D0",
-            area: false
-        }];
-        this.datab12 = [{
-            values: [],
-            key: "FFbH q12",
-            color: "0D00D0",
-            area: false
-        }];
-        this.datab13 = [{
-            values: [],
-            key: "FFbH q13",
-            color: "0D00D0",
-            area: false
-        }];
-        this.datab14 = [{
-            values: [],
-            key: "FFbH q14",
-            color: "0D00D0",
-            area: false
-        }];
-        this.datab15 = [{
-            values: [],
-            key: "FFbH q15",
-            color: "0D00D0",
-            area: false
-        }];
-        this.datab16 = [{
-            values: [],
-            key: "FFbH q16",
-            color: "0D00D0",
-            area: false
-        }];
-        this.datab17 = [{
-            values: [],
-            key: "FFbH q17",
-            color: "0D00D0",
-            area: false
-        }];
-        this.datab18 = [{
-            values: [],
-            key: "FFbH q18",
-            color: "0D00D0",
-            area: false
-        }];
-
-        this.patientFFbHResults = results;
-
-
-
-
-        for (var result of results) {
-
-            this.datab1[0].values.push({x:result.date, y:result.q1.toString()});
-            this.datab2[0].values.push({x:result.date, y:result.q2.toString()});
-            this.datab3[0].values.push({x:result.date, y:result.q3.toString()});
-            this.datab4[0].values.push({x:result.date, y:result.q4.toString()});
-            this.datab5[0].values.push({x:result.date, y:result.q5.toString()});
-            this.datab6[0].values.push({x:result.date, y:result.q6.toString()});
-            this.datab7[0].values.push({x:result.date, y:result.q7.toString()});
-            this.datab8[0].values.push({x:result.date, y:result.q8.toString()});
-            this.datab9[0].values.push({x:result.date, y:result.q9.toString()});
-            this.datab10[0].values.push({x:result.date, y:result.q10.toString()});
-            this.datab11[0].values.push({x:result.date, y:result.q11.toString()});
-            this.datab12[0].values.push({x:result.date, y:result.q12.toString()});
-            this.datab13[0].values.push({x:result.date, y:result.q13.toString()});
-            this.datab14[0].values.push({x:result.date, y:result.q14.toString()});
-            this.datab15[0].values.push({x:result.date, y:result.q15.toString()});
-            this.datab16[0].values.push({x:result.date, y:result.q16.toString()});
-            this.datab17[0].values.push({x:result.date, y:result.q17.toString()});
-            this.datab18[0].values.push({x:result.date, y:result.q18.toString()});
-
+          if (group.midValue != null) {
+            var newGraphValuesMid = [];
+            newGraphValuesMid.push({date: this.startDate, value: group.midValue});
+            newGraphValuesMid.push({date: this.endDate, value: group.midValue});
+            //mid value line
+            this.data.push({
+              values: newGraphValuesMid,
+              key: "hidemid" + group.id,
+              color: group.color,
+              //area: false,
+              //mean: 120,
+              disabled: false,
+              yAxis: 1,
+              xAxis: 1,
+              type: 'line',
+              classed: 'mydashed'
+            })
+          }
 
         }
-
-
-
-
-
+      }
     }
+
+    /*
+     for (var group of this.observationGroups) {
+
+     if (group.showRight) {
+
+     var filteredValues2 = [];
+
+     for (var el of group.values){
+     if (el.date<this.startDate || el.date>this.endDate) {}
+     else {filteredValues2.push(el)}
+     }
+
+     var sortedValues2 = filteredValues2.sort(function (a, b) {
+     return new Date(a.date).getTime() - new Date(b.date).getTime();
+     });
+
+     var
+     newValues2 = [];
+
+
+     var
+     i = 0;
+
+     for (
+
+     var
+     observation
+     of
+     sortedValues2
+     ) {
+
+     //newValues.push({x: i++, y: i});
+
+     newValues2
+     .push({
+     "x": new Date
+
+     (
+     observation
+     .date
+     ).getTime()
+
+     ,
+     "y": observation.value
+     }
+     )
+     }
+
+     this.data.push({
+     values: newValues2,
+     key: group.name + " / " + group.label,
+     color: group.color,
+     disabled: false,
+     //area: false,
+     //mean: 120,
+     yAxis: 2,
+     xAxis: 1,
+     type: 'line'
+     //type: group.type
+     })
+
+     }
+     }
+
+     */
+
+  }
+
+  public refreshRange(start: Date, end: Date): void {
+
+
+    this.startDate = start;
+    this.endDate = end;
+
+    this.options.chart.xDomain = [this.startDate.getTime() - 86400000, this.endDate.getTime() + 86400000];
+    this.reloadDataToGraph();
+
+  }
+
+
 
 }

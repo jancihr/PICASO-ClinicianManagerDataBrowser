@@ -17,8 +17,8 @@ export class PatientCliniciansComponent implements OnInit {
 
   public filterQuery = "";
   public rowsOnPage = 5;
-  public sortBy = "name";
-  public sortOrder = "asc";
+  public sortBy = "startDate";
+  public sortOrder = "desc";
 
   settings = {
     columns: {

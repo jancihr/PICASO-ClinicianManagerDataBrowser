@@ -43,3 +43,22 @@ button:disabled {
   padding-right: 0.25rem;
 }
 
+.no-float-table {
+  display: table;
+  width: 100%;
+}
+
+.no-float-row {
+  height: 100%;
+  width: 100%;
+  display: table-row
+}
+
+.no-float-cell {
+  height: 100%;
+  display: table-cell;
+  float: none;
+}
+
+
+

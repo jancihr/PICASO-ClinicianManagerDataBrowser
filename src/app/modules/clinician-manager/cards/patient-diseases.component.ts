@@ -18,8 +18,8 @@ export class PatientDiseasesComponent implements OnInit {
 
     public filterQuery = "";
     public rowsOnPage = 5;
-    public sortBy = "name";
-    public sortOrder = "asc";
+  public sortBy = "dateOfOnset";
+  public sortOrder = "desc";
 
 
   settings = {

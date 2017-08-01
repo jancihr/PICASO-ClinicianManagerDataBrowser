@@ -1,48 +1,53 @@
 <div class="card w3-light-gray">
 
-  <div class="card-footer  w3-center">
-
+  <div class="card-header w3-blue  w3-center">
     <div *ngIf="(progress.percentage < 100)" class="w3-right">
-
       <div> loading: {{progress.percentage}}%</div>
       <div> loaded: {{progress.total}} bytes</div>
     </div>
 
     <div class="w3-center" i18n="Patient Medication History"><i class="fa fa-medkit"> </i>
       Patient Medication History
-
     </div>
+  </div>
 
+  <div class="card-block">
     <div [visTimeline]="visTimelineMedications"
          [visTimelineItems]="visTimelineItemsMedications"
          [visTimelineOptions]="visTimelineMedicationsOptions"
          (initialized)="timelineInitialized()">
-
     </div>
   </div>
+
+  <div class="card-footer">
+    <div class="w3-tiny w3-right">Click chosen medication to view it's detail in a pop up
+      window.
+    </div>
+  </div>
+
 </div>
 
 <modal [animation]="animationsEnabled" #myMedicationModal>
-    <div *ngIf="selectedMedication">
-        <modal-header [show-close]="true">
-            <h4 class="modal-title">Patient medication details</h4>
-        </modal-header>
-        <modal-body>
+  <div *ngIf="selectedMedication">
+    <modal-header [show-close]="true">
+      <h4 class="modal-title">Patient medication details</h4>
+    </modal-header>
+    <modal-body>
 
-            <div class="w3-container w3-green w3-border w3-border-lime w3-round-large">
+      <div class="w3-container w3-green w3-border w3-border-lime w3-round-large">
 
-                <h2>{{selectedMedication.name}}</h2>
-                <p>Disease: {{selectedMedication.disease}}</p>
-                <p>Prescribed by: {{selectedMedication.prescribedBy}}</p>
-                <p>Dosage: {{selectedMedication.dosage}}</p>
-                <p>Frequency: {{selectedMedication.frequency}}</p>
-                <p>Stop Reason: {{selectedMedication.stopReason}}</p>
-                <p>From: {{selectedMedication.startDate}}</p>
-                <p>To: {{selectedMedication.endDate}}</p>
-            </div>
+        <h2>{{selectedMedication.name}}</h2>
+        <p>Disease: {{selectedMedication.disease}}</p>
+        <p>Prescribed by: {{selectedMedication.prescribedBy}}</p>
+        <p>Dosage: {{selectedMedication.dosage}}</p>
+        <p>Frequency: {{selectedMedication.frequency}}</p>
+        <p>Stop Reason: {{selectedMedication.stopReason}}</p>
+        <p>From: {{selectedMedication.startDate}}</p>
+        <p>To: {{selectedMedication.endDate}}</p>
+      </div>
 
-        </modal-body>
-        <modal-footer [show-default-buttons]="false"></modal-footer>
+    </modal-body>
+    <modal-footer [show-default-buttons]="false"></modal-footer>
 
-    </div>
+  </div>
 </modal>

@@ -17,8 +17,8 @@ export class PatientNotificationsComponent implements OnInit {
 
     public filterQuery = "";
     public rowsOnPage = 5;
-    public sortBy = "name";
-    public sortOrder = "asc";
+  public sortBy = "date";
+  public sortOrder = "desc";
     progress: PatientLoadProgress = {
         percentage: 0,
         loaded: 0,

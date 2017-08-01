@@ -103,44 +103,6 @@ export class PicasoDataService {
             ;
     }
 
-    getMoriskyResults(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientMoriskyResult[]> {
-        return this.http.withDownloadProgressListener(progress => {
-            console.log(`Loading ${progress.percentage}%`);
-            progressResult.percentage = progress.percentage;
-            progressResult.total = progress.total;
-            progressResult.loaded = progress.loaded;
-        })
-            .get(this.patientODSServiceURL)
-            .map(this.extractDataMorisky)
-            .catch(this.handleError)
-            ;
-    }
-
-    getFFbHResults(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientFFbHResult[]> {
-        return this.http.withDownloadProgressListener(progress => {
-            console.log(`Loading ${progress.percentage}%`);
-            progressResult.percentage = progress.percentage;
-            progressResult.total = progress.total;
-            progressResult.loaded = progress.loaded;
-        })
-            .get(this.patientODSServiceURL)
-            .map(this.extractDataFfbh)
-            .catch(this.handleError)
-            ;
-    }
-
-    getRADAIResults(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientRADAIResult[]> {
-        return this.http.withDownloadProgressListener(progress => {
-            console.log(`Loading ${progress.percentage}%`);
-            progressResult.percentage = progress.percentage;
-            progressResult.total = progress.total;
-            progressResult.loaded = progress.loaded;
-        })
-            .get(this.patientODSServiceURL)
-            .map(this.extractDataRadai)
-            .catch(this.handleError)
-            ;
-    }
 
     getObservations(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientObservationGroup[]> {
 
@@ -156,6 +118,21 @@ export class PicasoDataService {
             .catch(this.handleError)
             ;
     }
+
+  getMorisky(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientObservationGroup[]> {
+
+
+    return this.http.withDownloadProgressListener(progress => {
+      console.log(`Loading ${progress.percentage}%`);
+      progressResult.percentage = progress.percentage;
+      progressResult.total = progress.total;
+      progressResult.loaded = progress.loaded;
+    })
+      .get(this.patientODSServiceURL)
+      .map(this.extractDataMorisky)
+      .catch(this.handleError)
+      ;
+  }
 
 
     getMedicationHistory(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientMedication[]> {

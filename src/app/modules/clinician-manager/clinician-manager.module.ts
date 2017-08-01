@@ -14,7 +14,9 @@ import {PatientDiseasesComponent} from "./cards/patient-diseases.component";
 import {PatientCliniciansComponent} from "./cards/patient-clinicians-history.component";
 import {PatientTreatmentHistoryComponent} from "./cards/patient-treatment-history.component";
 import {nvD3} from "ng2-nvd3";
-import {PatientMoriskyResultsComponent} from "./cards/patient-morisky-results.component";
+import {
+  MoriskyDailyAverageObservationsComponent,
+} from "./cards/patient-morisky-results.component";
 import {PatientImagingComponent} from "./cards/patient-imaging.component";
 import {MyDateRangePickerModule} from "mydaterangepicker";
 import {ProgressHttpModule} from "angular-progress-http";
@@ -36,9 +38,9 @@ import {Ng2SmartTableModule} from "ng2-smart-table";
         PatientOverviewComponent,
         PatientDailyAverageObservationsComponent,
         PatientMedicationHistoryComponent,
+      MoriskyDailyAverageObservationsComponent,
         PatientDiseasesComponent,
-      PatientCliniciansComponent, PatientTreatmentHistoryComponent,
-        PatientMoriskyResultsComponent, PatientImagingComponent, PatientNotificationsComponent,
+      PatientCliniciansComponent, PatientTreatmentHistoryComponent, PatientImagingComponent, PatientNotificationsComponent,
         nvD3
     ]
 })

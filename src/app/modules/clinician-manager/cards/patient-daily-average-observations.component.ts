@@ -133,30 +133,40 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
               var html = ""; //d.value;
 
               d.series.forEach(function (elem) {
-                html = html +
-                  (
-                    elem.value === null
-                      ?
-                      "Missing value"
-                      :
-                      elem.value
-                  )
-                  + " <span style='color:" + elem.color + "'>" + elem.key + "</span> " +
-                  (
-                    elem.value === null
-                      ?
-                      ""
-                      :
-                      (
-                        elem.data.source
-                          ?
-                          (" (source: " + elem.data.source + ")")
-                          :
-                          ""
-                      )
-                  )
-                  +
-                  "<br>";
+
+                if (!elem.key.startsWith("hide")) {
+
+
+                  html = html +
+
+                    "<span style='color:" + elem.color + "' > <i class='fa fa-circle'></i> </span> " +
+
+                    elem.data.date + ": <br>" +
+                    (
+                      elem.value === null
+                        ?
+                        "<span class='text-danger'>Missing value</span>"
+                        :
+                        (elem.data.outOfRange ? "<span class='text-danger'>OUT OF RANGE! </span> " : "") + "<b>" + elem.value + "</b>"
+                    )
+                    + " " + elem.key +
+                    (
+                      elem.value === null
+                        ?
+                        ""
+                        :
+                        (
+                          elem.data.source
+                            ?
+                            (" (source: " + elem.data.source + ")")
+                            :
+                            ""
+                        )
+                    )
+                    +
+                    "<br>";
+                }
+
               });
 
               //console.log(JSON.stringify(d));
@@ -216,6 +226,14 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
         for (var el of group.values) {
 
+          if (
+            el.value != null &&
+            (group.minValue != null && el.value < group.minValue) ||
+            (group.maxValue != null && el.value > group.maxValue)
+          ) {
+            el.outOfRange = true;
+          }
+
           //console.log("gettime" + new Date(el.date).getTime());
 
           if (new Date(el.date).getTime() < this.startDate.getTime() || new Date(el.date).getTime() > this.endDate.getTime()) {
@@ -243,11 +261,13 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
             newGraphValues.push(observation);//{"x": new Date(observation.date).getTime(), "y": observation.value})
 
+
             //if (observation.value === null) console.log("found null");
 
             //console.log( group.name + " / " + group.label + " " +
             // observation.date + " " + observation.value);
           }
+
 
           this.data.push({
             values: newGraphValues,
@@ -258,12 +278,73 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             disabled: false,
             yAxis: 1,
             xAxis: 1,
-            type: 'line'//group.type
-          })
+            type: 'line'   //group.type
+
+          });
+
+
+          if (group.minValue != null) {
+            var newGraphValuesMin = [];
+            newGraphValuesMin.push({date: this.startDate, value: group.minValue});
+            newGraphValuesMin.push({date: this.endDate, value: group.minValue});
+            //min value line
+            this.data.push({
+              values: newGraphValuesMin,
+              key: "hidemin" + group.id,
+              color: group.color,
+              //area: false,
+              //mean: 120,
+              disabled: false,
+              yAxis: 1,
+              xAxis: 1,
+              type: 'line',
+              classed: 'mydashed'
+            })
+          }
+
+
+          if (group.maxValue != null) {
+            var newGraphValuesMax = [];
+            newGraphValuesMax.push({date: this.endDate, value: group.maxValue});
+            newGraphValuesMax.push({date: this.startDate, value: group.maxValue});
+            //max value line
+            this.data.push({
+              values: newGraphValuesMax,
+              key: "hidemax" + group.id,
+              color: group.color,
+              //area: false,
+              //mean: 120,
+              disabled: false,
+              yAxis: 1,
+              xAxis: 1,
+              type: 'line',
+              classed: 'mydashed'
+            })
+          }
+
+          if (group.midValue != null) {
+            var newGraphValuesMid = [];
+            newGraphValuesMid.push({date: this.startDate, value: group.midValue});
+            newGraphValuesMid.push({date: this.endDate, value: group.midValue});
+            //mid value line
+            this.data.push({
+              values: newGraphValuesMid,
+              key: "hidemid" + group.id,
+              color: group.color,
+              //area: false,
+              //mean: 120,
+              disabled: false,
+              yAxis: 1,
+              xAxis: 1,
+              type: 'line',
+              classed: 'mydashed'
+            })
+          }
 
         }
       }
     }
+
     /*
      for (var group of this.observationGroups) {
 
@@ -332,13 +413,13 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   }
 
-  public
-  refreshRange(start: Date, end: Date): void {
+  public refreshRange(start: Date, end: Date): void {
+
 
     this.startDate = start;
     this.endDate = end;
 
-    this.options.chart.xDomain = [this.startDate.getTime(), this.endDate.getTime()];
+    this.options.chart.xDomain = [this.startDate.getTime() - 86400000, this.endDate.getTime() + 86400000];
     this.reloadDataToGraph();
 
   }

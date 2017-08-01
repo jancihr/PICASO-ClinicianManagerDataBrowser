@@ -78,67 +78,2203 @@
   ],
   "morisky": [
     {
-      "id": "mor1",
-      "date": "2016-05-10",
-      "q1": "1",
-      "q2": "1",
-      "q3": "1",
-      "q4": "1",
-      "q5": "2"
-    },
-    {
-      "id": "mor2",
-      "date": "2016-05-11",
-      "q1": "1",
-      "q2": "2",
-      "q3": "2",
-      "q4": "2",
-      "q5": "1"
-    },
-    {
-      "id": "mor2",
-      "date": "2016-05-12",
-      "q1": "1",
-      "q2": "2",
-      "q3": "2",
-      "q4": "1",
-      "q5": "1"
-    },
-    {
-      "id": "mor2",
-      "date": "2016-05-13",
-      "q1": "2",
-      "q2": "2",
-      "q3": "2",
-      "q4": "2",
-      "q5": "2"
-    },
-    {
-      "id": "mor2",
-      "date": "2016-05-14",
-      "q1": "1",
-      "q2": "2",
-      "q3": "1",
-      "q4": "2",
-      "q5": "2"
-    },
-    {
-      "id": "mor2",
-      "date": "2016-05-15T13:41:19.000Z",
-      "q1": "2",
-      "q2": "2",
-      "q3": "1",
-      "q4": "1",
-      "q5": "1"
-    },
-    {
-      "id": "mor2",
-      "date": "2016-05-16T13:41:19.000Z",
-      "q1": "1",
-      "q2": "2",
-      "q3": "1",
-      "q4": "2",
-      "q5": "2"
+      "name": "Morisky Scale",
+      "id": "m11asds",
+      "label": "score",
+      "color": "#000000",
+      "type": "line",
+      "values": [
+        {
+          "id": "597fd3d49922fb40321ce943",
+          "value": 2.9475,
+          "date": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d41ce145a55e45efa2",
+          "value": 3.4444,
+          "date": "Tue Aug 23 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d428f905cb03285bab",
+          "value": 2.4053,
+          "date": "Wed Aug 24 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4a5bd5afa09c8dc05",
+          "value": 1.1305,
+          "date": "Thu Aug 25 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d44a415ca0b65fac4f",
+          "value": 1.0694,
+          "date": "Fri Aug 26 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d439c867fc9f20e81b",
+          "value": 0.8219,
+          "date": "Sat Aug 27 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4cd0b672a523b51ea",
+          "value": 0.0963,
+          "date": "Sun Aug 28 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4555e9e93d3d6c190",
+          "value": 0.7222,
+          "date": "Mon Aug 29 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4cc6e533210a2a726",
+          "value": 3.8596,
+          "date": "Tue Aug 30 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4598db505de8884d2",
+          "value": 2.8609,
+          "date": "Wed Aug 31 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d495353f846e292fdb",
+          "value": 2.4408,
+          "date": "Thu Sep 01 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d46e17fec20db0db7e",
+          "value": 1.7748,
+          "date": "Fri Sep 02 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4ef69616de789127f",
+          "value": 1.543,
+          "date": "Sat Sep 03 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d43fbcbaa6007e70dc",
+          "value": 1.7267,
+          "date": "Sun Sep 04 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d43f66cd8debe01738",
+          "value": 1.145,
+          "date": "Mon Sep 05 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d416a73e26bb6c8a40",
+          "value": 0.6324,
+          "date": "Tue Sep 06 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d48f1514e231825c96",
+          "value": 3.862,
+          "date": "Wed Sep 07 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d49b1fb90ced3010f7",
+          "value": 2.4164,
+          "date": "Thu Sep 08 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d40a6cc7d412133c2c",
+          "value": 2.7233,
+          "date": "Fri Sep 09 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d43a9ca16e06c37ef6",
+          "value": 2.0811,
+          "date": "Sat Sep 10 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d40ab3fa727972d98e",
+          "value": 1.4642,
+          "date": "Sun Sep 11 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4b1e6ecf7076e7cca",
+          "value": 2.2269,
+          "date": "Mon Sep 12 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d464ad75860b6c8b40",
+          "value": 3.5123,
+          "date": "Tue Sep 13 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4832caeb77abb4406",
+          "value": 3.2276,
+          "date": "Wed Sep 14 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4cc7120060518fe34",
+          "value": 1.4322,
+          "date": "Thu Sep 15 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4eb26db2f5a8798a3",
+          "value": 1.1782,
+          "date": "Fri Sep 16 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d476e4e5f202996678",
+          "value": 0.814,
+          "date": "Sat Sep 17 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4a425f103683818d0",
+          "value": 2.471,
+          "date": "Sun Sep 18 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4a320e889f0f5e98a",
+          "value": 3.0405,
+          "date": "Mon Sep 19 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d45d6e71aecf55f0e9",
+          "value": 1.5942,
+          "date": "Tue Sep 20 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4bac07525d39028ea",
+          "value": 1.6755,
+          "date": "Wed Sep 21 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d454762cccc9bf0dd1",
+          "value": 2.5383,
+          "date": "Thu Sep 22 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d46d8492d47b11cab6",
+          "value": 3.7042,
+          "date": "Fri Sep 23 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d46851a1278e0c0c6e",
+          "value": 0.2381,
+          "date": "Sat Sep 24 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d42472db6e9a1d410f",
+          "value": 2.053,
+          "date": "Sun Sep 25 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4fdb0ab4d33613d4f",
+          "value": 3.5137,
+          "date": "Mon Sep 26 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d418871dfe25250512",
+          "value": 1.932,
+          "date": "Tue Sep 27 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d42369881f0b7e03c1",
+          "value": 2.3867,
+          "date": "Wed Sep 28 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d40408549528655f6a",
+          "value": 2.522,
+          "date": "Thu Sep 29 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4fa8cedff7f8bd9f6",
+          "value": 3.0739,
+          "date": "Fri Sep 30 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4201ed6333d473e29",
+          "value": 1.5281,
+          "date": "Sat Oct 01 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d46909c3ae4247505b",
+          "value": 1.2809,
+          "date": "Sun Oct 02 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4270107349e98f5a2",
+          "value": 1.0555,
+          "date": "Mon Oct 03 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4bd3ea136be6df3d1",
+          "value": 3.3171,
+          "date": "Tue Oct 04 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d41148184ab7820598",
+          "value": 0.0587,
+          "date": "Wed Oct 05 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d45e261afe96d30dea",
+          "value": 2.7396,
+          "date": "Thu Oct 06 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d464c3455fc6dce455",
+          "value": 3.1011,
+          "date": "Fri Oct 07 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4b82df3ff6eacd5cc",
+          "value": 1.8398,
+          "date": "Sat Oct 08 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4c6925b1580ad26c7",
+          "value": 3.3172,
+          "date": "Sun Oct 09 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d445c24644aa43984f",
+          "value": 2.8885,
+          "date": "Mon Oct 10 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d42d666d1b091ff0fa",
+          "value": 3.6396,
+          "date": "Tue Oct 11 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4fbbd62c1164a1d27",
+          "value": 2.9691,
+          "date": "Wed Oct 12 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d48b6d9e36fc7e1995",
+          "value": 2.8714,
+          "date": "Thu Oct 13 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d43b648dd0295ec7a5",
+          "value": 2.6068,
+          "date": "Fri Oct 14 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d491d41a51492cf07c",
+          "value": 2.8987,
+          "date": "Sat Oct 15 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d40eb8628a6c876b10",
+          "value": 1.4267,
+          "date": "Sun Oct 16 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d43108823aff512c79",
+          "value": 3.1756,
+          "date": "Mon Oct 17 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d435c1a2d3cf9039f9",
+          "value": 3.2511,
+          "date": "Tue Oct 18 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4b037e711a0fe01fb",
+          "value": 3.1672,
+          "date": "Wed Oct 19 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4bb370dd1f21e16d3",
+          "value": 1.0693,
+          "date": "Thu Oct 20 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4257069f0af76e6d4",
+          "value": 1.0587,
+          "date": "Fri Oct 21 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d44a148ee6d69c1018",
+          "value": 0.3049,
+          "date": "Sat Oct 22 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d45b57e044c1057ee2",
+          "value": 1.221,
+          "date": "Sun Oct 23 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4d9ee0fddd79a10e9",
+          "value": 0.2699,
+          "date": "Mon Oct 24 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d414a5e17181d3d68b",
+          "value": 3.8743,
+          "date": "Tue Oct 25 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d466d39745cb27f166",
+          "value": 3.6422,
+          "date": "Wed Oct 26 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4d726e145b224ee04",
+          "value": 3.5091,
+          "date": "Thu Oct 27 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d447e600e77be81b87",
+          "value": 2.7062,
+          "date": "Fri Oct 28 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d44fc8fc8e550a96e3",
+          "value": 2.5988,
+          "date": "Sat Oct 29 2016 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d486183dd489c967e8",
+          "value": 3.1829,
+          "date": "Sun Oct 30 2016 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4368ace19b54d26d1",
+          "value": 2.0607,
+          "date": "Mon Oct 31 2016 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d44c31012582cf7455",
+          "value": 3.1652,
+          "date": "Tue Nov 01 2016 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4e1d15fa62a28d80f",
+          "value": 2.2184,
+          "date": "Wed Nov 02 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d47837dfb12f75d758",
+          "value": 3.2457,
+          "date": "Thu Nov 03 2016 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d448ea4ec7bfa1492e",
+          "value": 3.1743,
+          "date": "Fri Nov 04 2016 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d42048fcacf451a53b",
+          "value": 0.3327,
+          "date": "Sat Nov 05 2016 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4a542a0f6422cbc32",
+          "value": 0.564,
+          "date": "Sun Nov 06 2016 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d42e1711b05975969e",
+          "value": 0.4706,
+          "date": "Mon Nov 07 2016 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d466c9e04e36781a04",
+          "value": 0.7144,
+          "date": "Tue Nov 08 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d44ea06ee643426f00",
+          "value": 1.6544,
+          "date": "Wed Nov 09 2016 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d46006520877fa5fe3",
+          "value": 0.5218,
+          "date": "Thu Nov 10 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4474421b73444368f",
+          "value": 1.7055,
+          "date": "Fri Nov 11 2016 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d40d9565a9d8aa955c",
+          "value": 1.5184,
+          "date": "Sat Nov 12 2016 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d457f1b68bb9b1e7de",
+          "value": 3.9254,
+          "date": "Sun Nov 13 2016 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d440b85d53b74f0356",
+          "value": 3.5626,
+          "date": "Mon Nov 14 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4518c26db1bb283f4",
+          "value": 3.9942,
+          "date": "Tue Nov 15 2016 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4393d12617c2256f0",
+          "value": 3.6647,
+          "date": "Wed Nov 16 2016 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4b1d64a9ee45eb7b1",
+          "value": 2.4031,
+          "date": "Thu Nov 17 2016 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4386e6faf863148dd",
+          "value": 0.0178,
+          "date": "Fri Nov 18 2016 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d419e0f36cd0963d9e",
+          "value": 2.8945,
+          "date": "Sat Nov 19 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d43161454b9dbf4a83",
+          "value": 2.4051,
+          "date": "Sun Nov 20 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d415fac789071455aa",
+          "value": 2.4013,
+          "date": "Mon Nov 21 2016 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4486c35ab415b18f4",
+          "value": 1.839,
+          "date": "Tue Nov 22 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d485fc2dd340445832",
+          "value": 1.4622,
+          "date": "Wed Nov 23 2016 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4cf6d7cd515671713",
+          "value": 3.124,
+          "date": "Thu Nov 24 2016 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4ee2ac773f37feea7",
+          "value": 1.9392,
+          "date": "Fri Nov 25 2016 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d47ee3a05b01dc2354",
+          "value": 2.4484,
+          "date": "Sat Nov 26 2016 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d42035d24784639072",
+          "value": 1.6672,
+          "date": "Sun Nov 27 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4cb6d16e8c6a7cd10",
+          "value": 1.1551,
+          "date": "Mon Nov 28 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4b2cda2583241c051",
+          "value": 3.5724,
+          "date": "Tue Nov 29 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d40b3686bd86f09135",
+          "value": 2.3952,
+          "date": "Wed Nov 30 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4c7d7a1508ccb3e9e",
+          "value": 3.0474,
+          "date": "Thu Dec 01 2016 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d419c817828f1c4f96",
+          "value": 0.5546,
+          "date": "Fri Dec 02 2016 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4a49b177304b507d4",
+          "value": 0.705,
+          "date": "Sat Dec 03 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4146a4db7e26122a4",
+          "value": 0.3323,
+          "date": "Sun Dec 04 2016 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d403827e1f0e244ffe",
+          "value": 2.638,
+          "date": "Mon Dec 05 2016 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4ed18326853e7a887",
+          "value": 0.6196,
+          "date": "Tue Dec 06 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d42960d1f8d7450376",
+          "value": 3.3637,
+          "date": "Wed Dec 07 2016 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d419aa3d5fac1196b3",
+          "value": 3.5312,
+          "date": "Thu Dec 08 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4a126604601bfb3af",
+          "value": 0.5548,
+          "date": "Fri Dec 09 2016 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d468488aa5832d0d8d",
+          "value": 2.0571,
+          "date": "Sat Dec 10 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d43d91427b6875bd5e",
+          "value": 0.995,
+          "date": "Sun Dec 11 2016 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4c2eb153ec236b110",
+          "value": 1.0247,
+          "date": "Mon Dec 12 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4d50a2ae43ca78e61",
+          "value": 3.2714,
+          "date": "Tue Dec 13 2016 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4a528bce291fa8a41",
+          "value": 3.318,
+          "date": "Wed Dec 14 2016 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4750e9565ab6a6b89",
+          "value": 2.8416,
+          "date": "Thu Dec 15 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d486e5b004a58d0302",
+          "value": 2.8589,
+          "date": "Fri Dec 16 2016 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4ac23b453e9809ad6",
+          "value": 1.5452,
+          "date": "Sat Dec 17 2016 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d47cd0b636aa1e7047",
+          "value": 3.5087,
+          "date": "Sun Dec 18 2016 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4ea001abe113cde8f",
+          "value": 3.493,
+          "date": "Mon Dec 19 2016 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d44726e68a4465b777",
+          "value": 0.3839,
+          "date": "Tue Dec 20 2016 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4833e9c55fedd761d",
+          "value": 2.4671,
+          "date": "Wed Dec 21 2016 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d432870041b8d728f0",
+          "value": 2.5083,
+          "date": "Thu Dec 22 2016 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d409d511e63fd8d523",
+          "value": 3.9492,
+          "date": "Fri Dec 23 2016 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d49cf45b254558aedd",
+          "value": 1.1562,
+          "date": "Sat Dec 24 2016 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4d81483c774b3a2d8",
+          "value": 0.5986,
+          "date": "Sun Dec 25 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d438b2975dec293b06",
+          "value": 0.5919,
+          "date": "Mon Dec 26 2016 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4c5b51987209a7ef2",
+          "value": 3.0818,
+          "date": "Tue Dec 27 2016 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4698bff01cc78855b",
+          "value": 3.358,
+          "date": "Wed Dec 28 2016 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d48660c56a9b02e710",
+          "value": 3.91,
+          "date": "Thu Dec 29 2016 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d40db4d503305543f5",
+          "value": 1.4791,
+          "date": "Fri Dec 30 2016 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4235464ba0206513b",
+          "value": 0.596,
+          "date": "Sat Dec 31 2016 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4fbbfce6b860f197e",
+          "value": 0.7167,
+          "date": "Sun Jan 01 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4b9fefc4c758d26e6",
+          "value": 1.9463,
+          "date": "Mon Jan 02 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4e4ab53a665998a65",
+          "value": 3.1565,
+          "date": "Tue Jan 03 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4290abf913300615c",
+          "value": 1.6355,
+          "date": "Wed Jan 04 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d447652a32998ee14c",
+          "value": 0.5783,
+          "date": "Thu Jan 05 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4cd00d7652bd65c12",
+          "value": 3.1783,
+          "date": "Fri Jan 06 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d47ec86c17c5d0e9c5",
+          "value": 3.0112,
+          "date": "Sat Jan 07 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4d4afe90e5f819d90",
+          "value": 3.4436,
+          "date": "Sun Jan 08 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4246398bdcda17bed",
+          "value": 1.4629,
+          "date": "Mon Jan 09 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4d3136c4c570117e4",
+          "value": 3.5523,
+          "date": "Tue Jan 10 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4704610515ca70f35",
+          "value": 1.5884,
+          "date": "Wed Jan 11 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d42ca74643862e9809",
+          "value": 1.4545,
+          "date": "Thu Jan 12 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d41ffc276e1292cb47",
+          "value": 3.4171,
+          "date": "Fri Jan 13 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d45db19b13d0c49214",
+          "value": 2.8996,
+          "date": "Sat Jan 14 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d45b03e66731b07035",
+          "value": 0.0796,
+          "date": "Sun Jan 15 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d45a98fc9ca37f3420",
+          "value": 1.8108,
+          "date": "Mon Jan 16 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d461205d7a6282db56",
+          "value": 2.3802,
+          "date": "Tue Jan 17 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d44d74e7992f4ecbab",
+          "value": 0.5118,
+          "date": "Wed Jan 18 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d431d25c3f8ca8007b",
+          "value": 1.3434,
+          "date": "Thu Jan 19 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d42c626c28b1a473ca",
+          "value": 2.582,
+          "date": "Fri Jan 20 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d42a38f99dfaffa2ce",
+          "value": 3.8833,
+          "date": "Sat Jan 21 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d49c4ebca15ebba7c1",
+          "value": 3.561,
+          "date": "Sun Jan 22 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d486353f11f30c2d2b",
+          "value": 2.2659,
+          "date": "Mon Jan 23 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4ee422c3b9810c411",
+          "value": 0.669,
+          "date": "Tue Jan 24 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d48c7ba477d6671067",
+          "value": 1.2955,
+          "date": "Wed Jan 25 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4b54f15c0ece19efd",
+          "value": 3.3846,
+          "date": "Thu Jan 26 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4a65c19ffab25bb70",
+          "value": 3.5331,
+          "date": "Fri Jan 27 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d441cfcad771fa1f9b",
+          "value": 3.1022,
+          "date": "Sat Jan 28 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d48392426569172c2a",
+          "value": 0.4033,
+          "date": "Sun Jan 29 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4415092037d1c2944",
+          "value": 3.8665,
+          "date": "Mon Jan 30 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d448c306a72daad8d1",
+          "value": 3.6943,
+          "date": "Tue Jan 31 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4fd38485ff9149ea2",
+          "value": 3.2916,
+          "date": "Wed Feb 01 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d405ea96961c216e32",
+          "value": 2.6631,
+          "date": "Thu Feb 02 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d44a594beb723d0c96",
+          "value": 1.1619,
+          "date": "Fri Feb 03 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4f05d7f570fff6227",
+          "value": 1.9312,
+          "date": "Sat Feb 04 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d45441e35fddcf475f",
+          "value": 0.3035,
+          "date": "Sun Feb 05 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4689260c20c9ea6fe",
+          "value": 1.4067,
+          "date": "Mon Feb 06 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4376c8c527b36455b",
+          "value": 0.8529,
+          "date": "Tue Feb 07 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d400a9496bea105667",
+          "value": 2.9646,
+          "date": "Wed Feb 08 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d442f018983e067435",
+          "value": 2.0256,
+          "date": "Thu Feb 09 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d44decc82432a98b13",
+          "value": 0.6319,
+          "date": "Fri Feb 10 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4ee324c1752edd191",
+          "value": 1.7159,
+          "date": "Sat Feb 11 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4811f0b4815c0c7a3",
+          "value": 0.4658,
+          "date": "Sun Feb 12 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d43a10f45cd7dab1fc",
+          "value": 3.6446,
+          "date": "Mon Feb 13 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d44d63a4edc29080d5",
+          "value": 3.4888,
+          "date": "Tue Feb 14 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d467fa6c29628e2039",
+          "value": 1.5313,
+          "date": "Wed Feb 15 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4e09604b7c7f9ea7c",
+          "value": 3.0652,
+          "date": "Thu Feb 16 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4a05e92944a085629",
+          "value": 1.4467,
+          "date": "Fri Feb 17 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d464eb5088d4bffd3f",
+          "value": 1.4265,
+          "date": "Sat Feb 18 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d48c1d2cf00ebffd07",
+          "value": 1.2052,
+          "date": "Sun Feb 19 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4e3e62c903ea0e953",
+          "value": 3.7282,
+          "date": "Mon Feb 20 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4a0b00f2a1d8b9061",
+          "value": 2.4055,
+          "date": "Tue Feb 21 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4e5b355a9b7e8487b",
+          "value": 2.9165,
+          "date": "Wed Feb 22 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4893d6807c0685a2c",
+          "value": 1.7609,
+          "date": "Thu Feb 23 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d472e237f883896954",
+          "value": 2.6358,
+          "date": "Fri Feb 24 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d44a6bde8699fb0a4e",
+          "value": 1.6011,
+          "date": "Sat Feb 25 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d44b206cafef292406",
+          "value": 1.2873,
+          "date": "Sun Feb 26 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4c4b2d5b0ab2a2ccb",
+          "value": 3.2801,
+          "date": "Mon Feb 27 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4e96ec89263b3e433",
+          "value": 1.5247,
+          "date": "Tue Feb 28 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d433a436e115f0dcc8",
+          "value": 0.0649,
+          "date": "Wed Mar 01 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4d329f156a1c5816c",
+          "value": 0.2744,
+          "date": "Thu Mar 02 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d465d4acfb87c1690f",
+          "value": 3.0035,
+          "date": "Fri Mar 03 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4a4d9dc818ecbf6b0",
+          "value": 3.7169,
+          "date": "Sat Mar 04 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4e966a70fa8b90b7a",
+          "value": 2.2271,
+          "date": "Sun Mar 05 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4d8b186f1d719bde5",
+          "value": 1.4921,
+          "date": "Mon Mar 06 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4ec13e2f3cc5c1ac3",
+          "value": 2.4405,
+          "date": "Tue Mar 07 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d40c7d638929cccb55",
+          "value": 1.1919,
+          "date": "Wed Mar 08 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d471f98c1026110b12",
+          "value": 3.5092,
+          "date": "Thu Mar 09 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d47dbb3ba0f6f27b57",
+          "value": 1.4724,
+          "date": "Fri Mar 10 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d46a619cd39a00acdf",
+          "value": 2.9613,
+          "date": "Sat Mar 11 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d492bcfcd77a9b0618",
+          "value": 0.2261,
+          "date": "Sun Mar 12 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d48f83f30e700d4303",
+          "value": 3.7362,
+          "date": "Mon Mar 13 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4edc5c6a22bb0bf65",
+          "value": 2.9893,
+          "date": "Tue Mar 14 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4f57d11ca0221d7fd",
+          "value": 2.7085,
+          "date": "Wed Mar 15 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d47569294da1ca874e",
+          "value": 0.205,
+          "date": "Thu Mar 16 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4cd9251f7591d908e",
+          "value": 3.0669,
+          "date": "Fri Mar 17 2017 11:07:35 GMT+0100 (CET)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4a44a2137a503b7e6",
+          "value": 1.7366,
+          "date": "Sat Mar 18 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d40df8c7f0ca67c683",
+          "value": 0.8319,
+          "date": "Sun Mar 19 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4e6ff47b699111c82",
+          "value": 3.9265,
+          "date": "Mon Mar 20 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d445008c02fe292cba",
+          "value": 3.3471,
+          "date": "Tue Mar 21 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4df88a52a87aca872",
+          "value": 0.8273,
+          "date": "Wed Mar 22 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d46f082c1e602fabd4",
+          "value": 3.6478,
+          "date": "Thu Mar 23 2017 11:07:35 GMT+0100 (CET)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d439203bf2cb130068",
+          "value": 0.2025,
+          "date": "Fri Mar 24 2017 11:07:35 GMT+0100 (CET)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4d22990100ecac09c",
+          "value": 2.2219,
+          "date": "Sat Mar 25 2017 11:07:35 GMT+0100 (CET)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d47f6c7ba8e8106698",
+          "value": 0.3431,
+          "date": "Sun Mar 26 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d495ad140cae2ed31f",
+          "value": 1.0871,
+          "date": "Mon Mar 27 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4eb896c3cd697f1da",
+          "value": 1.8149,
+          "date": "Tue Mar 28 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d46ce1faa53d416366",
+          "value": 1.8261,
+          "date": "Wed Mar 29 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4312ce4734606a0d9",
+          "value": 3.649,
+          "date": "Thu Mar 30 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4c99d392186cb8ee3",
+          "value": 3.8135,
+          "date": "Fri Mar 31 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d43604b85be8652a14",
+          "value": 2.2086,
+          "date": "Sat Apr 01 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4bc2320a05064cf43",
+          "value": 2.5324,
+          "date": "Sun Apr 02 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4681b0ca356afc423",
+          "value": 2.7916,
+          "date": "Mon Apr 03 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d48e29584de19e77df",
+          "value": 2.4416,
+          "date": "Tue Apr 04 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d43469ff9b111676be",
+          "value": 3.4095,
+          "date": "Wed Apr 05 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4979bc5b52ad10df8",
+          "value": 2.2543,
+          "date": "Thu Apr 06 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4a1209b2713d21ee2",
+          "value": 2.7882,
+          "date": "Fri Apr 07 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4f1ec05d01517f696",
+          "value": 3.6444,
+          "date": "Sat Apr 08 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d477c12808c2ba10db",
+          "value": 0.5489,
+          "date": "Sun Apr 09 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d482c0fd77431b1b63",
+          "value": 2.0385,
+          "date": "Mon Apr 10 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d455342bc0415801ea",
+          "value": 1.0217,
+          "date": "Tue Apr 11 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d422b56855c661ad8f",
+          "value": 0.9389,
+          "date": "Wed Apr 12 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d433481371daf1bcf9",
+          "value": 0.3623,
+          "date": "Thu Apr 13 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4cd0ab2dfbb5d3da1",
+          "value": 0.5961,
+          "date": "Fri Apr 14 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d48d87036a8a93dd51",
+          "value": 3.4995,
+          "date": "Sat Apr 15 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d45c994db423031e9f",
+          "value": 1.3157,
+          "date": "Sun Apr 16 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d40660a7d80b70f9e1",
+          "value": 3.0955,
+          "date": "Mon Apr 17 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d40ca2ea47fd6c3fcd",
+          "value": 0.6204,
+          "date": "Tue Apr 18 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d451d1f27ee2fe36ed",
+          "value": 0.1435,
+          "date": "Wed Apr 19 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d40b9fc5c184174990",
+          "value": 1.1191,
+          "date": "Thu Apr 20 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d46e3c27c3385d5302",
+          "value": 3.1647,
+          "date": "Fri Apr 21 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d45802afc216146334",
+          "value": 0.361,
+          "date": "Sat Apr 22 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4104e45d1238d4d23",
+          "value": 3.4545,
+          "date": "Sun Apr 23 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d49ea94ad7e1473196",
+          "value": 1.2238,
+          "date": "Mon Apr 24 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4f47e42e89d82a7cc",
+          "value": 1.9859,
+          "date": "Tue Apr 25 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4315ad41736d1a159",
+          "value": 0.5696,
+          "date": "Wed Apr 26 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d490fac7c46b73af03",
+          "value": 2.4486,
+          "date": "Thu Apr 27 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d44e27c94cae3a1b54",
+          "value": 2.8426,
+          "date": "Fri Apr 28 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4807c74b94cbfac21",
+          "value": 2.6615,
+          "date": "Sat Apr 29 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4d68ba5879ae4f1bc",
+          "value": 1.6164,
+          "date": "Sun Apr 30 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d441616fe9a50f8995",
+          "value": 1.9197,
+          "date": "Mon May 01 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4ddc6082ec0a683e4",
+          "value": 3.0837,
+          "date": "Tue May 02 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4b435ad416966512e",
+          "value": 0.6427,
+          "date": "Wed May 03 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4e4da708dfe8a223f",
+          "value": 3.0408,
+          "date": "Thu May 04 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d475e68794b63df824",
+          "value": 1.9366,
+          "date": "Fri May 05 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4648afe20de52271c",
+          "value": 3.9042,
+          "date": "Sat May 06 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4a83c0419344b2589",
+          "value": 2.3602,
+          "date": "Sun May 07 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d403ef435e5d791da5",
+          "value": 0.8391,
+          "date": "Mon May 08 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d42b3c33b1d2cae906",
+          "value": 1.8577,
+          "date": "Tue May 09 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4e940ab1e85133d0d",
+          "value": 1.437,
+          "date": "Wed May 10 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4aeb30334d170a56b",
+          "value": 0.1909,
+          "date": "Thu May 11 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d47c0933602640becc",
+          "value": 3.0874,
+          "date": "Fri May 12 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4a2861b16b2981ae0",
+          "value": 1.5664,
+          "date": "Sat May 13 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4e819cc0d9f7d6544",
+          "value": 0.5588,
+          "date": "Sun May 14 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4dc56ee7b81d56d89",
+          "value": 0.992,
+          "date": "Mon May 15 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4e6a32eb4083816b6",
+          "value": 0.8099,
+          "date": "Tue May 16 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4e5c30cddc0a19279",
+          "value": 0.0585,
+          "date": "Wed May 17 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d449b595f61ce29061",
+          "value": 3.0302,
+          "date": "Thu May 18 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4ec6411820850b03b",
+          "value": 0.7211,
+          "date": "Fri May 19 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d406e81e81b06285f8",
+          "value": 2.2349,
+          "date": "Sat May 20 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4d2b790e2348ad793",
+          "value": 0.4537,
+          "date": "Sun May 21 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d41d36618f8d0b2201",
+          "value": 1.2774,
+          "date": "Mon May 22 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4b5a78ee06e98652e",
+          "value": 3.0529,
+          "date": "Tue May 23 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4712a2f4f26631638",
+          "value": 0.834,
+          "date": "Wed May 24 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4c861498f0302e78f",
+          "value": 2.2851,
+          "date": "Thu May 25 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4ed101664e026959a",
+          "value": 3.805,
+          "date": "Fri May 26 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4ed7aab0f7fa93dd4",
+          "value": 3.5267,
+          "date": "Sat May 27 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4ba9c3bf32b4da507",
+          "value": 0.7367,
+          "date": "Sun May 28 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4ae376a97e7ad24a9",
+          "value": 1.8721,
+          "date": "Mon May 29 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d44c0d49626b9a0b30",
+          "value": 0.1045,
+          "date": "Tue May 30 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d44b9ac3db61a23873",
+          "value": 1.5355,
+          "date": "Wed May 31 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d44f7ac62df802ef09",
+          "value": 1.0427,
+          "date": "Thu Jun 01 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4234f29c10c5733ac",
+          "value": 3.573,
+          "date": "Fri Jun 02 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4794b8952021efc43",
+          "value": 1.8537,
+          "date": "Sat Jun 03 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d47f77e48156bb738a",
+          "value": 2.7958,
+          "date": "Sun Jun 04 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4f573343e1cbd7414",
+          "value": 2.7169,
+          "date": "Mon Jun 05 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4686903a154ee44f7",
+          "value": 3.227,
+          "date": "Tue Jun 06 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d49ac61a9b3ab56529",
+          "value": 1.5438,
+          "date": "Wed Jun 07 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d450b1cca38350c338",
+          "value": 2.7683,
+          "date": "Thu Jun 08 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4b8b4554cbc147f93",
+          "value": 0.7002,
+          "date": "Fri Jun 09 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d43825ce355683146f",
+          "value": 0.9,
+          "date": "Sat Jun 10 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4497afb8d2cc78d67",
+          "value": 1.3538,
+          "date": "Sun Jun 11 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d49b11a9a98aa35890",
+          "value": 1.9174,
+          "date": "Mon Jun 12 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4d3184ed23059d4dd",
+          "value": 1.5542,
+          "date": "Tue Jun 13 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d41473fbd84344d7ff",
+          "value": 3.7219,
+          "date": "Wed Jun 14 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4e1ee5d5a8d7838f8",
+          "value": 0.1697,
+          "date": "Thu Jun 15 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4a9274f8bfdbdc7f0",
+          "value": 1.3469,
+          "date": "Fri Jun 16 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4992ac5008fe260ea",
+          "value": 1.6027,
+          "date": "Sat Jun 17 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d45dbe922a138c1280",
+          "value": 0.972,
+          "date": "Sun Jun 18 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4c425dde60da104fa",
+          "value": 0.1068,
+          "date": "Mon Jun 19 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4a851e5ee2b02c665",
+          "value": 1.7218,
+          "date": "Tue Jun 20 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4c6d3a4f280adb682",
+          "value": 3.8659,
+          "date": "Wed Jun 21 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d479ab8020dd629df8",
+          "value": 0.3994,
+          "date": "Thu Jun 22 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4de3f340796b1cb96",
+          "value": 2.2521,
+          "date": "Fri Jun 23 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4d9e05212d1a55734",
+          "value": 1.9049,
+          "date": "Sat Jun 24 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d42d6db07b75cd57a8",
+          "value": 1.1262,
+          "date": "Sun Jun 25 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4e291152a427e80c1",
+          "value": 3.6275,
+          "date": "Mon Jun 26 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4ea99bbe258f415c0",
+          "value": 1.334,
+          "date": "Tue Jun 27 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4777cbc8acf5a04b3",
+          "value": 3.0417,
+          "date": "Wed Jun 28 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4716707b3d513e82a",
+          "value": 1.3695,
+          "date": "Thu Jun 29 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d45bb67785b0827c47",
+          "value": 2.9208,
+          "date": "Fri Jun 30 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d437d00d04721fd8e8",
+          "value": 3.0155,
+          "date": "Sat Jul 01 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d406468411d133980f",
+          "value": 1.5213,
+          "date": "Sun Jul 02 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d45e28360e4a698a87",
+          "value": 1.9486,
+          "date": "Mon Jul 03 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d40a05c3ab3030e784",
+          "value": 0.0448,
+          "date": "Tue Jul 04 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d40535ce9aa3bdf225",
+          "value": 3.1173,
+          "date": "Wed Jul 05 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d40088821f75e21a62",
+          "value": 2.6311,
+          "date": "Thu Jul 06 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d46a9dbe4880ec53a6",
+          "value": 1.1627,
+          "date": "Fri Jul 07 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4247cdc16b8eea025",
+          "value": 2.2588,
+          "date": "Sat Jul 08 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4b96d658e7f71c94b",
+          "value": 1.6339,
+          "date": "Sun Jul 09 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4cef79514d6ab75e8",
+          "value": 2.117,
+          "date": "Mon Jul 10 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4d5e373aa9765186b",
+          "value": 3.7038,
+          "date": "Tue Jul 11 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4902cf4e5af82733c",
+          "value": 3.2873,
+          "date": "Wed Jul 12 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4d2dc61a52225fa92",
+          "value": 1.2867,
+          "date": "Thu Jul 13 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d437e8405966e20bd1",
+          "value": 0.5308,
+          "date": "Fri Jul 14 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d46e249822a05225c2",
+          "value": 3.8457,
+          "date": "Sat Jul 15 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d476229d6d9dd6e44c",
+          "value": 2.8397,
+          "date": "Sun Jul 16 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4d1285d509d416e57",
+          "value": 0.4516,
+          "date": "Mon Jul 17 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4cbd5e51af0916187",
+          "value": 0.2249,
+          "date": "Tue Jul 18 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d45aa8240711050bf3",
+          "value": 0.6176,
+          "date": "Wed Jul 19 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4b328d512cc7d8109",
+          "value": 0.6524,
+          "date": "Thu Jul 20 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d49762481947b6bd62",
+          "value": 0.4731,
+          "date": "Fri Jul 21 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d414d0b22844381dd0",
+          "value": 0.7594,
+          "date": "Sat Jul 22 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4b14e72d98ef336fa",
+          "value": 0.8111,
+          "date": "Sun Jul 23 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d48f56deee388e9bea",
+          "value": 0.9322,
+          "date": "Mon Jul 24 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4485ce81e6f3b046f",
+          "value": 1.0055,
+          "date": "Tue Jul 25 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4b6a9dd1b1cb5c698",
+          "value": 2.0235,
+          "date": "Wed Jul 26 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d43188acceddeaa391",
+          "value": 2.6649,
+          "date": "Thu Jul 27 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4e8aa66bcd62e4601",
+          "value": 1.1098,
+          "date": "Fri Jul 28 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d4856c82e208334f9d",
+          "value": 2.8685,
+          "date": "Sat Jul 29 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4c4f388f15c08642a",
+          "value": 3.1031,
+          "date": "Sun Jul 30 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4239c4aa9bb7d1806",
+          "value": 3.6451,
+          "date": "Mon Jul 31 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d4150c9e37f07387a1",
+          "value": 3.7614,
+          "date": "Tue Aug 01 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d41f18ce32029156d9",
+          "value": 1.2468,
+          "date": "Wed Aug 02 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d448f358f84d27ac04",
+          "value": 3.8549,
+          "date": "Thu Aug 03 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4ee6e8bf1d1949e5e",
+          "value": 2.6075,
+          "date": "Fri Aug 04 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d42a545d4c9313b657",
+          "value": 0.8847,
+          "date": "Sat Aug 05 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4aedfdd74d974ec74",
+          "value": 1.6138,
+          "date": "Sun Aug 06 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d47e1d8f36f2f0f487",
+          "value": 3.312,
+          "date": "Mon Aug 07 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4355a3131ee6957c6",
+          "value": 1.4925,
+          "date": "Tue Aug 08 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d40d8ca975c7c5cdc4",
+          "value": 1.6806,
+          "date": "Wed Aug 09 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d48a0d753e54ada0b7",
+          "value": 1.4476,
+          "date": "Thu Aug 10 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d47ff0924a5374a9bd",
+          "value": 2.7091,
+          "date": "Fri Aug 11 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d477e3a7b54269d134",
+          "value": 1.5943,
+          "date": "Sat Aug 12 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d48b2bd9dbb0bd28f9",
+          "value": 1.074,
+          "date": "Sun Aug 13 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d428661c1298687364",
+          "value": 0.3575,
+          "date": "Mon Aug 14 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d43b332b538038db88",
+          "value": 3.9744,
+          "date": "Tue Aug 15 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d404efa4fb5349c83c",
+          "value": 2.2355,
+          "date": "Wed Aug 16 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "PD_home"
+        },
+        {
+          "id": "597fd3d4314c4b41ef0cac4c",
+          "value": 0.0018,
+          "date": "Thu Aug 17 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d404c83ea46b83f34e",
+          "value": 1.154,
+          "date": "Fri Aug 18 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "SLucia"
+        },
+        {
+          "id": "597fd3d420514e008e8bb5bc",
+          "value": 0.1754,
+          "date": "Sat Aug 19 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "UDUS_Rh"
+        },
+        {
+          "id": "597fd3d48274c92f94593821",
+          "value": 1.492,
+          "date": "Sun Aug 20 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        },
+        {
+          "id": "597fd3d4eb4a88c738dc7f9c",
+          "value": 0.6913,
+          "date": "Mon Aug 21 2017 12:07:35 GMT+0200 (CEST)",
+          "source": "RA_home"
+        }
+      ]
     }
   ],
   "ffbh": [
@@ -321,10 +2457,13 @@
   ],
   "observations": [
     {
+      "id": "m1",
       "name": "Resting Heartrate",
       "label": "beats/min",
       "color": "#2E5CA4",
       "type": "line",
+      "minValue": 0,
+      "maxValue": 150,
       "values": [
         {
           "id": "5925e14413c912d56b032b28",
@@ -343,7 +2482,7 @@
         },
         {
           "id": "5925e144b93249ad95c12a6c",
-          "value": 73,
+          "value": 200,
           "date": "Thu Aug 25 2016 12:07:35 GMT+0200 (CEST)"
         },
         {
@@ -2155,9 +4294,12 @@
     },
     {
       "name": "Blood Pressure SYS",
+      "id": "m2",
       "label": "mmHg",
       "color": "#d0000a",
       "type": "line",
+      "minValue": 0,
+      "maxValue": 125,
       "values": [
         {
           "id": "5925e0f8c24ce54e2e74f419",
@@ -3865,13 +6007,23 @@
           "date": "Fri Jul 28 2017 12:07:35 GMT+0200 (CEST)"
         },
         {
-          "id": "5925e0f86d988941c76e3835",
+          "id": "5925e0f86d988941c7d6e3835",
           "value": 119,
-          "date": "Sat Jul 29 2017 12:07:35 GMT+0200 (CEST)"
+          "date": "Sat Jul 29 2017 10:07:35 GMT+0200 (CEST)"
+        },
+        {
+          "id": "5925e0f86d988941ac76e3835",
+          "value": 119,
+          "date": "Sat Jul 29 2017 16:07:35 GMT+0200 (CEST)"
+        },
+        {
+          "id": "5925e0f86d988941cf76e3835",
+          "value": null,
+          "date": "Sat Jul 29 2017 17:07:35 GMT+0200 (CEST)"
         },
         {
           "id": "5925e0f82004cb6805658a79",
-          "value": 130,
+          "value": null,
           "date": "Sun Jul 30 2017 12:07:35 GMT+0200 (CEST)"
         },
         {
@@ -3882,7 +6034,7 @@
         {
           "id": "5925e0f8eb987a449a2fa319",
           "value": 127,
-          "date": "Tue Aug 01 2017 12:07:35 GMT+0200 (CEST)"
+          "date": "Tue Aug 01 2017 11:07:35 GMT+0200 (CEST)"
         },
         {
           "id": "5925e0f8b200173bef313f5c",
@@ -3988,9 +6140,13 @@
     },
     {
       "name": "Blood Pressure DIA",
+      "id": "m3",
       "label": "mmHg",
       "color": "#d0000a",
       "type": "line",
+      "minValue": 70,
+      "maxValue": 90,
+      "midValue": 80,
       "values": [
         {
           "id": "5925e0dbba0ea07b42974011",
@@ -5821,6 +7977,7 @@
     },
     {
       "name": "Weight",
+      "id": "m4",
       "label": "kg",
       "color": "#000000",
       "type": "line",
@@ -7654,9 +9811,12 @@
     },
     {
       "name": "Steps",
+      "id": "m5",
       "label": "1000s of steps",
       "color": "#FFB200",
       "type": "bar",
+      "minValue": 3,
+      "maxValue": null,
       "values": [
         {
           "id": "5925e08ab2dd3085b171b3c3",
@@ -9487,6 +11647,7 @@
     },
     {
       "name": "Walking distance",
+      "id": "m6",
       "label": "km",
       "color": "#FFB200",
       "type": "line",
@@ -11320,6 +13481,7 @@
     },
     {
       "name": "Night sleep",
+      "id": "m7",
       "label": "hours",
       "color": "#000000",
       "type": "line",
@@ -13153,6 +15315,7 @@
     },
     {
       "name": "Pain ratings",
+      "id": "m8",
       "label": "score",
       "color": "#0daad0",
       "type": "line",
@@ -14986,6 +17149,7 @@
     },
     {
       "name": "Well-being ratings",
+      "id": "m9",
       "label": "score",
       "color": "#0daad0",
       "type": "line",
@@ -16819,6 +18983,7 @@
     },
     {
       "name": "RADAI",
+      "id": "m10",
       "label": "score",
       "color": "#0d0ed0",
       "type": "line",
@@ -19017,6 +21182,7 @@
     },
     {
       "name": "FFbh",
+      "id": "m11",
       "label": "score",
       "color": "#0d00d0",
       "type": "line",
@@ -21215,6 +23381,7 @@
     },
     {
       "name": "HAQ",
+      "id": "m12",
       "label": "score",
       "color": "#0db0d0",
       "type": "line",
@@ -23413,6 +25580,7 @@
     },
     {
       "name": "EQ-5D",
+      "id": "m13",
       "label": "score",
       "color": "#0aa0d0",
       "type": "line",
@@ -25262,7 +27430,7 @@
       "id": "IDxsdf",
       "name": "Candesartan",
       "startDate": "2017-05-12T10:41:19.000Z",
-      "endDate": "2017-07-17T10:41:19.000Z",
+      "endDate": "2017-12-17T10:41:19.000Z",
       "dosage": "23mg",
       "frequency": "3 times a day",
       "stopReason": "",
@@ -25353,35 +27521,49 @@
     {
       "id": "ID1",
       "category": "Care professional",
-      "startDate": "2017-01-20T10:41:19.000Z",
+      "startDate": "2017-08-20T10:41:19.000Z",
       "visitReason": "GP",
+      "color": "7777ff"
+    },
+    {
+      "id": "IDdafsdfsd1",
+      "category": "Care professional",
+      "startDate": "2017-08-20T10:41:19.000Z",
+      "visitReason": "Psych. & neurol. tests",
+      "color": "777dff"
+    },
+    {
+      "id": "ID1dsfsgfgdger",
+      "category": "Care professional",
+      "startDate": "2017-09-20T10:41:19.000Z",
+      "visitReason": "planned GP",
       "color": "7777ff"
     },
     {
       "id": "ID1ghg",
       "category": "Care professional",
-      "startDate": "2017-03-25T10:41:19.000Z",
+      "startDate": "2017-08-25T10:41:19.000Z",
       "visitReason": "GP",
       "color": "7777ff"
     },
     {
       "id": "ID2",
       "category": "Care professional",
-      "startDate": "2017-01-30T10:41:19.000Z",
-      "visitReason": "GP",
+      "startDate": "2017-10-30T10:41:19.000Z",
+      "visitReason": "planned GP",
       "color": "7777ff"
     },
     {
       "id": "ID2feefdf",
       "category": "Care professional",
-      "startDate": "2017-02-14T10:41:19.000Z",
+      "startDate": "2017-07-14T10:41:19.000Z",
       "visitReason": "GP",
       "color": "7777ff"
     },
     {
       "id": "ID2sfsgdf",
       "category": "Care professional",
-      "startDate": "2017-04-12T10:41:19.000Z",
+      "startDate": "2017-06-12T10:41:19.000Z",
       "visitReason": "GP",
       "color": "7777ff"
     },
@@ -25395,7 +27577,7 @@
     {
       "id": "IDa",
       "category": "Lab Test",
-      "startDate": "2017-05-02T10:41:19.000Z",
+      "startDate": "2017-08-02T10:41:19.000Z",
       "visitReason": "Blood tests",
       "color": "D04300"
     },
@@ -25403,7 +27585,7 @@
       "id": "ID3",
       "category": "Care professional",
       "visitReason": "Cardiologist",
-      "startDate": "2017-05-20T10:41:19.000Z",
+      "startDate": "2017-08-20T10:41:19.000Z",
       "color": "aa77ff"
     },
     {
@@ -25417,7 +27599,7 @@
       "id": "ID4",
       "category": "Care professional",
       "visitReason": "Cardiologist",
-      "startDate": "2017-01-27T10:41:19.000Z",
+      "startDate": "2017-04-27T10:41:19.000Z",
       "color": "aa77ff"
     },
     {
@@ -25429,6 +27611,98 @@
     },
     {
       "id": "ID5",
+      "category": "Care professional",
+      "visitReason": "Hospital",
+      "startDate": "2017-06-20T10:41:19.000Z",
+      "endDate": "2017-07-05T10:41:19.000Z",
+      "color": "00DB26"
+    },
+    {
+      "id": "ID1xx",
+      "category": "Care professional",
+      "startDate": "2017-08-20T10:41:19.000Z",
+      "visitReason": "GP",
+      "color": "7777ff"
+    },
+    {
+      "id": "ID1dsxxfsgfgdger",
+      "category": "Care professional",
+      "startDate": "2017-01-20T10:41:19.000Z",
+      "visitReason": " GP",
+      "color": "7777ff"
+    },
+    {
+      "id": "ID1ghgxxxx",
+      "category": "Care professional",
+      "startDate": "2017-05-25T10:41:19.000Z",
+      "visitReason": "GP",
+      "color": "7777ff"
+    },
+    {
+      "id": "IDxxxx2",
+      "category": "Care professional",
+      "startDate": "2017-06-30T10:41:19.000Z",
+      "visitReason": " GP",
+      "color": "7777ff"
+    },
+    {
+      "id": "ID2feexxxxfdf",
+      "category": "Care professional",
+      "startDate": "2017-05-14T10:41:19.000Z",
+      "visitReason": "GP",
+      "color": "7777ff"
+    },
+    {
+      "id": "ID2sfsgxxxxdf",
+      "category": "Care professional",
+      "startDate": "2017-02-12T10:41:19.000Z",
+      "visitReason": "GP",
+      "color": "7777ff"
+    },
+    {
+      "id": "ID2asdfxxxxd",
+      "category": "Care professional",
+      "startDate": "2017-04-18T10:41:19.000Z",
+      "visitReason": "GP",
+      "color": "7777ff"
+    },
+    {
+      "id": "IDxxxxa",
+      "category": "Lab Test",
+      "startDate": "2017-03-02T10:41:19.000Z",
+      "visitReason": "Blood tests",
+      "color": "D04300"
+    },
+    {
+      "id": "IxxxxD3",
+      "category": "Care professional",
+      "visitReason": "Cardiologist",
+      "startDate": "2017-02-20T10:41:19.000Z",
+      "color": "aa77ff"
+    },
+    {
+      "id": "ID3axxxsxd",
+      "category": "Care professional",
+      "visitReason": "Cardiologist",
+      "startDate": "2017-01-20T10:41:19.000Z",
+      "color": "aa77ff"
+    },
+    {
+      "id": "ID4xxxxx",
+      "category": "Care professional",
+      "visitReason": "Cardiologist",
+      "startDate": "2017-04-27T10:41:19.000Z",
+      "color": "aa77ff"
+    },
+    {
+      "id": "ID5cxx",
+      "category": "Imaging",
+      "visitReason": "MRI scan",
+      "startDate": "2017-03-22T10:41:19.000Z",
+      "color": "0BD000"
+    },
+    {
+      "id": "ID5xx",
       "category": "Care professional",
       "visitReason": "Hospital",
       "startDate": "2017-01-20T10:41:19.000Z",
@@ -25671,12 +27945,38 @@
     {
       "id": "ID1",
       "name": "Change in medication prescribed",
-      "date": "2017-01-20T10:41:19.000Z"
+      "date": "2017-01-20T10:41:19.000Z",
+      "byWhom": "Neurologist"
     },
     {
       "id": "ID2",
       "name": "Change in treatment",
-      "date": "2017-01-20T10:41:19.000Z"
+      "date": "2017-01-20T10:41:19.000Z",
+      "byWhom": "GP"
+    },
+    {
+      "id": "ID3",
+      "name": "Change in medication prescribed",
+      "date": "2017-01-23T10:41:19.000Z",
+      "byWhom": "Neurologist"
+    },
+    {
+      "id": "ID4",
+      "name": "Change in treatment",
+      "date": "2017-01-25T10:41:19.000Z",
+      "byWhom": "GP"
+    },
+    {
+      "id": "ID5",
+      "name": "Change in medication prescribed",
+      "date": "2017-03-20T10:41:19.000Z",
+      "byWhom": "Neurologist"
+    },
+    {
+      "id": "ID6",
+      "name": "Change in treatment",
+      "date": "2017-07-20T10:41:19.000Z",
+      "byWhom": "GP"
     }
   ]
 }

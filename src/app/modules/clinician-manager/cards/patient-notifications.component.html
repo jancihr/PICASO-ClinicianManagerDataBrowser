@@ -67,6 +67,11 @@
             Date
           </mfDefaultSorter>
         </th>
+        <th i18n="By Whom">
+          <mfDefaultSorter by="byWhom">
+            By Whom
+          </mfDefaultSorter>
+        </th>
 
 
       </tr>
@@ -74,9 +79,10 @@
       <tbody>
 
 
-      <tr *ngFor="let disease of mf.data">
-        <td>{{disease.name}}</td>
-        <td>{{disease.date}}</td>
+      <tr *ngFor="let notif of mf.data">
+        <td>{{notif.name}}</td>
+        <td>{{notif.date}}</td>
+        <td>{{notif.byWhom}}</td>
 
 
       </tr>
