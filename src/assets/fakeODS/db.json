@@ -27499,6 +27499,69 @@
       "prescribedBy": "Doctor Strange - Diabethologist"
     }
   ],
+  "concludingComments": [
+    {
+      "id": "idaa",
+      "authorId": "iddm",
+      "addresseeId": "iddw",
+      "addresseeRoleId": "idr",
+      "author": "Doctor Who",
+      "addresseeRole": "Neurologist",
+      "addresseeName": "Doctor Magic",
+      "date": "2017-03-20T10:41:19.000Z"
+    },
+    {
+      "id": "idaa",
+      "authorId": "iddm",
+      "addresseeId": "iddw",
+      "addresseeRoleId": "idr",
+      "author": "Doctor Magic",
+      "addresseeRole": "GP",
+      "addresseeName": "DoctorWho",
+      "date": "2017-04-20T10:41:19.000Z"
+    },
+    {
+      "id": "idaa",
+      "authorId": "iddm",
+      "addresseeId": "iddw",
+      "addresseeRoleId": "idr",
+      "author": "Doctor Who",
+      "addresseeRole": "Neurologist",
+      "addresseeName": "Doctor Magic",
+      "date": "2017-05-20T10:41:19.000Z"
+    },
+    {
+      "id": "idaa",
+      "authorId": "iddm",
+      "addresseeId": "iddw",
+      "addresseeRoleId": "idr",
+      "author": "Doctor Magic",
+      "addresseeRole": "GP",
+      "addresseeName": "DoctorWho",
+      "date": "2017-06-20T10:41:19.000Z"
+    },
+    {
+      "id": "idaa",
+      "authorId": "iddm",
+      "addresseeId": "iddw",
+      "addresseeRoleId": "idr",
+      "author": "Doctor Who",
+      "addresseeRole": "Neurologist",
+      "addresseeName": "Doctor Magic",
+      "date": "2017-07-20T10:41:19.000Z"
+    },
+    {
+      "id": "idaa",
+      "authorId": "iddm",
+      "addresseeId": "iddw",
+      "addresseeRoleId": "idr",
+      "author": "Doctor Magic",
+      "addresseeRole": "GP",
+      "addresseeName": "DoctorWho",
+      "date": "2017-08-20T10:41:19.000Z"
+
+    }
+  ],
   "clinicians": [
     {
       "id": "ID",

@@ -1,29 +1,13 @@
-button {
-    background-color: #eee;
-    padding: 10px 10px;
-    border-radius: 10px;
-}
-
-button:hover {
-    background-color: #cfd8dc;
-}
-
-button:disabled {
-    background-color: #eee;
-    color: #aaa;
-    cursor: auto;
-}
-
 .card {
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 .card-footer {
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 .card-header {
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 .card-footer {
@@ -56,8 +40,16 @@ button:disabled {
   padding: 0.25rem;
 }
 
+.table tfoot {
+  padding: 0.25rem;
+}
+
 pagination {
   padding: 0;
   margin: 0;
   height: 12px;
 }
+
+
+
+

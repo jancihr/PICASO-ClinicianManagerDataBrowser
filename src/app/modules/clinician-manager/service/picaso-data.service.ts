@@ -18,6 +18,7 @@ import {ProgressHttp} from "angular-progress-http";
 import {PatientNotification} from "../model/patient-notification";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {CdSharedModelService} from "../../../picaso-cd-common/_services/cd-shared-model.service";
+import {PatientConcludingComments} from "../model/patient-concluding-comments";
 
 
 @Injectable()
@@ -102,6 +103,21 @@ export class PicasoDataService {
             .catch(this.handleError)
             ;
     }
+
+  getConcludingComments(startDate: Date, endDate: Date, clinicianId: string, progressResult: PatientLoadProgress): Observable<PatientConcludingComments[]> {
+
+
+    return this.http.withDownloadProgressListener(progress => {
+      console.log(`Loading ${progress.percentage}%`);
+      progressResult.percentage = progress.percentage;
+      progressResult.total = progress.total;
+      progressResult.loaded = progress.loaded;
+    })
+      .get(this.patientODSServiceURL)
+      .map(this.extractConcludingComments)
+      .catch(this.handleError)
+      ;
+  }
 
 
     getObservations(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientObservationGroup[]> {
@@ -216,17 +232,17 @@ export class PicasoDataService {
 
     }
 
-    private  extractDataRadai(res: Response) {
-        return res.json().radai;
-    }
+
 
     private  extractDataMorisky(res: Response) {
         return res.json().morisky;
     }
 
-    private  extractDataFfbh(res: Response) {
-        return res.json().ffbh;
-    }
+  private extractConcludingComments(res: Response) {
+    return res.json().concludingComments;
+  }
+
+
 
     private  extractDataObservations(res: Response) {
         return res.json().observations;

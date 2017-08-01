@@ -24,6 +24,7 @@ import {DataTableModule} from "angular2-datatable";
 import {FormsModule} from "@angular/forms";
 import {PatientNotificationsComponent} from "./cards/patient-notifications.component";
 import {Ng2SmartTableModule} from "ng2-smart-table";
+import {PatientConcludingCommentsComponent} from "./cards/patient-concluding-comments.component";
 
 
 @NgModule({
@@ -39,7 +40,7 @@ import {Ng2SmartTableModule} from "ng2-smart-table";
         PatientDailyAverageObservationsComponent,
         PatientMedicationHistoryComponent,
       MoriskyDailyAverageObservationsComponent,
-        PatientDiseasesComponent,
+      PatientDiseasesComponent, PatientConcludingCommentsComponent,
       PatientCliniciansComponent, PatientTreatmentHistoryComponent, PatientImagingComponent, PatientNotificationsComponent,
         nvD3
     ]
