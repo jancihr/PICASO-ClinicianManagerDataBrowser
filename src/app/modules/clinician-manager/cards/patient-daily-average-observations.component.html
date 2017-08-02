@@ -12,87 +12,47 @@
 
     <div class="row">
 
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-3">
-
-        <table class="table-striped table-bordered table-sm" style="margin: 0 auto; float: none;">
-          <thead>
-          <tr>
-            <!--   <th rowspan="2" i18n="Observation">Observation</th>
-
-               <th colspan="2" i18n="Axis">Axis</th>
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w3-center">
 
 
-                         </tr>
+        <button type="button"
+                class="btn btn-default"
+                (click)="resetLeft()">
 
-                         <tr>
+        <span>
+                                <i class="fa {{showAllLeft?'fa-circle':'fa-circle-o'}}"></i>
+                            </span>
 
-
-                                       <th i18n="Left">Left</th>
-                                       <th i18n="Right">Right</th> -->
-
-            <th i18n="Show/Hide">Observation</th>
-            <th i18n="Show/Hide">Show / Hide</th>
-
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-
-            <td>
-              All observations
-
-            </td>
-
-            <td>
-              <input type="checkbox" [checked]="showAllLeft"
-                     (change)="resetLeft()"/>
+          All observations
 
 
-            </td>
-            <!-- <td>
-               <input type="checkbox" [checked]="showAllRight"
-                      (change)="resetRight()"/>
+          <span>
 
 
-             </td>
-             -->
 
 
-          </tr>
-
-          <tr *ngFor="let group of observationGroups">
-
-            <td> <span *ngIf="group.showLeft || group.showRight" [style.color]="group.color">
-                                <i class="fa fa-circle"></i>
-                            </span> {{group.name}} ({{group.label}})
+          </span>
 
 
-            </td>
-
-            <td>
-
-              <input type="checkbox" [checked]="group.showLeft"
-                     (change)="toggleLeft(group.id, group.name)"/>
-            </td>
-            <!--
-
-            <td>
-
-              <input type="checkbox" [checked]="group.showRight"
-                     (change)="toggleRight(group.id, group.name)"/>
-
-            </td>
-            -->
+        </button>
 
 
-          </tr>
+        <span *ngFor="let group of observationGroups">
 
+            <button
+              type="button"
+              class="btn btn-default"
+              (click)="toggleLeft(group.id, group.name)">
+              <span [style.color]="group.color">
+                                <i class="fa {{group.showLeft?'fa-circle':'fa-circle-o'}}"></i>
+                            </span>
+              {{group.name}} ({{group.label}})
+            </button>
 
-          </tbody>
-        </table>
+          </span>
 
       </div>
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
         <nvd3 [options]="options" [data]="data" class="with-3d-shadow with-transitions"></nvd3>
 
       </div>

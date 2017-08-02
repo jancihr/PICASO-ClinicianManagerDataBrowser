@@ -132,6 +132,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
               var html = ""; //d.value;
 
+              //console.log("d",d);
+
               d.series.forEach(function (elem) {
 
                 if (!elem.key.startsWith("hide")) {
@@ -145,9 +147,9 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                     (
                       elem.value === null
                         ?
-                        "<span class='text-danger'>Missing value</span>"
+                        "<span class='text-warning w3-tag'>MISSING VALUE!</span>"
                         :
-                        (elem.data.outOfRange ? "<span class='text-danger'>OUT OF RANGE! </span> " : "") + "<b>" + elem.value + "</b>"
+                        (elem.data.outOfRange ? "<span class='text-danger w3-tag'>OUT OF RANGE! </span> " : "") + "<b>" + elem.value + "</b>"
                     )
                     + " " + elem.key +
                     (
@@ -270,8 +272,10 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
           this.data.push({
-            values: newGraphValues,
+            label: group.label,
+            name: group.name,
             key: group.label + " (" + group.name + ")",
+            values: newGraphValues,
             color: group.color,
             //area: false,
             //mean: 120,
@@ -289,6 +293,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             newGraphValuesMin.push({date: this.endDate, value: group.minValue});
             //min value line
             this.data.push({
+              label: group.label,
+              name: group.name,
               values: newGraphValuesMin,
               key: "hidemin" + group.id,
               color: group.color,
@@ -309,6 +315,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             newGraphValuesMax.push({date: this.startDate, value: group.maxValue});
             //max value line
             this.data.push({
+              label: group.label,
+              name: group.name,
               values: newGraphValuesMax,
               key: "hidemax" + group.id,
               color: group.color,
@@ -328,6 +336,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             newGraphValuesMid.push({date: this.endDate, value: group.midValue});
             //mid value line
             this.data.push({
+              label: group.label,
+              name: group.name,
               values: newGraphValuesMid,
               key: "hidemid" + group.id,
               color: group.color,
@@ -425,7 +435,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   }
 
   public toggleLeft(id: string, name: string) {
-
     for (var i = 0; i < this.observationGroups.length; i++) {
 
       if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
@@ -443,34 +452,41 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     }
     this.reloadDataToGraph()
 
+
   }
 
-  public toggleRight(id: string, name: string) {
-    for (var i = 0; i < this.observationGroups.length; i++) {
+  /*
+    public toggleRight(id: string, name: string) {
 
-      if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
-        this.observationGroups[i].showRight = !this.observationGroups[i].showRight;
-        if (this.observationGroups[i].showRight) {
-          this.observationGroups[i].showLeft = false;
-          this.showAllLeft = false;
-        } else {
-          this.showAllRight = false;
+      for (var i = 0; i < this.observationGroups.length; i++) {
+
+        if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
+          this.observationGroups[i].showRight = !this.observationGroups[i].showRight;
+          if (this.observationGroups[i].showRight) {
+            this.observationGroups[i].showLeft = false;
+            this.showAllLeft = false;
+          } else {
+            this.showAllRight = false;
+          }
+          break;
         }
-        break;
+
+
       }
+
+      this.reloadDataToGraph()
 
 
     }
 
-    this.reloadDataToGraph()
-  }
+  */
 
   public resetLeft() {
 
     this.showAllLeft = !this.showAllLeft;
     if (this.showAllLeft) {
       this.showAllRight = true;
-      this.resetRight()
+      //this.resetRight()
     }
     for (var i = 0; i < this.observationGroups.length; i++) {
 
@@ -480,6 +496,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   }
 
+  /*
   public resetRight() {
     this.showAllRight = !this.showAllRight;
     if (this.showAllRight) {
@@ -491,6 +508,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     }
     this.reloadDataToGraph()
   }
+  */
 
 
 }

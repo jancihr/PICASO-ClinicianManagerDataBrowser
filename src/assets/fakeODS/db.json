@@ -2462,8 +2462,9 @@
       "label": "beats/min",
       "color": "#2E5CA4",
       "type": "line",
-      "minValue": 0,
-      "maxValue": 150,
+      "minValue": 40,
+      "midValue": 60,
+      "maxValue": 100,
       "values": [
         {
           "id": "5925e14413c912d56b032b28",
@@ -2482,7 +2483,7 @@
         },
         {
           "id": "5925e144b93249ad95c12a6c",
-          "value": 200,
+          "value": 100,
           "date": "Thu Aug 25 2016 12:07:35 GMT+0200 (CEST)"
         },
         {
@@ -2622,7 +2623,7 @@
         },
         {
           "id": "5925e144a2f6954f49e1337d",
-          "value": 66,
+          "value": 110,
           "date": "Thu Sep 22 2016 12:07:35 GMT+0200 (CEST)"
         },
         {
@@ -27454,8 +27455,8 @@
     {
       "id": "IDa",
       "name": "Ramipril",
-      "startDate": "2017-01-01T10:41:19.000Z",
-      "endDate": "2017-01-04T10:41:19.000Z",
+      "startDate": "2016-01-01T10:41:19.000Z",
+      "endDate": "2017-09-04T10:41:19.000Z",
       "dosage": "23mg",
       "frequency": "3 times a day",
       "stopReason": "Not working well",
@@ -27478,7 +27479,7 @@
     {
       "id": "IDb",
       "name": "Simvastatin",
-      "startDate": "2017-01-12T10:41:19.000Z",
+      "startDate": "2016-07-12T10:41:19.000Z",
       "endDate": "2017-01-17T10:41:19.000Z",
       "dosage": "23mg",
       "frequency": "3 times a day",
@@ -27649,7 +27650,7 @@
       "id": "ID3",
       "category": "Care professional",
       "visitReason": "Cardiologist",
-      "startDate": "2017-08-20T10:41:19.000Z",
+      "startDate": "2016-08-20T10:41:19.000Z",
       "color": "aa77ff"
     },
     {
@@ -27698,7 +27699,7 @@
     {
       "id": "ID1ghgxxxx",
       "category": "Care professional",
-      "startDate": "2017-05-25T10:41:19.000Z",
+      "startDate": "2016-05-25T10:41:19.000Z",
       "visitReason": "GP",
       "color": "7777ff"
     },
@@ -27748,7 +27749,7 @@
       "id": "ID3axxxsxd",
       "category": "Care professional",
       "visitReason": "Cardiologist",
-      "startDate": "2017-01-20T10:41:19.000Z",
+      "startDate": "2016-10-20T10:41:19.000Z",
       "color": "aa77ff"
     },
     {
@@ -27762,7 +27763,7 @@
       "id": "ID5cxx",
       "category": "Imaging",
       "visitReason": "MRI scan",
-      "startDate": "2017-03-22T10:41:19.000Z",
+      "startDate": "2016-03-22T10:41:19.000Z",
       "color": "0BD000"
     },
     {
