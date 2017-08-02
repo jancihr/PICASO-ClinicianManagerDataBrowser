@@ -23,11 +23,17 @@
 }
 
 .card {
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
 }
 
 .table-sm td {
   padding: 0.05rem;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 0rem;
 }
 
 ng2-smart-table.table.td {

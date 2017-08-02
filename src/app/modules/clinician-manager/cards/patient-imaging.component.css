@@ -34,7 +34,7 @@ button:disabled {
 }
 
 .card {
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.25rem;
 }
 
 .card-block {
@@ -52,6 +52,7 @@ button:disabled {
 .table {
   width: 100%;
   max-width: 100%;
+  margin-bottom: 0rem;
 }
 
 .table th,
