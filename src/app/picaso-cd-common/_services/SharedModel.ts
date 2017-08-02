@@ -8,7 +8,7 @@ export class SharedModel {
             roles: ["guest"]
         };
         this.patient = {
-            pId: "",
+            UPID: "",
             domain: "",
             display: "none"
         };
