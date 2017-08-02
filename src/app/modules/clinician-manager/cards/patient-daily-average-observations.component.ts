@@ -298,7 +298,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
               yAxis: 1,
               xAxis: 1,
               type: 'line',
-              classed: 'mydashed'
+              classed: 'dashed'
             })
           }
 
@@ -318,7 +318,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
               yAxis: 1,
               xAxis: 1,
               type: 'line',
-              classed: 'mydashed'
+              classed: 'dashed'
             })
           }
 
@@ -337,7 +337,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
               yAxis: 1,
               xAxis: 1,
               type: 'line',
-              classed: 'mydashed'
+              classed: 'dashed-long'
             })
           }
 

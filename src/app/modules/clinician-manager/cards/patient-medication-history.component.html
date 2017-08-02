@@ -30,11 +30,11 @@
 <modal [animation]="animationsEnabled" #myMedicationModal>
   <div *ngIf="selectedMedication">
     <modal-header [show-close]="true">
-      <h4 class="modal-title">Patient medication details</h4>
+      <h4 class="modal-title ">Patient medication details</h4>
     </modal-header>
     <modal-body>
 
-      <div class="w3-container w3-green w3-border w3-border-lime w3-round-large">
+      <div class="w3-container w3-border w3-border-lime w3-round-large">
 
         <h2>{{selectedMedication.name}}</h2>
         <p>Disease: {{selectedMedication.disease}}</p>

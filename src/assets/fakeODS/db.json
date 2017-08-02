@@ -4298,7 +4298,8 @@
       "label": "mmHg",
       "color": "#d0000a",
       "type": "line",
-      "minValue": 0,
+      "midValue": 120,
+      "minValue": 115,
       "maxValue": 125,
       "values": [
         {
@@ -6142,7 +6143,7 @@
       "name": "Blood Pressure DIA",
       "id": "m3",
       "label": "mmHg",
-      "color": "#d0000a",
+      "color": "orange",
       "type": "line",
       "minValue": 70,
       "maxValue": 90,
