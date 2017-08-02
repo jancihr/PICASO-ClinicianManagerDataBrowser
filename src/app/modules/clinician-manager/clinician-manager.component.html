@@ -9,7 +9,6 @@
   <div *ngIf="showTab===6 || showTab === 7 || showTab === 9 || showTab === 0" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
       <div class="card">
-
         <div class="card-header w3-blue w3-center">
           <span i18n="Patient Events"><i class="fa fa-calendar-times-o"></i></span>
           Date Picker (Treatments, Medication, Measurements and Recordings, Morisky Scale)
@@ -20,8 +19,59 @@
           </div>
 
         </div>
-
         <div class="card-block">
+
+          <div class="row w3-center">
+
+
+            <my-date-range-picker [options]="myDateRangePickerOptions"
+                                  (dateRangeChanged)="onDateRangeChanged($event)"
+                                  [selDateRange]="model">
+            </my-date-range-picker>
+
+
+            <!--  <button type="button"
+                      class="btn btn-default"
+                      (click)="focusRange()"
+                      i18n="Selected range">
+                  Selected range
+              </button> -->
+
+
+          </div>
+          <!--
+                      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <!-- <div class=" w3-center">
+                          <button type="button"
+                                  class="btn btn-default {{zoomAll? 'btn-outline-success' : ''}}"
+                                  (click)="focusAll()"
+                                  i18n="View all data">
+                            View all
+                          </button>
+
+                          <button type="button"
+                                  class="btn btn-default {{range==='lastweek' && !zoomAll ? 'btn-outline-success' : ''}}"
+                                  (click)="focusLastWeek()"
+                                  i18n="Last week">
+                            Last week
+                          </button>
+
+                          <button type="button"
+                                  class="btn btn-default {{range==='lastmonth' && !zoomAll ? 'btn-outline-success' : ''}}"
+                                  (click)="focusLastMonth()"
+                                  i18n="Last month">
+                            Last month
+                          </button>
+
+                          <button type="button"
+                                  class="btn btn-default {{range==='lastyear' && !zoomAll ? 'btn-outline-success' : ''}}"
+                                  (click)="focusLastYear()"
+                                  i18n="Last year">
+                            Last year
+                          </button>
+                        </div>
+          </div>-->
+
 
           <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -77,7 +127,12 @@
                   Last 2 years
                 </button>
 
-
+                <button type="button"
+                        class="btn btn-default {{zoomAll? 'btn-outline-success' : ''}}"
+                        (click)="focusAll()"
+                        i18n="View all data">
+                  View all
+                </button>
               </div>
             </div>
           </div>

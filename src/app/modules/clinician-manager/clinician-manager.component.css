@@ -64,5 +64,10 @@ button:disabled {
   float: none;
 }
 
+input.selection {
+  height: 20px !important;
+  font-size: 15px !important;
+
+}
 
 

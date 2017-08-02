@@ -66,7 +66,11 @@ export class ClinicianManagerComponent implements OnInit {
     this.myDateRangePickerOptions = {
       // other options...
       dateFormat: 'dd.mm.yyyy',
-      firstDayOfWeek: "mo"
+      firstDayOfWeek: "mo",
+      inline: false,
+      height: '25px',
+      selectionTxtFontSize: '15px',
+      sunHighlight: true,
     };
 
     this.model = {
