@@ -43,9 +43,9 @@ export class PicasoDataService {
 
     getNotifications(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientNotification[]> {
         return this.http.withDownloadProgressListener(progress => {
-            console.log(`Progress ${progress.percentage}%`);
-            console.log(`Loading ${progress.loaded} bytes`);
-            console.log(`Total ${progress.total} bytes`);
+          //console.log(`Progress ${progress.percentage}%`);
+          //console.log(`Loading ${progress.loaded} bytes`);
+          //console.log(`Total ${progress.total} bytes`);
             progressResult.percentage = progress.percentage;
             progressResult.total = progress.total;
             progressResult.loaded = progress.loaded;
@@ -53,7 +53,7 @@ export class PicasoDataService {
         })
             .get(this.patientODSServiceURL)
             .map(response => {
-                    console.log("getting notifications for patient", this.cdSharedModelService.get().patient.display);
+              //console.log("getting notifications for patient", this.cdSharedModelService.get().patient.display);
                     return this.extractDataNotifications(response);
                 }
             )
@@ -63,9 +63,9 @@ export class PicasoDataService {
 
     getDiseases(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientDisease[]> {
         return this.http.withDownloadProgressListener(progress => {
-            console.log(`Progress ${progress.percentage}%`);
-            console.log(`Loading ${progress.loaded} bytes`);
-            console.log(`Total ${progress.total} bytes`);
+          //console.log(`Progress ${progress.percentage}%`);
+          //console.log(`Loading ${progress.loaded} bytes`);
+          //console.log(`Total ${progress.total} bytes`);
             progressResult.percentage = progress.percentage;
             progressResult.total = progress.total;
             progressResult.loaded = progress.loaded;
@@ -78,7 +78,7 @@ export class PicasoDataService {
 
     getImaging(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientImage[]> {
         return this.http.withDownloadProgressListener(progress => {
-            console.log(`Loading ${progress.percentage}%`);
+          //console.log(`Loading ${progress.percentage}%`);
             progressResult.percentage = progress.percentage;
             progressResult.total = progress.total;
             progressResult.loaded = progress.loaded;
@@ -93,7 +93,7 @@ export class PicasoDataService {
 
 
         return this.http.withDownloadProgressListener(progress => {
-            console.log(`Loading ${progress.percentage}%`);
+          //console.log(`Loading ${progress.percentage}%`);
             progressResult.percentage = progress.percentage;
             progressResult.total = progress.total;
             progressResult.loaded = progress.loaded;
@@ -108,7 +108,7 @@ export class PicasoDataService {
 
 
     return this.http.withDownloadProgressListener(progress => {
-      console.log(`Loading ${progress.percentage}%`);
+      //console.log(`Loading ${progress.percentage}%`);
       progressResult.percentage = progress.percentage;
       progressResult.total = progress.total;
       progressResult.loaded = progress.loaded;
@@ -124,7 +124,7 @@ export class PicasoDataService {
 
 
         return this.http.withDownloadProgressListener(progress => {
-            console.log(`Loading ${progress.percentage}%`);
+          //console.log(`Loading ${progress.percentage}%`);
             progressResult.percentage = progress.percentage;
             progressResult.total = progress.total;
             progressResult.loaded = progress.loaded;
@@ -139,7 +139,7 @@ export class PicasoDataService {
 
 
     return this.http.withDownloadProgressListener(progress => {
-      console.log(`Loading ${progress.percentage}%`);
+      //console.log(`Loading ${progress.percentage}%`);
       progressResult.percentage = progress.percentage;
       progressResult.total = progress.total;
       progressResult.loaded = progress.loaded;
@@ -153,7 +153,7 @@ export class PicasoDataService {
 
     getMedicationHistory(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientMedication[]> {
         return this.http.withDownloadProgressListener(progress => {
-            console.log(`Loading ${progress.percentage}%`);
+          //console.log(`Loading ${progress.percentage}%`);
             progressResult.percentage = progress.percentage;
             progressResult.total = progress.total;
             progressResult.loaded = progress.loaded;
@@ -167,7 +167,7 @@ export class PicasoDataService {
   getTreatmentsHistory(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientTreatment[]> {
 
         return this.http.withDownloadProgressListener(progress => {
-            console.log(`Loading ${progress.percentage}%`);
+          //console.log(`Loading ${progress.percentage}%`);
             progressResult.percentage = progress.percentage;
             progressResult.total = progress.total;
             progressResult.loaded = progress.loaded;

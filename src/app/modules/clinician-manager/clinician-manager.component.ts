@@ -52,7 +52,7 @@ export class ClinicianManagerComponent implements OnInit {
     //showTabStr = this.route.snapshot.queryParams["tab"];
 
 
-    console.log("################parameter:", this.route.snapshot.queryParams["tab"]);
+    //console.log("################parameter:", this.route.snapshot.queryParams["tab"]);
 
     if (this.showTab === null) {
       this.showTab = 0;

@@ -34,11 +34,11 @@ export class PatientNotificationsComponent implements OnInit {
 
     getDiseases(): void {
 
-        console.log("progress before load", this.progress.percentage);
+      //console.log("progress before load", this.progress.percentage);
         this.picasoDataService.getNotifications(undefined, undefined, this.progress).subscribe(
             notifications => {
                 this.notifications = notifications;
-                console.log("progress after load", this.progress.percentage);
+              //console.log("progress after load", this.progress.percentage);
             },
             error => {
                 this.errorMessage = <any>error;
