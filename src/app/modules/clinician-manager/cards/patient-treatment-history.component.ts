@@ -138,7 +138,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
           id: item.id,
           style: "background: #" + item.color,
           content: `<div>
-                              <div class="w3-large">${item.category}</div>
+                              <div class="w3-small"><b>${item.category}</b></div>
                               <div class="w3-small">${item.visitReason} </div>
                               </div>`,
           start: item.startDate,
@@ -148,7 +148,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
         this.visTimelineItemsTreatments.add({
           id: item.id,
           content: `<div>
-                              <div class="w3-large">${item.category}</div>
+                              <div class="w3-small"><b>${item.category}</b></div>
                               <div class="w3-small">${item.visitReason} </div>
                               </div>`,
 

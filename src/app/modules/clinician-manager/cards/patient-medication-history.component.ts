@@ -143,7 +143,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
                     style: "background: #"+item.color,
 
                     content: `<div>
-                              <div class="w3-large">${item.name}</div>
+                              <div class="w3-small"><b>${item.name}</b></div>
                               <div class="w3-small">${item.dosage} - ${item.frequency} - ${item.stopReason}</div>
                               </div>`
                     ,
