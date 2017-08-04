@@ -25,6 +25,7 @@ import {FormsModule} from "@angular/forms";
 import {PatientNotificationsComponent} from "./cards/patient-notifications.component";
 import {Ng2SmartTableModule} from "ng2-smart-table";
 import {PatientConcludingCommentsComponent} from "./cards/patient-concluding-comments.component";
+import {PatientFollowUpComponent} from "./cards/patient-follow-up-appointments.component";
 
 
 @NgModule({
@@ -39,9 +40,10 @@ import {PatientConcludingCommentsComponent} from "./cards/patient-concluding-com
         PatientOverviewComponent,
         PatientDailyAverageObservationsComponent,
         PatientMedicationHistoryComponent,
-      MoriskyDailyAverageObservationsComponent,
+      MoriskyDailyAverageObservationsComponent, PatientFollowUpComponent,
       PatientDiseasesComponent, PatientConcludingCommentsComponent,
-      PatientCliniciansComponent, PatientTreatmentHistoryComponent, PatientImagingComponent, PatientNotificationsComponent,
+      PatientCliniciansComponent, PatientTreatmentHistoryComponent,
+      PatientImagingComponent, PatientNotificationsComponent,
         nvD3
     ]
 })

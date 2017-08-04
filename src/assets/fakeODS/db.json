@@ -27501,6 +27501,30 @@
       "prescribedBy": "Doctor Strange - Diabethologist"
     }
   ],
+  "followUps": [
+    {
+      "id": "idaa",
+      "name": "iddm",
+      "note": "iddw",
+      "role": "role",
+      "date": "2017-03-20T10:41:19.000Z"
+    },
+    {
+      "id": "idaasa",
+      "name": "DO CHECK",
+      "note": "NOT YET DONE",
+      "role": "role",
+      "date": "2017-03-20T10:41:19.000Z"
+    },
+    {
+      "id": "idaaASDAS",
+      "name": "iddm",
+      "note": "iddw",
+      "role": "role",
+      "date": "2017-03-20T10:41:19.000Z"
+    }
+  ],
+
   "concludingComments": [
     {
       "id": "idaa",
@@ -27561,7 +27585,6 @@
       "addresseeRole": "GP",
       "addresseeName": "DoctorWho",
       "date": "2017-08-20T10:41:19.000Z"
-
     }
   ],
   "clinicians": [
@@ -27807,7 +27830,6 @@
       "severity": "severity",
       "sideOfOnset": "left",
       "clinicalPhenotype": "mixed"
-
     },
     {
       "id": "ID2",
