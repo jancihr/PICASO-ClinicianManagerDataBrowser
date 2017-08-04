@@ -203,6 +203,82 @@
     </div>
   </div>
 
+
+  <div *ngIf="showTab===6 || showTab === 7 || showTab === 9 || showTab === 0" class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="card">
+
+        <div class="card-block">
+
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <div class=" w3-center">
+
+
+                <button type="button"
+                        class="btn btn-default {{range==='lastweek'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLastWeek()"
+                        i18n="Last week">
+                  Last week
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='lastmonth'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLastMonth()"
+                        i18n="Last month">
+                  Last month
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='last2months'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLast2Months()"
+                        i18n="Last 2 months">
+                  Last 2 months
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='last6months'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLast6Months()"
+                        i18n="Last 6 months">
+                  Last 6 months
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='next6months'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusNext6Months()"
+                        i18n="Next 6 months">
+                  Next 6 months
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='lastyear'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLastYear()"
+                        i18n="Last year">
+                  Last year
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='last2years'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLast2Years()"
+                        i18n="Last year">
+                  Last 2 years
+                </button>
+
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+
   <div *ngIf="showTab===7 || showTab === 0" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
       <medication-history>
@@ -210,12 +286,159 @@
     </div>
   </div>
 
+  <div *ngIf="showTab===6 || showTab === 7 || showTab === 9 || showTab === 0" class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="card">
+
+        <div class="card-block">
+
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <div class=" w3-center">
+
+
+                <button type="button"
+                        class="btn btn-default {{range==='lastweek'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLastWeek()"
+                        i18n="Last week">
+                  Last week
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='lastmonth'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLastMonth()"
+                        i18n="Last month">
+                  Last month
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='last2months'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLast2Months()"
+                        i18n="Last 2 months">
+                  Last 2 months
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='last6months'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLast6Months()"
+                        i18n="Last 6 months">
+                  Last 6 months
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='next6months'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusNext6Months()"
+                        i18n="Next 6 months">
+                  Next 6 months
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='lastyear'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLastYear()"
+                        i18n="Last year">
+                  Last year
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='last2years'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLast2Years()"
+                        i18n="Last year">
+                  Last 2 years
+                </button>
+
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
 
 
   <div *ngIf="showTab===9 || showTab === 0" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
       <patient-daily-average-observations>
       </patient-daily-average-observations>
+    </div>
+  </div>
+
+  <div *ngIf="showTab===6 || showTab === 7 || showTab === 9 || showTab === 0" class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="card">
+
+        <div class="card-block">
+
+
+          <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+              <div class=" w3-center">
+
+
+                <button type="button"
+                        class="btn btn-default {{range==='lastweek'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLastWeek()"
+                        i18n="Last week">
+                  Last week
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='lastmonth'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLastMonth()"
+                        i18n="Last month">
+                  Last month
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='last2months'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLast2Months()"
+                        i18n="Last 2 months">
+                  Last 2 months
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='last6months'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLast6Months()"
+                        i18n="Last 6 months">
+                  Last 6 months
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='next6months'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusNext6Months()"
+                        i18n="Next 6 months">
+                  Next 6 months
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='lastyear'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLastYear()"
+                        i18n="Last year">
+                  Last year
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='last2years'  && !zoomAll ? 'btn-outline-success' : ''}}"
+                        (click)="focusLast2Years()"
+                        i18n="Last year">
+                  Last 2 years
+                </button>
+
+
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+
     </div>
   </div>
 
