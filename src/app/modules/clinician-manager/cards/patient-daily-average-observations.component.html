@@ -11,15 +11,25 @@
   <div class="card-block" style="overflow-x: auto;">
 
     <div class="row">
-
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w3-center">
 
 
+        <!--
         <button type="button"
                 class="btn btn-default"
                 (click)="resetLeft()">
-          <span>  <i class="fa {{showAllLeft?'fa-circle':'fa-circle-o'}}"></i> </span>
-          All observations
+          <span>  <i class="fa {{showAllLeft||showAllRight?'fa-circle':'fa-circle-o'}}"></i> </span>
+          All observations {{showAllRight?"(right axis)":(showAllLeft?"(left axis)":"")}}
+          <span>
+          </span>
+        </button>
+        -->
+
+        <button type="button"
+                class="btn btn-default"
+                (click)="clearAll()">
+          <span>  <i class="fa fa-circle-o"></i> </span>
+          Clear graph
           <span>
           </span>
         </button>
@@ -36,6 +46,9 @@
 
         <span *ngFor="let group of observationGroups">
 
+          <span style="white-space: nowrap">
+
+
             <button
               type="button"
               class="btn btn-default"
@@ -43,20 +56,31 @@
               <span [style.color]="group.color">
                                 <i class="fa {{group.showLeft?'fa-circle':'fa-circle-o'}}"></i>
                             </span>
-              {{group.name}} ({{group.label}})
+               {{group.name}} ({{group.label}}) (left axis)
             </button>
 
-          </span>
+           <button
+             type="button"
+             class="btn btn-default"
+             (click)="toggleRight(group.id, group.name)">
+              <span [style.color]="group.color">
+                                <i class="fa {{group.showRight?'fa-circle':'fa-circle-o'}}"></i>
+                            </span>
+              (right axis)
+            </button>
+        </span>
 
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <nvd3 [options]="options" [data]="data" class="with-3d-shadow with-transitions"></nvd3>
+        </span>
 
       </div>
     </div>
-
-
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
+        <nvd3 [options]="options" [data]="data" class="with-transitions row-content"></nvd3>
+      </div>
+    </div>
   </div>
+
 
   <div class="card-footer w3-white">
     <div class="w3-tiny w3-right w3-full">Hover mouse over the diagram for values. Click
@@ -66,5 +90,5 @@
 
     </div>
   </div>
-</div>
 
+</div>

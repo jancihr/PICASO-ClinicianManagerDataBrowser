@@ -1,16 +1,48 @@
 <div class="animated fadeIn">
 
-  CARDS:
-  <a [routerLink]="['/clinician-manager', 'all']" (click)="focusLastYear()"> all </a>|
-  <a (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'overview']"> overview </a>|
-  <a (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'comments']">comments </a>|
-  <a (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'followups']">followups </a>|
-  <a (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'treatments']">treatments </a>|
-  <a (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'medications']">medications </a>|
-  <a (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'observations']">measurements </a>|
-  <a (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'morisky']">morisky </a>|
-  <a (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'diseases']">diseases </a>|
-  <a (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'clinicians']">clinicians</a>
+  <div class=" w3-center">
+    CARDS:
+    <button class="btn btn-default {{cardToShow==='all'   ? 'btn-outline-success' : ''}}"
+            [routerLink]="['/clinician-manager', 'all']" (click)="focusLastYear()"> all
+    </button>
+    |
+    <button class="btn btn-default {{cardToShow==='overview'   ? 'btn-outline-success' : ''}}" (click)="focusLastYear()"
+            [routerLink]="['/clinician-manager', 'overview']"> overview
+    </button>
+    |
+    <button class="btn btn-default {{cardToShow==='comments'   ? 'btn-outline-success' : ''}}" (click)="focusLastYear()"
+            [routerLink]="['/clinician-manager', 'comments']">comments
+    </button>
+    |
+    <button class="btn btn-default {{cardToShow==='followups'   ? 'btn-outline-success' : ''}}"
+            (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'followups']">followups
+    </button>
+    |
+    <button class="btn btn-default {{cardToShow==='treatments'   ? 'btn-outline-success' : ''}}"
+            (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'treatments']">treatments
+    </button>
+    |
+    <button class="btn btn-default {{cardToShow==='medications'   ? 'btn-outline-success' : ''}}"
+            (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'medications']">medications
+    </button>
+    |
+    <button class="btn btn-default {{cardToShow==='observations'   ? 'btn-outline-success' : ''}}"
+            (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'observations']">measurements
+    </button>
+    |
+    <button class="btn btn-default {{cardToShow==='morisky'   ? 'btn-outline-success' : ''}}" (click)="focusLastYear()"
+            [routerLink]="['/clinician-manager', 'morisky']">morisky
+    </button>
+    |
+    <button class="btn btn-default {{cardToShow==='diseases'   ? 'btn-outline-success' : ''}}" (click)="focusLastYear()"
+            [routerLink]="['/clinician-manager', 'diseases']">diseases
+    </button>
+    |
+    <button class="btn btn-default {{cardToShow==='clinicians'   ? 'btn-outline-success' : ''}}"
+            (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'clinicians']">clinicians
+    </button>
+
+  </div>
 
   <!--
     <div class="row">

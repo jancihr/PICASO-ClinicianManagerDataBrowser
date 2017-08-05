@@ -74,8 +74,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     this.options = {
       chart: {
         noData: 'No data exists for selected dates and observations.',
-        type: 'lineChart',
-        height: 600,
+        type: 'multiChart',
+        height: 500,
         transitionDuration: 500,
 
         zoom: {
@@ -91,7 +91,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           unzoomEventType: "dblclick.zoom"
         },
 
-        legendRightAxisHint: " (right axis)",
+        legendRightAxisHint: " ",
         interpolate: "linear",
         showLegend: false,
         legend: {
@@ -102,10 +102,10 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
         //average: function(d) { return d.mean/100; },
         margin: {
-          top: 55,
-          right: 55,
-          bottom: 55,
-          left: 55
+          top: 0,
+          right: 30,
+          bottom: 20,
+          left: 30
         },
 
         useInteractiveGuideline: true,
@@ -183,18 +183,18 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         },
 
         yAxis1: {
-          //axisLabel: 'Value',
+          //axisLabel: 'left axis',
           tickFormat: function (d) {
             return d;
           },
           //axisLabelDistance: -10
         },
         yAxis2: {
-          //axisLabel: 'Value',
+          //axisLabel: 'right axis',
           tickFormat: function (d) {
             return d;
           },
-          //axisLabelDistance: -10
+          axisLabelDistance: -10
         },
         callback: function (chart) {
           //console.log("!!! lineChart callback !!!");
@@ -223,7 +223,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
     for (var group of this.observationGroups) {
 
-      if (group.showLeft) {
+      if (group.showLeft || group.showRight) {
 
 
         var filteredValues = [];
@@ -282,8 +282,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             //area: false,
             //mean: 120,
             disabled: false,
-            yAxis: 1,
-            xAxis: 1,
+            yAxis: group.showLeft ? 1 : 2,
+            //xAxis: 1,
             type: 'line'   //group.type
 
           });
@@ -304,7 +304,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                 //area: false,
                 //mean: 120,
                 disabled: false,
-                yAxis: 1,
+                yAxis: group.showLeft ? 1 : 2,
                 xAxis: 1,
                 type: 'line',
                 classed: 'dashed'
@@ -326,7 +326,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                 //area: false,
                 //mean: 120,
                 disabled: false,
-                yAxis: 1,
+                yAxis: group.showLeft ? 1 : 2,
                 xAxis: 1,
                 type: 'line',
                 classed: 'dashed'
@@ -347,7 +347,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                 //area: false,
                 //mean: 120,
                 disabled: false,
-                yAxis: 1,
+                yAxis: group.showLeft ? 1 : 2,
                 xAxis: 1,
                 type: 'line',
                 classed: 'dashed-long'
@@ -359,71 +359,141 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       }
     }
 
-    /*
-     for (var group of this.observationGroups) {
 
-     if (group.showRight) {
+    /* for (var group of this.observationGroups) {
 
-     var filteredValues2 = [];
+       if (group.showRight) {
 
-     for (var el of group.values){
-     if (el.date<this.startDate || el.date>this.endDate) {}
-     else {filteredValues2.push(el)}
+         var filteredValues2 = [];
+
+         for (var el of group.values) {
+           if (el.date < this.startDate || el.date > this.endDate) {
+           }
+           else {
+             filteredValues2.push(el)
+           }
+         }
+
+         var sortedValues2 = filteredValues2.sort(function (a, b) {
+           return new Date(a.date).getTime() - new Date(b.date).getTime();
+         });
+
+         var
+           newValues2 = [];
+
+
+         var
+           i = 0;
+
+         for (
+
+           var
+             observation
+           of
+           sortedValues2
+           ) {
+
+           //newValues.push({x: i++, y: i});
+
+           newValues2
+             .push({
+                 "x": new Date
+
+                 (
+                   observation
+                     .date
+                 ).getTime()
+
+                 ,
+                 "y": observation.value
+               }
+             )
+         }
+
+         this.data.push({
+           values: newValues2,
+           key: group.name + " / " + group.label + "(right)",
+           color: group.color,
+           disabled: false,
+           //area: false,
+           //mean: 120,
+           yAxis: 2,
+           xAxis: 1,
+           type: 'line'
+           //type: group.type
+         });
+
+         if (this.showMinMidMax) {
+
+           if (group.minValue != null) {
+             var newGraphValuesMin = [];
+             newGraphValuesMin.push({date: this.startDate, value: group.minValue});
+             newGraphValuesMin.push({date: this.endDate, value: group.minValue});
+             //min value line
+             this.data.push({
+               label: group.label,
+               name: group.name,
+               values: newGraphValuesMin,
+               key: "hidemin" + group.id,
+               color: group.color,
+               //area: false,
+               //mean: 120,
+               disabled: false,
+               yAxis: 2,
+               xAxis: 1,
+               type: 'line',
+               classed: 'dashed'
+             })
+           }
+
+
+           if (group.maxValue != null) {
+             var newGraphValuesMax = [];
+             newGraphValuesMax.push({date: this.endDate, value: group.maxValue});
+             newGraphValuesMax.push({date: this.startDate, value: group.maxValue});
+             //max value line
+             this.data.push({
+               label: group.label,
+               name: group.name,
+               values: newGraphValuesMax,
+               key: "hidemax" + group.id,
+               color: group.color,
+               //area: false,
+               //mean: 120,
+               disabled: false,
+               yAxis: 2,
+               xAxis: 1,
+               type: 'line',
+               classed: 'dashed'
+             })
+           }
+
+           if (group.midValue != null) {
+             var newGraphValuesMid = [];
+             newGraphValuesMid.push({date: this.startDate, value: group.midValue});
+             newGraphValuesMid.push({date: this.endDate, value: group.midValue});
+             //mid value line
+             this.data.push({
+               label: group.label,
+               name: group.name,
+               values: newGraphValuesMid,
+               key: "hidemid" + group.id,
+               color: group.color,
+               //area: false,
+               //mean: 120,
+               disabled: false,
+               yAxis: 2,
+               xAxis: 1,
+               type: 'line',
+               classed: 'dashed-long'
+             })
+           }
+         }
+
+
+       }
      }
-
-     var sortedValues2 = filteredValues2.sort(function (a, b) {
-     return new Date(a.date).getTime() - new Date(b.date).getTime();
-     });
-
-     var
-     newValues2 = [];
-
-
-     var
-     i = 0;
-
-     for (
-
-     var
-     observation
-     of
-     sortedValues2
-     ) {
-
-     //newValues.push({x: i++, y: i});
-
-     newValues2
-     .push({
-     "x": new Date
-
-     (
-     observation
-     .date
-     ).getTime()
-
-     ,
-     "y": observation.value
-     }
-     )
-     }
-
-     this.data.push({
-     values: newValues2,
-     key: group.name + " / " + group.label,
-     color: group.color,
-     disabled: false,
-     //area: false,
-     //mean: 120,
-     yAxis: 2,
-     xAxis: 1,
-     type: 'line'
-     //type: group.type
-     })
-
-     }
-     }
-
-     */
+ */
 
   }
 
@@ -439,6 +509,31 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   }
 
   public toggleLeft(id: string, name: string) {
+
+
+    /*
+    for (var i = 0; i < this.observationGroups.length; i++) {
+
+      if (this.observationGroups[i].id === id) {
+        //this.observationGroups[i].showLeft = !this.observationGroups[i].showLeft;
+        if (!this.observationGroups[i].showLeft && !this.observationGroups[i].showRight) {
+          //this.observationGroups[i].showRight = true;
+          this.observationGroups[i].showLeft = true;
+
+        } else if (this.observationGroups[i].showLeft) {
+          this.observationGroups[i].showLeft = false;
+          this.observationGroups[i].showRight = true;
+          //this.showAllLeft = false;
+          this.showAllLeft = false;
+        } else {
+          this.observationGroups[i].showRight = false;
+          this.showAllRight = false;
+        }
+        break;
+      }
+    }
+    */
+
     for (var i = 0; i < this.observationGroups.length; i++) {
 
       if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
@@ -454,12 +549,14 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
     }
+
+
     this.reloadDataToGraph()
 
 
   }
 
-  /*
+
     public toggleRight(id: string, name: string) {
 
       for (var i = 0; i < this.observationGroups.length; i++) {
@@ -483,41 +580,47 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
     }
 
-  */
+
+  public clearAll() {
+    this.showAllRight = false;
+    this.showAllLeft = false;
+    for (var i = 0; i < this.observationGroups.length; i++) {
+      this.observationGroups[i].showLeft = this.showAllLeft;
+      this.observationGroups[i].showRight = this.showAllRight;
+    }
+    this.reloadDataToGraph();
+
+  }
 
   public resetLeft() {
 
-    this.showAllLeft = !this.showAllLeft;
-    if (this.showAllLeft) {
+    this.toggleAll();
+
+    this.reloadDataToGraph()
+
+  }
+
+
+  private toggleAll() {
+    if (!this.showAllLeft && !this.showAllRight) {
+      this.showAllLeft = true;
+    } else if (this.showAllRight) {
+      this.showAllRight = false;
+      this.showAllLeft = false;
+    } else {
       this.showAllRight = true;
-      //this.resetRight()
     }
     for (var i = 0; i < this.observationGroups.length; i++) {
 
       this.observationGroups[i].showLeft = this.showAllLeft;
+      this.observationGroups[i].showRight = this.showAllRight;
     }
-    this.reloadDataToGraph()
-
   }
 
   public resetMinMidMax() {
     this.showMinMidMax = !this.showMinMidMax;
     this.reloadDataToGraph();
   }
-
-  /*
-  public resetRight() {
-    this.showAllRight = !this.showAllRight;
-    if (this.showAllRight) {
-      this.showAllLeft = true;
-      this.resetLeft()
-    }
-    for (var i = 0; i < this.observationGroups.length; i++) {
-      this.observationGroups[i].showRight = this.showAllRight;
-    }
-    this.reloadDataToGraph()
-  }
-  */
 
 
 }
