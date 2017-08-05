@@ -19,16 +19,13 @@ export class ClinicianManagerComponent implements OnInit {
 
   private myDateRangePickerOptions: IMyOptions;
   private dateRange;
-  endDate: Date;
-  startDate: Date;
+  //endDate: Date;
+  //startDate: Date;
 
   private model;
 
-
-  private showTab = 0;
-
-  private range = "lastyear"; //show all
-  private zoomAll = false;
+  range = 'lastyear';
+  private cardToShow = 'all';
 
 
   @ViewChild(PatientMedicationHistoryComponent)
@@ -44,24 +41,41 @@ export class ClinicianManagerComponent implements OnInit {
   private moriskyComponent: MoriskyDailyAverageObservationsComponent;
 
   constructor(private config: ConfigurationService, private cdSharedModelService: CdSharedModelService,
-              private route: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit(): void {
+
+
+    this.activatedRoute.params.subscribe((params: Params) => {
+      this.cardToShow = params['card'];
+      if (this.cardToShow === null || this.cardToShow === undefined) {
+        this.cardToShow = 'all';
+      }
+      console.log("tab param", params['card']);
+
+
+      this.range = "lastyear";
+
+      //this.notifyDataChange(this.startDate, this.endDate);
+    });
 
     //showTabStr = this.route.snapshot.queryParams["tab"];
 
 
     //console.log("################parameter:", this.route.snapshot.queryParams["tab"]);
 
-    if (this.showTab === null) {
-      this.showTab = 0;
-    }
-    this.startDate = new Date();
-    this.endDate = new Date();
 
-    this.startDate.setFullYear(this.endDate.getFullYear() - 1);
+    var startDate = new Date();
+    var endDate = new Date();
+    startDate.setFullYear(endDate.getFullYear() - 1);
     this.range = "lastyear";
+    this.notifyDataChange(startDate, endDate);
+
+
+    if (this.cardToShow === undefined) {
+      this.cardToShow = 'all';
+    }
 
     this.myDateRangePickerOptions = {
       // other options...
@@ -73,22 +87,12 @@ export class ClinicianManagerComponent implements OnInit {
       sunHighlight: true,
     };
 
-    this.model = {
-      beginDate: {
-        year: this.startDate.getFullYear(),
-        month: this.startDate.getMonth(),
-        day: this.startDate.getDay()
-      },
-      endDate: {year: this.endDate.getFullYear(), month: this.endDate.getMonth(), day: this.endDate.getDay()}
-    };
-
-
   }
 
   focusLastWeek() {
 
     this.range = "lastweek";
-    this.zoomAll = false;
+
 
     var endDate: Date = new Date();
     var startDate: Date = new Date();
@@ -102,7 +106,7 @@ export class ClinicianManagerComponent implements OnInit {
   focusLastMonth() {
 
     this.range = "lastmonth";
-    this.zoomAll = false;
+
     var endDate: Date = new Date();
     var startDate: Date = new Date();
 
@@ -115,7 +119,7 @@ export class ClinicianManagerComponent implements OnInit {
   focusLast2Months() {
 
     this.range = "last2months";
-    this.zoomAll = false;
+
     var endDate: Date = new Date();
     var startDate: Date = new Date();
 
@@ -128,7 +132,7 @@ export class ClinicianManagerComponent implements OnInit {
   focusLast6Months() {
 
     this.range = "last6months";
-    this.zoomAll = false;
+
     var endDate: Date = new Date();
     var startDate: Date = new Date();
 
@@ -141,7 +145,7 @@ export class ClinicianManagerComponent implements OnInit {
   focusNext6Months() {
 
     this.range = "next6months";
-    this.zoomAll = false;
+
     var endDate: Date = new Date();
     var startDate: Date = new Date();
 
@@ -154,7 +158,7 @@ export class ClinicianManagerComponent implements OnInit {
   focusLastYear() {
 
     this.range = "lastyear";
-    this.zoomAll = false;
+
     var endDate: Date = new Date();
     var startDate: Date = new Date();
 
@@ -167,7 +171,7 @@ export class ClinicianManagerComponent implements OnInit {
   focusLast2Years() {
 
     this.range = "last2years";
-    this.zoomAll = false;
+
     var endDate: Date = new Date();
     var startDate: Date = new Date();
 
@@ -179,7 +183,7 @@ export class ClinicianManagerComponent implements OnInit {
 
   focusAll() {
 
-    this.zoomAll = true;
+
     this.medicationComponent.focusVis();
     this.treatmentsHistoryComponent.focusVisChecks();
     // TODO this.observationHistoryComponent.refreshRange(all);
@@ -198,7 +202,7 @@ export class ClinicianManagerComponent implements OnInit {
     //console.log('onDateRangeChanged(): BeginEpoc timestamp: ', event.beginEpoc, ' - endEpoc timestamp: ', event.endEpoc);
 
     this.range = "custom";
-    this.zoomAll = false;
+
     this.notifyDataChange(event.beginJsDate, event.endJsDate);
 
   }
@@ -206,12 +210,43 @@ export class ClinicianManagerComponent implements OnInit {
 
   notifyDataChange(startDate: Date, endDate: Date) {
 
-    this.model.beginDate = startDate;
-    this.model.endDate = endDate;
-    this.medicationComponent.refreshRange(startDate, endDate);
-    this.treatmentsHistoryComponent.refreshRange(startDate, endDate);
-    this.observationHistoryComponent.refreshRange(startDate, endDate);
-    this.moriskyComponent.refreshRange(startDate, endDate);
+
+    this.model = {
+      beginDate: {
+        year: startDate.getFullYear(),
+        month: startDate.getMonth(),
+        day: startDate.getDay()
+      },
+      endDate: {year: endDate.getFullYear(), month: endDate.getMonth(), day: endDate.getDay()}
+    };
+
+    //
+
+
+    //this.model.beginDate = startDate;
+    //this.model.endDate = endDate;
+
+    if (this.cardToShow === 'medications' || this.cardToShow === 'all') {
+      if (this.medicationComponent !== undefined) {
+        this.medicationComponent.refreshRange(startDate, endDate);
+      }
+    }
+    if (this.cardToShow === 'treatments' || this.cardToShow === 'all') {
+
+      if (this.treatmentsHistoryComponent !== undefined) {
+        this.treatmentsHistoryComponent.refreshRange(startDate, endDate);
+      }
+    }
+    if (this.cardToShow === 'observations' || this.cardToShow === 'all') {
+      if (this.observationHistoryComponent !== undefined) {
+        this.observationHistoryComponent.refreshRange(startDate, endDate);
+      }
+    }
+    if (this.cardToShow === 'morisky' || this.cardToShow === 'all') {
+      if (this.moriskyComponent !== undefined) {
+        this.moriskyComponent.refreshRange(startDate, endDate);
+      }
+    }
 
   }
 

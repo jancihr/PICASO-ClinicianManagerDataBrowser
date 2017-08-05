@@ -26,6 +26,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   showAllRight = false;
   showAllLeft = false;
 
+  showMinMidMax = true;
+
   progress: PatientLoadProgress = {
     percentage: 0,
     loaded: 0,
@@ -286,69 +288,71 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
           });
 
+          if (this.showMinMidMax) {
 
-          if (group.minValue != null) {
-            var newGraphValuesMin = [];
-            newGraphValuesMin.push({date: this.startDate, value: group.minValue});
-            newGraphValuesMin.push({date: this.endDate, value: group.minValue});
-            //min value line
-            this.data.push({
-              label: group.label,
-              name: group.name,
-              values: newGraphValuesMin,
-              key: "hidemin" + group.id,
-              color: group.color,
-              //area: false,
-              //mean: 120,
-              disabled: false,
-              yAxis: 1,
-              xAxis: 1,
-              type: 'line',
-              classed: 'dashed'
-            })
-          }
+            if (group.minValue != null) {
+              var newGraphValuesMin = [];
+              newGraphValuesMin.push({date: this.startDate, value: group.minValue});
+              newGraphValuesMin.push({date: this.endDate, value: group.minValue});
+              //min value line
+              this.data.push({
+                label: group.label,
+                name: group.name,
+                values: newGraphValuesMin,
+                key: "hidemin" + group.id,
+                color: group.color,
+                //area: false,
+                //mean: 120,
+                disabled: false,
+                yAxis: 1,
+                xAxis: 1,
+                type: 'line',
+                classed: 'dashed'
+              })
+            }
 
 
-          if (group.maxValue != null) {
-            var newGraphValuesMax = [];
-            newGraphValuesMax.push({date: this.endDate, value: group.maxValue});
-            newGraphValuesMax.push({date: this.startDate, value: group.maxValue});
-            //max value line
-            this.data.push({
-              label: group.label,
-              name: group.name,
-              values: newGraphValuesMax,
-              key: "hidemax" + group.id,
-              color: group.color,
-              //area: false,
-              //mean: 120,
-              disabled: false,
-              yAxis: 1,
-              xAxis: 1,
-              type: 'line',
-              classed: 'dashed'
-            })
-          }
+            if (group.maxValue != null) {
+              var newGraphValuesMax = [];
+              newGraphValuesMax.push({date: this.endDate, value: group.maxValue});
+              newGraphValuesMax.push({date: this.startDate, value: group.maxValue});
+              //max value line
+              this.data.push({
+                label: group.label,
+                name: group.name,
+                values: newGraphValuesMax,
+                key: "hidemax" + group.id,
+                color: group.color,
+                //area: false,
+                //mean: 120,
+                disabled: false,
+                yAxis: 1,
+                xAxis: 1,
+                type: 'line',
+                classed: 'dashed'
+              })
+            }
 
-          if (group.midValue != null) {
-            var newGraphValuesMid = [];
-            newGraphValuesMid.push({date: this.startDate, value: group.midValue});
-            newGraphValuesMid.push({date: this.endDate, value: group.midValue});
-            //mid value line
-            this.data.push({
-              label: group.label,
-              name: group.name,
-              values: newGraphValuesMid,
-              key: "hidemid" + group.id,
-              color: group.color,
-              //area: false,
-              //mean: 120,
-              disabled: false,
-              yAxis: 1,
-              xAxis: 1,
-              type: 'line',
-              classed: 'dashed-long'
-            })
+            if (group.midValue != null) {
+              var newGraphValuesMid = [];
+              newGraphValuesMid.push({date: this.startDate, value: group.midValue});
+              newGraphValuesMid.push({date: this.endDate, value: group.midValue});
+              //mid value line
+              this.data.push({
+                label: group.label,
+                name: group.name,
+                values: newGraphValuesMid,
+                key: "hidemid" + group.id,
+                color: group.color,
+                //area: false,
+                //mean: 120,
+                disabled: false,
+                yAxis: 1,
+                xAxis: 1,
+                type: 'line',
+                classed: 'dashed-long'
+              })
+            }
           }
 
         }
@@ -494,6 +498,11 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     }
     this.reloadDataToGraph()
 
+  }
+
+  public resetMinMidMax() {
+    this.showMinMidMax = !this.showMinMidMax;
+    this.reloadDataToGraph();
   }
 
   /*

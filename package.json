@@ -55,7 +55,7 @@
     "ts-helpers": "1.1.2",
     "typescript": "^2.3.2",
     "uuid": "^3.0.1",
-    "vis": "4.17.0",
+    "vis": "4.20.1",
     "zone.js": "0.6.26"
   },
   "devDependencies": {

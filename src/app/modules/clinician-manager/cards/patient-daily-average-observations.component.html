@@ -18,22 +18,19 @@
         <button type="button"
                 class="btn btn-default"
                 (click)="resetLeft()">
-
-        <span>
-                                <i class="fa {{showAllLeft?'fa-circle':'fa-circle-o'}}"></i>
-                            </span>
-
+          <span>  <i class="fa {{showAllLeft?'fa-circle':'fa-circle-o'}}"></i> </span>
           All observations
-
-
           <span>
-
-
-
-
           </span>
+        </button>
 
-
+        <button type="button"
+                class="btn btn-default"
+                (click)="resetMinMidMax()">
+          <span>  <i class="fa {{showMinMidMax?'fa-circle':'fa-circle-o'}}"></i> </span>
+          min/mid/max lines
+          <span>
+          </span>
         </button>
 
 
