@@ -346,11 +346,11 @@
   <div *ngIf="cardToShow==='observations' || cardToShow === 'all'" class=" w3-center">
 
     <button class="btn btn-default {{!showSeparate ? 'btn-outline-success' : ''}}"
-            (click)="showSeparate=false;">Combined Graph
+            (click)="showSeparate=false;focusLastYear()">Combined Graph
     </button>
 
     <button class="btn btn-default {{showSeparate  ? 'btn-outline-success' : ''}}"
-            (click)="showSeparate=true;">Separate Graphs
+            (click)="showSeparate=true;focusLastYear()">Separate Graphs
     </button>
 
   </div>
