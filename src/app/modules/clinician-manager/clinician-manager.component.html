@@ -344,7 +344,7 @@
 
   <div *ngIf="cardToShow==='observations' || cardToShow === 'all'" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-      <patient-daily-average-observations>
+      <patient-daily-average-observations [forMeasurements]='allMeasurements'>
       </patient-daily-average-observations>
     </div>
   </div>
@@ -424,8 +424,10 @@
   </div>
 
   <div *ngIf="cardToShow==='morisky' || cardToShow === 'all'" class="row">
-    <patient-morisky-results>
-    </patient-morisky-results>
+
+    <patient-daily-average-observations [forMeasurements]='moriskyObservations'>
+    </patient-daily-average-observations>
+
   </div>
 
   <div *ngIf="cardToShow==='diseases' || cardToShow === 'all'" class="row">

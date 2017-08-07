@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {IMyOptions, IMyDateRangeModel} from 'mydaterangepicker';
 import {PatientMedicationHistoryComponent} from "./cards/patient-medication-history.component";
@@ -6,8 +6,6 @@ import {PatientTreatmentHistoryComponent} from "./cards/patient-treatment-histor
 import {PatientDailyAverageObservationsComponent} from "./cards/patient-daily-average-observations.component";
 import {ConfigurationService} from "../../picaso-cd-common/_services/configuration.service";
 import {CdSharedModelService} from "../../picaso-cd-common/_services/cd-shared-model.service";
-import {DataResourceBrowserCardComponent} from "../data-resource-browser/cards/data-resource-browser-card.component";
-import {MoriskyDailyAverageObservationsComponent} from "./cards/patient-morisky-results.component";
 
 
 @Component({
@@ -19,6 +17,9 @@ export class ClinicianManagerComponent implements OnInit {
 
   private myDateRangePickerOptions: IMyOptions;
   private dateRange;
+
+  allMeasurements = ["all"];
+  moriskyObservations = ["morisky"];
   //endDate: Date;
   //startDate: Date;
 
@@ -34,11 +35,10 @@ export class ClinicianManagerComponent implements OnInit {
   @ViewChild(PatientTreatmentHistoryComponent)
   private treatmentsHistoryComponent: PatientTreatmentHistoryComponent;
 
-  @ViewChild(PatientDailyAverageObservationsComponent)
-  private observationHistoryComponent: PatientDailyAverageObservationsComponent;
+  @ViewChildren(PatientDailyAverageObservationsComponent) observationHistoryComponents: QueryList<PatientDailyAverageObservationsComponent>;
 
-  @ViewChild(MoriskyDailyAverageObservationsComponent)
-  private moriskyComponent: MoriskyDailyAverageObservationsComponent;
+
+
 
   constructor(private config: ConfigurationService, private cdSharedModelService: CdSharedModelService,
               private activatedRoute: ActivatedRoute) {
@@ -237,16 +237,14 @@ export class ClinicianManagerComponent implements OnInit {
         this.treatmentsHistoryComponent.refreshRange(startDate, endDate);
       }
     }
-    if (this.cardToShow === 'observations' || this.cardToShow === 'all') {
-      if (this.observationHistoryComponent !== undefined) {
-        this.observationHistoryComponent.refreshRange(startDate, endDate);
-      }
+    if (this.cardToShow === 'morisky' || this.cardToShow === 'observations' || this.cardToShow === 'all') {
+
+      this.observationHistoryComponents.forEach((child) => {
+        child.refreshRange(startDate, endDate)
+      });
+
     }
-    if (this.cardToShow === 'morisky' || this.cardToShow === 'all') {
-      if (this.moriskyComponent !== undefined) {
-        this.moriskyComponent.refreshRange(startDate, endDate);
-      }
-    }
+
 
   }
 

@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-header w3-blue  w3-center">
 
-    <div i18n="Average daily observations"><i class="fa fa-heartbeat"></i> Patient Measurements and Recordings</div>
+    <div i18n="Average daily observations"><i class="fa fa-heartbeat"></i> {{cardTitle}}</div>
     <div class="w3-right">
 
       <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
@@ -83,9 +83,7 @@
 
 
   <div class="card-footer w3-white">
-    <div class="w3-tiny w3-right w3-full">Hover mouse over the diagram for values. Click
-      series name in the legend of the diagram to view/hide series.
-      If several series are shown on one axis, series are not normalised.
+    <div class="w3-tiny w3-right w3-full">{{footerText}}
 
 
     </div>

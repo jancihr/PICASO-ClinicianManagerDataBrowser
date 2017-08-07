@@ -1,5 +1,6 @@
 import {PatientObservation} from "./patient-observation";
 export class PatientObservationGroup {
+  index: Number = 0;
     id: string;
     name: string;
     label: string;
