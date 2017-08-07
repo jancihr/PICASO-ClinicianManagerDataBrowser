@@ -1,45 +1,46 @@
 <div class="animated fadeIn">
 
   <div class=" w3-center">
-    CARDS:
     <button class="btn btn-default {{cardToShow==='all'   ? 'btn-outline-success' : ''}}"
-            [routerLink]="['/clinician-manager', 'all']" (click)="focusLastYear()"> all
+            [routerLink]="['/clinician-manager', 'all', 'all']" (click)="focusLastYear()"> all
     </button>
     |
     <button class="btn btn-default {{cardToShow==='overview'   ? 'btn-outline-success' : ''}}" (click)="focusLastYear()"
-            [routerLink]="['/clinician-manager', 'overview']"> overview
+            [routerLink]="['/clinician-manager', 'overview', '']"> overview
     </button>
     |
     <button class="btn btn-default {{cardToShow==='comments'   ? 'btn-outline-success' : ''}}" (click)="focusLastYear()"
-            [routerLink]="['/clinician-manager', 'comments']">comments
+            [routerLink]="['/clinician-manager', 'comments', '']">comments
     </button>
     |
     <button class="btn btn-default {{cardToShow==='followups'   ? 'btn-outline-success' : ''}}"
-            (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'followups']">followups
+            (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'followups', '']">followups
     </button>
     |
     <button class="btn btn-default {{cardToShow==='treatments'   ? 'btn-outline-success' : ''}}"
-            (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'treatments']">treatments
+            (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'treatments', '']">treatments
     </button>
     |
     <button class="btn btn-default {{cardToShow==='medications'   ? 'btn-outline-success' : ''}}"
-            (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'medications']">medications
+            (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'medications', '']">medications
     </button>
     |
-    <button class="btn btn-default {{cardToShow==='observations'   ? 'btn-outline-success' : ''}}"
-            (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'observations']">measurements
+    <button
+      class="btn btn-default {{cardToShow==='observations' && allMeasurements==='all'   ? 'btn-outline-success' : ''}}"
+      (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'observations', 'all']">measurements
     </button>
     |
+
     <button class="btn btn-default {{cardToShow==='morisky'   ? 'btn-outline-success' : ''}}" (click)="focusLastYear()"
-            [routerLink]="['/clinician-manager', 'morisky']">morisky
+            [routerLink]="['/clinician-manager', 'morisky', '']">morisky
     </button>
     |
     <button class="btn btn-default {{cardToShow==='diseases'   ? 'btn-outline-success' : ''}}" (click)="focusLastYear()"
-            [routerLink]="['/clinician-manager', 'diseases']">diseases
+            [routerLink]="['/clinician-manager', 'diseases', '']">diseases
     </button>
     |
     <button class="btn btn-default {{cardToShow==='clinicians'   ? 'btn-outline-success' : ''}}"
-            (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'clinicians']">clinicians
+            (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'clinicians', '']">clinicians
     </button>
 
   </div>
@@ -342,11 +343,69 @@
   </div>
 
 
-  <div *ngIf="cardToShow==='observations' || cardToShow === 'all'" class="row">
+  <div *ngIf="cardToShow==='observations' || cardToShow === 'all'" class=" w3-center">
+
+    <button class="btn btn-default {{!showSeparate ? 'btn-outline-success' : ''}}"
+            (click)="showSeparate=false;">Combined Graph
+    </button>
+
+    <button class="btn btn-default {{showSeparate  ? 'btn-outline-success' : ''}}"
+            (click)="showSeparate=true;">Separate Graphs
+    </button>
+
+  </div>
+
+
+  <div *ngIf="!showSeparate && (cardToShow==='observations' || cardToShow === 'all')" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
       <patient-daily-average-observations [forMeasurements]='allMeasurements'>
       </patient-daily-average-observations>
     </div>
+  </div>
+
+
+  <div *ngIf="showSeparate && (cardToShow==='observations' || cardToShow === 'all')" class="row">
+
+
+    <patient-daily-average-observations [forMeasurements]="'heartrate'">
+    </patient-daily-average-observations>
+
+    <patient-daily-average-observations [forMeasurements]="'sys'">
+    </patient-daily-average-observations>
+
+    <patient-daily-average-observations [forMeasurements]='"dia"'>
+    </patient-daily-average-observations>
+
+    <patient-daily-average-observations [forMeasurements]='"weight"'>
+    </patient-daily-average-observations>
+
+    <patient-daily-average-observations [forMeasurements]='"steps"'>
+    </patient-daily-average-observations>
+
+    <patient-daily-average-observations [forMeasurements]='"distance"'>
+    </patient-daily-average-observations>
+
+    <patient-daily-average-observations [forMeasurements]='"sleep"'>
+    </patient-daily-average-observations>
+
+    <patient-daily-average-observations [forMeasurements]='"pain"'>
+    </patient-daily-average-observations>
+
+    <patient-daily-average-observations [forMeasurements]='"wellbeing"'>
+    </patient-daily-average-observations>
+
+    <patient-daily-average-observations [forMeasurements]='"radai"'>
+    </patient-daily-average-observations>
+
+    <patient-daily-average-observations [forMeasurements]='"ffbh"'>
+    </patient-daily-average-observations>
+
+    <patient-daily-average-observations [forMeasurements]='"haq"'>
+    </patient-daily-average-observations>
+
+    <patient-daily-average-observations [forMeasurements]='"eq5d"'>
+    </patient-daily-average-observations>
+
   </div>
 
   <div *ngIf="cardToShow === 'all'"
@@ -447,6 +506,7 @@
       </patient-clinicians-history>
     </div>
   </div>
+
 
 </div>
 

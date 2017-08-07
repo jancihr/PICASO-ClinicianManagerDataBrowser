@@ -18,8 +18,11 @@ export class ClinicianManagerComponent implements OnInit {
   private myDateRangePickerOptions: IMyOptions;
   private dateRange;
 
-  allMeasurements = ["all"];
-  moriskyObservations = ["morisky"];
+  allMeasurements;
+  moriskyObservations = "morisky";
+
+  showSeparate = false;
+
   //endDate: Date;
   //startDate: Date;
 
@@ -52,7 +55,8 @@ export class ClinicianManagerComponent implements OnInit {
       if (this.cardToShow === null || this.cardToShow === undefined) {
         this.cardToShow = 'all';
       }
-      console.log("tab param", params['card']);
+
+      this.allMeasurements = params['measurement'];
 
 
       this.range = "lastyear";

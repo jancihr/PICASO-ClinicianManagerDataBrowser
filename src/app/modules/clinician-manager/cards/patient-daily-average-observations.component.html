@@ -1,7 +1,7 @@
 <div class="card">
-  <div class="card-header w3-blue  w3-center">
+  <div *ngIf="headerText" class="card-header w3-blue  w3-center">
 
-    <div i18n="Average daily observations"><i class="fa fa-heartbeat"></i> {{cardTitle}}</div>
+    <div i18n="Average daily observations"><i class="fa fa-heartbeat"></i> {{headerText}}</div>
     <div class="w3-right">
 
       <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
@@ -25,7 +25,7 @@
         </button>
         -->
 
-        <button type="button"
+        <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
                 class="btn btn-default"
                 (click)="clearAll()">
           <span>  <i class="fa fa-circle-o"></i> </span>
@@ -43,11 +43,13 @@
           </span>
         </button>
 
-
+        <span *ngIf="observationGroups && observationGroups.length!==1">
         <span *ngFor="let group of observationGroups">
 
           <span style="white-space: nowrap">
 
+            <button type="button" class="btn btn-default"
+                    (click)="toggleLeft(group.id, group.name)"> {{group.name}}</button>
 
             <button
               type="button"
@@ -56,7 +58,7 @@
               <span [style.color]="group.color">
                                 <i class="fa {{group.showLeft?'fa-circle':'fa-circle-o'}}"></i>
                             </span>
-               {{group.name}} ({{group.label}}) (left axis)
+              L
             </button>
 
            <button
@@ -66,23 +68,28 @@
               <span [style.color]="group.color">
                                 <i class="fa {{group.showRight?'fa-circle':'fa-circle-o'}}"></i>
                             </span>
-              (right axis)
+              R
             </button>
         </span>
+        </span>
 
         </span>
 
       </div>
     </div>
+
+
     <div class="row">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-        <nvd3 [options]="options" [data]="data" class="with-transitions row-content"></nvd3>
+        <nvd3 *ngIf="observationGroups" [options]="options" [data]="data" class="with-transitions row-content"></nvd3>
       </div>
     </div>
+
+
   </div>
 
 
-  <div class="card-footer w3-white">
+  <div *ngIf="footerText" class="card-footer w3-white">
     <div class="w3-tiny w3-right w3-full">{{footerText}}
 
 
