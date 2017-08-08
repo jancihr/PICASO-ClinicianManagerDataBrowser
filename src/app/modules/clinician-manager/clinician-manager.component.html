@@ -26,7 +26,7 @@
     </button>
     |
     <button
-      class="btn btn-default {{cardToShow==='observations' && allMeasurements==='all'   ? 'btn-outline-success' : ''}}"
+      class="btn btn-default {{cardToShow==='observations' ? 'btn-outline-success' : ''}}"
       (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'observations', 'all']">measurements
     </button>
     |
