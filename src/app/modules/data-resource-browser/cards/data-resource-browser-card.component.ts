@@ -13,6 +13,7 @@ import {DRBDataService} from "../service/DRB-data.service";
 import {GraphNodesDefinition} from '../model/graph-nodes-definition';
 import {GraphSetUp} from '../model/graph-set-up';
 import {LoadProgress} from "../model/load-progress";
+import {TableItem} from "../model/table-item";
 class PicasoNetworkData implements VisNetworkData {
     public nodes: VisNodes;
     public edges: VisEdges;
@@ -26,6 +27,13 @@ class PicasoNetworkData implements VisNetworkData {
 })
 
 export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
+
+  //Items table
+  public tableData: TableItem[];
+  public rowsOnPage = 5;
+  public sortBy = "startDate";
+  public sortOrder = "desc";
+
     public visNetwork: string = 'networkId1';
     public visNetworkData: PicasoNetworkData;
     public visNetworkOptions: VisNetworkOptions;
@@ -1814,6 +1822,15 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         // this.readLastDispalyedGraphSetUp()
         // this.displayLast();
         this.setNetworkOptions();
+
+
+      //TODO
+      this.tableData = [{
+        name: "Systolic",
+        date: new Date(),
+        source: "source1",
+        link: "/clinician-manager/observations/sys"
+      }, {name: "Diastolic", date: new Date(), source: "source2", link: "/clinician-manager/observations/dia"}];
     }
 
 // Destroy

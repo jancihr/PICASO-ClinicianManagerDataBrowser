@@ -1,12 +1,14 @@
 <div class="card">
     <div class="card-header">
         Data Resource Browser
-        <div class="card-actions">
-            <div *ngIf="progress.percentage<100">Loading: {{progress.percentage}}
-            </div>
-            Loaded: {{progress.total}} bytes
 
-        </div>
+      <div class="w3-right">
+
+        <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
+        <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
+      </div>
+
+
     </div>
     <div class="card-block">
         <div>
@@ -31,5 +33,61 @@
 
 
         </div>
+
+      <div class="row">
+
+        <table class="table table-striped table-bordered table-sm" [mfData]="tableData" #mf="mfDataTable"
+               [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+          <thead>
+          <tr>
+            <th i18n="Name">
+              <mfDefaultSorter by="name">
+                Name
+              </mfDefaultSorter>
+            </th>
+            <th i18n="Date">
+              <mfDefaultSorter by="date">
+                Date
+              </mfDefaultSorter>
+            </th>
+            <th i18n="Source">
+              <mfDefaultSorter by="source">
+                Source
+              </mfDefaultSorter>
+
+            </th>
+            <th i18n="Link to more details">
+              Link to more details
+            </th>
+
+          </tr>
+          </thead>
+          <tbody>
+
+          <tr *ngFor="let tableItem of tableData">
+
+            <td>{{tableItem.name}}</td>
+            <td>{{tableItem.date}}</td>
+            <td>{{tableItem.source}}</td>
+            <td>
+              <a [routerLink]="[tableItem.link]"> link </a>
+            </td>
+
+
+          </tr>
+
+          </tbody>
+
+          <tfoot>
+          <tr>
+            <td colspan="5" class="w3-center">
+              <mfBootstrapPaginator class="pagination-sm"></mfBootstrapPaginator>
+            </td>
+          </tr>
+          </tfoot>
+        </table>
+
+
+      </div>
     </div>
 </div>

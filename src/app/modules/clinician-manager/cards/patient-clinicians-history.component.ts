@@ -20,39 +20,7 @@ export class PatientCliniciansComponent implements OnInit {
   public sortBy = "startDate";
   public sortOrder = "desc";
 
-  settings = {
-    columns: {
-      startDate: {
-        title: 'Start Date',
-        editable: false
-      },
-      endDate: {
-        title: 'End Date',
-        editable: false
-      },
-      name: {
-        title: 'Name',
-      },
-      institution: {
-        title: 'Institution',
-      },
-      speciality: {
-        title: 'Speciality',
-        editable: false
-      }
 
-    },
-    hideSubHeader: true,
-    actions: {
-      add: false,
-      delete: false,
-      edit: false
-    },
-    pager: {
-      display: true,
-      perPage: 5
-    }
-  };
 
   progress: PatientLoadProgress = {
     percentage: 0,
