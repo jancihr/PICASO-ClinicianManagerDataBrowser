@@ -3,6 +3,7 @@ import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientDisease} from "../model/patient-disease";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 
+
 @Component({
     selector: 'patient-diseases',
     templateUrl: './patient-diseases.component.html',
@@ -17,8 +18,42 @@ export class PatientDiseasesComponent implements OnInit {
 
     public filterQuery = "";
     public rowsOnPage = 5;
-    public sortBy = "name";
-    public sortOrder = "asc";
+  public sortBy = "dateOfOnset";
+  public sortOrder = "desc";
+
+
+  settings = {
+    columns: {
+      name: {
+        title: 'Name',
+      },
+      dateOfOnset: {
+        title: 'Date Of Onset',
+      },
+      severity: {
+        title: 'Severity',
+        editable: false
+      },
+      sideOfOnset: {
+        title: 'Side of Onset',
+        editable: false
+      },
+      clinicalPhenotype: {
+        title: 'Clinical Phenotype',
+        editable: false
+      }
+    },
+    hideSubHeader: true,
+    actions: {
+      add: false,
+      delete: false,
+      edit: false
+    },
+    pager: {
+      display: true,
+      perPage: 5
+    }
+  };
 
     progress: PatientLoadProgress = {
         percentage: 0,

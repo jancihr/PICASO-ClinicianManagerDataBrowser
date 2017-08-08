@@ -12,31 +12,34 @@ import {PatientDailyAverageObservationsComponent} from "./cards/patient-daily-av
 import {PatientMedicationHistoryComponent} from "./cards/patient-medication-history.component";
 import {PatientDiseasesComponent} from "./cards/patient-diseases.component";
 import {PatientCliniciansComponent} from "./cards/patient-clinicians-history.component";
-import {PatientCheckHistoryComponent} from "./cards/patient-check-history.component";
+import {PatientTreatmentHistoryComponent} from "./cards/patient-treatment-history.component";
 import {nvD3} from "ng2-nvd3";
-import {PatientMoriskyResultsComponent} from "./cards/patient-morisky-results.component";
 import {PatientImagingComponent} from "./cards/patient-imaging.component";
 import {MyDateRangePickerModule} from "mydaterangepicker";
 import {ProgressHttpModule} from "angular-progress-http";
 import {DataTableModule} from "angular2-datatable";
 import {FormsModule} from "@angular/forms";
 import {PatientNotificationsComponent} from "./cards/patient-notifications.component";
+import {Ng2SmartTableModule} from "ng2-smart-table";
+import {PatientConcludingCommentsComponent} from "./cards/patient-concluding-comments.component";
+import {PatientFollowUpComponent} from "./cards/patient-follow-up-appointments.component";
 
 
 @NgModule({
     imports: [
         ClinicianManagerRoutingModule, FormsModule,
         ChartsModule, VisModule, HttpModule, CommonModule,
-        Ng2Bs3ModalModule, MyDateRangePickerModule, ProgressHttpModule, DataTableModule
+      Ng2Bs3ModalModule, MyDateRangePickerModule, ProgressHttpModule, DataTableModule,
+      Ng2SmartTableModule
 
     ],
     declarations: [ClinicianManagerComponent,
         PatientOverviewComponent,
         PatientDailyAverageObservationsComponent,
-        PatientMedicationHistoryComponent,
-        PatientDiseasesComponent,
-        PatientCliniciansComponent, PatientCheckHistoryComponent,
-        PatientMoriskyResultsComponent, PatientImagingComponent, PatientNotificationsComponent,
+      PatientMedicationHistoryComponent, PatientFollowUpComponent,
+      PatientDiseasesComponent, PatientConcludingCommentsComponent,
+      PatientCliniciansComponent, PatientTreatmentHistoryComponent,
+      PatientImagingComponent, PatientNotificationsComponent,
         nvD3
     ]
 })

@@ -114,7 +114,9 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
             //zoomMax: 61556926000, //year
             zoomMin: 86400000, //day
           clickToUse: true,
-          rollingMode: false
+          rollingMode: false,
+          start: this.startDate,
+          end: this.endDate
         };
 
 
@@ -141,7 +143,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
                     style: "background: #"+item.color,
 
                     content: `<div>
-                              <div class="w3-large">${item.name}</div>
+                              <div class="w3-small"><b>${item.name}</b></div>
                               <div class="w3-small">${item.dosage} - ${item.frequency} - ${item.stopReason}</div>
                               </div>`
                     ,
@@ -154,12 +156,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
         }
 
 
-        var today = new Date();
-        var yearsAgo = new Date();
-        yearsAgo.setFullYear(today.getFullYear() - 2);
-
-        this.visTimelineMedicationsOptions.start = yearsAgo;
-        this.visTimelineMedicationsOptions.end = today;
+      // this.focusVis();
 
 
     }

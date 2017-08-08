@@ -21,6 +21,39 @@ export class PatientImagingComponent implements OnInit {
     public sortBy = "type";
     public sortOrder = "asc";
 
+  public settings = {
+    columns: {
+      type: {
+        title: 'Type',
+      },
+      exists: {
+        title: 'Exists',
+      },
+      dates: {
+        title: 'Dates',
+        editable: false
+      },
+      report: {
+        title: 'Report',
+        editable: false
+      },
+      url: {
+        title: 'URL',
+        editable: false
+      }
+    },
+    hideSubHeader: true,
+    actions: {
+      add: false,
+      delete: false,
+      edit: false
+    },
+    pager: {
+      display: true,
+      perPage: 5
+    }
+  };
+
     progress: PatientLoadProgress = {
         percentage: 0,
         loaded: 0,

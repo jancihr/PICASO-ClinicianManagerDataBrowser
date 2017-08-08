@@ -1,24 +1,23 @@
 <div class="card">
-    <div class="card-header w3-orange  w3-center">
-        <div i18n="Patient Diseases"><i class="fa fa-medkit"></i> Patient Diseases</div>
-        <div class="w3-right">
+  <div class="card-header w3-orange  w3-center">
+    <div i18n="Patient Diseases"><i class="fa fa-medkit"></i> Patient Diseases</div>
+    <div class="w3-right">
 
-            <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
-            <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
-        </div>
+      <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
+      <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
     </div>
-    <div class="card-block" style="overflow-x: auto">
+  </div>
+  <div class="card-block" style="overflow-x: auto">
 
-
+    <!--
         <div class="row">
-
-            <div class="col-xs-4">
-                <label class="label-control">Rows on page</label>
-                <select class="form-control input-sm" [(ngModel)]="rowsOnPage">
-                    <option [ngValue]="5">5</option>
-                    <option [ngValue]="10">10</option>
-                    <option [ngValue]="15">15</option>
-                </select>
+          <!--  <div class="col-xs-4">
+               <label class="label-control">Rows on page</label>
+              <select class="form-control input-sm" [(ngModel)]="rowsOnPage">
+                   <option [ngValue]="5">5</option>
+                   <option [ngValue]="10">10</option>
+                   <option [ngValue]="15">15</option>
+               </select>
             </div>
             <div class="col-xs-8">
                 <div class="row">
@@ -43,51 +42,68 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
-        <table class="table table-striped table-sm" [mfData]="diseases" #mf="mfDataTable"
-               [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
-            <thead>
-            <tr>
-                <th i18n="Name">
-                    <mfDefaultSorter by="name">
-                        Name
-                    </mfDefaultSorter>
-                </th>
-                <th i18n="Date of Onset">
-                    <mfDefaultSorter by="onset">
-                        Date of Onset
-                    </mfDefaultSorter>
-                </th>
-                <th i18n="Severity">Severity</th>
-                <th i18n="Side of Onset">Side of Onset</th>
-                <th i18n="Clinical Phenotype">Clinical Phenotype</th>
+    <!--
+        <ng2-smart-table class="table table-striped table-bordered table-sm" [settings]="settings"
+                         [source]="diseases"></ng2-smart-table>
+    -->
+
+    <table class="table table-striped table-bordered table-sm" [mfData]="diseases" #mf="mfDataTable"
+           [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
+      <thead>
+      <tr>
+        <th i18n="Name">
+          <mfDefaultSorter by="name">
+            Name
+          </mfDefaultSorter>
+        </th>
+        <th i18n="Date of Onset">
+          <mfDefaultSorter by="dateOfOnset">
+            Date of Onset
+          </mfDefaultSorter>
+        </th>
+        <th i18n="Severity">
+          <mfDefaultSorter by="severity">
+            Severity
+          </mfDefaultSorter>
+        </th>
+
+        <th i18n="Side of Onset">
+          <mfDefaultSorter by="sideOfOnset">
+            Side of Onset
+          </mfDefaultSorter>
+        </th>
+
+        <th i18n="Clinical Phenotype">
+          <mfDefaultSorter by="clinicalPhenotype">
+            Clinical Phenotype
+          </mfDefaultSorter>
+        </th>
 
 
-            </tr>
-            </thead>
-            <tbody>
+      </tr>
+      </thead>
+      <tbody>
 
 
-            <tr *ngFor="let disease of mf.data">
-                <td>{{disease.name}}</td>
-                <td>{{disease.dateOfOnset}}</td>
-                <td>{{disease.severity}}</td>
-                <td>{{disease.sideOfOnset}}</td>
-                <td>{{disease.clinicalPhenotype}}</td>
+      <tr *ngFor="let disease of mf.data">
+        <td>{{disease.name}}</td>
+        <td>{{disease.dateOfOnset}}</td>
+        <td>{{disease.severity}}</td>
+        <td>{{disease.sideOfOnset}}</td>
+        <td>{{disease.clinicalPhenotype}}</td>
 
-            </tr>
+      </tr>
 
-            </tbody>
 
-            <tfoot>
-            <tr>
-                <td colspan="5">
-                    <mfBootstrapPaginator></mfBootstrapPaginator>
-                </td>
-            </tr>
-            </tfoot>
-        </table>
+      <tr>
+        <td colspan="5" class="w3-center">
+          <mfBootstrapPaginator class="pagination-sm"></mfBootstrapPaginator>
+        </td>
+      </tr>
+      </tbody>
+    </table>
 
-    </div>
+  </div>
 </div>

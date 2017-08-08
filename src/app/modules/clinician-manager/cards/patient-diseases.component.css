@@ -9,3 +9,75 @@
 .card-header {
     border-radius: 10px;
 }
+
+.card-footer {
+  padding: 0.25rem;
+}
+
+.card-block {
+  padding: 0.25rem;
+}
+
+.card-header {
+  padding: 0.25rem;
+}
+
+.card {
+  margin-bottom: 0.25rem;
+}
+
+.table-sm td {
+  padding: 0.05rem;
+}
+
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 0rem;
+}
+
+ng2-smart-table.table.td {
+  padding: 0.25rem;
+}
+
+.table td {
+  padding: 0.25rem;
+}
+
+.table tfoot tr td {
+  padding: 0.05rem;
+}
+
+.table tfoot {
+  padding: 0.25rem;
+}
+
+.pagination {
+  padding-left: 0;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.pagination-sm .page-link, .pagination-sm .pagination-datatables li a, .pagination-datatables li .pagination-sm a, .pagination-sm .pagination li a, .pagination li .pagination-sm a {
+  padding: 0.25rem 0.25rem;
+  font-size: 0.5rem;
+}
+
+.page-item {
+  padding: 0.25rem 0.25rem;
+  font-size: 0.5rem;
+}
+
+li {
+  padding: 0.25rem 0.25rem;
+  font-size: 0.5rem;
+}
+
+ul {
+  padding: 0.25rem 0.25rem;
+  font-size: 0.5rem;
+}
+
+
+
+
