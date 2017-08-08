@@ -817,7 +817,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                 this.coreGraphReset()
                 this.displayLast()
             }
-            if ((subGraphInfo.isDisplayed == false || subGraphInfo.level < this.coreLevel)){ //subGraphName === 'patient' || subGraphName === 'core' )) {
+            if ((subGraphInfo.isDisplayed == false || subGraphInfo.level < this.coreLevel)) { //subGraphName === 'patient' || subGraphName === 'core' )) {
                 this.subGraphsAsArray[index].isDisplayed = true // so show the subgraph .. create Vis network . .and remember the stare
                 //console.log('Unsorted: ',subGraphNodesArray)
                 subGraphNodesArray.sort((left, right): number => {
@@ -918,7 +918,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                         this.visNetworkData.nodes.add({
                             id: subGraphNodesArray[i].id,
                             label: subGraphNodesArray[i].label,
-                            title: subGraphNodesArray[i].title,
+                            title: subGraphNodesArray[i].isLeaf ? subGraphNodesArray[i].label + " - Click to see the elements in table below": subGraphNodesArray[i].label + " - Click to see sub-categories",
                             group: subGraphNodesArray[i].group,/*, x: 100, y: 100*/
                             x: subGraphNodesArray[i].x,
                             y: subGraphNodesArray[i].y
@@ -965,14 +965,14 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         }
         if (index != null && this.subGraphsAsArray[index].parrentGraph != "") { //patient-core is handled differently since it is displayed allways
             // remeber the state of displayed subgraphs
-          //  console.log('remembering');
+            console.log('remembering');
             this.updateLastDispalayedSubGraph(index)
         }
     }
 
 // NETWORK options //
     private setNetworkOptions() {
-        let shadowOn = true;
+        let shadowOn = false;
 
         this.visNetworkOptions = {
             //autoResize: true,
@@ -1415,13 +1415,18 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
     }
 
 // Memory - what graph was displayed
+    private updateUndoDispalayedSubGraph(subGraphIndex) {
+      sessionStorage.setItem(this.subGraphsAsArray[subGraphIndex].subGraphId + "UNDO", sessionStorage.getItem(this.subGraphsAsArray[subGraphIndex].subGraphId));
+
+    }
     private updateLastDispalayedSubGraph(subGraphIndex) {
+        this.updateUndoDispalayedSubGraph(subGraphIndex)
         sessionStorage.setItem(this.subGraphsAsArray[subGraphIndex].subGraphId, this.subGraphsAsArray[subGraphIndex].isDisplayed ? 'Displayed' : 'Inactive');
     }
 
     private updateLastDispalayedGraphOverall() {
         for (var i = 0; i < this.subGraphsAsArray.length; i++) {
-            this.updateLastDispalayedSubGraph(i)
+          this.updateLastDispalayedSubGraph(i)
         }
     }
 
@@ -1433,6 +1438,16 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                 this.allDisplayed = false
             }
         }
+    }
+
+    private readUNDODispalyedGraphSetUp() {
+      this.allDisplayed = true
+      for (var i = 0; i < this.subGraphsAsArray.length; i++) {
+        this.subGraphsAsArray[i].isDisplayed = sessionStorage.getItem(this.subGraphsAsArray[i].subGraphId + "UNDO") == 'Displayed' ? true : false
+        if (!this.subGraphsAsArray[i].isDisplayed) {
+          this.allDisplayed = false
+       }
+      }
     }
 
 // DISPALAY //
@@ -1456,6 +1471,38 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
             }
         }
         // this.visNetworkService.fit(this.visNetwork);
+    }
+    //DISPLAY LAST
+    private displayUNDO() {
+      //console.log('1 core: ', !this.coreDisplayed)
+     // if(!this.coreDisplayed) {
+        let subgraphToReflect = []
+        this.coreGraphReset()
+     // }
+
+      //console.log('2 dlzka: ', this.subGraphsAsArray.length)
+      for (var i = 0; i < this.subGraphsAsArray.length; i++) {
+        //console.log('2.1 last: ',this.subGraphsAsArray[i].subGraphId )
+        //console.log('2.2 last: ',this.subGraphsAsArray[i].isDisplayed)
+       // console.log(this.subGraphsAsArray[i].isDisplayed, "id: " + this.subGraphsAsArray[i].subGraphId)
+        if (this.subGraphsAsArray[i].level >= this.coreLevel && this.subGraphsAsArray[i].isDisplayed ) { // level 0, 1 are core displayed allways
+          //console.log('3 last: ',this.subGraphsAsArray[i].subGraphId )
+          //if subgraph in UNDO state isDispalyed == true and current isDispalyed == false .. then displaye otherwise do nothing (as it is displayed allready)
+          //if(this.subGraphsAsArray[i].isDisplayed != (sessionStorage.getItem(this.subGraphsAsArray[i].subGraphId) == 'Displayed' ? true : false)) {
+            this.subGraphsAsArray[i].isDisplayed =  !this.subGraphsAsArray[i].isDisplayed//otherwise the mechanism takes it as really dislayed ...
+            subgraphToReflect.push(i)
+          //}
+        }
+      }
+      for (var i = 0; i < subgraphToReflect.length; i++) {
+          console.log(" UNDO subgrahs: ", subgraphToReflect[i], " ID: ", this.subGraphsAsArray[subgraphToReflect[i]].subGraphId)
+          this.reflectToVisNetwork(this.subGraphsAsArray[subgraphToReflect[i]].subGraphId, false)
+      }
+    // this.visNetworkService.fit(this.visNetwork);
+    }
+    private reflectUNDO() {
+        this.readUNDODispalyedGraphSetUp()
+        this.displayUNDO()
     }
 
     // DISPALY ALL subgrahs //
