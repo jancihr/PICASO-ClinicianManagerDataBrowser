@@ -8,7 +8,6 @@ import {Observable} from 'rxjs/Observable';
 import {ProgressHttp} from "angular-progress-http";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {CdSharedModelService} from "../../../picaso-cd-common/_services/cd-shared-model.service";
-import Any = jasmine.Any;
 
 
 @Injectable()

@@ -20,17 +20,16 @@ import {ProgressHttpModule} from "angular-progress-http";
 import {DataTableModule} from "angular2-datatable";
 import {FormsModule} from "@angular/forms";
 import {PatientNotificationsComponent} from "./cards/patient-notifications.component";
-import {Ng2SmartTableModule} from "ng2-smart-table";
 import {PatientConcludingCommentsComponent} from "./cards/patient-concluding-comments.component";
 import {PatientFollowUpComponent} from "./cards/patient-follow-up-appointments.component";
+import {PatientRangePicker} from "./cards/patient-range-picker.component";
 
 
 @NgModule({
     imports: [
         ClinicianManagerRoutingModule, FormsModule,
         ChartsModule, VisModule, HttpModule, CommonModule,
-      Ng2Bs3ModalModule, MyDateRangePickerModule, ProgressHttpModule, DataTableModule,
-      Ng2SmartTableModule
+      Ng2Bs3ModalModule, MyDateRangePickerModule, ProgressHttpModule, DataTableModule
 
     ],
     declarations: [ClinicianManagerComponent,
@@ -40,6 +39,7 @@ import {PatientFollowUpComponent} from "./cards/patient-follow-up-appointments.c
       PatientDiseasesComponent, PatientConcludingCommentsComponent,
       PatientCliniciansComponent, PatientTreatmentHistoryComponent,
       PatientImagingComponent, PatientNotificationsComponent,
+      PatientRangePicker,
         nvD3
     ]
 })

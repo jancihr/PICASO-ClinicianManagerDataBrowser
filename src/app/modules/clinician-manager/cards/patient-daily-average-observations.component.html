@@ -8,7 +8,7 @@
       <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
     </div>
   </div>
-  <div class="card-block" style="overflow-x: auto;">
+  <div *ngIf="observationGroups" class="card-block" style="overflow-x: auto;">
 
     <div class="row">
       <div class="w3-center">
