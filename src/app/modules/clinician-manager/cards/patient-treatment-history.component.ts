@@ -1,10 +1,11 @@
-import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild, Input} from '@angular/core';
 
 import {VisTimelineService, VisTimelineItems, VisTimelineOptions} from 'ng2-vis/ng2-vis';
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientTreatment} from "../model/patient-treatment";
 import {ModalComponent} from "ng2-bs3-modal/components/modal";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
+import {MyDateRange} from "./patient-range-picker.component";
 
 @Component({
   selector: 'patient-treatments',
@@ -18,6 +19,8 @@ import {PatientLoadProgress} from "../model/patient-loadprogress";
 export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
   @ViewChild('myCheckModal')
   myModal: ModalComponent;
+
+  @Input() dateRange: MyDateRange;
 
   close() {
     this.myModal.close();
@@ -39,9 +42,6 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
     loaded: 0,
     total: 0
   };
-
-  public startDate: Date;
-  public endDate: Date;
 
   selectedItem: string;
   selectedId: string;
@@ -99,9 +99,6 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
 
     //this.selectedItem = '';
-    this.endDate = new Date();
-    this.startDate = new Date();
-    this.startDate.setFullYear(this.endDate.getFullYear() - 1);
 
     this.getChecks();
 
@@ -116,8 +113,8 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       zoomMin: 86400000, //day
       clickToUse: true,
       rollingMode: false,
-      start: this.startDate,
-      end: this.endDate
+      start: this.dateRange.startDate,
+      end: this.dateRange.endDate
     };
 
   }
@@ -171,8 +168,8 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
   getChecks(): void {
 
     this.picasoDataService.getTreatmentsHistory(
-      this.startDate,
-      this.endDate, this.progress
+      this.dateRange.startDate,
+      this.dateRange.endDate, this.progress
     ).subscribe(
       checks => this.setChecks(checks),
       error => this.errorMessage = <any>error);

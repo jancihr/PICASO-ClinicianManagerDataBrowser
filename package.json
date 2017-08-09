@@ -50,6 +50,7 @@
     "ng2-smart-table": "^1.2.1",
     "ng2-vis": "0.0.6",
     "ngx-bootstrap": "^1.6.6",
+    "ngx-cookie": "^1.0.0",
     "nvd3": "1.8.5",
     "rxjs": "5.2.0",
     "ts-helpers": "1.1.2",

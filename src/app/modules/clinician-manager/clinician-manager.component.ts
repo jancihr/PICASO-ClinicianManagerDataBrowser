@@ -6,6 +6,8 @@ import {PatientTreatmentHistoryComponent} from "./cards/patient-treatment-histor
 import {PatientDailyAverageObservationsComponent} from "./cards/patient-daily-average-observations.component";
 import {ConfigurationService} from "../../picaso-cd-common/_services/configuration.service";
 import {CdSharedModelService} from "../../picaso-cd-common/_services/cd-shared-model.service";
+import {CookieService} from "ngx-cookie";
+import {MyDateRange} from "./cards/patient-range-picker.component";
 
 
 @Component({
@@ -16,19 +18,14 @@ export class ClinicianManagerComponent implements OnInit {
 
 
   private myDateRangePickerOptions: IMyOptions;
-  private dateRange;
 
-  allMeasurements;
-  moriskyObservations = "morisky";
+  //private dateRange;
+
+  measurementToShow;
 
   showSeparate = false;
 
-  //endDate: Date;
-  //startDate: Date;
-
-  private model;
-
-  range = 'lastyear';
+  range: MyDateRange; //= 'lastyear';
   private cardToShow = 'all';
 
 
@@ -41,13 +38,18 @@ export class ClinicianManagerComponent implements OnInit {
   @ViewChildren(PatientDailyAverageObservationsComponent) observationHistoryComponents: QueryList<PatientDailyAverageObservationsComponent>;
 
 
-
-
   constructor(private config: ConfigurationService, private cdSharedModelService: CdSharedModelService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute, private _cookieService: CookieService) {
   }
 
   ngOnInit(): void {
+
+//TODO cookies to preserve selected ranges
+    //this._cookieService.put("clinician.dashboard.range", this.rangeToShow);
+    //console.log("cookie", this._cookieService.get("clinician.dashboard.card"));
+
+
+    this.range = this.computeRangeFromString('lastyear');
 
 
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -55,180 +57,45 @@ export class ClinicianManagerComponent implements OnInit {
       if (this.cardToShow === null || this.cardToShow === undefined) {
         this.cardToShow = 'all';
       }
+      this.measurementToShow = params['measurement'];
 
-      this.allMeasurements = params['measurement'];
+      let rangeFromURLParam = params['range'];
+      if (!rangeFromURLParam === null && !rangeFromURLParam === undefined) {
+
+        this.computeRangeFromString(rangeFromURLParam);
+      }
 
 
-      this.range = "lastyear";
-
-      //this.notifyDataChange(this.startDate, this.endDate);
     });
-
-    //showTabStr = this.route.snapshot.queryParams["tab"];
-
-
-    //console.log("################parameter:", this.route.snapshot.queryParams["tab"]);
-
 
     var startDate = new Date();
     var endDate = new Date();
     startDate.setFullYear(endDate.getFullYear() - 1);
-    this.range = "lastyear";
-    this.notifyDataChange(startDate, endDate);
+    //this.rangeToShow = "lastyear";
+    this.notifyChildrenAboutDataChange(startDate, endDate);
 
 
     if (this.cardToShow === undefined) {
       this.cardToShow = 'all';
     }
 
-    this.myDateRangePickerOptions = {
-      // other options...
-      dateFormat: 'dd.mm.yyyy',
-      firstDayOfWeek: "mo",
-      inline: false,
-      height: '25px',
-      selectionTxtFontSize: '15px',
-      sunHighlight: true,
-    };
-
   }
 
-  focusLastWeek() {
 
-    this.range = "lastweek";
-
-
-    var endDate: Date = new Date();
-    var startDate: Date = new Date();
-
-    startDate.setDate(endDate.getDate() - 7);
-
-    this.notifyDataChange(startDate, endDate);
-
+  //fired from event of date picker
+  rangeChanged(range: MyDateRange) {
+    this.range = range;
+    this.notifyChildrenAboutDataChange(this.range.startDate, this.range.endDate);
   }
 
-  focusLastMonth() {
 
-    this.range = "lastmonth";
-
-    var endDate: Date = new Date();
-    var startDate: Date = new Date();
-
-    startDate.setDate(endDate.getDate() - 31);
-
-    this.notifyDataChange(startDate, endDate);
-
-  }
-
-  focusLast2Months() {
-
-    this.range = "last2months";
-
-    var endDate: Date = new Date();
-    var startDate: Date = new Date();
-
-    startDate.setDate(endDate.getDate() - 61);
-
-    this.notifyDataChange(startDate, endDate);
-
-  }
-
-  focusLast6Months() {
-
-    this.range = "last6months";
-
-    var endDate: Date = new Date();
-    var startDate: Date = new Date();
-
-    startDate.setDate(endDate.getDate() - 183);
-
-    this.notifyDataChange(startDate, endDate);
-
-  }
-
-  focusNext6Months() {
-
-    this.range = "next6months";
-
-    var endDate: Date = new Date();
-    var startDate: Date = new Date();
-
-    endDate.setDate(startDate.getDate() + 183);
-
-    this.notifyDataChange(startDate, endDate);
-
-  }
-
-  focusLastYear() {
-
-    this.range = "lastyear";
-
-    var endDate: Date = new Date();
-    var startDate: Date = new Date();
-
-    startDate.setFullYear(endDate.getFullYear() - 1);
-
-    this.notifyDataChange(startDate, endDate);
-
-  }
-
-  focusLast2Years() {
-
-    this.range = "last2years";
-
-    var endDate: Date = new Date();
-    var startDate: Date = new Date();
-
-    startDate.setFullYear(endDate.getFullYear() - 2);
-
-    this.notifyDataChange(startDate, endDate);
-
-  }
-
+  // not used. shows all values available in graph
   focusAll() {
-
-
     this.medicationComponent.focusVis();
     this.treatmentsHistoryComponent.focusVisChecks();
-    // TODO this.observationHistoryComponent.refreshRange(all);
-
   }
 
-  focusRange() {
-
-    this.notifyDataChange(this.model.beginJsDate, this.model.endJsDate);
-
-  }
-
-  onDateRangeChanged(event: IMyDateRangeModel) {
-    //console.log('onDateRangeChanged(): Begin date: ', event.beginDate, ' End date: ', event.endDate);
-    //console.log('onDateRangeChanged(): Formatted: ', event.formatted);
-    //console.log('onDateRangeChanged(): BeginEpoc timestamp: ', event.beginEpoc, ' - endEpoc timestamp: ', event.endEpoc);
-
-    this.range = "custom";
-
-    this.notifyDataChange(event.beginJsDate, event.endJsDate);
-
-  }
-
-
-  notifyDataChange(startDate: Date, endDate: Date) {
-
-
-    this.model = {
-      beginDate: {
-        year: startDate.getFullYear(),
-        month: startDate.getMonth(),
-        day: startDate.getDay()
-      },
-      endDate: {year: endDate.getFullYear(), month: endDate.getMonth(), day: endDate.getDay()}
-    };
-
-    //
-
-
-    //this.model.beginDate = startDate;
-    //this.model.endDate = endDate;
+  notifyChildrenAboutDataChange(startDate: Date, endDate: Date) {
 
     if (this.cardToShow === 'medications' || this.cardToShow === 'all') {
       if (this.medicationComponent !== undefined) {
@@ -243,13 +110,65 @@ export class ClinicianManagerComponent implements OnInit {
     }
     if (this.cardToShow === 'morisky' || this.cardToShow === 'observations' || this.cardToShow === 'all') {
 
-      this.observationHistoryComponents.forEach((child) => {
-        child.refreshRange(startDate, endDate)
-      });
-
+      if (this.observationHistoryComponents !== undefined) {
+        this.observationHistoryComponents.forEach((child) => {
+          child.refreshRange(startDate, endDate)
+        });
+      }
     }
 
 
   }
+
+
+  computeRangeFromString(rangeStr: string): MyDateRange {
+
+    var endDate = new Date();
+    var startDate = new Date();
+
+    if (rangeStr === "lastweek") {
+
+      startDate.setTime(endDate.getTime() - 604800000);
+    }
+
+    else if (rangeStr === 'lastmonth') {
+
+      startDate.setTime(endDate.getTime() - 2678400000);
+    }
+
+    else if (rangeStr === 'last2months') {
+
+      startDate.setTime(endDate.getTime() - 5270400000);
+    }
+
+    else if (rangeStr === 'last6months') {
+
+      startDate.setTime(endDate.getTime() - 15778476000);
+    }
+
+    else if (rangeStr === 'next6months') {
+
+      endDate.setTime(startDate.getTime() + 15778476000);
+    }
+
+    else if (rangeStr === 'lastyear') {
+
+      startDate.setTime(endDate.getTime() - 31556952000);
+    }
+
+    else if (rangeStr === 'last2years') {
+
+      startDate.setTime(endDate.getTime() - 63113904000);
+    }
+
+    return {
+      startDate: startDate,
+      endDate: endDate,
+      range: rangeStr
+    };
+
+
+  }
+
 
 }

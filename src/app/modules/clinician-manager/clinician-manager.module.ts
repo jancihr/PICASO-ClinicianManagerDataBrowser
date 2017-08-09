@@ -23,6 +23,7 @@ import {PatientNotificationsComponent} from "./cards/patient-notifications.compo
 import {Ng2SmartTableModule} from "ng2-smart-table";
 import {PatientConcludingCommentsComponent} from "./cards/patient-concluding-comments.component";
 import {PatientFollowUpComponent} from "./cards/patient-follow-up-appointments.component";
+import {PatientRangePicker} from "./cards/patient-range-picker.component";
 
 
 @NgModule({
@@ -40,6 +41,7 @@ import {PatientFollowUpComponent} from "./cards/patient-follow-up-appointments.c
       PatientDiseasesComponent, PatientConcludingCommentsComponent,
       PatientCliniciansComponent, PatientTreatmentHistoryComponent,
       PatientImagingComponent, PatientNotificationsComponent,
+      PatientRangePicker,
         nvD3
     ]
 })

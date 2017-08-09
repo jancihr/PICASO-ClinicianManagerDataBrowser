@@ -34,6 +34,7 @@ import {ServiceCatalogModule} from "./modules/service-catalog/service-catalog.mo
 import {PagesModule} from "./pages/pages.module";
 import {CareplanTemplatesService} from "./modules/careplan-templates/careplan-templates.service";
 import {CareplanTemplatesModule} from "./modules/careplan-templates/careplan-templates.module";
+import {CookieModule} from "ngx-cookie";
 @NgModule({
   imports: [
     BrowserModule,
@@ -49,7 +50,8 @@ import {CareplanTemplatesModule} from "./modules/careplan-templates/careplan-tem
     MedCommModule,
     BsDropdownModule.forRoot(),
     ServiceCatalogModule,
-    CareplanTemplatesModule
+    CareplanTemplatesModule,
+    CookieModule.forRoot()
   ],
   declarations: [
     AppComponent,

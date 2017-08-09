@@ -2,24 +2,26 @@
   <div class="card-header w3-light-blue  w3-center">
 
 
-    <div i18n="PatientData Info"><i class="fa fa-user"></i>
-      Patient - {{patientData.name}}
-    </div>
+    <span i18n="PatientData Info"><i class="fa fa-user"></i>
+      Patient -
+
+      <select [ngModel]="selectedPatient" (ngModelChange)="patientClicked($event)">
+        <option *ngFor="let patient of patientsList" [value]="patient">{{patient}}</option>
+      </select>
+
+    </span>
 
 
-    <div class="w3-right">
+    <span class="w3-right">
 
-      <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
-      <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
-    </div>
+      <span *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</span>
+      <span> loaded: {{progress.loaded}} bytes</span>
+    </span>
 
 
   </div>
   <div class="card-block">
-
-
     <div class="animated fadeIn">
-
       <div class="row">
         <div class=" col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
 
