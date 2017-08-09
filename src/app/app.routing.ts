@@ -40,10 +40,6 @@ export const routes: Routes = [
         loadChildren: './modules/clinician-manager/clinician-manager.module#ClinicianManagerModule'
       },
       {
-        path: 'clinician-manager/:card/:measurement/:range',
-        loadChildren: './modules/clinician-manager/clinician-manager.module#ClinicianManagerModule'
-      },
-      {
         path: 'narratives-manager',
         loadChildren: './modules/narratives-manager/narratives-manager.module#NarrativesManagerModule'
       },

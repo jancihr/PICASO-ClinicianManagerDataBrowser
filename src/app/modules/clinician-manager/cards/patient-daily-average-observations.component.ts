@@ -1,9 +1,7 @@
-import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientObservationGroup} from "../model/patient-observation-group";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
-import {MyDateRange} from "./patient-range-picker.component";
-
 
 declare let d3, nv: any;
 
@@ -20,16 +18,13 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   @Input() forMeasurements: string;
 
-  @Input() dateRange: MyDateRange;
-
-
   headerText: string;
   footerText: string;
 
   errorMessage: string;
 
-  //endDate: Date;
-  //startDate: Date;
+  endDate: Date;
+  startDate: Date;
 
   options;
   data;
@@ -54,11 +49,9 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   ngOnInit(): void {
 
 
-    //this.dateRange.endDate = new Date();
-    //this.startDate = new Date();
-    //this.startDate.setFullYear(this.dateRange.endDate.getFullYear() - 1);
-
-
+    this.endDate = new Date();
+    this.startDate = new Date();
+    this.startDate.setFullYear(this.endDate.getFullYear() - 1);
     this.setOptions();
 
     this.getObservations();
@@ -84,29 +77,25 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     if (this.forMeasurements === "morisky") {
 
       this.picasoDataService.getMorisky(
-        this.dateRange.startDate,
-        this.dateRange.endDate, this.progress
+        this.startDate,
+        this.endDate, this.progress
       ).subscribe(
         observations => {
           this.setPatientObservations(observations);
           this.enableInitialGraphs();
-          this.reloadDataToGraph();
-          this.refreshRange(this.dateRange.startDate, this.dateRange.endDate);
-
+          this.reloadDataToGraph()
         },
         error => this.errorMessage = <any>error);
 
     } else {
       this.picasoDataService.getObservations(
-        this.dateRange.startDate,
-        this.dateRange.endDate, this.progress
+        this.startDate,
+        this.endDate, this.progress
       ).subscribe(
         observations => {
           this.setPatientObservations(observations);
           this.enableInitialGraphs();
-          this.reloadDataToGraph();
-          this.refreshRange(this.dateRange.startDate, this.dateRange.endDate);
-
+          this.reloadDataToGraph()
         },
         error => this.errorMessage = <any>error);
 
@@ -184,8 +173,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           },
         },
 
-        xDomain: [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()],
-        xRange: [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()],
+        xDomain: [this.startDate.getTime(), this.endDate.getTime()],
+        xRange: [this.startDate.getTime(), this.endDate.getTime()],
 
 
         tooltip: {
@@ -299,11 +288,11 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
           this.options.chart.yAxis1.axisLabel +=
             //"<span style='color:" + group.color + "' > <i class='fa fa-circle'></i> </span>" +
-            (this.options.chart.yAxis1.axisLabel !== "" ? " | " : "") + group.name + " (" + group.unit + ")";
+            (this.options.chart.yAxis1.axisLabel !== "" ? " | " : "") + group.name + " (" + group.label + ")";
         } else {
           this.options.chart.yAxis2.axisLabel +=
             (this.options.chart.yAxis2.axisLabel !== "" ? " | " : "") +
-            group.name + " (" + group.unit + ")";
+            group.name + " (" + group.label + ")";
 
         }
 
@@ -324,7 +313,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
           //console.log("gettime" + new Date(el.date).getTime());
 
-          if (new Date(el.date).getTime() < this.dateRange.startDate.getTime() || new Date(el.date).getTime() > this.dateRange.endDate.getTime()) {
+          if (new Date(el.date).getTime() < this.startDate.getTime() || new Date(el.date).getTime() > this.endDate.getTime()) {
           }
           else {
             filteredValues.push(el)
@@ -349,7 +338,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
             newGraphValues.push({
               observation: observation,
-              unit: group.unit,
+              unit: group.label,
               name: group.name
             });
             //{"x": new Date(observation.date).getTime(), "y": observation.value})
@@ -357,16 +346,16 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
             //if (observation.value === null) console.log("found null");
 
-            //console.log( group.name + " / " + group.unit + " " +
+            //console.log( group.name + " / " + group.label + " " +
             // observation.date + " " + observation.value);
           }
 
 
           index++;
           this.data.push({
-            label: group.unit,
+            label: group.label,
             name: group.name,
-            key: group.unit + " (" + group.name + ")",
+            key: group.label + " (" + group.name + ")",
             values: newGraphValues,
             color: group.color,
             //area: false,
@@ -383,12 +372,12 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
             if (group.minValue != null) {
               let newGraphValuesMin = [];
-              newGraphValuesMin.push({observation: {date: this.dateRange.startDate, value: group.minValue}});
-              newGraphValuesMin.push({observation: {date: this.dateRange.endDate, value: group.minValue}});
+              newGraphValuesMin.push({observation: {date: this.startDate, value: group.minValue}});
+              newGraphValuesMin.push({observation: {date: this.endDate, value: group.minValue}});
               //min value line
               index++;
               this.data.push({
-                label: group.unit,
+                label: group.label,
                 name: group.name,
                 values: newGraphValuesMin,
                 key: "hidemin" + group.id,
@@ -406,12 +395,12 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
             if (group.maxValue != null) {
               let newGraphValuesMax = [];
-              newGraphValuesMax.push({observation: {date: this.dateRange.endDate, value: group.maxValue}});
-              newGraphValuesMax.push({observation: {date: this.dateRange.startDate, value: group.maxValue}});
+              newGraphValuesMax.push({observation: {date: this.endDate, value: group.maxValue}});
+              newGraphValuesMax.push({observation: {date: this.startDate, value: group.maxValue}});
               //max value line
               index++;
               this.data.push({
-                label: group.unit,
+                label: group.label,
                 name: group.name,
                 values: newGraphValuesMax,
                 key: "hidemax" + group.id,
@@ -428,12 +417,12 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
             if (group.midValue != null) {
               let newGraphValuesMid = [];
-              newGraphValuesMid.push({observation: {date: this.dateRange.startDate, value: group.midValue}});
-              newGraphValuesMid.push({observation: {date: this.dateRange.endDate, value: group.midValue}});
+              newGraphValuesMid.push({observation: {date: this.startDate, value: group.midValue}});
+              newGraphValuesMid.push({observation: {date: this.endDate, value: group.midValue}});
               //mid value line
               index++;
               this.data.push({
-                label: group.unit,
+                label: group.label,
                 name: group.name,
                 values: newGraphValuesMid,
                 key: "hidemid" + group.id,
@@ -457,8 +446,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     if (isThereGraph) {
 
       let newGraphValuesHackLeftAxis = [];
-      newGraphValuesHackLeftAxis.push({observation: {date: this.dateRange.startDate, value: 0}});
-      newGraphValuesHackLeftAxis.push({observation: {date: this.dateRange.endDate, value: 0}});
+      newGraphValuesHackLeftAxis.push({observation: {date: this.startDate, value: 0}});
+      newGraphValuesHackLeftAxis.push({observation: {date: this.endDate, value: 0}});
       index++;
       this.data.push({
         label: "hideXDomainFixLeft",
@@ -477,8 +466,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
       if (this.observationGroups.length !== 1) {
         let newGraphValuesHackRightAxis = [];
-        newGraphValuesHackRightAxis.push({observation: {date: this.dateRange.startDate, value: 0}});
-        newGraphValuesHackRightAxis.push({observation: {date: this.dateRange.endDate, value: 0}});
+        newGraphValuesHackRightAxis.push({observation: {date: this.startDate, value: 0}});
+        newGraphValuesHackRightAxis.push({observation: {date: this.endDate, value: 0}});
         index++;
         this.data.push({
           label: "hideXDomainFixRight",
@@ -502,11 +491,11 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   public refreshRange(start: Date, end: Date): void {
 
-    this.dateRange.startDate = start;
-    this.dateRange.endDate = end;
-    this.options.chart.xDomain = [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()];
-    this.options.chart.xRange = [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()];
-    this.options.chart.xScale = [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()];
+    this.startDate = start;
+    this.endDate = end;
+    this.options.chart.xDomain = [this.startDate.getTime(), this.endDate.getTime()];
+    this.options.chart.xRange = [this.startDate.getTime(), this.endDate.getTime()];
+    this.options.chart.xScale = [this.startDate.getTime(), this.endDate.getTime()];
     this.reloadDataToGraph();
   }
 

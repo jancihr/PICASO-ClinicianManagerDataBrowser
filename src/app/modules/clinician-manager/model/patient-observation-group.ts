@@ -3,7 +3,7 @@ export class PatientObservationGroup {
   index: Number = 0;
     id: string;
     name: string;
-  unit: string;
+  label: string;
     color: string;
     type: string;
     values: PatientObservation[];

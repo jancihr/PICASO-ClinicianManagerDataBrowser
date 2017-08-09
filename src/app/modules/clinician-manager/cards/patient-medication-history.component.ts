@@ -5,7 +5,6 @@ import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientMedication} from "../model/patient-medication";
 import {ModalComponent} from 'ng2-bs3-modal/ng2-bs3-modal';
 import {PatientLoadProgress} from "../model/patient-loadprogress";
-import {MyDateRange} from "./patient-range-picker.component";
 
 
 @Component({
@@ -20,8 +19,6 @@ import {MyDateRange} from "./patient-range-picker.component";
 export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
     @ViewChild('myMedicationModal')
-
-    @Input() dateRange: MyDateRange;
 
     myModal: ModalComponent;
 
@@ -46,6 +43,8 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
         total: 0
     };
 
+  public startDate: Date;
+  public endDate: Date;
 
     selectedItem: string;
     selectedId: string;
@@ -101,7 +100,9 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
     public ngOnInit(): void {
 
         this.selectedItem = '';
-
+      this.endDate = new Date();
+      this.startDate = new Date();
+      this.startDate.setFullYear(this.endDate.getFullYear() - 1);
 
         this.getMedications();
 
@@ -114,8 +115,8 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
             zoomMin: 86400000, //day
           clickToUse: true,
           rollingMode: false,
-          start: this.dateRange.startDate,
-          end: this.dateRange.endDate
+          start: this.startDate,
+          end: this.endDate
         };
 
 
@@ -163,8 +164,8 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
     getMedications(): void {
 
         this.picasoDataService.getMedicationHistory(
-          this.dateRange.startDate,
-          this.dateRange.endDate, this.progress
+          this.startDate,
+          this.endDate, this.progress
         ).subscribe(
             medications => this.setMedications(medications),
             error => this.errorMessage = <any>error);

@@ -2,54 +2,45 @@
 
   <div class=" w3-center">
     <button class="btn btn-default {{cardToShow==='all'   ? 'btn-outline-success' : ''}}"
-            [routerLink]="['/clinician-manager', 'all', 'all', range.range]" (click)="focusRange(range.range)"> all
+            [routerLink]="['/clinician-manager', 'all', 'all']" (click)="focusLastYear()"> all
     </button>
     |
-    <button class="btn btn-default {{cardToShow==='overview'   ? 'btn-outline-success' : ''}}"
-            (click)="focusRange(range.range)"
-            [routerLink]="['/clinician-manager', 'overview', '', range.range]"> overview
+    <button class="btn btn-default {{cardToShow==='overview'   ? 'btn-outline-success' : ''}}" (click)="focusLastYear()"
+            [routerLink]="['/clinician-manager', 'overview', '']"> overview
     </button>
     |
-    <button class="btn btn-default {{cardToShow==='comments'   ? 'btn-outline-success' : ''}}"
-            (click)="focusRange(range.range)"
-            [routerLink]="['/clinician-manager', 'comments', '', range.range]">comments
+    <button class="btn btn-default {{cardToShow==='comments'   ? 'btn-outline-success' : ''}}" (click)="focusLastYear()"
+            [routerLink]="['/clinician-manager', 'comments', '']">comments
     </button>
     |
     <button class="btn btn-default {{cardToShow==='followups'   ? 'btn-outline-success' : ''}}"
-            (click)="focusRange(range.range)" [routerLink]="['/clinician-manager', 'followups', '', range.range]">
-      followups
+            (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'followups', '']">followups
     </button>
     |
     <button class="btn btn-default {{cardToShow==='treatments'   ? 'btn-outline-success' : ''}}"
-            (click)="focusRange(range.range)" [routerLink]="['/clinician-manager', 'treatments', '', range.range]">
-      treatments
+            (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'treatments', '']">treatments
     </button>
     |
     <button class="btn btn-default {{cardToShow==='medications'   ? 'btn-outline-success' : ''}}"
-            (click)="focusRange(range.range)" [routerLink]="['/clinician-manager', 'medications', '', range.range]">
-      medications
+            (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'medications', '']">medications
     </button>
     |
     <button
       class="btn btn-default {{cardToShow==='observations' ? 'btn-outline-success' : ''}}"
-      (click)="focusRange(range.range)" [routerLink]="['/clinician-manager', 'observations', 'all', range.range]">
-      measurements
+      (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'observations', 'all']">measurements
     </button>
     |
 
-    <button class="btn btn-default {{cardToShow==='morisky'   ? 'btn-outline-success' : ''}}"
-            (click)="focusRange(range.range)"
-            [routerLink]="['/clinician-manager', 'morisky', '', range.range]">morisky
+    <button class="btn btn-default {{cardToShow==='morisky'   ? 'btn-outline-success' : ''}}" (click)="focusLastYear()"
+            [routerLink]="['/clinician-manager', 'morisky', '']">morisky
     </button>
     |
-    <button class="btn btn-default {{cardToShow==='diseases'   ? 'btn-outline-success' : ''}}"
-            (click)="focusRange(range.range)"
-            [routerLink]="['/clinician-manager', 'diseases', '', range.range]">diseases
+    <button class="btn btn-default {{cardToShow==='diseases'   ? 'btn-outline-success' : ''}}" (click)="focusLastYear()"
+            [routerLink]="['/clinician-manager', 'diseases', '']">diseases
     </button>
     |
     <button class="btn btn-default {{cardToShow==='clinicians'   ? 'btn-outline-success' : ''}}"
-            (click)="focusRange(range.range)" [routerLink]="['/clinician-manager', 'clinicians', '', range.range]">
-      clinicians
+            (click)="focusLastYear()" [routerLink]="['/clinician-manager', 'clinicians', '']">clinicians
     </button>
 
   </div>
@@ -64,9 +55,87 @@
     *ngIf="cardToShow==='treatments' || cardToShow === 'medications' || cardToShow === 'morisky' || cardToShow==='observations' || cardToShow === 'all'"
     class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-      <patient-range-picker (changed)="rangeChanged($event)" [range]="range">
+      <div class="card">
+        <div class="card-header w3-blue w3-center">
+          <span i18n="Patient Events"><i class="fa fa-calendar-times-o"></i></span>
+          Date Picker (Treatments, Medication, Measurements and Recordings, Morisky Scale)
 
-      </patient-range-picker>
+
+          <div class="card-actions">
+
+          </div>
+
+        </div>
+        <div class="card-block">
+
+          <div class="row">
+            <div class="rowcontent">
+              <my-date-range-picker [options]="myDateRangePickerOptions"
+                                    (dateRangeChanged)="onDateRangeChanged($event)"
+                                    [selDateRange]="model">
+              </my-date-range-picker>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="rowcontent">
+              <button type="button"
+                      class="btn btn-default {{range==='lastweek'   ? 'btn-outline-success' : ''}}"
+                      (click)="focusLastWeek()"
+                      i18n="Last week">
+                Last week
+              </button>
+
+              <button type="button"
+                      class="btn btn-default {{range==='lastmonth'   ? 'btn-outline-success' : ''}}"
+                      (click)="focusLastMonth()"
+                      i18n="Last month">
+                Last month
+              </button>
+
+              <button type="button"
+                      class="btn btn-default {{range==='last2months'   ? 'btn-outline-success' : ''}}"
+                      (click)="focusLast2Months()"
+                      i18n="Last 2 months">
+                Last 2 months
+              </button>
+
+              <button type="button"
+                      class="btn btn-default {{range==='last6months'   ? 'btn-outline-success' : ''}}"
+                      (click)="focusLast6Months()"
+                      i18n="Last 6 months">
+                Last 6 months
+              </button>
+
+              <button type="button"
+                      class="btn btn-default {{range==='next6months'   ? 'btn-outline-success' : ''}}"
+                      (click)="focusNext6Months()"
+                      i18n="Next 6 months">
+                Next 6 months
+              </button>
+
+              <button type="button"
+                      class="btn btn-default {{range==='lastyear'   ? 'btn-outline-success' : ''}}"
+                      (click)="focusLastYear()"
+                      i18n="Last year">
+                Last year
+              </button>
+
+              <button type="button"
+                      class="btn btn-default {{range==='last2years'   ? 'btn-outline-success' : ''}}"
+                      (click)="focusLast2Years()"
+                      i18n="Last year">
+                Last 2 years
+              </button>
+
+            </div>
+          </div>
+
+
+        </div>
+
+
+      </div>
     </div>
   </div>
 
@@ -120,7 +189,7 @@
 
   <div *ngIf="cardToShow==='treatments' || cardToShow === 'all'" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-      <patient-treatments [dateRange]="range">
+      <patient-treatments>
       </patient-treatments>
     </div>
   </div>
@@ -128,10 +197,64 @@
 
   <div *ngIf="cardToShow === 'all'" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="card">
+        <div class="card-block">
+          <div class="row">
 
-      <patient-range-picker (changed)="rangeChanged($event)" [range]="range">
+            <div class="rowcontent">
+              <button type="button"
+                      class="btn btn-default {{range==='lastweek'   ? 'btn-outline-success' : ''}}"
+                      (click)="focusLastWeek()"
+                      i18n="Last week">
+                Last week
+              </button>
 
-      </patient-range-picker>
+              <button type="button"
+                      class="btn btn-default {{range==='lastmonth'   ? 'btn-outline-success' : ''}}"
+                      (click)="focusLastMonth()"
+                      i18n="Last month">
+                Last month
+              </button>
+
+              <button type="button"
+                      class="btn btn-default {{range==='last2months'   ? 'btn-outline-success' : ''}}"
+                      (click)="focusLast2Months()"
+                      i18n="Last 2 months">
+                Last 2 months
+              </button>
+
+              <button type="button"
+                      class="btn btn-default {{range==='last6months'   ? 'btn-outline-success' : ''}}"
+                      (click)="focusLast6Months()"
+                      i18n="Last 6 months">
+                Last 6 months
+              </button>
+
+              <button type="button"
+                      class="btn btn-default {{range==='next6months'   ? 'btn-outline-success' : ''}}"
+                      (click)="focusNext6Months()"
+                      i18n="Next 6 months">
+                Next 6 months
+              </button>
+
+              <button type="button"
+                      class="btn btn-default {{range==='lastyear'   ? 'btn-outline-success' : ''}}"
+                      (click)="focusLastYear()"
+                      i18n="Last year">
+                Last year
+              </button>
+
+              <button type="button"
+                      class="btn btn-default {{range==='last2years'   ? 'btn-outline-success' : ''}}"
+                      (click)="focusLast2Years()"
+                      i18n="Last year">
+                Last 2 years
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
 
     </div>
   </div>
@@ -139,7 +262,7 @@
 
   <div *ngIf="cardToShow==='medications' || cardToShow === 'all'" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-      <medication-history [dateRange]="range">
+      <medication-history>
       </medication-history>
     </div>
   </div>
@@ -147,10 +270,74 @@
   <div *ngIf="cardToShow === 'all'"
        class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="card">
+        <div class="rowcontent">
+          <div class="card-block">
 
-      <patient-range-picker (changed)="rangeChanged($event)" [range]="range">
 
-      </patient-range-picker>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                <div class=" ">
+
+
+                  <button type="button"
+                          class="btn btn-default {{range==='lastweek'   ? 'btn-outline-success' : ''}}"
+                          (click)="focusLastWeek()"
+                          i18n="Last week">
+                    Last week
+                  </button>
+
+                  <button type="button"
+                          class="btn btn-default {{range==='lastmonth'   ? 'btn-outline-success' : ''}}"
+                          (click)="focusLastMonth()"
+                          i18n="Last month">
+                    Last month
+                  </button>
+
+                  <button type="button"
+                          class="btn btn-default {{range==='last2months'   ? 'btn-outline-success' : ''}}"
+                          (click)="focusLast2Months()"
+                          i18n="Last 2 months">
+                    Last 2 months
+                  </button>
+
+                  <button type="button"
+                          class="btn btn-default {{range==='last6months'   ? 'btn-outline-success' : ''}}"
+                          (click)="focusLast6Months()"
+                          i18n="Last 6 months">
+                    Last 6 months
+                  </button>
+
+                  <button type="button"
+                          class="btn btn-default {{range==='next6months'   ? 'btn-outline-success' : ''}}"
+                          (click)="focusNext6Months()"
+                          i18n="Next 6 months">
+                    Next 6 months
+                  </button>
+
+                  <button type="button"
+                          class="btn btn-default {{range==='lastyear'   ? 'btn-outline-success' : ''}}"
+                          (click)="focusLastYear()"
+                          i18n="Last year">
+                    Last year
+                  </button>
+
+                  <button type="button"
+                          class="btn btn-default {{range==='last2years'   ? 'btn-outline-success' : ''}}"
+                          (click)="focusLast2Years()"
+                          i18n="Last year">
+                    Last 2 years
+                  </button>
+
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
 
     </div>
   </div>
@@ -159,11 +346,11 @@
   <div *ngIf="cardToShow==='observations' || cardToShow === 'all'" class=" w3-center">
 
     <button class="btn btn-default {{!showSeparate ? 'btn-outline-success' : ''}}"
-            (click)="showSeparate=false;focus('lastyear')">Combined Graph
+            (click)="showSeparate=false;focusLastYear()">Combined Graph
     </button>
 
     <button class="btn btn-default {{showSeparate  ? 'btn-outline-success' : ''}}"
-            (click)="showSeparate=true;focus('lastyear')">Separate Graphs
+            (click)="showSeparate=true;focusLastYear()">Separate Graphs
     </button>
 
   </div>
@@ -171,7 +358,7 @@
 
   <div *ngIf="!showSeparate && (cardToShow==='observations' || cardToShow === 'all')" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-      <patient-daily-average-observations [forMeasurements]="measurementToShow" [dateRange]="range">
+      <patient-daily-average-observations [forMeasurements]='allMeasurements'>
       </patient-daily-average-observations>
     </div>
   </div>
@@ -180,43 +367,43 @@
   <div *ngIf="showSeparate && (cardToShow==='observations' || cardToShow === 'all')" class="row">
 
 
-    <patient-daily-average-observations [forMeasurements]="'heartrate'" [dateRange]="range">
+    <patient-daily-average-observations [forMeasurements]="'heartrate'">
     </patient-daily-average-observations>
 
-    <patient-daily-average-observations [forMeasurements]="'sys'" [dateRange]="range">
+    <patient-daily-average-observations [forMeasurements]="'sys'">
     </patient-daily-average-observations>
 
-    <patient-daily-average-observations [forMeasurements]='"dia"' [dateRange]="range">
+    <patient-daily-average-observations [forMeasurements]='"dia"'>
     </patient-daily-average-observations>
 
-    <patient-daily-average-observations [forMeasurements]='"weight"' [dateRange]="range">
+    <patient-daily-average-observations [forMeasurements]='"weight"'>
     </patient-daily-average-observations>
 
-    <patient-daily-average-observations [forMeasurements]='"steps"' [dateRange]="range">
+    <patient-daily-average-observations [forMeasurements]='"steps"'>
     </patient-daily-average-observations>
 
-    <patient-daily-average-observations [forMeasurements]='"distance"' [dateRange]="range">
+    <patient-daily-average-observations [forMeasurements]='"distance"'>
     </patient-daily-average-observations>
 
-    <patient-daily-average-observations [forMeasurements]='"sleep"' [dateRange]="range">
+    <patient-daily-average-observations [forMeasurements]='"sleep"'>
     </patient-daily-average-observations>
 
-    <patient-daily-average-observations [forMeasurements]='"pain"' [dateRange]="range">
+    <patient-daily-average-observations [forMeasurements]='"pain"'>
     </patient-daily-average-observations>
 
-    <patient-daily-average-observations [forMeasurements]='"wellbeing"' [dateRange]="range">
+    <patient-daily-average-observations [forMeasurements]='"wellbeing"'>
     </patient-daily-average-observations>
 
-    <patient-daily-average-observations [forMeasurements]='"radai"' [dateRange]="range">
+    <patient-daily-average-observations [forMeasurements]='"radai"'>
     </patient-daily-average-observations>
 
-    <patient-daily-average-observations [forMeasurements]='"ffbh"' [dateRange]="range">
+    <patient-daily-average-observations [forMeasurements]='"ffbh"'>
     </patient-daily-average-observations>
 
-    <patient-daily-average-observations [forMeasurements]='"haq"' [dateRange]="range">
+    <patient-daily-average-observations [forMeasurements]='"haq"'>
     </patient-daily-average-observations>
 
-    <patient-daily-average-observations [forMeasurements]='"eq5d"' [dateRange]="range">
+    <patient-daily-average-observations [forMeasurements]='"eq5d"'>
     </patient-daily-average-observations>
 
   </div>
@@ -224,7 +411,72 @@
   <div *ngIf="cardToShow === 'all'"
        class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <div class="card">
 
+        <div class="card-block">
+
+
+          <div class="row">
+            <div class="rowcontent">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+
+                <button type="button"
+                        class="btn btn-default {{range==='lastweek'   ? 'btn-outline-success' : ''}}"
+                        (click)="focusLastWeek()"
+                        i18n="Last week">
+                  Last week
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='lastmonth'   ? 'btn-outline-success' : ''}}"
+                        (click)="focusLastMonth()"
+                        i18n="Last month">
+                  Last month
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='last2months'   ? 'btn-outline-success' : ''}}"
+                        (click)="focusLast2Months()"
+                        i18n="Last 2 months">
+                  Last 2 months
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='last6months'   ? 'btn-outline-success' : ''}}"
+                        (click)="focusLast6Months()"
+                        i18n="Last 6 months">
+                  Last 6 months
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='next6months'   ? 'btn-outline-success' : ''}}"
+                        (click)="focusNext6Months()"
+                        i18n="Next 6 months">
+                  Next 6 months
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='lastyear'   ? 'btn-outline-success' : ''}}"
+                        (click)="focusLastYear()"
+                        i18n="Last year">
+                  Last year
+                </button>
+
+                <button type="button"
+                        class="btn btn-default {{range==='last2years'   ? 'btn-outline-success' : ''}}"
+                        (click)="focusLast2Years()"
+                        i18n="Last year">
+                  Last 2 years
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
 
 
     </div>
@@ -232,7 +484,7 @@
 
   <div *ngIf="cardToShow==='morisky' || cardToShow === 'all'" class="row">
 
-    <patient-daily-average-observations [forMeasurements]='"morisky"' [dateRange]="range">
+    <patient-daily-average-observations [forMeasurements]='moriskyObservations'>
     </patient-daily-average-observations>
 
   </div>

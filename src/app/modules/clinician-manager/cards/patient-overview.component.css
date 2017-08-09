@@ -1,6 +1,6 @@
 button {
   background-color: #eee;
-  padding: 0.25rem 0.25rem;
+  padding: 10px 10px;
   border-radius: 10px;
 }
 
@@ -13,7 +13,6 @@ button:disabled {
   color: #aaa;
   cursor: auto;
 }
-
 
 .card {
     border-radius: 10px;
