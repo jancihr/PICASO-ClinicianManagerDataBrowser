@@ -81,7 +81,7 @@ export class PicasoDataService {
 
   private extractPatientList(res: Response) {
 
-    console.log("listcallresult", result);
+    //console.log("listcallresult", result);
     var result = res.json();
 
 

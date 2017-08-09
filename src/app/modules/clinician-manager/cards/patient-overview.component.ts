@@ -57,7 +57,7 @@ export class PatientOverviewComponent implements OnInit {
 
   getPatient(): void {
 
-    console.log("getPatient", this.selectedPatient);
+    //console.log("getPatient", this.selectedPatient);
     this.picasoDataService.getPatient(this.selectedPatient, this.progress).subscribe(
       patient => this.patientData = patient,
       error => this.errorMessage = <any>error);
