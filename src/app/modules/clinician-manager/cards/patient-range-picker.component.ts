@@ -24,6 +24,8 @@ export class PatientRangePicker implements OnInit {
 
   ngOnInit() {
 
+    //this.printDate("ngOnInit");
+
     this.updatePickerDates();
 
     this.myDateRangePickerOptions = {
@@ -39,43 +41,48 @@ export class PatientRangePicker implements OnInit {
 
   ngOnChanges(changes: SimpleChanges) {
     const range: SimpleChange = changes.range;
-    console.log('prev value: ', range.previousValue);
-    console.log('new value: ', range.currentValue);
-    this.updatePickerDates();
+    //console.log('prev value: ', range.previousValue);
+    //range.currentValue();
+
+    if (range.previousValue != range.currentValue) {
+      this.updatePickerDates();
+      //this.printDate("ngOnChanges")
+    }
   }
 
   updatePickerDates() {
     this.model = {
       beginDate: {
         year: this.range.startDate.getFullYear(),
-        month: this.range.startDate.getMonth(),
-        day: this.range.startDate.getDay()
+        month: this.range.startDate.getMonth() + 1,
+        day: this.range.startDate.getDate()
       },
       endDate: {
         year: this.range.endDate.getFullYear(),
-        month: this.range.endDate.getMonth(),
-        day: this.range.endDate.getDay()
+        month: this.range.endDate.getMonth() + 1,
+        day: this.range.endDate.getDate()
       }
     };
   }
 
 
   onDateRangeChanged(event: IMyDateRangeModel) {
-    //console.log('onDateRangeChanged(): Begin date: ', event.beginDate, ' End date: ', event.endDate);
-    //console.log('onDateRangeChanged(): Formatted: ', event.formatted);
-    //console.log('onDateRangeChanged(): BeginEpoc timestamp: ', event.beginEpoc, ' - endEpoc timestamp: ', event.endEpoc);
+
     this.range = {
       range: 'custom',
       startDate: event.beginJsDate,
       endDate: event.endJsDate
     };
     this.changed.emit(this.range);
+
   }
 
-
-  rangeChanged(rangeString: string) {
-
-    this.changed.emit(this.computeRangeFromString(rangeString));
+// when button clicked for changing date range
+  rangeChange(rangeString: string) {
+    var newRange = this.computeRangeFromString(rangeString);
+    if (newRange.startDate !== this.range.startDate || newRange.endDate !== this.range.endDate || newRange.range !== this.range.range) {
+      this.changed.emit(this.computeRangeFromString(rangeString));
+    }
   }
 
 
@@ -124,11 +131,7 @@ export class PatientRangePicker implements OnInit {
       endDate: endDate,
       range: rangeStr
     };
-
-
   }
-
-
 }
 
 export class MyDateRange {

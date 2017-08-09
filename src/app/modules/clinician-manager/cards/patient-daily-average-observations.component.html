@@ -11,19 +11,7 @@
   <div class="card-block" style="overflow-x: auto;">
 
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w3-center">
-
-
-        <!--
-        <button type="button"
-                class="btn btn-default"
-                (click)="resetLeft()">
-          <span>  <i class="fa {{showAllLeft||showAllRight?'fa-circle':'fa-circle-o'}}"></i> </span>
-          All observations {{showAllRight?"(right axis)":(showAllLeft?"(left axis)":"")}}
-          <span>
-          </span>
-        </button>
-        -->
+      <div class="w3-center">
 
         <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
                 class="btn btn-default"
@@ -80,9 +68,9 @@
 
 
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-        <nvd3 *ngIf="observationGroups" [options]="options" [data]="data" class="with-transitions row-content"></nvd3>
-      </div>
+
+      <nvd3 *ngIf="observationGroups" [options]="options" [data]="data" class="with-transitions row-content"></nvd3>
+
     </div>
 
 
