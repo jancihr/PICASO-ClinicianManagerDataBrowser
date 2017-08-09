@@ -123,42 +123,43 @@ export class ClinicianManagerComponent implements OnInit {
 
   computeRangeFromString(rangeStr: string): MyDateRange {
 
-    var endDate = new Date();
-    var startDate = new Date();
+    var endDate: Date;
+    var startDate: Date;
 
     if (rangeStr === "lastweek") {
-
-      startDate.setTime(endDate.getTime() - 604800000);
+      endDate = new Date();
+      startDate = new Date(endDate.getTime() - 604800000);
     }
 
     else if (rangeStr === 'lastmonth') {
 
-      startDate.setTime(endDate.getTime() - 2678400000);
+      endDate = new Date();
+      startDate = new Date(endDate.getTime() - 2678400000);
     }
 
     else if (rangeStr === 'last2months') {
-
-      startDate.setTime(endDate.getTime() - 5270400000);
+      endDate = new Date();
+      startDate = new Date(endDate.getTime() - 5270400000);
     }
 
     else if (rangeStr === 'last6months') {
-
-      startDate.setTime(endDate.getTime() - 15778476000);
+      endDate = new Date();
+      startDate = new Date(endDate.getTime() - 15778476000);
     }
 
     else if (rangeStr === 'next6months') {
-
-      endDate.setTime(startDate.getTime() + 15778476000);
+      startDate = new Date();
+      endDate = new Date(startDate.getTime() + 15778476000);
     }
 
     else if (rangeStr === 'lastyear') {
-
-      startDate.setTime(endDate.getTime() - 31556952000);
+      endDate = new Date();
+      startDate = new Date(endDate.getTime() - 31556952000);
     }
 
     else if (rangeStr === 'last2years') {
-
-      startDate.setTime(endDate.getTime() - 63113904000);
+      endDate = new Date();
+      startDate = new Date(endDate.getTime() - 63113904000);
     }
 
     return {
