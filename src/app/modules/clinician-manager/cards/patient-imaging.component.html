@@ -1,11 +1,17 @@
 <div class="card">
   <div class="card-header w3-orange  w3-center">
-    <div i18n="Patient Imaging Data"><i class="fa fa-image"></i> Patient Imaging Data</div>
-    <div class="w3-right">
+    <div i18n="Patient Imaging Data"><i class="fa fa-image"></i> Patient Imaging Data
+      <span class="w3-right">
 
-      <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
-      <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
+      <span *ngIf="(progress.percentage < 100)">
+
+        <span class="fa fa-spinner w3-spin" style="font-size:20px"></span>
+
+        loading: {{progress.percentage}}% |
+      loaded: {{progress.total}} bytes</span>
+    </span>
     </div>
+
   </div>
   <div class="card-block" style="overflow-x: auto;">
 

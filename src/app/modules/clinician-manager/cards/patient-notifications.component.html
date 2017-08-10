@@ -2,12 +2,16 @@
   <div class="card-header w3-red  w3-center">
     <div i18n="Notifications of Changes in Treatment"><i class="fa fa-exclamation-circle"></i> Notifications of
       Changes in Treatment
-    </div>
+      <span class="w3-right">
 
-    <div class="w3-right">
+      <span *ngIf="(progress.percentage < 100)">
 
-      <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
-      <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
+        <span class="fa fa-spinner w3-spin" style="font-size:20px"></span>
+
+        loading: {{progress.percentage}}% |
+      loaded: {{progress.total}} bytes</span>
+    </span>
+
     </div>
 
 

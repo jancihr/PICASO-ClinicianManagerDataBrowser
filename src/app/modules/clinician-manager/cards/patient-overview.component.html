@@ -14,8 +14,12 @@
 
     <span class="w3-right">
 
-      <span *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</span>
-      <span> loaded: {{progress.loaded}} bytes</span>
+      <span *ngIf="(progress.percentage < 100)">
+
+        <span class="fa fa-spinner w3-spin" style="font-size:20px"></span>
+
+        loading: {{progress.percentage}}% |
+      loaded: {{progress.total}} bytes</span>
     </span>
 
 
