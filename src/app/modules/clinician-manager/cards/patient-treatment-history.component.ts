@@ -1,10 +1,11 @@
-import {Component, OnInit, OnDestroy, ViewChild} from '@angular/core';
+import {Component, OnInit, OnDestroy, ViewChild, Input} from '@angular/core';
 
 import {VisTimelineService, VisTimelineItems, VisTimelineOptions} from 'ng2-vis/ng2-vis';
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientTreatment} from "../model/patient-treatment";
-import {ModalComponent} from "ng2-bs3-modal/components/modal";
+
 import {PatientLoadProgress} from "../model/patient-loadprogress";
+import {MyDateRange} from "./patient-range-picker.component";
 
 @Component({
   selector: 'patient-treatments',
@@ -16,23 +17,11 @@ import {PatientLoadProgress} from "../model/patient-loadprogress";
 })
 
 export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
-  @ViewChild('myCheckModal')
-  myModal: ModalComponent;
 
-  close() {
-    this.myModal.close();
-  }
 
-  openModal() {
-    for (var check of this.checks) {
-      if (check.id === this.selectedId) {
-        this.selectedTreatment = check;
-        break
-      }
-    }
+  @Input() dateRange: MyDateRange;
 
-    this.myModal.open();
-  }
+  animateToggle = true;
 
   progress: PatientLoadProgress = {
     percentage: 0,
@@ -40,10 +29,6 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
     total: 0
   };
 
-  public startDate: Date;
-  public endDate: Date;
-
-  selectedItem: string;
   selectedId: string;
   selectedTreatment: PatientTreatment;
 
@@ -60,48 +45,9 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
                      private picasoDataService: PicasoDataService) {
   }
 
-  public timelineInitialized(): void {
-    // console.log('timeline initialized');
-
-    // now we can use the service to register on events
-    this.visTimelineService.on(this.visTimelineTreatments, 'click');
-
-
-    this.visTimelineService.click
-      .subscribe((eventData: any[]) => {
-        if (eventData[0] === this.visTimelineTreatments) {
-
-
-
-          //console.log(itemId);
-          //console.log(this.selectedItem);
-
-
-          this.selectedId = eventData[1].item;
-          //console.log("itemid: ", eventData[1].item);
-          if (eventData[1].item !== null) this.openModal();
-
-
-        }
-      });
-
-  }
-
-  public refreshRange(start: Date, end: Date): void {
-
-
-    this.visTimelineService.setWindow('visTimelineGraph', start, end);
-
-
-  }
-
-
   public ngOnInit(): void {
 
     //this.selectedItem = '';
-    this.endDate = new Date();
-    this.startDate = new Date();
-    this.startDate.setFullYear(this.endDate.getFullYear() - 1);
 
     this.getChecks();
 
@@ -115,10 +61,60 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       //zoomMax: 61556926000, //year
       zoomMin: 86400000, //day
       clickToUse: true,
-      rollingMode: false,
-      start: this.startDate,
-      end: this.endDate
+      rollingMode: true,//{follow:false, offset:0},
+      start: this.dateRange.startDate,
+      end: this.dateRange.endDate
     };
+
+  }
+
+  close() {
+    this.selectedTreatment = undefined;
+  }
+
+  openDetail() {
+
+
+    if (!(this.selectedTreatment !== undefined && this.selectedTreatment.id === this.selectedId)) {
+
+      for (var treatment of this.checks) {
+        if (treatment.id === this.selectedId) {
+
+          this.animateToggle = !this.animateToggle;
+          this.selectedTreatment = treatment;
+          break
+        }
+
+      }
+    }
+
+
+  }
+
+  public timelineInitialized(): void {
+    // console.log('timeline initialized');
+
+    // now we can use the service to register on events
+    this.visTimelineService.on(this.visTimelineTreatments, 'click');
+
+
+    this.visTimelineService.click
+      .subscribe((eventData: any[]) => {
+        if (eventData[0] === this.visTimelineTreatments) {
+          //console.log(itemId);
+          //console.log(this.selectedItem);
+          this.selectedId = eventData[1].item;
+          //console.log("itemid: ", eventData[1].item);
+          if (eventData[1].item !== null) this.openDetail();
+        }
+      });
+
+  }
+
+  public refreshRange(start: Date, end: Date): void {
+
+    this.visTimelineService.setWindow('visTimelineGraph', start, end);
+
 
   }
 
@@ -134,6 +130,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
     this.listOfItems = [];
     for (var item of checks) {
       if (item.endDate === undefined)
+
         this.visTimelineItemsTreatments.add({
           id: item.id,
           style: "background: #" + item.color,
@@ -171,8 +168,8 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
   getChecks(): void {
 
     this.picasoDataService.getTreatmentsHistory(
-      this.startDate,
-      this.endDate, this.progress
+      this.dateRange.startDate,
+      this.dateRange.endDate, this.progress
     ).subscribe(
       checks => this.setChecks(checks),
       error => this.errorMessage = <any>error);
@@ -180,7 +177,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
   }
 
   public ngOnDestroy(): void {
-    //this.visTimelineService.off(this.visTimelineChecks, 'click');
+    this.visTimelineService.off(this.visTimelineTreatments, 'click');
   }
 
 

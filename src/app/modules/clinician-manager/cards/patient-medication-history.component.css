@@ -1,17 +1,17 @@
 button {
-    background-color: #eee;
-    padding: 10px 10px;
-    border-radius: 10px;
+  background-color: #eee;
+  padding: 0.25rem 0.25rem;
+  border-radius: 10px;
 }
 
 button:hover {
-    background-color: #cfd8dc;
+  background-color: #cfd8dc;
 }
 
 button:disabled {
-    background-color: #eee;
-    color: #aaa;
-    cursor: auto;
+  background-color: #eee;
+  color: #aaa;
+  cursor: auto;
 }
 
 .card {
@@ -41,3 +41,5 @@ button:disabled {
 .card {
   margin-bottom: 0.25rem;
 }
+
+

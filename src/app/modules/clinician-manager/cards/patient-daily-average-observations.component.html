@@ -1,29 +1,27 @@
 <div class="card">
-  <div *ngIf="headerText" class="card-header w3-blue  w3-center">
+  <div *ngIf="headerText || (progress.percentage < 100)" class="card-header w3-blue  w3-center">
 
-    <div i18n="Average daily observations"><i class="fa fa-heartbeat"></i> {{headerText}}</div>
-    <div class="w3-right">
+    <div i18n="Average daily observations"><i class="fa fa-heartbeat"></i>
 
-      <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
-      <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
+      <span *ngIf="headerText">{{headerText}}
+      </span>
+      <span class="w3-right">
+
+      <span *ngIf="(progress.percentage < 100)">
+
+        <span class="fa fa-spinner w3-spin" style="font-size:20px"></span>
+
+        loading: {{progress.percentage}}% |
+      loaded: {{progress.total}} bytes</span>
+    </span>
+
     </div>
+
   </div>
-  <div class="card-block" style="overflow-x: auto;">
+  <div *ngIf="observationGroups" class="card-block" style="overflow-x: auto;">
 
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 w3-center">
-
-
-        <!--
-        <button type="button"
-                class="btn btn-default"
-                (click)="resetLeft()">
-          <span>  <i class="fa {{showAllLeft||showAllRight?'fa-circle':'fa-circle-o'}}"></i> </span>
-          All observations {{showAllRight?"(right axis)":(showAllLeft?"(left axis)":"")}}
-          <span>
-          </span>
-        </button>
-        -->
+      <div class="w3-center">
 
         <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
                 class="btn btn-default"
@@ -80,9 +78,9 @@
 
 
     <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 ">
-        <nvd3 *ngIf="observationGroups" [options]="options" [data]="data" class="with-transitions row-content"></nvd3>
-      </div>
+
+      <nvd3 *ngIf="observationGroups" [options]="options" [data]="data" class="with-transitions row-content"></nvd3>
+
     </div>
 
 

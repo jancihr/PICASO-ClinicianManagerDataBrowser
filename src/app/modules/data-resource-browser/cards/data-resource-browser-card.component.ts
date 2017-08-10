@@ -15,10 +15,12 @@ import {GraphNodesDefinition} from '../model/graph-nodes-definition';
 import {GraphSetUp} from '../model/graph-set-up';
 import {LoadProgress} from "../model/load-progress";
 import {TableItem} from "../model/table-item";
+
 class PicasoNetworkData implements VisNetworkData {
     public nodes: VisNodes;
     public edges: VisEdges;
 }
+
 @Component({
     //templateUrl: 'data-resource-browser.component.html'
     selector: 'resource-browser-tag',
@@ -68,7 +70,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
     // });
     //edgesAsArray = new Array ({subGraphId: 'graphPart', parrentGraph: 'parrent graph', id: 'id', from: 'from', to: 'to', isDisplayed: false});
 // CONSTRUCTOR
-    public constructor(private visNetworkService: VisNetworkService, router: Router, private DRBDataService: DRBDataService, private PicasoDataService: PicasoDataService ) {
+    public constructor(private visNetworkService: VisNetworkService, router: Router, private DRBDataService: DRBDataService) {
         this.router = router
     }
 
@@ -1668,158 +1670,211 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                 }
                     console.log(eventData[1].nodes, 'one: ', eventData[1]);
 
+      });
+    // ********** DOUBLE CLICK ********* //
+    // open your console/dev tools to see the click params
+    this.visNetworkService.doubleClick
+      .subscribe((eventData: any[]) => {
+        if (eventData[0] === this.visNetwork) {
+          //DC Node ) level -> thus A Root node
+          let parrentGraph: string = "";
+          if (eventData[1].nodes != "") {
+            let nodeNameString: string = eventData[1].nodes.toString();
+            let nodeInfo: GraphNodesDefinition;
+            nodeInfo = this.nodesAsArray.find(item => item.id === nodeNameString)
+            if (nodeInfo) {
+              parrentGraph = nodeInfo.parrentGraph
+            }
+          }
+          if (parrentGraph === "" && eventData[1].nodes == 'patient') { //thus DoubleClicked on the level = 0 node / a Root node
+            // waits(10)
+            if (!this.allDisplayed) {
+              this.displayAll();
+            }
+            else {
+              this.collapseAll();
+            }
+            // console.log(eventData[1])
+          }
+          // if (eventData[1].nodes=="carers"){ // maybe something ?}
+          // if (eventData[1].nodes=="home"){}
+          // if (eventData[1].nodes=="plan"){}
+          //DC Node Cardiologist
+          if (eventData[1].nodes == "cardiologist") {
+            let nodesInit = new VisNodes();
+            let edgesInit = new VisEdges();
+            this.visNetworkData = {
+              nodes: nodesInit,
+              edges: edgesInit
+            };
+            this.visNetworkData.nodes.add({
+              id: 'cardiologist1',
+              label: 'Cardiologist\n' + '15.02.2015',
+              group: 'GroupCarer'
             });
-        // ********** DOUBLE CLICK ********* //
-        // open your console/dev tools to see the click params
-        this.visNetworkService.doubleClick
-            .subscribe((eventData: any[]) => {
-                if (eventData[0] === this.visNetwork) {
-                    //DC Node ) level -> thus A Root node
-                    let parrentGraph: string = "";
-                    if (eventData[1].nodes != ""){
-                        let nodeNameString: string = eventData[1].nodes.toString();
-                        let nodeInfo: GraphNodesDefinition;
-                        nodeInfo = this.nodesAsArray.find(item => item.id === nodeNameString)
-                        if(nodeInfo) {
-                            parrentGraph = nodeInfo.parrentGraph
-                        }
-                    }
-                    if (parrentGraph === "" && eventData[1].nodes == 'patient') { //thus DoubleClicked on the level = 0 node / a Root node
-                        // waits(10)
-                        if (!this.allDisplayed) {
-                            this.displayAll();
-                        }
-                        else {
-                            this.collapseAll();
-                        }
-                       // console.log(eventData[1])
-                    }
-                    // if (eventData[1].nodes=="carers"){ // maybe something ?}
-                    // if (eventData[1].nodes=="home"){}
-                    // if (eventData[1].nodes=="plan"){}
-                    //DC Node Cardiologist
-                    if (eventData[1].nodes == "cardiologist") {
-                        let nodesInit = new VisNodes();
-                        let edgesInit = new VisEdges();
-                        this.visNetworkData = {
-                            nodes: nodesInit,
-                            edges: edgesInit
-                        };
-                        this.visNetworkData.nodes.add({
-                            id: 'cardiologist1',
-                            label: 'Cardiologist\n' + '15.02.2015',
-                            group: 'GroupCarer'
-                        });
-                        this.visNetworkData.nodes.add({
-                            id: 'medicationPlan1',
-                            label: 'Meedication plan\n' + '15.02.2015',
-                            group: 'MedicationPlan'
-                        });
-                        this.visNetworkData.edges.add({from: 'medicationPlan1', to: 'cardiologist1', id: 'card01'});
-                        this.visNetworkData.nodes.add({
-                            id: 'appointment1',
-                            label: 'Appointment:\n Discussion on the results\n' + '15.02.2015',
-                            group: 'Appointment'
-                        });
-                        this.visNetworkData.edges.add({from: 'appointment1', to: 'cardiologist1', id: 'card02'});
-                        //  this.visNetworkService.fit(this.visNetwork);
-                    }
-                    //DC NODE  RHEUMATOLOGIST
-                    if (eventData[1].nodes == "rheumatologist") {
-                        //this.visNetworkData.edges.flush();
-                        let nodesInit = new VisNodes();
-                        let edgesInit = new VisEdges();
-                        this.visNetworkData = {
-                            nodes: nodesInit,
-                            edges: edgesInit
-                        };
-                        this.visNetworkData.nodes.add({
-                            id: 'rheumatologist1',
-                            label: 'Rheumatologists\n' + '31.05.2017',
-                            group: 'GroupCarer'
-                        });
-                        this.visNetworkData.nodes.add({
-                            id: 'appointment1',
-                            label: 'Appointment:\n Discussion on the results\n' + '31.05.2017',
-                            group: 'Appointment'
-                        });
-                        this.visNetworkData.edges.add({from: 'appointment1', to: 'rheumatologist1', id: 'rhe01'});
-                        this.visNetworkData.nodes.add({
-                            id: 'medicationPlan1',
-                            label: 'Meedication plan\n' + '27.02.2017',
-                            group: 'MedicationPlan'
-                        });
-                        this.visNetworkData.edges.add({from: 'medicationPlan1', to: 'rheumatologist1', id: 'rhe02'});
-                        this.visNetworkData.nodes.add({
-                            id: 'activityPlan1',
-                            label: 'Prescribed plan of activities\n' + '27.02.2017',
-                            group: 'ActivityPlan'
-                        });
-                        this.visNetworkData.edges.add({from: 'activityPlan1', to: 'rheumatologist1', id: 'rhe03'});
-                        this.visNetworkData.nodes.add({
-                            id: 'picture1',
-                            label: 'Image\n' + '12.10.2016',
-                            title: 'Picture or Scanned document',
-                            group: 'GroupImage'
-                        });
-                        this.visNetworkData.edges.add({from: 'picture1', to: 'rheumatologist1', id: 'rhe04'});
-                        //  this.visNetworkService.fit(this.visNetwork);
-                    }
-                    // DC Graph Rheumatologist1
-                    if (eventData[1].nodes == "rheumatologist1") {
-                        // console.log(eventData[1].nodes);
-                        this.visNetworkData.nodes.remove('rheumatologist1');
-                        this.visNetworkData.nodes.remove('medicationPlan1');
-                        this.visNetworkData.nodes.remove('activityPlan1');
-                        this.visNetworkData.nodes.remove('picture1');
-                        this.visNetworkData.edges.remove('rhe01');
-                        this.visNetworkData.edges.remove('rhe02');
-                        this.visNetworkData.edges.remove('rhe03');
-                        this.visNetworkData.edges.remove('rhe04');
-                        this.coreDisplayed = false
-                        this.displayLast();
-                        //this.visNetworkService.fit(this.visNetwork);
-                    }
-                    // DC Graph Cardiologist1
-                    if (eventData[1].nodes == "cardiologist1") {
-                        this.visNetworkData.nodes.remove('activityPlan1');
-                        this.visNetworkData.nodes.remove('picture1');
-                        this.visNetworkData.nodes.remove('cardiologist1');
-                        this.visNetworkData.edges.remove('card01');
-                        this.visNetworkData.edges.remove('card02');
-                        this.coreDisplayed = false
-                        this.displayLast();
-                    }
-                    //DC Navi towards CM (from HM)
-                    if (eventData[1].nodes == "sugarHistory"
-                        || eventData[1].nodes == "saturationHistory"
-                        || eventData[1].nodes == "lungHistory"
-                        || eventData[1].nodes == "respirationHistory"
-                        || eventData[1].nodes == "weightHistory"
-                        || eventData[1].nodes == "homeHeart"
-                        || eventData[1].nodes == "homeActivity"
-                        || eventData[1].nodes == "questionnaireHome"
-                    ) {
-                        this.router.navigate(['/clinician-manager'])
-                    }
-                    //DC Navi towards CM
-                    if (eventData[1].nodes == "questionnaireFFbhHAQHome"
-                        || eventData[1].nodes == "questionnaireRADAIHome"
-                        || eventData[1].nodes == "questionnaireFFbhHAQClinic"
-                        || eventData[1].nodes == "questionnaireRADAIClinic"
-                        || eventData[1].nodes == "questionnaireMoriskyClinic"
-                        || eventData[1].nodes == "MRI"
-                        || eventData[1].nodes == "DAT"
-                        || eventData[1].nodes == "PET"
-                        || eventData[1].nodes == "MYSC"
-                        || eventData[1].nodes == "ECG"
-                        || eventData[1].nodes == "EEG"
-                        || eventData[1].nodes == "painRating"
-                        || eventData[1].nodes == "wellBeing"
-                        || eventData[1].nodes == "hemoChrome"
-                        || eventData[1].nodes == "Thyroid"
-                        || eventData[1].nodes == "urineTest"
-                        || eventData[1].nodes == "histTest"
+            this.visNetworkData.nodes.add({
+              id: 'medicationPlan1',
+              label: 'Meedication plan\n' + '15.02.2015',
+              group: 'MedicationPlan'
+            });
+            this.visNetworkData.edges.add({from: 'medicationPlan1', to: 'cardiologist1', id: 'card01'});
+            this.visNetworkData.nodes.add({
+              id: 'appointment1',
+              label: 'Appointment:\n Discussion on the results\n' + '15.02.2015',
+              group: 'Appointment'
+            });
+            this.visNetworkData.edges.add({from: 'appointment1', to: 'cardiologist1', id: 'card02'});
+            //  this.visNetworkService.fit(this.visNetwork);
+          }
+          //DC NODE  RHEUMATOLOGIST
+          if (eventData[1].nodes == "rheumatologist") {
+            //this.visNetworkData.edges.flush();
+            let nodesInit = new VisNodes();
+            let edgesInit = new VisEdges();
+            this.visNetworkData = {
+              nodes: nodesInit,
+              edges: edgesInit
+            };
+            this.visNetworkData.nodes.add({
+              id: 'rheumatologist1',
+              label: 'Rheumatologists\n' + '31.05.2017',
+              group: 'GroupCarer'
+            });
+            this.visNetworkData.nodes.add({
+              id: 'appointment1',
+              label: 'Appointment:\n Discussion on the results\n' + '31.05.2017',
+              group: 'Appointment'
+            });
+            this.visNetworkData.edges.add({from: 'appointment1', to: 'rheumatologist1', id: 'rhe01'});
+            this.visNetworkData.nodes.add({
+              id: 'medicationPlan1',
+              label: 'Meedication plan\n' + '27.02.2017',
+              group: 'MedicationPlan'
+            });
+            this.visNetworkData.edges.add({from: 'medicationPlan1', to: 'rheumatologist1', id: 'rhe02'});
+            this.visNetworkData.nodes.add({
+              id: 'activityPlan1',
+              label: 'Prescribed plan of activities\n' + '27.02.2017',
+              group: 'ActivityPlan'
+            });
+            this.visNetworkData.edges.add({from: 'activityPlan1', to: 'rheumatologist1', id: 'rhe03'});
+            this.visNetworkData.nodes.add({
+              id: 'picture1',
+              label: 'Image\n' + '12.10.2016',
+              title: 'Picture or Scanned document',
+              group: 'GroupImage'
+            });
+            this.visNetworkData.edges.add({from: 'picture1', to: 'rheumatologist1', id: 'rhe04'});
+            //  this.visNetworkService.fit(this.visNetwork);
+          }
+          // DC Graph Rheumatologist1
+          if (eventData[1].nodes == "rheumatologist1") {
+            // console.log(eventData[1].nodes);
+            this.visNetworkData.nodes.remove('rheumatologist1');
+            this.visNetworkData.nodes.remove('medicationPlan1');
+            this.visNetworkData.nodes.remove('activityPlan1');
+            this.visNetworkData.nodes.remove('picture1');
+            this.visNetworkData.edges.remove('rhe01');
+            this.visNetworkData.edges.remove('rhe02');
+            this.visNetworkData.edges.remove('rhe03');
+            this.visNetworkData.edges.remove('rhe04');
+            this.coreDisplayed = false
+            this.displayLast();
+            //this.visNetworkService.fit(this.visNetwork);
+          }
+          // DC Graph Cardiologist1
+          if (eventData[1].nodes == "cardiologist1") {
+            this.visNetworkData.nodes.remove('activityPlan1');
+            this.visNetworkData.nodes.remove('picture1');
+            this.visNetworkData.nodes.remove('cardiologist1');
+            this.visNetworkData.edges.remove('card01');
+            this.visNetworkData.edges.remove('card02');
+            this.coreDisplayed = false
+            this.displayLast();
+          }
+          //DC Navi towards CM (from HM)
+
+          else if (
+            eventData[1].nodes == "weightHistory"
+          ) {
+
+            this.router.navigate(['/clinician-manager/observations/weight/lastyear'])
+
+          }
+
+
+          else if (
+            eventData[1].nodes == "questionnaireFFbhHAQHome" || eventData[1].nodes == "questionnaireFFbhHAQClinic"
+          ) {
+
+            this.router.navigate(['/clinician-manager/observations/ffbh/lastyear'])
+
+          }
+
+          else if (
+            eventData[1].nodes == "questionnaireRADAIClinic"
+          ) {
+
+            this.router.navigate(['/clinician-manager/observations/radai/lastyear'])
+
+          }
+
+          else if (
+            eventData[1].nodes == "questionnaireMoriskyClinic"
+          ) {
+
+            this.router.navigate(['/clinician-manager/observations/morisky/lastyear'])
+
+          }
+
+          else if (
+            eventData[1].nodes == "wellBeing"
+          ) {
+            this.router.navigate(['/clinician-manager/observations/wellbeing/lastyear'])
+
+
+          }
+
+          else if (
+            eventData[1].nodes == "painRating"
+          ) {
+            this.router.navigate(['/clinician-manager/observations/pain/lastyear'])
+
+
+          }
+
+
+          else if (eventData[1].nodes == "sugarHistory"
+            || eventData[1].nodes == "saturationHistory"
+            || eventData[1].nodes == "lungHistory"
+            || eventData[1].nodes == "respirationHistory"
+            || eventData[1].nodes == "weightHistory"
+            || eventData[1].nodes == "homeHeart"
+            || eventData[1].nodes == "homeActivity"
+            || eventData[1].nodes == "questionnaireHome"
+          ) {
+            //
+            //
+            this.router.navigate(['/clinician-manager/treatments/all/lastyear'])
+          }
+          //DC Navi towards CM
+          else if (eventData[1].nodes == "questionnaireFFbhHAQHome"
+            || eventData[1].nodes == "questionnaireRADAIHome"
+            || eventData[1].nodes == "questionnaireFFbhHAQClinic"
+            || eventData[1].nodes == "questionnaireRADAIClinic"
+            || eventData[1].nodes == "questionnaireMoriskyClinic"
+            || eventData[1].nodes == "MRI"
+            || eventData[1].nodes == "DAT"
+            || eventData[1].nodes == "PET"
+            || eventData[1].nodes == "MYSC"
+            || eventData[1].nodes == "ECG"
+            || eventData[1].nodes == "EEG"
+            || eventData[1].nodes == "painRating"
+            || eventData[1].nodes == "wellBeing"
+            || eventData[1].nodes == "hemoChrome"
+            || eventData[1].nodes == "Thyroid"
+            || eventData[1].nodes == "urineTest"
+            || eventData[1].nodes == "histTest"
 
                     ) {
                         this.router.navigate(['/clinician-manager'])
@@ -1839,7 +1894,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
     }
 
     // Get Graph/network data
-  private getGraphNetworkData() {
+    private getGraphNetworkData(): void {
 
 
   this.DRBDataService.getGraphSetUp().subscribe(
@@ -1860,22 +1915,21 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         },
         error => this.errorMessage = <any>error);
 
-      // console.log("result from service 2:", this.subGraphsAsArray)
+                // console.log("result from service 2:", this.subGraphsAsArray)
 
-    },
-    error => this.errorMessage = <any>error);
+            },
+            error => this.errorMessage = <any>error);
 
-  //console.log(this.errorMessage);
+        //console.log(this.errorMessage);
 
-}
-
+    }
 // MAIN routine
-  public ngOnInit() {
-    this.getGraphNetworkData()
-    // this.mapSourceDataToNetworkData()
-    // this.readLastDispalyedGraphSetUp()
-    // this.displayLast();
-    this.setNetworkOptions();
+    public ngOnInit() {
+        this.getGraphNetworkData()
+        // this.mapSourceDataToNetworkData()
+        // this.readLastDispalyedGraphSetUp()
+        // this.displayLast();
+        this.setNetworkOptions();
 
 
       //TODO

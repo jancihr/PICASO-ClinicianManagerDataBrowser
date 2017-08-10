@@ -19,7 +19,7 @@
     {
       "name": "Morisky Scale",
       "id": "morisky",
-      "label": "score",
+      "unit": "score",
       "color": "#000000",
       "type": "line",
       "minValue": 2,
@@ -2222,8 +2222,8 @@
     {
       "id": "heartrate",
       "name": "Resting Heartrate",
-      "label": "beats/min",
-      "color": "#2E5CA4",
+      "unit": "beats/min",
+      "color": "orange",
       "type": "line",
       "minValue": 40,
       "midValue": 60,
@@ -4057,9 +4057,10 @@
       ]
     },
     {
-      "name": "Blood Pressure SYS",
       "id": "sys",
-      "label": "mmHg",
+      "name": "Blood Pressure SYS",
+
+      "unit": "mmHg",
       "color": "red",
       "type": "line",
       "midValue": 120,
@@ -5904,9 +5905,10 @@
       ]
     },
     {
-      "name": "Blood Pressure DIA",
       "id": "dia",
-      "label": "mmHg",
+      "name": "Blood Pressure DIA",
+
+      "unit": "mmHg",
       "color": "red",
       "type": "line",
       "minValue": 70,
@@ -7741,9 +7743,10 @@
       ]
     },
     {
-      "name": "Weight",
       "id": "weight",
-      "label": "kg",
+      "name": "Weight",
+
+      "unit": "kg",
       "color": "#000000",
       "type": "line",
       "values": [
@@ -9575,9 +9578,10 @@
       ]
     },
     {
-      "name": "Steps",
       "id": "steps",
-      "label": "1000s of steps",
+      "name": "Steps",
+
+      "unit": "1000s of steps",
       "color": "#FFB200",
       "type": "bar",
       "minValue": 3,
@@ -11411,9 +11415,10 @@
       ]
     },
     {
-      "name": "Walking distance",
       "id": "distance",
-      "label": "km",
+      "name": "Walking distance",
+
+      "unit": "km",
       "color": "green",
       "type": "line",
       "values": [
@@ -13245,9 +13250,10 @@
       ]
     },
     {
-      "name": "Night sleep",
       "id": "sleep",
-      "label": "hours",
+      "name": "Night sleep",
+
+      "unit": "hours",
       "color": "#000000",
       "type": "line",
       "values": [
@@ -15079,9 +15085,9 @@
       ]
     },
     {
-      "name": "Pain ratings",
       "id": "pain",
-      "label": "score",
+      "name": "Pain ratings",
+      "unit": "score",
       "color": "#0daad0",
       "type": "line",
       "values": [
@@ -16913,9 +16919,9 @@
       ]
     },
     {
-      "name": "Well-being ratings",
       "id": "wellbeing",
-      "label": "score",
+      "name": "Well-being ratings",
+      "unit": "score",
       "color": "#0daad0",
       "type": "line",
       "minValue": 4,
@@ -18748,9 +18754,9 @@
       ]
     },
     {
-      "name": "RADAI",
       "id": "radai",
-      "label": "score",
+      "name": "RADAI",
+      "unit": "score",
       "color": "#0d0ed0",
       "type": "line",
       "maxValue": 1.6,
@@ -20948,9 +20954,9 @@
       ]
     },
     {
-      "name": "FFbh",
       "id": "ffbh",
-      "label": "score",
+      "name": "FFbh",
+      "unit": "score",
       "color": "#0d00d0",
       "type": "line",
       "values": [
@@ -23147,9 +23153,9 @@
       ]
     },
     {
-      "name": "HAQ",
       "id": "haq",
-      "label": "score",
+      "name": "HAQ",
+      "unit": "score",
       "color": "#0db0d0",
       "type": "line",
       "maxValue": 1,
@@ -25347,9 +25353,9 @@
       ]
     },
     {
-      "name": "EQ-5D",
       "id": "eq5d",
-      "label": "score",
+      "name": "EQ-5D",
+      "unit": "score",
       "color": "#0aa0d0",
       "type": "line",
       "values": [

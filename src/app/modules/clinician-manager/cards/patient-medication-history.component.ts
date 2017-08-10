@@ -3,182 +3,173 @@ import {Component, OnInit, OnDestroy, ViewChild, Input} from '@angular/core';
 import {VisTimelineService, VisTimelineItems, VisTimelineItem, VisTimelineOptions} from 'ng2-vis/ng2-vis';
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientMedication} from "../model/patient-medication";
-import {ModalComponent} from 'ng2-bs3-modal/ng2-bs3-modal';
-import {PatientLoadProgress} from "../model/patient-loadprogress";
 
+import {PatientLoadProgress} from "../model/patient-loadprogress";
+import {MyDateRange} from "./patient-range-picker.component";
 
 @Component({
-    selector: 'medication-history',
-    templateUrl: 'patient-medication-history.component.html',
-    styleUrls: [
-        'patient-medication-history.component.css'
-    ],
-    providers: [PicasoDataService, VisTimelineService]
+  selector: 'medication-history',
+  templateUrl: 'patient-medication-history.component.html',
+  styleUrls: [
+    'patient-medication-history.component.css'
+  ],
+  providers: [PicasoDataService, VisTimelineService]
 })
 
 export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
-    @ViewChild('myMedicationModal')
+  @Input() dateRange: MyDateRange;
 
-    myModal: ModalComponent;
+  animateToggle = true;
 
-    close() {
-        this.myModal.close();
-    }
+  progress: PatientLoadProgress = {
+    percentage: 0,
+    loaded: 0,
+    total: 0
+  };
 
-    openModal() {
-        for (var medication of this.medications){
-            if (medication.id === this.selectedId) {
-                this.selectedMedication = medication;
-                break
-            }
-        }
+  selectedId: string;
+  selectedMedication: PatientMedication;
 
-        this.myModal.open();
-    }
+  listOfItems: string[];
 
-    progress: PatientLoadProgress = {
-        percentage: 0,
-        loaded: 0,
-        total: 0
+  errorMessage: string;
+  medications: PatientMedication[];
+
+
+  public visTimelineMedications: string = 'medicationTimelineGraph';
+  public visTimelineItemsMedications: VisTimelineItems;
+  public visTimelineMedicationsOptions: VisTimelineOptions;
+
+  public constructor(private visTimelineService: VisTimelineService,
+                     private picasoDataService: PicasoDataService) {
+  }
+
+  public ngOnInit(): void {
+
+    //this.selectedItem = '';
+
+
+    this.getMedications();
+
+
+    this.visTimelineItemsMedications = new VisTimelineItems([]);
+
+
+    this.visTimelineMedicationsOptions = {
+      selectable: true,
+      showCurrentTime: true,
+      //zoomMax: 61556926000, //year
+      zoomMin: 86400000, //day
+      clickToUse: true,
+      rollingMode: true,//{follow:false, offset:0},
+      start: this.dateRange.startDate,
+      end: this.dateRange.endDate
     };
 
-    public startDate: Date;
-    public endDate: Date;
 
-    selectedItem: string;
-    selectedId: string;
-    selectedMedication: PatientMedication;
+  }
 
-    listOfItems: string[];
+  close() {
+    this.selectedMedication = undefined;
+  }
 
-    errorMessage: string;
-    medications: PatientMedication[];
-
-
-    public visTimelineMedications: string = 'medicationTimelineGraph';
-    public visTimelineItemsMedications: VisTimelineItems;
-    public visTimelineMedicationsOptions: VisTimelineOptions;
-
-    public constructor(private visTimelineService: VisTimelineService,
-                       private picasoDataService: PicasoDataService) {
+  openDetail() {
+    if (!(this.selectedMedication !== undefined && this.selectedMedication.id === this.selectedId)) {
+      for (var medication of this.medications) {
+        if (medication.id === this.selectedId) {
+          this.animateToggle = !this.animateToggle;
+          this.selectedMedication = medication;
+          break
+        }
+      }
     }
 
-    public timelineInitialized(): void {
-        // console.log('timeline initialized');
+  }
 
-        // now we can use the service to register on events
-        this.visTimelineService.on(this.visTimelineMedications, 'click');
+  public timelineInitialized(): void {
+    // console.log('timeline initialized');
 
-        this.visTimelineService.click
-            .subscribe((eventData: any[]) => {
-                if (eventData[0] === this.visTimelineMedications) {
+    // now we can use the service to register on events
+    this.visTimelineService.on(this.visTimelineMedications, 'click');
 
-
-
-                    //console.log(itemId);
-                    //console.log(this.selectedItem);
-
-
-
-                    this.selectedId = eventData[1].item;
-                    //console.log("itemid: ", eventData[1].item);
-                    if (eventData[1].item!== null) this.openModal();
+    this.visTimelineService.click
+      .subscribe((eventData: any[]) => {
+        if (eventData[0] === this.visTimelineMedications) {
+          //console.log(itemId);
+          //console.log(this.selectedItem);
+          this.selectedId = eventData[1].item;
+          //console.log("itemid: ", eventData[1].item);
+          if (eventData[1].item !== null) this.openDetail();
 
 
-                }
-            });
-    }
+        }
+      });
+  }
 
 
-    public refreshRange(start: Date, end: Date): void {
+  public refreshRange(start: Date, end: Date): void {
 
-        this.visTimelineService.setWindow('medicationTimelineGraph', start, end);
+    this.visTimelineService.setWindow('medicationTimelineGraph', start, end);
 
-    }
-
-    public ngOnInit(): void {
-
-        this.selectedItem = '';
-        this.endDate = new Date();
-        this.startDate = new Date();
-        this.startDate.setFullYear(this.endDate.getFullYear() - 1);
-
-        this.getMedications();
+  }
 
 
-        this.visTimelineItemsMedications = new VisTimelineItems([]);
-        this.visTimelineMedicationsOptions = {
-            selectable: false,
-          // showCurrentTime: true,
-            //zoomMax: 61556926000, //year
-            zoomMin: 86400000, //day
-          clickToUse: true,
-          rollingMode: false,
-          start: this.startDate,
-          end: this.endDate
-        };
+  setMedications(medications: PatientMedication[]): void {
+
+    this.medications = medications;
+
+    this.visTimelineItemsMedications = new VisTimelineItems([]);
 
 
-    }
+    this.listOfItems = [];
+    for (var item of medications) {
 
 
-    setMedications(medications: PatientMedication[]): void {
+      var vistimelineitem: VisTimelineItem;
 
-        this.medications = medications;
+      this.visTimelineItemsMedications.add(
+        {
+          id: item.id,
+          style: "background: #" + item.color,
 
-        this.visTimelineItemsMedications = new VisTimelineItems([]);
-
-
-        this.listOfItems = [];
-        for (var item of medications) {
-
-            this.listOfItems.push(item.id);
-
-            var vistimelineitem: VisTimelineItem;
-
-            vistimelineitem =
-                {
-                    id: item.id,
-                    style: "background: #"+item.color,
-
-                    content: `<div>
+          content: `<div>
                               <div class="w3-small"><b>${item.name}</b></div>
                               <div class="w3-small">${item.dosage} - ${item.frequency} - ${item.stopReason}</div>
                               </div>`
-                    ,
-                    start: item.startDate,
-                    end: item.endDate
-                };
-            vistimelineitem.className = " w3-border w3-border-lime w3-round-large";
+          ,
+          start: item.startDate,
+          end: item.endDate
+        });
+      //vistimelineitem.className = " w3-border w3-border-lime w3-round-large";
 
-            this.visTimelineItemsMedications.add(vistimelineitem);
-        }
-
-
-      // this.focusVis();
-
-
-    }
-
-    getMedications(): void {
-
-        this.picasoDataService.getMedicationHistory(
-            this.startDate,
-            this.endDate, this.progress
-        ).subscribe(
-            medications => this.setMedications(medications),
-            error => this.errorMessage = <any>error);
-
-    }
-
-    public ngOnDestroy(): void {
-        this.visTimelineService.off(this.visTimelineMedications, 'click');
+      this.listOfItems.push(item.id);
     }
 
 
-    public focusVis(): void {
+    // this.focusVis();
 
-        this.visTimelineService.focusOnIds(this.visTimelineMedications, this.listOfItems)
-    }
+
+  }
+
+  getMedications(): void {
+
+    this.picasoDataService.getMedicationHistory(
+      this.dateRange.startDate,
+      this.dateRange.endDate, this.progress
+    ).subscribe(
+      medications => this.setMedications(medications),
+      error => this.errorMessage = <any>error);
+
+  }
+
+  public ngOnDestroy(): void {
+    this.visTimelineService.off(this.visTimelineMedications, 'click');
+  }
+
+
+  public focusVis(): void {
+
+    this.visTimelineService.focusOnIds(this.visTimelineMedications, this.listOfItems)
+  }
 }
