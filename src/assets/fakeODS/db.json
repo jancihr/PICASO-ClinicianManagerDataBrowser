@@ -2223,7 +2223,7 @@
       "id": "heartrate",
       "name": "Resting Heartrate",
       "unit": "beats/min",
-      "color": "#2E5CA4",
+      "color": "orange",
       "type": "line",
       "minValue": 40,
       "midValue": 60,
@@ -4057,8 +4057,9 @@
       ]
     },
     {
-      "name": "Blood Pressure SYS",
       "id": "sys",
+      "name": "Blood Pressure SYS",
+
       "unit": "mmHg",
       "color": "red",
       "type": "line",
@@ -5904,8 +5905,9 @@
       ]
     },
     {
-      "name": "Blood Pressure DIA",
       "id": "dia",
+      "name": "Blood Pressure DIA",
+
       "unit": "mmHg",
       "color": "red",
       "type": "line",
@@ -7741,8 +7743,9 @@
       ]
     },
     {
-      "name": "Weight",
       "id": "weight",
+      "name": "Weight",
+
       "unit": "kg",
       "color": "#000000",
       "type": "line",
@@ -9575,8 +9578,9 @@
       ]
     },
     {
-      "name": "Steps",
       "id": "steps",
+      "name": "Steps",
+
       "unit": "1000s of steps",
       "color": "#FFB200",
       "type": "bar",
@@ -11411,8 +11415,9 @@
       ]
     },
     {
-      "name": "Walking distance",
       "id": "distance",
+      "name": "Walking distance",
+
       "unit": "km",
       "color": "green",
       "type": "line",
@@ -13245,8 +13250,9 @@
       ]
     },
     {
-      "name": "Night sleep",
       "id": "sleep",
+      "name": "Night sleep",
+
       "unit": "hours",
       "color": "#000000",
       "type": "line",
@@ -15079,8 +15085,8 @@
       ]
     },
     {
-      "name": "Pain ratings",
       "id": "pain",
+      "name": "Pain ratings",
       "unit": "score",
       "color": "#0daad0",
       "type": "line",
@@ -16913,8 +16919,8 @@
       ]
     },
     {
-      "name": "Well-being ratings",
       "id": "wellbeing",
+      "name": "Well-being ratings",
       "unit": "score",
       "color": "#0daad0",
       "type": "line",
@@ -18748,8 +18754,8 @@
       ]
     },
     {
-      "name": "RADAI",
       "id": "radai",
+      "name": "RADAI",
       "unit": "score",
       "color": "#0d0ed0",
       "type": "line",
@@ -20948,8 +20954,8 @@
       ]
     },
     {
-      "name": "FFbh",
       "id": "ffbh",
+      "name": "FFbh",
       "unit": "score",
       "color": "#0d00d0",
       "type": "line",
@@ -23147,8 +23153,8 @@
       ]
     },
     {
-      "name": "HAQ",
       "id": "haq",
+      "name": "HAQ",
       "unit": "score",
       "color": "#0db0d0",
       "type": "line",
@@ -25347,8 +25353,8 @@
       ]
     },
     {
-      "name": "EQ-5D",
       "id": "eq5d",
+      "name": "EQ-5D",
       "unit": "score",
       "color": "#0aa0d0",
       "type": "line",
