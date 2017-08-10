@@ -10,6 +10,7 @@ import {
     VisNetworkOptions, //VisEdgeOptions,// VisFitOptions     //VisNode,
 } from 'ng2-vis/components/network';
 import {DRBDataService} from "../service/DRB-data.service";
+import {PicasoDataService} from "../service/picaso.service";
 import {GraphNodesDefinition} from '../model/graph-nodes-definition';
 import {GraphSetUp} from '../model/graph-set-up';
 import {LoadProgress} from "../model/load-progress";
@@ -67,7 +68,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
     // });
     //edgesAsArray = new Array ({subGraphId: 'graphPart', parrentGraph: 'parrent graph', id: 'id', from: 'from', to: 'to', isDisplayed: false});
 // CONSTRUCTOR
-    public constructor(private visNetworkService: VisNetworkService, router: Router, private DRBDataService: DRBDataService) {
+    public constructor(private visNetworkService: VisNetworkService, router: Router, private DRBDataService: DRBDataService, private PicasoDataService: PicasoDataService ) {
         this.router = router
     }
 
@@ -1838,37 +1839,43 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
     }
 
     // Get Graph/network data
-    private getGraphNetworkData(): void {
+  private getGraphNetworkData() {
 
 
-        this.DRBDataService.getGraphSetUp().subscribe(
-            graphSetUp => {
-                this.subGraphsAsArray = graphSetUp;
-                this.DRBDataService.getGraphNodes(this.progress).subscribe(
-                    node => {
-                        this.nodesAsArray = node;
-                        //  console.log("result from service 1:", this.nodesAsArray)
-                        // this.mapSourceDataToNetworkData()
-                        this.readLastDispalyedGraphSetUp()
-                        this.displayLast();
-                    },
-                    error => this.errorMessage = <any>error);
-
-                // console.log("result from service 2:", this.subGraphsAsArray)
-
+  this.DRBDataService.getGraphSetUp().subscribe(
+    graphSetUp => {
+      this.subGraphsAsArray = graphSetUp;
+      this.DRBDataService.getGraphNodes(this.progress).subscribe(
+        node => {
+          this.nodesAsArray = node;
+          this.PicasoDataService.getPatient(this.progress).subscribe(
+            name => {
+              console.log("Picaso name: ", name)
             },
-            error => this.errorMessage = <any>error);
+          )
+          //  console.log("result from service 1:", this.nodesAsArray)
+          // this.mapSourceDataToNetworkData()
+          this.readLastDispalyedGraphSetUp()
+          this.displayLast();
+        },
+        error => this.errorMessage = <any>error);
 
-        //console.log(this.errorMessage);
+      // console.log("result from service 2:", this.subGraphsAsArray)
 
-    }
+    },
+    error => this.errorMessage = <any>error);
+
+  //console.log(this.errorMessage);
+
+}
+
 // MAIN routine
-    public ngOnInit() {
-        this.getGraphNetworkData()
-        // this.mapSourceDataToNetworkData()
-        // this.readLastDispalyedGraphSetUp()
-        // this.displayLast();
-        this.setNetworkOptions();
+  public ngOnInit() {
+    this.getGraphNetworkData()
+    // this.mapSourceDataToNetworkData()
+    // this.readLastDispalyedGraphSetUp()
+    // this.displayLast();
+    this.setNetworkOptions();
 
 
       //TODO
