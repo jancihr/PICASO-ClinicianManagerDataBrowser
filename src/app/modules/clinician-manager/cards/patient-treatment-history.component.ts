@@ -6,6 +6,10 @@ import {PatientTreatment} from "../model/patient-treatment";
 
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {MyDateRange} from "./patient-range-picker.component";
+import {PatientInClinicTreatment} from "../model/patient-in-clinic-treatment";
+import {PatientOutClinicTreatment} from "../model/patient-out-clinic-treatment";
+import {PatientLabTest} from "../model/patient-lab-test";
+import {PatientImaging} from "../model/patient-imaging";
 
 @Component({
   selector: 'patient-treatments',
@@ -31,11 +35,10 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
 
   selectedId: string;
   selectedTreatment: PatientTreatment;
-
+  checks: PatientTreatment[];
   listOfItems: string[];
 
   errorMessage: string;
-  checks: PatientTreatment[];
 
   public visTimelineTreatments: string = 'visTimelineGraph';
   public visTimelineItemsTreatments: VisTimelineItems;
@@ -46,36 +49,35 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-
-    //this.selectedItem = '';
-
-    this.getChecks();
-
-
-    this.visTimelineItemsTreatments = new VisTimelineItems([]);
-
-
     this.visTimelineTreatmentsOptions = {
       selectable: true,
       showCurrentTime: true,
       //zoomMax: 61556926000, //year
       zoomMin: 86400000, //day
       clickToUse: true,
-      rollingMode: true,//{follow:false, offset:0},
+      rollingMode: null,//{follow:false, offset:0},
       start: this.dateRange.startDate,
       end: this.dateRange.endDate
     };
+    this.getChecks();
+  }
 
+  getChecks() {
+
+    this.checks = [];
+
+    this.getInClinicTreatments();
+    this.getOutClinicTreatments();
+    this.getImaging();
+    this.getLabTests();
   }
 
   close() {
-    this.selectedTreatment = undefined;
+    this.selectedTreatment = null;
   }
 
   openDetail() {
-
-
-    if (!(this.selectedTreatment !== undefined && this.selectedTreatment.id === this.selectedId)) {
+    if (!(this.selectedTreatment !== null && this.selectedTreatment.id === this.selectedId)) {
 
       for (var treatment of this.checks) {
         if (treatment.id === this.selectedId) {
@@ -87,8 +89,6 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
 
       }
     }
-
-
   }
 
   public timelineInitialized(): void {
@@ -112,28 +112,22 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
   }
 
   public refreshRange(start: Date, end: Date): void {
-
     this.visTimelineService.setWindow('visTimelineGraph', start, end);
-
-
   }
 
 
-  setChecks(checks: PatientTreatment[]): void {
+  setTreatmentsGraphData(): void {
 
-
-    this.checks = checks;
-
+    this.selectedId = null;
+    this.selectedTreatment = null;
+    this.listOfItems = [];
     this.visTimelineItemsTreatments = new VisTimelineItems([]);
 
-
-    this.listOfItems = [];
-    for (var item of checks) {
-      if (item.endDate === undefined)
-
+    for (let item of this.checks) {
+      if (item.endDate === undefined || item.endDate === null) {
         this.visTimelineItemsTreatments.add({
           id: item.id,
-          style: "background: #" + item.color,
+          style: "background: " + item.color,
           content: `<div>
                               <div class="w3-small"><b>${item.category}</b></div>
                               <div class="w3-small">${item.visitReason} </div>
@@ -141,7 +135,8 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
           start: item.startDate,
           type: 'box'
         });
-      else
+      }
+      else {
         this.visTimelineItemsTreatments.add({
           id: item.id,
           content: `<div>
@@ -151,29 +146,113 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
 
           start: item.startDate,
           end: item.endDate,
-          style: "background: #" + item.color,
-
-          //type: 'point'
+          style: "background: " + item.color,
         });
-
+      }
       this.listOfItems.push(item.id);
-
     }
-
-
     // this.focusVisChecks();
-
   }
 
-  getChecks(): void {
 
-    this.picasoDataService.getTreatmentsHistory(
+  setInClinicTreatments(treatments: PatientInClinicTreatment[]) {
+    for (let treatment of treatments) {
+      let commonTreatment = new PatientTreatment();
+      commonTreatment.startDate = treatment.startDate;
+      commonTreatment.endDate = treatment.endDate;
+      commonTreatment.id = "IN_" + treatment.id;
+      commonTreatment.category = "In Clinic Treatment";
+      commonTreatment.color = treatment.color;
+      commonTreatment.visitReason = treatment.visitReason;
+      commonTreatment.visitResults = treatment.details;
+      this.checks.push(commonTreatment);
+
+      console.log("inclinic:", commonTreatment);
+    }
+    this.setTreatmentsGraphData();
+  }
+
+  setOutClinicTreatments(treatments: PatientOutClinicTreatment[]) {
+    for (let treatment of treatments) {
+      let commonTreatment = new PatientTreatment();
+      commonTreatment.startDate = treatment.startDate;
+      commonTreatment.endDate = null;
+      commonTreatment.id = "OUT_" + treatment.id;
+      commonTreatment.category = "Out Clinic Treatment";
+      commonTreatment.color = treatment.color;
+      commonTreatment.visitReason = treatment.visitReason;
+      commonTreatment.visitResults = treatment.details;
+      this.checks.push(commonTreatment);
+      console.log("outclinic:", commonTreatment);
+    }
+    this.setTreatmentsGraphData();
+  }
+
+  setLabTests(treatments: PatientLabTest[]) {
+    for (let treatment of treatments) {
+      let commonTreatment = new PatientTreatment();
+      commonTreatment.startDate = treatment.startDate;
+      commonTreatment.endDate = null;
+      commonTreatment.id = "LAB_" + treatment.id;
+      commonTreatment.category = "Lab Test";
+      commonTreatment.color = treatment.color;
+      commonTreatment.visitReason = treatment.visitReason;
+      commonTreatment.visitResults = null;
+      this.checks.push(commonTreatment);
+    }
+    this.setTreatmentsGraphData();
+  }
+
+  setImaging(treatments: PatientImaging[]) {
+    for (let treatment of treatments) {
+      let commonTreatment = new PatientTreatment();
+      commonTreatment.startDate = treatment.startDate;
+      commonTreatment.endDate = null;
+      commonTreatment.id = "IMG_" + treatment.id;
+      commonTreatment.category = "Imaging";
+      commonTreatment.color = treatment.color;
+      commonTreatment.visitReason = treatment.visitReason;
+      commonTreatment.visitResults = null;
+      this.checks.push(commonTreatment);
+    }
+    this.setTreatmentsGraphData();
+  }
+
+
+  getInClinicTreatments(): void {
+    this.picasoDataService.getInClinicTreatmentsResult(
       this.dateRange.startDate,
       this.dateRange.endDate, this.progress
     ).subscribe(
-      checks => this.setChecks(checks),
+      checks => this.setInClinicTreatments(checks),
       error => this.errorMessage = <any>error);
+  }
 
+  getOutClinicTreatments(): void {
+    this.picasoDataService.getOutClinicTreatmentsResult(
+      this.dateRange.startDate,
+      this.dateRange.endDate, this.progress
+    ).subscribe(
+      checks => this.setOutClinicTreatments(checks),
+      error => this.errorMessage = <any>error);
+  }
+
+  getImaging(): void {
+    this.picasoDataService.getImagingResult(
+      this.dateRange.startDate,
+      this.dateRange.endDate, this.progress
+    ).subscribe(
+      checks => this.setImaging(checks),
+      error => this.errorMessage = <any>error);
+  }
+
+  getLabTests(): void {
+    this.picasoDataService.getLabtestResult(
+      this.dateRange.startDate,
+      this.dateRange.endDate, this.progress
+    ).subscribe(
+      checks => this.setLabTests(checks),
+      error => this.errorMessage = <any>error);
   }
 
   public ngOnDestroy(): void {
@@ -182,7 +261,6 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
 
 
   public focusVisChecks(): void {
-
     this.visTimelineService.focusOnIds(this.visTimelineTreatments, this.listOfItems)
   }
 }

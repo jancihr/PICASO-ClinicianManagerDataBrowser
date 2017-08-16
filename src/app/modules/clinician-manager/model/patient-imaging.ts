@@ -1,9 +1,9 @@
-export class PatientTreatment {
+export class PatientImaging {
   id: string;
   category: string;
   startDate: Date;
-  endDate: Date;
+
   color: string;
   visitReason: string;
-  visitResults: string;
+
 }

@@ -4,7 +4,7 @@
 
 import {Component, Input, OnInit} from "@angular/core";
 import {PatientData} from "../model/patient-data"
-import {PicasoDataService} from "../service/picaso-data-cnet.service";
+import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 
 
@@ -58,7 +58,7 @@ export class PatientOverviewComponent implements OnInit {
   getPatient(): void {
 
     //console.log("getPatient", this.selectedPatient);
-    this.picasoDataService.getPatient(this.selectedPatient, this.progress).subscribe(
+    this.picasoDataService.getPatient(this.progress).subscribe(
       patient => this.patientData = patient,
       error => this.errorMessage = <any>error);
 
@@ -75,6 +75,8 @@ export class PatientOverviewComponent implements OnInit {
   }
 
   getPatients(): void {
+
+
     this.picasoDataService.getPatients(this.progress).subscribe(
       patientsList => {
         this.patientsList = patientsList;

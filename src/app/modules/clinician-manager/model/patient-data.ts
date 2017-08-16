@@ -2,10 +2,7 @@
 export class PatientData {
   id: string;
   name: string;
-  address1: string;
-  address2: string;
-  address3: string;
-  address4: string;
+  address: string;
   bloodType: string;
   dob: Date;
   height: string;

@@ -60,9 +60,11 @@
            [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
       <thead>
       <tr>
-        <mfDefaultSorter by="name">
-          Name
-        </mfDefaultSorter>
+        <th i18n="Name">
+          <mfDefaultSorter by="name">
+            Name
+          </mfDefaultSorter>
+        </th>
         <th i18n="Institution">Institution</th>
         <th i18n="Speciality">Speciality</th>
         <th i18n="Start Date">Start Date</th>

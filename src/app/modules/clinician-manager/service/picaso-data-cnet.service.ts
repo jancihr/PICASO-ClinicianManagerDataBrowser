@@ -97,7 +97,7 @@ export class PicasoDataService {
     patient.name = result.Person.FirstName + " " + result.Person.LastName
     patient.dob = result.Patient.DateOfBirth;
     patient.height = result.Patient.Height;
-    patient.address1 = result.Person.Address;
+    patient.address = result.Person.Address;
     patient.gender = result.Patient.Gender;
     patient.bloodType = "AB Negative";
     patient.livesAlone = false;

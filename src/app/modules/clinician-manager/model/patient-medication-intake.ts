@@ -1,13 +1,9 @@
-export class PatientMedication {
+export class PatientMedicationIntake {
   id: string;
   name: string;
   startDate: Date;
-  endDate: Date;
   dosage: string;
-  frequency: string;
-  stopReason: string;
   color: string;
   disease: string;
   prescribedBy: string;
-  type: string;
 }

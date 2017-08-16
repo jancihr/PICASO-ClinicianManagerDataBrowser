@@ -1,0 +1,427 @@
+{
+  "anyCallInputParameters": {
+    "patientId": "idp",
+    "startDate": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)",
+    "endDate": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)"
+  },
+  "infoResult": {
+    "id": "758923/8976",
+    "name": "Peter Moskowitch",
+    "address": "Great Address, Super city",
+    "bloodType": "AB normal",
+    "dob": "1960-05-10",
+    "height": "180cm",
+    "gender": "M",
+    "insurer": "Obamacare",
+    "insurerId": "OBMCR",
+    "occupancy": "Retired",
+    "livesAlone": "false"
+  },
+  "moriskyResult": {
+    "name": "Morisky Scale",
+    "id": "morisky",
+    "unit": "score",
+    "color": "#000000",
+    "minValue": 2,
+    "maxValue": 3,
+    "midValue": 2.5,
+    "values": [
+      {
+        "id": "597fd3d49922fb40321ce943",
+        "value": 2.9475,
+        "date": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)",
+        "source": "SLucia"
+      },
+      {
+        "id": "597fd3d41ce145a55e45efa2",
+        "value": 3.4444,
+        "date": "Tue Aug 23 2016 12:07:35 GMT+0200 (CEST)",
+        "source": "UDUS_Rh"
+      }
+    ]
+  },
+  "heartRateResult": {
+    "id": "heartrate",
+    "name": "Resting Heartrate",
+    "unit": "beats/min",
+    "color": "orange",
+    "minValue": 40,
+    "midValue": 60,
+    "maxValue": 100,
+    "values": [
+      {
+        "id": "5925e14413c912d56b032b28",
+        "value": 56,
+        "date": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)"
+      },
+      {
+        "id": "5925e144858d9ab95bb6d621",
+        "value": 67,
+        "date": "Tue Aug 23 2016 12:07:35 GMT+0200 (CEST)"
+      }
+    ]
+  },
+  "systolicResult": {
+    "id": "sys",
+    "name": "Blood Pressure SYS",
+    "unit": "mmHg",
+    "color": "red",
+    "midValue": 120,
+    "minValue": 115,
+    "maxValue": 125,
+    "values": [
+      {
+        "id": "5925e0f8c24ce54e2e74f419",
+        "value": 133,
+        "date": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)"
+      },
+      {
+        "id": "5925e0f86b25ffdaff1709d6",
+        "value": 140,
+        "date": "Tue Aug 23 2016 12:07:35 GMT+0200 (CEST)"
+      }
+    ]
+  },
+  "diastolicResult": {
+    "id": "dia",
+    "name": "Blood Pressure DIA",
+    "unit": "mmHg",
+    "color": "red",
+    "minValue": 70,
+    "maxValue": 90,
+    "midValue": 80,
+    "values": [
+      {
+        "id": "5925e0dbba0ea07b42974011",
+        "value": 69,
+        "date": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)"
+      },
+      {
+        "id": "5925e0db43d8092bf0fb0d6d",
+        "value": 90,
+        "date": "Tue Aug 23 2016 12:07:35 GMT+0200 (CEST)"
+      }
+    ]
+  },
+  "weightResult": {
+    "id": "weight",
+    "name": "Weight",
+    "unit": "kg",
+    "color": "#000000",
+    "minValue": 70,
+    "maxValue": 90,
+    "midValue": 80,
+    "values": [
+      {
+        "id": "5925e0b46ff4317fce57e9a2",
+        "value": 65.2,
+        "date": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)"
+      },
+      {
+        "id": "5925e0b457ad9211ad7cf458",
+        "value": 62.5,
+        "date": "Tue Aug 23 2016 12:07:35 GMT+0200 (CEST)"
+      }
+    ]
+  },
+  "stepsResult": {
+    "id": "steps",
+    "name": "Steps",
+    "unit": "1000s of steps",
+    "color": "#FFB200",
+    "minValue": 1000,
+    "maxValue": null,
+    "midValue": 5000,
+    "values": [
+      {
+        "id": "5925e08ab2dd3085b171b3c3",
+        "value": 9.557,
+        "date": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)"
+      },
+      {
+        "id": "5925e08a1664f9fbe7f16c12",
+        "value": 36.539,
+        "date": "Tue Aug 23 2016 12:07:35 GMT+0200 (CEST)"
+      }
+    ]
+  },
+  "distanceResult": {
+    "id": "distance",
+    "name": "Walking distance",
+    "unit": "km",
+    "color": "green",
+    "minValue": 2,
+    "maxValue": null,
+    "midValue": 5,
+    "values": [
+      {
+        "id": "597bd403c7f5bfec1a2d5e3f",
+        "value": 3.05,
+        "date": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)"
+      },
+      {
+        "id": "597bd4032a049fa6435ca06e",
+        "value": 16.58,
+        "date": "Tue Aug 23 2016 12:07:35 GMT+0200 (CEST)"
+      }
+    ]
+  },
+  "sleepResult": {
+    "id": "sleep",
+    "name": "Night sleep",
+    "unit": "hours",
+    "color": "#000000",
+    "minValue": 6,
+    "maxValue": 10,
+    "midValue": 8,
+    "values": [
+      {
+        "id": "597bd31139a27a105766a3c8",
+        "value": 5,
+        "date": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)"
+      },
+      {
+        "id": "597bd311d263f2d7a318c976",
+        "value": 3,
+        "date": "Tue Aug 23 2016 12:07:35 GMT+0200 (CEST)"
+      }
+    ]
+  },
+  "painResult": {
+    "id": "pain",
+    "name": "Pain ratings",
+    "unit": "score",
+    "color": "#0daad0",
+    "minValue": 0,
+    "maxValue": 3,
+    "midValue": 2,
+    "values": [
+      {
+        "id": "597be26c7f717e442eeb2c6b",
+        "value": 9,
+        "date": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)"
+      },
+      {
+        "id": "597be26cfbbfa1a8dd9680ca",
+        "value": 7,
+        "date": "Tue Aug 23 2016 12:07:35 GMT+0200 (CEST)"
+      }
+    ]
+  },
+  "wellBeingResult": {
+    "id": "wellbeing",
+    "name": "Well-being ratings",
+    "unit": "score",
+    "color": "#0daad0",
+    "minValue": 0,
+    "maxValue": null,
+    "midValue": 5,
+    "values": [
+      {
+        "id": "597be2ce351b6c99505b249d",
+        "value": 1,
+        "date": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)"
+      },
+      {
+        "id": "597be2cedc82f92c5e9f18b3",
+        "value": 4,
+        "date": "Tue Aug 23 2016 12:07:35 GMT+0200 (CEST)"
+      }
+    ]
+  },
+  "radaiResult": {
+    "id": "radai",
+    "name": "RADAI",
+    "unit": "score",
+    "color": "#0d0ed0",
+    "maxValue": 1.6,
+    "values": [
+      {
+        "id": "5988ddc126e3de60229cd8b9",
+        "value": 6.8867,
+        "date": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)",
+        "source": "UDUS_Rh"
+      },
+      {
+        "id": "5988ddc1044a56f2dd0b2347",
+        "value": 8.701,
+        "date": "Tue Aug 23 2016 12:07:35 GMT+0200 (CEST)",
+        "source": "RA_home"
+      }
+    ]
+  },
+  "ffbhResult": {
+    "id": "ffbh",
+    "name": "FFbh",
+    "unit": "score",
+    "color": "#0d00d0",
+    "values": [
+      {
+        "id": "597bd691f172737a91cbde82",
+        "value": 2,
+        "date": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)",
+        "source": "RA_home"
+      },
+      {
+        "id": "597bd691b567051715103103",
+        "value": 2,
+        "date": "Tue Aug 23 2016 12:07:35 GMT+0200 (CEST)",
+        "source": "RA_home"
+      }
+    ]
+  },
+  "haqResult": {
+    "id": "haq",
+    "name": "HAQ",
+    "unit": "score",
+    "color": "#0db0d0",
+    "maxValue": 1,
+    "values": [
+      {
+        "id": "5988dd20c342d6d5a6ece4f6",
+        "value": 1.3767,
+        "date": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)",
+        "source": "SLucia"
+      },
+      {
+        "id": "5988dd2005715d890060c0af",
+        "value": 2.9916,
+        "date": "Tue Aug 23 2016 12:07:35 GMT+0200 (CEST)",
+        "source": "RA_home"
+      }
+    ]
+  },
+  "eq5dResult": {
+    "id": "eq5d",
+    "name": "EQ-5D",
+    "unit": "score",
+    "color": "#0aa0d0",
+    "values": [
+      {
+        "id": "597be33f9e3e52cf517eb899",
+        "value": 4,
+        "date": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)"
+      },
+      {
+        "id": "597be33fd76c6dd43eeb4362",
+        "value": 5,
+        "date": "Tue Aug 23 2016 12:07:35 GMT+0200 (CEST)"
+      }
+    ]
+  },
+  "medicationPrescriptionsResult": [
+    {
+      "id": "IDxsdf",
+      "name": "Candesartan",
+      "startDate": "2017-05-12T10:41:19.000Z",
+      "endDate": "2017-12-17T10:41:19.000Z",
+      "dosage": "23mg",
+      "frequency": "3 times a day",
+      "stopReason": "",
+      "color": "f86c6b",
+      "disease": "jhaskds",
+      "prescribedBy": "DoctorWho - GP"
+    }
+  ],
+  "medicationIntakesResult": [
+    {
+      "id": "ID",
+      "name": "Candesartan",
+      "startDate": "2017-05-01T10:41:19.000Z",
+      "dosage": "23mg",
+      "color": "f86c6b",
+      "disease": "jhaskds",
+      "prescribedBy": "DoctorWho - GP"
+    }
+  ],
+  "followUpsResult": [
+    {
+      "id": "idaa",
+      "name": "iddm",
+      "role": "role",
+      "date": "2017-03-20T10:41:19.000Z",
+      "note": "iddw"
+    }
+  ],
+  "concludingCommentsResult": [
+    {
+      "id": "idaa",
+      "authorId": "iddm",
+      "addresseeId": "iddw",
+      "addresseeRoleId": "idr",
+      "author": "Doctor Who",
+      "addresseeRole": "Neurologist",
+      "addresseeName": "Doctor Magic",
+      "date": "2017-03-20T10:41:19.000Z",
+      "comment": "haksdhkashd kaasdhak sdhak dhaksd  <br> khjsd kahsdkj as <b> test </b>"
+    }
+  ],
+  "cliniciansResult": [
+    {
+      "id": "ID",
+      "name": "Doctor Who",
+      "institution": "Institution name, desc",
+      "speciality": "Doctor of magic",
+      "startDate": "2017-01-12T10:41:19.000Z",
+      "endDate": "2017-01-20T10:41:19.000Z"
+    }
+  ],
+  "inClinicTreatmentsResult": [
+    {
+      "id": "ID1",
+      "startDate": "2017-04-20T10:41:19.000Z",
+      "endDate": "2017-06-20T10:41:19.000Z",
+      "visitReason": "Stay at clinic B for treatment",
+      "color": "orange",
+      "details": "html"
+    }
+  ],
+  "outClinicTreatmentsResult": [
+    {
+      "id": "ID1",
+      "startDate": "2017-05-20T10:41:19.000Z",
+      "visitReason": "GP visit",
+      "color": "#7777ff",
+      "details": "html"
+    }
+  ],
+  "imagingResult": [
+    {
+      "id": "ID1",
+      "category": "Care professional",
+      "startDate": "2017-06-20T10:41:19.000Z",
+      "visitReason": "GP",
+      "color": "#7777ff"
+    }
+  ],
+  "labtestResult": [
+    {
+      "id": "ID1",
+      "startDate": "2017-07-20T10:41:19.000Z",
+      "visitReason": "Blood test at clinic B",
+      "forClinicianID": "idc",
+      "froClinician": "Doctor Who",
+      "color": "#7777ff"
+    }
+  ],
+  "diseasesResult": [
+    {
+      "id": "ID1",
+      "name": "Parkinson's Disease",
+      "dateOfOnset": "2017-01-20T10:41:19.000Z",
+      "dateOfOffset": null,
+      "sideOfOnset": "right",
+      "clinicalPhenotype": "mixed",
+      "severity": "severity"
+    },
+    {
+      "id": "ID2",
+      "name": "Diabetes",
+      "dateOfOnset": "2017-01-01T10:41:19.000Z",
+      "dateOfOffset": null,
+      "severity": "severity",
+      "sideOfOnset": null,
+      "clinicalPhenotype": "mixed"
+    }
+  ]
+}

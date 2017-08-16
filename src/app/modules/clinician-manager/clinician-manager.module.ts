@@ -14,7 +14,6 @@ import {PatientDiseasesComponent} from "./cards/patient-diseases.component";
 import {PatientCliniciansComponent} from "./cards/patient-clinicians-history.component";
 import {PatientTreatmentHistoryComponent} from "./cards/patient-treatment-history.component";
 import {nvD3} from "ng2-nvd3";
-import {PatientImagingComponent} from "./cards/patient-imaging.component";
 import {MyDateRangePickerModule} from "mydaterangepicker";
 import {ProgressHttpModule} from "angular-progress-http";
 import {DataTableModule} from "angular2-datatable";
@@ -38,8 +37,7 @@ import {PatientRangePicker} from "./cards/patient-range-picker.component";
       PatientMedicationHistoryComponent, PatientFollowUpComponent,
       PatientDiseasesComponent, PatientConcludingCommentsComponent,
       PatientCliniciansComponent, PatientTreatmentHistoryComponent,
-      PatientImagingComponent, PatientNotificationsComponent,
-      PatientRangePicker,
+      PatientNotificationsComponent, PatientRangePicker,
         nvD3
     ]
 })

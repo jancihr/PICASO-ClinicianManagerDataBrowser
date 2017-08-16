@@ -42,13 +42,18 @@
 
 
         <div>{{selectedMedication.name}}</div>
-        <div>Disease: {{selectedMedication.disease}}</div>
-        <div>Prescribed by: {{selectedMedication.prescribedBy}}</div>
-        <div>Dosage: {{selectedMedication.dosage}}</div>
-        <div>Frequency: {{selectedMedication.frequency}}</div>
-        <div>Stop Reason: {{selectedMedication.stopReason}}</div>
-        <div>From: {{selectedMedication.startDate}}</div>
-        <div>To: {{selectedMedication.endDate}}</div>
+        <div *ngIf="selectedMedication.disease">Disease: {{selectedMedication.disease}}</div>
+        <div *ngIf="selectedMedication.prescribedBy">Prescribed by: {{selectedMedication.prescribedBy}}</div>
+        <div *ngIf="selectedMedication.dosage">Dosage: {{selectedMedication.dosage}}</div>
+        <div *ngIf="selectedMedication.frequency">Frequency: {{selectedMedication.frequency}}</div>
+        <div *ngIf="selectedMedication.stopReason">Stop Reason: {{selectedMedication.stopReason}}</div>
+        <div *ngIf="selectedMedication.startDate && selectedMedication.type==='prescription'">From:
+          {{selectedMedication.startDate}}
+        </div>
+        <div *ngIf="selectedMedication.startDate && selectedMedication.type==='intake'">Time:
+          {{selectedMedication.startDate}}
+        </div>
+        <div *ngIf="selectedMedication.endDate">To: {{selectedMedication.endDate}}</div>
 
 
       </div>

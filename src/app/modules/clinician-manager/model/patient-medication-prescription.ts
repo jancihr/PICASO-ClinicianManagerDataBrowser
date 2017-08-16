@@ -1,4 +1,4 @@
-export class PatientMedication {
+export class PatientMedicationPrescription {
   id: string;
   name: string;
   startDate: Date;
@@ -9,5 +9,4 @@ export class PatientMedication {
   color: string;
   disease: string;
   prescribedBy: string;
-  type: string;
 }

@@ -1,11 +1,13 @@
 import {Component, OnInit, OnDestroy, ViewChild, Input} from '@angular/core';
 
-import {VisTimelineService, VisTimelineItems, VisTimelineItem, VisTimelineOptions} from 'ng2-vis/ng2-vis';
+import {VisTimelineService, VisTimelineItems, VisTimelineOptions} from 'ng2-vis/ng2-vis';
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientMedication} from "../model/patient-medication";
 
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {MyDateRange} from "./patient-range-picker.component";
+import {PatientMedicationIntake} from "../model/patient-medication-intake";
+import {PatientMedicationPrescription} from "../model/patient-medication-prescription";
 
 @Component({
   selector: 'medication-history',
@@ -30,12 +32,10 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
   selectedId: string;
   selectedMedication: PatientMedication;
-
   listOfItems: string[];
-
-  errorMessage: string;
   medications: PatientMedication[];
 
+  errorMessage: string;
 
   public visTimelineMedications: string = 'medicationTimelineGraph';
   public visTimelineItemsMedications: VisTimelineItems;
@@ -46,36 +46,34 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
   }
 
   public ngOnInit(): void {
-
-    //this.selectedItem = '';
-
-
-    this.getMedications();
-
-
-    this.visTimelineItemsMedications = new VisTimelineItems([]);
-
-
     this.visTimelineMedicationsOptions = {
       selectable: true,
       showCurrentTime: true,
       //zoomMax: 61556926000, //year
       zoomMin: 86400000, //day
       clickToUse: true,
-      rollingMode: true,//{follow:false, offset:0},
+      rollingMode: null,//{follow:false, offset:0},
       start: this.dateRange.startDate,
       end: this.dateRange.endDate
     };
+    this.getMedications();
+  }
+
+  getMedications() {
 
 
+    this.medications = [];
+
+    this.getMedicationIntakes();
+    this.getMedicationPrescriptions()
   }
 
   close() {
-    this.selectedMedication = undefined;
+    this.selectedMedication = null;
   }
 
   openDetail() {
-    if (!(this.selectedMedication !== undefined && this.selectedMedication.id === this.selectedId)) {
+    if (!(this.selectedMedication !== null && this.selectedMedication.id === this.selectedId)) {
       for (var medication of this.medications) {
         if (medication.id === this.selectedId) {
           this.animateToggle = !this.animateToggle;
@@ -89,7 +87,6 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
   public timelineInitialized(): void {
     // console.log('timeline initialized');
-
     // now we can use the service to register on events
     this.visTimelineService.on(this.visTimelineMedications, 'click');
 
@@ -101,47 +98,54 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
           this.selectedId = eventData[1].item;
           //console.log("itemid: ", eventData[1].item);
           if (eventData[1].item !== null) this.openDetail();
-
-
         }
       });
   }
 
 
   public refreshRange(start: Date, end: Date): void {
-
     this.visTimelineService.setWindow('medicationTimelineGraph', start, end);
-
   }
 
-
-  setMedications(medications: PatientMedication[]): void {
-
-    this.medications = medications;
-
+  setMedicationsGraphData(): void {
+    this.selectedId = null;
+    this.selectedMedication = null;
+    this.listOfItems = [];
     this.visTimelineItemsMedications = new VisTimelineItems([]);
 
+    for (var item of this.medications) {
 
-    this.listOfItems = [];
-    for (var item of medications) {
+      if (item.endDate === undefined || item.endDate === null) {
+        this.visTimelineItemsMedications.add(
+          {
+            id: item.id,
+            style: "background: #" + item.color,
 
+            content: `<div>
+                              <div class="w3-small"><b>${item.name} INTAKE</b></div>
+                              <div class="w3-small">${item.dosage} </div>
+                              </div>`
+            ,
+            start: item.startDate,
+            type: 'box'
+          });
 
-      var vistimelineitem: VisTimelineItem;
+      } else {
 
-      this.visTimelineItemsMedications.add(
-        {
-          id: item.id,
-          style: "background: #" + item.color,
+        this.visTimelineItemsMedications.add(
+          {
+            id: item.id,
+            style: "background: #" + item.color,
 
-          content: `<div>
-                              <div class="w3-small"><b>${item.name}</b></div>
+            content: `<div>
+                              <div class="w3-small"><b>${item.name} PRESCRIPTION</b></div>
                               <div class="w3-small">${item.dosage} - ${item.frequency} - ${item.stopReason}</div>
                               </div>`
-          ,
-          start: item.startDate,
-          end: item.endDate
-        });
-      //vistimelineitem.className = " w3-border w3-border-lime w3-round-large";
+            ,
+            start: item.startDate,
+            end: item.endDate
+          });
+      }
 
       this.listOfItems.push(item.id);
     }
@@ -152,13 +156,68 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
   }
 
-  getMedications(): void {
+  setMedicationPrescriptions(medications: PatientMedicationPrescription[]): void {
+    for (let prescription of medications) {
+      this.medications.push(
+        {
+          id: "IN_" + prescription.id,
+          name: prescription.name,
+          startDate: prescription.startDate,
+          endDate: prescription.endDate,
+          dosage: prescription.dosage,
+          frequency: prescription.frequency,
+          stopReason: prescription.stopReason,
+          color: prescription.color,
+          disease: prescription.disease,
+          prescribedBy: prescription.prescribedBy,
+          type: "prescription"
+        }
+      );
+      console.log("prescript:", this.medications);
+    }
+    this.setMedicationsGraphData();
+  }
 
-    this.picasoDataService.getMedicationHistory(
+  setMedicationIntakes(medications: PatientMedicationIntake[]): void {
+    for (let prescription of medications) {
+      this.medications.push(
+        {
+          id: "PRE_" + prescription.id,
+          name: prescription.name,
+          startDate: prescription.startDate,
+          endDate: null,
+          dosage: prescription.dosage,
+          frequency: null,
+          stopReason: null,
+          color: prescription.color,
+          disease: prescription.disease,
+          prescribedBy: prescription.prescribedBy,
+          type: "intake"
+        }
+      );
+      console.log("intake:", this.medications);
+    }
+    this.setMedicationsGraphData();
+  }
+
+  getMedicationPrescriptions(): void {
+
+    this.picasoDataService.getMedicationPrescriptionHistory(
       this.dateRange.startDate,
       this.dateRange.endDate, this.progress
     ).subscribe(
-      medications => this.setMedications(medications),
+      medications => this.setMedicationPrescriptions(medications),
+      error => this.errorMessage = <any>error);
+
+  }
+
+  getMedicationIntakes(): void {
+
+    this.picasoDataService.getMedicationIntakeHistory(
+      this.dateRange.startDate,
+      this.dateRange.endDate, this.progress
+    ).subscribe(
+      medications => this.setMedicationIntakes(medications),
       error => this.errorMessage = <any>error);
 
   }
@@ -169,7 +228,6 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
 
   public focusVis(): void {
-
     this.visTimelineService.focusOnIds(this.visTimelineMedications, this.listOfItems)
   }
 }
