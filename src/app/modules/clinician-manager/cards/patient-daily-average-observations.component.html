@@ -47,7 +47,7 @@
           <span style="white-space: nowrap">
 
             <button type="button" class="btn btn-default"
-                    (click)="toggleLeft(group.id, group.name)"> {{group.name}}</button>
+                    (click)="toggleLeft(group.id, group.name)"> {{group.name}} <span *ngIf="group.source"> ({{group.source}})</span></button>
 
             <button
               type="button"

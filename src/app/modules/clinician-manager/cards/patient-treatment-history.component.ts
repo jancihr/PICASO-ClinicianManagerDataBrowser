@@ -3,13 +3,10 @@ import {Component, OnInit, OnDestroy, ViewChild, Input} from '@angular/core';
 import {VisTimelineService, VisTimelineItems, VisTimelineOptions} from 'ng2-vis/ng2-vis';
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientTreatment} from "../model/patient-treatment";
-
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {MyDateRange} from "./patient-range-picker.component";
-import {PatientInClinicTreatment} from "../model/patient-in-clinic-treatment";
-import {PatientOutClinicTreatment} from "../model/patient-out-clinic-treatment";
-import {PatientLabTest} from "../model/patient-lab-test";
-import {PatientImaging} from "../model/patient-imaging";
+import {CareProfessionalVisit} from "../model/generated-interfaces";
+
 
 @Component({
   selector: 'patient-treatments',
@@ -66,10 +63,15 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
 
     this.checks = [];
 
-    this.getInClinicTreatments();
-    this.getOutClinicTreatments();
+    this.getVisits();
     this.getImaging();
     this.getLabTests();
+
+    this.getPsychTests();
+    this.getfunctionalDiag();
+    this.getPatientReport();
+    this.getQuestionFill();
+
   }
 
   close() {
@@ -79,7 +81,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
   openDetail() {
     if (!(this.selectedTreatment !== null && this.selectedTreatment.id === this.selectedId)) {
 
-      for (var treatment of this.checks) {
+      for (let treatment of this.checks) {
         if (treatment.id === this.selectedId) {
 
           this.animateToggle = !this.animateToggle;
@@ -112,6 +114,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
   }
 
   public refreshRange(start: Date, end: Date): void {
+    this.close();
     this.visTimelineService.setWindow('visTimelineGraph', start, end);
   }
 
@@ -155,103 +158,110 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
   }
 
 
-  setInClinicTreatments(treatments: PatientInClinicTreatment[]) {
+  setVisitTreatments(treatments: CareProfessionalVisit[]) {
     for (let treatment of treatments) {
-      let commonTreatment = new PatientTreatment();
-      commonTreatment.startDate = treatment.startDate;
-      commonTreatment.endDate = treatment.endDate;
-      commonTreatment.id = "IN_" + treatment.id;
-      commonTreatment.category = "In Clinic Treatment";
-      commonTreatment.color = treatment.color;
-      commonTreatment.visitReason = treatment.visitReason;
-      commonTreatment.visitResults = treatment.details;
-      this.checks.push(commonTreatment);
 
-      console.log("inclinic:", commonTreatment);
+      this.checks.push(
+        {
+          startDate: treatment.date,
+          endDate: null,
+          id: "IN_" + treatment.id,
+          category: "Care professional",
+          color: treatment.color,
+          visitReason: treatment.careProfessional,
+          visitResults: [{type: "Care professional result", result: treatment.result}]
+
+        }
+      );
+
     }
     this.setTreatmentsGraphData();
   }
 
-  setOutClinicTreatments(treatments: PatientOutClinicTreatment[]) {
+  setTreatment(treatments: any[], type: string) {
     for (let treatment of treatments) {
-      let commonTreatment = new PatientTreatment();
-      commonTreatment.startDate = treatment.startDate;
-      commonTreatment.endDate = null;
-      commonTreatment.id = "OUT_" + treatment.id;
-      commonTreatment.category = "Out Clinic Treatment";
-      commonTreatment.color = treatment.color;
-      commonTreatment.visitReason = treatment.visitReason;
-      commonTreatment.visitResults = treatment.details;
-      this.checks.push(commonTreatment);
-      console.log("outclinic:", commonTreatment);
-    }
-    this.setTreatmentsGraphData();
-  }
 
-  setLabTests(treatments: PatientLabTest[]) {
-    for (let treatment of treatments) {
-      let commonTreatment = new PatientTreatment();
-      commonTreatment.startDate = treatment.startDate;
-      commonTreatment.endDate = null;
-      commonTreatment.id = "LAB_" + treatment.id;
-      commonTreatment.category = "Lab Test";
-      commonTreatment.color = treatment.color;
-      commonTreatment.visitReason = treatment.visitReason;
-      commonTreatment.visitResults = null;
-      this.checks.push(commonTreatment);
-    }
-    this.setTreatmentsGraphData();
-  }
+      let visitReason: string = "";
+      for (let result of treatment.results) {
+        visitReason += (visitReason === "" ? "" : ", ") + result.type;
+      }
+      this.checks.push(
+        {
+          startDate: treatment.date,
+          endDate: null,
+          id: type + "_" + treatment.id,
+          category: type,
+          color: treatment.color,
+          visitReason: visitReason,
+          visitResults: treatment.results
+        }
+      );
 
-  setImaging(treatments: PatientImaging[]) {
-    for (let treatment of treatments) {
-      let commonTreatment = new PatientTreatment();
-      commonTreatment.startDate = treatment.startDate;
-      commonTreatment.endDate = null;
-      commonTreatment.id = "IMG_" + treatment.id;
-      commonTreatment.category = "Imaging";
-      commonTreatment.color = treatment.color;
-      commonTreatment.visitReason = treatment.visitReason;
-      commonTreatment.visitResults = null;
-      this.checks.push(commonTreatment);
     }
     this.setTreatmentsGraphData();
   }
 
 
-  getInClinicTreatments(): void {
-    this.picasoDataService.getInClinicTreatmentsResult(
+  getVisits(): void {
+    this.picasoDataService.getProfessionalVisits(
       this.dateRange.startDate,
       this.dateRange.endDate, this.progress
     ).subscribe(
-      checks => this.setInClinicTreatments(checks),
-      error => this.errorMessage = <any>error);
-  }
-
-  getOutClinicTreatments(): void {
-    this.picasoDataService.getOutClinicTreatmentsResult(
-      this.dateRange.startDate,
-      this.dateRange.endDate, this.progress
-    ).subscribe(
-      checks => this.setOutClinicTreatments(checks),
+      checks => this.setVisitTreatments(checks),
       error => this.errorMessage = <any>error);
   }
 
   getImaging(): void {
-    this.picasoDataService.getImagingResult(
+    this.picasoDataService.getImagingResults(
       this.dateRange.startDate,
       this.dateRange.endDate, this.progress
     ).subscribe(
-      checks => this.setImaging(checks),
+      checks => this.setTreatment(checks, "Imaging"),
       error => this.errorMessage = <any>error);
   }
 
   getLabTests(): void {
-    this.picasoDataService.getLabtestResult(
+    this.picasoDataService.getLabTestResults(
       this.dateRange.startDate,
       this.dateRange.endDate, this.progress
     ).subscribe(
-      checks => this.setLabTests(checks),
+      checks => this.setTreatment(checks, "Lab Tests"),
+      error => this.errorMessage = <any>error);
+  }
+
+  getPsychTests() {
+    this.picasoDataService.getPsychologicalNeurologicalTestsPerformedResults(
+      this.dateRange.startDate,
+      this.dateRange.endDate, this.progress
+    ).subscribe(
+      checks => this.setTreatment(checks, "Psych. & neurol. tests"),
+      error => this.errorMessage = <any>error);
+  }
+
+  getfunctionalDiag() {
+    this.picasoDataService.getFunctionalDiagnosticsResult(
+      this.dateRange.startDate,
+      this.dateRange.endDate, this.progress
+    ).subscribe(
+      checks => this.setTreatment(checks, "Functional diagnostics"),
+      error => this.errorMessage = <any>error);
+  }
+
+  getPatientReport() {
+    this.picasoDataService.getPatientReportedOutcomesResultResult(
+      this.dateRange.startDate,
+      this.dateRange.endDate, this.progress
+    ).subscribe(
+      checks => this.setTreatment(checks, "Patient reported outcomes"),
+      error => this.errorMessage = <any>error);
+  }
+
+  getQuestionFill() {
+    this.picasoDataService.getQuestionaryFilledResult(
+      this.dateRange.startDate,
+      this.dateRange.endDate, this.progress
+    ).subscribe(
+      checks => this.setTreatment(checks, "Questionnaire taken"),
       error => this.errorMessage = <any>error);
   }
 

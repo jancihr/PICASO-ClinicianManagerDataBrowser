@@ -1,8 +1,8 @@
-import { NgModule }                 from '@angular/core';
-import { ChartsModule }             from 'ng2-charts/ng2-charts';
+import {NgModule} from '@angular/core';
+import {ChartsModule} from 'ng2-charts/ng2-charts';
 
-import {ClinicianManagerComponent}       from './clinician-manager.component';
-import {ClinicianManagerRoutingModule}   from './clinician-manager-routing.module';
+import {ClinicianManagerComponent} from './clinician-manager.component';
+import {ClinicianManagerRoutingModule} from './clinician-manager-routing.module';
 import {VisModule} from "ng2-vis";
 import {HttpModule} from "@angular/http";
 import {CommonModule} from "@angular/common";
@@ -18,28 +18,26 @@ import {MyDateRangePickerModule} from "mydaterangepicker";
 import {ProgressHttpModule} from "angular-progress-http";
 import {DataTableModule} from "angular2-datatable";
 import {FormsModule} from "@angular/forms";
-import {PatientNotificationsComponent} from "./cards/patient-notifications.component";
 import {PatientConcludingCommentsComponent} from "./cards/patient-concluding-comments.component";
 import {PatientFollowUpComponent} from "./cards/patient-follow-up-appointments.component";
 import {PatientRangePicker} from "./cards/patient-range-picker.component";
 
 
 @NgModule({
-    imports: [
-        ClinicianManagerRoutingModule, FormsModule,
-        ChartsModule, VisModule, HttpModule, CommonModule,
-      Ng2Bs3ModalModule, MyDateRangePickerModule, ProgressHttpModule, DataTableModule
+  imports: [
+    ClinicianManagerRoutingModule, FormsModule,
+    ChartsModule, VisModule, HttpModule, CommonModule,
+    Ng2Bs3ModalModule, MyDateRangePickerModule, ProgressHttpModule, DataTableModule
 
-    ],
-    declarations: [ClinicianManagerComponent,
-        PatientOverviewComponent,
-        PatientDailyAverageObservationsComponent,
-      PatientMedicationHistoryComponent, PatientFollowUpComponent,
-      PatientDiseasesComponent, PatientConcludingCommentsComponent,
-      PatientCliniciansComponent, PatientTreatmentHistoryComponent,
-      PatientNotificationsComponent, PatientRangePicker,
-        nvD3
-    ]
+  ],
+  declarations: [ClinicianManagerComponent,
+    PatientOverviewComponent,
+    PatientDailyAverageObservationsComponent,
+    PatientMedicationHistoryComponent, PatientFollowUpComponent,
+    PatientDiseasesComponent, PatientConcludingCommentsComponent,
+    PatientCliniciansComponent, PatientTreatmentHistoryComponent, PatientRangePicker,
+    nvD3
+  ]
 })
 export class ClinicianManagerModule {
 }

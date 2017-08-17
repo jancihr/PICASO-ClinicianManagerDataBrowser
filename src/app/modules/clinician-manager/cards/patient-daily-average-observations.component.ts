@@ -1,8 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {PicasoDataService} from "../service/picaso-data.service";
-import {PatientObservationGroup} from "../model/patient-observation-group";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {MyDateRange} from "./patient-range-picker.component";
+import {ObservationResult} from "../model/generated-interfaces";
 
 
 declare let d3, nv: any;
@@ -45,7 +45,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   };
 
 
-  observationGroups: PatientObservationGroup[];
+  observationGroups: ObservationResult[];
 
 
   constructor(private picasoDataService: PicasoDataService) {
@@ -83,7 +83,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
     if (this.forMeasurements === "morisky") {
 
-      this.picasoDataService.getMorisky(
+      this.picasoDataService.getObservations(
         this.dateRange.startDate,
         this.dateRange.endDate, this.progress
       ).subscribe(
@@ -115,7 +115,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   }
 
 
-  setPatientObservations(observations: PatientObservationGroup[]) {
+  setPatientObservations(observations: ObservationResult[]) {
 
     if (this.forMeasurements === "all") {
       this.observationGroups = observations;

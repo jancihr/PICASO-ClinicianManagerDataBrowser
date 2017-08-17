@@ -3,9 +3,9 @@
  */
 
 import {Component, Input, OnInit} from "@angular/core";
-import {PatientData} from "../model/patient-data"
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
+import {InfoResult} from "../model/generated-interfaces";
 
 
 @Component({
@@ -18,7 +18,7 @@ import {PatientLoadProgress} from "../model/patient-loadprogress";
 export class PatientOverviewComponent implements OnInit {
 
   errorMessage: string;
-  patientData: PatientData;
+  patientData: InfoResult;
   selectedPatient: string = "1007";
   token: string;
 

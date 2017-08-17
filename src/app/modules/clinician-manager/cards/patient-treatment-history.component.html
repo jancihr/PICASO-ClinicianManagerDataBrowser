@@ -44,7 +44,8 @@
 
         <div>Category: {{selectedTreatment.category}}</div>
         <div>Visit reason: {{selectedTreatment.visitReason}}</div>
-        <div>Visit results: {{selectedTreatment.visitResults}}</div>
+        <div>Visit results:</div>
+        <div *ngFor="let result of selectedTreatment.visitResults">{{result.type}} - {{result.result}}</div>
         <div>From: {{selectedTreatment.startDate}}</div>
         <div>To: {{selectedTreatment.endDate}}</div>
       </div>

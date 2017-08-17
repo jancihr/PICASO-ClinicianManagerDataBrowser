@@ -6,8 +6,8 @@ import {PatientMedication} from "../model/patient-medication";
 
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {MyDateRange} from "./patient-range-picker.component";
-import {PatientMedicationIntake} from "../model/patient-medication-intake";
-import {PatientMedicationPrescription} from "../model/patient-medication-prescription";
+import {MedicationIntakesResult, MedicationPrescriptionsResult} from "../model/generated-interfaces";
+
 
 @Component({
   selector: 'medication-history',
@@ -74,7 +74,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
   openDetail() {
     if (!(this.selectedMedication !== null && this.selectedMedication.id === this.selectedId)) {
-      for (var medication of this.medications) {
+      for (let medication of this.medications) {
         if (medication.id === this.selectedId) {
           this.animateToggle = !this.animateToggle;
           this.selectedMedication = medication;
@@ -104,6 +104,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
 
   public refreshRange(start: Date, end: Date): void {
+    this.close();
     this.visTimelineService.setWindow('medicationTimelineGraph', start, end);
   }
 
@@ -113,7 +114,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
     this.listOfItems = [];
     this.visTimelineItemsMedications = new VisTimelineItems([]);
 
-    for (var item of this.medications) {
+    for (let item of this.medications) {
 
       if (item.endDate === undefined || item.endDate === null) {
         this.visTimelineItemsMedications.add(
@@ -156,7 +157,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
   }
 
-  setMedicationPrescriptions(medications: PatientMedicationPrescription[]): void {
+  setMedicationPrescriptions(medications: MedicationPrescriptionsResult[]): void {
     for (let prescription of medications) {
       this.medications.push(
         {
@@ -178,13 +179,13 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
     this.setMedicationsGraphData();
   }
 
-  setMedicationIntakes(medications: PatientMedicationIntake[]): void {
+  setMedicationIntakes(medications: MedicationIntakesResult[]): void {
     for (let prescription of medications) {
       this.medications.push(
         {
           id: "PRE_" + prescription.id,
           name: prescription.name,
-          startDate: prescription.startDate,
+          startDate: prescription.date,
           endDate: null,
           dosage: prescription.dosage,
           frequency: null,

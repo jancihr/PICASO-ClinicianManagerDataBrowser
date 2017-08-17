@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PicasoDataService} from "../service/picaso-data.service";
-import {PatientClinician} from "../model/patient-clinician";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
+import {CliniciansResult} from "../model/generated-interfaces";
 
 @Component({
   selector: 'patient-clinicians-history',
@@ -13,7 +13,7 @@ import {PatientLoadProgress} from "../model/patient-loadprogress";
 
 export class PatientCliniciansComponent implements OnInit {
   errorMessage: string;
-  clinicians: PatientClinician[];
+  clinicians: CliniciansResult[];
 
   public filterQuery = "";
   public rowsOnPage = 5;
