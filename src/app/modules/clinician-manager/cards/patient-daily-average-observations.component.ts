@@ -118,17 +118,23 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   setPatientObservations(observations: ObservationResult[]) {
 
     if (this.forMeasurements === "all") {
-      this.observationGroups = observations;
+
+      this.observationGroups = observations.filter(function (obj) {
+        return obj.id !== "morisky";
+      });
     }
 
     else {
       this.options.chart.height = 200;
+
       for (let observation of observations) {
+
         // console.log("observationID",observation.id);
         // console.log("forMeasurements",this.forMeasurements);
 
 
         if (observation.id === this.forMeasurements) {
+          this.footerText = observation.helpText;
           this.observationGroups = [];
           this.observationGroups.push(observation);
           this.headerText = observation.name
@@ -193,7 +199,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             //console.log("tooltip", d);
             var html = "";
             html += "<br><span style='color:" + d.point.color + "' > <i class='fa fa-circle'></i> </span> " +
-              (d.point.value === null ? "<span class='text-warning w3-tag'>MISSING VALUE!</span><br>" : d.point.value) + ' ' + d.series[0].key + '<br>' +
+              (d.point.value === null ? "<span class='badge badge-pill badge-warning'>MISSING VALUE!</span><br>" : d.point.value) + ' ' + d.series[0].key + '<br>' +
               d.point.date + '<br>';
             return html;
           }
@@ -218,13 +224,13 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
                     "<span style='color:" + elem.color + "' > <i class='fa fa-circle'></i> </span> " +
 
-                    elem.data.name + " " + elem.data.observation.date + ": <br>" +
+                    elem.data.name + " " + elem.data.observation.date + ": <br> <span class='text-white'><i class='fa fa-circle-o'></i> </span>" +
                     (
                       elem.data.observation.value === null
                         ?
-                        "<span class='text-warning w3-tag'>MISSING VALUE!</span>"
+                        "<span class='w3-tag w3-round text-warning'>MISSING VALUE!</span>"
                         :
-                        (elem.data.observation.outOfRange ? "<span class='text-danger w3-tag'>OUT OF RANGE! </span> " : "") + "<b>" + "<span class='w3-tag'>" + elem.value + " </span> " + "</b>"
+                        (elem.data.observation.outOfRange ? "<span class='w3-tag w3-round text-danger'>OUT OF RANGE! </span> " : "") + "<b>" + "<span class='w3-tag w3-round-medium'>" + elem.value + " </span> " + "</b>"
                     )
                     + " " + elem.data.unit +
                     (

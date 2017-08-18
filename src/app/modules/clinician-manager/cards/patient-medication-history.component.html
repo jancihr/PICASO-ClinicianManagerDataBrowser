@@ -33,29 +33,29 @@
     </div>
 
     <div *ngIf="selectedMedication"
-         class="{{animateToggle?'w3-animate-bottom':'w3-animate-right'}} col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
-      <div class="card-header">
+         class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+      <div class="w3-border-bottom">
         Selected Medication details
-        <button class="btn btn-default  w3-right" (click)="close()">X</button>
+        <button class="btn btn-default  w3-right" (click)="close()"><i class="fa fa-close"></i></button>
       </div>
-      <div>
+      <div class="{{animateToggle?'w3-animate-bottom':'w3-animate-right'}} ">
 
+        <samp>
+          <div>{{selectedMedication.name}}</div>
+          <div *ngIf="selectedMedication.disease">Disease: {{selectedMedication.disease}}</div>
+          <div *ngIf="selectedMedication.prescribedBy">Prescribed by: {{selectedMedication.prescribedBy}}</div>
+          <div *ngIf="selectedMedication.dosage">Dosage: {{selectedMedication.dosage}}</div>
+          <div *ngIf="selectedMedication.frequency">Frequency: {{selectedMedication.frequency}}</div>
+          <div *ngIf="selectedMedication.stopReason">Stop Reason: {{selectedMedication.stopReason}}</div>
+          <div *ngIf="selectedMedication.startDate && selectedMedication.type==='prescription'">From:
+            {{selectedMedication.startDate}}
+          </div>
+          <div *ngIf="selectedMedication.startDate && selectedMedication.type==='intake'">Time:
+            {{selectedMedication.startDate}}
+          </div>
+          <div *ngIf="selectedMedication.endDate">To: {{selectedMedication.endDate}}</div>
 
-        <div>{{selectedMedication.name}}</div>
-        <div *ngIf="selectedMedication.disease">Disease: {{selectedMedication.disease}}</div>
-        <div *ngIf="selectedMedication.prescribedBy">Prescribed by: {{selectedMedication.prescribedBy}}</div>
-        <div *ngIf="selectedMedication.dosage">Dosage: {{selectedMedication.dosage}}</div>
-        <div *ngIf="selectedMedication.frequency">Frequency: {{selectedMedication.frequency}}</div>
-        <div *ngIf="selectedMedication.stopReason">Stop Reason: {{selectedMedication.stopReason}}</div>
-        <div *ngIf="selectedMedication.startDate && selectedMedication.type==='prescription'">From:
-          {{selectedMedication.startDate}}
-        </div>
-        <div *ngIf="selectedMedication.startDate && selectedMedication.type==='intake'">Time:
-          {{selectedMedication.startDate}}
-        </div>
-        <div *ngIf="selectedMedication.endDate">To: {{selectedMedication.endDate}}</div>
-
-
+        </samp>
       </div>
 
     </div>

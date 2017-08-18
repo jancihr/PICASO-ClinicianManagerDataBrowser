@@ -47,12 +47,8 @@
           <span style="white-space: nowrap">
 
             <button type="button" class="btn btn-default"
-                    (click)="toggleLeft(group.id, group.name)"> {{group.name}} <span *ngIf="group.source"> ({{group.source}})</span></button>
+                    (click)="toggleLeft(group.id, group.name)"> {{group.name}} <span *ngIf="group.source"> ({{group.source}})</span>
 
-            <button
-              type="button"
-              class="btn btn-default"
-              (click)="toggleLeft(group.id, group.name)">
               <span [style.color]="group.color">
                                 <i class="fa {{group.showLeft?'fa-circle':'fa-circle-o'}}"></i>
                             </span>
@@ -79,7 +75,7 @@
 
     <div class="row">
 
-      <nvd3 *ngIf="observationGroups" [options]="options" [data]="data" class="with-transitions row-content"></nvd3>
+      <nvd3 *ngIf="observationGroups" [options]="options" [data]="data"></nvd3>
 
     </div>
 
@@ -87,8 +83,8 @@
   </div>
 
 
-  <div *ngIf="footerText" class="card-footer w3-white">
-    <div class="w3-tiny w3-right w3-full">{{footerText}}
+  <div class="card-footer w3-white">
+    <div class="w3-tiny w3-right w3-full">Hover the mouse pointer over the diagram for values. {{footerText}}
 
 
     </div>

@@ -49,7 +49,7 @@ export class ClinicianManagerComponent implements OnInit {
     //console.log("cookie", this._cookieService.get("clinician.dashboard.card"));
 
 
-    this.range = this.computeRangeFromString('lastyear');
+    this.range = this.computeRangeFromString('last2months');
 
 
     this.activatedRoute.params.subscribe((params: Params) => {

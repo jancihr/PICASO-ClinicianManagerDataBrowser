@@ -16,6 +16,8 @@
 
 .card-block {
   padding: 0.25rem;
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
 .card-header {

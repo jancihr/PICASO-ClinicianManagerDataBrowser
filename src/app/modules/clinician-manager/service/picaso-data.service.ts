@@ -23,6 +23,8 @@ import {
 export class PicasoDataService {
 
   private patientODSServiceURL = 'assets/fakeODS/cm_db_new.ods.json';
+  //private patientODSServiceURL = 'assets/fakeODS/cm_db_from_ods.ods.json';
+
   private patientODSServiceURLRemote = 'http://212.214.80.143:32772/api/v1/patient/11892829/anycall?startDate=2016-01-01T00%3A00%3A00&endDate=2017-11-20T23%3A59%3A59';
   private patientListServiceURL = "http://212.214.80.143:32772/api/v1/patient/all";
   private tokenServiceURL = "http://212.214.80.143:32772/api/v1/authentication/login";

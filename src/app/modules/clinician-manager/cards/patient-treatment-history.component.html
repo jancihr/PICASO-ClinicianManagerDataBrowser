@@ -32,22 +32,25 @@
     </div>
 
     <div *ngIf="selectedTreatment"
-         class="{{animateToggle?'w3-animate-bottom':'w3-animate-right'}}  col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+         class=" col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
 
-      <div class="card-header">
-        <div>Patient's Treatment details
-          <button class="btn btn-default  w3-right" (click)="close()">X</button>
+      <div class="w3-border-bottom">
+        <div>Selected Treatment Details
+          <button class="btn btn-default  w3-right" (click)="close()"><i class="fa fa-close"></i></button>
         </div>
       </div>
-      <div>
+      <div class="{{animateToggle?'w3-animate-bottom':'w3-animate-right'}} ">
+        <samp>
+          <div *ngIf="selectedTreatment.startDate">{{selectedTreatment.endDate?'From:':'Date:'}}
+            {{selectedTreatment.startDate}}
+          </div>
+          <div *ngIf="selectedTreatment.endDate">To: {{selectedTreatment.endDate}}</div>
 
-
-        <div>Category: {{selectedTreatment.category}}</div>
-        <div>Visit reason: {{selectedTreatment.visitReason}}</div>
-        <div>Visit results:</div>
+          <div>Category: {{selectedTreatment.category}}</div>
+          <div>Treatment: {{selectedTreatment.visitReason}}</div>
+          <div>Results:</div>
         <div *ngFor="let result of selectedTreatment.visitResults">{{result.type}} - {{result.result}}</div>
-        <div>From: {{selectedTreatment.startDate}}</div>
-        <div>To: {{selectedTreatment.endDate}}</div>
+        </samp>
       </div>
 
 

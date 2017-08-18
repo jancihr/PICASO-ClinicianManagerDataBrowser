@@ -37,6 +37,8 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
 
   errorMessage: string;
 
+  idCount: number;
+
   public visTimelineTreatments: string = 'visTimelineGraph';
   public visTimelineItemsTreatments: VisTimelineItems;
   public visTimelineTreatmentsOptions: VisTimelineOptions;
@@ -61,6 +63,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
 
   getChecks() {
 
+    this.idCount = 0;
     this.checks = [];
 
     this.getVisits();
@@ -129,7 +132,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
     for (let item of this.checks) {
       if (item.endDate === undefined || item.endDate === null) {
         this.visTimelineItemsTreatments.add({
-          id: item.id,
+          id: "" + this.idCount++,//item.id,
           style: "background: " + item.color,
           content: `<div>
                               <div class="w3-small"><b>${item.category}</b></div>
@@ -141,7 +144,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       }
       else {
         this.visTimelineItemsTreatments.add({
-          id: item.id,
+          id: "" + this.idCount++,//item.id,
           content: `<div>
                               <div class="w3-small"><b>${item.category}</b></div>
                               <div class="w3-small">${item.visitReason} </div>
@@ -165,7 +168,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
         {
           startDate: treatment.date,
           endDate: null,
-          id: "IN_" + treatment.id,
+          id: "" + this.idCount++, //"IN_" + treatment.id,
           category: "Care professional",
           color: treatment.color,
           visitReason: treatment.careProfessional,

@@ -158,10 +158,11 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
   }
 
   setMedicationPrescriptions(medications: MedicationPrescriptionsResult[]): void {
+    let i = 0;
     for (let prescription of medications) {
       this.medications.push(
         {
-          id: "IN_" + prescription.id,
+          id: "IN_" + i++,  // + prescription.id,
           name: prescription.name,
           startDate: prescription.startDate,
           endDate: prescription.endDate,
@@ -174,16 +175,17 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
           type: "prescription"
         }
       );
-      console.log("prescript:", this.medications);
+      //console.log("prescript:", this.medications);
     }
     this.setMedicationsGraphData();
   }
 
   setMedicationIntakes(medications: MedicationIntakesResult[]): void {
+    let i = 0;
     for (let prescription of medications) {
       this.medications.push(
         {
-          id: "PRE_" + prescription.id,
+          id: "PRE_" + i++, //+ prescription.id,
           name: prescription.name,
           startDate: prescription.date,
           endDate: null,
@@ -196,7 +198,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
           type: "intake"
         }
       );
-      console.log("intake:", this.medications);
+      //console.log("intake:", this.medications);
     }
     this.setMedicationsGraphData();
   }

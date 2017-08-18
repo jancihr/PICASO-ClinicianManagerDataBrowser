@@ -35,6 +35,7 @@ export interface ObservationResult {
   midValue?: number;
   maxValue?: number;
   source: string;
+  helpText: string;
   values: Value[];
   showLeft: boolean;
   showRight: boolean;

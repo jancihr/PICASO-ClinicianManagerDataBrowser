@@ -433,7 +433,7 @@
           "description": "---",
           "id": "/properties/infoResult/properties/livesAlone",
           "title": "The Livesalone Schema",
-          "type": "string"
+          "type": "boolean"
         },
         "name": {
           "default": "Peter Moskowitch",
@@ -481,7 +481,7 @@
             "type": "string"
           },
           "source": {
-            "default": "RA-home",
+            "default": null,
             "description": "Source of measurement if it is the same for all values of this measurement",
             "enum": [
               "UDUS_Rh",
@@ -490,6 +490,10 @@
               "SLucia",
               "PD_home",
               "other"
+            ],
+            "type": [
+              "string",
+              "null"
             ]
           },
           "id": {
@@ -606,7 +610,10 @@
                   "description": "---",
                   "id": "/properties/observationResult/items/properties/values/items/properties/value",
                   "title": "The Value Schema",
-                  "type": "number"
+                  "type": [
+                    "number",
+                    "null"
+                  ]
                 },
                 "source": {
                   "default": "RA-home",
