@@ -25,7 +25,7 @@ export class ClinicianManagerComponent implements OnInit {
 
   showSeparate = false;
 
-  range: MyDateRange; //= 'lastyear';
+  range: MyDateRange = null; //= 'lastyear';
   private cardToShow = 'all';
 
 
@@ -49,7 +49,7 @@ export class ClinicianManagerComponent implements OnInit {
     //console.log("cookie", this._cookieService.get("clinician.dashboard.card"));
 
 
-    this.range = this.computeRangeFromString('last2months');
+
 
 
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -62,17 +62,19 @@ export class ClinicianManagerComponent implements OnInit {
       let rangeFromURLParam = params['range'];
       if (!rangeFromURLParam === null && !rangeFromURLParam === undefined) {
 
-        this.computeRangeFromString(rangeFromURLParam);
+        this.range = this.computeRangeFromString(rangeFromURLParam);
+      } else if (this.range === null) {
+        this.range = this.computeRangeFromString("lastyear");
       }
 
 
     });
 
-    var startDate = new Date();
-    var endDate = new Date();
-    startDate.setFullYear(endDate.getFullYear() - 1);
+    //var startDate = new Date();
+    //var endDate = new Date();
+    //startDate.setFullYear(endDate.getFullYear() - 1);
     //this.rangeToShow = "lastyear";
-    this.notifyChildrenAboutDataChange(startDate, endDate);
+    //this.notifyChildrenAboutDataChange(startDate, endDate);
 
 
     if (this.cardToShow === undefined) {
