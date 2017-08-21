@@ -34,11 +34,12 @@
           </button>
 
 
-          <button type="button"
+          <button *ngIf="isThereMid || isThereMax || isThereMin" type="button"
                   class="btn btn-default"
                   (click)="resetMinMidMax()">
             <span>  <i class="fa {{showMinMidMax?'fa-circle':'fa-circle-o'}}"></i> </span>
-            <span *ngIf="!showMinMidMax">Show</span> <span *ngIf="showMinMidMax">Hide</span> min/mid/max lines
+            <span *ngIf="!showMinMidMax">Show</span> <span *ngIf="showMinMidMax">Hide</span> <span *ngIf="isThereMin">min</span>
+            <span *ngIf="isThereMid">mid</span> <span *ngIf="isThereMax">max</span> line(s)
             <span>
           </span>
           </button>

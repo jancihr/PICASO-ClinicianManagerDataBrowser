@@ -31,6 +31,10 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   errorMessage: string;
 
+  isThereMin: boolean;
+  isThereMid: boolean;
+  isThereMax: boolean;
+
   //endDate: Date;
   //startDate: Date;
 
@@ -213,7 +217,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     if (this.forMeasurements === "morisky") {
       this.headerText = "Morisky Scale results";
     } else {
-      this.headerText = "Patient Measurements and Recordings - Combined Graph";
+      this.headerText = "Patient Measurements and Recordings - Combined Chart";
       this.footerText = "Hover the mouse pointer over the diagram for values. Click\n" +
         "      a series name in the legend above the diagram to view/hide series.\n" +
         "      If several series are shown on one axis, series are not normalised."
@@ -269,7 +273,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     //hiding left y axis tick values
     if (hideLeft) {
       this.options.chart.yAxis1.tickFormat = function (d) {
-        return '';
+        return null;
       };
     } else {
       this.options.chart.yAxis1.tickFormat = function (d) {
@@ -281,7 +285,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     //hide right y axis tick values
     if (hideRight) {
       this.options.chart.yAxis2.tickFormat = function (d) {
-        return '';
+        return null;
       };
     } else {
       this.options.chart.yAxis2.tickFormat = function (d) {
@@ -304,8 +308,23 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     this.options.chart.yAxis1.axisLabel = "";
     this.options.chart.yAxis2.axisLabel = "";
     let isThereGraph = false;
+    this.isThereMax = false;
+    this.isThereMid = false;
+    this.isThereMin = false;
 
     for (let group of this.observationGroups) {
+
+      if (group.midValue != null) {
+        this.isThereMid = true;
+      }
+      if (group.maxValue != null) {
+        this.isThereMax = true;
+      }
+      if (group.minValue != null) {
+        this.isThereMin = true;
+      }
+
+
       if (group.showLeft || group.showRight) {
         if (group.showLeft) {
           this.options.chart.yAxis1.axisLabel +=
@@ -383,6 +402,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           // paint horizontal lines for min, mid, max values
           if (this.showMinMidMax) {
             if (group.minValue != null) {
+
               let newGraphValuesMin = [];
               newGraphValuesMin.push({observation: {date: this.dateRange.startDate, value: group.minValue}});
               newGraphValuesMin.push({observation: {date: this.dateRange.endDate, value: group.minValue}});

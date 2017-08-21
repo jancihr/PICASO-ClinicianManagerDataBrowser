@@ -39,7 +39,7 @@
           <button class="btn btn-default  w3-right" (click)="close()"><i class="fa fa-close"></i></button>
         </div>
       </div>
-      <div class="{{animateToggle?'w3-animate-bottom':'w3-animate-right'}} ">
+      <div class="{{animateToggle?'myanimation1':'myanimation2'}} ">
         <samp>
           <div *ngIf="selectedTreatment.startDate">{{selectedTreatment.endDate?'From:':'Date:'}}
             {{selectedTreatment.startDate}}
