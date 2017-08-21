@@ -19,35 +19,23 @@ export class PatientRangePicker implements OnInit {
 
   //model for custom daterange picker
   model;
-  myDateRangePickerOptions;
+  myDateRangePickerOptions = {
+    // other options...
+    dateFormat: 'dd.mm.yyyy',
+    firstDayOfWeek: "mo",
+    inline: false,
+    height: '25px',
+    selectionTxtFontSize: '15px',
+    sunHighlight: true,
+  };
 
 
   ngOnInit() {
-
-    //this.printDate("ngOnInit");
-
-    this.updatePickerDates();
-
-    this.myDateRangePickerOptions = {
-      // other options...
-      dateFormat: 'dd.mm.yyyy',
-      firstDayOfWeek: "mo",
-      inline: false,
-      height: '25px',
-      selectionTxtFontSize: '15px',
-      sunHighlight: true,
-    };
   }
 
   ngOnChanges(changes: SimpleChanges) {
     const range: SimpleChange = changes.range;
-    //console.log('prev value: ', range.previousValue);
-    //range.currentValue();
-
-    if (range.previousValue != range.currentValue) {
-      this.updatePickerDates();
-      //this.printDate("ngOnChanges")
-    }
+    this.updatePickerDates();
   }
 
   updatePickerDates() {
@@ -68,12 +56,20 @@ export class PatientRangePicker implements OnInit {
 
   onDateRangeChanged(event: IMyDateRangeModel) {
 
+    /*
     this.range = {
       range: 'custom',
       startDate: event.beginJsDate,
       endDate: event.endJsDate
     };
-    this.dateRangeChanged.emit(this.range);
+    */
+    this.range.range = 'custom';
+    this.dateRangeChanged.emit(
+      {
+        range: 'custom',
+        startDate: event.beginJsDate,
+        endDate: event.endJsDate
+      });
 
   }
 

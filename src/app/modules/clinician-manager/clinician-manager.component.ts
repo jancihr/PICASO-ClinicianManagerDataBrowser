@@ -82,9 +82,11 @@ export class ClinicianManagerComponent implements OnInit {
   }
 
 
-  //fired from event of date picker
+  //fired from events of date picker
   rangeChanged(range: MyDateRange) {
-    if (this.range.startDate.getTime() !== range.startDate.getTime()) {
+    if (this.range.range !== range.range
+      || this.range.startDate.getTime() !== range.startDate.getTime()
+      || this.range.endDate.getTime() !== range.endDate.getTime()) {
       this.range = range;
       this.notifyChildrenAboutDataChange(this.range.startDate, this.range.endDate);
     }

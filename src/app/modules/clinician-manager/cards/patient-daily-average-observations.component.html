@@ -28,7 +28,7 @@
           <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
                   class="btn btn-default"
                   (click)="clearAll()">
-            <i class="fa fa-circle-o"></i>
+            <i class="fa fa-minus-circle"></i>
             Clear all
 
           </button>
@@ -38,7 +38,7 @@
                   class="btn btn-default"
                   (click)="resetMinMidMax()">
             <span>  <i class="fa {{showMinMidMax?'fa-circle':'fa-circle-o'}}"></i> </span>
-            min/mid/max lines
+            <span *ngIf="!showMinMidMax">Show</span> <span *ngIf="showMinMidMax">Hide</span> min/mid/max lines
             <span>
           </span>
           </button>
@@ -51,7 +51,7 @@
                   class="btn btn-default"
                   (click)="showAllLeft()">
 
-            <i class="fa fa-circle"></i> Show all on left axis
+            <i class="fa fa-plus-circle"></i> Show all on left axis
           </button>
 
           <span *ngFor="let group of observationGroups">
@@ -79,7 +79,7 @@
           <button *ngIf="observationGroups && observationGroups.length!==1"
                   type="button"
                   class="btn btn-default"
-                  (click)="showAllRight()"><i class="fa fa-circle"></i> Show all on right axis
+                  (click)="showAllRight()"><i class="fa fa-plus-circle"></i> Show all on right axis
           </button>
           <span *ngFor="let group of observationGroups">
 
