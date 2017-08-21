@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {PicasoDataService} from "../service/picaso-data.service";
-import {PatientObservationGroup} from "../model/patient-observation-group";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {MyDateRange} from "./patient-range-picker.component";
+import {ObservationResult} from "../model/generated-interfaces";
+import {ActivatedRoute, Params} from "@angular/router";
 
 
 declare let d3, nv: any;
@@ -19,10 +20,12 @@ declare let d3, nv: any;
 export class PatientDailyAverageObservationsComponent implements OnInit {
 
   @Input() forMeasurements: string;
+  @Input() singleValued: boolean;
 
   @Input() dateRange: MyDateRange;
 
 
+  forMeasurementsPath: string;
   headerText: string;
   footerText: string;
 
@@ -33,8 +36,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   options;
   data;
-  showAllRight = false;
-  showAllLeft = false;
+
 
   showMinMidMax = true;
 
@@ -45,10 +47,10 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   };
 
 
-  observationGroups: PatientObservationGroup[];
+  observationGroups: ObservationResult[];
 
 
-  constructor(private picasoDataService: PicasoDataService) {
+  constructor(private picasoDataService: PicasoDataService, private activatedRoute: ActivatedRoute) {
   };
 
   ngOnInit(): void {
@@ -59,21 +61,17 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     //this.startDate.setFullYear(this.dateRange.endDate.getFullYear() - 1);
 
 
+    //this.activatedRoute.params.subscribe((params: Params) => {
+    //  this.forMeasurements = params['measurement'];
+    //  this.setOptions();
+    //  this.getObservations();
+    //});
+
+
+
     this.setOptions();
 
     this.getObservations();
-    if (this.forMeasurements === "morisky") {
-      this.headerText = "Morisky Scale results";
-      this.footerText = "4 points = high compliance; 2-3 points = medium compliance; 0-1 = low compliance";
-    } else if (this.forMeasurements === "all") {
-      this.headerText = "Patient Measurements and Recordings";
-      this.footerText = "Hover the mouse pointer over the diagram for values. Click\n" +
-        "      a series name in the legend above the diagram to view/hide series.\n" +
-        "      If several series are shown on one axis, series are not normalised."
-    } else {
-      this.headerText = null;
-      this.footerText = null
-    }
 
 
   }
@@ -82,59 +80,60 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
     if (this.forMeasurements === "morisky") {
-
-      this.picasoDataService.getMorisky(
-        this.dateRange.startDate,
-        this.dateRange.endDate, this.progress
-      ).subscribe(
-        observations => {
-          this.setPatientObservations(observations);
-          this.enableInitialGraphs();
-          this.reloadDataToGraph();
-          this.refreshRange(this.dateRange.startDate, this.dateRange.endDate);
-
-        },
-        error => this.errorMessage = <any>error);
-
-    } else {
-      this.picasoDataService.getObservations(
-        this.dateRange.startDate,
-        this.dateRange.endDate, this.progress
-      ).subscribe(
-        observations => {
-          this.setPatientObservations(observations);
-          this.enableInitialGraphs();
-          this.reloadDataToGraph();
-          this.refreshRange(this.dateRange.startDate, this.dateRange.endDate);
-
-        },
-        error => this.errorMessage = <any>error);
-
+      this.headerText = "Morisky Scale results";
+    } else if (this.forMeasurements === "all") {
+      this.headerText = "Patient Measurements and Recordings";
+      this.footerText = "Hover the mouse pointer over the diagram for values. Click\n" +
+        "      a series name in the legend above the diagram to view/hide series.\n" +
+        "      If several series are shown on one axis, series are not normalised."
     }
+
+
+    this.picasoDataService.getObservations(
+      this.dateRange.startDate,
+      this.dateRange.endDate, this.progress
+    ).subscribe(
+      observations => {
+        this.setPatientObservations(observations);
+        this.enableInitialGraphs();
+        this.reloadDataToGraph();
+        this.refreshRange(this.dateRange.startDate, this.dateRange.endDate);
+
+      },
+      error => this.errorMessage = <any>error);
 
   }
 
 
-  setPatientObservations(observations: PatientObservationGroup[]) {
 
-    if (this.forMeasurements === "all") {
-      this.observationGroups = observations;
-    }
+  setPatientObservations(observations: ObservationResult[]) {
 
-    else {
+
+    if (this.forMeasurements === "morisky" || this.singleValued) {
       this.options.chart.height = 200;
+
       for (let observation of observations) {
+
         // console.log("observationID",observation.id);
         // console.log("forMeasurements",this.forMeasurements);
 
 
         if (observation.id === this.forMeasurements) {
+          this.footerText = observation.helpText;
           this.observationGroups = [];
           this.observationGroups.push(observation);
           this.headerText = observation.name
         }
       }
     }
+
+    else {
+
+      this.observationGroups = observations.filter(function (obj) {
+        return obj.id !== "morisky";
+      });
+    }
+
   }
 
   setOptions(): void {
@@ -193,7 +192,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             //console.log("tooltip", d);
             var html = "";
             html += "<br><span style='color:" + d.point.color + "' > <i class='fa fa-circle'></i> </span> " +
-              (d.point.value === null ? "<span class='text-warning w3-tag'>MISSING VALUE!</span><br>" : d.point.value) + ' ' + d.series[0].key + '<br>' +
+              (d.point.value === null ? "<span class='badge badge-pill badge-warning'>MISSING VALUE!</span><br>" : d.point.value) + ' ' + d.series[0].key + '<br>' +
               d.point.date + '<br>';
             return html;
           }
@@ -218,13 +217,13 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
                     "<span style='color:" + elem.color + "' > <i class='fa fa-circle'></i> </span> " +
 
-                    elem.data.name + " " + elem.data.observation.date + ": <br>" +
+                    elem.data.name + " " + elem.data.observation.date + ": <br> <span class='text-white'><i class='fa fa-circle-o'></i> </span>" +
                     (
                       elem.data.observation.value === null
                         ?
-                        "<span class='text-warning w3-tag'>MISSING VALUE!</span>"
+                        "<span class='w3-tag w3-round text-warning'>MISSING VALUE!</span>"
                         :
-                        (elem.data.observation.outOfRange ? "<span class='text-danger w3-tag'>OUT OF RANGE! </span> " : "") + "<b>" + "<span class='w3-tag'>" + elem.value + " </span> " + "</b>"
+                        (elem.data.observation.outOfRange ? "<span class='w3-tag w3-round text-danger'>OUT OF RANGE! </span> " : "") + "<b>" + "<span class='w3-tag w3-round-medium'>" + elem.value + " </span> " + "</b>"
                     )
                     + " " + elem.data.unit +
                     (
@@ -517,9 +516,9 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         this.observationGroups[i].showLeft = !this.observationGroups[i].showLeft;
         if (this.observationGroups[i].showLeft) {
           this.observationGroups[i].showRight = false;
-          this.showAllRight = false;
+
         } else {
-          this.showAllLeft = false;
+
         }
         break;
       }
@@ -534,9 +533,9 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         this.observationGroups[i].showRight = !this.observationGroups[i].showRight;
         if (this.observationGroups[i].showRight) {
           this.observationGroups[i].showLeft = false;
-          this.showAllLeft = false;
+
         } else {
-          this.showAllRight = false;
+
         }
         break;
       }
@@ -546,11 +545,27 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
   public clearAll() {
-    this.showAllRight = false;
-    this.showAllLeft = false;
     for (var i = 0; i < this.observationGroups.length; i++) {
-      this.observationGroups[i].showLeft = this.showAllLeft;
-      this.observationGroups[i].showRight = this.showAllRight;
+      this.observationGroups[i].showLeft = false;
+      this.observationGroups[i].showRight = false;
+    }
+    this.reloadDataToGraph();
+  }
+
+  public showAllRight() {
+
+    for (var i = 0; i < this.observationGroups.length; i++) {
+      this.observationGroups[i].showLeft = false;
+      this.observationGroups[i].showRight = true;
+    }
+    this.reloadDataToGraph();
+  }
+
+  public showAllLeft() {
+
+    for (var i = 0; i < this.observationGroups.length; i++) {
+      this.observationGroups[i].showLeft = true;
+      this.observationGroups[i].showRight = false;
     }
     this.reloadDataToGraph();
   }
@@ -567,22 +582,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     }
   }
 
-
-  private toggleAll() {
-    if (!this.showAllLeft && !this.showAllRight) {
-      this.showAllLeft = true;
-    } else if (this.showAllRight) {
-      this.showAllRight = false;
-      this.showAllLeft = false;
-    } else {
-      this.showAllRight = true;
-    }
-    for (let i = 0; i < this.observationGroups.length; i++) {
-
-      this.observationGroups[i].showLeft = this.showAllLeft;
-      this.observationGroups[i].showRight = this.showAllRight;
-    }
-  }
 
   public resetMinMidMax() {
     this.showMinMidMax = !this.showMinMidMax;

@@ -1,4 +1,4 @@
-export class PatientLoadProgress {
+export interface PatientLoadProgress {
     percentage: number;
     loaded: number;
     total: number;

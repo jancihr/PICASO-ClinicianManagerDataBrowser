@@ -1,5 +1,6 @@
 <div class="animated fadeIn">
 
+  <!--
   <div class=" w3-center">
     <button class="btn btn-default {{cardToShow==='all'   ? 'btn-outline-success' : ''}}"
             [routerLink]="['/clinician-manager', 'all', 'all', range.range]"> all
@@ -37,7 +38,7 @@
     </button>
     |
 
-    <button class="btn btn-default {{cardToShow==='morisky'   ? 'btn-outline-success' : ''}}"
+    <button class="btn btn-default {{cardToShow==='morisky'  ? 'btn-outline-success' : ''}}"
 
             [routerLink]="['/clinician-manager', 'morisky', '', range.range]">morisky
     </button>
@@ -53,6 +54,7 @@
     </button>
 
   </div>
+  -->
 
   <!--
     <div class="row">
@@ -60,15 +62,7 @@
     </div>
   -->
 
-  <div
-    *ngIf="cardToShow==='treatments' || cardToShow === 'medications' || cardToShow === 'morisky' || cardToShow==='observations' || cardToShow === 'all'"
-    class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-      <patient-range-picker (changed)="rangeChanged($event)" [range]="range">
 
-      </patient-range-picker>
-    </div>
-  </div>
 
 
   <div *ngIf="cardToShow==='overview' || cardToShow === 'all'" class="row">
@@ -118,6 +112,16 @@
   </div> -->
 
 
+  <div
+    *ngIf="cardToShow==='treatments' || cardToShow === 'medications' || cardToShow === 'morisky' || cardToShow==='observations' || cardToShow === 'all'"
+    class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <patient-range-picker (dateRangeChanged)="rangeChanged($event)" [range]="range">
+
+      </patient-range-picker>
+    </div>
+  </div>
+
   <div *ngIf="cardToShow==='treatments' || cardToShow === 'all'" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
       <patient-treatments [dateRange]="range">
@@ -129,7 +133,7 @@
   <div *ngIf="cardToShow === 'all'" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
-      <patient-range-picker (changed)="rangeChanged($event)" [range]="range">
+      <patient-range-picker (dateRangeChanged)="rangeChanged($event)" [range]="range">
 
       </patient-range-picker>
 
@@ -148,7 +152,7 @@
        class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
 
-      <patient-range-picker (changed)="rangeChanged($event)" [range]="range">
+      <patient-range-picker (dateRangeChanged)="rangeChanged($event)" [range]="range">
 
       </patient-range-picker>
 
@@ -171,7 +175,8 @@
 
   <div *ngIf="!showSeparate && (cardToShow==='observations' || cardToShow === 'all')" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-      <patient-daily-average-observations [forMeasurements]="measurementToShow" [dateRange]="range">
+      <patient-daily-average-observations [forMeasurements]="measurementToShow" [singleValued]="false"
+                                          [dateRange]="range">
       </patient-daily-average-observations>
     </div>
   </div>
@@ -182,91 +187,84 @@
     <div
       class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
       col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
-      <patient-daily-average-observations [forMeasurements]="'heartrate'" [dateRange]="range">
+      <patient-daily-average-observations [forMeasurements]="'heartrate'" [singleValued]="true" [dateRange]="range">
       </patient-daily-average-observations>
     </div>
 
     <div
       class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
       col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
-      <patient-daily-average-observations [forMeasurements]="'sys'" [dateRange]="range">
+      <patient-daily-average-observations [forMeasurements]="'sys'" [singleValued]="true" [dateRange]="range">
       </patient-daily-average-observations>
 
     </div>
     <div
       class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
       col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
-      <patient-daily-average-observations [forMeasurements]='"dia"' [dateRange]="range">
+      <patient-daily-average-observations [forMeasurements]='"dia"' [singleValued]="true" [dateRange]="range">
       </patient-daily-average-observations>
 
     </div>
     <div
       class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
       col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
-      <patient-daily-average-observations [forMeasurements]='"weight"' [dateRange]="range">
+      <patient-daily-average-observations [forMeasurements]='"weight"' [singleValued]="true" [dateRange]="range">
       </patient-daily-average-observations>
 
     </div>
     <div
       class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
       col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
-      <patient-daily-average-observations [forMeasurements]='"steps"' [dateRange]="range">
+      <patient-daily-average-observations [forMeasurements]='"steps"' [singleValued]="true" [dateRange]="range">
       </patient-daily-average-observations>
 
     </div>
     <div
       class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
       col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
-      <patient-daily-average-observations [forMeasurements]='"distance"' [dateRange]="range">
+      <patient-daily-average-observations [forMeasurements]='"distance"' [singleValued]="true" [dateRange]="range">
       </patient-daily-average-observations>
 
     </div>
     <div
       class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
       col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
-      <patient-daily-average-observations [forMeasurements]='"sleep"' [dateRange]="range">
+      <patient-daily-average-observations [forMeasurements]='"sleep"' [singleValued]="true" [dateRange]="range">
       </patient-daily-average-observations>
 
     </div>
     <div
       class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
       col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
-      <patient-daily-average-observations [forMeasurements]='"pain"' [dateRange]="range">
+      <patient-daily-average-observations [forMeasurements]='"pain"' [singleValued]="true" [dateRange]="range">
       </patient-daily-average-observations>
 
     </div>
     <div
       class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
       col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
-      <patient-daily-average-observations [forMeasurements]='"wellbeing"' [dateRange]="range">
+      <patient-daily-average-observations [forMeasurements]='"wellbeing"' [singleValued]="true" [dateRange]="range">
       </patient-daily-average-observations>
 
     </div>
     <div
       class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
       col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
-      <patient-daily-average-observations [forMeasurements]='"radai"' [dateRange]="range">
+      <patient-daily-average-observations [forMeasurements]='"radai"' [singleValued]="true" [dateRange]="range">
       </patient-daily-average-observations>
 
     </div>
     <div
       class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
       col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
-      <patient-daily-average-observations [forMeasurements]='"ffbh"' [dateRange]="range">
+      <patient-daily-average-observations [forMeasurements]='"ffbh"' [singleValued]="true" [dateRange]="range">
       </patient-daily-average-observations>
 
     </div>
     <div
       class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
       col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
-      <patient-daily-average-observations [forMeasurements]='"haq"' [dateRange]="range">
-      </patient-daily-average-observations>
-
-    </div>
-    <div
-      class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
-      col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
-      <patient-daily-average-observations [forMeasurements]='"eq5d"' [dateRange]="range">
+      <patient-daily-average-observations [forMeasurements]='"haq"' [singleValued]="true" [dateRange]="range">
       </patient-daily-average-observations>
 
     </div>
@@ -275,7 +273,7 @@
 
   <div *ngIf="cardToShow==='morisky' || cardToShow === 'all'" class="row">
 
-    <patient-daily-average-observations [forMeasurements]='"morisky"' [dateRange]="range">
+    <patient-daily-average-observations [forMeasurements]='"morisky"' [singleValued]="true" [dateRange]="range">
     </patient-daily-average-observations>
 
   </div>

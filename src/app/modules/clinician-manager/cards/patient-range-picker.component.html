@@ -14,48 +14,18 @@
 
     <div class="row">
       <div class="rowcontent">
-        <my-date-range-picker [options]="myDateRangePickerOptions"
-                              (dateRangeChanged)="onDateRangeChanged($event)"
-                              [selDateRange]="model">
-        </my-date-range-picker>
+
       </div>
     </div>
 
     <div class="row">
       <div class="rowcontent">
-        <button type="button"
-                class="btn btn-default {{range.range==='lastweek'   ? 'btn-outline-success' : ''}}"
-                (click)="rangeChange('lastweek')"
-                i18n="Last week">
-          Last week
-        </button>
 
         <button type="button"
-                class="btn btn-default {{range.range==='lastmonth'   ? 'btn-outline-success' : ''}}"
-                (click)="rangeChange('lastmonth')"
-                i18n="Last month">
-          Last month
-        </button>
-
-        <button type="button"
-                class="btn btn-default {{range.range==='last2months'   ? 'btn-outline-success' : ''}}"
-                (click)="rangeChange('last2months')"
-                i18n="Last 2 months">
-          Last 2 months
-        </button>
-
-        <button type="button"
-                class="btn btn-default {{range.range==='last6months'   ? 'btn-outline-success' : ''}}"
-                (click)="rangeChange('last6months')"
-                i18n="Last 6 months">
-          Last 6 months
-        </button>
-
-        <button type="button"
-                class="btn btn-default {{range.range==='next6months'   ? 'btn-outline-success' : ''}}"
-                (click)="rangeChange('next6months')"
-                i18n="Next 6 months">
-          Next 6 months
+                class="btn btn-default {{range.range==='last2years'   ? 'btn-outline-success' : ''}}"
+                (click)="rangeChange('last2years')"
+                i18n="Last 2 years">
+          Last 2 years
         </button>
 
         <button type="button"
@@ -66,10 +36,43 @@
         </button>
 
         <button type="button"
-                class="btn btn-default {{range.range==='last2years'   ? 'btn-outline-success' : ''}}"
-                (click)="rangeChange('last2years')"
-                i18n="Last 2 years">
-          Last 2 years
+                class="btn btn-default {{range.range==='last6months'   ? 'btn-outline-success' : ''}}"
+                (click)="rangeChange('last6months')"
+                i18n="Last 6 months">
+          Last 6 months
+        </button>
+
+        <button type="button"
+                class="btn btn-default {{range.range==='last2months'   ? 'btn-outline-success' : ''}}"
+                (click)="rangeChange('last2months')"
+                i18n="Last 2 months">
+          Last 2 months
+        </button>
+
+        <button type="button"
+                class="btn btn-default {{range.range==='lastmonth'   ? 'btn-outline-success' : ''}}"
+                (click)="rangeChange('lastmonth')"
+                i18n="Last month">
+          Last month
+        </button>
+
+        <button type="button"
+                class="btn btn-default {{range.range==='lastweek'   ? 'btn-outline-success' : ''}}"
+                (click)="rangeChange('lastweek')"
+                i18n="Last week">
+          Last week
+        </button>
+
+        <my-date-range-picker [options]="myDateRangePickerOptions"
+                              (dateRangeChanged)="onDateRangeChanged($event)"
+                              [selDateRange]="model" style="margin-bottom: -40px">
+        </my-date-range-picker>
+
+        <button type="button" style="margin-bottom: 20px"
+                class="btn btn-default {{range.range==='next6months'   ? 'btn-outline-success' : ''}}"
+                (click)="rangeChange('next6months')"
+                i18n="Next 6 months">
+          Next 6 months
         </button>
 
       </div>

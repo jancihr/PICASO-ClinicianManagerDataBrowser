@@ -71,6 +71,11 @@
             Date of Onset
           </mfDefaultSorter>
         </th>
+        <th i18n="Date of Offset">
+          <mfDefaultSorter by="dateOfOffset">
+            Date of Offset
+          </mfDefaultSorter>
+        </th>
         <th i18n="Severity">
           <mfDefaultSorter by="severity">
             Severity
@@ -98,6 +103,7 @@
       <tr *ngFor="let disease of mf.data">
         <td>{{disease.name}}</td>
         <td>{{disease.dateOfOnset}}</td>
+        <td>{{disease.dateOfOffset?disease.dateOfOffset:""}}</td>
         <td>{{disease.severity}}</td>
         <td>{{disease.sideOfOnset}}</td>
         <td>{{disease.clinicalPhenotype}}</td>
@@ -106,7 +112,7 @@
 
 
       <tr>
-        <td colspan="5" class="w3-center">
+        <td colspan="6" class="w3-center">
           <mfBootstrapPaginator class="pagination-sm"></mfBootstrapPaginator>
         </td>
       </tr>

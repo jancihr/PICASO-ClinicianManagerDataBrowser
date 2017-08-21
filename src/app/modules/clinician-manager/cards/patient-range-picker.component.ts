@@ -13,7 +13,7 @@ import {IMyDateRangeModel} from "mydaterangepicker";
 export class PatientRangePicker implements OnInit {
 
 
-  @Output() changed: EventEmitter<MyDateRange> = new EventEmitter();
+  @Output() dateRangeChanged: EventEmitter<MyDateRange> = new EventEmitter();
 
   @Input() range: MyDateRange;
 
@@ -73,7 +73,7 @@ export class PatientRangePicker implements OnInit {
       startDate: event.beginJsDate,
       endDate: event.endJsDate
     };
-    this.changed.emit(this.range);
+    this.dateRangeChanged.emit(this.range);
 
   }
 
@@ -81,7 +81,7 @@ export class PatientRangePicker implements OnInit {
   rangeChange(rangeString: string) {
     var newRange = this.computeRangeFromString(rangeString);
     if (newRange.startDate !== this.range.startDate || newRange.endDate !== this.range.endDate || newRange.range !== this.range.range) {
-      this.changed.emit(this.computeRangeFromString(rangeString));
+      this.dateRangeChanged.emit(this.computeRangeFromString(rangeString));
     }
   }
 

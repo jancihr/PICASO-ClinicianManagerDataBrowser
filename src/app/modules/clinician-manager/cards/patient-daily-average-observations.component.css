@@ -16,6 +16,8 @@
 
 .card-block {
   padding: 0.25rem;
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
 .card-header {
@@ -40,4 +42,20 @@ td {
   margin-left: 15px;
   margin-right: 15px;
   text-align: center;
+}
+
+button {
+
+  padding: 0.25rem 0.25rem;
+  border-radius: 10px;
+}
+
+button:hover {
+  background-color: #cfd8dc;
+}
+
+button:disabled {
+  background-color: #eee;
+  color: #aaa;
+  cursor: auto;
 }

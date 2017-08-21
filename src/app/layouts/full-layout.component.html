@@ -53,13 +53,58 @@
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/patient-id']"><i class="fa fa-search" aria-hidden="true"></i>Select Patient</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/clinician-manager/all/all/lastyear']"><i class="icon-speedometer"></i>Patient
-          data
-          viewer</a>
+
+
+      <li class="nav-item nav-dropdown" routerLinkActive="open">
+        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-speedometer"></i> Patient data</a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/clinician-manager/all/all/']"><i
+              class="icon-puzzle"></i> All</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/clinician-manager/overview/all/']"><i
+              class="icon-puzzle"></i> Overview</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/clinician-manager/comments/all/']"><i
+              class="icon-puzzle"></i> Comments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/clinician-manager/followups/all/']"><i
+              class="icon-puzzle"></i> Follow Up</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/clinician-manager/treatments/all/']"><i
+              class="icon-puzzle"></i> Treatments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/clinician-manager/medications/all/']"><i
+              class="icon-puzzle"></i> Medications</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/clinician-manager/observations/all/']"><i
+              class="icon-puzzle"></i> Measurements</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/clinician-manager/morisky/all/']"><i
+              class="icon-puzzle"></i> Morisky</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/clinician-manager/diseases/all/']"><i
+              class="icon-puzzle"></i> Diseases</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active" [routerLink]="['/clinician-manager/clinicians/all/']"><i
+              class="icon-puzzle"></i> Clinicians</a>
+          </li>
+
+        </ul>
       </li>
+
+
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/data-resource-browser']"><i class="icon-folder"></i>Care setting</a>
+        <a class="nav-link" [routerLink]="['/data-resource-browser']"><i class="icon-folder"></i>Patient map</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/narratives-manager']"><i class="icon-briefcase"></i>Care plan manager</a>
