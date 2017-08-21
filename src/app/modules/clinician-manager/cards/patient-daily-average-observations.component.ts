@@ -82,7 +82,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     if (this.forMeasurements === "morisky") {
       this.headerText = "Morisky Scale results";
     } else if (this.forMeasurements === "all") {
-      this.headerText = "Patient Measurements and Recordings";
+      this.headerText = "Patient Measurements and Recordings Combined Graph";
       this.footerText = "Hover the mouse pointer over the diagram for values. Click\n" +
         "      a series name in the legend above the diagram to view/hide series.\n" +
         "      If several series are shown on one axis, series are not normalised."

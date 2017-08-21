@@ -23,8 +23,6 @@ export class ClinicianManagerComponent implements OnInit {
 
   measurementToShow;
 
-  showSeparate = false;
-
   range: MyDateRange = null; //= 'lastyear';
   private cardToShow = 'all';
 
@@ -110,7 +108,7 @@ export class ClinicianManagerComponent implements OnInit {
         this.treatmentsHistoryComponent.refreshRange(startDate, endDate);
       }
     }
-    if (this.cardToShow === 'morisky' || this.cardToShow === 'observations' || this.cardToShow === 'all') {
+    if (this.cardToShow === 'morisky' || this.cardToShow === 'observations' || this.cardToShow === 'observations-single' || this.cardToShow === 'all') {
 
       if (this.observationHistoryComponents !== undefined) {
         this.observationHistoryComponents.forEach((child) => {
