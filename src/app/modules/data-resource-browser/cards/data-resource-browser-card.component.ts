@@ -11,10 +11,17 @@ import {
 } from 'ng2-vis/components/network';
 import {DRBDataService} from "../service/DRB-data.service";
 import {PicasoDataService} from "../service/picaso.service";
+
+import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
+//import {PatientData} from '../model/patient-data';
+
 import {GraphNodesDefinition} from '../model/graph-nodes-definition';
 import {GraphSetUp} from '../model/graph-set-up';
 import {LoadProgress} from "../model/load-progress";
 import {TableItem} from "../model/table-item";
+import {DataForNodes} from "../model/data-for-nodes";
 
 class PicasoNetworkData implements VisNetworkData {
     public nodes: VisNodes;
@@ -26,7 +33,7 @@ class PicasoNetworkData implements VisNetworkData {
     selector: 'resource-browser-tag',
     templateUrl: './data-resource-browser-card.component.html',
     styleUrls: ['./data-resource-browser-card.component.css'],
-    providers: [DRBDataService]
+    providers: [DRBDataService, PicasoDataService]
 })
 
 export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
@@ -37,27 +44,28 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
   public sortBy = "startDate";
   public sortOrder = "desc";
 
-    public visNetwork: string = 'networkId1';
-    public visNetworkData: PicasoNetworkData;
-    public visNetworkOptions: VisNetworkOptions;
-    private coreLevel: number = 2;
-    private R: number = 165;
-    private angleBegin: number = 2/5*(Math.PI/2);
-    public router: Router
-    // public subGraphsAsArray = new Array({
-    //     subGraphId: 'id',
-    //     parrentGraph: 'parrent graph',
-    //     isDisplayed: false,
-    //     level: '0 - n'
-    // })
-   // public subGraphsSetUp: GraphSetUp[]
-    public subGraphsAsArray: GraphSetUp[];
-    public nodesAsArray: GraphNodesDefinition[];
-    public progress: LoadProgress = {percentage : 0, total: 0, loaded: 0}
-    public errorMessage: string;
-    public allDisplayed: boolean;
-    public coreDisplayed: boolean;
-    public scaleOfGraph: any
+  public visNetwork: string = 'networkId1';
+  public visNetworkData: PicasoNetworkData;
+  public visNetworkOptions: VisNetworkOptions;
+  private coreLevel: number = 2;
+  private R: number = 165;
+  private angleBegin: number = 2 / 5 * (Math.PI / 2);
+  public router: Router
+  // public subGraphsAsArray = new Array({
+  //     subGraphId: 'id',
+  //     parrentGraph: 'parrent graph',
+  //     isDisplayed: false,
+  //     level: '0 - n'
+  // })
+  // public subGraphsSetUp: GraphSetUp[]
+  public subGraphsAsArray: GraphSetUp[];
+  public nodesAsArray: GraphNodesDefinition[];
+  public observations: DataForNodes[];
+  public progress: LoadProgress = {percentage: 0, total: 0, loaded: 0}
+  public errorMessage: string;
+  public allDisplayed: boolean;
+  public coreDisplayed: boolean;
+  public scaleOfGraph: any
 
     //     = new Array({
     //     subGraphId: 'graphPart',
@@ -70,7 +78,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
     // });
     //edgesAsArray = new Array ({subGraphId: 'graphPart', parrentGraph: 'parrent graph', id: 'id', from: 'from', to: 'to', isDisplayed: false});
 // CONSTRUCTOR
-    public constructor(private visNetworkService: VisNetworkService, router: Router, private DRBDataService: DRBDataService) {
+    public constructor(private visNetworkService: VisNetworkService, router: Router, private drbDataService:DRBDataService, private picasoDataService: PicasoDataService) {
         this.router = router
     }
 
@@ -1234,6 +1242,18 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                     width: 2,
                     borderWidth: 3,
                 },
+              HomeSleep: {
+                shape: 'icon',
+                icon: {
+                  face: 'FontAwesome',
+                  code: '\uf236', //f1c0', //&#xf1c0;
+                  size: 50,
+                  color: '#2B65EC'
+                },
+                font: {strokeWidth: 3, strokeColor: 'white'},
+                width: 2,
+                borderWidth: 3,
+              },
                 QuestionnaireHome: {
                     shape: 'icon',
                     icon: {
@@ -1549,7 +1569,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         for(var i = 0; i < this.coreLevel; i++ ){
             subGraphsOnLevel = this.subGraphsAsArray.filter(item => item.level === i)
             for (var j = 0; j < subGraphsOnLevel.length; j++){
-                this.reflectToVisNetwork(subGraphsOnLevel[j].subGraphId, false)
+                  this.reflectToVisNetwork(subGraphsOnLevel[j].subGraphId, false)
             }
 
             //this.reflectToVisNetwork(this.subGraphsAsArray[index].subGraphId, false)
@@ -1651,11 +1671,16 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                         let nodeInfo: GraphNodesDefinition;
                         nodeInfo = this.nodesAsArray.find(item => item.id === nodeNameString)
                         if (nodeInfo) {
-                            IsLeafNodeOrCLickedOut = nodeInfo.isLeaf //
+                            IsLeafNodeOrCLickedOut = nodeInfo.isLeaf
+                          //if(nodeInfo.isLeaf){
+                              this.fillTableBelowDRB(nodeInfo.id, nodeInfo.isLeaf)
+
+                         // }//
                         }
                     }
                     if(IsLeafNodeOrCLickedOut) {
                         //is leaf or clicked next to the network ("" event)
+
                         this.visNetworkService.fit(this.visNetwork)
                     }
                     else{
@@ -1896,49 +1921,85 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
     // Get Graph/network data
     private getGraphNetworkData(): void {
 
+      this.picasoDataService.getPatientInfo(this.progress, "11892829").subscribe(
+        patientInfo => {
+          this.picasoDataService.getObservationsPerPatient(this.progress, "11892829").subscribe(
+            observations => {
+              this.drbDataService.getGraphSetUp().subscribe(
+                graphSetUp => {
+                  this.subGraphsAsArray = graphSetUp;
+                  this.drbDataService.getGraphNodes(this.progress).subscribe(
+                    node => {
+                      this.nodesAsArray = node;
+                      //console.log("Picaso name: ", patientInfo)
+                      let index = this.nodesAsArray.findIndex(item => item.id === "patient")
+                      this.nodesAsArray[index].label = patientInfo.toString()
 
-  this.DRBDataService.getGraphSetUp().subscribe(
-    graphSetUp => {
-      this.subGraphsAsArray = graphSetUp;
-      this.DRBDataService.getGraphNodes(this.progress).subscribe(
-        node => {
-          this.nodesAsArray = node;
-          this.PicasoDataService.getPatient(this.progress).subscribe(
-            name => {
-              console.log("Picaso name: ", name)
-            },
-          )
-          //  console.log("result from service 1:", this.nodesAsArray)
-          // this.mapSourceDataToNetworkData()
-          this.readLastDispalyedGraphSetUp()
-          this.displayLast();
-        },
-        error => this.errorMessage = <any>error);
-
-                // console.log("result from service 2:", this.subGraphsAsArray)
-
+                      //TODO napojenie: id uzla - id observacie
+                      console.log('observaTIONS : ', observations/*.Measurements[0].TypeId*/)
+                      this.mapDataToGraph(observations)
+                      this.observations = observations
+                      //  console.log("result from service 1:", this.nodesAsArray)
+                      // this.mapSourceDataToNetworkData()
+                      this.readLastDispalyedGraphSetUp()
+                      this.displayLast();
+                    },
+                    error => this.errorMessage = <any>error);
+                },
+                error => this.errorMessage = <any>error);
             },
             error => this.errorMessage = <any>error);
-
+        },
+      )
         //console.log(this.errorMessage);
 
     }
+
+  private mapDataToGraph(observations: DataForNodes[]): void {
+    for(var i = 0; i < observations.length; i++){
+      //console.log("pieces: ", resJson[i].TypeId,' ',resJson[i].Timestamp, ' ',resJson[i] )
+      let index = this.nodesAsArray.findIndex(item => item.id ===  observations[i].id)
+      this.nodesAsArray[index].label = this.nodesAsArray[index].label + '\n' + observations[i].date
+      this.nodesAsArray[index].isDisplayed = true
+
+
+    }
+
+  }
+  private fillTableBelowDRB(nodeId: string, isLeafNode: boolean): void {
+    this.tableData = []
+    if(isLeafNode){
+      let observForNode = this.observations.find(item => item.id === nodeId)
+      if(observForNode) {
+        this.tableData = observForNode.content
+      }
+    }
+    //TODO in picaso service add substructure with data details as in the table
+    // subscribe observations to local structure here
+    // clear and then fill here table based on local scructure with relevant ID (nodeID = ID in observation structure)
+    // if node is not leaf clear table but not fill it with content
+  }
+
 // MAIN routine
     public ngOnInit() {
         this.getGraphNetworkData()
         // this.mapSourceDataToNetworkData()
         // this.readLastDispalyedGraphSetUp()
         // this.displayLast();
+
+
+
+
         this.setNetworkOptions();
 
 
       //TODO
-      this.tableData = [{
-        name: "Systolic",
-        date: new Date(),
-        source: "source1",
-        link: "/clinician-manager/observations/sys"
-      }, {name: "Diastolic", date: new Date(), source: "source2", link: "/clinician-manager/observations/dia"}];
+      // this.tableData = [{
+      //   name: "Systolic",
+      //   date: new Date(),
+      //   source: "source1",
+      //   link: "/clinician-manager/observations/sys"
+      // }, {name: "Diastolic", date: new Date(), source: "source2", link: "/clinician-manager/observations/dia"}];
     }
 
 // Destroy
