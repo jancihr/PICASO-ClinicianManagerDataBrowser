@@ -1,0 +1,323 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://example.com/example.json",
+  "properties": {
+    "resultForDRB": {
+      "id": "/properties/resultForDRB",
+      "items": {
+        "id": "/properties/resultForDRB/items",
+        "properties": {
+          "carePlan": {
+            "id": "/properties/resultForDRB/items/properties/carePlan",
+            "items": {
+              "id": "/properties/resultForDRB/items/properties/carePlan/items",
+              "properties": {
+                "ListOfEntries": {
+                  "id": "/properties/resultForDRB/items/properties/carePlan/items/properties/ListOfEntries",
+                  "items": {
+                    "id": "/properties/resultForDRB/items/properties/carePlan/items/properties/ListOfEntries/items",
+                    "properties": {
+                      "ClinicianId": {
+                        "id": "/properties/resultForDRB/items/properties/carePlan/items/properties/ListOfEntries/items/properties/ClinicianId",
+                        "type": "string"
+                      },
+                      "Source": {
+                        "id": "/properties/resultForDRB/items/properties/carePlan/items/properties/ListOfEntries/items/properties/Source",
+                        "type": "string"
+                      },
+                      "Timestamp": {
+                        "id": "/properties/resultForDRB/items/properties/carePlan/items/properties/ListOfEntries/items/properties/Timestamp",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "TypeId": {
+                  "id": "/properties/resultForDRB/items/properties/carePlan/items/properties/TypeId",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "careProfessionals": {
+            "id": "/properties/resultForDRB/items/properties/careProfessionals",
+            "items": {
+              "id": "/properties/resultForDRB/items/properties/careProfessionals/items",
+              "properties": {
+                "ListOfEntries": {
+                  "id": "/properties/resultForDRB/items/properties/careProfessionals/items/properties/ListOfEntries",
+                  "items": {},
+                  "type": "array"
+                },
+                "TimestampLast": {
+                  "id": "/properties/resultForDRB/items/properties/careProfessionals/items/properties/TimestampLast",
+                  "type": "string"
+                },
+                "TypeId": {
+                  "id": "/properties/resultForDRB/items/properties/careProfessionals/items/properties/TypeId",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "funcDiagnostics": {
+            "id": "/properties/resultForDRB/items/properties/funcDiagnostics",
+            "items": {
+              "id": "/properties/resultForDRB/items/properties/funcDiagnostics/items",
+              "properties": {
+                "ListOfEntries": {
+                  "id": "/properties/resultForDRB/items/properties/funcDiagnostics/items/properties/ListOfEntries",
+                  "items": {
+                    "id": "/properties/resultForDRB/items/properties/funcDiagnostics/items/properties/ListOfEntries/items",
+                    "properties": {
+                      "ClinicianId": {
+                        "id": "/properties/resultForDRB/items/properties/funcDiagnostics/items/properties/ListOfEntries/items/properties/ClinicianId",
+                        "type": "string"
+                      },
+                      "Source": {
+                        "id": "/properties/resultForDRB/items/properties/funcDiagnostics/items/properties/ListOfEntries/items/properties/Source",
+                        "type": "string"
+                      },
+                      "Timestamp": {
+                        "id": "/properties/resultForDRB/items/properties/funcDiagnostics/items/properties/ListOfEntries/items/properties/Timestamp",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "TypeId": {
+                  "id": "/properties/resultForDRB/items/properties/funcDiagnostics/items/properties/TypeId",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "homeMeasurements": {
+            "id": "/properties/resultForDRB/items/properties/homeMeasurements",
+            "items": {
+              "id": "/properties/resultForDRB/items/properties/homeMeasurements/items",
+              "properties": {
+                "ListOfEntries": {
+                  "id": "/properties/resultForDRB/items/properties/homeMeasurements/items/properties/ListOfEntries",
+                  "items": {
+                    "id": "/properties/resultForDRB/items/properties/homeMeasurements/items/properties/ListOfEntries/items",
+                    "properties": {
+                      "Timestamp": {
+                        "id": "/properties/resultForDRB/items/properties/homeMeasurements/items/properties/ListOfEntries/items/properties/Timestamp",
+                        "type": "string"
+                      },
+                      "TypeId": {
+                        "id": "/properties/resultForDRB/items/properties/homeMeasurements/items/properties/ListOfEntries/items/properties/TypeId",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "TypeId": {
+                  "id": "/properties/resultForDRB/items/properties/homeMeasurements/items/properties/TypeId",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "imaging": {
+            "id": "/properties/resultForDRB/items/properties/imaging",
+            "items": {
+              "id": "/properties/resultForDRB/items/properties/imaging/items",
+              "properties": {
+                "ListOfEntries": {
+                  "id": "/properties/resultForDRB/items/properties/imaging/items/properties/ListOfEntries",
+                  "items": {
+                    "id": "/properties/resultForDRB/items/properties/imaging/items/properties/ListOfEntries/items",
+                    "properties": {
+                      "ClinicianId": {
+                        "id": "/properties/resultForDRB/items/properties/imaging/items/properties/ListOfEntries/items/properties/ClinicianId",
+                        "type": "string"
+                      },
+                      "Source": {
+                        "id": "/properties/resultForDRB/items/properties/imaging/items/properties/ListOfEntries/items/properties/Source",
+                        "type": "string"
+                      },
+                      "Timestamp": {
+                        "id": "/properties/resultForDRB/items/properties/imaging/items/properties/ListOfEntries/items/properties/Timestamp",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "TypeId": {
+                  "id": "/properties/resultForDRB/items/properties/imaging/items/properties/TypeId",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "labTest": {
+            "id": "/properties/resultForDRB/items/properties/labTest",
+            "items": {
+              "id": "/properties/resultForDRB/items/properties/labTest/items",
+              "properties": {
+                "ListOfEntries": {
+                  "id": "/properties/resultForDRB/items/properties/labTest/items/properties/ListOfEntries",
+                  "items": {
+                    "id": "/properties/resultForDRB/items/properties/labTest/items/properties/ListOfEntries/items",
+                    "properties": {
+                      "ClinicianId": {
+                        "id": "/properties/resultForDRB/items/properties/labTest/items/properties/ListOfEntries/items/properties/ClinicianId",
+                        "type": "string"
+                      },
+                      "Source": {
+                        "id": "/properties/resultForDRB/items/properties/labTest/items/properties/ListOfEntries/items/properties/Source",
+                        "type": "string"
+                      },
+                      "Timestamp": {
+                        "id": "/properties/resultForDRB/items/properties/labTest/items/properties/ListOfEntries/items/properties/Timestamp",
+                        "type": "string"
+                      },
+                      "TypeId": {
+                        "id": "/properties/resultForDRB/items/properties/labTest/items/properties/ListOfEntries/items/properties/TypeId",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "TypeId": {
+                  "id": "/properties/resultForDRB/items/properties/labTest/items/properties/TypeId",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "patient": {
+            "id": "/properties/resultForDRB/items/properties/patient",
+            "items": {
+              "id": "/properties/resultForDRB/items/properties/patient/items",
+              "properties": {
+                "age": {
+                  "id": "/properties/resultForDRB/items/properties/patient/items/properties/age",
+                  "type": "string"
+                },
+                "gender": {
+                  "id": "/properties/resultForDRB/items/properties/patient/items/properties/gender",
+                  "type": "string"
+                },
+                "name": {
+                  "id": "/properties/resultForDRB/items/properties/patient/items/properties/name",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "psychoTests": {
+            "id": "/properties/resultForDRB/items/properties/psychoTests",
+            "items": {
+              "id": "/properties/resultForDRB/items/properties/psychoTests/items",
+              "properties": {
+                "ListOfEntries": {
+                  "id": "/properties/resultForDRB/items/properties/psychoTests/items/properties/ListOfEntries",
+                  "items": {
+                    "id": "/properties/resultForDRB/items/properties/psychoTests/items/properties/ListOfEntries/items",
+                    "properties": {
+                      "ClinicianId": {
+                        "id": "/properties/resultForDRB/items/properties/psychoTests/items/properties/ListOfEntries/items/properties/ClinicianId",
+                        "type": "string"
+                      },
+                      "Source": {
+                        "id": "/properties/resultForDRB/items/properties/psychoTests/items/properties/ListOfEntries/items/properties/Source",
+                        "type": "string"
+                      },
+                      "Timestamp": {
+                        "id": "/properties/resultForDRB/items/properties/psychoTests/items/properties/ListOfEntries/items/properties/Timestamp",
+                        "type": "string"
+                      },
+                      "TypeId": {
+                        "id": "/properties/resultForDRB/items/properties/psychoTests/items/properties/ListOfEntries/items/properties/TypeId",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "TypeId": {
+                  "id": "/properties/resultForDRB/items/properties/psychoTests/items/properties/TypeId",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          },
+          "questionnaires": {
+            "id": "/properties/resultForDRB/items/properties/questionnaires",
+            "items": {
+              "id": "/properties/resultForDRB/items/properties/questionnaires/items",
+              "properties": {
+                "ListOfEntries": {
+                  "id": "/properties/resultForDRB/items/properties/questionnaires/items/properties/ListOfEntries",
+                  "items": {
+                    "id": "/properties/resultForDRB/items/properties/questionnaires/items/properties/ListOfEntries/items",
+                    "properties": {
+                      "ClinicianId": {
+                        "id": "/properties/resultForDRB/items/properties/questionnaires/items/properties/ListOfEntries/items/properties/ClinicianId",
+                        "type": "string"
+                      },
+                      "Source": {
+                        "id": "/properties/resultForDRB/items/properties/questionnaires/items/properties/ListOfEntries/items/properties/Source",
+                        "type": "string"
+                      },
+                      "Timestamp": {
+                        "id": "/properties/resultForDRB/items/properties/questionnaires/items/properties/ListOfEntries/items/properties/Timestamp",
+                        "type": "string"
+                      },
+                      "TypeId": {
+                        "id": "/properties/resultForDRB/items/properties/questionnaires/items/properties/ListOfEntries/items/properties/TypeId",
+                        "type": "string"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                },
+                "TypeId": {
+                  "id": "/properties/resultForDRB/items/properties/questionnaires/items/properties/TypeId",
+                  "type": "string"
+                }
+              },
+              "type": "object"
+            },
+            "type": "array"
+          }
+        },
+        "type": "object"
+      },
+      "type": "array"
+    }
+  },
+  "type": "object"
+}
