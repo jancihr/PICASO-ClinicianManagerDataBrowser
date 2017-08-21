@@ -62,7 +62,7 @@ export class ClinicianManagerComponent implements OnInit {
 
         this.range = this.computeRangeFromString(rangeFromURLParam);
       } else if (this.range === null) {
-        this.range = this.computeRangeFromString("lastyear");
+        this.range = this.computeRangeFromString("last2months");
       }
 
 
@@ -84,8 +84,10 @@ export class ClinicianManagerComponent implements OnInit {
 
   //fired from event of date picker
   rangeChanged(range: MyDateRange) {
-    this.range = range;
-    this.notifyChildrenAboutDataChange(this.range.startDate, this.range.endDate);
+    if (this.range.startDate.getTime() !== range.startDate.getTime()) {
+      this.range = range;
+      this.notifyChildrenAboutDataChange(this.range.startDate, this.range.endDate);
+    }
   }
 
 
@@ -112,7 +114,7 @@ export class ClinicianManagerComponent implements OnInit {
 
       if (this.observationHistoryComponents !== undefined) {
         this.observationHistoryComponents.forEach((child) => {
-          child.refreshRange(startDate, endDate)
+          //child.refreshRange(startDate, endDate)
         });
       }
     }

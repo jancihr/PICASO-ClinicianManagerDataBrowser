@@ -1,68 +1,5 @@
 <div class="animated fadeIn">
 
-  <!--
-  <div class=" w3-center">
-    <button class="btn btn-default {{cardToShow==='all'   ? 'btn-outline-success' : ''}}"
-            [routerLink]="['/clinician-manager', 'all', 'all', range.range]"> all
-    </button>
-    |
-    <button class="btn btn-default {{cardToShow==='overview'   ? 'btn-outline-success' : ''}}"
-
-            [routerLink]="['/clinician-manager', 'overview', '', range.range]"> overview
-    </button>
-    |
-    <button class="btn btn-default {{cardToShow==='comments'   ? 'btn-outline-success' : ''}}"
-
-            [routerLink]="['/clinician-manager', 'comments', '', range.range]">comments
-    </button>
-    |
-    <button class="btn btn-default {{cardToShow==='followups'   ? 'btn-outline-success' : ''}}"
-            [routerLink]="['/clinician-manager', 'followups', '', range.range]">
-      followups
-    </button>
-    |
-    <button class="btn btn-default {{cardToShow==='treatments'   ? 'btn-outline-success' : ''}}"
-            [routerLink]="['/clinician-manager', 'treatments', '', range.range]">
-      treatments
-    </button>
-    |
-    <button class="btn btn-default {{cardToShow==='medications'   ? 'btn-outline-success' : ''}}"
-            [routerLink]="['/clinician-manager', 'medications', '', range.range]">
-      medications
-    </button>
-    |
-    <button
-      class="btn btn-default {{cardToShow==='observations' ? 'btn-outline-success' : ''}}"
-      [routerLink]="['/clinician-manager', 'observations', 'all', range.range]">
-      measurements
-    </button>
-    |
-
-    <button class="btn btn-default {{cardToShow==='morisky'  ? 'btn-outline-success' : ''}}"
-
-            [routerLink]="['/clinician-manager', 'morisky', '', range.range]">morisky
-    </button>
-    |
-    <button class="btn btn-default {{cardToShow==='diseases'   ? 'btn-outline-success' : ''}}"
-
-            [routerLink]="['/clinician-manager', 'diseases', '', range.range]">diseases
-    </button>
-    |
-    <button class="btn btn-default {{cardToShow==='clinicians'   ? 'btn-outline-success' : ''}}"
-            [routerLink]="['/clinician-manager', 'clinicians', '', range.range]">
-      clinicians
-    </button>
-
-  </div>
-  -->
-
-  <!--
-    <div class="row">
-      <h3 i18n="Patient Data Viewer"><i class="fa fa-calendar-check-o"></i> Patient data viewer</h3>
-    </div>
-  -->
-
-
   <div *ngIf="cardToShow==='overview' || cardToShow === 'all'" class="row">
     <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
       <patient-overview>
@@ -70,18 +7,6 @@
     </div>
 
   </div>
-
-  <!--
-
-  <div class="row">
-    <div *ngIf="cardToShow===2 || cardToShow === 'all'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-
-      <patient-notifications>
-      </patient-notifications>
-    </div>
-  </div>
-  -->
-
 
   <div *ngIf="cardToShow==='comments' || cardToShow === 'all'" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -98,17 +23,6 @@
       </patient-follow-up-appointments>
     </div>
   </div>
-
-
-  <!--
-      <div class="row">
-         <div *ngIf="cardToShow===4 || cardToShow === 'all'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
-          <patient-imaging>
-          </patient-imaging>
-        </div>
-
-  </div> -->
-
 
   <div
     *ngIf="cardToShow==='treatments' || cardToShow === 'medications' ||
@@ -189,7 +103,7 @@
 
           <div><i class="fa fa-heartbeat"></i>
 
-            Patient Measurements and Recordings Single Graphs
+            Patient Measurements and Recordings - Single Graphs
 
           </div>
 
@@ -197,13 +111,6 @@
       </div>
     </div>
 
-
-    <div
-      class="col-xs-12 col-sm-12 col-md-6
-      col-lg-6 col-xl-6">
-      <patient-daily-average-observations [forMeasurements]="'heartrate'" [singleValued]="true" [dateRange]="range">
-      </patient-daily-average-observations>
-    </div>
 
     <div
       class="col-xs-12 col-sm-12 col-md-6
@@ -218,6 +125,12 @@
       <patient-daily-average-observations [forMeasurements]='"dia"' [singleValued]="true" [dateRange]="range">
       </patient-daily-average-observations>
 
+    </div>
+    <div
+      class="col-xs-12 col-sm-12 col-md-6
+      col-lg-6 col-xl-6">
+      <patient-daily-average-observations [forMeasurements]="'heartrate'" [singleValued]="true" [dateRange]="range">
+      </patient-daily-average-observations>
     </div>
     <div
       class="col-xs-12 col-sm-12 col-md-6

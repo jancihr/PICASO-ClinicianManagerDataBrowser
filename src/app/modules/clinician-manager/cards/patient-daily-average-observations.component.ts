@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output, SimpleChange, SimpleChanges} from "@angular/core";
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {MyDateRange} from "./patient-range-picker.component";
@@ -54,41 +54,31 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   };
 
   ngOnInit(): void {
+  }
 
 
-    //this.dateRange.endDate = new Date();
-    //this.startDate = new Date();
-    //this.startDate.setFullYear(this.dateRange.endDate.getFullYear() - 1);
+  ngOnChanges(changes: SimpleChanges) {
+    const range: SimpleChange = changes.dateRange;
+    //console.log('prev value: ', range.previousValue);
+    //range.currentValue();
 
-
-    //this.activatedRoute.params.subscribe((params: Params) => {
-    //  this.forMeasurements = params['measurement'];
-    //  this.setOptions();
-    //  this.getObservations();
-    //});
-
-
-
-    this.setOptions();
-
-    this.getObservations();
-
-
+    if (range.previousValue != range.currentValue) {
+      this.setOptions();
+      this.updateDates();
+      this.getObservations();
+      //this.printDate("ngOnChanges")
+    }
   }
 
   getObservations(): void {
-
-
     if (this.forMeasurements === "morisky") {
       this.headerText = "Morisky Scale results";
-    } else if (this.forMeasurements === "all") {
-      this.headerText = "Patient Measurements and Recordings Combined Graph";
+    } else {
+      this.headerText = "Patient Measurements and Recordings - Combined Graph";
       this.footerText = "Hover the mouse pointer over the diagram for values. Click\n" +
         "      a series name in the legend above the diagram to view/hide series.\n" +
         "      If several series are shown on one axis, series are not normalised."
     }
-
-
     this.picasoDataService.getObservations(
       this.dateRange.startDate,
       this.dateRange.endDate, this.progress
@@ -97,27 +87,19 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         this.setPatientObservations(observations);
         this.enableInitialGraphs();
         this.reloadDataToGraph();
-        this.refreshRange(this.dateRange.startDate, this.dateRange.endDate);
+        this.updateDates();
 
       },
       error => this.errorMessage = <any>error);
-
   }
 
 
-
   setPatientObservations(observations: ObservationResult[]) {
-
-
     if (this.forMeasurements === "morisky" || this.singleValued) {
       this.options.chart.height = 200;
-
       for (let observation of observations) {
-
         // console.log("observationID",observation.id);
         // console.log("forMeasurements",this.forMeasurements);
-
-
         if (observation.id === this.forMeasurements) {
           this.footerText = observation.helpText;
           this.observationGroups = [];
@@ -126,18 +108,14 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         }
       }
     }
-
     else {
-
       this.observationGroups = observations.filter(function (obj) {
         return obj.id !== "morisky";
       });
     }
-
   }
 
   setOptions(): void {
-
     this.options = {
       chart: {
         noData: 'No data exists for selected dates and observations.',
@@ -278,24 +256,17 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   }
 
 
-
   reloadDataToGraph() {
 
     let index = 0;
     this.data = [];
     this.options.chart.yAxis1.axisLabel = "";
     this.options.chart.yAxis2.axisLabel = "";
-
-
     let isThereGraph = false;
 
     for (let group of this.observationGroups) {
-
-
       if (group.showLeft || group.showRight) {
-
         if (group.showLeft) {
-
           this.options.chart.yAxis1.axisLabel +=
             //"<span style='color:" + group.color + "' > <i class='fa fa-circle'></i> </span>" +
             (this.options.chart.yAxis1.axisLabel !== "" ? " | " : "") + group.name + " (" + group.unit + ")";
@@ -303,16 +274,13 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           this.options.chart.yAxis2.axisLabel +=
             (this.options.chart.yAxis2.axisLabel !== "" ? " | " : "") +
             group.name + " (" + group.unit + ")";
-
         }
 
         group.index = index;
         isThereGraph = true;
-
         let filteredValues = [];
 
         for (let el of group.values) {
-
           if (
             el.value != null &&
             (group.minValue != null && el.value < group.minValue) ||
@@ -320,9 +288,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           ) {
             el.outOfRange = true;
           }
-
           //console.log("gettime" + new Date(el.date).getTime());
-
           if (new Date(el.date).getTime() < this.dateRange.startDate.getTime() || new Date(el.date).getTime() > this.dateRange.endDate.getTime()) {
           }
           else {
@@ -331,35 +297,21 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         }
 
         if (filteredValues.length > 0) {
-
-
           let sortedValues = filteredValues.sort(function (a, b) {
             return new Date(a.date).getTime() - new Date(b.date).getTime();
           });
 
-
           let newGraphValues = [];
-
 
           //var i = 0;
           for (let observation of sortedValues) {
-
             //newValues.push({x: i++, y: i});
-
             newGraphValues.push({
               observation: observation,
               unit: group.unit,
               name: group.name
             });
-            //{"x": new Date(observation.date).getTime(), "y": observation.value})
-
-
-            //if (observation.value === null) console.log("found null");
-
-            //console.log( group.name + " / " + group.unit + " " +
-            // observation.date + " " + observation.value);
           }
-
 
           index++;
           this.data.push({
@@ -374,12 +326,10 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             yAxis: group.showLeft ? 1 : 2,
             xAxis: 1,
             type: 'line'   //group.type
-
           });
 
-
+          // paint horizontal lines for min, mid, max values
           if (this.showMinMidMax) {
-
             if (group.minValue != null) {
               let newGraphValuesMin = [];
               newGraphValuesMin.push({observation: {date: this.dateRange.startDate, value: group.minValue}});
@@ -401,7 +351,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                 classed: 'dashed'
               })
             }
-
 
             if (group.maxValue != null) {
               let newGraphValuesMax = [];
@@ -499,14 +448,16 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   }
 
-  public refreshRange(start: Date, end: Date): void {
+  public updateDates(): void {
 
-    this.dateRange.startDate = start;
-    this.dateRange.endDate = end;
+
     this.options.chart.xDomain = [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()];
     this.options.chart.xRange = [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()];
     this.options.chart.xScale = [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()];
-    this.reloadDataToGraph();
+
+
+    //this.getObservations();
+
   }
 
   public toggleLeft(id: string, name: string) {
