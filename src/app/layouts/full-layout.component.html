@@ -9,11 +9,13 @@
     </ul>
     <ul class="nav navbar-nav float-xs-right hidden-md-down">
       <li class="nav-item">
-        <a class="nav-link" href="#" [routerLink]="['/patient-id']"><i class="fa fa-user-plus"></i>  Patient: {{cdSharedObject.patient.display}}  </a>
+        <a class="nav-link" href="#" [routerLink]="['/patient-id']"><i class="fa fa-user-plus"></i> Patient:
+          {{cdSharedObject.patient.display}} </a>
       </li>
 
       <li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
-        <a class="nav-link dropdown-toggle" (click)="false" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle>
+        <a class="nav-link dropdown-toggle" (click)="false" data-toggle="dropdown" href="#" role="button"
+           aria-haspopup="true" aria-expanded="false" dropdownToggle>
           <i class="fa fa-user"></i>User: {{cdSharedObject.clinician.UPID}}
           <span class="hidden-md-down"></span>
         </a>
@@ -21,8 +23,10 @@
           <div class="dropdown-header text-xs-center">
             <strong>Account Admin</strong>
           </div>
-          <a class="dropdown-item" href="#" [routerLink]="['/account-edit']"><i class="fa fa-bell-o"></i> User account</a>
-          <a class="dropdown-item" href="#" [routerLink]="['/med-comm']"><i class="fa fa-comments"></i> Comments<span class="tag tag-info">2</span></a>
+          <a class="dropdown-item" href="#" [routerLink]="['/account-edit']"><i class="fa fa-bell-o"></i> User
+            account</a>
+          <a class="dropdown-item" href="#" [routerLink]="['/med-comm']"><i class="fa fa-comments"></i> Comments<span
+            class="tag tag-info">2</span></a>
           <a class="dropdown-item" href="#"><i class="fa fa-envelope-o"></i> Notifications<span class="tag tag-warning">2</span></a>
           <div class="divider"></div>
           <a class="dropdown-item" href="#" [routerLink]="['/logout']"><i class="fa fa-lock"></i> Logout</a>
@@ -30,7 +34,8 @@
 
 
       <li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
-        <a class="nav-link dropdown-toggle" (click)="false" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle>
+        <a class="nav-link dropdown-toggle" (click)="false" data-toggle="dropdown" href="#" role="button"
+           aria-haspopup="true" aria-expanded="false" dropdownToggle>
           <i class="fa fa-cog" aria-hidden="true"></i> Configuration
           <span class="hidden-md-down"></span>
         </a>
@@ -84,12 +89,19 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/clinician-manager/observations/all/']"><i
-              class="icon-puzzle"></i> Measurements</a>
+              class="icon-puzzle"></i> Measurements I</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLinkActive="active"
+               [routerLink]="['/clinician-manager/observations-single/all/']"><i
+              class="icon-puzzle"></i> Measurements II</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/clinician-manager/morisky/all/']"><i
               class="icon-puzzle"></i> Morisky</a>
           </li>
+
+
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/clinician-manager/diseases/all/']"><i
               class="icon-puzzle"></i> Diseases</a>
