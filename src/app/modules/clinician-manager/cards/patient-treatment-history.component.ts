@@ -35,9 +35,9 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
   checks: PatientTreatment[];
   listOfItems: string[];
 
-  errorMessage: string;
+  itemCounter: number;
 
-  idCount: number;
+  errorMessage: string;
 
   public visTimelineTreatments: string = 'visTimelineGraph';
   public visTimelineItemsTreatments: VisTimelineItems;
@@ -63,8 +63,8 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
 
   getChecks() {
 
-    this.idCount = 0;
     this.checks = [];
+    this.itemCounter = 0;
 
     this.getVisits();
     this.getImaging();
@@ -129,10 +129,11 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
     this.listOfItems = [];
     this.visTimelineItemsTreatments = new VisTimelineItems([]);
 
+    let counter: number = 0;
     for (let item of this.checks) {
       if (item.endDate === undefined || item.endDate === null) {
         this.visTimelineItemsTreatments.add({
-          id: "" + this.idCount++,//item.id,
+          id: item.id,
           style: "background: " + item.color,
           content: `<div>
                               <div class="w3-small"><b>${item.category}</b></div>
@@ -144,7 +145,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       }
       else {
         this.visTimelineItemsTreatments.add({
-          id: "" + this.idCount++,//item.id,
+          id: item.id,
           content: `<div>
                               <div class="w3-small"><b>${item.category}</b></div>
                               <div class="w3-small">${item.visitReason} </div>
@@ -168,7 +169,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
         {
           startDate: treatment.date,
           endDate: null,
-          id: "" + this.idCount++, //"IN_" + treatment.id,
+          id: "treat_" + this.itemCounter++,
           category: "Care professional",
           color: treatment.color,
           visitReason: treatment.careProfessional,
@@ -192,7 +193,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
         {
           startDate: treatment.date,
           endDate: null,
-          id: type + "_" + treatment.id,
+          id: "treat_" + this.itemCounter++,
           category: type,
           color: treatment.color,
           visitReason: visitReason,

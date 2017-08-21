@@ -34,6 +34,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
   selectedMedication: PatientMedication;
   listOfItems: string[];
   medications: PatientMedication[];
+  itemCounter: number;
 
   errorMessage: string;
 
@@ -63,6 +64,8 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
 
     this.medications = [];
+    this.itemCounter = 0;
+
 
     this.getMedicationIntakes();
     this.getMedicationPrescriptions()
@@ -114,6 +117,9 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
     this.listOfItems = [];
     this.visTimelineItemsMedications = new VisTimelineItems([]);
 
+
+    let counter: number = 0;
+
     for (let item of this.medications) {
 
       if (item.endDate === undefined || item.endDate === null) {
@@ -162,7 +168,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
     for (let prescription of medications) {
       this.medications.push(
         {
-          id: "IN_" + i++,  // + prescription.id,
+          id: "graphItem" + this.itemCounter++,
           name: prescription.name,
           startDate: prescription.startDate,
           endDate: prescription.endDate,
@@ -185,7 +191,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
     for (let prescription of medications) {
       this.medications.push(
         {
-          id: "PRE_" + i++, //+ prescription.id,
+          id: "graphItem" + this.itemCounter++,
           name: prescription.name,
           startDate: prescription.date,
           endDate: null,

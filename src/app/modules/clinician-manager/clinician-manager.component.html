@@ -168,6 +168,15 @@
     </div>
   </div>
 
+  <div *ngIf="cardToShow === 'all'" class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+      <patient-range-picker (dateRangeChanged)="rangeChanged($event)" [range]="range">
+
+      </patient-range-picker>
+
+    </div>
+  </div>
 
   <div *ngIf="cardToShow==='observations-single' || cardToShow === 'all' " class="row">
 

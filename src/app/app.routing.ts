@@ -13,16 +13,7 @@ export const routes: Routes = [
   {
     path: '',
     redirectTo: 'patient-id',
-    pathMatch: 'full',
-    canActivate: [AuthGuard]
-  },
-  {path: 'login', component: LoginComponent},
-  {path: 'register', component: RegisterComponent},
-  {
-    path: 'home',
-    redirectTo: 'patient-id',
-    pathMatch: 'full',
-    canActivate: [AuthGuard]
+    pathMatch: 'full'
   },
   {
     path: '',
@@ -72,10 +63,8 @@ export const routes: Routes = [
         path: 'careplan-templates',
         loadChildren: './modules/careplan-templates/careplan-templates.module#CareplanTemplatesModule'
       }
-    ],
-    canActivate: [AuthGuard]
-  },
-  {path: '**', component: LoginComponent},
+    ]
+  }
 
 ];
 
