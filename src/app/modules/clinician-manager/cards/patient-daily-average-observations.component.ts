@@ -204,7 +204,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     //console.log('prev value: ', range.previousValue);
     //range.currentValue();
 
-    if (range.previousValue != range.currentValue) {
+    if (range === undefined || (range.previousValue != range.currentValue)) {
       this.setOptions();
       this.updateDates();
       this.getObservations();
@@ -217,17 +217,15 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
     let oldOnOff = [];
     for (let group of this.observationGroups) {
-      oldOnOff.push({id: group.id, left: group.showLeft, right: group.showRight})
+      oldOnOff.push({id: group.id, showLeft: group.showLeft, showRight: group.showRight})
     }
 
 
     if (this.forMeasurements === "morisky") {
       this.headerText = "Morisky Scale results";
     } else {
-      this.headerText = "Patient Measurements and Recordings - Combined Chart";
-      this.footerText = "Hover the mouse pointer over the diagram for values. Click\n" +
-        "      a series name in the legend above the diagram to view/hide series.\n" +
-        "      If several series are shown on one axis, series are not normalised."
+      this.headerText = "Patient Measurements and Recordings";
+
     }
     this.options.chart.noData = "Loading...";
     this.picasoDataService.getObservations(
@@ -262,6 +260,10 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       }
     }
     else {
+      this.headerText = "Patient Measurements and Recordings - Combined Chart";
+      this.footerText = "Hover the mouse pointer over the diagram for values. Click\n" +
+        "      a series name in the legend above the diagram to view/hide series.\n" +
+        "      If several series are shown on one axis, series are not normalised."
       this.observationGroups = observations.filter(function (obj) {
         return obj.id !== "morisky";
       });
@@ -601,9 +603,16 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   }
 
   public enableInitialGraphs(oldOnOffData: any) {
-
     if (oldOnOffData.length > 1) {
-
+      for (let i = 0; i < this.observationGroups.length; i++) {
+        for (let oldGroup of oldOnOffData) {
+          if (this.observationGroups[i].id === oldGroup.id) {
+            this.observationGroups[i].showLeft = oldGroup.showLeft;
+            this.observationGroups[i].showRight = oldGroup.showRight;
+            break;
+          }
+        }
+      }
     }
     else {
       for (let i = 0; i < this.observationGroups.length; i++) {
@@ -613,7 +622,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         if (this.forMeasurements === "all" || this.forMeasurements === this.observationGroups[i].id) {
           this.observationGroups[i].showLeft = true;
         }
-
       }
     }
   }
