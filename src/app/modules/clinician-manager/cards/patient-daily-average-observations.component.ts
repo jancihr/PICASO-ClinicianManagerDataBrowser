@@ -189,7 +189,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   };
 
 
-  observationGroups: ObservationResult[];
+  observationGroups: ObservationResult[] = [];
 
 
   constructor(private picasoDataService: PicasoDataService, private activatedRoute: ActivatedRoute) {
@@ -214,6 +214,13 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
   getObservations(): void {
+
+    let oldOnOff = [];
+    for (let group of this.observationGroups) {
+      oldOnOff.push({id: group.id, left: group.showLeft, right: group.showRight})
+    }
+
+
     if (this.forMeasurements === "morisky") {
       this.headerText = "Morisky Scale results";
     } else {
@@ -229,7 +236,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     ).subscribe(
       observations => {
         this.setPatientObservations(observations);
-        this.enableInitialGraphs();
+        this.enableInitialGraphs(oldOnOff);
         this.reloadDataToGraph();
         this.updateDates();
 
@@ -593,14 +600,20 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     this.reloadDataToGraph();
   }
 
-  public enableInitialGraphs() {
+  public enableInitialGraphs(oldOnOffData: any) {
 
-    for (let i = 0; i < this.observationGroups.length; i++) {
-      this.observationGroups[i].showRight = false;
-      this.observationGroups[i].showLeft = false;
-      //console.log(this.forMeasurements);
-      if (this.forMeasurements === "all" || this.forMeasurements === this.observationGroups[i].id) {
-        this.observationGroups[i].showLeft = true;
+    if (oldOnOffData.length > 1) {
+
+    }
+    else {
+      for (let i = 0; i < this.observationGroups.length; i++) {
+        this.observationGroups[i].showRight = false;
+        this.observationGroups[i].showLeft = false;
+        //console.log(this.forMeasurements);
+        if (this.forMeasurements === "all" || this.forMeasurements === this.observationGroups[i].id) {
+          this.observationGroups[i].showLeft = true;
+        }
+
       }
     }
   }

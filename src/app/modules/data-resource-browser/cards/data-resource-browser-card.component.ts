@@ -39,7 +39,7 @@ class PicasoNetworkData implements VisNetworkData {
 export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
 
   //Items table
-  public tableData: TableItem[];
+  public tableData: TableItem[] = [];
   public rowsOnPage = 5;
   public sortBy = "startDate";
   public sortOrder = "desc";
