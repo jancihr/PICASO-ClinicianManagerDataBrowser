@@ -44,6 +44,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
   public sortBy = "startDate";
   public sortOrder = "desc";
 
+  animationToggle: boolean = true;
   public visNetwork: string = 'networkId1';
   public visNetworkData: PicasoNetworkData;
   public visNetworkOptions: VisNetworkOptions;
@@ -1967,8 +1968,10 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
 
   }
   private fillTableBelowDRB(nodeId: string, isLeafNode: boolean): void {
+
     this.tableData = []
     if(isLeafNode){
+      this.animationToggle = !this.animationToggle;
       let observForNode = this.observations.find(item => item.id === nodeId)
       if(observForNode) {
         this.tableData = observForNode.content

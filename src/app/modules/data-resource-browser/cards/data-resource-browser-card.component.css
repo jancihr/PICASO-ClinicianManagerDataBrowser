@@ -40,3 +40,36 @@ pagination {
   margin: 0;
   height: 12px;
 }
+
+.my-animation1 {
+  position: relative;
+  animation: animate-top1 0.4s
+}
+
+@keyframes animate-top1 {
+  from {
+    top: -600px;
+    opacity: 0
+  }
+  to {
+    top: 0;
+    opacity: 1
+  }
+}
+
+.my-animation2 {
+  position: relative;
+  animation: animate-top2 0.4s
+}
+
+@keyframes animate-top2 {
+  from {
+    top: -600px;
+    opacity: 0
+  }
+  to {
+    top: 0;
+    opacity: 1
+  }
+}
+

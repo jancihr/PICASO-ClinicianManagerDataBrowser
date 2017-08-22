@@ -37,7 +37,7 @@
 
         </div>
 
-      <div class="row">
+      <div *ngIf="tableData.length>0" class="row" class="{{animationToggle?'my-animation1':'my-animation2'}}">
 
         <table class="table table-striped table-bordered table-sm" [mfData]="tableData" #mf="mfDataTable"
                [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
