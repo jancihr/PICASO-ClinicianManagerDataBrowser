@@ -1,5 +1,6 @@
 .card {
   border-radius: 10px;
+
 }
 
 .card-footer {
@@ -16,6 +17,7 @@
 
 .card-block {
   padding: 0.25rem;
+  margin-bottom: -0.75rem;
 }
 
 .card-header {
