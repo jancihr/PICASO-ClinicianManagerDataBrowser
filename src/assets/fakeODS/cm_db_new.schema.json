@@ -419,7 +419,8 @@
           "description": "Date of birth",
           "id": "/properties/infoResult/properties/dob",
           "title": "The Dob Schema",
-          "type": "string"
+          "type": "string",
+          "format": "date-time"
         },
         "gender": {
           "default": "M",

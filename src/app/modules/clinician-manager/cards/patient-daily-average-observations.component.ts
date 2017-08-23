@@ -62,7 +62,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     chart: {
       noData: 'No data exists for selected dates and observations.',
       type: 'multiChart',
-      height: 500,
+      height: 400,
       transitionDuration: 300,
       duration: 300,
 
@@ -100,7 +100,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       xAxis: {
         //axisLabel: 'Time',
         tickFormat: function (d) {
-          return new Date(d).toLocaleDateString();
+          let date = new Date(d);
+          return ("" + date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear());
         },
       },
 
@@ -114,7 +115,11 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           var html = "";
           html += "<br><span style='color:" + d.point.color + "' > <i class='fa fa-circle'></i> </span> " +
             (d.point.value === null ? "<span class='badge badge-pill badge-warning'>MISSING VALUE!</span><br>" : d.point.value) + ' ' + d.series[0].key + '<br>' +
-            d.point.date + '<br>';
+
+            ("" + d.point.date.getDate() + "." + (d.point.date.getMonth() + 1) + "." + d.point.date.getFullYear() + " " + d.point.date.getHours() + ":" + d.point.date.getMinutes())
+
+
+            + '<br>';
           return html;
         }
       },
@@ -131,12 +136,18 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
               if (!elem.key.startsWith("hide")) {
 
+                let date = new Date(elem.data.observation.date);
 
                 html = html +
 
                   "<span style='color:" + elem.color + "' > <i class='fa fa-circle'></i> </span> " +
 
-                  elem.data.name + " " + elem.data.observation.date + ": <br> <span class='text-white'><i class='fa fa-circle-o'></i> </span>" +
+                  elem.data.name + " " +
+
+                  ("" + date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear() + " " + (date.getHours() < 10 ? "0" : "") + date.getHours() + ":" + (date.getMinutes() < 10 ? "0" : "") + date.getMinutes())
+
+
+                  + " <br> <span class='text-white'><i class='fa fa-circle-o'></i> </span>" +
                   (
                     elem.data.observation.value === null
                       ?

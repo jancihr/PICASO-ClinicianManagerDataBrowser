@@ -33,10 +33,10 @@
     </div>
 
     <div *ngIf="selectedMedication"
-         class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" style="padding-left: 0;padding-right: 0">
+         class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 detail-view">
       <div class="w3-border-bottom">
         Selected Medication details
-        <button class="btn btn-default  w3-right" (click)="close()"><i class="fa fa-close"></i></button>
+        <button class="w3-right" (click)="close()"><i class="fa fa-close"></i></button>
       </div>
       <div class="{{animateToggle?'myanimation1':'myanimation2'}} ">
 
@@ -48,12 +48,12 @@
           <div *ngIf="selectedMedication.frequency">Frequency: {{selectedMedication.frequency}}</div>
           <div *ngIf="selectedMedication.stopReason">Stop Reason: {{selectedMedication.stopReason}}</div>
           <div *ngIf="selectedMedication.startDate && selectedMedication.type==='prescription'">From:
-            {{selectedMedication.startDate}}
+            {{selectedMedication.startDate| date:'d.M.y'}}
           </div>
           <div *ngIf="selectedMedication.startDate && selectedMedication.type==='intake'">Time:
-            {{selectedMedication.startDate}}
+            {{selectedMedication.startDate| date:'d.M.y'}}
           </div>
-          <div *ngIf="selectedMedication.endDate">To: {{selectedMedication.endDate}}</div>
+          <div *ngIf="selectedMedication.endDate">To: {{selectedMedication.endDate| date:'d.M.y'}}</div>
 
         </samp>
       </div>
@@ -63,8 +63,8 @@
   </div>
 
   <div class="card-footer">
-    <div class="w3-tiny w3-right">Click inside the timeline first, to enable interactions. Then use zoom, scroll to
-      navigate the timeline and click chosen medication to view it's detail
+    <div class="w3-tiny w3-right">Scroll the timeline draging it with mouse. Zoom using Alt key + mouse scroll. Click
+      chosen medication to view it's detail
     </div>
   </div>
 

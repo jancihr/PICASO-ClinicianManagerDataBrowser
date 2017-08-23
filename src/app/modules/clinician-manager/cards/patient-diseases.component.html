@@ -102,8 +102,8 @@
 
       <tr *ngFor="let disease of mf.data">
         <td>{{disease.name}}</td>
-        <td>{{disease.dateOfOnset}}</td>
-        <td>{{disease.dateOfOffset?disease.dateOfOffset:""}}</td>
+        <td>{{disease.dateOfOnset| date:'d.M.y'}}</td>
+        <td>{{disease.dateOfOffset?(disease.dateOfOffset| date:'d.M.y'):""}}</td>
         <td>{{disease.severity}}</td>
         <td>{{disease.sideOfOnset}}</td>
         <td>{{disease.clinicalPhenotype}}</td>

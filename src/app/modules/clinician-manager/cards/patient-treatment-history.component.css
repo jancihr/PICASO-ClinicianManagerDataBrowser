@@ -1,17 +1,12 @@
 button {
-  background-color: #eee;
-  padding: 0.25rem 0.25rem;
+  background-color: transparent;
+  padding: 0.05rem 0.25rem;
   border-radius: 10px;
+  border: 0;
 }
 
 button:hover {
   background-color: #cfd8dc;
-}
-
-button:disabled {
-  background-color: #eee;
-  color: #aaa;
-  cursor: auto;
 }
 
 .card {
@@ -78,4 +73,10 @@ button:disabled {
     margin-left: 0%;
     width: 100%;
   }
+}
+
+:host /deep/ .vis-selected {
+  border-color: #00b821;
+  border-width: 2px;
+  border-radius: 10px;
 }

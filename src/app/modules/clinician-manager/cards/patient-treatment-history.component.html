@@ -32,19 +32,19 @@
     </div>
 
     <div *ngIf="selectedTreatment"
-         class=" col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" style="padding-left: 0;padding-right: 0">
+         class=" col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 detail-view">
 
       <div class="w3-border-bottom">
         <div>Selected Treatment Details
-          <button class="btn btn-default  w3-right" (click)="close()"><i class="fa fa-close"></i></button>
+          <button class="w3-right" (click)="close()"><i class="fa fa-close"></i></button>
         </div>
       </div>
       <div class="{{animateToggle?'myanimation1':'myanimation2'}} ">
         <samp>
           <div *ngIf="selectedTreatment.startDate">{{selectedTreatment.endDate?'From:':'Date:'}}
-            {{selectedTreatment.startDate}}
+            {{selectedTreatment.startDate| date:'d.M.y'}}
           </div>
-          <div *ngIf="selectedTreatment.endDate">To: {{selectedTreatment.endDate}}</div>
+          <div *ngIf="selectedTreatment.endDate">To: {{selectedTreatment.endDate| date:'d.M.y'}}</div>
 
           <div>Category: {{selectedTreatment.category}}</div>
           <div>Treatment: {{selectedTreatment.visitReason}}</div>
@@ -59,8 +59,8 @@
   </div>
 
   <div class="card-footer">
-    <div class="w3-tiny w3-right">Click inside the timeline first, to enable interactions. Then use zoom, scroll to
-      navigate the timeline and click chosen treatment to view it's details.
+    <div class="w3-tiny w3-right">Scroll the timeline draging it with mouse. Zoom using Alt key + mouse scroll. Click
+      chosen treatment to view it's details.
     </div>
 
   </div>

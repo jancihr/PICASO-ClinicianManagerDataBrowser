@@ -57,9 +57,9 @@
 
       <tr *ngFor="let appointemnt of mf.data">
 
-        <td>{{appointemnt.createdDate}}</td>
-        <td>{{appointemnt.patientUpdatedDate}}</td>
-        <td>{{appointemnt.followUpDate}}</td>
+        <td>{{appointemnt.createdDate| date:'d.M.y'}}</td>
+        <td>{{appointemnt.patientUpdatedDate| date:'d.M.y'}}</td>
+        <td>{{appointemnt.followUpDate| date:'d.M.y'}}</td>
         <td>{{appointemnt.name}}</td>
         <td>{{appointemnt.role}}</td>
         <td>{{appointemnt.note}}</td>

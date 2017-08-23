@@ -9,7 +9,7 @@ export interface InfoResult {
   name: string;
   address: string;
   bloodType: string;
-  dob: string;
+  dob: Date;
   height: string;
   gender: string;
   insurer: string;

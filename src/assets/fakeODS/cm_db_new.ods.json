@@ -30954,12 +30954,12 @@
     },
     {
       "id": "ffbh",
-      "name": "FFbh",
+      "name": "Funktionsfragebogen Hannover",
       "unit": "score",
       "color": "#0d00d0",
       "maxValue": null,
-      "midValue": null,
-      "minValue": null,
+      "midValue": 100,
+      "minValue": 70,
       "source": null,
       "values": [
         {

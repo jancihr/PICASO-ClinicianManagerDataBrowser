@@ -50,13 +50,48 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.visTimelineTreatmentsOptions = {
       selectable: true,
+      autoResize: true,
       showCurrentTime: true,
       //zoomMax: 61556926000, //year
       zoomMin: 86400000, //day
-      clickToUse: true,
+      clickToUse: false,
       rollingMode: null,//{follow:false, offset:0},
       start: this.dateRange.startDate,
-      end: this.dateRange.endDate
+      end: this.dateRange.endDate,
+      height: 250,
+      margin: {
+        axis: 10,
+        item: 10
+      },
+      showMajorLabels: true,
+      showMinorLabels: true,
+      zoomable: true,
+      zoomKey: 'altKey',
+
+      format: {
+        minorLabels: {
+          millisecond: 'SSS',
+          second: 's',
+          minute: 'HH:mm',
+          hour: 'HH:mm',
+          weekday: 'ddd D.M.',
+          day: 'D.',
+          week: 'w',
+          month: 'MMM',
+          year: 'YYYY'
+        },
+        majorLabels: {
+          millisecond: 'HH:mm:ss',
+          second: 'D.M. HH:mm',
+          minute: 'ddd D.M.',
+          hour: 'ddd D.M.',
+          weekday: 'MMMM YYYY',
+          day: 'MMMM YYYY',
+          week: 'MMMM YYYY',
+          month: 'YYYY',
+          year: ''
+        }
+      }
     };
     this.getChecks();
   }
