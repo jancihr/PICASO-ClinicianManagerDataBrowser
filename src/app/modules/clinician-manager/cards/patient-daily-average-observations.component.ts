@@ -26,6 +26,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
   forMeasurementsPath: string;
+  chart;
   headerText: string;
   footerText: string;
 
@@ -192,7 +193,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       },
       callback: function (chart) {
 
-        //d3.selectAll('.nv-y1 text').style('fill','#123');
+        this.chart = chart;//d3.selectAll('.nv-y1 text').style('fill','#123');
         //console.log("!!! lineChart callback !!!", chart);
       }
     }
@@ -207,6 +208,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
   ngOnChanges(changes: SimpleChanges) {
+    this.clearElement();
     const range: SimpleChange = changes.dateRange;
     //console.log('prev value: ', range.previousValue);
     //range.currentValue();
@@ -217,6 +219,10 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       this.getObservations();
       //this.printDate("ngOnChanges")
     }
+  }
+
+  ngOnDestroy() {
+    this.clearElement();
   }
 
 
@@ -637,6 +643,11 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   public resetMinMidMax() {
     this.showMinMidMax = !this.showMinMidMax;
     this.reloadDataToGraph();
+  }
+
+  clearElement() {
+    d3.selectAll('.nvtooltip').remove();
+
   }
 
 

@@ -35,7 +35,9 @@ button:disabled {
 
 .card-block {
   padding: 0.25rem;
-
+  margin-bottom: 0.1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
 }
 
 .card-header {

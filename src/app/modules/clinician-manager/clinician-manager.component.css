@@ -65,13 +65,9 @@ input.selection {
   text-align: center;
 }
 
-.btn {
-  padding: 0.25rem;
-}
 
 button {
-  background-color: #eee;
-  padding: 0.05rem 0.55rem 0.05rem 0.55rem;
+  padding: 0 0.3rem 0 0.3rem;
   border-radius: 10px;
   border-color: transparent;
   background-color: transparent;
