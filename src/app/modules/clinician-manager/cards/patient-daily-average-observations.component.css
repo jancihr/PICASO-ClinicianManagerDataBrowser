@@ -1,14 +1,17 @@
 .card {
-    border-radius: 10px;
+  border-radius: 10px;
+
 }
 
 .card-footer {
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 .card-header {
-    border-radius: 10px;
+  border-radius: 10px;
 }
+
+
 
 .card-footer {
   padding: 0.25rem;
@@ -22,12 +25,16 @@
 }
 
 .card-header {
-  padding: 0.25rem;
+  padding: 0.05rem;
 }
 
 .card {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.05rem;
 }
+
+
+
+
 
 td {
   font-size: 0.75rem;
@@ -46,9 +53,11 @@ td {
 }
 
 button {
-
-  padding: 0.25rem 0.25rem;
+  background-color: #eee;
+  padding: 0.05rem 0.55rem 0.05rem 0.55rem;
   border-radius: 10px;
+  border-color: transparent;
+  background-color: transparent;
 }
 
 button:hover {
@@ -60,3 +69,5 @@ button:disabled {
   color: #aaa;
   cursor: auto;
 }
+
+

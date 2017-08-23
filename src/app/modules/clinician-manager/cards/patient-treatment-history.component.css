@@ -15,16 +15,19 @@ button:disabled {
 }
 
 .card {
-    border-radius: 10px;
+  border-radius: 10px;
+
 }
 
 .card-footer {
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 .card-header {
-    border-radius: 10px;
+  border-radius: 10px;
 }
+
+
 
 .card-footer {
   padding: 0.25rem;
@@ -32,14 +35,15 @@ button:disabled {
 
 .card-block {
   padding: 0.25rem;
+
 }
 
 .card-header {
-  padding: 0.25rem;
+  padding: 0.05rem;
 }
 
 .card {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.05rem;
 }
 
 .myanimation1 {

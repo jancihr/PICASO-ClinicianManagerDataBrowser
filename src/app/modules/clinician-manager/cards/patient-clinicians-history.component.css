@@ -23,11 +23,11 @@
 }
 
 .card-header {
-  padding: 0.25rem;
+  padding: 0.05rem;
 }
 
 .card {
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.05rem;
 }
 
 .table-sm td {
@@ -42,17 +42,17 @@
 
 .table th,
 .table td {
-  padding: 0.25rem;
+  padding: 0.05rem;
 }
 
 .table tfoot {
-  padding: 0.25rem;
+  padding: 0.05rem;
 }
 
 pagination {
   padding: 0;
   margin: 0;
-  height: 12px;
+  height: 10px;
 }
 
 

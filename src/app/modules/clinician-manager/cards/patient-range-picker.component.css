@@ -58,13 +58,56 @@ pagination {
 
 button {
   background-color: #eee;
-  padding: 0.25rem 0.25rem;
+  padding: 0.05rem 0.55rem 0.05rem 0.55rem;
   border-radius: 10px;
   margin-bottom: 20px;
 }
 
 button:hover {
   background-color: #cfd8dc;
+}
+
+.btn-selected {
+  color: #f9fffd;
+  background-image: none;
+  background-color: #4dbd74;
+  border-color: #4dbd74;
+}
+
+.btn-selected:hover {
+  color: #fff;
+  background-color: #327a4b;
+  border-color: #4dbd74;
+}
+
+.btn-selected:focus, .btn-selected.focus {
+  color: #fff;
+  background-color: #4dbd74;
+  border-color: #4dbd74;
+}
+
+.btn-selected:active, .btn-selected.active,
+.open > .btn-selected.dropdown-toggle {
+  color: #fff;
+  background-color: #4dbd74;
+  border-color: #4dbd74;
+}
+
+.btn-selected:active:hover, .btn-selected:active:focus, .btn-selected:active.focus, .btn-selected.active:hover, .btn-selected.active:focus, .btn-selected.active.focus,
+.open > .btn-selected.dropdown-toggle:hover,
+.open > .btn-selected.dropdown-toggle:focus,
+.open > .btn-selected.dropdown-toggle.focus {
+  color: #fff;
+  background-color: #30834d;
+  border-color: #25653c;
+}
+
+.btn-selected.disabled:focus, .btn-selected.disabled.focus, .btn-selected:disabled:focus, .btn-selected:disabled.focus {
+  border-color: #97d9ae;
+}
+
+.btn-selected.disabled:hover, .btn-selected:disabled:hover {
+  border-color: #97d9ae;
 }
 
 button:disabled {
