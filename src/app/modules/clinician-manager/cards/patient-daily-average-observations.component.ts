@@ -1,12 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output, SimpleChange, SimpleChanges} from "@angular/core";
+import {Component, Input, OnInit, SimpleChange, SimpleChanges} from "@angular/core";
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {MyDateRange} from "./patient-range-picker.component";
 import {ObservationResult} from "../model/generated-interfaces";
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 
 
-declare let d3, nv: any;
+declare let d3, nv;
 
 
 @Component({
@@ -35,15 +35,34 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   isThereMid: boolean;
   isThereMax: boolean;
 
+  isRedBlue: boolean = false;
+
   //endDate: Date;
   //startDate: Date;
+
+  data;
+
+
+  showMinMidMax = true;
+
+  progress: PatientLoadProgress = {
+    percentage: 0,
+    loaded: 0,
+    total: 0
+  };
+
+
+  observationGroups: ObservationResult[] = [];
+
+
 
   options: any = {
     chart: {
       noData: 'No data exists for selected dates and observations.',
       type: 'multiChart',
       height: 500,
-      transitionDuration: 500,
+      transitionDuration: 300,
+      duration: 300,
 
       legendRightAxisHint: " ",
       interpolate: "linear",
@@ -97,8 +116,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           return html;
         }
       },
-
-
       interactiveLayer: {
         tooltip: {
           contentGenerator: function (d) {
@@ -155,6 +172,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       },
 
       yAxis1: {
+        showMaxMin: false,
         axisLabel: 'left axis',
         tickFormat: function (d) {
           return d;
@@ -163,6 +181,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         axisLabelDistance: -20
       },
       yAxis2: {
+        showMaxMin: false,
         axisLabel: 'right axis',
         tickFormat: function (d) {
           return d;
@@ -171,25 +190,13 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         axisLabelDistance: -30
       },
       callback: function (chart) {
-        //console.log("!!! lineChart callback !!!");
+
+        //d3.selectAll('.nv-y1 text').style('fill','#123');
+        //console.log("!!! lineChart callback !!!", chart);
       }
     }
   };
 
-
-  data;
-
-
-  showMinMidMax = true;
-
-  progress: PatientLoadProgress = {
-    percentage: 0,
-    loaded: 0,
-    total: 0
-  };
-
-
-  observationGroups: ObservationResult[] = [];
 
 
   constructor(private picasoDataService: PicasoDataService, private activatedRoute: ActivatedRoute) {
@@ -238,7 +245,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         this.reloadDataToGraph();
         this.updateDates();
 
-        this.options.chart.noData = "Choose some measurements from the list above.";
+        this.options.chart.noData = "Choose Left (L) and Right (R) values from the list above to compare.";
 
       },
       error => this.errorMessage = <any>error);
@@ -261,9 +268,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     }
     else {
       this.headerText = "Patient Measurements and Recordings - Combined Chart";
-      this.footerText = "Hover the mouse pointer over the diagram for values. Click\n" +
-        "      a series name in the legend above the diagram to view/hide series.\n" +
-        "      If several series are shown on one axis, series are not normalised."
+      this.footerText = "Choose series above the diagram to show/hide them on left/right y axis." +
+        "      If several series are shown on one axis, series are not normalised.";
       this.observationGroups = observations.filter(function (obj) {
         return obj.id !== "morisky";
       });
@@ -399,7 +405,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             name: group.name,
             key: group.unit + " (" + group.name + ")",
             values: newGraphValues,
-            color: group.color,
+            color: this.isRedBlue && !this.singleValued ? (group.showLeft ? "red" : "blue") : group.color,
             //area: false,
             //mean: 120,
             disabled: false,
@@ -422,7 +428,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                 name: group.name,
                 values: newGraphValuesMin,
                 key: "hidemin" + group.id,
-                color: group.color,
+                color: this.isRedBlue && !this.singleValued ? (group.showLeft ? "red" : "blue") : group.color,
                 //area: false,
                 //mean: 120,
                 disabled: false,
@@ -444,14 +450,14 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                 name: group.name,
                 values: newGraphValuesMax,
                 key: "hidemax" + group.id,
-                color: group.color,
+                color: this.isRedBlue && !this.singleValued ? (group.showLeft ? "red" : "blue") : group.color,
                 //area: false,
                 //mean: 120,
                 disabled: false,
                 yAxis: group.showLeft ? 1 : 2,
                 xAxis: 1,
                 type: 'line',
-                classed: 'dashed'
+                //classed: 'dashed'
               })
             }
 
@@ -466,7 +472,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                 name: group.name,
                 values: newGraphValuesMid,
                 key: "hidemid" + group.id,
-                color: group.color,
+                color: this.isRedBlue && !this.singleValued ? (group.showLeft ? "red" : "blue") : group.color,
                 //area: false,
                 //mean: 120,
                 disabled: false,
@@ -545,14 +551,13 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
     for (let i = 0; i < this.observationGroups.length; i++) {
       if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
-        this.observationGroups[i].showLeft = !this.observationGroups[i].showLeft;
+        this.observationGroups[i].showLeft = true;//!this.observationGroups[i].showLeft;
         if (this.observationGroups[i].showLeft) {
           this.observationGroups[i].showRight = false;
-
-        } else {
-
         }
-        break;
+      }
+      else {
+        this.observationGroups[i].showLeft = false;
       }
     }
     this.reloadDataToGraph()
@@ -562,14 +567,13 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
     for (let i = 0; i < this.observationGroups.length; i++) {
       if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
-        this.observationGroups[i].showRight = !this.observationGroups[i].showRight;
+        this.observationGroups[i].showRight = true;//!this.observationGroups[i].showRight;
         if (this.observationGroups[i].showRight) {
           this.observationGroups[i].showLeft = false;
-
-        } else {
-
         }
-        break;
+      }
+      else {
+        this.observationGroups[i].showRight = false;
       }
     }
     this.reloadDataToGraph()
@@ -581,6 +585,11 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       this.observationGroups[i].showLeft = false;
       this.observationGroups[i].showRight = false;
     }
+    this.reloadDataToGraph();
+  }
+
+  public showRedBlue() {
+    this.isRedBlue = !this.isRedBlue;
     this.reloadDataToGraph();
   }
 
@@ -619,7 +628,10 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         this.observationGroups[i].showRight = false;
         this.observationGroups[i].showLeft = false;
         //console.log(this.forMeasurements);
-        if (this.forMeasurements === "all" || this.forMeasurements === this.observationGroups[i].id) {
+        //if (this.forMeasurements === "all") {
+        //  this.observationGroups[i].showLeft = false;
+        //}
+        if (this.forMeasurements === this.observationGroups[i].id) {
           this.observationGroups[i].showLeft = true;
         }
       }

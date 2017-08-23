@@ -25,11 +25,40 @@
       <div class="w3-center">
 
         <div>
+
+          <!--
           <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
                   class="btn btn-default"
                   (click)="clearAll()">
             <i class="fa fa-minus-circle"></i>
             Clear all
+
+          </button>
+          -->
+
+          <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
+                  class="btn btn-default"
+                  (click)="showAllLeft()">
+
+            <i class="fa fa-plus-circle"></i> Show all values
+          </button>
+
+          <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
+                  class="btn btn-default"
+                  (click)="showRedBlue()">
+
+            <span *ngIf="!isRedBlue">
+              <span style="color: red;"> <i class="fa fa-circle-o"></i></span>
+              <span style="color: blue;"> <i class="fa fa-circle-o"></i></span>
+            </span>
+            <span *ngIf="isRedBlue">
+              <span style="color: green;"> <i class="fa fa-circle-o"></i></span>
+              <span style="color: yellow;"> <i class="fa fa-circle-o"></i></span>
+              <span style="color: red;"> <i class="fa fa-circle-o"></i></span>
+              <span style="color: orange;"> <i class="fa fa-circle-o"></i></span>
+            </span>
+            <span *ngIf="!isRedBlue">Show High Contrast LR Colours</span>
+            <span *ngIf="isRedBlue">Show Original Colours</span>
 
           </button>
 
@@ -47,42 +76,47 @@
 
 
         <div *ngIf="observationGroups && observationGroups.length!==1"
-             class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-          <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
-                  class="btn btn-default"
-                  (click)="showAllLeft()">
+             class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
+             style=" padding-right: 0.05rem; padding-bottom: 0.15rem;">
+          <div class="card" style=" margin-left: 5.05rem;">
 
-            <i class="fa fa-plus-circle"></i> Show all on left axis
-          </button>
+            <!--
+            <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
+                    class="btn btn-default"
+                    (click)="showAllLeft()">
 
-          <span *ngFor="let group of observationGroups">
+              <i class="fa fa-plus-circle"></i> Show all on left axis
+            </button>
+            -->
 
-          <span style="white-space: nowrap">
+            <span *ngFor="let group of observationGroups">
 
             <button type="button" class="btn btn-default"
                     (click)="toggleLeft(group.id, group.name)">
-              <span [style.color]="group.color">
+              <span [style.color]="isRedBlue?'red':group.color">
                 <i class="fa {{group.showLeft?'fa-circle':'fa-circle-o'}}"></i>
               </span>
               {{group.name}} <span *ngIf="group.source"> ({{group.source}})</span>
               L
             </button>
 
-
-          </span>
         </span>
+          </div>
         </div>
 
 
         <div *ngIf="observationGroups && observationGroups.length!==1"
-             class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-
-          <button *ngIf="observationGroups && observationGroups.length!==1"
-                  type="button"
-                  class="btn btn-default"
-                  (click)="showAllRight()"><i class="fa fa-plus-circle"></i> Show all on right axis
-          </button>
-          <span *ngFor="let group of observationGroups">
+             class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
+             style="padding-left: 0.05rem; padding-bottom: 0.15rem;">
+          <div class="card" style=" margin-right: 5.05rem;">
+            <!--
+             <button *ngIf="observationGroups && observationGroups.length!==1"
+                     type="button"
+                     class="btn btn-default"
+                     (click)="showAllRight()"><i class="fa fa-plus-circle"></i> Show all on right axis
+             </button>
+             -->
+            <span *ngFor="let group of observationGroups">
 
           <span style="white-space: nowrap">
 
@@ -92,7 +126,7 @@
               type="button"
               class="btn btn-default"
               (click)="toggleRight(group.id, group.name)">
-              <span [style.color]="group.color">
+              <span [style.color]="isRedBlue?'blue':group.color">
                                 <i class="fa {{group.showRight?'fa-circle':'fa-circle-o'}}"></i>
                             </span>
              {{group.name}} <span *ngIf="group.source"> ({{group.source}})</span>
@@ -100,6 +134,7 @@
             </button>
           </span>
         </span>
+          </div>
         </div>
 
 
@@ -123,5 +158,6 @@
 
     </div>
   </div>
+
 
 </div>
