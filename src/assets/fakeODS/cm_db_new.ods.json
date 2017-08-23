@@ -36685,6 +36685,42 @@
       "color": "f86c6b",
       "disease": "RH",
       "prescribedBy": "DoctorWho - GP"
+    },
+    {
+      "id": "IDdfsd",
+      "name": "Candesartan",
+      "date": "2017-07-01T10:41:19.000Z",
+      "dosage": "23mg",
+      "color": "f86c6b",
+      "disease": "DIS1",
+      "prescribedBy": "DoctorWho - GP"
+    },
+    {
+      "id": "IDa",
+      "name": "Ramipril",
+      "date": "2017-07-12T10:41:19.000Z",
+      "dosage": "23mg",
+      "color": "f8cb00",
+      "disease": "DIS1",
+      "prescribedBy": "Doctor Strange - Diabethologist"
+    },
+    {
+      "id": "IDagasjhdgasdj",
+      "name": "Ramipril",
+      "date": "2017-08-12T10:41:19.000Z",
+      "dosage": "23mg",
+      "color": "f8cb00",
+      "disease": "DIS1",
+      "prescribedBy": "Doctor Strange - Diabethologist"
+    },
+    {
+      "id": "IDb",
+      "name": "Simvastatin",
+      "date": "2017-08-30T10:41:19.000Z",
+      "dosage": "23mg",
+      "color": "20a8d8",
+      "disease": "DIS1",
+      "prescribedBy": "Doctor Strange - Diabethologist"
     }
   ],
   "followUpsResult": [
