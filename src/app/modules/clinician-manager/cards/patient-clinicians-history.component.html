@@ -3,15 +3,14 @@
     <div class="vericaltext" i18n="Patient Clinicians History"><i class="fa fa-medkit"></i> Patient Clinicians History
 
       <span class="w3-right">
+        <span *ngIf="(progress.percentage < 100)">
+          <span class="fa fa-spinner w3-spin" style="font-size:20px">
 
-      <span *ngIf="(progress.percentage < 100)">
-
-        <span class="fa fa-spinner w3-spin" style="font-size:20px"></span>
-
-        loading: {{progress.percentage}}% |
-      loaded: {{progress.total}} bytes</span>
-    </span>
-
+          </span>
+          loading: {{progress.percentage}}% |
+          loaded: {{progress.total}} bytes
+        </span>
+      </span>
     </div>
 
   </div>
@@ -91,6 +90,7 @@
         <td colspan="5" class="w3-right-align">
 
           <mfBootstrapPaginator class="pagination-sm"></mfBootstrapPaginator>
+
         </td>
       </tr>
       </tfoot>

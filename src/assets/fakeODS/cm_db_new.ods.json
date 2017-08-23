@@ -36726,51 +36726,72 @@
   "followUpsResult": [
     {
       "id": "idaa",
-      "name": "iddm",
-      "role": "role",
+      "name": "Doctor X",
+      "role": "Doctor of Science",
       "date": "2017-03-20T10:41:19.000Z",
+      "createdDate": "2017-03-20T10:41:19.000Z",
+      "patientUpdatedDate": "2017-03-20T10:41:19.000Z",
+      "followUpDate": "2017-03-20T10:41:19.000Z",
       "note": "iddw"
     },
     {
       "id": "idaa",
-      "name": "Get screening",
+      "name": null,
       "role": "Radiologist",
       "date": "2017-09-20T10:41:19.000Z",
+      "createdDate": "2017-03-20T10:41:19.000Z",
+      "patientUpdatedDate": null,
+      "followUpDate": null,
+      "note": "Get screening of xxx in next 3 weeks"
+    },
+    {
+      "id": "idaa",
+      "name": "Doctor of Magic",
+      "role": "Radiologist",
+      "date": "2017-09-20T10:41:19.000Z",
+      "createdDate": "2017-03-20T10:41:19.000Z",
+      "patientUpdatedDate": "2017-03-20T10:41:19.000Z",
+      "followUpDate": "2017-03-20T10:41:19.000Z",
       "note": "Get screening of xxx"
     },
     {
       "id": "idaa",
-      "name": "Sample follow up",
+      "name": null,
       "role": "Radiologist",
       "date": "2017-09-20T10:41:19.000Z",
+      "createdDate": "2017-03-20T10:41:19.000Z",
+      "patientUpdatedDate": "2017-03-20T10:41:19.000Z",
+      "followUpDate": "2017-03-20T10:41:19.000Z",
       "note": "Get screening of xxx"
     },
     {
       "id": "idaa",
-      "name": "Get Sample follow up",
-      "role": "Radiologist",
-      "date": "2017-09-20T10:41:19.000Z",
-      "note": "Get screening of xxx"
-    },
-    {
-      "id": "idaa",
-      "name": "Get Sample follow up",
+      "name": null,
       "role": "GP",
       "date": "2017-09-20T10:41:19.000Z",
+      "createdDate": "2017-03-20T10:41:19.000Z",
+      "patientUpdatedDate": "2017-03-20T10:41:19.000Z",
+      "followUpDate": "2017-03-20T10:41:19.000Z",
       "note": "Get screening of xxx"
     },
     {
       "id": "idaa",
-      "name": "Get Sample follow up",
+      "name": null,
       "role": "Radiologist",
       "date": "2017-09-20T10:41:19.000Z",
+      "createdDate": "2017-03-20T10:41:19.000Z",
+      "patientUpdatedDate": "2017-03-20T10:41:19.000Z",
+      "followUpDate": "2017-03-20T10:41:19.000Z",
       "note": "Get screening of xxx"
     },
     {
       "id": "idaa",
-      "name": "Get Sample follow up",
+      "name": "GDoctor Who",
       "role": "GP",
       "date": "2017-09-20T10:41:19.000Z",
+      "createdDate": "2017-03-20T10:41:19.000Z",
+      "patientUpdatedDate": "2017-03-20T10:41:19.000Z",
+      "followUpDate": "2017-03-20T10:41:19.000Z",
       "note": "Get screening of xxx"
     }
   ],

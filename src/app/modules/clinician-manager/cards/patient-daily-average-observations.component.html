@@ -36,29 +36,26 @@
           </button>
           -->
 
-          <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
-                  class="btn btn-default"
-                  (click)="showAllLeft()">
 
-            <i class="fa fa-plus-circle"></i> Show all values
-          </button>
 
           <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
                   class="btn btn-default"
                   (click)="showRedBlue()">
 
-            <span *ngIf="!isRedBlue">
-              <span style="color: red;"> <i class="fa fa-circle-o"></i></span>
-              <span style="color: blue;"> <i class="fa fa-circle-o"></i></span>
-            </span>
             <span *ngIf="isRedBlue">
-              <span style="color: green;"> <i class="fa fa-circle-o"></i></span>
-              <span style="color: yellow;"> <i class="fa fa-circle-o"></i></span>
-              <span style="color: red;"> <i class="fa fa-circle-o"></i></span>
-              <span style="color: orange;"> <i class="fa fa-circle-o"></i></span>
+              <span style="color: red;"> <i class="fa fa-circle"></i></span>
+              <span style="color: red;"> <i class="fa fa-circle"></i></span>
+              <span style="color: blue;"> <i class="fa fa-circle"></i></span>
+              <span style="color: blue;"> <i class="fa fa-circle"></i></span>
             </span>
-            <span *ngIf="!isRedBlue">Show High Contrast LR Colours</span>
-            <span *ngIf="isRedBlue">Show Original Colours</span>
+            <span *ngIf="!isRedBlue">
+              <span style="color: green;"> <i class="fa fa-circle"></i></span>
+              <span style="color: yellow;"> <i class="fa fa-circle"></i></span>
+              <span style="color: red;"> <i class="fa fa-circle"></i></span>
+              <span style="color: orange;"> <i class="fa fa-circle"></i></span>
+            </span>
+            <span *ngIf="!isRedBlue">Colours</span>
+            <span *ngIf="isRedBlue">Colours</span>
 
           </button>
 
@@ -67,18 +64,25 @@
                   class="btn btn-default"
                   (click)="resetMinMidMax()">
             <span>  <i class="fa {{showMinMidMax?'fa-circle':'fa-circle-o'}}"></i> </span>
-            <span *ngIf="!showMinMidMax">Show</span> <span *ngIf="showMinMidMax">Hide</span> <span *ngIf="isThereMin">min</span>
-            <span *ngIf="isThereMid">mid</span> <span *ngIf="isThereMax">max</span> line(s)
+            <span *ngIf="!showMinMidMax"></span> <span *ngIf="showMinMidMax"></span> <span *ngIf="isThereMin">Min</span>
+            <span *ngIf="isThereMid">Mid</span> <span *ngIf="isThereMax">Max</span>
             <span>
           </span>
+          </button>
+
+          <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
+                  class="btn btn-default"
+                  (click)="forceYZero=!forceYZero;reloadDataToGraph()">
+
+            <span>  <i class="fa {{forceYZero?'fa-circle':'fa-circle-o'}}"></i> </span> Zero axis
           </button>
         </div>
 
 
         <div *ngIf="observationGroups && observationGroups.length!==1"
-             class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
+             class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6"
              style=" padding-right: 0.05rem; padding-bottom: 0.15rem;">
-          <div class="card" style=" margin-left: 5.05rem;">
+          <div class="card" style=" margin-left: 0.25rem;">
 
             <!--
             <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
@@ -88,6 +92,13 @@
               <i class="fa fa-plus-circle"></i> Show all on left axis
             </button>
             -->
+
+            <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
+                    class="btn btn-default"
+                    (click)="showAllLeft()">
+
+              <i class="fa fa-plus-circle"></i> Show all values
+            </button>
 
             <span *ngFor="let group of observationGroups">
 
@@ -106,9 +117,9 @@
 
 
         <div *ngIf="observationGroups && observationGroups.length!==1"
-             class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
+             class="col-xs-6 col-sm-6 col-md-6 col-lg-6 col-xl-6"
              style="padding-left: 0.05rem; padding-bottom: 0.15rem;">
-          <div class="card" style=" margin-right: 5.05rem;">
+          <div class="card" style=" margin-right: 0.25rem;">
             <!--
              <button *ngIf="observationGroups && observationGroups.length!==1"
                      type="button"

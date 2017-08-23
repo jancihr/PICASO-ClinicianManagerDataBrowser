@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {CliniciansResult} from "../model/generated-interfaces";
@@ -8,7 +8,6 @@ import {CliniciansResult} from "../model/generated-interfaces";
   templateUrl: './patient-clinicians-history.component.html',
   styleUrls: ['./patient-clinicians-history.component.css'],
   providers: [PicasoDataService]
-
 })
 
 export class PatientCliniciansComponent implements OnInit {

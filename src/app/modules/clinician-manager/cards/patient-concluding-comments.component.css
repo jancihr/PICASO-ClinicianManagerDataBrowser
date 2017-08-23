@@ -17,7 +17,7 @@
 
 .card-block {
   padding: 0.25rem;
-  margin-bottom: -0.75rem;
+  margin-bottom: -0.5rem;
 }
 
 .card-header {
@@ -47,10 +47,7 @@
   padding: 0.05rem;
 }
 
-
-
-
-
-
-
-
+:host /deep/ .pagination-sm .page-link, .pagination-sm .pagination-datatables li a, .pagination-datatables li .pagination-sm a, .pagination-sm .pagination li a, .pagination li .pagination-sm a {
+  padding: 0.1rem 0.4rem !important;
+  font-size: 0.7rem !important;
+}

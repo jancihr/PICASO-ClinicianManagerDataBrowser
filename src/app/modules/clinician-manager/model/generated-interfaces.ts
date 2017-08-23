@@ -69,7 +69,9 @@ export interface FollowUpsResult {
   id: string;
   name: string;
   role: string;
-  date: Date;
+  createdDate: Date,
+  patientUpdatedDate: Date,
+  followUpDate: Date,
   note: string;
 }
 

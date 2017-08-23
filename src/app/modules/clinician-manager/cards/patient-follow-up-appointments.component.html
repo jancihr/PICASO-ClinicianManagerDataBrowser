@@ -22,8 +22,18 @@
       <tr>
 
         <th i18n="Date">
-          <mfDefaultSorter by="date">
+          <mfDefaultSorter by="followUpDate">
             Date
+          </mfDefaultSorter>
+        </th>
+        <th i18n="Created">
+          <mfDefaultSorter by="createdDate">
+            Created
+          </mfDefaultSorter>
+        </th>
+        <th i18n="Patient Updated">
+          <mfDefaultSorter by="patientUpdatedDate">
+            Patient Updated
           </mfDefaultSorter>
         </th>
         <th i18n="Name">
@@ -47,7 +57,9 @@
 
       <tr *ngFor="let appointemnt of mf.data">
 
-        <td>{{appointemnt.date}}</td>
+        <td>{{appointemnt.createdDate}}</td>
+        <td>{{appointemnt.patientUpdatedDate}}</td>
+        <td>{{appointemnt.followUpDate}}</td>
         <td>{{appointemnt.name}}</td>
         <td>{{appointemnt.role}}</td>
         <td>{{appointemnt.note}}</td>
@@ -59,7 +71,7 @@
 
       <tfoot>
       <tr>
-        <td colspan="5" class="w3-right-align">
+        <td colspan="6" class="w3-right-align">
           <mfBootstrapPaginator class="pagination-sm"></mfBootstrapPaginator>
         </td>
       </tr>

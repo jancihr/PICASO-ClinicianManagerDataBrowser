@@ -37,6 +37,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   isRedBlue: boolean = false;
 
+  forceYZero = false;
+
   //endDate: Date;
   //startDate: Date;
 
@@ -53,7 +55,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
   observationGroups: ObservationResult[] = [];
-
 
 
   options: any = {
@@ -198,7 +199,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   };
 
 
-
   constructor(private picasoDataService: PicasoDataService, private activatedRoute: ActivatedRoute) {
   };
 
@@ -316,12 +316,26 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
   reloadDataToGraph() {
-    this.hideLeftOrRightAxisTicks();
-    let min = this.observationGroups[0].values[0].value;
     this.data = [];
-    let index = 0;
-    this.options.chart.yAxis1.axisLabel = "";
-    this.options.chart.yAxis2.axisLabel = "";
+    this.hideLeftOrRightAxisTicks();
+    this.reload('right');
+    this.reload('left');
+
+  }
+
+  reload(side: string) {
+
+    let isLeft: boolean = side === 'left';
+    let min = null;
+    if (this.forceYZero) {
+      min = 0;
+    }
+
+    //let index = 0;
+
+    if (isLeft) this.options.chart.yAxis1.axisLabel = "";
+    else this.options.chart.yAxis2.axisLabel = "";
+
     let isThereGraph = false;
     this.isThereMax = false;
     this.isThereMid = false;
@@ -340,18 +354,21 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       }
 
 
-      if (group.showLeft || group.showRight) {
-        if (group.showLeft) {
+      if ((isLeft && group.showLeft) || (!isLeft && group.showRight)) {
+
+        if (min == null) {
+          min = group.values[0];
+        }
+        if (isLeft)
           this.options.chart.yAxis1.axisLabel +=
             //"<span style='color:" + group.color + "' > <i class='fa fa-circle'></i> </span>" +
             (this.options.chart.yAxis1.axisLabel !== "" ? " | " : "") + group.name + " (" + group.unit + ")";
-        } else {
+        else
           this.options.chart.yAxis2.axisLabel +=
-            (this.options.chart.yAxis2.axisLabel !== "" ? " | " : "") +
-            group.name + " (" + group.unit + ")";
-        }
+            //"<span style='color:" + group.color + "' > <i class='fa fa-circle'></i> </span>" +
+            (this.options.chart.yAxis2.axisLabel !== "" ? " | " : "") + group.name + " (" + group.unit + ")";
 
-        group.index = index;
+        //group.index = index;
         isThereGraph = true;
         let filteredValues = [];
 
@@ -382,10 +399,13 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           });
 
           // find minimum value for a hack
-          let newmin = sortedValues.reduce(function (m, o) {
-            return (o.value != null && o.value < m) ? o.value : m;
-          }, Infinity);
-          min = min < newmin ? min : newmin;
+          if (!this.forceYZero) {
+            if (min == null) {
+              min = sortedValues.reduce(function (m, o) {
+                return (o.value != null && o.value < m) ? o.value : m;
+              }, Infinity);
+            }
+          }
 
           let newGraphValues = [];
 
@@ -399,17 +419,17 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             });
           }
 
-          index++;
+          //index++;
           this.data.push({
             label: group.unit,
             name: group.name,
             key: group.unit + " (" + group.name + ")",
             values: newGraphValues,
-            color: this.isRedBlue && !this.singleValued ? (group.showLeft ? "red" : "blue") : group.color,
+            color: this.isRedBlue && !this.singleValued ? (isLeft ? "red" : "blue") : group.color,
             //area: false,
             //mean: 120,
             disabled: false,
-            yAxis: group.showLeft ? 1 : 2,
+            yAxis: isLeft ? 1 : 2,
             xAxis: 1,
             type: 'line'   //group.type
           });
@@ -422,17 +442,17 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
               newGraphValuesMin.push({observation: {date: this.dateRange.startDate, value: group.minValue}});
               newGraphValuesMin.push({observation: {date: this.dateRange.endDate, value: group.minValue}});
               //min value line
-              index++;
+              //index++;
               this.data.push({
                 label: group.unit,
                 name: group.name,
                 values: newGraphValuesMin,
                 key: "hidemin" + group.id,
-                color: this.isRedBlue && !this.singleValued ? (group.showLeft ? "red" : "blue") : group.color,
+                color: this.isRedBlue && !this.singleValued ? (isLeft ? "red" : "blue") : group.color,
                 //area: false,
                 //mean: 120,
                 disabled: false,
-                yAxis: group.showLeft ? 1 : 2,
+                yAxis: isLeft ? 1 : 2,
                 xAxis: 1,
                 type: 'line',
                 classed: 'dashed'
@@ -444,17 +464,17 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
               newGraphValuesMax.push({observation: {date: this.dateRange.endDate, value: group.maxValue}});
               newGraphValuesMax.push({observation: {date: this.dateRange.startDate, value: group.maxValue}});
               //max value line
-              index++;
+              //index++;
               this.data.push({
                 label: group.unit,
                 name: group.name,
                 values: newGraphValuesMax,
                 key: "hidemax" + group.id,
-                color: this.isRedBlue && !this.singleValued ? (group.showLeft ? "red" : "blue") : group.color,
+                color: this.isRedBlue && !this.singleValued ? (isLeft ? "red" : "blue") : group.color,
                 //area: false,
                 //mean: 120,
                 disabled: false,
-                yAxis: group.showLeft ? 1 : 2,
+                yAxis: isLeft ? 1 : 2,
                 xAxis: 1,
                 type: 'line',
                 //classed: 'dashed'
@@ -466,17 +486,17 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
               newGraphValuesMid.push({observation: {date: this.dateRange.startDate, value: group.midValue}});
               newGraphValuesMid.push({observation: {date: this.dateRange.endDate, value: group.midValue}});
               //mid value line
-              index++;
+              //index++;
               this.data.push({
                 label: group.unit,
                 name: group.name,
                 values: newGraphValuesMid,
                 key: "hidemid" + group.id,
-                color: this.isRedBlue && !this.singleValued ? (group.showLeft ? "red" : "blue") : group.color,
+                color: this.isRedBlue && !this.singleValued ? (isLeft ? "red" : "blue") : group.color,
                 //area: false,
                 //mean: 120,
                 disabled: false,
-                yAxis: group.showLeft ? 1 : 2,
+                yAxis: isLeft ? 1 : 2,
                 xAxis: 1,
                 type: 'line',
                 classed: 'dashed-long'
@@ -489,12 +509,12 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     }
 
     // HACK adding line with min max date to normalize xRange for left/right y axes
-    if (isThereGraph) {
+    if (min !== null) {
 
       let newGraphValuesHackLeftAxis = [];
       newGraphValuesHackLeftAxis.push({observation: {date: this.dateRange.startDate, value: min}});
       newGraphValuesHackLeftAxis.push({observation: {date: this.dateRange.endDate, value: min}});
-      index++;
+      //index++;
       this.data.push({
         label: "hideXDomainFixLeft",
         name: "hideXDomainFixLeft",
@@ -504,34 +524,14 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         //area: false,
         //mean: 120,
         disabled: false,
-        yAxis: 1,
+        yAxis: isLeft ? 1 : 2,
         xAxis: 1,
         type: 'line',
         classed: 'hidden-line'
       });
-
-      if (this.observationGroups.length !== 1) {
-        let newGraphValuesHackRightAxis = [];
-        newGraphValuesHackRightAxis.push({observation: {date: this.dateRange.startDate, value: min}});
-        newGraphValuesHackRightAxis.push({observation: {date: this.dateRange.endDate, value: min}});
-        index++;
-        this.data.push({
-          label: "hideXDomainFixRight",
-          name: "hideXDomainFixRight",
-          values: newGraphValuesHackRightAxis,
-          key: "hideXDomainFixRight",
-          color: "grey",
-          //area: false,
-          //mean: 120,
-          disabled: false,
-          yAxis: 2,
-          xAxis: 1,
-          type: 'line',
-          classed: 'hidden-line'
-        });
-      }
-
     }
+
+
 
   }
 
@@ -552,9 +552,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     for (let i = 0; i < this.observationGroups.length; i++) {
       if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
         this.observationGroups[i].showLeft = true;//!this.observationGroups[i].showLeft;
-        if (this.observationGroups[i].showLeft) {
-          this.observationGroups[i].showRight = false;
-        }
+
       }
       else {
         this.observationGroups[i].showLeft = false;
@@ -568,9 +566,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     for (let i = 0; i < this.observationGroups.length; i++) {
       if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
         this.observationGroups[i].showRight = true;//!this.observationGroups[i].showRight;
-        if (this.observationGroups[i].showRight) {
-          this.observationGroups[i].showLeft = false;
-        }
       }
       else {
         this.observationGroups[i].showRight = false;
@@ -606,7 +601,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
     for (var i = 0; i < this.observationGroups.length; i++) {
       this.observationGroups[i].showLeft = true;
-      this.observationGroups[i].showRight = false;
+      //this.observationGroups[i].showRight = false;
     }
     this.reloadDataToGraph();
   }
