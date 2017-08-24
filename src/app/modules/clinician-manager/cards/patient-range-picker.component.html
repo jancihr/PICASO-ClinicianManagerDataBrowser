@@ -26,42 +26,42 @@
       <div class="rowcontent">
 
         <button type="button"
-                class="btn btn-default {{range.range==='last2years'   ? 'btn-selected' : ''}}"
+                class="picker-button {{range.range==='last2years'   ? 'picker-button-selected' : ''}}"
                 (click)="rangeChange('last2years')"
                 i18n="Last 2 years">
           Last 2 years
         </button>
 
         <button type="button"
-                class="btn btn-default {{range.range==='lastyear'   ? 'btn-selected' : ''}}"
+                class="picker-button {{range.range==='lastyear'   ? 'picker-button-selected' : ''}}"
                 (click)="rangeChange('lastyear')"
                 i18n="Last year">
           Last year
         </button>
 
         <button type="button"
-                class="btn btn-default {{range.range==='last6months'   ? 'btn-selected' : ''}}"
+                class="picker-button {{range.range==='last6months'   ? 'picker-button-selected' : ''}}"
                 (click)="rangeChange('last6months')"
                 i18n="Last 6 months">
           Last 6 months
         </button>
 
         <button type="button"
-                class="btn btn-default {{range.range==='last2months'   ? 'btn-selected' : ''}}"
+                class="picker-button {{range.range==='last2months'   ? 'picker-button-selected' : ''}}"
                 (click)="rangeChange('last2months')"
                 i18n="Last 2 months">
           Last 2 months
         </button>
 
         <button type="button"
-                class="btn btn-default {{range.range==='lastmonth'   ? 'btn-selected' : ''}}"
+                class="picker-button {{range.range==='lastmonth'   ? 'picker-button-selected' : ''}}"
                 (click)="rangeChange('lastmonth')"
                 i18n="Last month">
           Last month
         </button>
 
         <button type="button"
-                class="btn btn-default {{range.range==='lastweek'   ? 'btn-selected' : ''}}"
+                class="picker-button {{range.range==='lastweek'   ? 'picker-button-selected' : ''}}"
                 (click)="rangeChange('lastweek')"
                 i18n="Last week">
           Last week
@@ -74,7 +74,7 @@
         </my-date-range-picker>
 
         <button type="button" style="margin-bottom: 20px"
-                class="btn btn-default {{range.range==='next6months'   ? 'btn-selected' : ''}}"
+                class="picker-button {{range.range==='next6months'   ? 'picker-button-selected' : ''}}"
                 (click)="rangeChange('next6months')"
                 i18n="Next 6 months">
           Next 6 months
