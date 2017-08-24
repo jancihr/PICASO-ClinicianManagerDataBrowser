@@ -14,36 +14,43 @@
           "ListOfEntries": [
             {
               "Timestamp": "2017-08-11T07:44:23+00:00",
-              "TypeId": "systolic"
+              "TypeId": "systolic",
+              "LOINC": "8480-6"
             },
             {
               "Timestamp": "2017-08-11T07:44:23+00:00",
-              "TypeId": "diastolic"
+              "TypeId": "diastolic",
+              "LOINC": "8480-4"
             },
             {
               "Timestamp": "2016-08-11T07:44:23+00:00",
-              "TypeId": "systolic"
+              "TypeId": "systolic",
+              "LOINC": "8480-6"
             },
             {
               "Timestamp": "2016-08-11T07:44:23+00:00",
-              "TypeId": "diastolic"
+              "TypeId": "diastolic",
+              "LOINC": "8480-4"
             }
           ]
         },
         {
-          "TypeId": "weightscale",
+          "TypeId": "weightingscale",
           "ListOfEntries": [
             {
               "Timestamp": "2017-08-11T07:44:23+00:00",
-              "TypeId": "weight"
+              "TypeId": "weight",
+              "LOINC": "29463-7"
             },
             {
               "Timestamp": "2016-08-11T07:44:23+00:00",
-              "TypeId": "weight"
+              "TypeId": "weight",
+              "LOINC": "29463-7"
             },
             {
               "Timestamp": "2013-08-11T07:44:23+00:00",
-              "TypeId": "weight"
+              "TypeId": "weight",
+              "LOINC": "29463-7"
             }
           ]
         },
@@ -52,24 +59,32 @@
           "ListOfEntries": [
             {
               "Timestamp": "2017-01-02T06:34:30+00:00",
-              "TypeId": "sleep_minutes"
+              "TypeId": "sleep_minutes",
+              "SNOMED": "248263006"
             },
             {
               "Timestamp": "2015-01-02T06:34:30+00:00",
-              "TypeId": "sleep_minutes"
+              "TypeId": "sleep_minutes",
+              "SNOMED": "248263006"
             }
           ]
         },
         {
-          "TypeId": "stepcounter",
+          "TypeId": "activitymonitor",
           "ListOfEntries": [
             {
               "Timestamp": "2017-08-11T21:00:00+00:00",
-              "TypeId": "steps"
+              "TypeId": "steps",
+              "LOINC": "55423-8"
+            },
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "TypeId": "distance"
             },
             {
               "Timestamp": "2015-08-11T21:00:00+00:00",
-              "TypeId": "steps"
+              "TypeId": "steps",
+              "LOINC": "55423-8"
             }
           ]
         },
@@ -78,11 +93,13 @@
           "ListOfEntries": [
             {
               "Timestamp": "2017-08-11T21:00:00+00:00",
-              "TypeId": "heartrate"
+              "TypeId": "heartrate",
+              "LOINC": "8867-4"
             },
             {
               "Timestamp": "2013-08-11T21:00:00+00:00",
-              "TypeId": "heartrate"
+              "TypeId": "heartrate",
+              "LOINC": "8867-4"
             }
           ]
         },
@@ -93,27 +110,27 @@
             {
               "Timestamp": "2017-08-11T21:00:00+00:00",
               "ClinicianId": "077",
-              "TypeId": "FFbhHAQ"
+              "TypeId": "ffbh"
             },
             {
               "Timestamp": "2013-08-11T21:00:00+00:00",
               "ClinicianId": "077",
-              "TypeId": "FFbhHAQ"
+              "TypeId": "ffbh"
             },
             {
               "Timestamp": "2017-08-11T21:00:00+00:00",
               "ClinicianId": "077",
-              "TypeId": "RADAI"
+              "TypeId": "radai"
             },
             {
               "Timestamp": "2013-08-11T21:00:00+00:00",
               "ClinicianId": "077",
-              "TypeId": "RADAI"
+              "TypeId": "radai"
             },
             {
               "Timestamp": "2017-08-11T21:00:00+00:00",
               "ClinicianId": "077",
-              "TypeId": "Morisky"
+              "TypeId": "morisky"
             },
             {
               "Timestamp": "2013-08-11T21:00:00+00:00",
@@ -448,13 +465,13 @@
               "Source": "home"
             },
             {
-              "TypeId": "RADAI",
+              "TypeId": "radai",
               "Timestamp": "2010-08-11T21:00:00+00:00",
               "ClinicianId": "077",
               "Source": "UDUS radiology"
             },
             {
-              "TypeId": "RADAI",
+              "TypeId": "radai",
               "Timestamp": "2010-08-11T21:00:00+00:00",
               "ClinicianId": "077",
               "Source": "home"
@@ -472,13 +489,13 @@
           "TypeId": "pdQuestionnaires",
           "ListOfEntries": [
             {
-              "TypeId": "Morisky",
+              "TypeId": "morisky",
               "Timestamp": "2013-08-11T21:00:00+00:00",
               "ClinicianId": "055",
               "Source": "UTV"
             },
             {
-              "TypeId": "Morisky",
+              "TypeId": "morisky",
               "Timestamp": "2013-08-11T21:00:00+00:00",
               "ClinicianId": "055",
               "Source": "home"

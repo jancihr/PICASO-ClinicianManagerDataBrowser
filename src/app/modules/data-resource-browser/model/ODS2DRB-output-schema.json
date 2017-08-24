@@ -113,6 +113,10 @@
                   "items": {
                     "id": "/properties/resultForDRB/items/properties/homeMeasurements/items/properties/ListOfEntries/items",
                     "properties": {
+                      "LOINC": {
+                        "id": "/properties/resultForDRB/items/properties/homeMeasurements/items/properties/ListOfEntries/items/properties/LOINC",
+                        "type": "string"
+                      },
                       "Timestamp": {
                         "id": "/properties/resultForDRB/items/properties/homeMeasurements/items/properties/ListOfEntries/items/properties/Timestamp",
                         "type": "string"
