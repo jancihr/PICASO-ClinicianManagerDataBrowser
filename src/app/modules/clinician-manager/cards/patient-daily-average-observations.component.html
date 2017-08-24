@@ -43,8 +43,7 @@
           -->
 
 
-
-          <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
+          <button *ngIf="!singleValued && observationGroups && observationGroups.length!==1" type="button"
                   class="button-clear"
                   (click)="showHighContrast()">
 
@@ -76,7 +75,7 @@
           </span>
           </button>
 
-          <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
+          <button *ngIf="!singleValued && observationGroups && observationGroups.length!==1" type="button"
                   class="button-clear"
                   (click)="forceYZero=!forceYZero;reloadDataToGraph()">
 
@@ -85,7 +84,7 @@
         </div>
 
 
-        <div *ngIf="observationGroups && observationGroups.length!==1"
+        <div *ngIf="!singleValued && observationGroups && observationGroups.length!==1"
              class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
              style=" padding-right: 0.05rem; padding-bottom: 0.15rem;">
           <div class="" style=" margin-left: 0.25rem;">
@@ -101,7 +100,7 @@
 
             <span class="axis-buttons-legend">Left Axis</span>
 
-            <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
+            <button *ngIf="!singleValued && observationGroups && observationGroups.length!==1" type="button"
                     class="button-clear"
                     (click)="showAllLeft()">
 
@@ -124,7 +123,7 @@
         </div>
 
 
-        <div *ngIf="observationGroups && observationGroups.length!==1"
+        <div *ngIf="!singleValued && observationGroups && observationGroups.length!==1"
              class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
              style="padding-left: 0.05rem; padding-bottom: 0.15rem;">
           <div class="" style=" margin-right: 0.25rem;">
@@ -162,9 +161,9 @@
     </div>
 
 
-    <div class="row">
+    <div class="chart-row">
 
-      <nvd3 *ngIf="observationGroups" [options]="options" [data]="data"></nvd3>
+      <nvd3 [options]="options" [data]="data"></nvd3>
 
     </div>
 

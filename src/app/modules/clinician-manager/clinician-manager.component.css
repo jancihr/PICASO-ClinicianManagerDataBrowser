@@ -38,6 +38,23 @@
 
 }
 
+:host /deep/ .chart-row {
+  margin-left: -18px;
+  margin-right: -18px;
+  margin-bottom: 0.1rem;
+  margin-top: 0;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+:host /deep/ .nvd3-svg {
+  padding-top: 0.43rem;
+
+}
+
+
 :host /deep/ .col-xs, :host /deep/ .col-xs-1, :host /deep/ .col-xs-2, :host /deep/ .col-xs-3,
 :host /deep/ .col-xs-4, :host /deep/ .col-xs-5, :host /deep/ .col-xs-6, :host /deep/ .col-xs-7,
 :host /deep/ .col-xs-8, :host /deep/ .col-xs-9, :host /deep/ .col-xs-10, :host /deep/ .col-xs-11,
@@ -59,10 +76,10 @@
   padding-right: 0rem;
 }
 
-:host /deep/ input.selection {
+:host /deep/ .selectiongroup .selection {
   height: 20px !important;
   font-size: 0.91rem !important;
-  padding-top: 10px;
+  padding-top: 4px;
 
 }
 
@@ -203,6 +220,83 @@
   padding-left: 0.2rem;
   padding-right: 0.2rem;
 }
+
+:host /deep/ .dashed {
+  stroke-dasharray: 3, 5 !important;
+  stroke-opacity: 0.75 !important;
+  stroke-width: 1.5 !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .dashed-long {
+  stroke-dasharray: 20, 5 !important;
+  stroke-opacity: 0.75 !important;
+  stroke-width: 1.5 !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .dashed .nv-point {
+  stroke-opacity: 0 !important;
+  stroke-width: 0px !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .nv-point {
+  stroke-opacity: 20% !important;
+  stroke-width: 1px !important
+
+}
+
+:host /deep/ .nvd3 .nv-groups .nv-point.hover {
+  stroke-width: 0px !important;
+  stroke-opacity: 0 !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .dashed .nv-point {
+  stroke-width: 0px !important;
+  stroke-opacity: 0 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .dashed .nv-point.hover {
+  stroke-width: 0px !important;
+  stroke-opacity: 0 !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .dashed-long .nv-point {
+  stroke-width: 0px !important;
+  stroke-opacity: 0 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .dashed-long .nv-point.hover {
+  stroke-width: 0px !important;
+  stroke-opacity: 0 !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .hidden-line {
+  stroke-opacity: 0 !important;
+  stroke-width: 0 !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .hidden-line .nv-point {
+  stroke-width: 0px !important;
+  stroke-opacity: 0 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .hidden-line .nv-point.hover {
+  stroke-width: 0px !important;
+  stroke-opacity: 0 !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .vis-item .vis-item-content {
+  padding: 0;
+}
+
+
 
 
 

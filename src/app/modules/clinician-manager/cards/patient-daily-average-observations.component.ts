@@ -20,7 +20,7 @@ declare let d3, nv;
 export class PatientDailyAverageObservationsComponent implements OnInit {
 
   @Input() forMeasurements: string;
-  @Input() singleValued: boolean;
+  @Input() singleValued: boolean = true;
 
   @Input() dateRange: MyDateRange;
 
@@ -37,7 +37,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   isThereMax: boolean;
 
   isHighContrast: boolean = false;
-
+  isThereGraph: boolean = false;
   forceYZero = true;
 
   //endDate: Date;
@@ -60,11 +60,37 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   options: any = {
     chart: {
+
+      dispatch: {
+        tooltipShow: function (e) {
+          console.log("tooltipShow");
+        },
+        tooltipHide: function (e) {
+          console.log("tooltip hide");
+        },
+        stateChange: function (e) {
+          console.log("statechange");
+        },
+        changeState: function (e) {
+          console.log("statechange2");
+        },
+        elementMousemove: function (e) {
+          var xValue = this.chart.xAxis.tickFormat()(e.pointXValue);
+        },
+        elementMouseout: function (e) {
+          console.log('mouseout')
+        },
+        elementDblclick: function (e) {
+          console.log('double click')
+        }
+
+
+      },
       noData: 'No data exists for selected dates and observations.',
       type: 'multiChart',
       height: 300,
-      transitionDuration: 300,
-      duration: 300,
+      transitionDuration: 100,
+      duration: 100,
 
       legendRightAxisHint: " ",
       interpolate: "linear",
@@ -72,8 +98,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       legend: {
         align: false
       },
-      showDistX: true,
-      showDistY: true,
 
       //average: function(d) { return d.mean/100; },
       margin: {
@@ -111,6 +135,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
       tooltip: {
         contentGenerator: function (d) {
+          this.clearElement();
           //console.log("tooltip", d);
           var html = "";
           html += "<br><span style='color:" + d.point.color + "' > <i class='fa fa-circle'></i> </span> " +
@@ -125,6 +150,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       },
       interactiveLayer: {
         tooltip: {
+          hideDelay: 0,
+
           contentGenerator: function (d) {
 
 
@@ -182,21 +209,33 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
           },
 
+
           dispatch: {
-            elementClick: function (e) {
-              console.log('click')
-            },
-            elementDblclick: function (e) {
-              console.log('double click')
-            },
-            elementMousemove: function (e) {
-              console.log('mousemove')
+            elementMousemove: function (t, u) {
+              console.log('interactive elementMousemove');
             },
             elementMouseout: function (e) {
-              console.log('mouseout');
+              console.log('interactive elementMouseout');
+              this.clearElement();
+            },
+            elementClick: function (e) {
+              console.log('interactive elementClick');
+              this.clearElement();
+            },
+            elementDblclick: function (e) {
+              console.log('interactive elementDblclick');
+              this.clearElement();
+            },
+            elementMouseDown: function (e) {
+              console.log('interactive elementMouseDown');
+              this.clearElement();
+            },
+            elementMouseUp: function (e) {
+              console.log('interactive elementMouseUp');
               this.clearElement();
             }
           }
+
         }
       },
 
@@ -222,9 +261,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
         this.chart = chart;//d3.selectAll('.nv-y1 text').style('fill','#123');
 
-        chart.multibar.dispatch.on('elementClick', function (e) {
-          console.log('elementClick in callback', e.data);
-        });
 
         //console.log("!!! lineChart callback !!!", chart);
       }
@@ -246,7 +282,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     //range.currentValue();
 
     if (range === undefined || (range.previousValue != range.currentValue)) {
-      this.setOptions();
+
       this.updateDates();
       this.getObservations();
       //this.printDate("ngOnChanges")
@@ -306,8 +342,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     }
     else {
       this.headerText = "Patient Measurements and Recordings - Combined Chart";
-      this.footerText = "Choose series above the diagram to show/hide them on left/right y axis." +
-        "      If several series are shown on one axis, series are not normalised.";
+      this.footerText = "Choose series above the diagram to show/hide them on the left/right axis.";
       this.observationGroups = observations.filter(function (obj) {
         return obj.id !== "morisky";
       });
@@ -347,14 +382,14 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     }
   }
 
-  setOptions(): void {
-    this.data = [];
-    //this.options =
-  }
-
 
   reloadDataToGraph() {
     this.data = [];
+    this.isThereGraph = false;
+    this.isThereMax = false;
+    this.isThereMid = false;
+    this.isThereMin = false;
+
     this.hideLeftOrRightAxisTicks();
     this.reload('right');
     this.reload('left');
@@ -363,6 +398,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   reload(side: string) {
 
+    let isThereSome = false;
     let isLeft: boolean = side === 'left';
     let min = null;
     if (this.forceYZero) {
@@ -374,10 +410,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     if (isLeft) this.options.chart.yAxis1.axisLabel = "";
     else this.options.chart.yAxis2.axisLabel = "";
 
-    let isThereGraph = false;
-    this.isThereMax = false;
-    this.isThereMid = false;
-    this.isThereMin = false;
 
     for (let group of this.observationGroups) {
 
@@ -407,7 +439,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             (this.options.chart.yAxis2.axisLabel !== "" ? " | " : "") + group.name + " (" + group.unit + ")";
 
         //group.index = index;
-        isThereGraph = true;
+        this.isThereGraph = true;
+        isThereSome = true;
         let filteredValues = [];
 
 
@@ -547,7 +580,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     }
 
     // HACK adding line with min max date to normalize xRange for left/right y axes
-    if (min !== null) {
+    if (min !== null && isThereSome) {
 
       let newGraphValuesHackLeftAxis = [];
       newGraphValuesHackLeftAxis.push({observation: {date: this.dateRange.startDate, value: min}});
@@ -568,7 +601,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         classed: 'hidden-line'
       });
     }
-
 
 
   }
@@ -678,6 +710,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   }
 
   clearElement() {
+    console.log("cleaning tooltips");
     d3.selectAll('.nvtooltip').remove();
 
   }

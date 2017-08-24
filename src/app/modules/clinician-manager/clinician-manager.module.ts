@@ -13,7 +13,6 @@ import {PatientMedicationHistoryComponent} from "./cards/patient-medication-hist
 import {PatientDiseasesComponent} from "./cards/patient-diseases.component";
 import {PatientCliniciansComponent} from "./cards/patient-clinicians-history.component";
 import {PatientTreatmentHistoryComponent} from "./cards/patient-treatment-history.component";
-import {nvD3} from "ng2-nvd3";
 import {MyDateRangePickerModule} from "mydaterangepicker";
 import {ProgressHttpModule} from "angular-progress-http";
 import {DataTableModule} from "angular2-datatable";
@@ -21,13 +20,15 @@ import {FormsModule} from "@angular/forms";
 import {PatientConcludingCommentsComponent} from "./cards/patient-concluding-comments.component";
 import {PatientFollowUpComponent} from "./cards/patient-follow-up-appointments.component";
 import {PatientRangePicker} from "./cards/patient-range-picker.component";
+import {NvD3Module} from "ng2-nvd3";
 
 
 @NgModule({
   imports: [
     ClinicianManagerRoutingModule, FormsModule,
     ChartsModule, VisModule, HttpModule, CommonModule,
-    Ng2Bs3ModalModule, MyDateRangePickerModule, ProgressHttpModule, DataTableModule
+    Ng2Bs3ModalModule, MyDateRangePickerModule,
+    ProgressHttpModule, DataTableModule, NvD3Module
 
   ],
   declarations: [ClinicianManagerComponent,
@@ -35,8 +36,7 @@ import {PatientRangePicker} from "./cards/patient-range-picker.component";
     PatientDailyAverageObservationsComponent,
     PatientMedicationHistoryComponent, PatientFollowUpComponent,
     PatientDiseasesComponent, PatientConcludingCommentsComponent,
-    PatientCliniciansComponent, PatientTreatmentHistoryComponent, PatientRangePicker,
-    nvD3
+    PatientCliniciansComponent, PatientTreatmentHistoryComponent, PatientRangePicker
   ]
 })
 export class ClinicianManagerModule {
