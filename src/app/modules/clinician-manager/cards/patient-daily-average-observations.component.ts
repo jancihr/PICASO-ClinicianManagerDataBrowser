@@ -38,7 +38,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   isHighContrast: boolean = false;
 
-  forceYZero = false;
+  forceYZero = true;
 
   //endDate: Date;
   //startDate: Date;

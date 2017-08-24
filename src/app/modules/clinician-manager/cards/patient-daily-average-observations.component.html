@@ -80,7 +80,7 @@
                   class="button-clear"
                   (click)="forceYZero=!forceYZero;reloadDataToGraph()">
 
-            <span>  <i class="fa {{forceYZero?'fa-circle':'fa-circle-o'}}"></i> </span> Zero axis
+            <span>  <i class="fa {{forceYZero?'fa-circle':'fa-circle-o'}}"></i> </span> Zero Axis
           </button>
         </div>
 
@@ -99,7 +99,7 @@
             </button>
             -->
 
-            <span class="button-header">Left Axis</span>
+            <span class="axis-buttons-legend">Left Axis</span>
 
             <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
                     class="button-clear"
@@ -128,6 +128,7 @@
              class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
              style="padding-left: 0.05rem; padding-bottom: 0.15rem;">
           <div class="" style=" margin-right: 0.25rem;">
+            <span class="axis-buttons-legend">Right Axis</span>
             <!--
              <button *ngIf="observationGroups && observationGroups.length!==1"
                      type="button"

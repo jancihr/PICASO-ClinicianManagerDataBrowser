@@ -129,8 +129,19 @@
 
 :host /deep/ .picker-button-selected:hover {
   background-color: #67bc9a;
-
 }
+
+:host /deep/ .axis-buttons-legend {
+  background-color: transparent;
+  font-size: 0.7rem;
+  padding: 0px 1px 0px 1px;
+  border-radius: 10px;
+  margin-bottom: 0px;
+  color: #000000;
+  border-color: transparent;
+  font-weight: bold;
+}
+
 
 :host /deep/ .button-clear {
   background-color: transparent;
