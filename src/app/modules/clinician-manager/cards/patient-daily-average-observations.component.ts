@@ -62,7 +62,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     chart: {
       noData: 'No data exists for selected dates and observations.',
       type: 'multiChart',
-      height: 400,
+      height: 300,
       transitionDuration: 300,
       duration: 300,
 
@@ -78,9 +78,9 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       //average: function(d) { return d.mean/100; },
       margin: {
         top: 0,
-        right: 70,
+        right: 50,
         bottom: 20,
-        left: 70
+        left: 50
       },
 
       useInteractiveGuideline: true,
@@ -180,6 +180,22 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             return html;
 
 
+          },
+
+          dispatch: {
+            elementClick: function (e) {
+              console.log('click')
+            },
+            elementDblclick: function (e) {
+              console.log('double click')
+            },
+            elementMousemove: function (e) {
+              console.log('mousemove')
+            },
+            elementMouseout: function (e) {
+              console.log('mouseout');
+              this.clearElement();
+            }
           }
         }
       },
@@ -191,7 +207,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           return d;
         },
 
-        axisLabelDistance: -20
+        axisLabelDistance: -28
       },
       yAxis2: {
         showMaxMin: false,
@@ -200,11 +216,16 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           return d;
         },
 
-        axisLabelDistance: -30
+        axisLabelDistance: -40
       },
       callback: function (chart) {
 
         this.chart = chart;//d3.selectAll('.nv-y1 text').style('fill','#123');
+
+        chart.multibar.dispatch.on('elementClick', function (e) {
+          console.log('elementClick in callback', e.data);
+        });
+
         //console.log("!!! lineChart callback !!!", chart);
       }
     }

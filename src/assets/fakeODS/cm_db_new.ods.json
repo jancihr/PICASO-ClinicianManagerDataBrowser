@@ -36587,7 +36587,7 @@
       "dosage": "23mg",
       "frequency": "3 times a day",
       "stopReason": "Not working well",
-      "color": "f86c6b",
+      "color": "#f86c6b",
       "disease": "jhaskds",
       "prescribedBy": "DoctorWho - GP"
     },
@@ -36599,7 +36599,7 @@
       "dosage": "23mg",
       "frequency": "3 times a day",
       "stopReason": "",
-      "color": "f86c6b",
+      "color": "#f86c6b",
       "disease": "jhaskds",
       "prescribedBy": "DoctorWho - GP"
     },
@@ -36611,7 +36611,7 @@
       "dosage": "23mg",
       "frequency": "3 times a day",
       "stopReason": "Not working well",
-      "color": "f86c6b",
+      "color": "#f86c6b",
       "disease": "jhaskds",
       "prescribedBy": "DoctorWho - GP"
     },
@@ -36623,7 +36623,7 @@
       "dosage": "23mg",
       "frequency": "3 times a day",
       "stopReason": "Not working well",
-      "color": "f8cb00",
+      "color": "#f8cb00",
       "disease": "jhaskds",
       "prescribedBy": "Doctor Strange - Diabethologist"
     },
@@ -36635,7 +36635,7 @@
       "dosage": "23mg",
       "frequency": "3 times a day",
       "stopReason": "Not working well",
-      "color": "f8cb00",
+      "color": "#f8cb00",
       "disease": "jhaskds",
       "prescribedBy": "Doctor Strange - Diabethologist"
     },
@@ -36647,7 +36647,7 @@
       "dosage": "23mg",
       "frequency": "3 times a day",
       "stopReason": "too low",
-      "color": "20a8d8",
+      "color": "#20a8d8",
       "disease": "jhaskds",
       "prescribedBy": "Doctor Strange - Diabethologist"
     },
@@ -36659,7 +36659,7 @@
       "dosage": "46mg",
       "frequency": "3 times a day",
       "stopReason": "Not working well",
-      "color": "20a8d8",
+      "color": "#20a8d8",
       "disease": "jhaskds",
       "prescribedBy": "Doctor Strange - Diabethologist"
     },
@@ -36671,7 +36671,7 @@
       "dosage": "23mg",
       "frequency": "3 times a day",
       "stopReason": "",
-      "color": "f86c6b",
+      "color": "#f86c6b",
       "disease": "RH",
       "prescribedBy": "DoctorWho - GP"
     }
@@ -36682,7 +36682,7 @@
       "name": "Candesartan",
       "date": "2017-05-01T10:41:19.000Z",
       "dosage": "23mg",
-      "color": "f86c6b",
+      "color": "#f86c6b",
       "disease": "RH",
       "prescribedBy": "DoctorWho - GP"
     },
@@ -36691,7 +36691,7 @@
       "name": "Candesartan",
       "date": "2017-07-01T10:41:19.000Z",
       "dosage": "23mg",
-      "color": "f86c6b",
+      "color": "#f86c6b",
       "disease": "DIS1",
       "prescribedBy": "DoctorWho - GP"
     },
@@ -36700,7 +36700,7 @@
       "name": "Ramipril",
       "date": "2017-07-12T10:41:19.000Z",
       "dosage": "23mg",
-      "color": "f8cb00",
+      "color": "#f8cb00",
       "disease": "DIS1",
       "prescribedBy": "Doctor Strange - Diabethologist"
     },
@@ -36709,7 +36709,7 @@
       "name": "Ramipril",
       "date": "2017-08-12T10:41:19.000Z",
       "dosage": "23mg",
-      "color": "f8cb00",
+      "color": "#f8cb00",
       "disease": "DIS1",
       "prescribedBy": "Doctor Strange - Diabethologist"
     },
@@ -36718,7 +36718,7 @@
       "name": "Simvastatin",
       "date": "2017-08-30T10:41:19.000Z",
       "dosage": "23mg",
-      "color": "20a8d8",
+      "color": "#20a8d8",
       "disease": "DIS1",
       "prescribedBy": "Doctor Strange - Diabethologist"
     }
@@ -36992,7 +36992,7 @@
       "id": "ID1",
       "date": "2017-03-20T10:41:19.000Z",
       "careProfessional": "General Practitioner",
-      "color": "ddabcd",
+      "color": "#ddabcd",
       "result": ""
     },
     {
@@ -37006,14 +37006,14 @@
       "id": "ID1b",
       "date": "2017-06-20T10:41:19.000Z",
       "careProfessional": "General Practitioner",
-      "color": "ddabcd",
+      "color": "#ddabcd",
       "result": ""
     },
     {
       "id": "ID1c",
       "date": "2017-06-26T10:41:19.000Z",
       "careProfessional": "General Practitioner",
-      "color": "ddabcd",
+      "color": "#ddabcd",
       "result": ""
     },
     {

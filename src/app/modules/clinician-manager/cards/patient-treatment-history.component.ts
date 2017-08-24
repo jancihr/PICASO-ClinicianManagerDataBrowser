@@ -23,6 +23,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
   @Input() dateRange: MyDateRange;
 
   animateToggle = true;
+  isColourful = false;
 
   progress: PatientLoadProgress = {
     percentage: 0,
@@ -169,7 +170,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       if (item.endDate === undefined || item.endDate === null) {
         this.visTimelineItemsTreatments.add({
           id: item.id,
-          style: "background: " + item.color,
+          style: this.isColourful ? ("background: " + item.color) : "",
           content: `<div>
                               <div class="w3-small"><b>${item.category}</b></div>
                               <div class="w3-small">${item.visitReason} </div>
@@ -188,7 +189,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
 
           start: item.startDate,
           end: item.endDate,
-          style: "background: " + item.color,
+          style: this.isColourful ? ("background: " + item.color) : "",
         });
       }
       this.listOfItems.push(item.id);
@@ -311,5 +312,10 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
 
   public focusVisChecks(): void {
     this.visTimelineService.focusOnIds(this.visTimelineTreatments, this.listOfItems)
+  }
+
+  toggleColor(): void {
+    this.isColourful = !this.isColourful;
+    this.setTreatmentsGraphData();
   }
 }

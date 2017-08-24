@@ -1,44 +1,58 @@
-
-
-.card-block {
-  margin-bottom: 0.1rem;
-  margin-left: -1rem;
-  margin-right: -1rem;
+.my-animate-left {
+  position: relative;
+  -webkit-animation: myanimateleft 0.4s;
+  animation: myanimateleft 0.4s
 }
 
-
-.myanimation1 {
-  animation-duration: 0.5s;
-  animation-name: slidein1;
-}
-
-.myanimation2 {
-  animation-duration: 0.5s;
-  animation-name: slidein2;
-}
-
-@keyframes slidein1 {
+@-webkit-keyframes myanimateleft {
   from {
-    margin-left: 100%;
-    width: 300%;
+    left: -300px;
+    opacity: 0
   }
-
   to {
-    margin-left: 0%;
-    width: 100%;
+    left: 0;
+    opacity: 1
   }
 }
 
-@keyframes slidein2 {
+@keyframes myanimateleft {
   from {
-    margin-left: 100%;
-    width: 300%;
+    left: -300px;
+    opacity: 0
   }
-
   to {
-    margin-left: 0%;
-    width: 100%;
+    left: 0;
+    opacity: 1
   }
 }
+
+.my-animate-left2 {
+  position: relative;
+  -webkit-animation: myanimateleft2 0.4s;
+  animation: myanimateleft2 0.4s
+}
+
+@-webkit-keyframes myanimateleft2 {
+  from {
+    left: -300px;
+    opacity: 0
+  }
+  to {
+    left: 0;
+    opacity: 1
+  }
+}
+
+@keyframes myanimateleft2 {
+  from {
+    left: -300px;
+    opacity: 0
+  }
+  to {
+    left: 0;
+    opacity: 1
+  }
+}
+
 
 
