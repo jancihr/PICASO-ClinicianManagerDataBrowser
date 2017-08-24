@@ -1,4 +1,4 @@
-import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {Component, HostListener, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {IMyOptions, IMyDateRangeModel} from 'mydaterangepicker';
 import {PatientMedicationHistoryComponent} from "./cards/patient-medication-history.component";
@@ -39,6 +39,7 @@ export class ClinicianManagerComponent implements OnInit {
   constructor(private config: ConfigurationService, private cdSharedModelService: CdSharedModelService,
               private activatedRoute: ActivatedRoute, private _cookieService: CookieService) {
   }
+
 
   ngOnInit(): void {
 

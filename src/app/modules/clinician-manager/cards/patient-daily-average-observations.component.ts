@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, SimpleChange, SimpleChanges} from "@angular/core";
+import {Component, HostListener, Input, OnInit, SimpleChange, SimpleChanges, ViewChild} from "@angular/core";
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {MyDateRange} from "./patient-range-picker.component";
@@ -19,10 +19,14 @@ declare let d3, nv;
 
 export class PatientDailyAverageObservationsComponent implements OnInit {
 
+
   @Input() forMeasurements: string;
   @Input() singleValued: boolean = true;
 
+
   @Input() dateRange: MyDateRange;
+
+  //@HostListener("window:scroll", [])
 
 
   forMeasurementsPath: string;
@@ -35,6 +39,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   isThereMin: boolean;
   isThereMid: boolean;
   isThereMax: boolean;
+
 
   isHighContrast: boolean = false;
   isThereGraph: boolean = false;
@@ -58,214 +63,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   observationGroups: ObservationResult[] = [];
 
 
-  options: any = {
-    chart: {
-
-      dispatch: {
-        tooltipShow: function (e) {
-          console.log("tooltipShow");
-        },
-        tooltipHide: function (e) {
-          console.log("tooltip hide");
-        },
-        stateChange: function (e) {
-          console.log("statechange");
-        },
-        changeState: function (e) {
-          console.log("statechange2");
-        },
-        elementMousemove: function (e) {
-          var xValue = this.chart.xAxis.tickFormat()(e.pointXValue);
-        },
-        elementMouseout: function (e) {
-          console.log('mouseout')
-        },
-        elementDblclick: function (e) {
-          console.log('double click')
-        }
-
-
-      },
-      noData: 'No data exists for selected dates and observations.',
-      type: 'multiChart',
-      height: 300,
-      transitionDuration: 100,
-      duration: 100,
-
-      legendRightAxisHint: " ",
-      interpolate: "linear",
-      showLegend: false,
-      legend: {
-        align: false
-      },
-
-      //average: function(d) { return d.mean/100; },
-      margin: {
-        top: 0,
-        right: 50,
-        bottom: 20,
-        left: 50
-      },
-
-      useInteractiveGuideline: true,
-      useVoronoi: true,
-
-      x: function (d) {
-        return new Date(d.observation.date);
-      },
-      y: function (d) {
-        return d.observation.value === null ? null : new Number(d.observation.value);
-      },
-      defined: function (d) {
-        return d.observation.value !== null
-      },
-
-
-      xAxis: {
-        //axisLabel: 'Time',
-        tickFormat: function (d) {
-          let date = new Date(d);
-          return ("" + date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear());
-        },
-      },
-
-      //xDomain: [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()],
-      //xRange: [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()],
-
-
-      tooltip: {
-        contentGenerator: function (d) {
-          this.clearElement();
-          //console.log("tooltip", d);
-          var html = "";
-          html += "<br><span style='color:" + d.point.color + "' > <i class='fa fa-circle'></i> </span> " +
-            (d.point.value === null ? "<span class='badge badge-pill badge-warning'>MISSING VALUE!</span><br>" : d.point.value) + ' ' + d.series[0].key + '<br>' +
-
-            ("" + d.point.date.getDate() + "." + (d.point.date.getMonth() + 1) + "." + d.point.date.getFullYear() + " " + d.point.date.getHours() + ":" + d.point.date.getMinutes())
-
-
-            + '<br>';
-          return html;
-        }
-      },
-      interactiveLayer: {
-        tooltip: {
-          hideDelay: 0,
-
-          contentGenerator: function (d) {
-
-
-            var html = ""; //d.value;
-
-            //console.log("d", d);
-
-            d.series.forEach(function (elem) {
-
-              if (!elem.key.startsWith("hide")) {
-
-                let date = new Date(elem.data.observation.date);
-
-                html = html +
-
-                  "<span style='color:" + elem.color + "' > <i class='fa fa-circle'></i> </span> " +
-
-                  elem.data.name + " " +
-
-                  ("" + date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear() + " " + (date.getHours() < 10 ? "0" : "") + date.getHours() + ":" + (date.getMinutes() < 10 ? "0" : "") + date.getMinutes())
-
-
-                  + " <br> <span class='text-white'><i class='fa fa-circle-o'></i> </span>" +
-                  (
-                    elem.data.observation.value === null
-                      ?
-                      "<span class='w3-tag w3-round text-warning'>MISSING VALUE!</span>"
-                      :
-                      (elem.data.observation.outOfRange ? "<span class='w3-tag w3-round text-danger'>OUT OF RANGE! </span> " : "") + "<b>" + "<span class='w3-tag w3-round-medium'>" + elem.value + " </span> " + "</b>"
-                  )
-                  + " " + elem.data.unit +
-                  (
-                    elem.value === null
-                      ?
-                      ""
-                      :
-                      (
-                        elem.data.observation.source
-                          ?
-                          (" <span class='w3-tag'>source: " + elem.data.observation.source + "</span>")
-                          :
-                          ""
-                      )
-                  )
-                  +
-                  "<br>";
-              }
-
-            });
-
-            //console.log(JSON.stringify(d));
-
-            return html;
-
-
-          },
-
-
-          dispatch: {
-            elementMousemove: function (t, u) {
-              console.log('interactive elementMousemove');
-            },
-            elementMouseout: function (e) {
-              console.log('interactive elementMouseout');
-              this.clearElement();
-            },
-            elementClick: function (e) {
-              console.log('interactive elementClick');
-              this.clearElement();
-            },
-            elementDblclick: function (e) {
-              console.log('interactive elementDblclick');
-              this.clearElement();
-            },
-            elementMouseDown: function (e) {
-              console.log('interactive elementMouseDown');
-              this.clearElement();
-            },
-            elementMouseUp: function (e) {
-              console.log('interactive elementMouseUp');
-              this.clearElement();
-            }
-          }
-
-        }
-      },
-
-      yAxis1: {
-        showMaxMin: false,
-        axisLabel: 'left axis',
-        tickFormat: function (d) {
-          return d;
-        },
-
-        axisLabelDistance: -28
-      },
-      yAxis2: {
-        showMaxMin: false,
-        axisLabel: 'right axis',
-        tickFormat: function (d) {
-          return d;
-        },
-
-        axisLabelDistance: -40
-      },
-      callback: function (chart) {
-
-        this.chart = chart;//d3.selectAll('.nv-y1 text').style('fill','#123');
-
-
-        //console.log("!!! lineChart callback !!!", chart);
-      }
-    }
-  };
+  options;
 
 
   constructor(private picasoDataService: PicasoDataService, private activatedRoute: ActivatedRoute) {
@@ -276,31 +74,235 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
   ngOnChanges(changes: SimpleChanges) {
-    this.clearElement();
     const range: SimpleChange = changes.dateRange;
-    //console.log('prev value: ', range.previousValue);
-    //range.currentValue();
+    if (range === undefined || (range.previousValue !== range.currentValue)) {
 
-    if (range === undefined || (range.previousValue != range.currentValue)) {
-
-      this.updateDates();
-      this.getObservations();
+      this.callServiceToGetObservations();
       //this.printDate("ngOnChanges")
     }
   }
 
+  setOptions() {
+    this.options = {
+      chart: {
+
+        // dispatch: {
+        //   tooltipShow: function (e) {
+        //     console.log("tooltipShow");
+        //   },
+        //   tooltipHide: function (e) {
+        //     console.log("tooltip hide");
+        //   },
+        //   stateChange: function (e) {
+        //     console.log("statechange");
+        //   },
+        //   changeState: function (e) {
+        //     console.log("statechange2");
+        //   },
+        //   elementMousemove: function (e, v) {
+        //     console.log('mousemove')
+        //     var xValue = this.chart.xAxis.tickFormat()(e.pointXValue);
+        //   },
+        //   elementMouseout: function (e) {
+        //     console.log('mouseout')
+        //   },
+        //   elementDblclick: function (e) {
+        //     console.log('double click')
+        //   }
+        //
+        //
+        // },
+        noData: 'No data exists for selected dates and observations.',
+        type: 'multiChart',
+        height: this.forMeasurements === "morisky" || this.singleValued ? 200 : 300,
+        transitionDuration: 100,
+        duration: 100,
+
+        legendRightAxisHint: " ",
+        interpolate: "linear",
+        showLegend: false,
+        legend: {
+          align: false
+        },
+
+        //average: function(d) { return d.mean/100; },
+        margin: {
+          top: 0,
+          right: 50,
+          bottom: 20,
+          left: 50
+        },
+
+        useInteractiveGuideline: true,
+        useVoronoi: true,
+
+        x: function (d) {
+          return new Date(d.observation.date);
+        },
+        y: function (d) {
+          return d.observation.value === null ? null : new Number(d.observation.value);
+        },
+        defined: function (d) {
+          return d.observation.value !== null
+        },
+
+
+        xAxis: {
+          //axisLabel: 'Time',
+          tickFormat: function (d) {
+            let date = new Date(d);
+            return ("" + date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear());
+          },
+        },
+
+        //xDomain: [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()],
+        //xRange: [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()],
+
+
+        tooltip: {
+          contentGenerator: function (d) {
+            this.hideTooltipElements();
+            //console.log("tooltip", d);
+            var html = "";
+            html += "<br><span style='color:" + d.point.color + "' > <i class='fa fa-circle'></i> </span> " +
+              (d.point.value === null ? "<span class='badge badge-pill badge-warning'>MISSING VALUE!</span><br>" : d.point.value) + ' ' + d.series[0].key + '<br>' +
+
+              ("" + d.point.date.getDate() + "." + (d.point.date.getMonth() + 1) + "." + d.point.date.getFullYear() + " " + d.point.date.getHours() + ":" + d.point.date.getMinutes())
+
+
+              + '<br>';
+            return html;
+          }
+        },
+        interactiveLayer: {
+          tooltip: {
+            hideDelay: 0,
+
+            contentGenerator: function (d) {
+
+
+              var html = ""; //d.value;
+
+              //console.log("d", d);
+
+              d.series.forEach(function (elem) {
+
+                if (!elem.key.startsWith("hide")) {
+
+                  let date = new Date(elem.data.observation.date);
+
+                  html = html +
+
+                    "<span style='color:" + elem.color + "' > <i class='fa fa-circle'></i> </span> " +
+
+                    elem.data.name + " " +
+
+                    ("" + date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear() + " " + (date.getHours() < 10 ? "0" : "") + date.getHours() + ":" + (date.getMinutes() < 10 ? "0" : "") + date.getMinutes())
+
+
+                    + " <br> <span class='text-white'><i class='fa fa-circle-o'></i> </span>" +
+                    (
+                      elem.data.observation.value === null
+                        ?
+                        "<span class='w3-tag w3-round text-warning'>MISSING VALUE!</span>"
+                        :
+                        (elem.data.observation.outOfRange ? "<span class='w3-tag w3-round text-danger'>OUT OF RANGE! </span> " : "") + "<b>" + "<span class='w3-tag w3-round-medium'>" + elem.value + " </span> " + "</b>"
+                    )
+                    + " " + elem.data.unit +
+                    (
+                      elem.value === null
+                        ?
+                        ""
+                        :
+                        (
+                          elem.data.observation.source
+                            ?
+                            (" <span class='w3-tag'>source: " + elem.data.observation.source + "</span>")
+                            :
+                            ""
+                        )
+                    )
+                    +
+                    "<br>";
+                }
+
+              });
+
+              //console.log(JSON.stringify(d));
+
+              return html;
+
+
+            },
+
+
+            // dispatch: {
+            //   elementMousemove: function (t, u) {
+            //     console.log('interactive elementMousemove');
+            //   },
+            //   elementMouseout: function (e) {
+            //     console.log('interactive elementMouseout');
+            //     this.hideTooltipElements();
+            //   },
+            //   elementClick: function (e) {
+            //     console.log('interactive elementClick');
+            //     this.hideTooltipElements();
+            //   },
+            //   elementDblclick: function (e) {
+            //     console.log('interactive elementDblclick');
+            //     this.hideTooltipElements();
+            //   },
+            //   elementMouseDown: function (e) {
+            //     console.log('interactive elementMouseDown');
+            //     this.hideTooltipElements();
+            //   },
+            //   elementMouseUp: function (e) {
+            //     console.log('interactive elementMouseUp');
+            //     this.hideTooltipElements();
+            //   }
+            // }
+
+          }
+        },
+
+        yAxis1: {
+          showMaxMin: false,
+          axisLabel: 'left axis',
+          tickFormat: function (d) {
+            return d;
+          },
+
+          axisLabelDistance: -28
+        },
+        yAxis2: {
+          showMaxMin: false,
+          axisLabel: 'right axis',
+          tickFormat: function (d) {
+            return d;
+          },
+
+          axisLabelDistance: -40
+        },
+        callback: function (chart) {
+
+          this.chart = chart;//d3.selectAll('.nv-y1 text').style('fill','#123');
+
+          //console.log("!!! lineChart callback !!!", chart);
+        }
+      }
+    };
+  }
+
   ngOnDestroy() {
-    this.clearElement();
+    this.removeTooltipElements();
+    this.options = null;
+    this.data = null;
   }
 
 
-  getObservations(): void {
+  callServiceToGetObservations(): void {
 
-    let oldOnOff = [];
-    for (let group of this.observationGroups) {
-      oldOnOff.push({id: group.id, showLeft: group.showLeft, showRight: group.showRight})
-    }
-
+    this.setOptions();
 
     if (this.forMeasurements === "morisky") {
       this.headerText = "Morisky Scale results";
@@ -314,11 +316,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       this.dateRange.endDate, this.progress
     ).subscribe(
       observations => {
-        this.setPatientObservations(observations);
-        this.enableInitialGraphs(oldOnOff);
-        this.reloadDataToGraph();
-        this.updateDates();
-
+        this.reloadDataToGraph(observations);
         this.options.chart.noData = "Choose Left (L) and Right (R) values from the list above to compare.";
 
       },
@@ -326,7 +324,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   }
 
 
-  setPatientObservations(observations: ObservationResult[]) {
+  filterMoriskyType(observations: ObservationResult[]) {
     if (this.forMeasurements === "morisky" || this.singleValued) {
       this.options.chart.height = 200;
       for (let observation of observations) {
@@ -341,7 +339,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       }
     }
     else {
-      this.headerText = "Patient Measurements and Recordings - Combined Chart";
+      this.headerText = "Patient Measurements and Recordings - Comparison Chart";
       this.footerText = "Choose series above the diagram to show/hide them on the left/right axis.";
       this.observationGroups = observations.filter(function (obj) {
         return obj.id !== "morisky";
@@ -383,16 +381,34 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   }
 
 
-  reloadDataToGraph() {
+  reloadDataToGraph(observations: ObservationResult[]) {
+
+    let oldOnOff = [];
+    for (let group of this.observationGroups) {
+      oldOnOff.push({id: group.id, showLeft: group.showLeft, showRight: group.showRight})
+    }
+
+    this.filterMoriskyType(observations);
+    this.enableInitialGraphs(oldOnOff);
+
     this.data = [];
+    this.setOptions();
+
+
     this.isThereGraph = false;
     this.isThereMax = false;
     this.isThereMid = false;
     this.isThereMin = false;
 
-    this.hideLeftOrRightAxisTicks();
+
     this.reload('right');
     this.reload('left');
+
+
+    this.hideLeftOrRightAxisTicks();
+
+    //this.chartUpdate();
+
 
   }
 
@@ -502,7 +518,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             disabled: false,
             yAxis: isLeft ? 1 : 2,
             xAxis: 1,
-            type: 'line'   //group.type
+            type: group.type ? group.type : 'line'
           });
 
           // paint horizontal lines for min, mid, max values
@@ -628,7 +644,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         this.observationGroups[i].showLeft = false;
       }
     }
-    this.reloadDataToGraph()
+    this.callServiceToGetObservations()
   }
 
   public toggleRight(id: string, name: string) {
@@ -641,7 +657,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         this.observationGroups[i].showRight = false;
       }
     }
-    this.reloadDataToGraph()
+    this.callServiceToGetObservations()
   }
 
 
@@ -650,12 +666,12 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       this.observationGroups[i].showLeft = false;
       this.observationGroups[i].showRight = false;
     }
-    this.reloadDataToGraph();
+    this.callServiceToGetObservations();
   }
 
   public showHighContrast() {
     this.isHighContrast = !this.isHighContrast;
-    this.reloadDataToGraph();
+    this.callServiceToGetObservations();
   }
 
   public showAllRight() {
@@ -664,7 +680,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       this.observationGroups[i].showLeft = false;
       this.observationGroups[i].showRight = true;
     }
-    this.reloadDataToGraph();
+    this.callServiceToGetObservations();
   }
 
   public showAllLeft() {
@@ -673,7 +689,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       this.observationGroups[i].showLeft = true;
       //this.observationGroups[i].showRight = false;
     }
-    this.reloadDataToGraph();
+    this.callServiceToGetObservations();
   }
 
   public enableInitialGraphs(oldOnOffData: any) {
@@ -691,7 +707,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     else {
       for (let i = 0; i < this.observationGroups.length; i++) {
         this.observationGroups[i].showRight = false;
-        this.observationGroups[i].showLeft = false;
+        this.observationGroups[i].showLeft = true;
         //console.log(this.forMeasurements);
         //if (this.forMeasurements === "all") {
         //  this.observationGroups[i].showLeft = false;
@@ -706,13 +722,27 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   public resetMinMidMax() {
     this.showMinMidMax = !this.showMinMidMax;
-    this.reloadDataToGraph();
+    this.callServiceToGetObservations();
   }
 
-  clearElement() {
-    console.log("cleaning tooltips");
+
+  hideTooltipElements() {
+    //console.log("cleaning tooltips");
+    d3.selectAll('.nvtooltip').style("opacity", "0");
+
+  }
+
+  removeTooltipElements() {
+    //console.log("cleaning tooltips");
     d3.selectAll('.nvtooltip').remove();
 
+  }
+
+  @HostListener("window:scroll", [])
+
+  onWindowScroll() {
+    console.log("scroll detected");
+    this.hideTooltipElements();
   }
 
 

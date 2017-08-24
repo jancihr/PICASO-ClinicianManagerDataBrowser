@@ -31,6 +31,7 @@ export interface ObservationResult {
   name: string;
   unit: string;
   color: string;
+  type: string;
   minValue?: number;
   midValue?: number;
   maxValue?: number;

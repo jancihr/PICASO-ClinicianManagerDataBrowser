@@ -132,6 +132,7 @@
   margin-bottom: 0px;
   color: #000000;
   border-color: transparent;
+  display: inline-block;
 }
 
 :host /deep/ .picker-button:hover {
@@ -168,6 +169,7 @@
   margin-bottom: 0px;
   color: #000000;
   border-color: transparent;
+  display: inline-block;
 }
 
 :host /deep/ .button-clear:hover {
