@@ -1,6 +1,12 @@
 <div class="animated fadeIn">
 
   <div *ngIf="cardToShow==='overview' || cardToShow === 'all'" class="row">
+    <!-- <div class="w3-right" style="margin-right: 1rem;">
+       <a [routerLink]="['/clinician-manager', 'all', '']"><i
+         class="fa {{cardToShow==='all'?'fa-window-maximize':'fa-window-restore'}}"></i> </a>
+     </div>
+     -->
+
     <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
       <patient-overview>
       </patient-overview>
@@ -85,7 +91,7 @@
       class="col-xs-12 col-sm-12 col-md-12
       col-lg-12 col-xl-12">
       <div class="card">
-        <div class="card-header w3-blue  w3-center">
+        <div class="card-header measurement-header  ">
           <div><i class="fa fa-heartbeat"></i>
             Patient Measurements and Recordings - Separate Charts
           </div>
@@ -163,8 +169,10 @@
   </div>
 
   <div *ngIf="cardToShow==='morisky' || cardToShow === 'all'" class="row">
-    <patient-daily-average-observations [forMeasurements]='"morisky"' [singleValued]="true" [dateRange]="range">
-    </patient-daily-average-observations>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <patient-daily-average-observations [forMeasurements]='"morisky"' [singleValued]="true" [dateRange]="range">
+      </patient-daily-average-observations>
+    </div>
   </div>
 
   <div *ngIf="cardToShow==='diseases' || cardToShow === 'all'" class="row">

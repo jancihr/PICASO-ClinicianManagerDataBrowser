@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card-header w3-light-blue  w3-center">
+  <div class="card-header info-header ">
 
 
     <span i18n="PatientData Info"><i class="fa fa-user"></i>
@@ -29,54 +29,54 @@
 
 
   </div>
-  <div *ngIf="patientData" class="card-block">
-    <div class="animated fadeIn">
-      <div class="row">
-        <div class=" col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+  <div class="card-block">
+    <div class="fadeIn">
+      <div class="row detail-view">
+        <div class=" col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3 ">
 
-          <div class=" text-primary w3-border-bottom  ">
+          <div class=" text-patient-info w3-border-bottom  ">
                       <span class="text-muted text-uppercase  font-weight-bold font-xs " i18n="Name">Name:
-                      </span>
-            {{patientData.name}}
+                      </span><span *ngIf="patientData">
+            {{patientData.name}}</span>
           </div>
 
 
-          <div class=" text-primary w3-border-bottom ">
+          <div class=" text-patient-info w3-border-bottom ">
             <span class="text-muted text-uppercase  font-weight-bold font-xs " i18n="Id">ID:</span>
-            {{patientData.id}}
+            <span class="" *ngIf="patientData">{{patientData.id}}</span>
           </div>
 
 
-          <div class=" text-primary w3-border-bottom ">
+          <div class=" text-patient-info w3-border-bottom ">
                   <span class="text-muted text-uppercase   font-weight-bold font-xs " i18n="bloodType">
                     blood type:
                   </span>
-            {{patientData.bloodType}}
+            <span *ngIf="patientData">{{patientData.bloodType}}</span>
           </div>
         </div>
         <div class=" col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
 
-          <div class=" text-primary w3-border-bottom ">
+          <div class=" text-patient-info w3-border-bottom ">
                   <span class="text-muted text-uppercase   font-weight-bold font-xs " i18n="DOB">Date Of
                     Birth:
                   </span>
-            {{patientData.dob}}
+            <span *ngIf="patientData">{{patientData.dob | date:'d.M.y'}}</span>
           </div>
 
 
-          <div class=" text-primary w3-border-bottom ">
+          <div class=" text-patient-info w3-border-bottom ">
                   <span class="text-muted text-uppercase   font-weight-bold font-xs " i18n="height">
                     height:
                   </span>
-            {{patientData.height}}
+            <span *ngIf="patientData">{{patientData.height}}</span>
           </div>
 
 
-          <div class=" text-primary w3-border-bottom ">
+          <div class=" text-patient-info w3-border-bottom ">
                   <span class="text-muted text-uppercase   font-weight-bold font-xs " i18n="gender">
                     gender:
                   </span>
-            {{patientData.gender}}
+            <span *ngIf="patientData">{{patientData.gender}}</span>
           </div>
 
 
@@ -85,46 +85,46 @@
         <div class=" col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
 
 
-          <div class=" text-primary w3-border-bottom ">
+          <div class=" text-patient-info w3-border-bottom ">
                       <span class="text-muted text-uppercase   font-weight-bold font-xs " i18n="insurer">
                         Insurer:
                       </span>
-            {{patientData.insurer}}
+            <span *ngIf="patientData">{{patientData.insurer}}</span>
           </div>
 
 
-          <div class=" text-primary w3-border-bottom ">
+          <div class=" text-patient-info w3-border-bottom ">
                   <span class="text-muted text-uppercase   font-weight-bold font-xs " i18n="insurer ID">
                     Insurer ID:
                   </span>
-            {{patientData.insurerId}}
+            <span *ngIf="patientData">{{patientData.insurerId}}</span>
           </div>
 
 
-          <div class=" text-primary w3-border-bottom ">
+          <div class=" text-patient-info w3-border-bottom ">
                   <span class="text-muted text-uppercase   font-weight-bold font-xs " i18n="occupancy">
                     occupancy:
                   </span>
-            {{patientData.occupancy}}
+            <span *ngIf="patientData">{{patientData.occupancy}}</span>
           </div>
 
         </div>
         <div class=" col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
 
-          <div class=" text-primary w3-border-bottom ">
+          <div class=" text-patient-info w3-border-bottom ">
                   <span class="text-muted text-uppercase   font-weight-bold font-xs " i18n="lives alone">
                     lives alone:
                   </span>
-            {{patientData.livesAlone==="true"? "Yes":"No" }}
+            <span *ngIf="patientData">{{patientData.livesAlone==="true"? "Yes":"No" }}</span>
           </div>
 
           <div class="w3-border-bottom ">
 
-            <div class=" text-primary ">
+            <div class=" text-patient-info ">
                   <span class="text-muted text-uppercase   font-weight-bold font-xs " i18n="Address">
                     Patient Address:
                   </span>
-              {{patientData.address}}
+              <span *ngIf="patientData">{{patientData.address}}</span>
             </div>
 
 

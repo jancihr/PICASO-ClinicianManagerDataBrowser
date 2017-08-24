@@ -8,6 +8,14 @@
       "additionalProperties": true,
       "id": "/properties/anyCallInputParameters",
       "properties": {
+        "startDate": {
+          "default": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)",
+          "description": "---",
+          "id": "/properties/anyCallInputParameters/properties/startDate",
+          "title": "The Startdate Schema",
+          "type": "string",
+          "format": "date-time"
+        },
         "endDate": {
           "default": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)",
           "description": "---",
@@ -22,14 +30,6 @@
           "id": "/properties/anyCallInputParameters/properties/patientId",
           "title": "The Patientid Schema",
           "type": "string"
-        },
-        "startDate": {
-          "default": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)",
-          "description": "---",
-          "id": "/properties/anyCallInputParameters/properties/startDate",
-          "title": "The Startdate Schema",
-          "type": "string",
-          "format": "date-time"
         }
       },
       "required": [
@@ -47,46 +47,11 @@
         "additionalProperties": true,
         "id": "/properties/cliniciansResult/items",
         "properties": {
-          "endDate": {
-            "default": "2017-01-20T10:41:19.000Z",
-            "description": "---",
-            "id": "/properties/cliniciansResult/items/properties/endDate",
-            "title": "The Enddate Schema",
-            "type": [
-              "string",
-              "null"
-            ],
-            "format": "date-time"
-          },
           "id": {
             "default": "ID",
             "description": "---",
             "id": "/properties/cliniciansResult/items/properties/id",
             "title": "The Id Schema",
-            "type": "string"
-          },
-          "institution": {
-            "default": "Institution name, desc",
-            "description": "---",
-            "id": "/properties/cliniciansResult/items/properties/institution",
-            "title": "The Institution Schema",
-            "type": [
-              "string",
-              "null"
-            ]
-          },
-          "name": {
-            "default": "Doctor Who",
-            "description": "---",
-            "id": "/properties/cliniciansResult/items/properties/name",
-            "title": "The Name Schema",
-            "type": "string"
-          },
-          "speciality": {
-            "default": "Doctor of magic",
-            "description": "---",
-            "id": "/properties/cliniciansResult/items/properties/speciality",
-            "title": "The Speciality Schema",
             "type": "string"
           },
           "startDate": {
@@ -99,6 +64,41 @@
               "null"
             ],
             "format": "date-time"
+          },
+          "endDate": {
+            "default": "2017-01-20T10:41:19.000Z",
+            "description": "---",
+            "id": "/properties/cliniciansResult/items/properties/endDate",
+            "title": "The Enddate Schema",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "name": {
+            "default": "Doctor Who",
+            "description": "Clinician full name",
+            "id": "/properties/cliniciansResult/items/properties/name",
+            "title": "The Name Schema",
+            "type": "string"
+          },
+          "speciality": {
+            "default": "Doctor of magic",
+            "description": "---",
+            "id": "/properties/cliniciansResult/items/properties/speciality",
+            "title": "The Speciality Schema",
+            "type": "string"
+          },
+          "institution": {
+            "default": "Institution name, desc",
+            "description": "---",
+            "id": "/properties/cliniciansResult/items/properties/institution",
+            "title": "The Institution Schema",
+            "type": [
+              "string",
+              "null"
+            ]
           }
         },
         "required": [
@@ -166,28 +166,28 @@
           "authorId": {
             "default": "Doctor Who",
             "description": "Concluding comment author id ",
-            "id": "/properties/concludingCommentsResult/items/properties/author",
+            "id": "/properties/concludingCommentsResult/items/properties/authorId",
             "title": "The Author Schema",
             "type": "string"
           },
           "authorName": {
             "default": "Doctor Who",
             "description": "Concluding comment author name",
-            "id": "/properties/concludingCommentsResult/items/properties/author",
+            "id": "/properties/concludingCommentsResult/items/properties/authorName",
             "title": "The Author Schema",
             "type": "string"
           },
           "authorRoleId": {
             "default": "rlid",
             "description": "Concluding comment author role id",
-            "id": "/properties/concludingCommentsResult/items/properties/author",
+            "id": "/properties/concludingCommentsResult/items/properties/authorRoleId",
             "title": "The Author Schema",
             "type": "string"
           },
           "authorRole": {
             "default": "General Practitioner",
             "description": "Concluding comment author role",
-            "id": "/properties/concludingCommentsResult/items/properties/author",
+            "id": "/properties/concludingCommentsResult/items/properties/authorRole",
             "title": "The Author Schema",
             "type": "string"
           },
@@ -230,19 +230,19 @@
         "additionalProperties": true,
         "id": "/properties/diseasesResult/items",
         "properties": {
+          "id": {
+            "default": "ID1",
+            "description": "---",
+            "id": "/properties/diseasesResult/items/properties/id",
+            "title": "The Id Schema",
+            "type": "string"
+          },
           "clinicalPhenotype": {
             "default": "mixed",
             "description": "---",
             "id": "/properties/diseasesResult/items/properties/clinicalPhenotype",
             "title": "The Clinicalphenotype Schema",
             "type": "string"
-          },
-          "dateOfOffset": {
-            "description": "---",
-            "id": "/properties/diseasesResult/items/properties/dateOfOffset",
-            "title": "The Dateofoffset Schema",
-            "type": "null",
-            "format": "date-time"
           },
           "dateOfOnset": {
             "default": "2017-01-20T10:41:19.000Z",
@@ -255,12 +255,15 @@
             ],
             "format": "date-time"
           },
-          "id": {
-            "default": "ID1",
+          "dateOfOffset": {
             "description": "---",
-            "id": "/properties/diseasesResult/items/properties/id",
-            "title": "The Id Schema",
-            "type": "string"
+            "id": "/properties/diseasesResult/items/properties/dateOfOffset",
+            "title": "The Dateofoffset Schema",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
           },
           "name": {
             "default": "Parkinson's Disease",
@@ -291,13 +294,13 @@
           }
         },
         "required": [
-          "sideOfOnset",
-          "name",
-          "clinicalPhenotype",
-          "dateOfOffset",
-          "dateOfOnset",
           "id",
-          "severity"
+          "name",
+          "dateOfOnset",
+          "dateOfOffset",
+          "clinicalPhenotype",
+          "severity",
+          "sideOfOnset"
         ],
         "type": "object"
       },
@@ -312,17 +315,6 @@
         "additionalProperties": true,
         "id": "/properties/followUpsResult/items",
         "properties": {
-          "date": {
-            "default": "2017-03-20T10:41:19.000Z",
-            "description": "Planned date of the follow up.",
-            "id": "/properties/followUpsResult/items/properties/date",
-            "title": "The Date Schema",
-            "type": "string",
-            "format": [
-              "date-time",
-              "null"
-            ]
-          },
           "id": {
             "default": "idfollowup",
             "description": "---",
@@ -337,6 +329,40 @@
             "title": "The Name Schema",
             "type": "string"
           },
+          "createdDate": {
+            "default": "2017-03-20T10:41:19.000Z",
+            "description": "Date when clinician creates the follow up.",
+            "id": "/properties/followUpsResult/items/properties/createdDate",
+            "title": "The Date Schema",
+            "type": "string",
+            "format": [
+              "date-time",
+              "null"
+            ]
+          },
+          "patientUpdatedDate": {
+            "default": "2017-03-20T10:41:19.000Z",
+            "description": "Date when patient updates the follow up with required data.",
+            "id": "/properties/followUpsResult/items/properties/patientUpdatedDate",
+            "title": "The Date Schema",
+            "type": "string",
+            "format": [
+              "date-time",
+              "null"
+            ]
+          },
+          "followUpDate": {
+            "default": "2017-03-20T10:41:19.000Z",
+            "description": "Planned date of the follow up.",
+            "id": "/properties/followUpsResult/items/properties/followUpDate",
+            "title": "The Date Schema",
+            "type": "string",
+            "format": [
+              "date-time",
+              "null"
+            ]
+          },
+
           "role": {
             "default": "Cardiologist",
             "description": "Role of requested clinician.",
@@ -356,7 +382,9 @@
           }
         },
         "required": [
-          "date",
+          "createdDate",
+          "patientUpdatedDate",
+          "followUpDate",
           "note",
           "role",
           "id",
@@ -388,10 +416,11 @@
         },
         "dob": {
           "default": "1960-05-10",
-          "description": "---",
+          "description": "Date of birth",
           "id": "/properties/infoResult/properties/dob",
           "title": "The Dob Schema",
-          "type": "string"
+          "type": "string",
+          "format": "date-time"
         },
         "gender": {
           "default": "M",
@@ -437,7 +466,7 @@
         },
         "name": {
           "default": "Peter Moskowitch",
-          "description": "---",
+          "description": "Patient full name",
           "id": "/properties/infoResult/properties/name",
           "title": "The Name Schema",
           "type": "string"
@@ -707,7 +736,7 @@
           "date": {
             "default": "2017-05-01T10:41:19.000Z",
             "description": "---",
-            "id": "/properties/medicationIntakesResult/items/properties/startDate",
+            "id": "/properties/medicationIntakesResult/items/properties/date",
             "title": "The Startdate Schema",
             "type": "string",
             "format": "date-time"

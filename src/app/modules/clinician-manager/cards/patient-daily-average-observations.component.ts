@@ -1,12 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output, SimpleChange, SimpleChanges} from "@angular/core";
+import {Component, Input, OnInit, SimpleChange, SimpleChanges} from "@angular/core";
 import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {MyDateRange} from "./patient-range-picker.component";
 import {ObservationResult} from "../model/generated-interfaces";
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 
 
-declare let d3, nv: any;
+declare let d3, nv;
 
 
 @Component({
@@ -26,6 +26,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
   forMeasurementsPath: string;
+  chart;
   headerText: string;
   footerText: string;
 
@@ -35,15 +36,35 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   isThereMid: boolean;
   isThereMax: boolean;
 
+  isHighContrast: boolean = false;
+
+  forceYZero = true;
+
   //endDate: Date;
   //startDate: Date;
+
+  data;
+
+
+  showMinMidMax = true;
+
+  progress: PatientLoadProgress = {
+    percentage: 0,
+    loaded: 0,
+    total: 0
+  };
+
+
+  observationGroups: ObservationResult[] = [];
+
 
   options: any = {
     chart: {
       noData: 'No data exists for selected dates and observations.',
       type: 'multiChart',
-      height: 500,
-      transitionDuration: 500,
+      height: 300,
+      transitionDuration: 300,
+      duration: 300,
 
       legendRightAxisHint: " ",
       interpolate: "linear",
@@ -57,9 +78,9 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       //average: function(d) { return d.mean/100; },
       margin: {
         top: 0,
-        right: 70,
+        right: 50,
         bottom: 20,
-        left: 70
+        left: 50
       },
 
       useInteractiveGuideline: true,
@@ -79,7 +100,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       xAxis: {
         //axisLabel: 'Time',
         tickFormat: function (d) {
-          return new Date(d).toLocaleDateString();
+          let date = new Date(d);
+          return ("" + date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear());
         },
       },
 
@@ -93,12 +115,14 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           var html = "";
           html += "<br><span style='color:" + d.point.color + "' > <i class='fa fa-circle'></i> </span> " +
             (d.point.value === null ? "<span class='badge badge-pill badge-warning'>MISSING VALUE!</span><br>" : d.point.value) + ' ' + d.series[0].key + '<br>' +
-            d.point.date + '<br>';
+
+            ("" + d.point.date.getDate() + "." + (d.point.date.getMonth() + 1) + "." + d.point.date.getFullYear() + " " + d.point.date.getHours() + ":" + d.point.date.getMinutes())
+
+
+            + '<br>';
           return html;
         }
       },
-
-
       interactiveLayer: {
         tooltip: {
           contentGenerator: function (d) {
@@ -112,12 +136,18 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
               if (!elem.key.startsWith("hide")) {
 
+                let date = new Date(elem.data.observation.date);
 
                 html = html +
 
                   "<span style='color:" + elem.color + "' > <i class='fa fa-circle'></i> </span> " +
 
-                  elem.data.name + " " + elem.data.observation.date + ": <br> <span class='text-white'><i class='fa fa-circle-o'></i> </span>" +
+                  elem.data.name + " " +
+
+                  ("" + date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear() + " " + (date.getHours() < 10 ? "0" : "") + date.getHours() + ":" + (date.getMinutes() < 10 ? "0" : "") + date.getMinutes())
+
+
+                  + " <br> <span class='text-white'><i class='fa fa-circle-o'></i> </span>" +
                   (
                     elem.data.observation.value === null
                       ?
@@ -150,46 +180,56 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             return html;
 
 
+          },
+
+          dispatch: {
+            elementClick: function (e) {
+              console.log('click')
+            },
+            elementDblclick: function (e) {
+              console.log('double click')
+            },
+            elementMousemove: function (e) {
+              console.log('mousemove')
+            },
+            elementMouseout: function (e) {
+              console.log('mouseout');
+              this.clearElement();
+            }
           }
         }
       },
 
       yAxis1: {
+        showMaxMin: false,
         axisLabel: 'left axis',
         tickFormat: function (d) {
           return d;
         },
 
-        axisLabelDistance: -20
+        axisLabelDistance: -28
       },
       yAxis2: {
+        showMaxMin: false,
         axisLabel: 'right axis',
         tickFormat: function (d) {
           return d;
         },
 
-        axisLabelDistance: -30
+        axisLabelDistance: -40
       },
       callback: function (chart) {
-        //console.log("!!! lineChart callback !!!");
+
+        this.chart = chart;//d3.selectAll('.nv-y1 text').style('fill','#123');
+
+        chart.multibar.dispatch.on('elementClick', function (e) {
+          console.log('elementClick in callback', e.data);
+        });
+
+        //console.log("!!! lineChart callback !!!", chart);
       }
     }
   };
-
-
-  data;
-
-
-  showMinMidMax = true;
-
-  progress: PatientLoadProgress = {
-    percentage: 0,
-    loaded: 0,
-    total: 0
-  };
-
-
-  observationGroups: ObservationResult[];
 
 
   constructor(private picasoDataService: PicasoDataService, private activatedRoute: ActivatedRoute) {
@@ -200,11 +240,12 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
   ngOnChanges(changes: SimpleChanges) {
+    this.clearElement();
     const range: SimpleChange = changes.dateRange;
     //console.log('prev value: ', range.previousValue);
     //range.currentValue();
 
-    if (range.previousValue != range.currentValue) {
+    if (range === undefined || (range.previousValue != range.currentValue)) {
       this.setOptions();
       this.updateDates();
       this.getObservations();
@@ -212,15 +253,24 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     }
   }
 
+  ngOnDestroy() {
+    this.clearElement();
+  }
+
 
   getObservations(): void {
+
+    let oldOnOff = [];
+    for (let group of this.observationGroups) {
+      oldOnOff.push({id: group.id, showLeft: group.showLeft, showRight: group.showRight})
+    }
+
+
     if (this.forMeasurements === "morisky") {
       this.headerText = "Morisky Scale results";
     } else {
-      this.headerText = "Patient Measurements and Recordings - Combined Chart";
-      this.footerText = "Hover the mouse pointer over the diagram for values. Click\n" +
-        "      a series name in the legend above the diagram to view/hide series.\n" +
-        "      If several series are shown on one axis, series are not normalised."
+      this.headerText = "Patient Measurements and Recordings";
+
     }
     this.options.chart.noData = "Loading...";
     this.picasoDataService.getObservations(
@@ -229,11 +279,11 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     ).subscribe(
       observations => {
         this.setPatientObservations(observations);
-        this.enableInitialGraphs();
+        this.enableInitialGraphs(oldOnOff);
         this.reloadDataToGraph();
         this.updateDates();
 
-        this.options.chart.noData = "Choose some measurements from the list above.";
+        this.options.chart.noData = "Choose Left (L) and Right (R) values from the list above to compare.";
 
       },
       error => this.errorMessage = <any>error);
@@ -255,6 +305,9 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       }
     }
     else {
+      this.headerText = "Patient Measurements and Recordings - Combined Chart";
+      this.footerText = "Choose series above the diagram to show/hide them on left/right y axis." +
+        "      If several series are shown on one axis, series are not normalised.";
       this.observationGroups = observations.filter(function (obj) {
         return obj.id !== "morisky";
       });
@@ -301,12 +354,26 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
   reloadDataToGraph() {
-    this.hideLeftOrRightAxisTicks();
-    let min = this.observationGroups[0].values[0].value;
     this.data = [];
-    let index = 0;
-    this.options.chart.yAxis1.axisLabel = "";
-    this.options.chart.yAxis2.axisLabel = "";
+    this.hideLeftOrRightAxisTicks();
+    this.reload('right');
+    this.reload('left');
+
+  }
+
+  reload(side: string) {
+
+    let isLeft: boolean = side === 'left';
+    let min = null;
+    if (this.forceYZero) {
+      min = 0;
+    }
+
+    //let index = 0;
+
+    if (isLeft) this.options.chart.yAxis1.axisLabel = "";
+    else this.options.chart.yAxis2.axisLabel = "";
+
     let isThereGraph = false;
     this.isThereMax = false;
     this.isThereMid = false;
@@ -325,18 +392,21 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       }
 
 
-      if (group.showLeft || group.showRight) {
-        if (group.showLeft) {
+      if ((isLeft && group.showLeft) || (!isLeft && group.showRight)) {
+
+        if (min == null) {
+          min = group.values[0];
+        }
+        if (isLeft)
           this.options.chart.yAxis1.axisLabel +=
             //"<span style='color:" + group.color + "' > <i class='fa fa-circle'></i> </span>" +
             (this.options.chart.yAxis1.axisLabel !== "" ? " | " : "") + group.name + " (" + group.unit + ")";
-        } else {
+        else
           this.options.chart.yAxis2.axisLabel +=
-            (this.options.chart.yAxis2.axisLabel !== "" ? " | " : "") +
-            group.name + " (" + group.unit + ")";
-        }
+            //"<span style='color:" + group.color + "' > <i class='fa fa-circle'></i> </span>" +
+            (this.options.chart.yAxis2.axisLabel !== "" ? " | " : "") + group.name + " (" + group.unit + ")";
 
-        group.index = index;
+        //group.index = index;
         isThereGraph = true;
         let filteredValues = [];
 
@@ -367,10 +437,13 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           });
 
           // find minimum value for a hack
-          let newmin = sortedValues.reduce(function (m, o) {
-            return (o.value != null && o.value < m) ? o.value : m;
-          }, Infinity);
-          min = min < newmin ? min : newmin;
+          if (!this.forceYZero) {
+            if (min == null) {
+              min = sortedValues.reduce(function (m, o) {
+                return (o.value != null && o.value < m) ? o.value : m;
+              }, Infinity);
+            }
+          }
 
           let newGraphValues = [];
 
@@ -384,17 +457,17 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             });
           }
 
-          index++;
+          //index++;
           this.data.push({
             label: group.unit,
             name: group.name,
             key: group.unit + " (" + group.name + ")",
             values: newGraphValues,
-            color: group.color,
+            color: this.isHighContrast && !this.singleValued ? (isLeft ? "red" : "green") : group.color,
             //area: false,
             //mean: 120,
             disabled: false,
-            yAxis: group.showLeft ? 1 : 2,
+            yAxis: isLeft ? 1 : 2,
             xAxis: 1,
             type: 'line'   //group.type
           });
@@ -407,17 +480,17 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
               newGraphValuesMin.push({observation: {date: this.dateRange.startDate, value: group.minValue}});
               newGraphValuesMin.push({observation: {date: this.dateRange.endDate, value: group.minValue}});
               //min value line
-              index++;
+              //index++;
               this.data.push({
                 label: group.unit,
                 name: group.name,
                 values: newGraphValuesMin,
                 key: "hidemin" + group.id,
-                color: group.color,
+                color: this.isHighContrast && !this.singleValued ? (isLeft ? "red" : "green") : group.color,
                 //area: false,
                 //mean: 120,
                 disabled: false,
-                yAxis: group.showLeft ? 1 : 2,
+                yAxis: isLeft ? 1 : 2,
                 xAxis: 1,
                 type: 'line',
                 classed: 'dashed'
@@ -429,20 +502,20 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
               newGraphValuesMax.push({observation: {date: this.dateRange.endDate, value: group.maxValue}});
               newGraphValuesMax.push({observation: {date: this.dateRange.startDate, value: group.maxValue}});
               //max value line
-              index++;
+              //index++;
               this.data.push({
                 label: group.unit,
                 name: group.name,
                 values: newGraphValuesMax,
                 key: "hidemax" + group.id,
-                color: group.color,
+                color: this.isHighContrast && !this.singleValued ? (isLeft ? "red" : "green") : group.color,
                 //area: false,
                 //mean: 120,
                 disabled: false,
-                yAxis: group.showLeft ? 1 : 2,
+                yAxis: isLeft ? 1 : 2,
                 xAxis: 1,
                 type: 'line',
-                classed: 'dashed'
+                //classed: 'dashed'
               })
             }
 
@@ -451,17 +524,17 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
               newGraphValuesMid.push({observation: {date: this.dateRange.startDate, value: group.midValue}});
               newGraphValuesMid.push({observation: {date: this.dateRange.endDate, value: group.midValue}});
               //mid value line
-              index++;
+              //index++;
               this.data.push({
                 label: group.unit,
                 name: group.name,
                 values: newGraphValuesMid,
                 key: "hidemid" + group.id,
-                color: group.color,
+                color: this.isHighContrast && !this.singleValued ? (isLeft ? "red" : "green") : group.color,
                 //area: false,
                 //mean: 120,
                 disabled: false,
-                yAxis: group.showLeft ? 1 : 2,
+                yAxis: isLeft ? 1 : 2,
                 xAxis: 1,
                 type: 'line',
                 classed: 'dashed-long'
@@ -474,12 +547,12 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     }
 
     // HACK adding line with min max date to normalize xRange for left/right y axes
-    if (isThereGraph) {
+    if (min !== null) {
 
       let newGraphValuesHackLeftAxis = [];
       newGraphValuesHackLeftAxis.push({observation: {date: this.dateRange.startDate, value: min}});
       newGraphValuesHackLeftAxis.push({observation: {date: this.dateRange.endDate, value: min}});
-      index++;
+      //index++;
       this.data.push({
         label: "hideXDomainFixLeft",
         name: "hideXDomainFixLeft",
@@ -489,34 +562,14 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         //area: false,
         //mean: 120,
         disabled: false,
-        yAxis: 1,
+        yAxis: isLeft ? 1 : 2,
         xAxis: 1,
         type: 'line',
         classed: 'hidden-line'
       });
-
-      if (this.observationGroups.length !== 1) {
-        let newGraphValuesHackRightAxis = [];
-        newGraphValuesHackRightAxis.push({observation: {date: this.dateRange.startDate, value: min}});
-        newGraphValuesHackRightAxis.push({observation: {date: this.dateRange.endDate, value: min}});
-        index++;
-        this.data.push({
-          label: "hideXDomainFixRight",
-          name: "hideXDomainFixRight",
-          values: newGraphValuesHackRightAxis,
-          key: "hideXDomainFixRight",
-          color: "grey",
-          //area: false,
-          //mean: 120,
-          disabled: false,
-          yAxis: 2,
-          xAxis: 1,
-          type: 'line',
-          classed: 'hidden-line'
-        });
-      }
-
     }
+
+
 
   }
 
@@ -536,14 +589,11 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
     for (let i = 0; i < this.observationGroups.length; i++) {
       if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
-        this.observationGroups[i].showLeft = !this.observationGroups[i].showLeft;
-        if (this.observationGroups[i].showLeft) {
-          this.observationGroups[i].showRight = false;
+        this.observationGroups[i].showLeft = true;//!this.observationGroups[i].showLeft;
 
-        } else {
-
-        }
-        break;
+      }
+      else {
+        this.observationGroups[i].showLeft = false;
       }
     }
     this.reloadDataToGraph()
@@ -553,14 +603,10 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
     for (let i = 0; i < this.observationGroups.length; i++) {
       if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
-        this.observationGroups[i].showRight = !this.observationGroups[i].showRight;
-        if (this.observationGroups[i].showRight) {
-          this.observationGroups[i].showLeft = false;
-
-        } else {
-
-        }
-        break;
+        this.observationGroups[i].showRight = true;//!this.observationGroups[i].showRight;
+      }
+      else {
+        this.observationGroups[i].showRight = false;
       }
     }
     this.reloadDataToGraph()
@@ -572,6 +618,11 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       this.observationGroups[i].showLeft = false;
       this.observationGroups[i].showRight = false;
     }
+    this.reloadDataToGraph();
+  }
+
+  public showHighContrast() {
+    this.isHighContrast = !this.isHighContrast;
     this.reloadDataToGraph();
   }
 
@@ -588,19 +639,34 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
     for (var i = 0; i < this.observationGroups.length; i++) {
       this.observationGroups[i].showLeft = true;
-      this.observationGroups[i].showRight = false;
+      //this.observationGroups[i].showRight = false;
     }
     this.reloadDataToGraph();
   }
 
-  public enableInitialGraphs() {
-
-    for (let i = 0; i < this.observationGroups.length; i++) {
-      this.observationGroups[i].showRight = false;
-      this.observationGroups[i].showLeft = false;
-      //console.log(this.forMeasurements);
-      if (this.forMeasurements === "all" || this.forMeasurements === this.observationGroups[i].id) {
-        this.observationGroups[i].showLeft = true;
+  public enableInitialGraphs(oldOnOffData: any) {
+    if (oldOnOffData.length > 1) {
+      for (let i = 0; i < this.observationGroups.length; i++) {
+        for (let oldGroup of oldOnOffData) {
+          if (this.observationGroups[i].id === oldGroup.id) {
+            this.observationGroups[i].showLeft = oldGroup.showLeft;
+            this.observationGroups[i].showRight = oldGroup.showRight;
+            break;
+          }
+        }
+      }
+    }
+    else {
+      for (let i = 0; i < this.observationGroups.length; i++) {
+        this.observationGroups[i].showRight = false;
+        this.observationGroups[i].showLeft = false;
+        //console.log(this.forMeasurements);
+        //if (this.forMeasurements === "all") {
+        //  this.observationGroups[i].showLeft = false;
+        //}
+        if (this.forMeasurements === this.observationGroups[i].id) {
+          this.observationGroups[i].showLeft = true;
+        }
       }
     }
   }
@@ -609,6 +675,11 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   public resetMinMidMax() {
     this.showMinMidMax = !this.showMinMidMax;
     this.reloadDataToGraph();
+  }
+
+  clearElement() {
+    d3.selectAll('.nvtooltip').remove();
+
   }
 
 

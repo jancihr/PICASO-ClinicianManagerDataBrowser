@@ -1,21 +1,20 @@
 <div class="card">
-  <div class="card-header w3-orange w3-center">
+  <div class="card-header info-header">
     <div class="vericaltext" i18n="Patient Clinicians History"><i class="fa fa-medkit"></i> Patient Clinicians History
 
       <span class="w3-right">
+        <span *ngIf="(progress.percentage < 100)">
+          <span class="fa fa-spinner w3-spin" style="font-size:20px">
 
-      <span *ngIf="(progress.percentage < 100)">
-
-        <span class="fa fa-spinner w3-spin" style="font-size:20px"></span>
-
-        loading: {{progress.percentage}}% |
-      loaded: {{progress.total}} bytes</span>
-    </span>
-
+          </span>
+          loading: {{progress.percentage}}% |
+          loaded: {{progress.total}} bytes
+        </span>
+      </span>
     </div>
 
   </div>
-  <div class="card-block" style="overflow-x: auto;">
+  <div class="card-block shorter" style="overflow-x: auto;">
     <!--
 
             <div class="row">
@@ -56,7 +55,7 @@
     <!--
     <ng2-smart-table class="table table-striped table-bordered table-sm" [settings]="settings" [source]="clinicians"></ng2-smart-table>
 -->
-    <table class="table table-striped table-bordered table-sm" [mfData]="clinicians" #mf="mfDataTable"
+    <table class="table table-striped  table-sm" [mfData]="clinicians" #mf="mfDataTable"
            [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
       <thead>
       <tr>
@@ -79,8 +78,8 @@
         <td>{{clinician.name}}</td>
         <td>{{clinician.institution}}</td>
         <td>{{clinician.speciality}}</td>
-        <td>{{clinician.startDate}}</td>
-        <td>{{clinician.endDate}}</td>
+        <td>{{clinician.startDate | date:'d.M.y'}}</td>
+        <td>{{clinician.endDate | date:'d.M.y'}}</td>
 
       </tr>
 
@@ -89,7 +88,9 @@
       <tfoot>
       <tr>
         <td colspan="5" class="w3-right-align">
+
           <mfBootstrapPaginator class="pagination-sm"></mfBootstrapPaginator>
+
         </td>
       </tr>
       </tfoot>

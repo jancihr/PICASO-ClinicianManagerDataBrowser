@@ -23,6 +23,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
   @Input() dateRange: MyDateRange;
 
   animateToggle = true;
+  isColourful = false;
 
   progress: PatientLoadProgress = {
     percentage: 0,
@@ -49,13 +50,48 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.visTimelineMedicationsOptions = {
       selectable: true,
+      autoResize: true,
       showCurrentTime: true,
       //zoomMax: 61556926000, //year
       zoomMin: 86400000, //day
-      clickToUse: true,
+      clickToUse: false,
       rollingMode: null,//{follow:false, offset:0},
       start: this.dateRange.startDate,
-      end: this.dateRange.endDate
+      end: this.dateRange.endDate,
+      height: 250,
+      margin: {
+        axis: 10,
+        item: 10
+      },
+      showMajorLabels: true,
+      showMinorLabels: true,
+      zoomable: true,
+      zoomKey: 'altKey',
+
+      format: {
+        minorLabels: {
+          millisecond: 'SSS',
+          second: 's',
+          minute: 'HH:mm',
+          hour: 'HH:mm',
+          weekday: 'ddd D.M.',
+          day: 'D.',
+          week: 'w',
+          month: 'MMM',
+          year: 'YYYY'
+        },
+        majorLabels: {
+          millisecond: 'HH:mm:ss',
+          second: 'D.M. HH:mm',
+          minute: 'ddd D.M.',
+          hour: 'ddd D.M.',
+          weekday: 'MMMM YYYY',
+          day: 'MMMM YYYY',
+          week: 'MMMM YYYY',
+          month: 'YYYY',
+          year: ''
+        }
+      }
     };
     this.getMedications();
   }
@@ -126,7 +162,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
         this.visTimelineItemsMedications.add(
           {
             id: item.id,
-            style: "background: #" + item.color,
+            style: this.isColourful ? ("background: " + item.color) : "",
 
             content: `<div>
                               <div class="w3-small"><b>${item.name} INTAKE</b></div>
@@ -142,7 +178,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
         this.visTimelineItemsMedications.add(
           {
             id: item.id,
-            style: "background: #" + item.color,
+            style: this.isColourful ? ("background: " + item.color) : "",
 
             content: `<div>
                               <div class="w3-small"><b>${item.name} PRESCRIPTION</b></div>
@@ -239,4 +275,10 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
   public focusVis(): void {
     this.visTimelineService.focusOnIds(this.visTimelineMedications, this.listOfItems)
   }
+
+  toggleColor(): void {
+    this.isColourful = !this.isColourful;
+    this.setMedicationsGraphData();
+  }
+
 }

@@ -1,9 +1,9 @@
-<div class="card w3-light-gray">
+<div class="card">
 
-  <div class="card-header w3-blue  w3-center">
+  <div class="card-header measurement-header  ">
 
 
-    <div class="w3-center" i18n="Patient Medication History"><i class="fa fa-medkit"> </i>
+    <div class="" i18n="Patient Medication History"><i class="fa fa-medkit"> </i>
       Patient Medication History
 
       <span class="w3-right">
@@ -23,6 +23,29 @@
 
   <div class="card-block">
 
+    <div class="w3-center">
+      <button type="button"
+              class="button-clear"
+              (click)="toggleColor()">
+
+    <span *ngIf="isColourful">
+              <span style="color:red"> <i class="fa fa-circle"></i></span>
+              <span style="color:red"> <i class="fa fa-circle"></i></span>
+              <span style="color:green"> <i class="fa fa-circle"></i></span>
+              <span style="color:green"> <i class="fa fa-circle"></i></span>
+            </span>
+        <span *ngIf="!isColourful">
+              <span style="color: grey;"> <i class="fa fa-circle"></i></span>
+              <span style="color: grey;"> <i class="fa fa-circle"></i></span>
+              <span style="color: grey;"> <i class="fa fa-circle"></i></span>
+              <span style="color: grey;"> <i class="fa fa-circle"></i></span>
+            </span>
+        Colours
+
+      </button>
+
+    </div>
+
     <div class="col-xs-12 col-sm-12 col-md-{{selectedMedication?'6':12}}
     col-lg-{{selectedMedication?'6':12}} col-xl-{{selectedMedication?'8':12}}">
       <div [visTimeline]="visTimelineMedications"
@@ -33,38 +56,38 @@
     </div>
 
     <div *ngIf="selectedMedication"
-         class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4" style="padding-left: 0;padding-right: 0">
+         class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 detail-view">
       <div class="w3-border-bottom">
         Selected Medication details
-        <button class="btn btn-default  w3-right" (click)="close()"><i class="fa fa-close"></i></button>
+        <button class="w3-right button-clear" (click)="close()"><i class="fa fa-close"></i></button>
       </div>
-      <div class="{{animateToggle?'myanimation1':'myanimation2'}} ">
+      <div class="{{animateToggle?'my-animate-left':'my-animate-left2'}} ">
 
-        <samp>
-          <div>{{selectedMedication.name}}</div>
+
+        <div>{{selectedMedication.name}}</div>
           <div *ngIf="selectedMedication.disease">Disease: {{selectedMedication.disease}}</div>
           <div *ngIf="selectedMedication.prescribedBy">Prescribed by: {{selectedMedication.prescribedBy}}</div>
           <div *ngIf="selectedMedication.dosage">Dosage: {{selectedMedication.dosage}}</div>
           <div *ngIf="selectedMedication.frequency">Frequency: {{selectedMedication.frequency}}</div>
           <div *ngIf="selectedMedication.stopReason">Stop Reason: {{selectedMedication.stopReason}}</div>
           <div *ngIf="selectedMedication.startDate && selectedMedication.type==='prescription'">From:
-            {{selectedMedication.startDate}}
+            {{selectedMedication.startDate| date:'d.M.y'}}
           </div>
           <div *ngIf="selectedMedication.startDate && selectedMedication.type==='intake'">Time:
-            {{selectedMedication.startDate}}
+            {{selectedMedication.startDate| date:'d.M.y'}}
           </div>
-          <div *ngIf="selectedMedication.endDate">To: {{selectedMedication.endDate}}</div>
+          <div *ngIf="selectedMedication.endDate">To: {{selectedMedication.endDate| date:'d.M.y'}}</div>
 
-        </samp>
+
       </div>
 
     </div>
 
   </div>
 
-  <div class="card-footer">
-    <div class="w3-tiny w3-right">Click inside the timeline first, to enable interactions. Then use zoom, scroll to
-      navigate the timeline and click chosen medication to view it's detail
+  <div class="card-footer w3-white">
+    <div class="w3-tiny w3-right">Scroll the timeline draging it with mouse. Zoom using Alt key + mouse scroll. Click
+      chosen medication to view it's detail
     </div>
   </div>
 

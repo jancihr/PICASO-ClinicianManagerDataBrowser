@@ -1,5 +1,5 @@
 <div class="card">
-  <div class="card-header w3-orange  w3-center">
+  <div class="card-header info-header  ">
     <div i18n="Patient Diseases"><i class="fa fa-medkit"></i> Patient Diseases
 
       <span class="w3-right">
@@ -15,7 +15,7 @@
     </div>
 
   </div>
-  <div class="card-block" style="overflow-x: auto">
+  <div class="card-block shorter" style="overflow-x: auto">
 
     <!--
         <div class="row">
@@ -57,7 +57,7 @@
                          [source]="diseases"></ng2-smart-table>
     -->
 
-    <table class="table table-striped table-bordered table-sm" [mfData]="diseases" #mf="mfDataTable"
+    <table class="table table-striped  table-sm" [mfData]="diseases" #mf="mfDataTable"
            [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
       <thead>
       <tr>
@@ -102,8 +102,8 @@
 
       <tr *ngFor="let disease of mf.data">
         <td>{{disease.name}}</td>
-        <td>{{disease.dateOfOnset}}</td>
-        <td>{{disease.dateOfOffset?disease.dateOfOffset:""}}</td>
+        <td>{{disease.dateOfOnset| date:'d.M.y'}}</td>
+        <td>{{disease.dateOfOffset?(disease.dateOfOffset| date:'d.M.y'):""}}</td>
         <td>{{disease.severity}}</td>
         <td>{{disease.sideOfOnset}}</td>
         <td>{{disease.clinicalPhenotype}}</td>

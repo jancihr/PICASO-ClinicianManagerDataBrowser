@@ -9,7 +9,7 @@ export interface InfoResult {
   name: string;
   address: string;
   bloodType: string;
-  dob: string;
+  dob: Date;
   height: string;
   gender: string;
   insurer: string;
@@ -69,7 +69,9 @@ export interface FollowUpsResult {
   id: string;
   name: string;
   role: string;
-  date: Date;
+  createdDate: Date,
+  patientUpdatedDate: Date,
+  followUpDate: Date,
   note: string;
 }
 

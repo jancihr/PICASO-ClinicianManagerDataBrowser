@@ -61,7 +61,9 @@
 
 
       <li class="nav-item nav-dropdown" routerLinkActive="open">
-        <a class="nav-link nav-dropdown-toggle" href="#"><i class="icon-speedometer"></i> Clinician Manager</a>
+        <a class="nav-link nav-dropdown"
+           routerLinkActive="active" [routerLink]="['/clinician-manager/all/all/']"><i class="icon-speedometer"></i>
+          Clinician Manager</a>
         <ul class="nav-dropdown-items">
 
           <li class="nav-item">
@@ -86,12 +88,12 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/clinician-manager/observations/all/']"><i
-              class="icon-puzzle"></i> Measurements I</a>
+              class="icon-puzzle"></i> Comparison</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active"
                [routerLink]="['/clinician-manager/observations-single/all/']"><i
-              class="icon-puzzle"></i> Measurements II</a>
+              class="icon-puzzle"></i> Measurements</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLinkActive="active" [routerLink]="['/clinician-manager/morisky/all/']"><i

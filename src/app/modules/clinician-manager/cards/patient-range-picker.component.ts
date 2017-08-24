@@ -24,8 +24,8 @@ export class PatientRangePicker implements OnInit {
     dateFormat: 'dd.mm.yyyy',
     firstDayOfWeek: "mo",
     inline: false,
-    height: '25px',
-    selectionTxtFontSize: '15px',
+    height: '23px',
+    selectionTxtFontSize: '0.7rem',
     sunHighlight: true,
   };
 
