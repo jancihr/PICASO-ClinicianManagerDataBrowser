@@ -36,7 +36,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   isThereMid: boolean;
   isThereMax: boolean;
 
-  isRedBlue: boolean = false;
+  isHighContrast: boolean = false;
 
   forceYZero = false;
 
@@ -442,7 +442,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             name: group.name,
             key: group.unit + " (" + group.name + ")",
             values: newGraphValues,
-            color: this.isRedBlue && !this.singleValued ? (isLeft ? "red" : "blue") : group.color,
+            color: this.isHighContrast && !this.singleValued ? (isLeft ? "red" : "green") : group.color,
             //area: false,
             //mean: 120,
             disabled: false,
@@ -465,7 +465,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                 name: group.name,
                 values: newGraphValuesMin,
                 key: "hidemin" + group.id,
-                color: this.isRedBlue && !this.singleValued ? (isLeft ? "red" : "blue") : group.color,
+                color: this.isHighContrast && !this.singleValued ? (isLeft ? "red" : "green") : group.color,
                 //area: false,
                 //mean: 120,
                 disabled: false,
@@ -487,7 +487,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                 name: group.name,
                 values: newGraphValuesMax,
                 key: "hidemax" + group.id,
-                color: this.isRedBlue && !this.singleValued ? (isLeft ? "red" : "blue") : group.color,
+                color: this.isHighContrast && !this.singleValued ? (isLeft ? "red" : "green") : group.color,
                 //area: false,
                 //mean: 120,
                 disabled: false,
@@ -509,7 +509,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                 name: group.name,
                 values: newGraphValuesMid,
                 key: "hidemid" + group.id,
-                color: this.isRedBlue && !this.singleValued ? (isLeft ? "red" : "blue") : group.color,
+                color: this.isHighContrast && !this.singleValued ? (isLeft ? "red" : "green") : group.color,
                 //area: false,
                 //mean: 120,
                 disabled: false,
@@ -600,8 +600,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     this.reloadDataToGraph();
   }
 
-  public showRedBlue() {
-    this.isRedBlue = !this.isRedBlue;
+  public showHighContrast() {
+    this.isHighContrast = !this.isHighContrast;
     this.reloadDataToGraph();
   }
 

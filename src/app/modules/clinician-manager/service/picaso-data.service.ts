@@ -308,35 +308,18 @@ export class PicasoDataService {
 
     return this.http.withDownloadProgressListener(progress => {
 
-      //TODO to be deleted later - fake progress
-      setTimeout(() => {
-        progressResult.percentage = 0;
-      }, 300);
-      setTimeout(() => {
-        progressResult.percentage = 25
-      }, 600);
-      setTimeout(() => {
-        progressResult.percentage = 50
-      }, 900);
-      setTimeout(() => {
-        progressResult.percentage = 75
-      }, 1200);
-      setTimeout(() => {
-        progressResult.percentage = 100
-      }, 1500);
 
-      setTimeout(() => {
-        progressResult.total = progress.total
-      }, 1800);
+
 
 
       // TODO to be uncommented later - real progress
-      // progressResult.percentage = progress.percentage;
-      // progressResult.total = progress.total;
+      progressResult.percentage = progress.percentage;
+      progressResult.total = progress.total;
       progressResult.loaded = progress.loaded;
     })
       .get(this.patientODSServiceURL)
       .map(response => {
+
         return this.extractDataInfo(response);
       })
       .catch(this.handleError)

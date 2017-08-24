@@ -62,6 +62,28 @@ export class PatientOverviewComponent implements OnInit {
       patient => this.patientData = patient,
       error => this.errorMessage = <any>error);
 
+
+    setTimeout(() => {
+      this.progress.percentage = 0;
+    }, 300);
+    setTimeout(() => {
+      this.progress.percentage = 25
+    }, 600);
+    setTimeout(() => {
+      this.progress.percentage = 50
+    }, 900);
+    setTimeout(() => {
+      this.progress.percentage = 75
+    }, 1200);
+    setTimeout(() => {
+      this.progress.percentage = 100
+    }, 1500);
+
+    setTimeout(() => {
+      this.progress.total = 2000
+    }, 1800);
+
+
     //console.log("webservice called");
     //console.log(this.patientData);
     //console.log(this.errorMessage);

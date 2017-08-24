@@ -12,8 +12,14 @@
 
         <span class="fa fa-spinner w3-spin" style="font-size:20px"></span>
 
-        loading: {{progress.percentage}}% |
-      loaded: {{progress.total}} bytes</span>
+        loading:
+
+        <!--{{progress.percentage}}% |
+      loaded: {{progress.total}} bytes
+
+      -->
+
+      </span>
     </span>
 
     </div>
@@ -40,22 +46,22 @@
 
           <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
                   class="btn btn-default"
-                  (click)="showRedBlue()">
+                  (click)="showHighContrast()">
 
-            <span *ngIf="isRedBlue">
-              <span style="color: red;"> <i class="fa fa-circle"></i></span>
-              <span style="color: red;"> <i class="fa fa-circle"></i></span>
-              <span style="color: blue;"> <i class="fa fa-circle"></i></span>
-              <span style="color: blue;"> <i class="fa fa-circle"></i></span>
+            <span *ngIf="isHighContrast">
+              <span style="color:red"> <i class="fa fa-circle"></i></span>
+              <span style="color:red"> <i class="fa fa-circle"></i></span>
+              <span style="color:green"> <i class="fa fa-circle"></i></span>
+              <span style="color:green"> <i class="fa fa-circle"></i></span>
             </span>
-            <span *ngIf="!isRedBlue">
+            <span *ngIf="!isHighContrast">
               <span style="color: green;"> <i class="fa fa-circle"></i></span>
               <span style="color: yellow;"> <i class="fa fa-circle"></i></span>
               <span style="color: red;"> <i class="fa fa-circle"></i></span>
               <span style="color: orange;"> <i class="fa fa-circle"></i></span>
             </span>
-            <span *ngIf="!isRedBlue">Colours</span>
-            <span *ngIf="isRedBlue">Colours</span>
+            <span *ngIf="!isHighContrast">Colours</span>
+            <span *ngIf="isHighContrast">Colours</span>
 
           </button>
 
@@ -104,7 +110,7 @@
 
             <button type="button" class="btn btn-default"
                     (click)="toggleLeft(group.id, group.name)">
-              <span [style.color]="isRedBlue?'red':group.color">
+              <span [style.color]="isHighContrast?'red':group.color">
                 <i class="fa {{group.showLeft?'fa-circle':'fa-circle-o'}}"></i>
               </span>
               {{group.name}} <span *ngIf="group.source"> ({{group.source}})</span>
@@ -137,7 +143,7 @@
               type="button"
               class="btn btn-default"
               (click)="toggleRight(group.id, group.name)">
-              <span [style.color]="isRedBlue?'blue':group.color">
+              <span [style.color]="isHighContrast?'green':group.color">
                                 <i class="fa {{group.showRight?'fa-circle':'fa-circle-o'}}"></i>
                             </span>
              {{group.name}} <span *ngIf="group.source"> ({{group.source}})</span>
