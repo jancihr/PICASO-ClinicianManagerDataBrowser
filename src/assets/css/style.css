@@ -2648,10 +2648,7 @@ tbody.collapse.in {
 
 .navbar-brand {
   float: left;
-  padding-top: 0.25rem;
-  padding-bottom: 0.25rem;
-  margin-right: 1rem;
-  font-size: 1.25rem;
+
   line-height: inherit; }
   .navbar-brand:focus, .navbar-brand:hover {
     text-decoration: none; }
@@ -2945,9 +2942,9 @@ header.navbar {
     min-width: 180px; }
   header.navbar a.navbar-brand {
     display: inline-block;
-    width: 155px;
-    height: 55px;
-    padding: 0.5rem 1rem;
+    width: 317px;
+    height: 61px;
+    padding: 0rem 0rem;
     background-color: #fff;
     background-image: url("../img/logo.png");
     background-repeat: no-repeat;

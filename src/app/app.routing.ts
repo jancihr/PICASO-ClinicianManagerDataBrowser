@@ -12,7 +12,7 @@ import {RegisterComponent} from './authentication/register.component'
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'patient-id',
+    redirectTo: 'data-resource-browser',
     pathMatch: 'full'
   },
   {
