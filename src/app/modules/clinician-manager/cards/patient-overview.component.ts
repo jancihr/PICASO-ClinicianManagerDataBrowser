@@ -4,49 +4,90 @@
 
 import {Component, Input, OnInit} from "@angular/core";
 import {PatientData} from "../model/patient-data"
-import {PicasoDataService} from "../service/picaso-data.service";
+import {PicasoDataService} from "../service/picaso-data-cnet.service";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 
 
-@Component ({
-    selector: "patient-overview",
-    template: require("./patient-overview.component.html"),
-    styles: [require("./patient-overview.component.css")],
-    providers: [PicasoDataService]
+@Component({
+  selector: "patient-overview",
+  template: require("./patient-overview.component.html"),
+  styles: [require("./patient-overview.component.css")],
+  providers: [PicasoDataService]
 })
 
 export class PatientOverviewComponent implements OnInit {
 
-    errorMessage: string;
-    patientData: PatientData;
+  errorMessage: string;
+  patientData: PatientData;
+  selectedPatient: string = "1007";
+  token: string;
 
-    progress: PatientLoadProgress = {
-        percentage: 0,
-        loaded: 0,
-        total: 0
-    };
+  patientsList: string[];
 
-    constructor(
-        private picasoDataService: PicasoDataService) {
-    };
+  progress: PatientLoadProgress = {
+    percentage: 0,
+    loaded: 0,
+    total: 0
+  };
 
-    ngOnInit(): void {
-        this.getPatient();
-    }
+  constructor(private picasoDataService: PicasoDataService) {
+  };
 
-    getPatient(): void {
-        this.picasoDataService.getPatient(this.progress).subscribe(
-            patient => this.patientData = patient,
-            error => this.errorMessage = <any>error);
+  ngOnInit(): void {
 
-        //console.log("webservice called");
-        //console.log(this.patientData);
-        //console.log(this.errorMessage);
+    //this.getToken("picasodemo", "password");
 
-    }
+    this.getPatients();
+    //this.getPatient();
+  }
 
-    reloadPatient(): void {
-        this.getPatient();
-    }
+
+  getToken(user: string, pass: string): void {
+    this.picasoDataService.getToken(user, pass, this.progress).subscribe(
+      token => {
+        this.token = token;
+      },
+      error => this.errorMessage = <any>error);
+
+    //console.log("webservice called");
+    //console.log(this.patientData);
+    //console.log(this.errorMessage);
+
+  }
+
+  getPatient(): void {
+
+    //console.log("getPatient", this.selectedPatient);
+    this.picasoDataService.getPatient(this.selectedPatient, this.progress).subscribe(
+      patient => this.patientData = patient,
+      error => this.errorMessage = <any>error);
+
+    //console.log("webservice called");
+    //console.log(this.patientData);
+    //console.log(this.errorMessage);
+
+  }
+
+
+  patientClicked(patientId: string) {
+    this.selectedPatient = patientId;
+    this.getPatient();
+  }
+
+  getPatients(): void {
+    this.picasoDataService.getPatients(this.progress).subscribe(
+      patientsList => {
+        this.patientsList = patientsList;
+        this.selectedPatient = this.patientsList[0];
+        this.getPatient()
+      },
+      error => this.errorMessage = <any>error);
+
+    //console.log("webservice called");
+    //console.log(this.patientData);
+    //console.log(this.errorMessage);
+
+  }
+
 
 }

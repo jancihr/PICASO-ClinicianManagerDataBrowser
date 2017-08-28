@@ -29,6 +29,7 @@ import {ServiceCatalogModule} from "./modules/service-catalog/service-catalog.mo
 import {CareplanTemplatesModule} from "./modules/careplan-templates/careplan-templates.module";
 import {HttpModule} from "@angular/http";
 import {RouterModule} from "@angular/router";
+import {CookieModule} from "ngx-cookie";
 @NgModule({
   imports: [
     BrowserModule,
@@ -50,7 +51,8 @@ import {RouterModule} from "@angular/router";
     MedCommModule,
     BsDropdownModule.forRoot(),
     ServiceCatalogModule,
-    CareplanTemplatesModule
+    CareplanTemplatesModule,
+    CookieModule.forRoot()
   ],
   declarations: [
     AppComponent,

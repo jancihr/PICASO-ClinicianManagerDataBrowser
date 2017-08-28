@@ -5,7 +5,7 @@ import {PatientFFbHResult} from "./patient-ffbh-result";
 import {PatientObservationGroup} from "./patient-observation-group";
 import {PatientMedication} from "./patient-medication";
 import {PatientClinician} from "./patient-clinician";
-import {PatientCheck} from "./patient-check";
+import {PatientTreatment} from "./patient-treatment";
 import {PatientDisease} from "./patient-disease";
 import {PatientImage} from "./patient-image";
 export class PatientODS {
@@ -16,7 +16,7 @@ export class PatientODS {
     observations: PatientObservationGroup[];
     medications: PatientMedication[];
     clinicians: PatientClinician[];
-    checks: PatientCheck[];
+  treatments: PatientTreatment[];
     diseases: PatientDisease[];
     imaging: PatientImage[];
 

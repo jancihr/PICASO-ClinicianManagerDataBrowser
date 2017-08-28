@@ -8,10 +8,11 @@ import { DataResourceBrowserRoutingModule }   from './data-resource-browser-rout
 import {DataResourceBrowserCardComponent} from "./cards/data-resource-browser-card.component";
 import {CommonModule} from "@angular/common";
 import {ProgressHttpModule} from "angular-progress-http";
+import {DataTableModule} from "angular2-datatable";
 
 @NgModule({
     imports: [
-        DataResourceBrowserRoutingModule,VisModule, HttpModule, ProgressHttpModule, CommonModule
+      DataResourceBrowserRoutingModule, VisModule, HttpModule, ProgressHttpModule, CommonModule, DataTableModule
     ],
     declarations: [ DataResourceBrowserCardComponent, DataResourceBrowserComponent ]
 })

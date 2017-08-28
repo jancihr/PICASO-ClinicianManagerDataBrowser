@@ -1,6 +1,6 @@
-export class PatientCheck {
+export class PatientTreatment {
   id: string;
-  clinician: string;
+  category: string;
   startDate: Date;
   endDate: Date;
   color: string;

@@ -2,98 +2,137 @@
   <div class="card-header w3-light-blue  w3-center">
 
 
-        <div i18n="PatientData Info"><i class="fa fa-user"></i>
-        PatientData Info - {{patientData.name}}</div>
+    <span i18n="PatientData Info"><i class="fa fa-user"></i>
+      Patient -
+
+      <select [ngModel]="selectedPatient" (ngModelChange)="patientClicked($event)">
+        <option *ngFor="let patient of patientsList" [value]="patient">{{patient}}</option>
+      </select>
+
+    </span>
 
 
-        <div class="w3-right">
+    <span class="w3-right">
 
-            <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
-            <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
+      <span *ngIf="(progress.percentage < 100)">
+
+        <span class="fa fa-spinner w3-spin" style="font-size:20px"></span>
+
+        loading: {{progress.percentage}}% |
+      loaded: {{progress.total}} bytes</span>
+    </span>
+
+
+  </div>
+  <div class="card-block">
+    <div class="animated fadeIn">
+      <div class="row">
+        <div class=" col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+
+          <div class=" text-primary w3-border-bottom  ">
+                      <span class="text-muted text-uppercase  font-weight-bold font-xs " i18n="Name">Name:
+                      </span>
+            {{patientData.name}}
+          </div>
+
+
+          <div class=" text-primary w3-border-bottom ">
+            <span class="text-muted text-uppercase  font-weight-bold font-xs " i18n="Id">ID:</span>
+            {{patientData.id}}
+          </div>
+
+
+          <div class=" text-primary w3-border-bottom ">
+                  <span class="text-muted text-uppercase   font-weight-bold font-xs " i18n="bloodType">
+                    blood type:
+                  </span>
+            {{patientData.bloodType}}
+          </div>
+        </div>
+        <div class=" col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
+
+          <div class=" text-primary w3-border-bottom ">
+                  <span class="text-muted text-uppercase   font-weight-bold font-xs " i18n="DOB">Date Of
+                    Birth:
+                  </span>
+            {{patientData.dob}}
+          </div>
+
+
+          <div class=" text-primary w3-border-bottom ">
+                  <span class="text-muted text-uppercase   font-weight-bold font-xs " i18n="height">
+                    height:
+                  </span>
+            {{patientData.height}}
+          </div>
+
+
+          <div class=" text-primary w3-border-bottom ">
+                  <span class="text-muted text-uppercase   font-weight-bold font-xs " i18n="gender">
+                    gender:
+                  </span>
+            {{patientData.gender}}
+          </div>
+
+
         </div>
 
-    </div>
-    <div class="card-block">
+        <div class=" col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
 
 
-        <div class="animated fadeIn">
-
-            <div class="row">
-              <div class=" col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
-
-                    <div class=" text-primary  ">{{patientData.name}}</div>
-                    <div class="text-muted text-uppercase w3-border-top font-weight-bold font-xs " i18n="Name">Name
-                    </div>
-                    <br>
-
-                    <div class=" text-primary ">{{patientData.id}}</div>
-                    <div class="text-muted text-uppercase  w3-border-top font-weight-bold font-xs " i18n="Id">ID</div>
-                    <br>
-
-                    <div class=" text-primary ">{{patientData.bloodType}}</div>
-                    <div class="text-muted text-uppercase  w3-border-top font-weight-bold font-xs " i18n="bloodType">
-                        blood type
-                    </div>
-
-                    <br>
-                    <div class=" text-primary ">{{patientData.dob}}</div>
-                    <div class="text-muted text-uppercase  w3-border-top font-weight-bold font-xs " i18n="DOB">Date Of
-                        Birth
-                    </div>
-                    <br>
-                    <div class=" text-primary ">{{patientData.height}}</div>
-                    <div class="text-muted text-uppercase  w3-border-top font-weight-bold font-xs " i18n="height">
-                        height
-                    </div>
-                    <br>
-                    <div class=" text-primary ">{{patientData.gender}}</div>
-                    <div class="text-muted text-uppercase  w3-border-top font-weight-bold font-xs " i18n="gender">
-                        gender
-                    </div>
-
-                </div>
-                <br>
-              <div class=" col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+          <div class=" text-primary w3-border-bottom ">
+                      <span class="text-muted text-uppercase   font-weight-bold font-xs " i18n="insurer">
+                        Insurer:
+                      </span>
+            {{patientData.insurer}}
+          </div>
 
 
-                    <div class=" text-primary ">{{patientData.insurer}}</div>
-                    <div class="text-muted text-uppercase  w3-border-top font-weight-bold font-xs " i18n="insurer">
-                        insurer
-                    </div>
-                    <br>
-                    <div class=" text-primary ">{{patientData.insurerId}}</div>
-                    <div class="text-muted text-uppercase  w3-border-top font-weight-bold font-xs " i18n="insurer ID">
-                        insurer ID
-                    </div>
-                    <br>
+          <div class=" text-primary w3-border-bottom ">
+                  <span class="text-muted text-uppercase   font-weight-bold font-xs " i18n="insurer ID">
+                    Insurer ID:
+                  </span>
+            {{patientData.insurerId}}
+          </div>
 
-                    <div class=" text-primary ">{{patientData.occupancy}}</div>
-                    <div class="text-muted text-uppercase  w3-border-top font-weight-bold font-xs " i18n="occupancy">
-                        occupancy
-                    </div>
-                    <br>
 
-                    <div class=" text-primary ">{{patientData.livesAlone==="true"? "Yes":"No" }}</div>
-                    <div class="text-muted text-uppercase  w3-border-top font-weight-bold font-xs " i18n="lives alone">
-                        lives alone
-                    </div>
+          <div class=" text-primary w3-border-bottom ">
+                  <span class="text-muted text-uppercase   font-weight-bold font-xs " i18n="occupancy">
+                    occupancy:
+                  </span>
+            {{patientData.occupancy}}
+          </div>
 
-                    <br>
-                    <div class=" text-primary ">{{patientData.address1}}</div>
-                    <div class=" text-primary ">{{patientData.address2}}</div>
-                    <div class=" text-primary ">{{patientData.address3}}</div>
-                    <div class=" text-primary ">{{patientData.address4}}</div>
-                    <div class="text-muted text-uppercase  w3-border-top font-weight-bold font-xs " i18n="Address">
-                        Patient Address
-                    </div>
+        </div>
+        <div class=" col-xs-12 col-sm-6 col-md-6 col-lg-3 col-xl-3">
 
-                </div>
+          <div class=" text-primary w3-border-bottom ">
+                  <span class="text-muted text-uppercase   font-weight-bold font-xs " i18n="lives alone">
+                    lives alone:
+                  </span>
+            {{patientData.livesAlone==="true"? "Yes":"No" }}
+          </div>
 
+          <div class="w3-border-bottom ">
+
+            <div class=" text-primary ">
+                  <span class="text-muted text-uppercase   font-weight-bold font-xs " i18n="Address">
+                    Patient Address:
+                  </span>
+              {{patientData.address1}}
             </div>
+            <div class=" text-primary ">{{patientData.address2}}</div>
+            <div class=" text-primary ">{{patientData.address3}}</div>
+            <div class=" text-primary ">{{patientData.address4}}</div>
 
-
+          </div>
         </div>
 
+      </div>
+
+
     </div>
+
+  </div>
 
 </div>

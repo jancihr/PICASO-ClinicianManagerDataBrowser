@@ -1,7 +1,6 @@
 <div class="card">
   <div class="card-header w3-orange w3-center">
-    <div class="vericaltext" i18n="Patient Clinicians History"><i class="fa fa-medkit"></i> Patient Clinicians History
-
+    <div i18n="Concluding Comments "><i class="fa fa-medkit"></i> Concluding Comments
       <span class="w3-right">
 
       <span *ngIf="(progress.percentage < 100)">
@@ -56,29 +55,42 @@
     <!--
     <ng2-smart-table class="table table-striped table-bordered table-sm" [settings]="settings" [source]="clinicians"></ng2-smart-table>
 -->
-    <table class="table table-striped table-bordered table-sm" [mfData]="clinicians" #mf="mfDataTable"
+    <table class="table table-striped table-bordered table-sm" [mfData]="concludingComments" #mf="mfDataTable"
            [mfRowsOnPage]="rowsOnPage" [(mfSortBy)]="sortBy" [(mfSortOrder)]="sortOrder">
       <thead>
       <tr>
-        <mfDefaultSorter by="name">
-          Name
-        </mfDefaultSorter>
-        <th i18n="Institution">Institution</th>
-        <th i18n="Speciality">Speciality</th>
-        <th i18n="Start Date">Start Date</th>
-        <th i18n="End Date">End Date</th>
+
+        <th i18n="Date">
+          <mfDefaultSorter by="date">
+            Date
+          </mfDefaultSorter>
+        </th>
+        <th i18n="Author">
+          <mfDefaultSorter by="author"> Author</mfDefaultSorter>
+        </th>
+        <th i18n="Addressee">
+          <mfDefaultSorter by="addresseeName">
+            Addressee
+          </mfDefaultSorter>
+        </th>
+        <th i18n="Addressee Role">
+          <mfDefaultSorter by="addresseeRole">
+            Addressee Role
+          </mfDefaultSorter>
+        </th>
+        <th i18n="Comments">Comments</th>
 
       </tr>
       </thead>
       <tbody>
 
-      <tr *ngFor="let clinician of mf.data">
+      <tr *ngFor="let comments of mf.data">
 
-        <td>{{clinician.name}}</td>
-        <td>{{clinician.institution}}</td>
-        <td>{{clinician.speciality}}</td>
-        <td>{{clinician.startDate}}</td>
-        <td>{{clinician.endDate}}</td>
+        <td>{{comments.date}}</td>
+        <td>{{comments.author}}</td>
+        <td>{{comments.addresseeName}}</td>
+        <td>{{comments.addresseeRole}}</td>
+        <td>{{comments.comments}}</td>
 
       </tr>
 
@@ -98,3 +110,6 @@
 
 
 </div>
+
+
+

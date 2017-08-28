@@ -1,48 +1,65 @@
 <div class="card w3-light-gray">
 
-  <div class="card-footer  w3-center">
+  <div class="card-header w3-blue  w3-center">
 
-    <div *ngIf="(progress.percentage < 100)" class="w3-right">
-
-      <div> loading: {{progress.percentage}}%</div>
-      <div> loaded: {{progress.total}} bytes</div>
-    </div>
 
     <div class="w3-center" i18n="Patient Medication History"><i class="fa fa-medkit"> </i>
       Patient Medication History
 
-    </div>
+      <span class="w3-right">
 
-    <div [visTimeline]="visTimelineMedications"
-         [visTimelineItems]="visTimelineItemsMedications"
-         [visTimelineOptions]="visTimelineMedicationsOptions"
-         (initialized)="timelineInitialized()">
+      <span *ngIf="(progress.percentage < 100)">
+
+        <span class="fa fa-spinner w3-spin" style="font-size:20px"></span>
+
+        loading: {{progress.percentage}}% |
+      loaded: {{progress.total}} bytes
+
+      </span>
+      </span>
 
     </div>
   </div>
-</div>
 
-<modal [animation]="animationsEnabled" #myMedicationModal>
-    <div *ngIf="selectedMedication">
-        <modal-header [show-close]="true">
-            <h4 class="modal-title">Patient medication details</h4>
-        </modal-header>
-        <modal-body>
+  <div class="card-block">
 
-            <div class="w3-container w3-green w3-border w3-border-lime w3-round-large">
+    <div class="col-xs-12 col-sm-12 col-md-{{selectedMedication?'6':12}}
+    col-lg-{{selectedMedication?'6':12}} col-xl-{{selectedMedication?'8':12}}">
+      <div [visTimeline]="visTimelineMedications"
+           [visTimelineItems]="visTimelineItemsMedications"
+           [visTimelineOptions]="visTimelineMedicationsOptions"
+           (initialized)="timelineInitialized()">
+      </div>
+    </div>
 
-                <h2>{{selectedMedication.name}}</h2>
-                <p>Disease: {{selectedMedication.disease}}</p>
-                <p>Prescribed by: {{selectedMedication.prescribedBy}}</p>
-                <p>Dosage: {{selectedMedication.dosage}}</p>
-                <p>Frequency: {{selectedMedication.frequency}}</p>
-                <p>Stop Reason: {{selectedMedication.stopReason}}</p>
-                <p>From: {{selectedMedication.startDate}}</p>
-                <p>To: {{selectedMedication.endDate}}</p>
-            </div>
+    <div *ngIf="selectedMedication"
+         class="{{animateToggle?'w3-animate-bottom':'w3-animate-right'}} col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+      <div class="card-header">
+        Selected Medication details
+        <button class="btn btn-default  w3-right" (click)="close()">X</button>
+      </div>
+      <div>
 
-        </modal-body>
-        <modal-footer [show-default-buttons]="false"></modal-footer>
+
+        <div>{{selectedMedication.name}}</div>
+        <div>Disease: {{selectedMedication.disease}}</div>
+        <div>Prescribed by: {{selectedMedication.prescribedBy}}</div>
+        <div>Dosage: {{selectedMedication.dosage}}</div>
+        <div>Frequency: {{selectedMedication.frequency}}</div>
+        <div>Stop Reason: {{selectedMedication.stopReason}}</div>
+        <div>From: {{selectedMedication.startDate}}</div>
+        <div>To: {{selectedMedication.endDate}}</div>
+
+
+      </div>
 
     </div>
-</modal>
+
+  </div>
+
+  <div class="card-footer">
+    <div class="w3-tiny w3-right">Click chosen medication to view it's detail
+    </div>
+  </div>
+
+</div>

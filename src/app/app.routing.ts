@@ -36,7 +36,11 @@ export const routes: Routes = [
         loadChildren: './modules/patient-id/patient-id.module#PatientIdModule'
       },
       {
-        path: 'clinician-manager',
+        path: 'clinician-manager/:card/:measurement',
+        loadChildren: './modules/clinician-manager/clinician-manager.module#ClinicianManagerModule'
+      },
+      {
+        path: 'clinician-manager/:card/:measurement/:range',
         loadChildren: './modules/clinician-manager/clinician-manager.module#ClinicianManagerModule'
       },
       {

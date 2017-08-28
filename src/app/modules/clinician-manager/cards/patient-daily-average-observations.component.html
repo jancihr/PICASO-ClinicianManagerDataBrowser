@@ -1,114 +1,97 @@
 <div class="card">
-  <div class="card-header w3-blue  w3-center">
+  <div *ngIf="headerText || (progress.percentage < 100)" class="card-header w3-blue  w3-center">
 
-    <div i18n="Average daily observations"><i class="fa fa-heartbeat"></i> Average daily observations</div>
-    <div class="w3-right">
+    <div i18n="Average daily observations"><i class="fa fa-heartbeat"></i>
 
-      <div *ngIf="(progress.percentage < 100)"> loading: {{progress.percentage}}%</div>
-      <div *ngIf="(progress.percentage < 100)"> loaded: {{progress.total}} bytes</div>
+      <span *ngIf="headerText">{{headerText}}
+      </span>
+      <span class="w3-right">
+
+      <span *ngIf="(progress.percentage < 100)">
+
+        <span class="fa fa-spinner w3-spin" style="font-size:20px"></span>
+
+        loading: {{progress.percentage}}% |
+      loaded: {{progress.total}} bytes</span>
+    </span>
+
     </div>
+
   </div>
-  <div class="card-block" style="overflow-x: auto;">
+  <div *ngIf="observationGroups" class="card-block" style="overflow-x: auto;">
+
+    <div class="row">
+      <div class="w3-center">
+
+        <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
+                class="btn btn-default"
+                (click)="clearAll()">
+          <span>  <i class="fa fa-circle-o"></i> </span>
+          Clear graph
+          <span>
+          </span>
+        </button>
+
+        <button type="button"
+                class="btn btn-default"
+                (click)="resetMinMidMax()">
+          <span>  <i class="fa {{showMinMidMax?'fa-circle':'fa-circle-o'}}"></i> </span>
+          min/mid/max lines
+          <span>
+          </span>
+        </button>
+
+        <span *ngIf="observationGroups && observationGroups.length!==1">
+        <span *ngFor="let group of observationGroups">
+
+          <span style="white-space: nowrap">
+
+            <button type="button" class="btn btn-default"
+                    (click)="toggleLeft(group.id, group.name)"> {{group.name}}</button>
+
+            <button
+              type="button"
+              class="btn btn-default"
+              (click)="toggleLeft(group.id, group.name)">
+              <span [style.color]="group.color">
+                                <i class="fa {{group.showLeft?'fa-circle':'fa-circle-o'}}"></i>
+                            </span>
+              L
+            </button>
+
+           <button
+             type="button"
+             class="btn btn-default"
+             (click)="toggleRight(group.id, group.name)">
+              <span [style.color]="group.color">
+                                <i class="fa {{group.showRight?'fa-circle':'fa-circle-o'}}"></i>
+                            </span>
+              R
+            </button>
+        </span>
+        </span>
+
+        </span>
+
+      </div>
+    </div>
+
 
     <div class="row">
 
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-3">
+      <nvd3 *ngIf="observationGroups" [options]="options" [data]="data" class="with-transitions row-content"></nvd3>
 
-        <table class="table-striped table-bordered table-sm" style="margin: 0 auto; float: none;">
-          <thead>
-          <tr>
-            <!--   <th rowspan="2" i18n="Observation">Observation</th>
-
-               <th colspan="2" i18n="Axis">Axis</th>
-
-
-                         </tr>
-
-                         <tr>
-
-
-                                       <th i18n="Left">Left</th>
-                                       <th i18n="Right">Right</th> -->
-
-            <th i18n="Show/Hide">Observation</th>
-            <th i18n="Show/Hide">Show / Hide</th>
-
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-
-            <td>
-              All observations
-
-            </td>
-
-            <td>
-              <input type="checkbox" [checked]="showAllLeft"
-                     (change)="resetLeft()"/>
-
-
-            </td>
-            <!-- <td>
-               <input type="checkbox" [checked]="showAllRight"
-                      (change)="resetRight()"/>
-
-
-             </td>
-             -->
-
-
-          </tr>
-
-          <tr *ngFor="let group of observationGroups">
-
-            <td> <span *ngIf="group.showLeft || group.showRight" [style.color]="group.color">
-                                <i class="fa fa-circle"></i>
-                            </span> {{group.name}} ({{group.label}})
-
-
-            </td>
-
-            <td>
-
-              <input type="checkbox" [checked]="group.showLeft"
-                     (change)="toggleLeft(group.id, group.name)"/>
-            </td>
-            <!--
-
-            <td>
-
-              <input type="checkbox" [checked]="group.showRight"
-                     (change)="toggleRight(group.id, group.name)"/>
-
-            </td>
-            -->
-
-
-          </tr>
-
-
-          </tbody>
-        </table>
-
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-9">
-        <nvd3 [options]="options" [data]="data"></nvd3>
-
-      </div>
     </div>
 
 
   </div>
 
-  <div class="card-footer w3-white">
-    <div class="w3-tiny w3-right w3-full">Hover mouse over the diagram for values. Click
-      series name in the legend above the diagram to view/hide series. Double click a chosen series legend to
-      view only this series.
-      If several series are shown on one axis, series are not normalised.
-      Compare values of very different ranges on separate y axes.
+
+  <div *ngIf="footerText" class="card-footer w3-white">
+    <div class="w3-tiny w3-right w3-full">{{footerText}}
+
 
     </div>
   </div>
+
 </div>
-

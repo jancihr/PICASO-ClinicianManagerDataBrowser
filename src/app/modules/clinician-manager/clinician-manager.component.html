@@ -1,219 +1,306 @@
 <div class="animated fadeIn">
 
+  <div class=" w3-center">
+    <button class="btn btn-default {{cardToShow==='all'   ? 'btn-outline-success' : ''}}"
+            [routerLink]="['/clinician-manager', 'all', 'all', range.range]"> all
+    </button>
+    |
+    <button class="btn btn-default {{cardToShow==='overview'   ? 'btn-outline-success' : ''}}"
 
-  <div>
+            [routerLink]="['/clinician-manager', 'overview', '', range.range]"> overview
+    </button>
+    |
+    <button class="btn btn-default {{cardToShow==='comments'   ? 'btn-outline-success' : ''}}"
 
+            [routerLink]="['/clinician-manager', 'comments', '', range.range]">comments
+    </button>
+    |
+    <button class="btn btn-default {{cardToShow==='followups'   ? 'btn-outline-success' : ''}}"
+            [routerLink]="['/clinician-manager', 'followups', '', range.range]">
+      followups
+    </button>
+    |
+    <button class="btn btn-default {{cardToShow==='treatments'   ? 'btn-outline-success' : ''}}"
+            [routerLink]="['/clinician-manager', 'treatments', '', range.range]">
+      treatments
+    </button>
+    |
+    <button class="btn btn-default {{cardToShow==='medications'   ? 'btn-outline-success' : ''}}"
+            [routerLink]="['/clinician-manager', 'medications', '', range.range]">
+      medications
+    </button>
+    |
+    <button
+      class="btn btn-default {{cardToShow==='observations' ? 'btn-outline-success' : ''}}"
+      [routerLink]="['/clinician-manager', 'observations', 'all', range.range]">
+      measurements
+    </button>
+    |
 
+    <button class="btn btn-default {{cardToShow==='morisky'   ? 'btn-outline-success' : ''}}"
+
+            [routerLink]="['/clinician-manager', 'morisky', '', range.range]">morisky
+    </button>
+    |
+    <button class="btn btn-default {{cardToShow==='diseases'   ? 'btn-outline-success' : ''}}"
+
+            [routerLink]="['/clinician-manager', 'diseases', '', range.range]">diseases
+    </button>
+    |
+    <button class="btn btn-default {{cardToShow==='clinicians'   ? 'btn-outline-success' : ''}}"
+            [routerLink]="['/clinician-manager', 'clinicians', '', range.range]">
+      clinicians
+    </button>
+
+  </div>
+
+  <!--
     <div class="row">
-      <div class="w3-tiny w3-right">Below you can see different cards containing several available
-        patient data from all available sources for selected dates. The data is not complete as it
-        contains only values from available and accessible sources based on patient privacy
-        settings.
-      </div>
-
       <h3 i18n="Patient Data Viewer"><i class="fa fa-calendar-check-o"></i> Patient data viewer</h3>
     </div>
+  -->
 
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
-        <patient-overview>
-        </patient-overview>
-      </div>
+  <div
+    *ngIf="cardToShow==='treatments' || cardToShow === 'medications' || cardToShow === 'morisky' || cardToShow==='observations' || cardToShow === 'all'"
+    class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <patient-range-picker (changed)="rangeChanged($event)" [range]="range">
 
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-6 col-xl-6">
+      </patient-range-picker>
+    </div>
+  </div>
 
-        <patient-notifications>
-        </patient-notifications>
-      </div>
+
+  <div *ngIf="cardToShow==='overview' || cardToShow === 'all'" class="row">
+    <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <patient-overview>
+      </patient-overview>
     </div>
 
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
-        <patient-diseases>
-        </patient-diseases>
-      </div>
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
-        <patient-imaging>
-        </patient-imaging>
-      </div>
+  </div>
+
+  <!--
+
+  <div class="row">
+    <div *ngIf="cardToShow===2 || cardToShow === 'all'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+      <patient-notifications>
+      </patient-notifications>
     </div>
+  </div>
+  -->
 
 
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <patient-clinicians-history>
-        </patient-clinicians-history>
-      </div>
+  <div *ngIf="cardToShow==='comments' || cardToShow === 'all'" class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+      <patient-concluding-comments>
+      </patient-concluding-comments>
     </div>
+  </div>
+
+  <div *ngIf="cardToShow==='followups' || cardToShow === 'all'" class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+      <patient-follow-up-appointments>
+      </patient-follow-up-appointments>
+    </div>
+  </div>
 
 
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <div class="card">
-          <div class="card-header w3-black w3-center">
-            <span i18n="Patient Events"><i class="fa fa-calendar-times-o"></i></span> Patient Events
-
-
-            <div class="card-actions">
-
-            </div>
-
-          </div>
-          <div class="card-block">
-
-            <div class="row w3-center">
-
-              <!--
-                                         <my-date-range-picker [options]="myDateRangePickerOptions"
-                                                                (dateRangeChanged)="onDateRangeChanged($event)"
-                                                                [selDateRange]="model">
-                                          </my-date-range-picker>
-
-
-                                                                   <button type="button"
-                                                                           class="btn btn-default"
-                                                                           (click)="focusRange()"
-                                                                           i18n="Selected range">
-                                                                       Selected range
-                                                                   </button>
-                                                                    -->
-
-
-            </div>
-
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-              <div class=" w3-center">
-                <button type="button"
-                        class="btn btn-default {{zoomAll? 'btn-outline-success' : ''}}"
-                        (click)="focusAll()"
-                        i18n="View all data">
-                  View all
-                </button>
-
-                <button type="button"
-                        class="btn btn-default {{range==='lastweek' && !zoomAll ? 'btn-outline-success' : ''}}"
-                        (click)="focusLastWeek()"
-                        i18n="Last week">
-                  Last week
-                </button>
-
-                <button type="button"
-                        class="btn btn-default {{range==='lastmonth' && !zoomAll ? 'btn-outline-success' : ''}}"
-                        (click)="focusLastMonth()"
-                        i18n="Last month">
-                  Last month
-                </button>
-
-                <button type="button"
-                        class="btn btn-default {{range==='lastyear' && !zoomAll ? 'btn-outline-success' : ''}}"
-                        (click)="focusLastYear()"
-                        i18n="Last year">
-                  Last year
-                </button>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <patient-checks>
-                </patient-checks>
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-              <div class=" w3-center">
-                <button type="button"
-                        class="btn btn-default {{zoomAll? 'btn-outline-success' : ''}}"
-                        (click)="focusAll()"
-                        i18n="View all data">
-                  View all
-                </button>
-
-                <button type="button"
-                        class="btn btn-default {{range==='lastweek'  && !zoomAll ? 'btn-outline-success' : ''}}"
-                        (click)="focusLastWeek()"
-                        i18n="Last week">
-                  Last week
-                </button>
-
-                <button type="button"
-                        class="btn btn-default {{range==='lastmonth'  && !zoomAll ? 'btn-outline-success' : ''}}"
-                        (click)="focusLastMonth()"
-                        i18n="Last month">
-                  Last month
-                </button>
-
-                <button type="button"
-                        class="btn btn-default {{range==='lastyear'  && !zoomAll ? 'btn-outline-success' : ''}}"
-                        (click)="focusLastYear()"
-                        i18n="Last year">
-                  Last year
-                </button>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-                <medication-history>
-                </medication-history>
-              </div>
-            </div>
-          </div>
-          <div class="card-footer w3-white">
-            <div class="w3-tiny w3-right">Click inside the diagram area to enable mouse interactions (zoom,
-              scroll left/right, click for detail). Click chosen event to view it's detail in a pop up
-              window.
-            </div>
-          </div>
+  <!--
+      <div class="row">
+         <div *ngIf="cardToShow===4 || cardToShow === 'all'" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-6">
+          <patient-imaging>
+          </patient-imaging>
         </div>
-      </div>
+
+  </div> -->
+
+
+  <div *ngIf="cardToShow==='treatments' || cardToShow === 'all'" class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <patient-treatments [dateRange]="range">
+      </patient-treatments>
     </div>
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <div class=" w3-center">
-          <span i18n="Patient Events"><i class="fa fa-calendar-times-o"></i></span>
-
-          <button type="button"
-                  class="btn btn-default {{range==='lastweek'? 'btn-outline-success' : ''}}"
-                  (click)="focusLastWeek()"
-                  i18n="Last week">
-            Last week
-          </button>
-
-          <button type="button"
-                  class="btn btn-default {{range==='lastmonth'? 'btn-outline-success' : ''}}"
-                  (click)="focusLastMonth()"
-                  i18n="Last month">
-            Last month
-          </button>
-
-          <button type="button"
-                  class="btn btn-default {{range==='lastyear'? 'btn-outline-success' : ''}}"
-                  (click)="focusLastYear()"
-                  i18n="Last year">
-            Last year
-          </button>
+  </div>
 
 
-        </div>
-      </div>
+  <div *ngIf="cardToShow === 'all'" class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+      <patient-range-picker (changed)="rangeChanged($event)" [range]="range">
+
+      </patient-range-picker>
 
     </div>
+  </div>
 
 
-    <div class="row">
-      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-        <patient-daily-average-observations>
-        </patient-daily-average-observations>
-      </div>
+  <div *ngIf="cardToShow==='medications' || cardToShow === 'all'" class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <medication-history [dateRange]="range">
+      </medication-history>
     </div>
+  </div>
 
-    <div class="row">
-      <patient-morisky-results>
-      </patient-morisky-results>
+  <div *ngIf="cardToShow === 'all'"
+       class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+
+      <patient-range-picker (changed)="rangeChanged($event)" [range]="range">
+
+      </patient-range-picker>
+
     </div>
+  </div>
 
+
+  <div *ngIf="cardToShow==='observations' || cardToShow === 'all'" class=" w3-center">
+
+    <button class="btn btn-default {{!showSeparate ? 'btn-outline-success' : ''}}"
+            (click)="showSeparate=false;">Combined Graph
+    </button>
+
+    <button class="btn btn-default {{showSeparate  ? 'btn-outline-success' : ''}}"
+            (click)="showSeparate=true;">Separate Graphs
+    </button>
 
   </div>
 
 
+  <div *ngIf="!showSeparate && (cardToShow==='observations' || cardToShow === 'all')" class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <patient-daily-average-observations [forMeasurements]="measurementToShow" [dateRange]="range">
+      </patient-daily-average-observations>
+    </div>
+  </div>
+
+
+  <div *ngIf="showSeparate && (cardToShow==='observations' || cardToShow === 'all')" class="row">
+
+    <div
+      class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
+      col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
+      <patient-daily-average-observations [forMeasurements]="'heartrate'" [dateRange]="range">
+      </patient-daily-average-observations>
+    </div>
+
+    <div
+      class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
+      col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
+      <patient-daily-average-observations [forMeasurements]="'sys'" [dateRange]="range">
+      </patient-daily-average-observations>
+
+    </div>
+    <div
+      class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
+      col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
+      <patient-daily-average-observations [forMeasurements]='"dia"' [dateRange]="range">
+      </patient-daily-average-observations>
+
+    </div>
+    <div
+      class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
+      col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
+      <patient-daily-average-observations [forMeasurements]='"weight"' [dateRange]="range">
+      </patient-daily-average-observations>
+
+    </div>
+    <div
+      class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
+      col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
+      <patient-daily-average-observations [forMeasurements]='"steps"' [dateRange]="range">
+      </patient-daily-average-observations>
+
+    </div>
+    <div
+      class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
+      col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
+      <patient-daily-average-observations [forMeasurements]='"distance"' [dateRange]="range">
+      </patient-daily-average-observations>
+
+    </div>
+    <div
+      class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
+      col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
+      <patient-daily-average-observations [forMeasurements]='"sleep"' [dateRange]="range">
+      </patient-daily-average-observations>
+
+    </div>
+    <div
+      class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
+      col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
+      <patient-daily-average-observations [forMeasurements]='"pain"' [dateRange]="range">
+      </patient-daily-average-observations>
+
+    </div>
+    <div
+      class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
+      col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
+      <patient-daily-average-observations [forMeasurements]='"wellbeing"' [dateRange]="range">
+      </patient-daily-average-observations>
+
+    </div>
+    <div
+      class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
+      col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
+      <patient-daily-average-observations [forMeasurements]='"radai"' [dateRange]="range">
+      </patient-daily-average-observations>
+
+    </div>
+    <div
+      class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
+      col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
+      <patient-daily-average-observations [forMeasurements]='"ffbh"' [dateRange]="range">
+      </patient-daily-average-observations>
+
+    </div>
+    <div
+      class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
+      col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
+      <patient-daily-average-observations [forMeasurements]='"haq"' [dateRange]="range">
+      </patient-daily-average-observations>
+
+    </div>
+    <div
+      class="col-xs-12 col-sm-12 col-md-{{showSeparate?'6':'12'}}
+      col-lg-{{showSeparate?'6':'12'}} col-xl-{{showSeparate?'6':'12'}}">
+      <patient-daily-average-observations [forMeasurements]='"eq5d"' [dateRange]="range">
+      </patient-daily-average-observations>
+
+    </div>
+  </div>
+
+
+  <div *ngIf="cardToShow==='morisky' || cardToShow === 'all'" class="row">
+
+    <patient-daily-average-observations [forMeasurements]='"morisky"' [dateRange]="range">
+    </patient-daily-average-observations>
+
+  </div>
+
+  <div *ngIf="cardToShow==='diseases' || cardToShow === 'all'" class="row">
+    <div
+      class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <patient-diseases>
+      </patient-diseases>
+    </div>
+
+  </div>
+
+
+  <div *ngIf="cardToShow==='clinicians' || cardToShow === 'all'" class="row">
+    <div
+      class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+      <patient-clinicians-history>
+      </patient-clinicians-history>
+    </div>
+  </div>
+
+
 </div>
+
+
+
 

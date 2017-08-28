@@ -4,103 +4,109 @@
       "subGraphId": "patient",
       "parrentGraph": "",
       "isDisplayed": true,
-      "level": "0"
+      "level": 0
     },
     {
-      "subGraphId": "patient",
+      "subGraphId": "core",
       "parrentGraph": "patient",
       "isDisplayed": true,
-      "level": "1"
+      "level": 1
     },
     {
       "subGraphId": "carers",
       "parrentGraph": "core",
       "isDisplayed": false,
-      "level": "2"
+      "level": 2
     },
     {
       "subGraphId": "home",
       "parrentGraph": "core",
       "isDisplayed": false,
-      "level": "2"
+      "level": 2
     },
     {
       "subGraphId": "plan",
       "parrentGraph": "core",
       " isDisplayed": false,
-      "level": "2"
+      "level": 2
     },
     {
       "subGraphId": "questionnaires",
       "parrentGraph": "core",
       "isDisplayed": false,
-      "level": "2"
+      "level": 2
     },
     {
       "subGraphId": "psychoTest",
       "parrentGraph": "core",
       "isDisplayed": false,
-      "level": "2"
+      "level": 2
     },
     {
       "subGraphId": "image",
       "parrentGraph": "core",
       "isDisplayed": false,
-      "level": "2"
+      "level": 2
     },
     {
       "subGraphId": "cliMeasurements",
       "parrentGraph": "core",
       " isDisplayed": false,
-      "level": "2"
+      "level": 2
     },
     {
       "subGraphId": "screening",
       "parrentGraph": "core",
       "isDisplayed": false,
-      "level": "2"
+      "level": 2
     },
     {
       "subGraphId": "lab",
       "parrentGraph": "core",
       "isDisplayed": false,
-      "level": "2"
+      "level": 2
     },
     {
       "subGraphId": "questionnaireHome",
       "parrentGraph": "home",
       "isDisplayed": false,
-      "level": "3"
+      "level": 3
     },
     {
       "subGraphId": "memory",
       "parrentGraph": "psychoTest",
       "isDisplayed": false,
-      "level": "3"
+      "level": 3
     },
     {
       "subGraphId": "attention",
       "parrentGraph": "psychoTest",
       "isDisplayed": false,
-      "level": "3"
+      "level": 3
     },
     {
       "subGraphId": "language",
       "parrentGraph": "psychoTest",
       "isDisplayed": false,
-      "level": "3"
+      "level": 3
     },
     {
       "subGraphId": "psychoHealth",
       "parrentGraph": "psychoTest",
       "isDisplayed": false,
-      "level": "3"
+      "level": 3
     },
     {
       "subGraphId": "bloodTest",
       "parrentGraph": "lab",
       "isDisplayed": false,
-      "level": "3"
+      "level": 3
+    },
+    {
+      "subGraphId": "surgery",
+      "parrentGraph": "core",
+      "isDisplayed": false,
+      "level": 2
     }
   ],
   "GraphNodes": [
@@ -117,11 +123,11 @@
       "y": 0
     },
     {
-      "subGraphId": "patient",
+      "subGraphId": "core",
       "parrentGraph": "patient",
       "isDisplayed": true,
       "id": "carers",
-      "label": "Care Professionals\n",
+      "label": "Care Professionals\n31.05.2017",
       "title": "Care professionals category\n - Click to see sub-categories",
       "group": "GroupCarers",
       "isLeaf": false,
@@ -129,11 +135,11 @@
       "y": 0
     },
     {
-      "subGraphId": "patient",
+      "subGraphId": "core",
       "parrentGraph": "patient",
       "isDisplayed": true,
       "id": "home",
-      "label": "Home Measurements\n and Recording\n",
+      "label": "Home Measurements\n and Recording\n30.05.2017",
       "title": "Home monitoring data category\n - Click to see sub-categories",
       "group": "GroupHome",
       "isLeaf": false,
@@ -141,11 +147,11 @@
       "y": 94
     },
     {
-      "subGraphId": "patient",
+      "subGraphId": "core",
       "parrentGraph": "patient",
       "isDisplayed": true,
       "id": "plan",
-      "label": "Care Plans\n",
+      "label": "Care Plans\n31.05.2017",
       "title": "Care plans data category\n - Click to see sub-categories",
       "group": "GroupPlan",
       "isLeaf": false,
@@ -153,11 +159,11 @@
       "y": 152
     },
     {
-      "subGraphId": "patient",
+      "subGraphId": "core",
       "parrentGraph": "patient",
       "isDisplayed": true,
       "id": "lab",
-      "label": "Lab tests\n",
+      "label": "Lab tests\n25.04.2017",
       "title": "Lab tests data category\n - Click to see sub-categories",
       "group": "GroupLab",
       "isLeaf": false,
@@ -165,11 +171,11 @@
       "y": 152
     },
     {
-      "subGraphId": "patient",
+      "subGraphId": "core",
       "parrentGraph": "patient",
       "isDisplayed": true,
       "id": "image",
-      "label": "Images\n",
+      "label": "Images\n31.05.2017",
       "title": "Images - Click to see sub-categories",
       "group": "GroupImage",
       "isLeaf": false,
@@ -177,11 +183,11 @@
       "y": 94
     },
     {
-      "subGraphId": "patient",
+      "subGraphId": "core",
       "parrentGraph": "patient",
       "isDisplayed": true,
       "id": "questionnaires",
-      "label": "RA-Questionnaires\n",
+      "label": "RA-Questionnaires\n31.05.2017",
       "title": "Questionnaires \n - Click to see sub-categories",
       "group": "Questionnaires",
       "isLeaf": false,
@@ -189,11 +195,11 @@
       "y": 0
     },
     {
-      "subGraphId": "patient",
+      "subGraphId": "core",
       "parrentGraph": "patient",
       "isDisplayed": true,
       "id": "psychoTest",
-      "label": "Psychological and \nNeuropsychological Testing\n",
+      "label": "Psychological and \nNeuropsychological Testing\n21.02.2015",
       "title": "Psychological and Neuropsychological Testing\n - Click to see sub-categories",
       "group": "PsychologicalTest",
       "isLeaf": false,
@@ -201,11 +207,11 @@
       "y": -94
     },
     {
-      "subGraphId": "patient",
+      "subGraphId": "core",
       "parrentGraph": "patient",
       "isDisplayed": true,
       "id": "cliMeasurements",
-      "label": "Clinical measurements\n",
+      "label": "Clinical measurements\n15.04.2017",
       "title": "Clinical measurements\n - Click to see sub-categories",
       "group": "GroupCliMeasurements",
       "isLeaf": false,
@@ -213,7 +219,7 @@
       "y": -152
     },
     {
-      "subGraphId": "patient",
+      "subGraphId": "core",
       "parrentGraph": "patient",
       "isDisplayed": true,
       "id": "surgery",
@@ -225,11 +231,11 @@
       "y": -152
     },
     {
-      "subGraphId": "patient",
+      "subGraphId": "core",
       "parrentGraph": "patient",
       "isDisplayed": true,
       "id": "screening",
-      "label": "Screening\n",
+      "label": "Screening\n31.05.2016",
       "title": "Screening\n - Click to see sub-categories",
       "group": "GroupScreening",
       "isLeaf": false,
@@ -242,7 +248,7 @@
       "isDisplayed": true,
       "title": "",
       "id": "cardiologist",
-      "label": "Cardiologist\n",
+      "label": "Cardiologist\n15.02.2015",
       "group": "GroupCarer",
       "isLeaf": true,
       "x": 400,
@@ -254,7 +260,7 @@
       "isDisplayed": true,
       "title": "",
       "id": "rheumatologist",
-      "label": "Rheumatologists\n",
+      "label": "Rheumatologists\n 31.05.2017",
       "group": "GroupCarer",
       "isLeaf": true,
       "x": 396,
@@ -266,7 +272,7 @@
       "isDisplayed": true,
       "title": "",
       "id": "neurologist",
-      "label": "Neurologist\n",
+      "label": "Neurologist\n28.05.2016",
       "group": "GroupCarer",
       "isLeaf": true,
       "x": 387,
@@ -278,7 +284,7 @@
       "isDisplayed": true,
       "title": "",
       "id": "neuropschologist",
-      "label": "Neuropschologist\n",
+      "label": "Neuropsychologist\n15.03.2016",
       "group": "GroupCarer",
       "isLeaf": true,
       "x": 380,
@@ -290,7 +296,7 @@
       "isDisplayed": true,
       "title": "",
       "id": "radiologist",
-      "label": "Radiologist\n",
+      "label": "Radiologist\n31.05.2017",
       "group": "GroupCarer",
       "isLeaf": true,
       "x": 360,
@@ -302,7 +308,7 @@
       "isDisplayed": true,
       "title": "",
       "id": "gp",
-      "label": "General Practitioner\n",
+      "label": "General Practitioner\n21.02.2017",
       "group": "GroupCarer",
       "isLeaf": true,
       "x": 338,
