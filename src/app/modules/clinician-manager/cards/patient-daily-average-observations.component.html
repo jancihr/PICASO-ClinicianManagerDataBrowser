@@ -47,22 +47,21 @@
             <i class="fa fa-line-chart">
             </i>
           </button>
-
-          <button type="button"
-                  class="button-clear"
-                  (click)="toggleChartType2('bar')">
-            <i class="fa fa-bar-chart">
-            </i>
-          </button>
-
           <button type="button"
                   class="button-clear"
                   (click)="toggleChartType2('scatter')">
             <i class="fa fa-dot-circle-o">
             </i>
           </button>
+          <button *ngIf="!(observationId==='all' && showAll)" type="button"
+                  class="button-clear"
+                  (click)="toggleChartType2('bar')">
+            <i class="fa fa-bar-chart">
+            </i>
+          </button>
 
-          <button type="button"
+
+          <button *ngIf="!(showAll && observationId==='all') " type="button"
                   class="button-clear"
                   (click)="toggleChartType2('area')">
             <i class="fa fa-area-chart">
@@ -115,7 +114,7 @@
         </div>
 
 
-        <div *ngIf="observationId==='all' && observationGroups && observationGroups.length!==1"
+        <div *ngIf="observationId==='all' && observationGroups"
              class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
              style=" padding-right: 0.05rem; padding-bottom: 0.15rem;">
           <div class="" style=" margin-left: 0.25rem;">
@@ -131,7 +130,7 @@
 
             <span class="axis-buttons-legend">Left Axis</span>
 
-            <button *ngIf="observationId==='all' && observationGroups && observationGroups.length!==1" type="button"
+            <button *ngIf="observationId==='all' && observationGroups" type="button"
                     class="button-clear"
                     (click)="showAllLeft()">
 
@@ -154,7 +153,7 @@
         </div>
 
 
-        <div *ngIf="observationId==='all' && observationGroups && observationGroups.length!==1"
+        <div *ngIf="observationId==='all' && observationGroups"
              class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
              style="padding-left: 0.05rem; padding-bottom: 0.15rem;">
           <div class="" style=" margin-right: 0.25rem;">

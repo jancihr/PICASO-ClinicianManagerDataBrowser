@@ -57,6 +57,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
   showMinMidMax = true;
+  showAll = true;
 
   progress: PatientLoadProgress = {
     percentage: 0,
@@ -661,6 +662,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   }
 
   public toggleLeft(id: string, name: string) {
+    this.data = [];
+    this.showAll = false;
 
     for (let i = 0; i < this.observationGroups.length; i++) {
       if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
@@ -675,7 +678,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   }
 
   public toggleRight(id: string, name: string) {
-
+    this.data = [];
     for (let i = 0; i < this.observationGroups.length; i++) {
       if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
         this.observationGroups[i].showRight = true;//!this.observationGroups[i].showRight;
@@ -710,13 +713,23 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     this.callServiceToGetObservations();
   }
 
+
   public showAllLeft() {
+    this.data = [];
 
     for (var i = 0; i < this.observationGroups.length; i++) {
       this.observationGroups[i].showLeft = true;
       //this.observationGroups[i].showRight = false;
     }
+
+    this.showAll = true;
+    if (this.chartType === 'bar' || this.chartType === 'area') {
+      this.chartType = 'line';
+    }
+
     this.callServiceToGetObservations();
+
+
   }
 
   public enableInitialGraphs(oldOnOffData: any) {
