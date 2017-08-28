@@ -748,7 +748,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     else {
       for (let i = 0; i < this.observationGroups.length; i++) {
         this.observationGroups[i].showRight = false;
-        this.observationGroups[i].showLeft = this.observationId !== 'all' ? false : true;
+        this.observationGroups[i].showLeft = this.observationId === 'all';
         //console.log(this.forMeasurements);
         //if (this.forMeasurements === "all") {
         //  this.observationGroups[i].showLeft = false;
