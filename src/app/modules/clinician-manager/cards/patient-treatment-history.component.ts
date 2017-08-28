@@ -59,7 +59,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       rollingMode: null,//{follow:false, offset:0},
       start: this.dateRange.startDate,
       end: this.dateRange.endDate,
-      height: 250,
+      minHeight: 270,
       margin: {
         axis: 10,
         item: 10
@@ -158,10 +158,14 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
   }
 
 
-  setTreatmentsGraphData(): void {
+  setTreatmentsGraphData(closeDetail: boolean): void {
 
-    this.selectedId = null;
-    this.selectedTreatment = null;
+    if (closeDetail) {
+
+
+      this.selectedId = null;
+      this.selectedTreatment = null;
+    }
     this.listOfItems = [];
     this.visTimelineItemsTreatments = new VisTimelineItems([]);
 
@@ -172,8 +176,8 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
           id: item.id,
           style: this.isColourful ? ("background: " + item.color) : "",
           content: `<div>
-                              <div class="w3-small"><b>${item.category}</b></div>
-                              <div class="w3-small">${item.visitReason} </div>
+                              <div class="timeline-item-header"><b>${item.category}</b></div>
+                              <div class="timeline-item-content">${item.visitReason} </div>
                               </div>`,
           start: item.startDate,
           type: 'box'
@@ -183,8 +187,8 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
         this.visTimelineItemsTreatments.add({
           id: item.id,
           content: `<div>
-                              <div class="w3-small"><b>${item.category}</b></div>
-                              <div class="w3-small">${item.visitReason} </div>
+                              <div class="timeline-item-header"><b>${item.category}</b></div>
+                              <div class="timeline-item-content">${item.visitReason} </div>
                               </div>`,
 
           start: item.startDate,
@@ -215,7 +219,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       );
 
     }
-    this.setTreatmentsGraphData();
+    this.setTreatmentsGraphData(true);
   }
 
   setTreatment(treatments: any[], type: string) {
@@ -238,7 +242,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       );
 
     }
-    this.setTreatmentsGraphData();
+    this.setTreatmentsGraphData(true);
   }
 
 
@@ -316,6 +320,6 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
 
   toggleColor(): void {
     this.isColourful = !this.isColourful;
-    this.setTreatmentsGraphData();
+    this.setTreatmentsGraphData(false);
   }
 }

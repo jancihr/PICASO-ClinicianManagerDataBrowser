@@ -72,7 +72,7 @@
 
   <div *ngIf="cardToShow==='observations' || cardToShow === 'all'" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-      <patient-daily-average-observations [forMeasurements]="measurementToShow" [singleValued]="false"
+      <patient-daily-average-observations [observationId]="measurementToShow"
                                           [dateRange]="range">
       </patient-daily-average-observations>
     </div>
@@ -101,62 +101,62 @@
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-      <patient-daily-average-observations [forMeasurements]="'sys'" [singleValued]="true" [dateRange]="range">
+      <patient-daily-average-observations [observationId]="'systolic'" [dateRange]="range">
       </patient-daily-average-observations>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-      <patient-daily-average-observations [forMeasurements]='"dia"' [singleValued]="true" [dateRange]="range">
+      <patient-daily-average-observations [observationId]='"diastolic"' [dateRange]="range">
       </patient-daily-average-observations>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-      <patient-daily-average-observations [forMeasurements]="'heartrate'" [singleValued]="true" [dateRange]="range">
+      <patient-daily-average-observations [observationId]="'heartrate'" [dateRange]="range">
       </patient-daily-average-observations>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-      <patient-daily-average-observations [forMeasurements]='"weight"' [singleValued]="true" [dateRange]="range">
+      <patient-daily-average-observations [observationId]='"weight"' [dateRange]="range">
       </patient-daily-average-observations>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-      <patient-daily-average-observations [forMeasurements]='"steps"' [singleValued]="true" [dateRange]="range">
+      <patient-daily-average-observations [observationId]='"steps"' [dateRange]="range">
       </patient-daily-average-observations>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-      <patient-daily-average-observations [forMeasurements]='"distance"' [singleValued]="true" [dateRange]="range">
+      <patient-daily-average-observations [observationId]='"distance"' [dateRange]="range">
       </patient-daily-average-observations>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-      <patient-daily-average-observations [forMeasurements]='"sleep"' [singleValued]="true" [dateRange]="range">
+      <patient-daily-average-observations [observationId]='"sleep_minutes"' [dateRange]="range">
       </patient-daily-average-observations>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-      <patient-daily-average-observations [forMeasurements]='"pain"' [singleValued]="true" [dateRange]="range">
+      <patient-daily-average-observations [observationId]='"pain"' [dateRange]="range">
       </patient-daily-average-observations>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-      <patient-daily-average-observations [forMeasurements]='"wellbeing"' [singleValued]="true" [dateRange]="range">
+      <patient-daily-average-observations [observationId]='"wellbeing"' [dateRange]="range">
       </patient-daily-average-observations>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-      <patient-daily-average-observations [forMeasurements]='"radai"' [singleValued]="true" [dateRange]="range">
+      <patient-daily-average-observations [observationId]='"radai"' [dateRange]="range">
       </patient-daily-average-observations>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-      <patient-daily-average-observations [forMeasurements]='"ffbh"' [singleValued]="true" [dateRange]="range">
+      <patient-daily-average-observations [observationId]='"ffbh"' [dateRange]="range">
       </patient-daily-average-observations>
     </div>
 
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-6">
-      <patient-daily-average-observations [forMeasurements]='"haq"' [singleValued]="true" [dateRange]="range">
+      <patient-daily-average-observations [observationId]='"haq"' [dateRange]="range">
       </patient-daily-average-observations>
     </div>
   </div>
@@ -171,7 +171,7 @@
 
   <div *ngIf="cardToShow==='morisky' || cardToShow === 'all'" class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-      <patient-daily-average-observations [forMeasurements]='"morisky"' [singleValued]="true" [dateRange]="range">
+      <patient-daily-average-observations [observationId]='"morisky"' [dateRange]="range">
       </patient-daily-average-observations>
     </div>
   </div>

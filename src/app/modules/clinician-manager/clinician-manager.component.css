@@ -176,11 +176,72 @@
   background-color: #cfd8dc;
 }
 
-:host /deep/ .vis-selected {
-  border-color: #67bc9a;
-  border-width: 2px;
-  border-radius: 10px;
+:host /deep/ .chart-contrast-color1 {
+  color: #67bc9a;
 }
+
+:host /deep/ .chart-contrast-color2 {
+  color: #6f93c5;
+}
+
+:host /deep/ .chart-normal-color1 {
+  color: #3a955d;
+}
+
+:host /deep/ .chart-normal-color2 {
+  color: #466581;
+}
+
+:host /deep/ .chart-normal-color3 {
+  color: #c87533;
+}
+
+:host /deep/ .chart-normal-color4 {
+  color: #b4aa49;
+}
+
+:host /deep/ .vis-item .vis-item-content {
+  padding: 0;
+}
+
+:host /deep/ .vis-item {
+  border-color: #67bc9a;
+  background: #e4e5e6;
+  color: black;
+
+  padding: 0;
+
+}
+
+:host /deep/ .vis-item.vis-selected {
+  border-color: #7093c5;
+  background: #67bc9a;
+  color: white;
+  padding: 0;
+
+}
+
+:host /deep/ .timeline-item-content {
+  font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+  font-size: 0.5rem;
+  padding-left: 0.05rem;
+  padding-right: 0.05rem;
+  padding-top: 0.00rem;
+  padding-bottom: 0.01rem;
+  margin: 0;
+
+}
+
+:host /deep/ .timeline-item-header {
+  font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+  font-size: 0.5rem;
+  padding-left: 0.05rem;
+  padding-right: 0.05rem;
+  padding-top: 0.01rem;
+  padding-bottom: 0.01rem;
+  margin: 0;
+}
+
 
 :host /deep/ .table-sm td,
 :host /deep/ .table-sm th {
@@ -223,17 +284,44 @@
   padding-right: 0.2rem;
 }
 
+:host /deep/ .nvd3 .nv-groups .nv-point {
+  stroke-opacity: 50% !important;
+  stroke-width: 5px !important;
+  fill-opacity: 1 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .nv-point.hover {
+  stroke-width: 12px !important;
+  stroke-opacity: 100% !important;
+  fill-opacity: 0.2 !important;
+}
+
+
+
+
 :host /deep/ .dashed {
   stroke-dasharray: 3, 5 !important;
   stroke-opacity: 0.75 !important;
-  stroke-width: 1.5 !important;
+  stroke-width: 1px !important;
   fill-opacity: 0 !important;
 }
 
 :host /deep/ .dashed-long {
   stroke-dasharray: 20, 5 !important;
   stroke-opacity: 0.75 !important;
-  stroke-width: 1.5 !important;
+  stroke-width: 1px !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .not-dashed {
+  stroke-opacity: 0.75 !important;
+  stroke-width: 1px !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .hidden-line {
+  stroke-opacity: 0 !important;
+  stroke-width: 0 !important;
   fill-opacity: 0 !important;
 }
 
@@ -243,24 +331,23 @@
   fill-opacity: 0 !important;
 }
 
-:host /deep/ .nvd3 .nv-groups .nv-point {
-  stroke-opacity: 20% !important;
-  stroke-width: 1px !important
-
-}
-
-:host /deep/ .nvd3 .nv-groups .nv-point.hover {
-  stroke-width: 0px !important;
-  stroke-opacity: 0 !important;
-  fill-opacity: 0 !important;
-}
-
 :host /deep/ .nvd3 .nv-groups .dashed .nv-point {
   stroke-width: 0px !important;
   stroke-opacity: 0 !important;
 }
 
 :host /deep/ .nvd3 .nv-groups .dashed .nv-point.hover {
+  stroke-width: 0px !important;
+  stroke-opacity: 0 !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .not-dashed .nv-point {
+  stroke-width: 0px !important;
+  stroke-opacity: 0 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .not-dashed .nv-point.hover {
   stroke-width: 0px !important;
   stroke-opacity: 0 !important;
   fill-opacity: 0 !important;
@@ -277,12 +364,6 @@
   fill-opacity: 0 !important;
 }
 
-:host /deep/ .hidden-line {
-  stroke-opacity: 0 !important;
-  stroke-width: 0 !important;
-  fill-opacity: 0 !important;
-}
-
 :host /deep/ .nvd3 .nv-groups .hidden-line .nv-point {
   stroke-width: 0px !important;
   stroke-opacity: 0 !important;
@@ -294,9 +375,7 @@
   fill-opacity: 0 !important;
 }
 
-:host /deep/ .vis-item .vis-item-content {
-  padding: 0;
-}
+
 
 
 

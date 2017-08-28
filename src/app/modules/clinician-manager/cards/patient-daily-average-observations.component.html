@@ -26,7 +26,7 @@
   <div *ngIf="observationGroups" class="card-block" style="overflow-x: hidden;">
 
     <div class="row">
-      <div class="w3-center">
+      <div class="">
 
         <div>
 
@@ -41,48 +41,81 @@
           -->
 
 
-          <button *ngIf="!singleValued && observationGroups && observationGroups.length!==1" type="button"
+          <button type="button"
+                  class="button-clear"
+                  (click)="toggleChartType2('line')">
+            <i class="fa fa-line-chart">
+            </i>
+          </button>
+
+          <button type="button"
+                  class="button-clear"
+                  (click)="toggleChartType2('bar')">
+            <i class="fa fa-bar-chart">
+            </i>
+          </button>
+
+          <button type="button"
+                  class="button-clear"
+                  (click)="toggleChartType2('scatter')">
+            <i class="fa fa-dot-circle-o">
+            </i>
+          </button>
+
+          <button type="button"
+                  class="button-clear"
+                  (click)="toggleChartType2('area')">
+            <i class="fa fa-area-chart">
+            </i>
+          </button>
+
+
+          <button *ngIf="observationId==='all' && observationGroups && observationGroups.length!==1" type="button"
                   class="button-clear"
                   (click)="showHighContrast()">
 
+           <span *ngIf="!isHighContrast">
+             <span class="chart-normal-color1"> <i class="fa fa-circle"></i></span>
+             <span class="chart-normal-color4"> <i class="fa fa-circle"></i></span>
+           </span>
             <span *ngIf="isHighContrast">
-              <span style="color:red"> <i class="fa fa-circle"></i></span>
-              <span style="color:red"> <i class="fa fa-circle"></i></span>
-              <span style="color:green"> <i class="fa fa-circle"></i></span>
-              <span style="color:green"> <i class="fa fa-circle"></i></span>
-            </span>
-            <span *ngIf="!isHighContrast">
-              <span style="color: green;"> <i class="fa fa-circle"></i></span>
-              <span style="color: yellow;"> <i class="fa fa-circle"></i></span>
-              <span style="color: red;"> <i class="fa fa-circle"></i></span>
-              <span style="color: orange;"> <i class="fa fa-circle"></i></span>
-            </span>
-            <span *ngIf="!isHighContrast">Colours</span>
-            <span *ngIf="isHighContrast">Colours</span>
+             <span style="color:red"> <i class="fa fa-circle"></i></span>
+             <span style="color: green"> <i class="fa fa-circle"></i></span>
+           </span>
+            <span *ngIf="!isHighContrast">Original Colours</span>
+            <span *ngIf="isHighContrast">Contrast Colours</span>
 
           </button>
 
 
-          <button *ngIf="isThereMid || isThereMax || isThereMin" type="button"
-                  class="button-clear"
-                  (click)="resetMinMidMax()">
-            <span>  <i class="fa {{showMinMidMax?'fa-circle':'fa-circle-o'}}"></i> </span>
-            <span *ngIf="!showMinMidMax"></span> <span *ngIf="showMinMidMax"></span> <span *ngIf="isThereMin">Min</span>
-            <span *ngIf="isThereMid">Mid</span> <span *ngIf="isThereMax">Max</span>
-            <span>
-          </span>
-          </button>
+          <!--
 
-          <button *ngIf="!singleValued && observationGroups && observationGroups.length!==1" type="button"
-                  class="button-clear"
-                  (click)="forceYZero=!forceYZero;callServiceToGetObservations()">
+                  <button *ngIf="isThereMid || isThereMax || isThereMin" type="button"
+                          class="button-clear"
+                          (click)="resetMinMidMax()">
+                    <span>  <i class="fa {{showMinMidMax?'fa-circle':'fa-circle-o'}}"></i> </span>
+                    <span *ngIf="!showMinMidMax"></span> <span *ngIf="showMinMidMax"></span> <span *ngIf="isThereMin">Min</span>
+                    <span *ngIf="isThereMid">Mid</span> <span *ngIf="isThereMax">Max</span>
+                    <span>
+                  </span>
+                  </button>
+
+                  -->
+
+          <button
+            *ngIf="((min1!==null && min1>0)|| (min2!== null && min2>0)) && chartType!=='bar' && chartType!=='area'"
+            type="button"
+            class="button-clear"
+            (click)="toggleZero()">
 
             <span>  <i class="fa {{forceYZero?'fa-circle':'fa-circle-o'}}"></i> </span> Zero Axis
           </button>
+
+
         </div>
 
 
-        <div *ngIf="!singleValued && observationGroups && observationGroups.length!==1"
+        <div *ngIf="observationId==='all' && observationGroups && observationGroups.length!==1"
              class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
              style=" padding-right: 0.05rem; padding-bottom: 0.15rem;">
           <div class="" style=" margin-left: 0.25rem;">
@@ -98,7 +131,7 @@
 
             <span class="axis-buttons-legend">Left Axis</span>
 
-            <button *ngIf="!singleValued && observationGroups && observationGroups.length!==1" type="button"
+            <button *ngIf="observationId==='all' && observationGroups && observationGroups.length!==1" type="button"
                     class="button-clear"
                     (click)="showAllLeft()">
 
@@ -121,7 +154,7 @@
         </div>
 
 
-        <div *ngIf="!singleValued && observationGroups && observationGroups.length!==1"
+        <div *ngIf="observationId==='all' && observationGroups && observationGroups.length!==1"
              class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
              style="padding-left: 0.05rem; padding-bottom: 0.15rem;">
           <div class="" style=" margin-right: 0.25rem;">
@@ -161,7 +194,7 @@
 
     <div class="chart-row">
 
-      <nvd3 [options]="options" [data]="data"></nvd3>
+      <nvd3 #nvd3 [options]="options" [data]="data"></nvd3>
 
     </div>
 

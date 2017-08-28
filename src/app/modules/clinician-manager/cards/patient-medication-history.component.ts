@@ -58,7 +58,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
       rollingMode: null,//{follow:false, offset:0},
       start: this.dateRange.startDate,
       end: this.dateRange.endDate,
-      height: 250,
+      minHeight: 270,
       margin: {
         axis: 10,
         item: 10
@@ -147,9 +147,12 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
     this.visTimelineService.setWindow('medicationTimelineGraph', start, end);
   }
 
-  setMedicationsGraphData(): void {
-    this.selectedId = null;
-    this.selectedMedication = null;
+  setMedicationsGraphData(closeDetail: boolean): void {
+    if (closeDetail) {
+
+      this.selectedId = null;
+      this.selectedMedication = null;
+    }
     this.listOfItems = [];
     this.visTimelineItemsMedications = new VisTimelineItems([]);
 
@@ -165,8 +168,8 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
             style: this.isColourful ? ("background: " + item.color) : "",
 
             content: `<div>
-                              <div class="w3-small"><b>${item.name} INTAKE</b></div>
-                              <div class="w3-small">${item.dosage} </div>
+                              <div class="timeline-item-header"><b>${item.name} INTAKE</b></div>
+                              <div class="timeline-item-content">${item.dosage} </div>
                               </div>`
             ,
             start: item.startDate,
@@ -181,8 +184,8 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
             style: this.isColourful ? ("background: " + item.color) : "",
 
             content: `<div>
-                              <div class="w3-small"><b>${item.name} PRESCRIPTION</b></div>
-                              <div class="w3-small">${item.dosage} - ${item.frequency} - ${item.stopReason}</div>
+                              <div class="timeline-item-header"><b>${item.name} PRESCRIPTION</b></div>
+                              <div class="timeline-item-content">${item.dosage} - ${item.frequency} - ${item.stopReason}</div>
                               </div>`
             ,
             start: item.startDate,
@@ -219,7 +222,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
       );
       //console.log("prescript:", this.medications);
     }
-    this.setMedicationsGraphData();
+    this.setMedicationsGraphData(true);
   }
 
   setMedicationIntakes(medications: MedicationIntakesResult[]): void {
@@ -242,7 +245,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
       );
       //console.log("intake:", this.medications);
     }
-    this.setMedicationsGraphData();
+    this.setMedicationsGraphData(true);
   }
 
   getMedicationPrescriptions(): void {
@@ -278,7 +281,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
   toggleColor(): void {
     this.isColourful = !this.isColourful;
-    this.setMedicationsGraphData();
+    this.setMedicationsGraphData(false);
   }
 
 }

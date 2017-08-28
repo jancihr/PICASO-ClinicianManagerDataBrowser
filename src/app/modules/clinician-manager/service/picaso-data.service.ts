@@ -307,21 +307,12 @@ export class PicasoDataService {
   getPatient(progressResult: PatientLoadProgress): Observable<InfoResult> {
 
     return this.http.withDownloadProgressListener(progress => {
-
-
-
-
-
-      // TODO to be uncommented later - real progress
       progressResult.percentage = progress.percentage;
       progressResult.total = progress.total;
       progressResult.loaded = progress.loaded;
     })
       .get(this.patientODSServiceURL)
-      .map(response => {
-
-        return this.extractDataInfo(response);
-      })
+      .map(this.extractDataInfo)
       .catch(this.handleError)
       ;
   }
