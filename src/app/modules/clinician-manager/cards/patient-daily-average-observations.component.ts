@@ -423,8 +423,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     this.min1 = this.reload('left');
     this.min2 = this.reload('right');
 
-    console.log("min1", this.min1);
-    console.log("min2", this.min2);
+    //console.log("min1", this.min1);
+    //console.log("min2", this.min2);
 
 
     this.hideLeftOrRightAxisTicks();
@@ -533,7 +533,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             type: this.chartType === undefined ? "line" : this.chartType//group.type ? group.type : 'line'
           });
 
-          console.log("chartType: ", this.chartType);
+          //console.log("chartType: ", this.chartType);
 
           // paint horizontal lines for min, mid, max values
           if (this.showMinMidMax) {

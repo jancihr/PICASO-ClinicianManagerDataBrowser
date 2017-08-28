@@ -66,7 +66,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       },
       showMajorLabels: true,
       showMinorLabels: true,
-      zoomable: true,
+      zoomable: false,
       zoomKey: 'altKey',
 
       format: {
@@ -77,7 +77,6 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
           hour: 'HH:mm',
           weekday: 'ddd D.M.',
           day: 'D.',
-          week: 'w',
           month: 'MMM',
           year: 'YYYY'
         },
@@ -88,7 +87,6 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
           hour: 'ddd D.M.',
           weekday: 'MMMM YYYY',
           day: 'MMMM YYYY',
-          week: 'MMMM YYYY',
           month: 'YYYY',
           year: ''
         }
