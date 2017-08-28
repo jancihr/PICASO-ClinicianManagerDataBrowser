@@ -87,6 +87,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       this.callServiceToGetObservations();
       //this.printDate("ngOnChanges")
     }
+
   }
 
   setOptions() {
@@ -747,7 +748,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     else {
       for (let i = 0; i < this.observationGroups.length; i++) {
         this.observationGroups[i].showRight = false;
-        this.observationGroups[i].showLeft = true;
+        this.observationGroups[i].showLeft = this.observationId !== 'all' ? false : true;
         //console.log(this.forMeasurements);
         //if (this.forMeasurements === "all") {
         //  this.observationGroups[i].showLeft = false;

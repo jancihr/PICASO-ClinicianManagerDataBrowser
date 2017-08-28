@@ -130,7 +130,7 @@
 
             <span class="axis-buttons-legend">Left Axis</span>
 
-            <button *ngIf="observationId==='all' && observationGroups" type="button"
+            <button *ngIf="observationId==='all' && observationGroups && observationGroups.length!==1" type="button"
                     class="button-clear"
                     (click)="showAllLeft()">
 
