@@ -1,11 +1,12 @@
-import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import {Component, HostListener, Input, OnInit, SimpleChange, SimpleChanges, ViewChild} from "@angular/core";
 import {PicasoDataService} from "../service/picaso-data.service";
-import {PatientObservationGroup} from "../model/patient-observation-group";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {MyDateRange} from "./patient-range-picker.component";
+import {ObservationResult} from "../model/generated-interfaces";
+import {ActivatedRoute} from "@angular/router";
 
 
-declare let d3, nv: any;
+declare let d3, nv;
 
 
 @Component({
@@ -18,23 +19,42 @@ declare let d3, nv: any;
 
 export class PatientDailyAverageObservationsComponent implements OnInit {
 
-  @Input() forMeasurements: string;
+
+  @Input() observationId: string;
+  //@Input() singleValued: boolean = true;
+
 
   @Input() dateRange: MyDateRange;
 
+  //@HostListener("window:scroll", [])
 
+
+  forMeasurementsPath: string;
+  chart;
   headerText: string;
   footerText: string;
 
+  chartType: string = "line";
+
+  min1: number;
+  min2: number;
+
   errorMessage: string;
+
+  isThereMin: boolean;
+  isThereMid: boolean;
+  isThereMax: boolean;
+
+
+  isHighContrast: boolean = false;
+  isThereGraph: boolean = false;
+  forceYZero = true;
 
   //endDate: Date;
   //startDate: Date;
 
-  options;
   data;
-  showAllRight = false;
-  showAllLeft = false;
+
 
   showMinMidMax = true;
 
@@ -45,106 +65,93 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   };
 
 
-  observationGroups: PatientObservationGroup[];
+  observationGroups: ObservationResult[] = [];
 
 
-  constructor(private picasoDataService: PicasoDataService) {
+  options;
+
+
+  constructor(private picasoDataService: PicasoDataService, private activatedRoute: ActivatedRoute) {
+    this.setOptions();
   };
 
   ngOnInit(): void {
-
-
-    //this.dateRange.endDate = new Date();
-    //this.startDate = new Date();
-    //this.startDate.setFullYear(this.dateRange.endDate.getFullYear() - 1);
-
-
-    this.setOptions();
-
-    this.getObservations();
-    if (this.forMeasurements === "morisky") {
-      this.headerText = "Morisky Scale results";
-      this.footerText = "4 points = high compliance; 2-3 points = medium compliance; 0-1 = low compliance";
-    } else if (this.forMeasurements === "all") {
-      this.headerText = "Patient Measurements and Recordings";
-      this.footerText = "Hover the mouse pointer over the diagram for values. Click\n" +
-        "      a series name in the legend above the diagram to view/hide series.\n" +
-        "      If several series are shown on one axis, series are not normalised."
-    } else {
-      this.headerText = null;
-      this.footerText = null
-    }
-
-
-  }
-
-  getObservations(): void {
-
-
-    if (this.forMeasurements === "morisky") {
-
-      this.picasoDataService.getMorisky(
-        this.dateRange.startDate,
-        this.dateRange.endDate, this.progress
-      ).subscribe(
-        observations => {
-          this.setPatientObservations(observations);
-          this.enableInitialGraphs();
-          this.reloadDataToGraph();
-          this.refreshRange(this.dateRange.startDate, this.dateRange.endDate);
-
-        },
-        error => this.errorMessage = <any>error);
-
-    } else {
-      this.picasoDataService.getObservations(
-        this.dateRange.startDate,
-        this.dateRange.endDate, this.progress
-      ).subscribe(
-        observations => {
-          this.setPatientObservations(observations);
-          this.enableInitialGraphs();
-          this.reloadDataToGraph();
-          this.refreshRange(this.dateRange.startDate, this.dateRange.endDate);
-
-        },
-        error => this.errorMessage = <any>error);
-
-    }
-
   }
 
 
-  setPatientObservations(observations: PatientObservationGroup[]) {
+  ngOnChanges(changes: SimpleChanges) {
+    const range: SimpleChange = changes.dateRange;
+    if (range === undefined || (range.previousValue !== range.currentValue)) {
 
-    if (this.forMeasurements === "all") {
-      this.observationGroups = observations;
-    }
-
-    else {
-      this.options.chart.height = 200;
-      for (let observation of observations) {
-        // console.log("observationID",observation.id);
-        // console.log("forMeasurements",this.forMeasurements);
-
-
-        if (observation.id === this.forMeasurements) {
-          this.observationGroups = [];
-          this.observationGroups.push(observation);
-          this.headerText = observation.name
-        }
-      }
+      this.callServiceToGetObservations();
+      //this.printDate("ngOnChanges")
     }
   }
 
-  setOptions(): void {
-
+  setOptions() {
     this.options = {
       chart: {
+
+        // dispatch: {
+        //   tooltipShow: function (e) {
+        //     console.log("tooltipShow");
+        //   },
+        //   tooltipHide: function (e) {
+        //     console.log("tooltip hide");
+        //   },
+        //   stateChange: function (e) {
+        //     console.log("statechange");
+        //   },
+        //   changeState: function (e) {
+        //     console.log("statechange2");
+        //   },
+        //   elementMousemove: function (e, v) {
+        //     console.log('mousemove')
+        //     var xValue = this.chart.xAxis.tickFormat()(e.pointXValue);
+        //   },
+        //   elementMouseout: function (e) {
+        //     console.log('mouseout')
+        //   },
+        //   elementDblclick: function (e) {
+        //     console.log('double click')
+        //   }
+        //
+        //
+        // },
+
+        lines1: {
+          dispatch: {
+            renderEnd: function () {
+
+            }
+          }
+        },
+        lines2: {
+          dispatch: {
+            renderEnd: function () {
+
+            }
+          }
+        },
+        scattter1: {
+          dispatch: {
+            renderEnd: function () {
+
+            }
+          }
+        },
+        scattter2: {
+          dispatch: {
+            renderEnd: function () {
+
+            }
+          }
+        },
         noData: 'No data exists for selected dates and observations.',
         type: 'multiChart',
-        height: 500,
-        transitionDuration: 500,
+        height: this.observationId === "morisky" || this.observationId !== 'all' ? 200 : 300,
+        transitionDuration: 0,
+        duration: 0,
 
         legendRightAxisHint: " ",
         interpolate: "linear",
@@ -152,15 +159,13 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         legend: {
           align: false
         },
-        showDistX: true,
-        showDistY: true,
 
         //average: function(d) { return d.mean/100; },
         margin: {
           top: 0,
-          right: 70,
+          right: 50,
           bottom: 20,
-          left: 70
+          left: 50
         },
 
         useInteractiveGuideline: true,
@@ -180,51 +185,51 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         xAxis: {
           //axisLabel: 'Time',
           tickFormat: function (d) {
-            return new Date(d).toLocaleDateString();
+            let date = new Date(d);
+            return ("" + date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear());
           },
         },
 
-        xDomain: [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()],
-        xRange: [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()],
+        //xDomain: [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()],
+        //xRange: [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()],
 
 
         tooltip: {
           contentGenerator: function (d) {
+            this.hideTooltipElements();
             //console.log("tooltip", d);
             var html = "";
             html += "<br><span style='color:" + d.point.color + "' > <i class='fa fa-circle'></i> </span> " +
-              (d.point.value === null ? "<span class='text-warning w3-tag'>MISSING VALUE!</span><br>" : d.point.value) + ' ' + d.series[0].key + '<br>' +
-              d.point.date + '<br>';
+              (d.point.value === null ? "<span class='badge badge-pill badge-warning'>MISSING VALUE!</span><br>" : d.point.value) + ' ' + d.series[0].key + '<br>' +
+
+              ("" + d.point.date.getDate() + "." + (d.point.date.getMonth() + 1) + "." + d.point.date.getFullYear() + " " + d.point.date.getHours() + ":" + d.point.date.getMinutes())
+
+
+              + '<br>';
             return html;
           }
         },
-
-
         interactiveLayer: {
           tooltip: {
+            hideDelay: 0,
+
             contentGenerator: function (d) {
-
-
-              var html = ""; //d.value;
-
+              let html = ""; //d.value;
               //console.log("d", d);
-
               d.series.forEach(function (elem) {
-
                 if (!elem.key.startsWith("hide")) {
-
-
+                  let date = new Date(elem.data.observation.date);
                   html = html +
-
                     "<span style='color:" + elem.color + "' > <i class='fa fa-circle'></i> </span> " +
-
-                    elem.data.name + " " + elem.data.observation.date + ": <br>" +
+                    elem.data.name + " " +
+                    ("" + date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear() + " " + (date.getHours() < 10 ? "0" : "") + date.getHours() + ":" + (date.getMinutes() < 10 ? "0" : "") + date.getMinutes())
+                    + " <br> <span class='text-white'><i class='fa fa-circle-o'></i> </span>" +
                     (
                       elem.data.observation.value === null
                         ?
-                        "<span class='text-warning w3-tag'>MISSING VALUE!</span>"
+                        "<span class='w3-tag w3-round text-warning'>MISSING VALUE!</span>"
                         :
-                        (elem.data.observation.outOfRange ? "<span class='text-danger w3-tag'>OUT OF RANGE! </span> " : "") + "<b>" + "<span class='w3-tag'>" + elem.value + " </span> " + "</b>"
+                        (elem.data.observation.outOfRange ? "<span class='w3-tag w3-round text-danger'>OUT OF RANGE! </span> " : "") + "<b>" + "<span class='w3-tag w3-round-medium'>" + elem.value + " </span> " + "</b>"
                     )
                     + " " + elem.data.unit +
                     (
@@ -243,77 +248,236 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                     +
                     "<br>";
                 }
-
               });
-
               //console.log(JSON.stringify(d));
-
               return html;
+            },
 
+            // dispatch: {
+            //   elementMousemove: function (t, u) {
+            //     console.log('interactive elementMousemove');
+            //   },
+            //   elementMouseout: function (e) {
+            //     console.log('interactive elementMouseout');
+            //     this.hideTooltipElements();
+            //   },
+            //   elementClick: function (e) {
+            //     console.log('interactive elementClick');
+            //     this.hideTooltipElements();
+            //   },
+            //   elementDblclick: function (e) {
+            //     console.log('interactive elementDblclick');
+            //     this.hideTooltipElements();
+            //   },
+            //   elementMouseDown: function (e) {
+            //     console.log('interactive elementMouseDown');
+            //     this.hideTooltipElements();
+            //   },
+            //   elementMouseUp: function (e) {
+            //     console.log('interactive elementMouseUp');
+            //     this.hideTooltipElements();
+            //   }
+            // }
 
-            }
           }
         },
 
         yAxis1: {
+          showMaxMin: false,
           axisLabel: 'left axis',
           tickFormat: function (d) {
             return d;
           },
 
-          axisLabelDistance: -20
+          axisLabelDistance: -28
         },
         yAxis2: {
+          showMaxMin: false,
           axisLabel: 'right axis',
           tickFormat: function (d) {
             return d;
           },
 
-          axisLabelDistance: -30
+          axisLabelDistance: -40
         },
         callback: function (chart) {
-          //console.log("!!! lineChart callback !!!");
+
+          this.chart = chart;//d3.selectAll('.nv-y1 text').style('fill','#123');
+
+          console.log("!!! lineChart callback !!!", chart);
         }
       }
     };
   }
 
+  ngOnDestroy() {
+    this.removeTooltipElements();
+    this.options = null;
+    this.data = null;
+  }
 
 
-  reloadDataToGraph() {
+  callServiceToGetObservations(): void {
 
-    let index = 0;
+    //this.setOptions();
+
+    if (this.observationId === "morisky") {
+      this.headerText = "Morisky Scale results";
+    } else {
+      this.headerText = "Measurements loading...";
+
+    }
+    this.options.chart.noData = "Loading...";
+    this.picasoDataService.getObservations(
+      this.dateRange.startDate,
+      this.dateRange.endDate, this.progress
+    ).subscribe(
+      observations => {
+        this.reloadDataToGraph(observations);
+
+        this.options.chart.noData = "Choose Left (L) and Right (R) values from the list above to compare.";
+
+      },
+      error => this.errorMessage = <any>error);
+  }
+
+
+  filterMoriskyType(observations: ObservationResult[]) {
+    if (this.observationId === "morisky" || this.observationId !== 'all') {
+      this.options.chart.height = 200;
+      for (let observation of observations) {
+        // console.log("observationID",observation.id);
+        // console.log("forMeasurements",this.forMeasurements);
+        if (observation.id === this.observationId) {
+          this.footerText = observation.helpText;
+          this.observationGroups = [];
+          this.observationGroups.push(observation);
+          this.headerText = observation.name + " (" + observation.unit + ")";
+        }
+      }
+    }
+    else {
+      this.headerText = "Patient Measurements and Recordings - Comparison Chart";
+      this.footerText = "Choose series above the diagram to show/hide them on the left/right axis.";
+      this.observationGroups = observations.filter(function (obj) {
+        return obj.id !== "morisky";
+      });
+    }
+  }
+
+  // hide y axis if no values ae on the axis
+  hideLeftOrRightAxisTicks(): void {
+    let hideLeft = true;
+    let hideRight = true;
+    for (let group of this.observationGroups) {
+      if (group.showLeft) hideLeft = false;
+      if (group.showRight) hideRight = false;
+    }
+
+    //hiding left y axis tick values
+    if (hideLeft) {
+      this.options.chart.yAxis1.tickFormat = function (d) {
+        return null;
+      };
+    } else {
+      this.options.chart.yAxis1.tickFormat = function (d) {
+        return d;
+      };
+    }
+
+
+    //hide right y axis tick values
+    if (hideRight) {
+      this.options.chart.yAxis2.tickFormat = function (d) {
+        return null;
+      };
+    } else {
+      this.options.chart.yAxis2.tickFormat = function (d) {
+        return d;
+      };
+    }
+  }
+
+
+  reloadDataToGraph(observations: ObservationResult[]) {
+
+    let oldOnOff = [];
+    for (let group of this.observationGroups) {
+      oldOnOff.push({id: group.id, showLeft: group.showLeft, showRight: group.showRight})
+    }
+
+
+    this.filterMoriskyType(observations);
+    this.enableInitialGraphs(oldOnOff);
+
     this.data = [];
-    this.options.chart.yAxis1.axisLabel = "";
-    this.options.chart.yAxis2.axisLabel = "";
+    //this.setOptions();
 
 
-    let isThereGraph = false;
+    this.isThereGraph = false;
+    this.isThereMax = false;
+    this.isThereMid = false;
+    this.isThereMin = false;
+
+//min value to see if chart has zero x axis visible and to paint hidden line for x axis synchronization
+    this.min1 = this.reload('left');
+    this.min2 = this.reload('right');
+
+    //console.log("min1", this.min1);
+    //console.log("min2", this.min2);
+
+
+    this.hideLeftOrRightAxisTicks();
+
+    //this.chart.update();
+    //this.updateDates();
+
+  }
+
+  reload(side: string): number {
+
+    let isLeft: boolean = side === 'left';
+    let min = null;
+
+
+    //let index = 0;
+
+    if (isLeft) this.options.chart.yAxis1.axisLabel = "";
+    else this.options.chart.yAxis2.axisLabel = "";
+
 
     for (let group of this.observationGroups) {
 
+      if (group.midValue != null) {
+        this.isThereMid = true;
+      }
+      if (group.maxValue != null) {
+        this.isThereMax = true;
+      }
+      if (group.minValue != null) {
+        this.isThereMin = true;
+      }
 
-      if (group.showLeft || group.showRight) {
 
-        if (group.showLeft) {
+      if ((isLeft && group.showLeft) || (!isLeft && group.showRight)) {
 
+
+        if (isLeft)
           this.options.chart.yAxis1.axisLabel +=
             //"<span style='color:" + group.color + "' > <i class='fa fa-circle'></i> </span>" +
             (this.options.chart.yAxis1.axisLabel !== "" ? " | " : "") + group.name + " (" + group.unit + ")";
-        } else {
+        else
           this.options.chart.yAxis2.axisLabel +=
-            (this.options.chart.yAxis2.axisLabel !== "" ? " | " : "") +
-            group.name + " (" + group.unit + ")";
+            //"<span style='color:" + group.color + "' > <i class='fa fa-circle'></i> </span>" +
+            (this.options.chart.yAxis2.axisLabel !== "" ? " | " : "") + group.name + " (" + group.unit + ")";
 
-        }
-
-        group.index = index;
-        isThereGraph = true;
-
+        //group.index = index;
+        this.isThereGraph = true;
         let filteredValues = [];
 
-        for (let el of group.values) {
 
+        // show only values between min max
+        for (let el of group.values) {
           if (
             el.value != null &&
             (group.minValue != null && el.value < group.minValue) ||
@@ -321,9 +485,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           ) {
             el.outOfRange = true;
           }
-
           //console.log("gettime" + new Date(el.date).getTime());
-
           if (new Date(el.date).getTime() < this.dateRange.startDate.getTime() || new Date(el.date).getTime() > this.dateRange.endDate.getTime()) {
           }
           else {
@@ -331,98 +493,92 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           }
         }
 
+
         if (filteredValues.length > 0) {
 
-
+          //sort values by date for graph to be shown correctly
           let sortedValues = filteredValues.sort(function (a, b) {
             return new Date(a.date).getTime() - new Date(b.date).getTime();
           });
 
+          // find minimum value for a hack
+          min = sortedValues.reduce(function (m, o) {
+            return (o.value != null && o.value < m) ? o.value : m;
+          }, Infinity);
 
           let newGraphValues = [];
 
-
           //var i = 0;
           for (let observation of sortedValues) {
-
             //newValues.push({x: i++, y: i});
-
             newGraphValues.push({
               observation: observation,
               unit: group.unit,
               name: group.name
             });
-            //{"x": new Date(observation.date).getTime(), "y": observation.value})
-
-
-            //if (observation.value === null) console.log("found null");
-
-            //console.log( group.name + " / " + group.unit + " " +
-            // observation.date + " " + observation.value);
           }
 
-
-          index++;
+          //index++;
           this.data.push({
             label: group.unit,
             name: group.name,
-            key: group.unit + " (" + group.name + ")",
+            key: (this.chartType === undefined ? "line" : this.chartType) + group.unit + " (" + group.name + ")",
             values: newGraphValues,
-            color: group.color,
+            color: this.isHighContrast && this.observationId === 'all' ? (isLeft ? "red" : "green") : group.color,
             //area: false,
             //mean: 120,
             disabled: false,
-            yAxis: group.showLeft ? 1 : 2,
+            yAxis: isLeft ? 1 : 2,
             xAxis: 1,
-            type: 'line'   //group.type
-
+            type: this.chartType === undefined ? "line" : this.chartType//group.type ? group.type : 'line'
           });
 
+          //console.log("chartType: ", this.chartType);
 
+          // paint horizontal lines for min, mid, max values
           if (this.showMinMidMax) {
-
             if (group.minValue != null) {
+
               let newGraphValuesMin = [];
               newGraphValuesMin.push({observation: {date: this.dateRange.startDate, value: group.minValue}});
               newGraphValuesMin.push({observation: {date: this.dateRange.endDate, value: group.minValue}});
               //min value line
-              index++;
+              //index++;
               this.data.push({
                 label: group.unit,
                 name: group.name,
                 values: newGraphValuesMin,
                 key: "hidemin" + group.id,
-                color: group.color,
+                color: this.isHighContrast && this.observationId === 'all' ? (isLeft ? "red" : "green") : group.color,
                 //area: false,
                 //mean: 120,
                 disabled: false,
-                yAxis: group.showLeft ? 1 : 2,
+                yAxis: isLeft ? 1 : 2,
                 xAxis: 1,
                 type: 'line',
                 classed: 'dashed'
               })
             }
 
-
             if (group.maxValue != null) {
               let newGraphValuesMax = [];
               newGraphValuesMax.push({observation: {date: this.dateRange.endDate, value: group.maxValue}});
               newGraphValuesMax.push({observation: {date: this.dateRange.startDate, value: group.maxValue}});
               //max value line
-              index++;
+              //index++;
               this.data.push({
                 label: group.unit,
                 name: group.name,
                 values: newGraphValuesMax,
                 key: "hidemax" + group.id,
-                color: group.color,
+                color: this.isHighContrast && this.observationId === 'all' ? (isLeft ? "red" : "green") : group.color,
                 //area: false,
                 //mean: 120,
                 disabled: false,
-                yAxis: group.showLeft ? 1 : 2,
+                yAxis: isLeft ? 1 : 2,
                 xAxis: 1,
                 type: 'line',
-                classed: 'dashed'
+                classed: 'not-dashed'
               })
             }
 
@@ -431,17 +587,17 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
               newGraphValuesMid.push({observation: {date: this.dateRange.startDate, value: group.midValue}});
               newGraphValuesMid.push({observation: {date: this.dateRange.endDate, value: group.midValue}});
               //mid value line
-              index++;
+              //index++;
               this.data.push({
                 label: group.unit,
                 name: group.name,
                 values: newGraphValuesMid,
                 key: "hidemid" + group.id,
-                color: group.color,
+                color: this.isHighContrast && this.observationId === 'all' ? (isLeft ? "red" : "green") : group.color,
                 //area: false,
                 //mean: 120,
                 disabled: false,
-                yAxis: group.showLeft ? 1 : 2,
+                yAxis: isLeft ? 1 : 2,
                 xAxis: 1,
                 type: 'line',
                 classed: 'dashed-long'
@@ -453,140 +609,183 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       }
     }
 
-    // HACK adding line with min max date to normalize xRange for left/right y axes
-    if (isThereGraph) {
+    // HACK adding line with min max date to normalize xRange for left/right y axes. It will also force y axis to show zero if requested
+    if (min !== null) {
 
-      let newGraphValuesHackLeftAxis = [];
-      newGraphValuesHackLeftAxis.push({observation: {date: this.dateRange.startDate, value: 0}});
-      newGraphValuesHackLeftAxis.push({observation: {date: this.dateRange.endDate, value: 0}});
-      index++;
+      let newGraphValuesHackLeftAxis = [{
+        observation: {
+          date: this.dateRange.startDate,
+          value: this.forceYZero || this.chartType === "area" || this.chartType === "bar" ? 0 : min
+        }
+      },
+        {
+          observation: {
+            date: this.dateRange.endDate,
+            value: this.forceYZero || this.chartType === "area" || this.chartType === "bar" ? 0 : min
+          }
+        }];
+      //index++;
       this.data.push({
-        label: "hideXDomainFixLeft",
-        name: "hideXDomainFixLeft",
+        label: "hideXDomainFix" + side,
+        name: "hideXDomainFix" + side,
         values: newGraphValuesHackLeftAxis,
-        key: "hideXDomainFixLeft",
+        key: "hideXDomainFix" + side,
         color: "grey",
         //area: false,
         //mean: 120,
         disabled: false,
-        yAxis: 1,
+        yAxis: isLeft ? 1 : 2,
         xAxis: 1,
         type: 'line',
         classed: 'hidden-line'
       });
-
-      if (this.observationGroups.length !== 1) {
-        let newGraphValuesHackRightAxis = [];
-        newGraphValuesHackRightAxis.push({observation: {date: this.dateRange.startDate, value: 0}});
-        newGraphValuesHackRightAxis.push({observation: {date: this.dateRange.endDate, value: 0}});
-        index++;
-        this.data.push({
-          label: "hideXDomainFixRight",
-          name: "hideXDomainFixRight",
-          values: newGraphValuesHackRightAxis,
-          key: "hideXDomainFixRight",
-          color: "grey",
-          //area: false,
-          //mean: 120,
-          disabled: false,
-          yAxis: 2,
-          xAxis: 1,
-          type: 'line',
-          classed: 'hidden-line'
-        });
-      }
-
     }
 
+
+    //this.data=data;
+    //this.data=[];
+
+    return min;
   }
 
-  public refreshRange(start: Date, end: Date): void {
+  public updateDates(): void {
 
-    this.dateRange.startDate = start;
-    this.dateRange.endDate = end;
+
     this.options.chart.xDomain = [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()];
     this.options.chart.xRange = [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()];
     this.options.chart.xScale = [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()];
-    this.reloadDataToGraph();
+
+
+    //this.getObservations();
+
   }
 
   public toggleLeft(id: string, name: string) {
 
     for (let i = 0; i < this.observationGroups.length; i++) {
       if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
-        this.observationGroups[i].showLeft = !this.observationGroups[i].showLeft;
-        if (this.observationGroups[i].showLeft) {
-          this.observationGroups[i].showRight = false;
-          this.showAllRight = false;
-        } else {
-          this.showAllLeft = false;
-        }
-        break;
+        this.observationGroups[i].showLeft = true;//!this.observationGroups[i].showLeft;
+
+      }
+      else {
+        this.observationGroups[i].showLeft = false;
       }
     }
-    this.reloadDataToGraph()
+    this.callServiceToGetObservations()
   }
 
   public toggleRight(id: string, name: string) {
 
     for (let i = 0; i < this.observationGroups.length; i++) {
       if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
-        this.observationGroups[i].showRight = !this.observationGroups[i].showRight;
-        if (this.observationGroups[i].showRight) {
-          this.observationGroups[i].showLeft = false;
-          this.showAllLeft = false;
-        } else {
-          this.showAllRight = false;
-        }
-        break;
+        this.observationGroups[i].showRight = true;//!this.observationGroups[i].showRight;
+      }
+      else {
+        this.observationGroups[i].showRight = false;
       }
     }
-    this.reloadDataToGraph()
+    this.callServiceToGetObservations()
   }
 
 
   public clearAll() {
-    this.showAllRight = false;
-    this.showAllLeft = false;
     for (var i = 0; i < this.observationGroups.length; i++) {
-      this.observationGroups[i].showLeft = this.showAllLeft;
-      this.observationGroups[i].showRight = this.showAllRight;
+      this.observationGroups[i].showLeft = false;
+      this.observationGroups[i].showRight = false;
     }
-    this.reloadDataToGraph();
+    this.callServiceToGetObservations();
   }
 
-  public enableInitialGraphs() {
+  public showHighContrast() {
+    this.isHighContrast = !this.isHighContrast;
+    this.callServiceToGetObservations();
+  }
 
-    for (let i = 0; i < this.observationGroups.length; i++) {
-      this.observationGroups[i].showRight = false;
+  public showAllRight() {
+
+    for (var i = 0; i < this.observationGroups.length; i++) {
       this.observationGroups[i].showLeft = false;
-      //console.log(this.forMeasurements);
-      if (this.forMeasurements === "all" || this.forMeasurements === this.observationGroups[i].id) {
+      this.observationGroups[i].showRight = true;
+    }
+    this.callServiceToGetObservations();
+  }
+
+  public showAllLeft() {
+
+    for (var i = 0; i < this.observationGroups.length; i++) {
+      this.observationGroups[i].showLeft = true;
+      //this.observationGroups[i].showRight = false;
+    }
+    this.callServiceToGetObservations();
+  }
+
+  public enableInitialGraphs(oldOnOffData: any) {
+    if (oldOnOffData.length > 1) {
+      for (let i = 0; i < this.observationGroups.length; i++) {
+        for (let oldGroup of oldOnOffData) {
+          if (this.observationGroups[i].id === oldGroup.id) {
+            this.observationGroups[i].showLeft = oldGroup.showLeft;
+            this.observationGroups[i].showRight = oldGroup.showRight;
+            break;
+          }
+        }
+      }
+    }
+    else {
+      for (let i = 0; i < this.observationGroups.length; i++) {
+        this.observationGroups[i].showRight = false;
         this.observationGroups[i].showLeft = true;
+        //console.log(this.forMeasurements);
+        //if (this.forMeasurements === "all") {
+        //  this.observationGroups[i].showLeft = false;
+        //}
+        if (this.observationId === this.observationGroups[i].id) {
+          this.observationGroups[i].showLeft = true;
+        }
       }
     }
   }
 
 
-  private toggleAll() {
-    if (!this.showAllLeft && !this.showAllRight) {
-      this.showAllLeft = true;
-    } else if (this.showAllRight) {
-      this.showAllRight = false;
-      this.showAllLeft = false;
-    } else {
-      this.showAllRight = true;
-    }
-    for (let i = 0; i < this.observationGroups.length; i++) {
+  public resetMinMidMax() {
+    this.showMinMidMax = !this.showMinMidMax;
+    this.callServiceToGetObservations();
+  }
 
-      this.observationGroups[i].showLeft = this.showAllLeft;
-      this.observationGroups[i].showRight = this.showAllRight;
+
+  toggleChartType2(type: string) {
+
+    if (this.chartType !== type) {
+      this.data = [];
+      this.chartType = type;
+      this.callServiceToGetObservations();
     }
   }
 
-  public resetMinMidMax() {
-    this.showMinMidMax = !this.showMinMidMax;
-    this.reloadDataToGraph();
+  toggleZero() {
+    this.forceYZero = !this.forceYZero;
+    this.callServiceToGetObservations()
+  }
+
+  hideTooltipElements() {
+    //console.log("cleaning tooltips");
+    d3.selectAll('.nvtooltip').style("opacity", "0");
+
+  }
+
+  removeTooltipElements() {
+    //console.log("cleaning tooltips");
+    d3.selectAll('.nvtooltip').remove();
+
+  }
+
+  @HostListener("window:scroll", [])
+
+
+  //HACK to hide tooltips that stayed on screen when scrolling on mobile device
+  onWindowScroll() {
+    //console.log("scroll detected");
+    this.hideTooltipElements();
   }
 
 

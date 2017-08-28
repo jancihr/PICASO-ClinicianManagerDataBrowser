@@ -3,9 +3,9 @@
  */
 
 import {Component, Input, OnInit} from "@angular/core";
-import {PatientData} from "../model/patient-data"
-import {PicasoDataService} from "../service/picaso-data-cnet.service";
+import {PicasoDataService} from "../service/picaso-data.service";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
+import {InfoResult} from "../model/generated-interfaces";
 
 
 @Component({
@@ -18,7 +18,7 @@ import {PatientLoadProgress} from "../model/patient-loadprogress";
 export class PatientOverviewComponent implements OnInit {
 
   errorMessage: string;
-  patientData: PatientData;
+  patientData: InfoResult;
   selectedPatient: string = "1007";
   token: string;
 
@@ -58,9 +58,31 @@ export class PatientOverviewComponent implements OnInit {
   getPatient(): void {
 
     //console.log("getPatient", this.selectedPatient);
-    this.picasoDataService.getPatient(this.selectedPatient, this.progress).subscribe(
+    this.picasoDataService.getPatient(this.progress).subscribe(
       patient => this.patientData = patient,
       error => this.errorMessage = <any>error);
+
+
+    setTimeout(() => {
+      this.progress.percentage = 0;
+    }, 300);
+    setTimeout(() => {
+      this.progress.percentage = 25
+    }, 600);
+    setTimeout(() => {
+      this.progress.percentage = 50
+    }, 900);
+    setTimeout(() => {
+      this.progress.percentage = 75
+    }, 1200);
+    setTimeout(() => {
+      this.progress.percentage = 100
+    }, 1500);
+
+    setTimeout(() => {
+      this.progress.total = 2000
+    }, 1800);
+
 
     //console.log("webservice called");
     //console.log(this.patientData);
@@ -75,6 +97,8 @@ export class PatientOverviewComponent implements OnInit {
   }
 
   getPatients(): void {
+
+
     this.picasoDataService.getPatients(this.progress).subscribe(
       patientsList => {
         this.patientsList = patientsList;

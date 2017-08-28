@@ -1,43 +1,57 @@
-button {
-  background-color: #eee;
-  padding: 0.25rem 0.25rem;
-  border-radius: 10px;
+
+.my-animate-left {
+  position: relative;
+  -webkit-animation: myanimateleft 0.4s;
+  animation: myanimateleft 0.4s
 }
 
-button:hover {
-  background-color: #cfd8dc;
+@-webkit-keyframes myanimateleft {
+  from {
+    left: -300px;
+    opacity: 0
+  }
+  to {
+    left: 0;
+    opacity: 1
+  }
 }
 
-button:disabled {
-  background-color: #eee;
-  color: #aaa;
-  cursor: auto;
+@keyframes myanimateleft {
+  from {
+    left: -300px;
+    opacity: 0
+  }
+  to {
+    left: 0;
+    opacity: 1
+  }
 }
 
-.card {
-    border-radius: 10px;
+.my-animate-left2 {
+  position: relative;
+  -webkit-animation: myanimateleft2 0.4s;
+  animation: myanimateleft2 0.4s
 }
 
-.card-footer {
-    border-radius: 10px;
+@-webkit-keyframes myanimateleft2 {
+  from {
+    left: -300px;
+    opacity: 0
+  }
+  to {
+    left: 0;
+    opacity: 1
+  }
 }
 
-.card-header {
-    border-radius: 10px;
+@keyframes myanimateleft2 {
+  from {
+    left: -300px;
+    opacity: 0
+  }
+  to {
+    left: 0;
+    opacity: 1
+  }
 }
 
-.card-footer {
-  padding: 0.25rem;
-}
-
-.card-block {
-  padding: 0.25rem;
-}
-
-.card-header {
-  padding: 0.25rem;
-}
-
-.card {
-  margin-bottom: 0.25rem;
-}

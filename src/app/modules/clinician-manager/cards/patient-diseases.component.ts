@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import {PicasoDataService} from "../service/picaso-data.service";
-import {PatientDisease} from "../model/patient-disease";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
+import {DiseasesResult} from "../model/generated-interfaces";
+
 
 
 @Component({
@@ -14,7 +15,7 @@ import {PatientLoadProgress} from "../model/patient-loadprogress";
 
 export class PatientDiseasesComponent implements OnInit {
     errorMessage: string;
-    diseases: PatientDisease[];
+  diseases: DiseasesResult[];
 
     public filterQuery = "";
     public rowsOnPage = 5;

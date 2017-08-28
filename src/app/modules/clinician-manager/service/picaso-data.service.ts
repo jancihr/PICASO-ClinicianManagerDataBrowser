@@ -1,28 +1,38 @@
 import {Injectable} from '@angular/core';
-import {Headers, Http, Response} from '@angular/http';
+import {Response} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
-import {PatientData} from '../model/patient-data';
 import {Observable} from 'rxjs/Observable';
-import {PatientObservationGroup} from "../model/patient-observation-group";
-import {PatientMedication} from "../model/patient-medication";
-import {PatientDisease} from "../model/patient-disease";
-import {PatientClinician} from "../model/patient-clinician";
-import {PatientTreatment} from "../model/patient-treatment";
-import {PatientImage} from "../model/patient-image";
 import {ProgressHttp} from "angular-progress-http";
-import {PatientNotification} from "../model/patient-notification";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {CdSharedModelService} from "../../../picaso-cd-common/_services/cd-shared-model.service";
-import {PatientConcludingComments} from "../model/patient-concluding-comments";
-import {PatientFollowUpAppointment} from "../model/patient-follow-up-appointment";
+
+import {
+  CareProfessionalVisit,
+  CliniciansResult, ConcludingCommentsResult, DiseasesResult, FollowUpsResult, FunctionalDiagnosticsResult,
+  ImagingResult, InfoResult,
+  LabTestResult, MedicationIntakesResult,
+  MedicationPrescriptionsResult,
+  ObservationResult,
+  ODSResult, PatientReportedOutcomesResult, PsychologicalNeurologicalTestsPerformed, QuestionaryFilled
+} from "../model/generated-interfaces";
 
 
 @Injectable()
 export class PicasoDataService {
 
-  private patientODSServiceURL = 'assets/fakeODS/db.json';
+  private patientODSServiceURL = 'assets/fakeODS/cm_db_new.ods.json';
+  //private patientODSServiceURL = 'assets/fakeODS/cm_db_from_ods.ods.json';
+
+  private patientODSServiceURLRemote = 'http://212.214.80.143:32772/api/v1/patient/11892829/anycall?startDate=2016-01-01T00%3A00%3A00&endDate=2017-11-20T23%3A59%3A59';
+  private patientListServiceURL = "http://212.214.80.143:32772/api/v1/patient/all";
+  private tokenServiceURL = "http://212.214.80.143:32772/api/v1/authentication/login";
+
+  private fullJson: ODSResult = null;
+
+  //11892829
+
 
   //private patientDataServiceURL = 'http://147.232.202.101:9004/info';  // URL to web api
   //private observationsDataServiceURL = 'http://147.232.202.101:9004/observations';  // URL to web api
@@ -39,27 +49,7 @@ export class PicasoDataService {
   }
 
 
-  getNotifications(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientNotification[]> {
-    return this.http.withDownloadProgressListener(progress => {
-      //console.log(`Progress ${progress.percentage}%`);
-      //console.log(`Loading ${progress.loaded} bytes`);
-      //console.log(`Total ${progress.total} bytes`);
-      progressResult.percentage = progress.percentage;
-      progressResult.total = progress.total;
-      progressResult.loaded = progress.loaded;
-
-    })
-      .get(this.patientODSServiceURL)
-      .map(response => {
-          //console.log("getting notifications for patient", this.cdSharedModelService.get().patient.display);
-          return this.extractDataNotifications(response);
-        }
-      )
-      .catch(this.handleError)
-      ;
-  }
-
-  getDiseases(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientDisease[]> {
+  getDiseases(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<DiseasesResult[]> {
     return this.http.withDownloadProgressListener(progress => {
       //console.log(`Progress ${progress.percentage}%`);
       //console.log(`Loading ${progress.loaded} bytes`);
@@ -74,20 +64,12 @@ export class PicasoDataService {
       ;
   }
 
-  getImaging(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientImage[]> {
-    return this.http.withDownloadProgressListener(progress => {
-      //console.log(`Loading ${progress.percentage}%`);
-      progressResult.percentage = progress.percentage;
-      progressResult.total = progress.total;
-      progressResult.loaded = progress.loaded;
-    })
-      .get(this.patientODSServiceURL)
-      .map(this.extractDataImaging)
-      .catch(this.handleError)
-      ;
+  private extractDataDiseases(res: Response) {
+    return res.json().diseasesResult;
   }
 
-  getClinicians(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientClinician[]> {
+
+  getClinicians(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<CliniciansResult[]> {
 
 
     return this.http.withDownloadProgressListener(progress => {
@@ -102,7 +84,11 @@ export class PicasoDataService {
       ;
   }
 
-  getConcludingComments(startDate: Date, endDate: Date, clinicianId: string, progressResult: PatientLoadProgress): Observable<PatientConcludingComments[]> {
+  private extractDataClinicians(res: Response) {
+    return res.json().cliniciansResult;
+  }
+
+  getConcludingComments(startDate: Date, endDate: Date, clinicianId: string, progressResult: PatientLoadProgress): Observable<ConcludingCommentsResult[]> {
 
 
     return this.http.withDownloadProgressListener(progress => {
@@ -117,8 +103,12 @@ export class PicasoDataService {
       ;
   }
 
+  private extractConcludingComments(res: Response) {
+    return res.json().concludingCommentsResult;
+  }
 
-  getFollowUps(startDate: Date, endDate: Date, clinicianId: string, progressResult: PatientLoadProgress): Observable<PatientFollowUpAppointment[]> {
+
+  getFollowUps(startDate: Date, endDate: Date, clinicianId: string, progressResult: PatientLoadProgress): Observable<FollowUpsResult[]> {
 
 
     return this.http.withDownloadProgressListener(progress => {
@@ -133,7 +123,11 @@ export class PicasoDataService {
       ;
   }
 
-  getObservations(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientObservationGroup[]> {
+  private extractFollowUps(res: Response) {
+    return res.json().followUpsResult;
+  }
+
+  getObservations(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<ObservationResult[]> {
 
 
     return this.http.withDownloadProgressListener(progress => {
@@ -148,144 +142,185 @@ export class PicasoDataService {
       ;
   }
 
-  getMorisky(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientObservationGroup[]> {
-
-
-    return this.http.withDownloadProgressListener(progress => {
-      //console.log(`Loading ${progress.percentage}%`);
-      progressResult.percentage = progress.percentage;
-      progressResult.total = progress.total;
-      progressResult.loaded = progress.loaded;
-    })
-      .get(this.patientODSServiceURL)
-      .map(this.extractDataMorisky)
-      .catch(this.handleError)
-      ;
-  }
-
-
-  getMedicationHistory(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientMedication[]> {
-    return this.http.withDownloadProgressListener(progress => {
-      //console.log(`Loading ${progress.percentage}%`);
-      progressResult.percentage = progress.percentage;
-      progressResult.total = progress.total;
-      progressResult.loaded = progress.loaded;
-    })
-      .get(this.patientODSServiceURL)
-      .map(this.extractDataMedications)
-      .catch(this.handleError)
-      ;
-  }
-
-  getTreatmentsHistory(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientTreatment[]> {
-
-    return this.http.withDownloadProgressListener(progress => {
-      //console.log(`Loading ${progress.percentage}%`);
-      progressResult.percentage = progress.percentage;
-      progressResult.total = progress.total;
-      progressResult.loaded = progress.loaded;
-    })
-      .get(this.patientODSServiceURL)
-      .map(this.extractDataChecks)
-      .catch(this.handleError)
-      ;
-  }
-
-
-  getPatient(progressResult: PatientLoadProgress): Observable<PatientData> {
-
-    return this.http.withDownloadProgressListener(progress => {
-
-      //TODO to be deleted later - fake progress
-      setTimeout(() => {
-        progressResult.percentage = 0;
-      }, 100);
-      setTimeout(() => {
-        progressResult.percentage = 25
-      }, 200);
-      setTimeout(() => {
-        progressResult.percentage = 50
-      }, 300);
-      setTimeout(() => {
-        progressResult.percentage = 75
-      }, 400);
-      setTimeout(() => {
-        progressResult.percentage = 100
-      }, 500);
-
-      setTimeout(() => {
-        progressResult.total = progress.total
-      }, 600);
-
-
-      // TODO to be uncommented later - real progress
-      // progressResult.percentage = progress.percentage;
-      // progressResult.total = progress.total;
-      progressResult.loaded = progress.loaded;
-    })
-      .get(this.patientODSServiceURL)
-      .map(response => {
-        return this.extractDataInfo(response, this.cdSharedModelService.get().patient.display);
-      })
-      .catch(this.handleError)
-      ;
-  }
-
-  //private  extractData(res: Response) {
-  //    return res.json();
-  //}
-
-  private extractDataInfo(res: Response, name: string) {
-
-    var result: PatientData = res.json().info;
-
-    result.name = name;
-
-    return result;
-
-  }
-
-
-  private extractDataMorisky(res: Response) {
-    return res.json().morisky;
-  }
-
-  private extractConcludingComments(res: Response) {
-    return res.json().concludingComments;
-  }
-
-  private extractFollowUps(res: Response) {
-    return res.json().followUps;
-  }
-
-
   private extractDataObservations(res: Response) {
-    return res.json().observations;
+    return res.json().observationResult;
   }
 
-  private extractDataMedications(res: Response) {
-    return res.json().medications;
+
+  getMedicationIntakeHistory(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<MedicationIntakesResult[]> {
+    return this.http.withDownloadProgressListener(progress => {
+      //console.log(`Loading ${progress.percentage}%`);
+      progressResult.percentage = progress.percentage;
+      progressResult.total = progress.total;
+      progressResult.loaded = progress.loaded;
+    })
+      .get(this.patientODSServiceURL)
+      .map(this.extractDataMedicationIntake)
+      .catch(this.handleError)
+      ;
   }
 
-  private extractDataClinicians(res: Response) {
-    return res.json().clinicians;
+  private extractDataMedicationIntake(res: Response) {
+    return res.json().medicationIntakesResult;
   }
 
-  private extractDataChecks(res: Response) {
-    return res.json().treatments;
+  getMedicationPrescriptionHistory(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<MedicationPrescriptionsResult[]> {
+    return this.http.withDownloadProgressListener(progress => {
+      //console.log(`Loading ${progress.percentage}%`);
+      progressResult.percentage = progress.percentage;
+      progressResult.total = progress.total;
+      progressResult.loaded = progress.loaded;
+    })
+      .get(this.patientODSServiceURL)
+      .map(this.extractDataMedicationPrescription)
+      .catch(this.handleError)
+      ;
   }
 
-  private extractDataDiseases(res: Response) {
-    return res.json().diseases;
+  private extractDataMedicationPrescription(res: Response) {
+    return res.json().medicationPrescriptionsResult;
   }
 
-  private extractDataNotifications(res: Response) {
-    return res.json().notifications;
+  getProfessionalVisits(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<CareProfessionalVisit[]> {
+    return this.http.withDownloadProgressListener(progress => {
+      //console.log(`Loading ${progress.percentage}%`);
+      progressResult.percentage = progress.percentage;
+      progressResult.total = progress.total;
+      progressResult.loaded = progress.loaded;
+    })
+      .get(this.patientODSServiceURL)
+      .map(this.extractProfessionalVisits)
+      .catch(this.handleError)
+      ;
   }
 
-  private extractDataImaging(res: Response) {
-    return res.json().imaging;
+  private extractProfessionalVisits(res: Response) {
+    return res.json().careProfessionalVisit;
   }
+
+  getLabTestResults(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<LabTestResult[]> {
+    return this.http.withDownloadProgressListener(progress => {
+      //console.log(`Loading ${progress.percentage}%`);
+      progressResult.percentage = progress.percentage;
+      progressResult.total = progress.total;
+      progressResult.loaded = progress.loaded;
+    })
+      .get(this.patientODSServiceURL)
+      .map(this.extractLabTestResult)
+      .catch(this.handleError)
+      ;
+  }
+
+  private extractLabTestResult(res: Response) {
+    return res.json().labTestResult;
+  }
+
+  getImagingResults(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<ImagingResult[]> {
+    return this.http.withDownloadProgressListener(progress => {
+      //console.log(`Loading ${progress.percentage}%`);
+      progressResult.percentage = progress.percentage;
+      progressResult.total = progress.total;
+      progressResult.loaded = progress.loaded;
+    })
+      .get(this.patientODSServiceURL)
+      .map(this.extractImagingResult)
+      .catch(this.handleError)
+      ;
+  }
+
+  private extractImagingResult(res: Response) {
+    return res.json().imagingResult;
+  }
+
+  getPsychologicalNeurologicalTestsPerformedResults(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PsychologicalNeurologicalTestsPerformed[]> {
+    return this.http.withDownloadProgressListener(progress => {
+      //console.log(`Loading ${progress.percentage}%`);
+      progressResult.percentage = progress.percentage;
+      progressResult.total = progress.total;
+      progressResult.loaded = progress.loaded;
+    })
+      .get(this.patientODSServiceURL)
+      .map(this.extractPsychologicalNeurologicalTestsPerformed)
+      .catch(this.handleError)
+      ;
+  }
+
+  private extractPsychologicalNeurologicalTestsPerformed(res: Response) {
+    return res.json().psychologicalNeurologicalTestsPerformed;
+  }
+
+
+  getFunctionalDiagnosticsResult(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<FunctionalDiagnosticsResult[]> {
+    return this.http.withDownloadProgressListener(progress => {
+      //console.log(`Loading ${progress.percentage}%`);
+      progressResult.percentage = progress.percentage;
+      progressResult.total = progress.total;
+      progressResult.loaded = progress.loaded;
+    })
+      .get(this.patientODSServiceURL)
+      .map(this.extractFunctionalDiagnosticsResult)
+      .catch(this.handleError)
+      ;
+  }
+
+  private extractFunctionalDiagnosticsResult(res: Response) {
+    return res.json().functionalDiagnosticsResult;
+  }
+
+  getPatientReportedOutcomesResultResult(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<PatientReportedOutcomesResult[]> {
+    return this.http.withDownloadProgressListener(progress => {
+      //console.log(`Loading ${progress.percentage}%`);
+      progressResult.percentage = progress.percentage;
+      progressResult.total = progress.total;
+      progressResult.loaded = progress.loaded;
+    })
+      .get(this.patientODSServiceURL)
+      .map(this.extractPatientReportedOutcomesResult)
+      .catch(this.handleError)
+      ;
+  }
+
+  private extractPatientReportedOutcomesResult(res: Response) {
+    return res.json().patientReportedOutcomesResult;
+  }
+
+  getQuestionaryFilledResult(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<QuestionaryFilled[]> {
+    return this.http.withDownloadProgressListener(progress => {
+      //console.log(`Loading ${progress.percentage}%`);
+      progressResult.percentage = progress.percentage;
+      progressResult.total = progress.total;
+      progressResult.loaded = progress.loaded;
+    })
+      .get(this.patientODSServiceURL)
+      .map(this.extractQuestionaryFilled)
+      .catch(this.handleError)
+      ;
+  }
+
+  private extractQuestionaryFilled(res: Response) {
+
+    return res.json().questionaryFilled;
+
+  }
+
+
+  getPatient(progressResult: PatientLoadProgress): Observable<InfoResult> {
+
+    return this.http.withDownloadProgressListener(progress => {
+      progressResult.percentage = progress.percentage;
+      progressResult.total = progress.total;
+      progressResult.loaded = progress.loaded;
+    })
+      .get(this.patientODSServiceURL)
+      .map(this.extractDataInfo)
+      .catch(this.handleError)
+      ;
+  }
+
+  private extractDataInfo(res: Response) {
+    return res.json().infoResult;
+  }
+
 
 
   private handleError(error: Response | any) {
@@ -302,6 +337,57 @@ export class PicasoDataService {
     return Observable.throw(errMsg);
   }
 
+
+  getPatients(progressResult: PatientLoadProgress): Observable<string[]> {
+    return this.http.withDownloadProgressListener(progress => {
+      //console.log(`Progress ${progress.percentage}%`);
+      //console.log(`Loading ${progress.loaded} bytes`);
+      //console.log(`Total ${progress.total} bytes`);
+      progressResult.percentage = progress.percentage;
+      progressResult.total = progress.total;
+      progressResult.loaded = progress.loaded;
+
+    }).get(this.patientListServiceURL)
+      .map(response => {
+        return this.extractPatientList(response);
+      })
+      .catch(this.handleError)
+      ;
+  }
+
+  private extractPatientList(res: Response) {
+
+    //console.log("listcallresult", result);
+    var result = res.json();
+
+
+    var returnValue = result.usernames;
+
+    return returnValue
+  }
+
+  getToken(user: string, pass: string, progressResult: PatientLoadProgress): Observable<string> {
+
+    return this.http.withDownloadProgressListener(progress => {
+      //console.log(`Progress ${progress.percentage}%`);
+      //console.log(`Loading ${progress.loaded} bytes`);
+      //console.log(`Total ${progress.total} bytes`);
+      progressResult.percentage = progress.percentage;
+      progressResult.total = progress.total;
+      progressResult.loaded = progress.loaded;
+
+    })
+      .get(this.tokenServiceURL, {body: {UserNAme: user, Password: pass}})
+      .map(response => {
+        return this.extracTokenInfo(response);
+      })
+      .catch(this.handleError)
+      ;
+  }
+
+  private extracTokenInfo(res: Response) {
+    return res.json().Message;
+  }
 
 }
 

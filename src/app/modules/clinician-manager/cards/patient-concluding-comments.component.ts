@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {PicasoDataService} from "../service/picaso-data.service";
-import {PatientConcludingComments} from "../model/patient-concluding-comments";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
+import {ConcludingCommentsResult} from "../model/generated-interfaces";
 
 @Component({
   selector: 'patient-concluding-comments',
@@ -13,7 +13,7 @@ import {PatientLoadProgress} from "../model/patient-loadprogress";
 
 export class PatientConcludingCommentsComponent implements OnInit {
   errorMessage: string;
-  concludingComments: PatientConcludingComments[];
+  concludingComments: ConcludingCommentsResult[];
 
   public filterQuery = "";
   public rowsOnPage = 5;

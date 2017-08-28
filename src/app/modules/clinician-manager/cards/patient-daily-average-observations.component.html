@@ -1,85 +1,200 @@
 <div class="card">
-  <div *ngIf="headerText || (progress.percentage < 100)" class="card-header w3-blue  w3-center">
+  <div *ngIf="headerText || (progress.percentage < 100)" class="card-header measurement-header  ">
 
-    <div i18n="Average daily observations"><i class="fa fa-heartbeat"></i>
+    <div><i class="fa fa-heartbeat"></i>
 
       <span *ngIf="headerText">{{headerText}}
       </span>
+
       <span class="w3-right">
 
       <span *ngIf="(progress.percentage < 100)">
 
         <span class="fa fa-spinner w3-spin" style="font-size:20px"></span>
 
-        loading: {{progress.percentage}}% |
-      loaded: {{progress.total}} bytes</span>
+        loading:
+        {{progress.percentage}}% |
+      loaded: {{progress.total}} bytes
+
+
+      </span>
     </span>
 
     </div>
 
   </div>
-  <div *ngIf="observationGroups" class="card-block" style="overflow-x: auto;">
+  <div *ngIf="observationGroups" class="card-block" style="overflow-x: hidden;">
 
     <div class="row">
-      <div class="w3-center">
+      <div class="">
 
-        <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
-                class="btn btn-default"
-                (click)="clearAll()">
-          <span>  <i class="fa fa-circle-o"></i> </span>
-          Clear graph
-          <span>
-          </span>
-        </button>
+        <div>
 
-        <button type="button"
-                class="btn btn-default"
-                (click)="resetMinMidMax()">
-          <span>  <i class="fa {{showMinMidMax?'fa-circle':'fa-circle-o'}}"></i> </span>
-          min/mid/max lines
-          <span>
-          </span>
-        </button>
+          <!--
+          <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
+                  class="button-clear"
+                  (click)="clearAll()">
+            <i class="fa fa-minus-circle"></i>
+            Clear all
 
-        <span *ngIf="observationGroups && observationGroups.length!==1">
-        <span *ngFor="let group of observationGroups">
+          </button>
+          -->
 
-          <span style="white-space: nowrap">
 
-            <button type="button" class="btn btn-default"
-                    (click)="toggleLeft(group.id, group.name)"> {{group.name}}</button>
+          <button type="button"
+                  class="button-clear"
+                  (click)="toggleChartType2('line')">
+            <i class="fa fa-line-chart">
+            </i>
+          </button>
 
-            <button
-              type="button"
-              class="btn btn-default"
-              (click)="toggleLeft(group.id, group.name)">
-              <span [style.color]="group.color">
-                                <i class="fa {{group.showLeft?'fa-circle':'fa-circle-o'}}"></i>
-                            </span>
+          <button type="button"
+                  class="button-clear"
+                  (click)="toggleChartType2('bar')">
+            <i class="fa fa-bar-chart">
+            </i>
+          </button>
+
+          <button type="button"
+                  class="button-clear"
+                  (click)="toggleChartType2('scatter')">
+            <i class="fa fa-dot-circle-o">
+            </i>
+          </button>
+
+          <button type="button"
+                  class="button-clear"
+                  (click)="toggleChartType2('area')">
+            <i class="fa fa-area-chart">
+            </i>
+          </button>
+
+
+          <button *ngIf="observationId==='all' && observationGroups && observationGroups.length!==1" type="button"
+                  class="button-clear"
+                  (click)="showHighContrast()">
+
+           <span *ngIf="!isHighContrast">
+             <span class="chart-normal-color1"> <i class="fa fa-circle"></i></span>
+             <span class="chart-normal-color4"> <i class="fa fa-circle"></i></span>
+           </span>
+            <span *ngIf="isHighContrast">
+             <span style="color:red"> <i class="fa fa-circle"></i></span>
+             <span style="color: green"> <i class="fa fa-circle"></i></span>
+           </span>
+            <span *ngIf="!isHighContrast">Original Colours</span>
+            <span *ngIf="isHighContrast">Contrast Colours</span>
+
+          </button>
+
+
+          <!--
+
+                  <button *ngIf="isThereMid || isThereMax || isThereMin" type="button"
+                          class="button-clear"
+                          (click)="resetMinMidMax()">
+                    <span>  <i class="fa {{showMinMidMax?'fa-circle':'fa-circle-o'}}"></i> </span>
+                    <span *ngIf="!showMinMidMax"></span> <span *ngIf="showMinMidMax"></span> <span *ngIf="isThereMin">Min</span>
+                    <span *ngIf="isThereMid">Mid</span> <span *ngIf="isThereMax">Max</span>
+                    <span>
+                  </span>
+                  </button>
+
+                  -->
+
+          <button
+            *ngIf="((min1!==null && min1>0)|| (min2!== null && min2>0)) && chartType!=='bar' && chartType!=='area'"
+            type="button"
+            class="button-clear"
+            (click)="toggleZero()">
+
+            <span>  <i class="fa {{forceYZero?'fa-circle':'fa-circle-o'}}"></i> </span> Zero Axis
+          </button>
+
+
+        </div>
+
+
+        <div *ngIf="observationId==='all' && observationGroups && observationGroups.length!==1"
+             class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
+             style=" padding-right: 0.05rem; padding-bottom: 0.15rem;">
+          <div class="" style=" margin-left: 0.25rem;">
+
+            <!--
+            <button *ngIf="observationGroups && observationGroups.length!==1" type="button"
+                    class="button-clear"
+                    (click)="showAllLeft()">
+
+              <i class="fa fa-plus-circle"></i> Show all on left axis
+            </button>
+            -->
+
+            <span class="axis-buttons-legend">Left Axis</span>
+
+            <button *ngIf="observationId==='all' && observationGroups && observationGroups.length!==1" type="button"
+                    class="button-clear"
+                    (click)="showAllLeft()">
+
+              <i class="fa fa-plus-circle"></i> Show all values
+            </button>
+
+            <span *ngFor="let group of observationGroups">
+
+            <button type="button" class="button-clear"
+                    (click)="toggleLeft(group.id, group.name)">
+              <span [style.color]="isHighContrast?'red':group.color">
+                <i class="fa {{group.showLeft?'fa-circle':'fa-circle-o'}}"></i>
+              </span>
+              {{group.name}} <span *ngIf="group.source"> ({{group.source}})</span>
               L
             </button>
 
-           <button
-             type="button"
-             class="btn btn-default"
-             (click)="toggleRight(group.id, group.name)">
-              <span [style.color]="group.color">
+        </span>
+          </div>
+        </div>
+
+
+        <div *ngIf="observationId==='all' && observationGroups && observationGroups.length!==1"
+             class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
+             style="padding-left: 0.05rem; padding-bottom: 0.15rem;">
+          <div class="" style=" margin-right: 0.25rem;">
+            <span class="axis-buttons-legend">Right Axis</span>
+            <!--
+             <button *ngIf="observationGroups && observationGroups.length!==1"
+                     type="button"
+                     class="button-clear"
+                     (click)="showAllRight()"><i class="fa fa-plus-circle"></i> Show all on right axis
+             </button>
+             -->
+            <span *ngFor="let group of observationGroups">
+
+          <span style="white-space: nowrap">
+
+
+
+            <button
+              type="button"
+              class="button-clear"
+              (click)="toggleRight(group.id, group.name)">
+              <span [style.color]="isHighContrast?'green':group.color">
                                 <i class="fa {{group.showRight?'fa-circle':'fa-circle-o'}}"></i>
                             </span>
+             {{group.name}} <span *ngIf="group.source"> ({{group.source}})</span>
               R
             </button>
+          </span>
         </span>
-        </span>
+          </div>
+        </div>
 
-        </span>
 
       </div>
     </div>
 
 
-    <div class="row">
+    <div class="chart-row">
 
-      <nvd3 *ngIf="observationGroups" [options]="options" [data]="data" class="with-transitions row-content"></nvd3>
+      <nvd3 #nvd3 [options]="options" [data]="data"></nvd3>
 
     </div>
 
@@ -87,11 +202,12 @@
   </div>
 
 
-  <div *ngIf="footerText" class="card-footer w3-white">
-    <div class="w3-tiny w3-right w3-full">{{footerText}}
+  <div class="card-footer w3-white">
+    <div class="w3-tiny w3-right w3-full">Hover the mouse pointer over the diagram for values. {{footerText}}
 
 
     </div>
   </div>
+
 
 </div>

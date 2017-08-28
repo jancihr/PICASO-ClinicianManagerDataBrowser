@@ -1,0 +1,771 @@
+{
+  "resultForDRB": [
+    {
+      "patient": [
+        {
+          "name": "Peter Patient",
+          "age": "34",
+          "gender": "M"
+        }
+      ],
+      "homeMeasurements": [
+        {
+          "TypeId": "bloodpressure",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T07:44:23+00:00",
+              "TypeId": "systolic",
+              "LOINC": "8480-6"
+            },
+            {
+              "Timestamp": "2017-08-11T07:44:23+00:00",
+              "TypeId": "diastolic",
+              "LOINC": "8480-4"
+            },
+            {
+              "Timestamp": "2016-08-11T07:44:23+00:00",
+              "TypeId": "systolic",
+              "LOINC": "8480-6"
+            },
+            {
+              "Timestamp": "2016-08-11T07:44:23+00:00",
+              "TypeId": "diastolic",
+              "LOINC": "8480-4"
+            }
+          ]
+        },
+        {
+          "TypeId": "weightingscale",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T07:44:23+00:00",
+              "TypeId": "weight",
+              "LOINC": "29463-7"
+            },
+            {
+              "Timestamp": "2016-08-11T07:44:23+00:00",
+              "TypeId": "weight",
+              "LOINC": "29463-7"
+            },
+            {
+              "Timestamp": "2013-08-11T07:44:23+00:00",
+              "TypeId": "weight",
+              "LOINC": "29463-7"
+            }
+          ]
+        },
+        {
+          "TypeId": "sleep",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-01-02T06:34:30+00:00",
+              "TypeId": "sleep_minutes",
+              "SNOMED": "248263006"
+            },
+            {
+              "Timestamp": "2015-01-02T06:34:30+00:00",
+              "TypeId": "sleep_minutes",
+              "SNOMED": "248263006"
+            }
+          ]
+        },
+        {
+          "TypeId": "activitymonitor",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "TypeId": "steps",
+              "LOINC": "55423-8"
+            },
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "TypeId": "distance"
+            },
+            {
+              "Timestamp": "2015-08-11T21:00:00+00:00",
+              "TypeId": "steps",
+              "LOINC": "55423-8"
+            }
+          ]
+        },
+        {
+          "TypeId": "heartrate",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "TypeId": "heartrate",
+              "LOINC": "8867-4"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "TypeId": "heartrate",
+              "LOINC": "8867-4"
+            }
+          ]
+        },
+        {
+          "TypeId": "questionnaireHome",
+
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "TypeId": "ffbh"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "TypeId": "ffbh"
+            },
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "TypeId": "radai"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "TypeId": "radai"
+            },
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "TypeId": "morisky"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "TypeId": "EQ-5D"
+            }
+          ]
+        },
+        {
+          "TypeId": "sugarHistory",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "TypeId": "sugar"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "TypeId": "sugar"
+            }
+          ]
+        },
+        {
+          "TypeId": "saturationHistory",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "TypeId": "saturation"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "TypeId": "saturation"
+            }
+          ]
+        },
+        {
+          "TypeId": "lungHistory",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "TypeId": "lung"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "TypeId": "lung"
+            }
+          ]
+        },
+        {
+          "TypeId": "respirationHistory",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "TypeId": "respiration"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "TypeId": "respiration"
+            }
+          ]
+        }
+      ],
+      "carePlan": [
+        {
+          "TypeId": "active",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            }
+          ]
+        },
+        {
+          "TypeId": "completed",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UTV"
+            }
+          ]
+        },
+        {
+          "TypeId": "suspended",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            }
+          ]
+        }
+      ],
+      "funcDiagnostics": [
+        {
+          "TypeId": "EEG",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            }
+          ]
+        },
+        {
+          "TypeId": "ECG",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UTV"
+            }
+          ]
+        },
+        {
+          "TypeId": "lungFuncTest",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            }
+          ]
+        }
+      ],
+      "imaging": [
+        {
+          "TypeId": "MRI",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS radiology"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            }
+          ]
+        },
+        {
+          "TypeId": "PET",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UTV"
+            }
+          ]
+        },
+        {
+          "TypeId": "DAT",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            }
+          ]
+        },
+        {
+          "TypeId": "sonography",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2017-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            }
+          ]
+        },
+        {
+          "TypeId": "tomography",
+          "ListOfEntries": [
+
+          ]
+        },
+        {
+          "TypeId": "nuclear",
+          "ListOfEntries": [
+
+          ]
+        },
+        {
+          "TypeId": "microcardial",
+          "ListOfEntries": [
+
+          ]
+        },
+        {
+          "TypeId": "conventional",
+          "ListOfEntries": [
+
+          ]
+        }
+      ],
+      "labTest": [
+        {
+          "TypeId": "virology",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UTV"
+            }
+          ],
+          "TypeId": "microbiology",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2010-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UTV"
+            }
+          ],
+          "TypeId": "urine",
+          "ListOfEntries": [
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UTV"
+            },
+            {
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            }
+          ],
+          "TypeId": "blood",
+          "ListOfEntries": [
+            {
+              "TypeId": "serology",
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UTV"
+
+            },
+            {
+              "TypeId": "blodCount",
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            },
+            {
+              "TypeId": "thyroid",
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UTV"
+            },
+            {
+              "TypeId": "thyroid",
+              "Timestamp": "2010-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UTV"
+            },
+            {
+              "TypeId": "haemostaseology",
+              "Timestamp": "",
+              "ClinicianId": "",
+              "Source": ""
+            }
+          ]
+
+        }
+      ],
+      "questionnaires": [
+        {
+          "TypeId": "raQuestionnaires",
+          "ListOfEntries": [
+            {
+              "TypeId": "FFbH/HAQ",
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS"
+            },
+            {
+              "TypeId": "FFbH/HAQ",
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "home"
+            },
+            {
+              "TypeId": "radai",
+              "Timestamp": "2010-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "UDUS radiology"
+            },
+            {
+              "TypeId": "radai",
+              "Timestamp": "2010-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "home"
+            },
+            {
+              "TypeId": "EQ-5D",
+              "Timestamp": "2009-08-11T21:00:00+00:00",
+              "ClinicianId": "077",
+              "Source": "home"
+            }
+          ]
+        },
+
+        {
+          "TypeId": "pdQuestionnaires",
+          "ListOfEntries": [
+            {
+              "TypeId": "morisky",
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "055",
+              "Source": "UTV"
+            },
+            {
+              "TypeId": "morisky",
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "055",
+              "Source": "home"
+            },
+            {
+              "TypeId": "wellBeing",
+              "Timestamp": "2012-08-11T21:00:00+00:00",
+              "ClinicianId": "055",
+              "Source": "home"
+            }
+          ]
+
+        }
+      ],
+      "psychoTests": [
+        {
+          "TypeId": "psychoHealth",
+          "ListOfEntries": [
+            {
+              "TypeId": "depression",
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "066",
+              "Source": "UTV"
+
+            },
+            {
+              "TypeId": "depression",
+              "Timestamp": "2010-08-11T21:00:00+00:00",
+              "ClinicianId": "055",
+              "Source": "Santa lucia"
+            },
+            {
+              "TypeId": "anxietyHamilton",
+              "Timestamp": "2012-08-11T21:00:00+00:00",
+              "ClinicianId": "055",
+              "Source": "UTV"
+            },
+            {
+              "TypeId": "anxietyHamilton",
+              "Timestamp": "2012-08-11T21:00:00+00:00",
+              "ClinicianId": "055",
+              "Source": "UTV"
+            },
+            {
+              "TypeId": "snaithHamiltonPleasure",
+              "Timestamp": "",
+              "ClinicianId": "",
+              "Source": ""
+            },
+            {
+              "TypeId": "parkinsonPsychosis",
+              "Timestamp": "2016-08-11T21:00:00+00:00",
+              "ClinicianId": "066",
+              "Source": "UTV"
+            },
+            {
+              "TypeId": "parkinsonPsychosis",
+              "Timestamp": "2015-08-11T21:00:00+00:00",
+              "ClinicianId": "066",
+              "Source": "UTV"
+            },
+            {
+              "TypeId": "parkinsonPsychosis",
+              "Timestamp": "2014-08-11T21:00:00+00:00",
+              "ClinicianId": "066",
+              "Source": "UTV"
+            },
+            {
+              "TypeId": "euroquol",
+              "Timestamp": "",
+              "ClinicianId": "",
+              "Source": ""
+            }
+          ],
+          "TypeId": "memory",
+          "ListOfEntries": [
+            {
+              "TypeId": "15words",
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "066",
+              "Source": "UTV"
+            },
+            {
+              "TypeId": "15words",
+              "Timestamp": "2010-08-11T21:00:00+00:00",
+              "ClinicianId": "066",
+              "Source": "Santa lucia"
+            },
+            {
+              "TypeId": "figureRecall",
+              "Timestamp": "2012-08-11T21:00:00+00:00",
+              "ClinicianId": "066",
+              "Source": "UTV"
+            },
+            {
+              "TypeId": "figureRecall",
+              "Timestamp": "2012-08-11T21:00:00+00:00",
+              "ClinicianId": "066",
+              "Source": "UTV"
+            },
+            {
+              "TypeId": "ravlt",
+              "Timestamp": "",
+              "ClinicianId": "",
+              "Source": ""
+            },
+            {
+              "TypeId": "roravlt",
+              "Timestamp": "2016-08-11T21:00:00+00:00",
+              "ClinicianId": "066",
+              "Source": "Santa Lucia"
+            }
+          ],
+          "TypeId": "language",
+          "ListOfEntries": [
+            {
+              "TypeId": "fluency",
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "066",
+              "Source": "UTV"
+            },
+            {
+              "TypeId": "fluency",
+              "Timestamp": "2010-08-11T21:00:00+00:00",
+              "ClinicianId": "066",
+              "Source": "Santa lucia"
+            },
+            {
+              "TypeId": "phonoFluency",
+              "Timestamp": "2012-08-11T21:00:00+00:00",
+              "ClinicianId": "066",
+              "Source": "UTV"
+            }
+          ],
+          "TypeId": "executive",
+          "ListOfEntries": [
+
+            {
+              "TypeId": "wisconsin",
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "066",
+              "Source": "UTV"
+            }
+
+          ],
+          "TypeId": "praxia",
+          "ListOfEntries": [
+            {
+              "TypeId": "reyosterreich",
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "066",
+              "Source": "UTV"
+            },
+            {
+              "TypeId": "reyosterreich",
+              "Timestamp": "2010-08-11T21:00:00+00:00",
+              "ClinicianId": "055",
+              "Source": "Santa Lucia"
+            }
+          ],
+          "TypeId": "globalCongnitive",
+          "ListOfEntries": [
+            {
+              "TypeId": "minimental",
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "066",
+              "Source": "UTV"
+            }
+          ],
+          "TypeId": "pdSeverity",
+          "ListOfEntries": [
+            {
+              "TypeId": "hyscore",
+              "Timestamp": "2013-08-11T21:00:00+00:00",
+              "ClinicianId": "066",
+              "Source": "Santa lucia"
+            }
+          ]
+        }
+      ],
+      "careProfessionals": [
+        {
+          "TypeId": "rheumatologist",
+          "TimestampLast": "2013-08-11T21:00:00+00:00",
+          "ListOfEntries": [
+            {
+              "ClinicianId": "044"
+            },
+            {
+              "ClinicianId": "055"
+            },
+            {
+              "ClinicianId": "066"
+            }
+          ],
+
+          "TypeId": "orthopedist",
+          "TimestampLast": "2013-08-11T21:00:00+00:00",
+          "ListOfEntries": [
+            {
+              "ClinicianId": "024"
+            },
+            {
+              "ClinicianId": "026"
+            },
+            {
+              "ClinicianId": "022"
+            }
+          ],
+          "TypeId": "cardiologist",
+          "TimestampLast": "",
+          "ListOfEntries": [
+
+          ],
+          "TypeId": "neurologist",
+          "TimestampLast": "",
+          "ListOfEntries": [
+
+          ],
+          "TypeId": "neuropschologist",
+          "TimestampLast": "",
+          "ListOfEntries": [
+
+          ],
+          "TypeId": "radiologist",
+          "TimestampLast": "",
+          "ListOfEntries": [
+
+          ],
+          "TypeId": "gp",
+          "TimestampLast": "2015-08-11T21:00:00+00:00",
+          "ListOfEntries": [
+            {
+              "ClinicianId": "024"
+            }
+
+          ],
+          "TypeId": "dermatologist",
+          "TimestampLast": "",
+          "ListOfEntries": [
+
+          ],
+          "TypeId": "occphysic",
+          "TimestampLast": "",
+          "ListOfEntries": [
+
+          ],
+          "TypeId": "psychologist",
+          "TimestampLast": "",
+          "ListOfEntries": [
+
+          ],
+          "TypeId": "psychiatrist",
+          "TimestampLast": "",
+          "ListOfEntries": [
+
+          ],
+          "TypeId": "physiotherapist",
+          "TimestampLast": "",
+          "ListOfEntries": [
+
+          ],
+          "TypeId": "occtherap",
+          "TimestampLast": "",
+          "ListOfEntries": [
+
+          ]
+        }
+      ]
+
+    }
+  ]
+}

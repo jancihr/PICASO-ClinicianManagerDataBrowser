@@ -1,19 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewEncapsulation} from '@angular/core';
 import {PicasoDataService} from "../service/picaso-data.service";
-import {PatientClinician} from "../model/patient-clinician";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
+import {CliniciansResult} from "../model/generated-interfaces";
 
 @Component({
   selector: 'patient-clinicians-history',
   templateUrl: './patient-clinicians-history.component.html',
   styleUrls: ['./patient-clinicians-history.component.css'],
   providers: [PicasoDataService]
-
 })
 
 export class PatientCliniciansComponent implements OnInit {
   errorMessage: string;
-  clinicians: PatientClinician[];
+  clinicians: CliniciansResult[];
 
   public filterQuery = "";
   public rowsOnPage = 5;

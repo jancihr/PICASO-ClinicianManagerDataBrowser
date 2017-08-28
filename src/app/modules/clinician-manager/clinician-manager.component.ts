@@ -1,4 +1,4 @@
-import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {Component, HostListener, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 import {IMyOptions, IMyDateRangeModel} from 'mydaterangepicker';
 import {PatientMedicationHistoryComponent} from "./cards/patient-medication-history.component";
@@ -23,9 +23,7 @@ export class ClinicianManagerComponent implements OnInit {
 
   measurementToShow;
 
-  showSeparate = false;
-
-  range: MyDateRange; //= 'lastyear';
+  range: MyDateRange = null; //= 'lastyear';
   private cardToShow = 'all';
 
 
@@ -42,6 +40,7 @@ export class ClinicianManagerComponent implements OnInit {
               private activatedRoute: ActivatedRoute, private _cookieService: CookieService) {
   }
 
+
   ngOnInit(): void {
 
 //TODO cookies to preserve selected ranges
@@ -49,7 +48,7 @@ export class ClinicianManagerComponent implements OnInit {
     //console.log("cookie", this._cookieService.get("clinician.dashboard.card"));
 
 
-    this.range = this.computeRangeFromString('lastyear');
+
 
 
     this.activatedRoute.params.subscribe((params: Params) => {
@@ -62,17 +61,19 @@ export class ClinicianManagerComponent implements OnInit {
       let rangeFromURLParam = params['range'];
       if (!rangeFromURLParam === null && !rangeFromURLParam === undefined) {
 
-        this.computeRangeFromString(rangeFromURLParam);
+        this.range = this.computeRangeFromString(rangeFromURLParam);
+      } else if (this.range === null) {
+        this.range = this.computeRangeFromString("last2months");
       }
 
 
     });
 
-    var startDate = new Date();
-    var endDate = new Date();
-    startDate.setFullYear(endDate.getFullYear() - 1);
+    //var startDate = new Date();
+    //var endDate = new Date();
+    //startDate.setFullYear(endDate.getFullYear() - 1);
     //this.rangeToShow = "lastyear";
-    this.notifyChildrenAboutDataChange(startDate, endDate);
+    //this.notifyChildrenAboutDataChange(startDate, endDate);
 
 
     if (this.cardToShow === undefined) {
@@ -82,10 +83,14 @@ export class ClinicianManagerComponent implements OnInit {
   }
 
 
-  //fired from event of date picker
+  //fired from events of date picker
   rangeChanged(range: MyDateRange) {
-    this.range = range;
-    this.notifyChildrenAboutDataChange(this.range.startDate, this.range.endDate);
+    if (this.range.range !== range.range
+      || this.range.startDate.getTime() !== range.startDate.getTime()
+      || this.range.endDate.getTime() !== range.endDate.getTime()) {
+      this.range = range;
+      this.notifyChildrenAboutDataChange(this.range.startDate, this.range.endDate);
+    }
   }
 
 
@@ -108,11 +113,11 @@ export class ClinicianManagerComponent implements OnInit {
         this.treatmentsHistoryComponent.refreshRange(startDate, endDate);
       }
     }
-    if (this.cardToShow === 'morisky' || this.cardToShow === 'observations' || this.cardToShow === 'all') {
+    if (this.cardToShow === 'morisky' || this.cardToShow === 'observations' || this.cardToShow === 'observations-single' || this.cardToShow === 'all') {
 
       if (this.observationHistoryComponents !== undefined) {
         this.observationHistoryComponents.forEach((child) => {
-          child.refreshRange(startDate, endDate)
+          //child.refreshRange(startDate, endDate)
         });
       }
     }

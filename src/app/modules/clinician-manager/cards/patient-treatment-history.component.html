@@ -1,8 +1,8 @@
-<div class="card w3-light-gray">
+<div class="card ">
 
-  <div class="card-header w3-blue">
+  <div class="card-header measurement-header">
 
-    <div class="w3-center" i18n="Patient's Treatment History">
+    <div class="" i18n="Patient's Treatment History">
       <i class="fa fa-hospital-o"></i>
       Patient's Treatment History
       <span class="w3-right">
@@ -21,6 +21,29 @@
   </div>
 
   <div class="card-block">
+    <div class="">
+      <button type="button"
+              class="button-clear"
+              (click)="toggleColor()">
+
+    <span *ngIf="isColourful">
+              <span style="color:red"> <i class="fa fa-circle"></i></span>
+              <span style="color:red"> <i class="fa fa-circle"></i></span>
+              <span style="color:green"> <i class="fa fa-circle"></i></span>
+              <span style="color:green"> <i class="fa fa-circle"></i></span>
+            </span>
+        <span *ngIf="!isColourful">
+              <span style="color: grey;"> <i class="fa fa-circle"></i></span>
+              <span style="color: grey;"> <i class="fa fa-circle"></i></span>
+              <span style="color: grey;"> <i class="fa fa-circle"></i></span>
+              <span style="color: grey;"> <i class="fa fa-circle"></i></span>
+            </span>
+        Colours
+
+      </button>
+
+    </div>
+
 
     <div class="col-xs-12 col-sm-12 col-md-{{selectedTreatment?'6':12}}
     col-lg-{{selectedTreatment?'6':12}} col-xl-{{selectedTreatment?'8':12}}">
@@ -32,21 +55,25 @@
     </div>
 
     <div *ngIf="selectedTreatment"
-         class="{{animateToggle?'w3-animate-bottom':'w3-animate-right'}}  col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4">
+         class=" col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xl-4 detail-view">
 
-      <div class="card-header">
-        <div>Patient's Treatment details
-          <button class="btn btn-default  w3-right" (click)="close()">X</button>
+      <div class="w3-border-bottom">
+        <div>Selected Treatment Details
+          <button class="w3-right button-clear" (click)="close()"><i class="fa fa-close"></i></button>
         </div>
       </div>
-      <div>
+      <div class="{{animateToggle?'my-animate-left':'my-animate-left2'}} ">
 
+        <div *ngIf="selectedTreatment.startDate">{{selectedTreatment.endDate?'From:':'Date:'}}
+            {{selectedTreatment.startDate| date:'d.M.y'}}
+          </div>
+          <div *ngIf="selectedTreatment.endDate">To: {{selectedTreatment.endDate| date:'d.M.y'}}</div>
 
-        <div>Category: {{selectedTreatment.category}}</div>
-        <div>Visit reason: {{selectedTreatment.visitReason}}</div>
-        <div>Visit results: {{selectedTreatment.visitResults}}</div>
-        <div>From: {{selectedTreatment.startDate}}</div>
-        <div>To: {{selectedTreatment.endDate}}</div>
+          <div>Category: {{selectedTreatment.category}}</div>
+          <div>Treatment: {{selectedTreatment.visitReason}}</div>
+          <div>Results:</div>
+        <div *ngFor="let result of selectedTreatment.visitResults">{{result.type}} - {{result.result}}</div>
+
       </div>
 
 
@@ -54,8 +81,10 @@
 
   </div>
 
-  <div class="card-footer">
-    <div class="w3-tiny w3-right">Click chosen treatment to view it's details.
+  <div class="card-footer w3-white">
+    <div class="w3-tiny w3-right">Click timeline to use it. Scroll the timeline draging with mouse. Zoom using Alt key +
+      mouse scroll. Click
+      chosen treatment to view it's details.
     </div>
 
   </div>

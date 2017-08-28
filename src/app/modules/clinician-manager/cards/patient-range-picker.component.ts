@@ -13,41 +13,29 @@ import {IMyDateRangeModel} from "mydaterangepicker";
 export class PatientRangePicker implements OnInit {
 
 
-  @Output() changed: EventEmitter<MyDateRange> = new EventEmitter();
+  @Output() dateRangeChanged: EventEmitter<MyDateRange> = new EventEmitter();
 
   @Input() range: MyDateRange;
 
   //model for custom daterange picker
   model;
-  myDateRangePickerOptions;
+  myDateRangePickerOptions = {
+    // other options...
+    dateFormat: 'dd.mm.yyyy',
+    firstDayOfWeek: "mo",
+    inline: false,
+    height: '23px',
+    selectionTxtFontSize: '0.7rem',
+    sunHighlight: true,
+  };
 
 
   ngOnInit() {
-
-    //this.printDate("ngOnInit");
-
-    this.updatePickerDates();
-
-    this.myDateRangePickerOptions = {
-      // other options...
-      dateFormat: 'dd.mm.yyyy',
-      firstDayOfWeek: "mo",
-      inline: false,
-      height: '25px',
-      selectionTxtFontSize: '15px',
-      sunHighlight: true,
-    };
   }
 
   ngOnChanges(changes: SimpleChanges) {
     const range: SimpleChange = changes.range;
-    //console.log('prev value: ', range.previousValue);
-    //range.currentValue();
-
-    if (range.previousValue != range.currentValue) {
-      this.updatePickerDates();
-      //this.printDate("ngOnChanges")
-    }
+    this.updatePickerDates();
   }
 
   updatePickerDates() {
@@ -68,12 +56,20 @@ export class PatientRangePicker implements OnInit {
 
   onDateRangeChanged(event: IMyDateRangeModel) {
 
+    /*
     this.range = {
       range: 'custom',
       startDate: event.beginJsDate,
       endDate: event.endJsDate
     };
-    this.changed.emit(this.range);
+    */
+    this.range.range = 'custom';
+    this.dateRangeChanged.emit(
+      {
+        range: 'custom',
+        startDate: event.beginJsDate,
+        endDate: event.endJsDate
+      });
 
   }
 
@@ -81,7 +77,7 @@ export class PatientRangePicker implements OnInit {
   rangeChange(rangeString: string) {
     var newRange = this.computeRangeFromString(rangeString);
     if (newRange.startDate !== this.range.startDate || newRange.endDate !== this.range.endDate || newRange.range !== this.range.range) {
-      this.changed.emit(this.computeRangeFromString(rangeString));
+      this.dateRangeChanged.emit(this.computeRangeFromString(rangeString));
     }
   }
 

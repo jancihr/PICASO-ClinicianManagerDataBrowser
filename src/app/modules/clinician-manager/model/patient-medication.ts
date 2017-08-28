@@ -1,4 +1,4 @@
-export class PatientMedication {
+export interface PatientMedication {
   id: string;
   name: string;
   startDate: Date;
@@ -9,4 +9,5 @@ export class PatientMedication {
   color: string;
   disease: string;
   prescribedBy: string;
+  type: string;
 }

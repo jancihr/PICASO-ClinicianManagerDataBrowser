@@ -1,0 +1,1557 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {},
+  "id": "http://example.com/example.json",
+  "properties": {
+    "anyCallInputParameters": {
+      "description": "Input parameters of the service call.",
+      "additionalProperties": true,
+      "id": "/properties/anyCallInputParameters",
+      "properties": {
+        "startDate": {
+          "default": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)",
+          "description": "---",
+          "id": "/properties/anyCallInputParameters/properties/startDate",
+          "title": "The Startdate Schema",
+          "type": "string",
+          "format": "date-time"
+        },
+        "endDate": {
+          "default": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)",
+          "description": "---",
+          "id": "/properties/anyCallInputParameters/properties/endDate",
+          "title": "The Enddate Schema",
+          "type": "string",
+          "format": "date-time"
+        },
+        "patientId": {
+          "default": "idp",
+          "description": "---",
+          "id": "/properties/anyCallInputParameters/properties/patientId",
+          "title": "The Patientid Schema",
+          "type": "string"
+        }
+      },
+      "required": [
+        "startDate",
+        "endDate",
+        "patientId"
+      ],
+      "type": "object"
+    },
+    "cliniciansResult": {
+      "additionalItems": true,
+      "description": "Patient's clinicians. All of them not limited by start/end dates.",
+      "id": "/properties/cliniciansResult",
+      "items": {
+        "additionalProperties": true,
+        "id": "/properties/cliniciansResult/items",
+        "properties": {
+          "id": {
+            "default": "ID",
+            "description": "---",
+            "id": "/properties/cliniciansResult/items/properties/id",
+            "title": "The Id Schema",
+            "type": "string"
+          },
+          "startDate": {
+            "default": "2017-01-12T10:41:19.000Z",
+            "description": "---",
+            "id": "/properties/cliniciansResult/items/properties/startDate",
+            "title": "The Startdate Schema",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "endDate": {
+            "default": "2017-01-20T10:41:19.000Z",
+            "description": "---",
+            "id": "/properties/cliniciansResult/items/properties/endDate",
+            "title": "The Enddate Schema",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "name": {
+            "default": "Doctor Who",
+            "description": "Clinician full name",
+            "id": "/properties/cliniciansResult/items/properties/name",
+            "title": "The Name Schema",
+            "type": "string"
+          },
+          "speciality": {
+            "default": "Doctor of magic",
+            "description": "---",
+            "id": "/properties/cliniciansResult/items/properties/speciality",
+            "title": "The Speciality Schema",
+            "type": "string"
+          },
+          "institution": {
+            "default": "Institution name, desc",
+            "description": "---",
+            "id": "/properties/cliniciansResult/items/properties/institution",
+            "title": "The Institution Schema",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "startDate",
+          "endDate",
+          "speciality",
+          "institution",
+          "id",
+          "name"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
+    "concludingCommentsResult": {
+      "additionalItems": true,
+      "description": "Patient's concluding comments from clinicians.",
+      "id": "/properties/concludingCommentsResult",
+      "items": {
+        "additionalProperties": true,
+        "id": "/properties/concludingCommentsResult/items",
+        "properties": {
+          "id": {
+            "default": "idaa",
+            "description": "---",
+            "id": "/properties/concludingCommentsResult/items/properties/id",
+            "title": "The Id Schema",
+            "type": "string"
+          },
+          "addresseeId": {
+            "default": "concCommentId1",
+            "description": "---",
+            "id": "/properties/concludingCommentsResult/items/properties/addresseeId",
+            "title": "The Addresseeid Schema",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "addresseeName": {
+            "default": "Doctor Magic",
+            "description": "---",
+            "id": "/properties/concludingCommentsResult/items/properties/addresseeName",
+            "title": "The Addresseename Schema",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "addresseeRole": {
+            "default": "Neurologist",
+            "description": "---",
+            "id": "/properties/concludingCommentsResult/items/properties/addresseeRole",
+            "title": "The Addresseerole Schema",
+            "type": "string"
+          },
+          "addresseeRoleId": {
+            "default": "idr",
+            "description": "---",
+            "id": "/properties/concludingCommentsResult/items/properties/addresseeRoleId",
+            "title": "The Addresseeroleid Schema",
+            "type": "string"
+          },
+          "authorId": {
+            "default": "Doctor Who",
+            "description": "Concluding comment author id ",
+            "id": "/properties/concludingCommentsResult/items/properties/authorId",
+            "title": "The Author Schema",
+            "type": "string"
+          },
+          "authorName": {
+            "default": "Doctor Who",
+            "description": "Concluding comment author name",
+            "id": "/properties/concludingCommentsResult/items/properties/authorName",
+            "title": "The Author Schema",
+            "type": "string"
+          },
+          "authorRoleId": {
+            "default": "rlid",
+            "description": "Concluding comment author role id",
+            "id": "/properties/concludingCommentsResult/items/properties/authorRoleId",
+            "title": "The Author Schema",
+            "type": "string"
+          },
+          "authorRole": {
+            "default": "General Practitioner",
+            "description": "Concluding comment author role",
+            "id": "/properties/concludingCommentsResult/items/properties/authorRole",
+            "title": "The Author Schema",
+            "type": "string"
+          },
+          "comment": {
+            "default": "Patient should lessen steroid intake",
+            "description": "Concluding comments are created by a physician when referring a patient to another physician. For this purpose the physician summarizes further necessary resp. recommended actions, e.g. the patient should lessen steroid intake or the patient should be referred to a radiologist for an MRI-scan. Concluding comments have an author (creator), distinct addressee (either name and role of medical professional or only role of medical professional) ",
+            "id": "/properties/concludingCommentsResult/items/properties/comment",
+            "title": "The Comment Schema",
+            "type": "string"
+          },
+          "date": {
+            "default": "2017-03-20T10:41:19.000Z",
+            "description": "---",
+            "id": "/properties/concludingCommentsResult/items/properties/date",
+            "title": "The Date Schema",
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "comment",
+          "addresseeName",
+          "authorId",
+          "addresseeRoleId",
+          "date",
+          "addresseeId",
+          "id",
+          "addresseeRole"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
+    "diseasesResult": {
+      "description": "Patient's diseases. Not limited by start-end dates",
+      "additionalItems": true,
+      "id": "/properties/diseasesResult",
+      "items": {
+        "additionalProperties": true,
+        "id": "/properties/diseasesResult/items",
+        "properties": {
+          "id": {
+            "default": "ID1",
+            "description": "---",
+            "id": "/properties/diseasesResult/items/properties/id",
+            "title": "The Id Schema",
+            "type": "string"
+          },
+          "clinicalPhenotype": {
+            "default": "mixed",
+            "description": "---",
+            "id": "/properties/diseasesResult/items/properties/clinicalPhenotype",
+            "title": "The Clinicalphenotype Schema",
+            "type": "string"
+          },
+          "dateOfOnset": {
+            "default": "2017-01-20T10:41:19.000Z",
+            "description": "---",
+            "id": "/properties/diseasesResult/items/properties/dateOfOnset",
+            "title": "The Dateofonset Schema",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "dateOfOffset": {
+            "description": "---",
+            "id": "/properties/diseasesResult/items/properties/dateOfOffset",
+            "title": "The Dateofoffset Schema",
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "name": {
+            "default": "Parkinson's Disease",
+            "description": "---",
+            "id": "/properties/diseasesResult/items/properties/name",
+            "title": "The Name Schema",
+            "type": "string"
+          },
+          "severity": {
+            "default": "severity",
+            "description": "---",
+            "id": "/properties/diseasesResult/items/properties/severity",
+            "title": "The Severity Schema",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "sideOfOnset": {
+            "default": "right",
+            "description": "---",
+            "id": "/properties/diseasesResult/items/properties/sideOfOnset",
+            "title": "The Sideofonset Schema",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "dateOfOnset",
+          "dateOfOffset",
+          "clinicalPhenotype",
+          "severity",
+          "sideOfOnset"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
+    "followUpsResult": {
+      "additionalItems": true,
+      "description": "All follow ups from future should be shown (still to be clarified with clinicians). Follow-up appointments are appointments where patients were asked by a physician to consult another specific/type of physician for a follow-up treatment, e.g., see a radiologist to get an MRI or see Dr. Schmidt, cardiologist at UDUS, to get an ECG. It could be also that the patient shall make a follow-up appointment with the secretary of the physician him-/herself. Follow-up appointments will be defined in the Narratives Manager with a specified time range until a follow-up appointment should be arranged. ",
+      "id": "/properties/followUpsResult",
+      "items": {
+        "additionalProperties": true,
+        "id": "/properties/followUpsResult/items",
+        "properties": {
+          "id": {
+            "default": "idfollowup",
+            "description": "---",
+            "id": "/properties/followUpsResult/items/properties/id",
+            "title": "The Id Schema",
+            "type": "string"
+          },
+          "name": {
+            "default": "Doctor Who",
+            "description": "Requested doctor name",
+            "id": "/properties/followUpsResult/items/properties/name",
+            "title": "The Name Schema",
+            "type": "string"
+          },
+          "createdDate": {
+            "default": "2017-03-20T10:41:19.000Z",
+            "description": "Date when clinician creates the follow up.",
+            "id": "/properties/followUpsResult/items/properties/createdDate",
+            "title": "The Date Schema",
+            "type": "string",
+            "format": [
+              "date-time",
+              "null"
+            ]
+          },
+          "patientUpdatedDate": {
+            "default": "2017-03-20T10:41:19.000Z",
+            "description": "Date when patient updates the follow up with required data.",
+            "id": "/properties/followUpsResult/items/properties/patientUpdatedDate",
+            "title": "The Date Schema",
+            "type": "string",
+            "format": [
+              "date-time",
+              "null"
+            ]
+          },
+          "followUpDate": {
+            "default": "2017-03-20T10:41:19.000Z",
+            "description": "Planned date of the follow up.",
+            "id": "/properties/followUpsResult/items/properties/followUpDate",
+            "title": "The Date Schema",
+            "type": "string",
+            "format": [
+              "date-time",
+              "null"
+            ]
+          },
+
+          "role": {
+            "default": "Cardiologist",
+            "description": "Role of requested clinician.",
+            "id": "/properties/followUpsResult/items/properties/role",
+            "title": "The Role Schema",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "note": {
+            "default": "See the Cardiologist in next 2 weeks",
+            "description": "The follow up note text",
+            "id": "/properties/followUpsResult/items/properties/note",
+            "title": "The Note Schema",
+            "type": "string"
+          }
+        },
+        "required": [
+          "createdDate",
+          "patientUpdatedDate",
+          "followUpDate",
+          "note",
+          "role",
+          "id",
+          "name"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
+    "infoResult": {
+      "description": "Basic information about the patient",
+      "additionalProperties": true,
+      "id": "/properties/infoResult",
+      "properties": {
+        "address": {
+          "default": "Great Address, Super city",
+          "description": "---",
+          "id": "/properties/infoResult/properties/address",
+          "title": "The Address Schema",
+          "type": "string"
+        },
+        "bloodType": {
+          "default": "AB normal",
+          "description": "---",
+          "id": "/properties/infoResult/properties/bloodType",
+          "title": "The Bloodtype Schema",
+          "type": "string"
+        },
+        "dob": {
+          "default": "1960-05-10",
+          "description": "Date of birth",
+          "id": "/properties/infoResult/properties/dob",
+          "title": "The Dob Schema",
+          "type": "string",
+          "format": "date-time"
+        },
+        "gender": {
+          "default": "M",
+          "description": "---",
+          "id": "/properties/infoResult/properties/gender",
+          "title": "The Gender Schema",
+          "type": "string"
+        },
+        "height": {
+          "default": "180cm",
+          "description": "---",
+          "id": "/properties/infoResult/properties/height",
+          "title": "The Height Schema",
+          "type": "string"
+        },
+        "id": {
+          "default": "758923/8976",
+          "description": "---",
+          "id": "/properties/infoResult/properties/id",
+          "title": "The Id Schema",
+          "type": "string"
+        },
+        "insurer": {
+          "default": "Obamacare",
+          "description": "---",
+          "id": "/properties/infoResult/properties/insurer",
+          "title": "The Insurer Schema",
+          "type": "string"
+        },
+        "insurerId": {
+          "default": "OBMCR",
+          "description": "---",
+          "id": "/properties/infoResult/properties/insurerId",
+          "title": "The Insurerid Schema",
+          "type": "string"
+        },
+        "livesAlone": {
+          "default": "false",
+          "description": "---",
+          "id": "/properties/infoResult/properties/livesAlone",
+          "title": "The Livesalone Schema",
+          "type": "boolean"
+        },
+        "name": {
+          "default": "Peter Moskowitch",
+          "description": "Patient full name",
+          "id": "/properties/infoResult/properties/name",
+          "title": "The Name Schema",
+          "type": "string"
+        },
+        "occupancy": {
+          "default": "Retired",
+          "description": "---",
+          "id": "/properties/infoResult/properties/occupancy",
+          "title": "The Occupancy Schema",
+          "type": "string"
+        }
+      },
+      "required": [
+        "bloodType",
+        "name",
+        "insurer",
+        "dob",
+        "gender",
+        "occupancy",
+        "height",
+        "livesAlone",
+        "insurerId",
+        "address",
+        "id"
+      ],
+      "type": "object"
+    },
+    "observationResult": {
+      "description": "different patient measurements. On this CM graph only measurements and recordings will be depicted as stored for a specific patient. The following data types are generally available and shall be presented in line graphs:Blood pressure, Heart rate, Weight, Steps, Walking distance, Night sleep, Pain ratings, Well-being ratings, EQ-5D, RADAI, FFbh, HAQ",
+      "additionalItems": true,
+      "id": "/properties/observationResult",
+      "items": {
+        "additionalProperties": true,
+        "id": "/properties/observationResult/items",
+        "properties": {
+          "color": {
+            "default": "orange",
+            "description": "---",
+            "id": "/properties/observationResult/items/properties/color",
+            "title": "The Color Schema",
+            "type": "string"
+          },
+          "source": {
+            "default": null,
+            "description": "Source of measurement if it is the same for all values of this measurement",
+            "enum": [
+              "UDUS_Rh",
+              "RA_home",
+              "SLucia_home",
+              "SLucia",
+              "PD_home",
+              "other"
+            ],
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "id": {
+            "default": "heartrate",
+            "description": "enumarator for trial 1, should be any new measurement type in future",
+            "enum": [
+              "radai",
+              "heartrate",
+              "ffbh",
+              "haq",
+              "steps",
+              "sys",
+              "dia",
+              "eq5d",
+              "pain",
+              "sleep",
+              "distance",
+              "wellbeing",
+              "weight",
+              "morisky"
+            ],
+            "id": "/properties/observationResult/items/properties/id",
+            "title": "The Id Schema",
+            "type": "string"
+          },
+          "maxValue": {
+            "default": 100,
+            "description": "Expected max value defined in Narrative Manager for the specific patient",
+            "id": "/properties/observationResult/items/properties/maxValue",
+            "title": "The Maxvalue Schema",
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "midValue": {
+            "default": 60,
+            "description": "Usual mid (normal) value",
+            "id": "/properties/observationResult/items/properties/midValue",
+            "title": "The Midvalue Schema",
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "minValue": {
+            "default": 40,
+            "description": "Expected min value defined in Narrative Manager for the specific patient",
+            "id": "/properties/observationResult/items/properties/minValue",
+            "title": "The Minvalue Schema",
+            "type": [
+              "number",
+              "null"
+            ]
+          },
+          "name": {
+            "default": "Resting Heartrate",
+            "description": "Observation name as it will appear in a graph",
+            "id": "/properties/observationResult/items/properties/name",
+            "title": "The Name Schema",
+            "type": "string",
+            "enum": [
+              "Blood pressure SYS",
+              "Blood pressure DIA",
+              "Heart rate",
+              "Weight",
+              "Steps",
+              "Walking distance",
+              "Night sleep",
+              "Pain ratings",
+              "Well-being ratings",
+              "EQ-5D",
+              "RADAI",
+              "FFbh",
+              "HAQ",
+              "Morisky"
+            ]
+          },
+          "helpText": {
+            "default": "(5=very good, 4=good , 3=OK, 2= bad, 1=very bad)",
+            "description": "Help text to explain values meaning (e.g. for different scores)",
+            "id": "/properties/observationResult/items/properties/helpText",
+            "title": "The HelpText Schema",
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "unit": {
+            "default": "beats/min",
+            "description": "Observation unit in which measurements are made as these appear in a graph",
+            "id": "/properties/observationResult/items/properties/unit",
+            "title": "The Unit Schema",
+            "type": "string"
+          },
+          "values": {
+            "description": "measured values",
+            "additionalItems": true,
+            "id": "/properties/observationResult/items/properties/values",
+            "items": {
+              "additionalProperties": true,
+              "id": "/properties/observationResult/items/properties/values/items",
+              "properties": {
+                "date": {
+                  "default": "Mon Aug 22 2016 12:07:35 GMT+0200 (CEST)",
+                  "description": "---",
+                  "id": "/properties/observationResult/items/properties/values/items/properties/date",
+                  "title": "The Date Schema",
+                  "type": "string",
+                  "format": "date-time"
+                },
+                "value": {
+                  "default": 56,
+                  "description": "---",
+                  "id": "/properties/observationResult/items/properties/values/items/properties/value",
+                  "title": "The Value Schema",
+                  "type": [
+                    "number",
+                    "null"
+                  ]
+                },
+                "source": {
+                  "default": "RA-home",
+                  "description": "Source of a single measurement if measurements from different sources are combined",
+                  "enum": [
+                    "UDUS_Rh",
+                    "RA_home",
+                    "SLucia_home",
+                    "SLucia",
+                    "PD_home",
+                    "other"
+                  ]
+                }
+              },
+              "required": [
+                "date",
+                "value"
+              ],
+              "type": "object"
+            },
+            "type": "array",
+            "uniqueItems": false
+          }
+        },
+        "required": [
+          "name",
+          "color",
+          "midValue",
+          "maxValue",
+          "minValue",
+          "values",
+          "id",
+          "source",
+          "unit"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
+    "medicationIntakesResult": {
+      "additionalItems": true,
+      "description": "Presentation of patient’s recordings on drug intake when differing from their defined medication: Differing medication intake as recorded on the Patient Dashboard.",
+      "id": "/properties/medicationIntakesResult",
+      "items": {
+        "additionalProperties": true,
+        "id": "/properties/medicationIntakesResult/items",
+        "properties": {
+          "color": {
+            "default": "f86c6b",
+            "description": "---",
+            "id": "/properties/medicationIntakesResult/items/properties/color",
+            "title": "The Color Schema",
+            "type": "string"
+          },
+          "disease": {
+            "default": "jhaskds",
+            "description": "---",
+            "id": "/properties/medicationIntakesResult/items/properties/disease",
+            "title": "The Disease Schema",
+            "type": "string"
+          },
+          "dosage": {
+            "default": "23mg",
+            "description": "---",
+            "id": "/properties/medicationIntakesResult/items/properties/dosage",
+            "title": "The Dosage Schema",
+            "type": "string"
+          },
+          "id": {
+            "default": "ID",
+            "description": "---",
+            "id": "/properties/medicationIntakesResult/items/properties/id",
+            "title": "The Id Schema",
+            "type": "string"
+          },
+          "name": {
+            "default": "Candesartan",
+            "description": "---",
+            "id": "/properties/medicationIntakesResult/items/properties/name",
+            "title": "The Name Schema",
+            "type": "string"
+          },
+          "prescribedBy": {
+            "default": "DoctorWho - GP",
+            "description": "---",
+            "id": "/properties/medicationIntakesResult/items/properties/prescribedBy",
+            "title": "The Prescribedby Schema",
+            "type": "string"
+          },
+          "date": {
+            "default": "2017-05-01T10:41:19.000Z",
+            "description": "---",
+            "id": "/properties/medicationIntakesResult/items/properties/date",
+            "title": "The Startdate Schema",
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "date",
+          "name",
+          "color",
+          "disease",
+          "dosage",
+          "prescribedBy",
+          "id"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
+    "medicationPrescriptionsResult": {
+      "additionalItems": true,
+      "id": "/properties/medicationPrescriptionsResult",
+      "items": {
+        "additionalProperties": true,
+        "id": "/properties/medicationPrescriptionsResult/items",
+        "properties": {
+          "color": {
+            "default": "f86c6b",
+            "description": "---",
+            "id": "/properties/medicationPrescriptionsResult/items/properties/color",
+            "title": "The Color Schema",
+            "type": "string"
+          },
+          "disease": {
+            "default": "jhaskds",
+            "description": "---",
+            "id": "/properties/medicationPrescriptionsResult/items/properties/disease",
+            "title": "The Disease Schema",
+            "type": "string"
+          },
+          "dosage": {
+            "default": "23mg",
+            "description": "---",
+            "id": "/properties/medicationPrescriptionsResult/items/properties/dosage",
+            "title": "The Dosage Schema",
+            "type": "string"
+          },
+          "endDate": {
+            "default": "2017-12-17T10:41:19.000Z",
+            "description": "---",
+            "id": "/properties/medicationPrescriptionsResult/items/properties/endDate",
+            "title": "The Enddate Schema",
+            "type": "string",
+            "format": "date-time"
+          },
+          "frequency": {
+            "default": "3 times a day",
+            "description": "---",
+            "id": "/properties/medicationPrescriptionsResult/items/properties/frequency",
+            "title": "The Frequency Schema",
+            "type": "string"
+          },
+          "id": {
+            "default": "IDxsdf",
+            "description": "---",
+            "id": "/properties/medicationPrescriptionsResult/items/properties/id",
+            "title": "The Id Schema",
+            "type": "string"
+          },
+          "name": {
+            "default": "Candesartan",
+            "description": "---",
+            "id": "/properties/medicationPrescriptionsResult/items/properties/name",
+            "title": "The Name Schema",
+            "type": "string"
+          },
+          "prescribedBy": {
+            "default": "DoctorWho - GP",
+            "description": "---",
+            "id": "/properties/medicationPrescriptionsResult/items/properties/prescribedBy",
+            "title": "The Prescribedby Schema",
+            "type": "string"
+          },
+          "startDate": {
+            "default": "2017-05-12T10:41:19.000Z",
+            "description": "---",
+            "id": "/properties/medicationPrescriptionsResult/items/properties/startDate",
+            "title": "The Startdate Schema",
+            "type": "string",
+            "format": "date-time"
+          },
+          "stopReason": {
+            "default": "",
+            "description": "---",
+            "id": "/properties/medicationPrescriptionsResult/items/properties/stopReason",
+            "title": "The Stopreason Schema",
+            "type": "string"
+          }
+        },
+        "required": [
+          "startDate",
+          "endDate",
+          "name",
+          "color",
+          "disease",
+          "dosage",
+          "frequency",
+          "stopReason",
+          "prescribedBy",
+          "id"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
+    "careProfessionalVisit": {
+      "additionalItems": true,
+      "id": "/properties/careProfessionalVisit",
+      "items": {
+        "additionalProperties": true,
+        "id": "/properties/careProfessionalVisit/items",
+        "properties": {
+          "careProfessional": {
+            "default": "GP",
+            "enum": [
+              "Cardiologist",
+              "Radiologist",
+              "Neurologist",
+              "Neuropsychologist",
+              "Rheumatologist",
+              "General Practitioner",
+              "Dermatologist",
+              "Orthopaedist",
+              "Occupational physician",
+              "Psychologist",
+              "Psychiatrist",
+              "Physiotherapist",
+              "Occupational therapist"
+            ],
+            "description": "---",
+            "id": "/properties/careProfessionalVisit/items/properties/careProfessional",
+            "title": "The Careprofessional Schema",
+            "type": "string"
+          },
+          "color": {
+            "default": "#7777ff",
+            "description": "---",
+            "id": "/properties/careProfessionalVisit/items/properties/color",
+            "title": "The Color Schema",
+            "type": "string"
+          },
+          "date": {
+            "default": "2017-05-20T10:41:19.000Z",
+            "description": "---",
+            "id": "/properties/careProfessionalVisit/items/properties/date",
+            "title": "The Date Schema",
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "default": "ID1",
+            "description": "---",
+            "id": "/properties/careProfessionalVisit/items/properties/id",
+            "title": "The Id Schema",
+            "type": "string"
+          },
+          "result": {
+            "default": "",
+            "description": "TODO To be updated if this is a structured data (concluding comments, images, ...)",
+            "id": "/properties/careProfessionalVisit/items/properties/result",
+            "title": "The Result Schema",
+            "type": "string"
+          }
+        },
+        "required": [
+          "date",
+          "color",
+          "careProfessional",
+          "id",
+          "result"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
+    "functionalDiagnosticsResult": {
+      "additionalItems": true,
+      "id": "/properties/functionalDiagnosticsResult",
+      "items": {
+        "additionalProperties": true,
+        "id": "/properties/functionalDiagnosticsResult/items",
+        "properties": {
+          "color": {
+            "default": "#7777ff",
+            "description": "---",
+            "id": "/properties/functionalDiagnosticsResult/items/properties/color",
+            "title": "The Color Schema",
+            "type": "string"
+          },
+          "date": {
+            "default": "2017-07-20T10:41:19.000Z",
+            "description": "---",
+            "id": "/properties/functionalDiagnosticsResult/items/properties/date",
+            "title": "The Date Schema",
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "default": "ID1",
+            "description": "---",
+            "id": "/properties/functionalDiagnosticsResult/items/properties/id",
+            "title": "The Id Schema",
+            "type": "string"
+          },
+          "results": {
+            "additionalItems": true,
+            "id": "/properties/functionalDiagnosticsResult/items/properties/results",
+            "items": {
+              "additionalProperties": true,
+              "id": "/properties/functionalDiagnosticsResult/items/properties/results/items",
+              "properties": {
+                "result": {
+                  "default": "",
+                  "description": "TODO To be updated if this is a structured data (links, structured text, images, PDFs, ...)",
+                  "id": "/properties/functionalDiagnosticsResult/items/properties/results/items/properties/result",
+                  "title": "The Result Schema",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "ECG",
+                  "enum": [
+                    "ECG",
+                    "EEG",
+                    "Lung function tests"
+                  ],
+                  "description": "---",
+                  "id": "/properties/functionalDiagnosticsResult/items/properties/results/items/properties/type",
+                  "title": "The Type Schema",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "result"
+              ],
+              "type": "object"
+            },
+            "type": "array",
+            "uniqueItems": false
+          },
+          "source": {
+            "default": "RA-home",
+            "description": "---",
+            "enum": [
+              "UDUS_Rh",
+              "RA_home",
+              "SLucia_home",
+              "SLucia",
+              "PD_home",
+              "other"
+            ],
+            "id": "/properties/functionalDiagnosticsResult/items/properties/source",
+            "title": "The Source Schema",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "date",
+          "source",
+          "id",
+          "color",
+          "results"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
+    "imagingResult": {
+      "additionalItems": true,
+      "id": "/properties/imagingResult",
+      "items": {
+        "additionalProperties": true,
+        "id": "/properties/imagingResult/items",
+        "properties": {
+          "color": {
+            "default": "#7777ff",
+            "description": "---",
+            "id": "/properties/imagingResult/items/properties/color",
+            "title": "The Color Schema",
+            "type": "string"
+          },
+          "date": {
+            "default": "2017-06-20T10:41:19.000Z",
+            "description": "---",
+            "id": "/properties/imagingResult/items/properties/date",
+            "title": "The Date Schema",
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "default": "ID1",
+            "description": "---",
+            "id": "/properties/imagingResult/items/properties/id",
+            "title": "The Id Schema",
+            "type": "string"
+          },
+          "results": {
+            "additionalItems": true,
+            "id": "/properties/imagingResult/items/properties/results",
+            "items": {
+              "additionalProperties": true,
+              "id": "/properties/imagingResult/items/properties/results/items",
+              "properties": {
+                "result": {
+                  "default": "",
+                  "description": "TODO To be updated if this is a structured data (links, structured text, images, PDFs, ...)",
+                  "id": "/properties/imagingResult/items/properties/results/items/properties/result",
+                  "title": "The Result Schema",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "Sonography",
+                  "enum": [
+                    "Conventional imaging",
+                    "MRI",
+                    "Sonography",
+                    "Computer tomography",
+                    "Nuclear medicine",
+                    "Dat Scan",
+                    "Myocardial scintigraphy",
+                    "PET"
+                  ],
+                  "description": "---",
+                  "id": "/properties/imagingResult/items/properties/results/items/properties/type",
+                  "title": "The Type Schema",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "result"
+              ],
+              "type": "object"
+            },
+            "type": "array",
+            "uniqueItems": false
+          },
+          "source": {
+            "default": "RA-home",
+            "description": "---",
+            "enum": [
+              "UDUS_Rh",
+              "RA_home",
+              "SLucia_home",
+              "SLucia",
+              "PD_home",
+              "other"
+            ],
+            "id": "/properties/imagingResult/items/properties/source",
+            "title": "The Source Schema",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "date",
+          "source",
+          "id",
+          "color",
+          "results"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
+    "labTestResult": {
+      "additionalItems": true,
+      "id": "/properties/labTestResult",
+      "items": {
+        "additionalProperties": true,
+        "id": "/properties/labTestResult/items",
+        "properties": {
+          "color": {
+            "default": "#7777ff",
+            "description": "---",
+            "id": "/properties/labTestResult/items/properties/color",
+            "title": "The Color Schema",
+            "type": "string"
+          },
+          "date": {
+            "default": "2017-07-20T10:41:19.000Z",
+            "description": "---",
+            "id": "/properties/labTestResult/items/properties/date",
+            "title": "The Date Schema",
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "default": "ID1",
+            "description": "---",
+            "id": "/properties/labTestResult/items/properties/id",
+            "title": "The Id Schema",
+            "type": "string"
+          },
+          "results": {
+            "additionalItems": true,
+            "id": "/properties/labTestResult/items/properties/results",
+            "items": {
+              "additionalProperties": true,
+              "id": "/properties/labTestResult/items/properties/results/items",
+              "properties": {
+                "result": {
+                  "default": "",
+                  "description": "TODO To be updated if this is a structured data (links, structured text, images, PDFs, ...)",
+                  "id": "/properties/labTestResult/items/properties/results/items/properties/result",
+                  "title": "The Result Schema",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "MRI",
+                  "enum": [
+                    "Blood tests",
+                    "Blood count",
+                    "Serology",
+                    "Haemostaseology",
+                    "Thyroid hormones*",
+                    "Urine exams",
+                    "Microbiology",
+                    "Virology"
+                  ],
+                  "description": "---",
+                  "id": "/properties/labTestResult/items/properties/results/items/properties/type",
+                  "title": "The Type Schema",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "result"
+              ],
+              "type": "object"
+            },
+            "type": "array",
+            "uniqueItems": false
+          },
+          "source": {
+            "default": "RA-home",
+            "description": "---",
+            "enum": [
+              "UDUS_Rh",
+              "RA_home",
+              "SLucia_home",
+              "SLucia",
+              "PD_home",
+              "other"
+            ],
+            "id": "/properties/labTestResult/items/properties/source",
+            "title": "The Source Schema",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "date",
+          "source",
+          "id",
+          "color",
+          "results"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
+    "patientReportedOutcomesResult": {
+      "additionalItems": true,
+      "id": "/properties/patientReportedOutcomesResult",
+      "items": {
+        "additionalProperties": true,
+        "id": "/properties/patientReportedOutcomesResult/items",
+        "properties": {
+          "color": {
+            "default": "red",
+            "description": "---",
+            "id": "/properties/patientReportedOutcomesResult/items/properties/color",
+            "title": "The Color Schema",
+            "type": "string"
+          },
+          "date": {
+            "default": "2017-07-20T10:41:19.000Z",
+            "description": "---",
+            "id": "/properties/patientReportedOutcomesResult/items/properties/date",
+            "title": "The Date Schema",
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "default": "ID1",
+            "description": "---",
+            "id": "/properties/patientReportedOutcomesResult/items/properties/id",
+            "title": "The Id Schema",
+            "type": "string"
+          },
+          "results": {
+            "additionalItems": true,
+            "id": "/properties/patientReportedOutcomesResult/items/properties/results",
+            "items": {
+              "additionalProperties": true,
+              "id": "/properties/patientReportedOutcomesResult/items/properties/results/items",
+              "properties": {
+                "result": {
+                  "default": "",
+                  "description": "TODO To be updated if this is a structured data (questionnaire, links, structured text, images, PDFs, ...)",
+                  "id": "/properties/patientReportedOutcomesResult/items/properties/results/items/properties/result",
+                  "title": "The Result Schema",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "Pain ratings",
+                  "enum": [
+                    "Pain ratings"
+                  ],
+                  "description": "---",
+                  "id": "/properties/patientReportedOutcomesResult/items/properties/results/items/properties/type",
+                  "title": "The Type Schema",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "result"
+              ],
+              "type": "object"
+            },
+            "type": "array",
+            "uniqueItems": false
+          },
+          "source": {
+            "default": "RA-home",
+            "description": "---",
+            "enum": [
+              "UDUS_Rh",
+              "RA_home",
+              "SLucia_home",
+              "SLucia",
+              "PD_home",
+              "other"
+            ],
+            "id": "/properties/patientReportedOutcomesResult/items/properties/source",
+            "title": "The Source Schema",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "date",
+          "source",
+          "id",
+          "color",
+          "results"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
+    "psychologicalNeurologicalTestsPerformed": {
+      "additionalItems": true,
+      "id": "/properties/psychologicalNeurologicalTestsPerformed",
+      "items": {
+        "additionalProperties": true,
+        "id": "/properties/psychologicalNeurologicalTestsPerformed/items",
+        "properties": {
+          "color": {
+            "default": "#7777ff",
+            "description": "---",
+            "id": "/properties/psychologicalNeurologicalTestsPerformed/items/properties/color",
+            "title": "The Color Schema",
+            "type": "string"
+          },
+          "date": {
+            "default": "2017-07-20T10:41:19.000Z",
+            "description": "---",
+            "id": "/properties/psychologicalNeurologicalTestsPerformed/items/properties/date",
+            "title": "The Date Schema",
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "default": "idt",
+            "description": "---",
+            "id": "/properties/psychologicalNeurologicalTestsPerformed/items/properties/id",
+            "title": "The Id Schema",
+            "type": "string"
+          },
+          "results": {
+            "additionalItems": true,
+            "id": "/properties/psychologicalNeurologicalTestsPerformed/items/properties/results",
+            "items": {
+              "additionalProperties": true,
+              "id": "/properties/psychologicalNeurologicalTestsPerformed/items/properties/results/items",
+              "properties": {
+                "result": {
+                  "default": "",
+                  "description": "TODO To be updated if this is a structured data (questionnaire, links, structured text, images, PDFs, ...)",
+                  "id": "/properties/psychologicalNeurologicalTestsPerformed/items/properties/results/items/properties/result",
+                  "title": "The Result Schema",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "Attention",
+                  "description": "---",
+                  "enum": [
+                    "Attention",
+                    "Memory",
+                    "Language",
+                    "Psychological health",
+                    "Executive functions",
+                    "Praxia",
+                    "Global cognitive status",
+                    "PD severity",
+                    "Stroop reduced",
+                    "Trial Making Test part A",
+                    "Trial Making Test part B",
+                    "Recall of the Figure of Rey-Osterrieth",
+                    "Learning Curve 15 words of Rey",
+                    "Rey Auditory Verbal Learning Test TOT (RAVLT)",
+                    "Recall of Rey Auditory Verbal Learning Test (RAVLT)",
+                    "Semantic Fluency",
+                    "Test of Phonological Fluency",
+                    "Depression tests (including questionnaires from Hamilton Depression Rating Scale TOT and Beck Depression Inventory)",
+                    "Hamilton Anxiety Scale",
+                    "Euroquol Rating Scale",
+                    "Snaith-Hamilton Pleasure Scale",
+                    "Parkinson Psychosis Rating Scale",
+                    "State-Triat Anger Expression Inventory TOT",
+                    "Wisconsin Card Sorting Test",
+                    "Copy of Figure Rey-Osterrieth",
+                    "Mini-Mental State Examination",
+                    "H&Y score",
+                    "UPDRS III score"
+                  ],
+                  "id": "/properties/psychologicalNeurologicalTestsPerformed/items/properties/results/items/properties/type",
+                  "title": "The Type Schema",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "result"
+              ],
+              "type": "object"
+            },
+            "type": "array",
+            "uniqueItems": false
+          },
+          "source": {
+            "default": "RA-home",
+            "description": "---",
+            "enum": [
+              "UDUS_Rh",
+              "RA_home",
+              "SLucia_home",
+              "SLucia",
+              "PD_home",
+              "other"
+            ],
+            "id": "/properties/psychologicalNeurologicalTestsPerformed/items/properties/source",
+            "title": "The Source Schema",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "date",
+          "source",
+          "id",
+          "color",
+          "results"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": false
+    },
+    "questionaryFilled": {
+      "additionalItems": true,
+      "id": "/properties/questionaryFilled",
+      "items": {
+        "additionalProperties": true,
+        "id": "/properties/questionaryFilled/items",
+        "properties": {
+          "color": {
+            "default": "#7777ff",
+            "description": "---",
+            "id": "/properties/questionaryFilled/items/properties/color",
+            "title": "The Color Schema",
+            "type": "string"
+          },
+          "date": {
+            "default": "2017-07-20T10:41:19.000Z",
+            "description": "---",
+            "id": "/properties/questionaryFilled/items/properties/date",
+            "title": "The Date Schema",
+            "type": "string",
+            "format": "date-time"
+          },
+          "id": {
+            "default": "qid",
+            "description": "---",
+            "id": "/properties/questionaryFilled/items/properties/id",
+            "title": "The Id Schema",
+            "type": "string"
+          },
+          "results": {
+            "additionalItems": true,
+            "id": "/properties/questionaryFilled/items/properties/results",
+            "items": {
+              "additionalProperties": true,
+              "id": "/properties/questionaryFilled/items/properties/results/items",
+              "properties": {
+                "result": {
+                  "default": "",
+                  "description": "TODO To be updated if this is a structured data (questionnaire, links, structured text, images, PDFs, ...)",
+                  "id": "/properties/questionaryFilled/items/properties/results/items/properties/result",
+                  "title": "The Result Schema",
+                  "type": "string"
+                },
+                "type": {
+                  "default": "RA-Quest",
+                  "description": "---",
+                  "enum": [
+                    "RA-Quest",
+                    "Morisky Scale",
+                    "RADAI",
+                    "FFbH/HAQ"
+                  ],
+                  "id": "/properties/questionaryFilled/items/properties/results/items/properties/type",
+                  "title": "The Type Schema",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "type",
+                "result"
+              ],
+              "type": "object"
+            },
+            "type": "array",
+            "uniqueItems": false
+          },
+          "source": {
+            "default": "UDUS_Rh",
+            "description": "---",
+            "enum": [
+              "UDUS_Rh",
+              "RA_home",
+              "SLucia_home",
+              "SLucia",
+              "PD_home",
+              "other"
+            ],
+            "id": "/properties/questionaryFilled/items/properties/source",
+            "title": "The Source Schema",
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "date",
+          "source",
+          "id",
+          "color",
+          "results"
+        ],
+        "type": "object"
+      },
+      "type": "array",
+      "uniqueItems": false
+    }
+  },
+  "required": [
+    "anyCallInputParameters",
+    "concludingCommentsResult",
+    "cliniciansResult",
+    "medicationPrescriptionsResult",
+    "medicationIntakesResult",
+    "infoResult",
+    "observationResult",
+    "diseasesResult",
+    "followUpsResult",
+    "functionalDiagnosticsResult",
+    "labTestResult",
+    "psychologicalNeurologicalTestsPerformed",
+    "patientReportedOutcomesResult",
+    "imagingResult",
+    "careProfessionalVisit",
+    "questionaryFilled"
+  ],
+  "type": "object"
+}

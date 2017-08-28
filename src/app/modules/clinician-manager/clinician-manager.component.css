@@ -1,80 +1,390 @@
-button {
-    background-color: #eee;
-  padding: 0.25rem 0.25rem;
-    border-radius: 10px;
+:host /deep/ .card {
+  border-radius: 7px;
+  margin: 0;
+  padding: 0;
+
 }
 
-button:hover {
-    background-color: #cfd8dc;
+:host /deep/ .card-footer {
+  border-radius: 7px;
 }
 
-button:disabled {
-    background-color: #eee;
-    color: #aaa;
-    cursor: auto;
+:host /deep/ .card-header {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0;
+  border-radius: 7px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
-.card {
+:host /deep/ .card-footer {
+  padding: 0rem;
+}
+
+:host /deep/ .card-block {
+  padding: 0.1rem;
+}
+
+:host /deep/ .card .shorter {
+  margin-bottom: -1.35rem;
+}
+
+
+
+:host /deep/ .card {
+  margin-bottom: 0.05rem;
+  alignment: left;
+
+}
+
+:host /deep/ .chart-row {
+  margin-left: -18px;
+  margin-right: -18px;
+  margin-bottom: 0.1rem;
+  margin-top: 0;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+:host /deep/ .nvd3-svg {
+  padding-top: 0.43rem;
+
+}
+
+
+:host /deep/ .col-xs, :host /deep/ .col-xs-1, :host /deep/ .col-xs-2, :host /deep/ .col-xs-3,
+:host /deep/ .col-xs-4, :host /deep/ .col-xs-5, :host /deep/ .col-xs-6, :host /deep/ .col-xs-7,
+:host /deep/ .col-xs-8, :host /deep/ .col-xs-9, :host /deep/ .col-xs-10, :host /deep/ .col-xs-11,
+:host /deep/ .col-xs-12, :host /deep/ .col-sm, :host /deep/ .col-sm-1, :host /deep/ .col-sm-2,
+:host /deep/ .col-sm-3, :host /deep/ .col-sm-4, :host /deep/ .col-sm-5, :host /deep/ .col-sm-6,
+:host /deep/ .col-sm-7, :host /deep/ .col-sm-8, :host /deep/ .col-sm-9, :host /deep/ .col-sm-10,
+:host /deep/ .col-sm-11, :host /deep/ .col-sm-12, :host /deep/ .col-md, :host /deep/ .col-md-1,
+:host /deep/ .col-md-2, :host /deep/ .col-md-3, :host /deep/ .col-md-4, :host /deep/ .col-md-5,
+:host /deep/ .col-md-6, :host /deep/ .col-md-7, :host /deep/ .col-md-8, :host /deep/ .col-md-9,
+:host /deep/ .col-md-10, :host /deep/ .col-md-11, :host /deep/ .col-md-12, :host /deep/ .col-lg,
+:host /deep/ .col-lg-1, :host /deep/ .col-lg-2, :host /deep/ .col-lg-3, :host /deep/ .col-lg-4,
+:host /deep/ .col-lg-5, :host /deep/ .col-lg-6, :host /deep/ .col-lg-7, :host /deep/ .col-lg-8,
+:host /deep/ .col-lg-9, :host /deep/ .col-lg-10, :host /deep/ .col-lg-11, :host /deep/ .col-lg-12,
+:host /deep/ .col-xl, :host /deep/ .col-xl-1, :host /deep/ .col-xl-2, :host /deep/ .col-xl-3,
+:host /deep/ .col-xl-4, :host /deep/ .col-xl-5, :host /deep/ .col-xl-6, :host /deep/ .col-xl-7,
+:host /deep/ .col-xl-8, :host /deep/ .col-xl-9, :host /deep/ .col-xl-10, :host /deep/ .col-xl-11,
+:host /deep/ .col-xl-12 {
+  padding-left: 0rem;
+  padding-right: 0rem;
+}
+
+:host /deep/ .selectiongroup .selection {
+  height: 20px !important;
+  font-size: 0.91rem !important;
+  padding-top: 4px;
+
+}
+
+:host /deep/ .row {
+  margin-bottom: 0;
+  margin-top: 0;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 0;
+}
+
+:host /deep/ .info-header {
+  background-color: #6f93c5;
+  color: white;
+}
+
+:host /deep/ .text-patient-info {
+  color: #000000;
+}
+
+:host /deep/ .page-item.active .page-link,
+:host /deep/ .pagination li.active .page-link {
+  background-color: #6f93c5 !important;
+  border-color: #6f93c5 !important;
+}
+
+:host /deep/ .pagination-sm .page-link,
+:host /deep/ .pagination-sm .pagination-datatables li a,
+:host /deep/ .pagination-datatables li .pagination-sm a,
+:host /deep/ .pagination-sm .pagination li a,
+:host /deep/ .pagination li .pagination-sm a {
+  padding: 0.1rem 0.4rem !important;
+  font-size: 0.7rem !important;
+}
+
+:host /deep/ .measurement-header {
+  background-color: #67bc9a;
+  color: white;
+}
+
+:host /deep/ .mydrp {
+  top: 8px;
+}
+
+:host /deep/ .picker-button {
+  background-color: #ffffff;
+  font-size: 0.7rem;
+  padding: 0px 1px 0px 1px;
   border-radius: 10px;
+  margin-bottom: 0px;
+  color: #000000;
+  border-color: transparent;
+  display: inline-block;
 }
 
-.card-footer {
+:host /deep/ .picker-button:hover {
+  background-color: #cfd8dc;
+
+}
+
+:host /deep/ .picker-button-selected {
+  background-color: #67bc9a;
+  color: white;
+}
+
+:host /deep/ .picker-button-selected:hover {
+  background-color: #67bc9a;
+}
+
+:host /deep/ .axis-buttons-legend {
+  background-color: transparent;
+  font-size: 0.7rem;
+  padding: 0px 1px 0px 1px;
   border-radius: 10px;
+  margin-bottom: 0px;
+  color: #000000;
+  border-color: transparent;
+  font-weight: bold;
 }
 
-.card-header {
+
+:host /deep/ .button-clear {
+  background-color: transparent;
+  font-size: 0.7rem;
+  padding: 0px 1px 0px 1px;
   border-radius: 10px;
+  margin-bottom: 0px;
+  color: #000000;
+  border-color: transparent;
+  display: inline-block;
 }
 
-.card-footer {
-  padding: 0.25rem;
+:host /deep/ .button-clear:hover {
+  background-color: #cfd8dc;
 }
 
-.card-block {
-  padding: 0.25rem;
+:host /deep/ .chart-contrast-color1 {
+  color: #67bc9a;
 }
 
-.card-header {
-  padding: 0.25rem;
+:host /deep/ .chart-contrast-color2 {
+  color: #6f93c5;
 }
 
-.card {
+:host /deep/ .chart-normal-color1 {
+  color: #3a955d;
+}
+
+:host /deep/ .chart-normal-color2 {
+  color: #466581;
+}
+
+:host /deep/ .chart-normal-color3 {
+  color: #c87533;
+}
+
+:host /deep/ .chart-normal-color4 {
+  color: #b4aa49;
+}
+
+:host /deep/ .vis-item .vis-item-content {
+  padding: 0;
+}
+
+:host /deep/ .vis-item {
+  border-color: #67bc9a;
+  background: #e4e5e6;
+  color: black;
+
+  padding: 0;
+
+}
+
+:host /deep/ .vis-item.vis-selected {
+  border-color: #7093c5;
+  background: #67bc9a;
+  color: white;
+  padding: 0;
+
+}
+
+:host /deep/ .timeline-item-content {
+  font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+  font-size: 0.5rem;
+  padding-left: 0.05rem;
+  padding-right: 0.05rem;
+  padding-top: 0.00rem;
+  padding-bottom: 0.01rem;
+  margin: 0;
+
+}
+
+:host /deep/ .timeline-item-header {
+  font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+  font-size: 0.5rem;
+  padding-left: 0.05rem;
+  padding-right: 0.05rem;
+  padding-top: 0.01rem;
+  padding-bottom: 0.01rem;
+  margin: 0;
+}
+
+
+:host /deep/ .table-sm td,
+:host /deep/ .table-sm th {
+  padding-left: 0.15rem;
+  padding-right: 0.15rem;
+  padding-top: 0rem;
+  padding-bottom: 0rem;
+  margin: 0;
+}
+
+:host /deep/ .table-sm th {
+  font-size: 0.7rem;
+}
+
+:host /deep/ .table-sm td {
+  font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+  font-size: 0.7rem;
+}
+
+:host /deep/ .table {
+  width: 100%;
+  max-width: 100%;
+
+}
+
+:host /deep/ .animated {
+
+  margin-top: -1.4rem;
+  margin-left: -1.8rem;
+  margin-right: -1.8rem;
+  margin-bottom: -2rem;
+  padding: 0;
+
+}
+
+:host /deep/ .detail-view {
+  font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
+  font-size: 0.7rem;
+  padding-left: 0.2rem;
+  padding-right: 0.2rem;
+}
+
+:host /deep/ .nvd3 .nv-groups .nv-point {
+  stroke-opacity: 50% !important;
+  stroke-width: 5px !important;
+  fill-opacity: 1 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .nv-point.hover {
+  stroke-width: 12px !important;
+  stroke-opacity: 100% !important;
+  fill-opacity: 0.2 !important;
+}
+
+
+
+
+:host /deep/ .dashed {
+  stroke-dasharray: 3, 5 !important;
+  stroke-opacity: 0.75 !important;
+  stroke-width: 1px !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .dashed-long {
+  stroke-dasharray: 20, 5 !important;
+  stroke-opacity: 0.75 !important;
+  stroke-width: 1px !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .not-dashed {
+  stroke-opacity: 0.75 !important;
+  stroke-width: 1px !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .hidden-line {
+  stroke-opacity: 0 !important;
+  stroke-width: 0 !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .dashed .nv-point {
+  stroke-opacity: 0 !important;
+  stroke-width: 0px !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .dashed .nv-point {
+  stroke-width: 0px !important;
+  stroke-opacity: 0 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .dashed .nv-point.hover {
+  stroke-width: 0px !important;
+  stroke-opacity: 0 !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .not-dashed .nv-point {
+  stroke-width: 0px !important;
+  stroke-opacity: 0 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .not-dashed .nv-point.hover {
+  stroke-width: 0px !important;
+  stroke-opacity: 0 !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .dashed-long .nv-point {
+  stroke-width: 0px !important;
+  stroke-opacity: 0 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .dashed-long .nv-point.hover {
+  stroke-width: 0px !important;
+  stroke-opacity: 0 !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .hidden-line .nv-point {
+  stroke-width: 0px !important;
+  stroke-opacity: 0 !important;
+}
+
+:host /deep/ .nvd3 .nv-groups .hidden-line .nv-point.hover {
+  stroke-width: 0px !important;
+  stroke-opacity: 0 !important;
+  fill-opacity: 0 !important;
+}
+
+:host /deep/ .pagination {
+
+  margin-top: 0.25rem;
   margin-bottom: 0.25rem;
 }
 
-.col-xs, .col-xs-1, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9, .col-xs-10, .col-xs-11, .col-xs-12, .col-sm, .col-sm-1, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-10, .col-sm-11, .col-sm-12, .col-md, .col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12, .col-lg, .col-lg-1, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-10, .col-lg-11, .col-lg-12, .col-xl, .col-xl-1, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-10, .col-xl-11, .col-xl-12 {
-  padding-left: 0.25rem;
-  padding-right: 0.25rem;
-}
 
-.no-float-table {
-  display: table;
-  width: 100%;
-}
 
-.no-float-row {
-  height: 100%;
-  width: 100%;
-  display: table-row
-}
 
-.no-float-cell {
-  height: 100%;
-  display: table-cell;
-  float: none;
-}
 
-input.selection {
-  height: 20px !important;
-  font-size: 15px !important;
 
-}
 
-.rowcontent {
-  margin-bottom: 0;
-  margin-top: 0;
-  margin-left: 15px;
-  margin-right: 15px;
-  text-align: center;
-}
 
