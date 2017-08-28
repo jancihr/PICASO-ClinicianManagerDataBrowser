@@ -304,7 +304,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
           this.chart = chart;//d3.selectAll('.nv-y1 text').style('fill','#123');
 
-          console.log("!!! lineChart callback !!!", chart);
+          //console.log("!!! lineChart callback !!!", chart);
         }
       }
     };
