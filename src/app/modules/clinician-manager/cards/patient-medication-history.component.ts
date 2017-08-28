@@ -54,7 +54,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
       showCurrentTime: true,
       //zoomMax: 61556926000, //year
       zoomMin: 86400000, //day
-      clickToUse: false,
+      clickToUse: true,
       rollingMode: null,//{follow:false, offset:0},
       start: this.dateRange.startDate,
       end: this.dateRange.endDate,
@@ -65,7 +65,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
       },
       showMajorLabels: true,
       showMinorLabels: true,
-      zoomable: false,
+      zoomable: true,
       zoomKey: 'altKey',
 
       format: {
