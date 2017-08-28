@@ -8,9 +8,46 @@
       </li>
     </ul>
     <ul class="nav navbar-nav float-xs-right hidden-md-down">
+      <li class="nav-item">
+        <a class="nav-link" href="#" [routerLink]="['/patient-id']"><i class="fa fa-user-plus"></i> Patient:
+          {{cdSharedObject.patient.display}} </a>
+      </li>
+
+      <li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
+        <a class="nav-link dropdown-toggle" (click)="false" data-toggle="dropdown" href="#" role="button"
+           aria-haspopup="true" aria-expanded="false" dropdownToggle>
+          <i class="fa fa-user"></i>User: {{cdSharedObject.clinician.UPID}}
+          <span class="hidden-md-down"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+          <div class="dropdown-header text-xs-center">
+            <strong>Account Admin</strong>
+          </div>
+          <a class="dropdown-item" href="#" [routerLink]="['/account-edit']"><i class="fa fa-bell-o"></i> User
+            account</a>
+          <a class="dropdown-item" href="#" [routerLink]="['/med-comm']"><i class="fa fa-comments"></i> Comments<span
+            class="tag tag-info">2</span></a>
+          <a class="dropdown-item" href="#"><i class="fa fa-envelope-o"></i> Notifications<span class="tag tag-warning">2</span></a>
+          <div class="divider"></div>
+          <a class="dropdown-item" href="#" [routerLink]="['/logout']"><i class="fa fa-lock"></i> Logout</a>
+        </div>
 
 
-
+      <li class="nav-item dropdown" dropdown (onToggle)="toggled($event)">
+        <a class="nav-link dropdown-toggle" (click)="false" data-toggle="dropdown" href="#" role="button"
+           aria-haspopup="true" aria-expanded="false" dropdownToggle>
+          <i class="fa fa-cog" aria-hidden="true"></i> Configuration
+          <span class="hidden-md-down"></span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
+          <div class="dropdown-header text-xs-center">
+            <strong>System Admin</strong>
+          </div>
+          <a class="dropdown-item" href="#" [routerLink]="['/codings']"><i class="fa fa-database"></i> Codings</a>
+          <a class="dropdown-item" href="#" [routerLink]="['/service-catalog']"><i class="fa fa-dashcube"></i> Services</a>
+          <a class="dropdown-item" href="#" [routerLink]="['/careplan-templates']"><i class="fa fa-apple"></i> Templates</a>
+        </div>
+      </li>
     </ul>
   </div>
 </header>
@@ -19,7 +56,9 @@
   <nav class="sidebar-nav">
     <ul class="nav">
 
-
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/patient-id']"><i class="fa fa-search" aria-hidden="true"></i>Select Patient</a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" [routerLink]="['/data-resource-browser']"><i class="icon-folder"></i>Data Resource
           Browser</a>
@@ -77,6 +116,12 @@
 
 
         </ul>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/narratives-manager']"><i class="icon-briefcase"></i>Care plan manager</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/med-comm']"><i class="fa fa-commenting" aria-hidden="true"></i>Communication</a>
       </li>
 
 

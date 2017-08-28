@@ -36817,7 +36817,7 @@
       "authorRole": "General Practitioner",
       "addresseeRole": "Neurologist",
       "addresseeName": "Doctor Z",
-      "date": "2017-03-20T10:41:19.000Z",
+      "date": "2017-04-20T10:41:19.000Z",
       "comment": "Patient should lessen steroid intake"
     },
     {
@@ -36829,7 +36829,7 @@
       "authorRole": "General Practitioner",
       "addresseeRole": "Neurologist",
       "addresseeName": "Doctor Magic",
-      "date": "2017-03-20T10:41:19.000Z",
+      "date": "2017-05-20T10:41:19.000Z",
       "comment": "Patient should lessen steroid intake"
     },
     {
@@ -36837,12 +36837,24 @@
       "authorId": "iddm",
       "addresseeId": "iddw",
       "addresseeRoleId": "idr",
-      "authorName": "Doctor Who",
+      "authorName": "Doctor B",
       "authorRole": "General Practitioner",
-      "addresseeRole": "Neurologist",
+      "addresseeRole": "Radiologist",
       "addresseeName": "Doctor Radio",
-      "date": "2017-03-20T10:41:19.000Z",
-      "comment": "Patient should lessen steroid intake"
+      "date": "2017-06-20T10:41:19.000Z",
+      "comment": "Patient should meet more people"
+    },
+    {
+      "id": "idaa",
+      "authorId": "iddm",
+      "addresseeId": "iddw",
+      "addresseeRoleId": "idr",
+      "authorName": "Doctor Who",
+      "authorRole": "General Practitioner",
+      "addresseeRole": "GP",
+      "addresseeName": "Doctor Magic",
+      "date": "2017-07-20T10:41:19.000Z",
+      "comment": "Patient should stop smoking"
     },
     {
       "id": "idaa",
@@ -36853,8 +36865,8 @@
       "authorRole": "General Practitioner",
       "addresseeRole": "Neurologist",
       "addresseeName": "Doctor Magic",
-      "date": "2017-03-20T10:41:19.000Z",
-      "comment": "Patient should lessen steroid intake"
+      "date": "2017-08-20T10:41:19.000Z",
+      "comment": "Patient should do more sport"
     },
     {
       "id": "idaa",
@@ -36865,19 +36877,7 @@
       "authorRole": "General Practitioner",
       "addresseeRole": "Neurologist",
       "addresseeName": "Doctor Magic",
-      "date": "2017-03-20T10:41:19.000Z",
-      "comment": "Patient should lessen steroid intake"
-    },
-    {
-      "id": "idaa",
-      "authorId": "iddm",
-      "addresseeId": "iddw",
-      "addresseeRoleId": "idr",
-      "authorName": "Doctor Who",
-      "authorRole": "General Practitioner",
-      "addresseeRole": "Neurologist",
-      "addresseeName": "Doctor Magic",
-      "date": "2017-03-20T10:41:19.000Z",
+      "date": "2017-09-20T10:41:19.000Z",
       "comment": "Patient should lessen steroid intake"
     }
   ],

@@ -12,8 +12,17 @@ import {RegisterComponent} from './authentication/register.component'
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'data-resource-browser',
-    pathMatch: 'full'
+    redirectTo: 'patient-id',
+    pathMatch: 'full',
+    canActivate: [AuthGuard]
+  },
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
+  {
+    path: 'home',
+    redirectTo: 'patient-id',
+    pathMatch: 'full',
+    canActivate: [AuthGuard]
   },
   {
     path: '',
@@ -63,8 +72,10 @@ export const routes: Routes = [
         path: 'careplan-templates',
         loadChildren: './modules/careplan-templates/careplan-templates.module#CareplanTemplatesModule'
       }
-    ]
-  }
+    ],
+    canActivate: [AuthGuard]
+  },
+  {path: '**', component: LoginComponent},
 
 ];
 

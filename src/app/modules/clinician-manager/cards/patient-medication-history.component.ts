@@ -76,7 +76,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
           hour: 'HH:mm',
           weekday: 'ddd D.M.',
           day: 'D.',
-          week: 'w',
+
           month: 'MMM',
           year: 'YYYY'
         },
@@ -87,7 +87,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
           hour: 'ddd D.M.',
           weekday: 'MMMM YYYY',
           day: 'MMMM YYYY',
-          week: 'MMMM YYYY',
+
           month: 'YYYY',
           year: ''
         }

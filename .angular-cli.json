@@ -19,11 +19,23 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "scss/style.scss"
+        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "scss/style.scss",
+        "../node_modules/vis/dist/vis.min.css",
+        "../node_modules/vis/dist/vis-network.min.css",
+        "../node_modules/vis/dist/vis-timeline-graph2d.min.css",
+        "../node_modules/nvd3/build/nv.d3.min.css"
       ],
       "scripts": [
+        "../node_modules/jquery/dist/jquery.min.js",
+        "../node_modules/bootstrap/dist/js/bootstrap.min.js",
         "../node_modules/chart.js/dist/Chart.bundle.min.js",
-        "../node_modules/chart.js/dist/Chart.min.js"
+        "../node_modules/chart.js/dist/Chart.min.js",
+        "../node_modules/vis/dist/vis.min.js",
+        "../node_modules/vis/dist/vis-network.min.js",
+        "../node_modules/vis/dist/vis-timeline-graph2d.min.js",
+        "../node_modules/d3/d3.min.js",
+        "../node_modules/nvd3/build/nv.d3.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
