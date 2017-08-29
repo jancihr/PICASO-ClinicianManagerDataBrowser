@@ -156,7 +156,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         duration: 0,
 
         legendRightAxisHint: " ",
-        interpolate: "linear",
+        interpolate: "monotone",
         showLegend: false,
         legend: {
           align: false
