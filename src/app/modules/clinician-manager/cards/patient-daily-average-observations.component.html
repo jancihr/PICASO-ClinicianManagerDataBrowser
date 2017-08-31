@@ -87,19 +87,16 @@
           </button>
 
 
-          <!--
-
-                  <button *ngIf="isThereMid || isThereMax || isThereMin" type="button"
-                          class="button-clear"
-                          (click)="resetMinMidMax()">
-                    <span>  <i class="fa {{showMinMidMax?'fa-circle':'fa-circle-o'}}"></i> </span>
-                    <span *ngIf="!showMinMidMax"></span> <span *ngIf="showMinMidMax"></span> <span *ngIf="isThereMin">Min</span>
-                    <span *ngIf="isThereMid">Mid</span> <span *ngIf="isThereMax">Max</span>
-                    <span>
+          <button *ngIf="isThereMid || isThereMax || isThereMin" type="button"
+                  class="button-clear"
+                  (click)="resetMinMidMax()">
+            <span>  <i class="fa {{showMinMidMax?'fa-circle':'fa-circle-o'}}"></i> </span>
+            <span *ngIf="!showMinMidMax"></span> <span *ngIf="showMinMidMax"></span> <span *ngIf="isThereMin">Min</span>
+            <span *ngIf="isThereMid">Mid</span> <span *ngIf="isThereMax">Max</span>
+            <span>
                   </span>
-                  </button>
+          </button>
 
-                  -->
 
           <button
             *ngIf="((min1!==null && min1>0)|| (min2!== null && min2>0)) && chartType!=='bar' && chartType!=='area'"
@@ -193,7 +190,7 @@
 
     <div class="chart-row">
 
-      <nvd3 #nvd3 [options]="options" [data]="data"></nvd3>
+      <nvd3 id="{{observationId}}-cm-graph" [options]="options" [data]="data"></nvd3>
 
     </div>
 

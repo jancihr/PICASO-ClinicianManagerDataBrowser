@@ -24,6 +24,7 @@ export interface Value {
   date: string;
   source: string;
   outOfRange: boolean;
+  calculatedMax: number;
 }
 
 export interface ObservationResult {
@@ -41,6 +42,7 @@ export interface ObservationResult {
   showLeft: boolean;
   showRight: boolean;
   index: number;
+
 }
 
 export interface MedicationPrescriptionsResult {

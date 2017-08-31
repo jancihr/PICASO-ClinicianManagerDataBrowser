@@ -3,7 +3,7 @@
  */
 
 import {Component, Input, OnInit} from "@angular/core";
-import {PicasoDataService} from "../service/picaso-data.service";
+import {PicasoOdsCmDataService} from "../service/picaso-data.service";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {InfoResult} from "../model/generated-interfaces";
 
@@ -11,8 +11,7 @@ import {InfoResult} from "../model/generated-interfaces";
 @Component({
   selector: "patient-overview",
   template: require("./patient-overview.component.html"),
-  styles: [require("./patient-overview.component.css")],
-  providers: [PicasoDataService]
+  styles: [require("./patient-overview.component.css")]
 })
 
 export class PatientOverviewComponent implements OnInit {
@@ -30,7 +29,7 @@ export class PatientOverviewComponent implements OnInit {
     total: 0
   };
 
-  constructor(private picasoDataService: PicasoDataService) {
+  constructor(private picasoDataService: PicasoOdsCmDataService) {
   };
 
   ngOnInit(): void {
@@ -38,7 +37,7 @@ export class PatientOverviewComponent implements OnInit {
     //this.getToken("picasodemo", "password");
 
     this.getPatients();
-    //this.getPatient();
+    //this.getPatientResult();
   }
 
 
@@ -57,31 +56,11 @@ export class PatientOverviewComponent implements OnInit {
 
   getPatient(): void {
 
-    //console.log("getPatient", this.selectedPatient);
-    this.picasoDataService.getPatient(this.progress).subscribe(
+    //console.log("getPatientResult", this.selectedPatient);
+    this.picasoDataService.getPatientResult(this.progress).subscribe(
       patient => this.patientData = patient,
       error => this.errorMessage = <any>error);
 
-
-    setTimeout(() => {
-      this.progress.percentage = 0;
-    }, 300);
-    setTimeout(() => {
-      this.progress.percentage = 25
-    }, 600);
-    setTimeout(() => {
-      this.progress.percentage = 50
-    }, 900);
-    setTimeout(() => {
-      this.progress.percentage = 75
-    }, 1200);
-    setTimeout(() => {
-      this.progress.percentage = 100
-    }, 1500);
-
-    setTimeout(() => {
-      this.progress.total = 2000
-    }, 1800);
 
 
     //console.log("webservice called");

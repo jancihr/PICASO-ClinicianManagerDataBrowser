@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {PicasoDataService} from "../service/picaso-data.service";
+import {PicasoOdsCmDataService} from "../service/picaso-data.service";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {DiseasesResult} from "../model/generated-interfaces";
 
@@ -7,8 +7,7 @@ import {DiseasesResult} from "../model/generated-interfaces";
 @Component({
     selector: 'patient-diseases',
     templateUrl: './patient-diseases.component.html',
-    styleUrls: ['./patient-diseases.component.css'],
-    providers: [PicasoDataService]
+  styleUrls: ['./patient-diseases.component.css']
 
 })
 
@@ -61,7 +60,7 @@ export class PatientDiseasesComponent implements OnInit {
         total: 0
     };
 
-    constructor(private picasoDataService: PicasoDataService) {
+  constructor(private picasoDataService: PicasoOdsCmDataService) {
     };
 
     ngOnInit(): void {
@@ -69,6 +68,11 @@ export class PatientDiseasesComponent implements OnInit {
     }
 
     getDiseases(): void {
+      this.progress = {
+        percentage: 0,
+        loaded: 0,
+        total: 0
+      };
 
         this.picasoDataService.getDiseases(undefined, undefined, this.progress).
         subscribe(diseases => this.diseases = diseases,

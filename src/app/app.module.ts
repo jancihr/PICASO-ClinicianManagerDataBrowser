@@ -30,6 +30,8 @@ import {CareplanTemplatesModule} from "./modules/careplan-templates/careplan-tem
 import {HttpModule} from "@angular/http";
 import {RouterModule} from "@angular/router";
 import {CookieModule} from "ngx-cookie";
+import {PicasoOdsCmDataService} from "./modules/clinician-manager/service/picaso-data.service";
+import {ProgressHttpModule} from "angular-progress-http";
 @NgModule({
   imports: [
     BrowserModule,
@@ -52,6 +54,7 @@ import {CookieModule} from "ngx-cookie";
     BsDropdownModule.forRoot(),
     ServiceCatalogModule,
     CareplanTemplatesModule,
+    ProgressHttpModule,
     CookieModule.forRoot()
   ],
   declarations: [
@@ -70,7 +73,8 @@ import {CookieModule} from "ngx-cookie";
     ConfigurationService,
     CdSharedModelService,
     AuthGuard,
-    NGXLogger
+    NGXLogger,
+    PicasoOdsCmDataService
   ],
   bootstrap: [AppComponent]
 })

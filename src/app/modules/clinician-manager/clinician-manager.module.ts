@@ -27,8 +27,7 @@ import {NvD3Module} from "ng2-nvd3";
   imports: [
     ClinicianManagerRoutingModule, FormsModule,
     ChartsModule, VisModule, HttpModule, CommonModule,
-    Ng2Bs3ModalModule, MyDateRangePickerModule,
-    ProgressHttpModule, DataTableModule, NvD3Module
+    Ng2Bs3ModalModule, MyDateRangePickerModule, DataTableModule, NvD3Module
 
   ],
   declarations: [ClinicianManagerComponent,

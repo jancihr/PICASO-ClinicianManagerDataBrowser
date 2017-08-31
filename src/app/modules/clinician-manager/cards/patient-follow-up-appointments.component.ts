@@ -1,13 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {PicasoDataService} from "../service/picaso-data.service";
+import {PicasoOdsCmDataService} from "../service/picaso-data.service";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {FollowUpsResult} from "../model/generated-interfaces";
 
 @Component({
   selector: 'patient-follow-up-appointments',
   templateUrl: './patient-follow-up-appointments.component.html',
-  styleUrls: ['./patient-follow-up-appointments.component.css'],
-  providers: [PicasoDataService]
+  styleUrls: ['./patient-follow-up-appointments.component.css']
 
 })
 
@@ -27,7 +26,7 @@ export class PatientFollowUpComponent implements OnInit {
     total: 0
   };
 
-  constructor(private picasoDataService: PicasoDataService) {
+  constructor(private picasoDataService: PicasoOdsCmDataService) {
   };
 
   ngOnInit(): void {
@@ -35,6 +34,12 @@ export class PatientFollowUpComponent implements OnInit {
   }
 
   getFollowUps(): void {
+    this.progress = {
+      percentage: 0,
+      loaded: 0,
+      total: 0
+    };
+
     this.picasoDataService.getFollowUps(undefined, undefined, undefined, this.progress).subscribe(concludingComments => this.followUps = concludingComments,
       error => this.errorMessage = <any>error);
 

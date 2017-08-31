@@ -8,11 +8,13 @@ import {ConfigurationService} from "../../picaso-cd-common/_services/configurati
 import {CdSharedModelService} from "../../picaso-cd-common/_services/cd-shared-model.service";
 import {CookieService} from "ngx-cookie";
 import {MyDateRange} from "./cards/patient-range-picker.component";
+import {PatientLoadProgress} from "./model/patient-loadprogress";
+import {PicasoOdsCmDataService} from "./service/picaso-data.service";
 
 
 @Component({
   templateUrl: 'clinician-manager.component.html',
-  styleUrls: ['clinician-manager.component.css'],
+  styleUrls: ['clinician-manager.component.css']
 })
 export class ClinicianManagerComponent implements OnInit {
 
@@ -35,18 +37,22 @@ export class ClinicianManagerComponent implements OnInit {
 
   @ViewChildren(PatientDailyAverageObservationsComponent) observationHistoryComponents: QueryList<PatientDailyAverageObservationsComponent>;
 
-
-  constructor(private config: ConfigurationService, private cdSharedModelService: CdSharedModelService,
-              private activatedRoute: ActivatedRoute, private _cookieService: CookieService) {
+  constructor(private config: ConfigurationService,
+              private cdSharedModelService: CdSharedModelService,
+              private activatedRoute: ActivatedRoute,
+              private _cookieService: CookieService) {
   }
 
 
   ngOnInit(): void {
 
+
+
 //TODO cookies to preserve selected ranges
+
+
     //this._cookieService.put("clinician.dashboard.range", this.rangeToShow);
     //console.log("cookie", this._cookieService.get("clinician.dashboard.card"));
-
 
 
 
@@ -171,6 +177,10 @@ export class ClinicianManagerComponent implements OnInit {
       endDate: endDate,
       range: rangeStr
     };
+  }
+
+  refresh() {
+    sessionStorage.removeItem("temporaryCmServiceResult");
   }
 
 

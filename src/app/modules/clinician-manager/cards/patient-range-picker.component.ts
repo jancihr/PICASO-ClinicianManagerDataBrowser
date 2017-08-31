@@ -1,12 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output, SimpleChange, SimpleChanges} from '@angular/core';
-import {PicasoDataService} from "../service/picaso-data.service";
+import {PicasoOdsCmDataService} from "../service/picaso-data.service";
 import {IMyDateRangeModel} from "mydaterangepicker";
 
 @Component({
   selector: 'patient-range-picker',
   templateUrl: './patient-range-picker.component.html',
-  styleUrls: ['./patient-range-picker.component.css'],
-  providers: [PicasoDataService]
+  styleUrls: ['./patient-range-picker.component.css']
 
 })
 

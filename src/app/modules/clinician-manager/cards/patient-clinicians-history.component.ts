@@ -1,13 +1,12 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import {PicasoDataService} from "../service/picaso-data.service";
+import {PicasoOdsCmDataService} from "../service/picaso-data.service";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {CliniciansResult} from "../model/generated-interfaces";
 
 @Component({
   selector: 'patient-clinicians-history',
   templateUrl: './patient-clinicians-history.component.html',
-  styleUrls: ['./patient-clinicians-history.component.css'],
-  providers: [PicasoDataService]
+  styleUrls: ['./patient-clinicians-history.component.css']
 })
 
 export class PatientCliniciansComponent implements OnInit {
@@ -27,7 +26,7 @@ export class PatientCliniciansComponent implements OnInit {
     total: 0
   };
 
-  constructor(private picasoDataService: PicasoDataService) {
+  constructor(private picasoDataService: PicasoOdsCmDataService) {
   };
 
   ngOnInit(): void {
@@ -35,6 +34,11 @@ export class PatientCliniciansComponent implements OnInit {
   }
 
   getClinicians(): void {
+    this.progress = {
+      percentage: 0,
+      loaded: 0,
+      total: 0
+    };
     this.picasoDataService.getClinicians(undefined, undefined, this.progress).subscribe(clinicians => this.clinicians = clinicians,
       error => this.errorMessage = <any>error);
 

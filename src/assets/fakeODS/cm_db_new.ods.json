@@ -19,7 +19,7 @@
   },
   "observationResult": [
     {
-      "id": "heartrate",
+      "id": "heartrate_resting",
       "name": "Heart rate",
       "unit": "beats/min",
       "color": "orange",

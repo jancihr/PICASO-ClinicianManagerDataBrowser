@@ -1,7 +1,7 @@
 import {Component, OnInit, OnDestroy, ViewChild, Input} from '@angular/core';
 
 import {VisTimelineService, VisTimelineItems, VisTimelineOptions} from 'ng2-vis/ng2-vis';
-import {PicasoDataService} from "../service/picaso-data.service";
+import {PicasoOdsCmDataService} from "../service/picaso-data.service";
 import {PatientTreatment} from "../model/patient-treatment";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
 import {MyDateRange} from "./patient-range-picker.component";
@@ -14,7 +14,7 @@ import {CareProfessionalVisit} from "../model/generated-interfaces";
   styles: [
     require('./patient-treatment-history.component.css')
   ],
-  providers: [PicasoDataService, VisTimelineService]
+  providers: [VisTimelineService]
 })
 
 export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
@@ -25,7 +25,43 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
   animateToggle = true;
   isColourful = false;
 
-  progress: PatientLoadProgress = {
+  progress1: PatientLoadProgress = {
+    percentage: 0,
+    loaded: 0,
+    total: 0
+  };
+
+  progress2: PatientLoadProgress = {
+    percentage: 0,
+    loaded: 0,
+    total: 0
+  };
+
+  progress3: PatientLoadProgress = {
+    percentage: 0,
+    loaded: 0,
+    total: 0
+  };
+
+  progress4: PatientLoadProgress = {
+    percentage: 0,
+    loaded: 0,
+    total: 0
+  };
+
+  progress5: PatientLoadProgress = {
+    percentage: 0,
+    loaded: 0,
+    total: 0
+  };
+
+  progress6: PatientLoadProgress = {
+    percentage: 0,
+    loaded: 0,
+    total: 0
+  };
+
+  progress7: PatientLoadProgress = {
     percentage: 0,
     loaded: 0,
     total: 0
@@ -45,7 +81,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
   public visTimelineTreatmentsOptions: VisTimelineOptions;
 
   public constructor(private visTimelineService: VisTimelineService,
-                     private picasoDataService: PicasoDataService) {
+                     private picasoDataService: PicasoOdsCmDataService) {
   }
 
   public ngOnInit(): void {
@@ -201,107 +237,146 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
 
 
   setVisitTreatments(treatments: CareProfessionalVisit[]) {
-    for (let treatment of treatments) {
+    if (treatments) {
+      for (let treatment of treatments) {
 
-      this.checks.push(
-        {
-          startDate: treatment.date,
-          endDate: null,
-          id: "treat_" + this.itemCounter++,
-          category: "Care professional",
-          color: treatment.color,
-          visitReason: treatment.careProfessional,
-          visitResults: [{type: "Care professional result", result: treatment.result}]
+        this.checks.push(
+          {
+            startDate: treatment.date,
+            endDate: null,
+            id: "treat_" + this.itemCounter++,
+            category: "Care professional",
+            color: treatment.color,
+            visitReason: treatment.careProfessional,
+            visitResults: [{type: "Care professional result", result: treatment.result}]
 
-        }
-      );
+          }
+        );
 
+      }
+      this.setTreatmentsGraphData(true);
     }
-    this.setTreatmentsGraphData(true);
   }
 
   setTreatment(treatments: any[], type: string) {
-    for (let treatment of treatments) {
+    if (treatments) {
+      for (let treatment of treatments) {
 
-      let visitReason: string = "";
-      for (let result of treatment.results) {
-        visitReason += (visitReason === "" ? "" : ", ") + result.type;
-      }
-      this.checks.push(
-        {
-          startDate: treatment.date,
-          endDate: null,
-          id: "treat_" + this.itemCounter++,
-          category: type,
-          color: treatment.color,
-          visitReason: visitReason,
-          visitResults: treatment.results
+        let visitReason: string = "";
+        for (let result of treatment.results) {
+          visitReason += (visitReason === "" ? "" : ", ") + result.type;
         }
-      );
+        this.checks.push(
+          {
+            startDate: treatment.date,
+            endDate: null,
+            id: "treat_" + this.itemCounter++,
+            category: type,
+            color: treatment.color,
+            visitReason: visitReason,
+            visitResults: treatment.results
+          }
+        );
 
+      }
+      this.setTreatmentsGraphData(true);
     }
-    this.setTreatmentsGraphData(true);
   }
 
 
   getVisits(): void {
+    this.progress1 = {
+      percentage: 0,
+      loaded: 0,
+      total: 0
+    };
     this.picasoDataService.getProfessionalVisits(
       this.dateRange.startDate,
-      this.dateRange.endDate, this.progress
+      this.dateRange.endDate, this.progress1
     ).subscribe(
       checks => this.setVisitTreatments(checks),
       error => this.errorMessage = <any>error);
   }
 
   getImaging(): void {
+    this.progress2 = {
+      percentage: 0,
+      loaded: 0,
+      total: 0
+    };
     this.picasoDataService.getImagingResults(
       this.dateRange.startDate,
-      this.dateRange.endDate, this.progress
+      this.dateRange.endDate, this.progress2
     ).subscribe(
       checks => this.setTreatment(checks, "Imaging"),
       error => this.errorMessage = <any>error);
   }
 
   getLabTests(): void {
+    this.progress3 = {
+      percentage: 0,
+      loaded: 0,
+      total: 0
+    };
     this.picasoDataService.getLabTestResults(
       this.dateRange.startDate,
-      this.dateRange.endDate, this.progress
+      this.dateRange.endDate, this.progress3
     ).subscribe(
       checks => this.setTreatment(checks, "Lab Tests"),
       error => this.errorMessage = <any>error);
   }
 
   getPsychTests() {
+    this.progress4 = {
+      percentage: 0,
+      loaded: 0,
+      total: 0
+    };
     this.picasoDataService.getPsychologicalNeurologicalTestsPerformedResults(
       this.dateRange.startDate,
-      this.dateRange.endDate, this.progress
+      this.dateRange.endDate, this.progress4
     ).subscribe(
       checks => this.setTreatment(checks, "Psych. & neurol. tests"),
       error => this.errorMessage = <any>error);
   }
 
   getfunctionalDiag() {
+    this.progress5 = {
+      percentage: 0,
+      loaded: 0,
+      total: 0
+    };
     this.picasoDataService.getFunctionalDiagnosticsResult(
       this.dateRange.startDate,
-      this.dateRange.endDate, this.progress
+      this.dateRange.endDate, this.progress5
     ).subscribe(
       checks => this.setTreatment(checks, "Functional diagnostics"),
       error => this.errorMessage = <any>error);
   }
 
   getPatientReport() {
+    this.progress6 = {
+      percentage: 0,
+      loaded: 0,
+      total: 0
+    };
     this.picasoDataService.getPatientReportedOutcomesResultResult(
       this.dateRange.startDate,
-      this.dateRange.endDate, this.progress
+      this.dateRange.endDate, this.progress6
     ).subscribe(
       checks => this.setTreatment(checks, "Patient reported outcomes"),
       error => this.errorMessage = <any>error);
   }
 
   getQuestionFill() {
+    this.progress7 = {
+      percentage: 0,
+      loaded: 0,
+      total: 0
+    };
     this.picasoDataService.getQuestionaryFilledResult(
       this.dateRange.startDate,
-      this.dateRange.endDate, this.progress
+      this.dateRange.endDate, this.progress7
     ).subscribe(
       checks => this.setTreatment(checks, "Questionnaire taken"),
       error => this.errorMessage = <any>error);

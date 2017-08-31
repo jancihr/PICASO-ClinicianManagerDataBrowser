@@ -7,12 +7,60 @@
       Patient's Treatment History
       <span class="w3-right">
 
-      <span *ngIf="(progress.percentage < 100)">
+      <span *ngIf="(progress1.percentage < 100)">
 
         <span class="fa fa-spinner w3-spin" style="font-size:20px"></span>
 
-        loading: {{progress.percentage}}% |
-      loaded: {{progress.total}} bytes
+        loading visits: {{progress1.percentage}}% |
+      loaded: {{progress1.total}} bytes
+      </span>
+
+        <span *ngIf="(progress2.percentage < 100)">
+
+        <span class="fa fa-spinner w3-spin" style="font-size:20px"></span>
+
+        loading imaging: {{progress2.percentage}}% |
+      loaded: {{progress2.total}} bytes
+      </span>
+
+        <span *ngIf="(progress3.percentage < 100)">
+
+        <span class="fa fa-spinner w3-spin" style="font-size:20px"></span>
+
+        loading lab tests: {{progress3.percentage}}% |
+      loaded: {{progress3.total}} bytes
+      </span>
+
+        <span *ngIf="(progress4.percentage < 100)">
+
+        <span class="fa fa-spinner w3-spin" style="font-size:20px"></span>
+
+        loading psych. tests: {{progress4.percentage}}% |
+      loaded: {{progress4.total}} bytes
+      </span>
+
+        <span *ngIf="(progress5.percentage < 100)">
+
+        <span class="fa fa-spinner w3-spin" style="font-size:20px"></span>
+
+        loading func diag.: {{progress5.percentage}}% |
+      loaded: {{progress5.total}} bytes
+      </span>
+
+        <span *ngIf="(progress6.percentage < 100)">
+
+        <span class="fa fa-spinner w3-spin" style="font-size:20px"></span>
+
+        loading patient reportings: {{progress6.percentage}}% |
+      loaded: {{progress6.total}} bytes
+      </span>
+
+        <span *ngIf="(progress7.percentage < 100)">
+
+        <span class="fa fa-spinner w3-spin" style="font-size:20px"></span>
+
+        loading questionnaires: {{progress7.percentage}}% |
+      loaded: {{progress7.total}} bytes
       </span>
     </span>
 

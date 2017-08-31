@@ -1,7 +1,7 @@
 import {Component, OnInit, OnDestroy, ViewChild, Input} from '@angular/core';
 
 import {VisTimelineService, VisTimelineItems, VisTimelineOptions} from 'ng2-vis/ng2-vis';
-import {PicasoDataService} from "../service/picaso-data.service";
+import {PicasoOdsCmDataService} from "../service/picaso-data.service";
 import {PatientMedication} from "../model/patient-medication";
 
 import {PatientLoadProgress} from "../model/patient-loadprogress";
@@ -15,7 +15,7 @@ import {MedicationIntakesResult, MedicationPrescriptionsResult} from "../model/g
   styleUrls: [
     'patient-medication-history.component.css'
   ],
-  providers: [PicasoDataService, VisTimelineService]
+  providers: [VisTimelineService]
 })
 
 export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
@@ -25,7 +25,12 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
   animateToggle = true;
   isColourful = false;
 
-  progress: PatientLoadProgress = {
+  progress1: PatientLoadProgress = {
+    percentage: 0,
+    loaded: 0,
+    total: 0
+  };
+  progress2: PatientLoadProgress = {
     percentage: 0,
     loaded: 0,
     total: 0
@@ -44,7 +49,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
   public visTimelineMedicationsOptions: VisTimelineOptions;
 
   public constructor(private visTimelineService: VisTimelineService,
-                     private picasoDataService: PicasoDataService) {
+                     private picasoDataService: PicasoOdsCmDataService) {
   }
 
   public ngOnInit(): void {
@@ -157,42 +162,43 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
     let counter: number = 0;
 
-    for (let item of this.medications) {
+    if (this.medications)
+      for (let item of this.medications) {
 
-      if (item.endDate === undefined || item.endDate === null) {
-        this.visTimelineItemsMedications.add(
-          {
-            id: item.id,
-            style: this.isColourful ? ("background: " + item.color) : "",
+        if (item.endDate === undefined || item.endDate === null) {
+          this.visTimelineItemsMedications.add(
+            {
+              id: item.id,
+              style: this.isColourful ? ("background: " + item.color) : "",
 
-            content: `<div>
+              content: `<div>
                               <div class="timeline-item-header"><b>${item.name} INTAKE</b></div>
                               <div class="timeline-item-content">${item.dosage} </div>
                               </div>`
-            ,
-            start: item.startDate,
-            type: 'box'
-          });
+              ,
+              start: item.startDate,
+              type: 'box'
+            });
 
-      } else {
+        } else {
 
-        this.visTimelineItemsMedications.add(
-          {
-            id: item.id,
-            style: this.isColourful ? ("background: " + item.color) : "",
+          this.visTimelineItemsMedications.add(
+            {
+              id: item.id,
+              style: this.isColourful ? ("background: " + item.color) : "",
 
-            content: `<div>
+              content: `<div>
                               <div class="timeline-item-header"><b>${item.name} PRESCRIPTION</b></div>
                               <div class="timeline-item-content">${item.dosage} - ${item.frequency} - ${item.stopReason}</div>
                               </div>`
-            ,
-            start: item.startDate,
-            end: item.endDate
-          });
-      }
+              ,
+              start: item.startDate,
+              end: item.endDate
+            });
+        }
 
-      this.listOfItems.push(item.id);
-    }
+        this.listOfItems.push(item.id);
+      }
 
 
     // this.focusVis();
@@ -202,55 +208,63 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
   setMedicationPrescriptions(medications: MedicationPrescriptionsResult[]): void {
     let i = 0;
-    for (let prescription of medications) {
-      this.medications.push(
-        {
-          id: "graphItem" + this.itemCounter++,
-          name: prescription.name,
-          startDate: prescription.startDate,
-          endDate: prescription.endDate,
-          dosage: prescription.dosage,
-          frequency: prescription.frequency,
-          stopReason: prescription.stopReason,
-          color: prescription.color,
-          disease: prescription.disease,
-          prescribedBy: prescription.prescribedBy,
-          type: "prescription"
-        }
-      );
-      //console.log("prescript:", this.medications);
+    if (medications) {
+      for (let prescription of medications) {
+        this.medications.push(
+          {
+            id: "graphItem" + this.itemCounter++,
+            name: prescription.name,
+            startDate: prescription.startDate,
+            endDate: prescription.endDate,
+            dosage: prescription.dosage,
+            frequency: prescription.frequency,
+            stopReason: prescription.stopReason,
+            color: prescription.color,
+            disease: prescription.disease,
+            prescribedBy: prescription.prescribedBy,
+            type: "prescription"
+          }
+        );
+        //console.log("prescript:", this.medications);
+      }
+      this.setMedicationsGraphData(true);
     }
-    this.setMedicationsGraphData(true);
   }
 
   setMedicationIntakes(medications: MedicationIntakesResult[]): void {
     let i = 0;
-    for (let prescription of medications) {
-      this.medications.push(
-        {
-          id: "graphItem" + this.itemCounter++,
-          name: prescription.name,
-          startDate: prescription.date,
-          endDate: null,
-          dosage: prescription.dosage,
-          frequency: null,
-          stopReason: null,
-          color: prescription.color,
-          disease: prescription.disease,
-          prescribedBy: prescription.prescribedBy,
-          type: "intake"
-        }
-      );
-      //console.log("intake:", this.medications);
+    if (medications) {
+      for (let prescription of medications) {
+        this.medications.push(
+          {
+            id: "graphItem" + this.itemCounter++,
+            name: prescription.name,
+            startDate: prescription.date,
+            endDate: null,
+            dosage: prescription.dosage,
+            frequency: null,
+            stopReason: null,
+            color: prescription.color,
+            disease: prescription.disease,
+            prescribedBy: prescription.prescribedBy,
+            type: "intake"
+          }
+        );
+        //console.log("intake:", this.medications);
+      }
+      this.setMedicationsGraphData(true);
     }
-    this.setMedicationsGraphData(true);
   }
 
   getMedicationPrescriptions(): void {
-
+    this.progress1 = {
+      percentage: 0,
+      loaded: 0,
+      total: 0
+    };
     this.picasoDataService.getMedicationPrescriptionHistory(
       this.dateRange.startDate,
-      this.dateRange.endDate, this.progress
+      this.dateRange.endDate, this.progress1
     ).subscribe(
       medications => this.setMedicationPrescriptions(medications),
       error => this.errorMessage = <any>error);
@@ -258,10 +272,14 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
   }
 
   getMedicationIntakes(): void {
-
+    this.progress2 = {
+      percentage: 0,
+      loaded: 0,
+      total: 0
+    };
     this.picasoDataService.getMedicationIntakeHistory(
       this.dateRange.startDate,
-      this.dateRange.endDate, this.progress
+      this.dateRange.endDate, this.progress2
     ).subscribe(
       medications => this.setMedicationIntakes(medications),
       error => this.errorMessage = <any>error);
