@@ -99,7 +99,7 @@
 
 
           <button
-            *ngIf="((min1!==null && min1>0)|| (min2!== null && min2>0)) && chartType!=='bar' && chartType!=='area'"
+            *ngIf="((min1!==null && min1>0)|| (min2!== null && min2>0) || normaliseValues) && chartType!=='bar' && chartType!=='area'"
             type="button"
             class="button-clear"
             (click)="toggleZero()">

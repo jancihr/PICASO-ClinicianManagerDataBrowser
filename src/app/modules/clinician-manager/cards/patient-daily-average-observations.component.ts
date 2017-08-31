@@ -30,7 +30,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   @ViewChild('nvd3') nvd3;
 
 
-
   forMeasurementsPath: string;
   chart;
   headerText: string;
@@ -334,6 +333,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       total: 0
     };
 
+    this.stretchChartUpDown(this.normaliseValues);
+
     //this.setOptions();
 
     if (this.observationId === "morisky") {
@@ -430,6 +431,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
     this.setHeaderFooter(observations);
     this.enableInitialGraphs(oldOnOff);
+    this.stretchChartUpDown(this.normaliseValues);
 
     this.data = [];
     //this.setOptions();
@@ -538,9 +540,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           //console.log("max for ", group.name)
           //console.log("max value ", max)
 
-          for (let i = 0; i < filteredValues.length; i++) {
-            filteredValues[i].calculatedMax = max;
-          }
 
           //sort values by date for graph to be shown correctly
           let sortedValues = filteredValues.sort(function (a, b) {
@@ -552,6 +551,14 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             return (o.value != null && o.value < m) ? o.value : m;
           }, Infinity);
 
+          if (this.showMinMidMax) {
+            min = Math.min(min, group.maxValue, group.minValue, group.midValue);
+          }
+
+          for (let i = 0; i < filteredValues.length; i++) {
+            filteredValues[i].calculatedMax = max;
+            filteredValues[i].calculatedMin = min;
+          }
 
           let newGraphValues = [];
 
@@ -591,14 +598,16 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                 observation: {
                   date: this.dateRange.startDate,
                   value: group.minValue,
-                  calculatedMax: max
+                  calculatedMax: max,
+                  calculatedMin: min
                 }
               });
               newGraphValuesMin.push({
                 observation: {
                   date: this.dateRange.endDate,
                   value: group.minValue,
-                  calculatedMax: max
+                  calculatedMax: max,
+                  calculatedMin: min
                 }
               });
               //min value line
@@ -625,14 +634,16 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                 observation: {
                   date: this.dateRange.endDate,
                   value: group.maxValue,
-                  calculatedMax: max
+                  calculatedMax: max,
+                  calculatedMin: min
                 }
               });
               newGraphValuesMax.push({
                 observation: {
                   date: this.dateRange.startDate,
                   value: group.maxValue,
-                  calculatedMax: max
+                  calculatedMax: max,
+                  calculatedMin: min
                 }
               });
               //max value line
@@ -659,14 +670,16 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                 observation: {
                   date: this.dateRange.startDate,
                   value: group.midValue,
-                  calculatedMax: max
+                  calculatedMax: max,
+                  calculatedMin: min
                 }
               });
               newGraphValuesMid.push({
                 observation: {
                   date: this.dateRange.endDate,
                   value: group.midValue,
-                  calculatedMax: max
+                  calculatedMax: max,
+                  calculatedMin: min
                 }
               });
               //mid value line
@@ -904,6 +917,28 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   clearOldChart() {
     d3.selectAll("nvd3#" + this.observationId + "-cm-graph > svg > g > g > g > g.nv-wrap").remove();
+  }
+
+  stretchChartUpDown(toggle: boolean) {
+    if (toggle && this.forceYZero) {
+      this.options.chart.y = function (y) {
+        return y.observation.value === null ?
+          null : new Number((y.observation.value ) / (y.observation.calculatedMax));
+      }
+
+    }
+    else if (toggle && !this.forceYZero) {
+      this.options.chart.y = function (y) {
+        return y.observation.value === null ?
+          null : new Number((y.observation.value - y.observation.calculatedMin ) / (y.observation.calculatedMax - y.observation.calculatedMin));
+      }
+    } else {
+      this.options.chart.y = function (y) {
+        return y.observation.value === null ?
+          null : new Number(y.observation.value);
+      }
+    }
+
   }
 
 

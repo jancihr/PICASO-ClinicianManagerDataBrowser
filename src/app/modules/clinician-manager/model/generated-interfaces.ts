@@ -25,6 +25,7 @@ export interface Value {
   source: string;
   outOfRange: boolean;
   calculatedMax: number;
+  calculatedMin: number;
 }
 
 export interface ObservationResult {
