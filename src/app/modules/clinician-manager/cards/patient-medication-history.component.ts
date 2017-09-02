@@ -70,7 +70,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
       start: this.dateRange.startDate,
       end: this.dateRange.endDate,
       //minHeight: 270,
-      maxHeight: 200,
+      //maxHeight: 200,
       margin: {
         axis: 10,
         item: 10
@@ -81,7 +81,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
       groupOrder: 'id',
 
       clickToUse: false,
-      horizontalScroll: false,
+      horizontalScroll: true,
       verticalScroll: false,
       zoomable: true,
       zoomKey: 'altKey',

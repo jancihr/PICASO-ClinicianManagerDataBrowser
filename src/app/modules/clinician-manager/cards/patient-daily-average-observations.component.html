@@ -131,7 +131,7 @@
                     class="button-clear"
                     (click)="showAllLeft()">
 
-              <i class="fa fa-plus-circle"></i> Show all values
+              <i class="fa fa-plus-circle"></i> Show all L
             </button>
 
             <span *ngFor="let group of observationGroups">
@@ -155,13 +155,13 @@
              style="padding-left: 0.05rem; padding-bottom: 0.15rem;">
           <div class="" style=" margin-right: 0.25rem;">
             <span class="axis-buttons-legend">Right Axis</span>
-            <!--
+
              <button *ngIf="observationGroups && observationGroups.length!==1"
                      type="button"
                      class="button-clear"
-                     (click)="showAllRight()"><i class="fa fa-plus-circle"></i> Show all on right axis
+                     (click)="clearRight()"><i class="fa fa-minus-circle"></i> Clear R
              </button>
-             -->
+
             <span *ngFor="let group of observationGroups">
 
           <span style="white-space: nowrap">

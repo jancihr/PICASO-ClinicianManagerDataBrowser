@@ -110,7 +110,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       start: this.dateRange.startDate,
       end: this.dateRange.endDate,
       //minHeight: 270,
-      maxHeight: 200,
+      //maxHeight: 200,
       margin: {
         axis: 10,
         item: 10
@@ -120,7 +120,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       showMinorLabels: true,
 
       clickToUse: false,
-      horizontalScroll: false,
+      horizontalScroll: true,
       verticalScroll: false,
       zoomable: true,
       zoomKey: 'altKey',
@@ -232,7 +232,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
           style: this.isColourful ? ("background: " + item.color) : "",
           content: `<div>
                              <!-- <div class="timeline-item-header"><b>${item.category}</b></div>-->
-                              <div class="timeline-item-content">${item.visitReason} </div>
+                              <div class="timeline-item-header">${item.visitReason} </div>
                               </div>`,
           start: item.startDate,
           type: 'box'
@@ -244,7 +244,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
           group: item.categoryId,
           content: `<div>
                              <!-- <div class="timeline-item-header"><b>${item.category}</b></div>-->
-                              <div class="timeline-item-content">${item.visitReason} </div>
+                              <div class="timeline-item-header">${item.visitReason} </div>
                               </div>`,
 
           start: item.startDate,

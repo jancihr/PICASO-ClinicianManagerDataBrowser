@@ -395,7 +395,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     }
 
     //hiding left y axis tick values
-    if (hideLeft) {
+    if (hideLeft || this.normaliseValues) {
       this.options.chart.yAxis1.tickFormat = function (d) {
         return null;
       };
@@ -771,7 +771,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         this.observationGroups[i].showLeft = false;
       }
     }
-    this.normaliseValues = false;
+    this.toggleNormalisedView(false);
     this.callServiceToGetObservations()
   }
 
@@ -779,7 +779,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     this.data = [];
     for (let i = 0; i < this.observationGroups.length; i++) {
       if (this.normaliseValues) {
-        this.observationGroups[i].showLeft = false;
+        //this.observationGroups[i].showLeft = false;
       }
       if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
         this.observationGroups[i].showRight = true;//!this.observationGroups[i].showRight;
@@ -789,7 +789,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
       }
     }
-    this.normaliseValues = false;
+    //this.normaliseValues = false;
     this.callServiceToGetObservations()
   }
 
@@ -822,7 +822,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
     for (var i = 0; i < this.observationGroups.length; i++) {
       this.observationGroups[i].showLeft = true;
-      this.observationGroups[i].showRight = false;
+      //this.observationGroups[i].showRight = false;
     }
 
     this.showAll = true;
@@ -830,7 +830,20 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       this.chartType = 'line';
     }
 
-    this.normaliseValues = true;
+    this.toggleNormalisedView(true);
+
+    this.callServiceToGetObservations();
+
+
+  }
+
+
+  public clearRight() {
+    this.data = [];
+
+    for (var i = 0; i < this.observationGroups.length; i++) {
+      this.observationGroups[i].showRight = false;
+    }
 
     this.callServiceToGetObservations();
 
@@ -850,7 +863,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       }
     }
     else {
-      this.normaliseValues = this.observationId === 'all';
+      this.toggleNormalisedView(this.observationId === 'all');
       for (let i = 0; i < this.observationGroups.length; i++) {
         this.observationGroups[i].showRight = false;
         this.observationGroups[i].showLeft = this.observationId === 'all';
@@ -881,6 +894,12 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       this.callServiceToGetObservations();
     }
   }
+
+  toggleNormalisedView(toggle: boolean) {
+    this.normaliseValues = toggle;
+
+  }
+
 
   toggleZero() {
 
