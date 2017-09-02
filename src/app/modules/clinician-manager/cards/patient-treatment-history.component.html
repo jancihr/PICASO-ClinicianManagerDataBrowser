@@ -97,6 +97,7 @@
     col-lg-{{selectedTreatment?'6':12}} col-xl-{{selectedTreatment?'8':12}}">
       <div [visTimeline]="visTimelineTreatments"
            [visTimelineItems]="visTimelineItemsTreatments"
+           [visTimelineGroups]="visTimelineGroups"
            [visTimelineOptions]="visTimelineTreatmentsOptions"
            (initialized)="timelineInitialized()">
       </div>

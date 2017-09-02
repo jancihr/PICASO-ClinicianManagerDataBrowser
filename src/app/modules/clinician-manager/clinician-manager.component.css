@@ -213,6 +213,14 @@
 
 }
 
+:host /deep/ .vis-inner, :host /deep/ .vis-minor, :host /deep/ .vis-major {
+  font-size: 0.7rem;
+  font-weight: bold;
+
+  padding: 0;
+
+}
+
 :host /deep/ .vis-item.vis-selected {
   border-color: #7093c5;
   background: #67bc9a;

@@ -1,6 +1,6 @@
 import {Component, OnInit, OnDestroy, ViewChild, Input} from '@angular/core';
 
-import {VisTimelineService, VisTimelineItems, VisTimelineOptions} from 'ng2-vis/ng2-vis';
+import {VisTimelineService, VisTimelineItems, VisTimelineGroups, VisTimelineOptions} from 'ng2-vis/ng2-vis';
 import {PicasoOdsCmDataService} from "../service/picaso-data.service";
 import {PatientTreatment} from "../model/patient-treatment";
 import {PatientLoadProgress} from "../model/patient-loadprogress";
@@ -79,29 +79,49 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
   public visTimelineTreatments: string = 'visTimelineGraph';
   public visTimelineItemsTreatments: VisTimelineItems;
   public visTimelineTreatmentsOptions: VisTimelineOptions;
+  public visTimelineGroups: VisTimelineGroups;
 
   public constructor(private visTimelineService: VisTimelineService,
                      private picasoDataService: PicasoOdsCmDataService) {
   }
 
   public ngOnInit(): void {
+    this.visTimelineGroups = new VisTimelineGroups();
+
+    this.visTimelineGroups.add({id: 1, content: "Visits"});
+    this.visTimelineGroups.add({id: 2, content: "Imaging"});
+    this.visTimelineGroups.add({id: 3, content: "Lab Test"});
+    this.visTimelineGroups.add({id: 4, content: "Psych. Test"});
+    this.visTimelineGroups.add({id: 5, content: "Func. Diag."});
+    this.visTimelineGroups.add({id: 6, content: "Patient Rep."});
+    this.visTimelineGroups.add({id: 7, content: "Questionnaires"});
+
+
     this.visTimelineTreatmentsOptions = {
+
+      groupOrder: 'id',
       selectable: true,
       autoResize: true,
       showCurrentTime: true,
       //zoomMax: 61556926000, //year
       zoomMin: 86400000, //day
-      clickToUse: true,
+
       rollingMode: null,//{follow:false, offset:0},
       start: this.dateRange.startDate,
       end: this.dateRange.endDate,
-      minHeight: 270,
+      //minHeight: 270,
+      maxHeight: 200,
       margin: {
         axis: 10,
         item: 10
       },
+
       showMajorLabels: true,
       showMinorLabels: true,
+
+      clickToUse: false,
+      horizontalScroll: false,
+      verticalScroll: false,
       zoomable: true,
       zoomKey: 'altKey',
 
@@ -207,10 +227,11 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
     for (let item of this.checks) {
       if (item.endDate === undefined || item.endDate === null) {
         this.visTimelineItemsTreatments.add({
+          group: item.categoryId,
           id: item.id,
           style: this.isColourful ? ("background: " + item.color) : "",
           content: `<div>
-                              <div class="timeline-item-header"><b>${item.category}</b></div>
+                             <!-- <div class="timeline-item-header"><b>${item.category}</b></div>-->
                               <div class="timeline-item-content">${item.visitReason} </div>
                               </div>`,
           start: item.startDate,
@@ -220,8 +241,9 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       else {
         this.visTimelineItemsTreatments.add({
           id: item.id,
+          group: item.categoryId,
           content: `<div>
-                              <div class="timeline-item-header"><b>${item.category}</b></div>
+                             <!-- <div class="timeline-item-header"><b>${item.category}</b></div>-->
                               <div class="timeline-item-content">${item.visitReason} </div>
                               </div>`,
 
@@ -246,6 +268,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
             endDate: null,
             id: "treat_" + this.itemCounter++,
             category: "Care professional",
+            categoryId: 1,
             color: treatment.color,
             visitReason: treatment.careProfessional,
             visitResults: [{type: "Care professional result", result: treatment.result}]
@@ -258,7 +281,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
     }
   }
 
-  setTreatment(treatments: any[], type: string) {
+  setTreatment(treatments: any[], type: string, typeId: number) {
     if (treatments) {
       for (let treatment of treatments) {
 
@@ -271,6 +294,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
             startDate: treatment.date,
             endDate: null,
             id: "treat_" + this.itemCounter++,
+            categoryId: typeId,
             category: type,
             color: treatment.color,
             visitReason: visitReason,
@@ -308,7 +332,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       this.dateRange.startDate,
       this.dateRange.endDate, this.progress2
     ).subscribe(
-      checks => this.setTreatment(checks, "Imaging"),
+      checks => this.setTreatment(checks, "Imaging", 2),
       error => this.errorMessage = <any>error);
   }
 
@@ -322,7 +346,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       this.dateRange.startDate,
       this.dateRange.endDate, this.progress3
     ).subscribe(
-      checks => this.setTreatment(checks, "Lab Tests"),
+      checks => this.setTreatment(checks, "Lab Tests", 3),
       error => this.errorMessage = <any>error);
   }
 
@@ -336,7 +360,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       this.dateRange.startDate,
       this.dateRange.endDate, this.progress4
     ).subscribe(
-      checks => this.setTreatment(checks, "Psych. & neurol. tests"),
+      checks => this.setTreatment(checks, "Psych. & neurol. tests", 4),
       error => this.errorMessage = <any>error);
   }
 
@@ -350,7 +374,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       this.dateRange.startDate,
       this.dateRange.endDate, this.progress5
     ).subscribe(
-      checks => this.setTreatment(checks, "Functional diagnostics"),
+      checks => this.setTreatment(checks, "Functional diagnostics", 5),
       error => this.errorMessage = <any>error);
   }
 
@@ -364,7 +388,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       this.dateRange.startDate,
       this.dateRange.endDate, this.progress6
     ).subscribe(
-      checks => this.setTreatment(checks, "Patient reported outcomes"),
+      checks => this.setTreatment(checks, "Patient reported outcomes", 6),
       error => this.errorMessage = <any>error);
   }
 
@@ -378,7 +402,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       this.dateRange.startDate,
       this.dateRange.endDate, this.progress7
     ).subscribe(
-      checks => this.setTreatment(checks, "Questionnaire taken"),
+      checks => this.setTreatment(checks, "Questionnaire taken", 7),
       error => this.errorMessage = <any>error);
   }
 

@@ -10,4 +10,5 @@ export interface PatientMedication {
   disease: string;
   prescribedBy: string;
   type: string;
+  typeId: number;
 }

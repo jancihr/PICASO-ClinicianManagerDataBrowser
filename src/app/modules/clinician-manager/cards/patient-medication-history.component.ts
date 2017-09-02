@@ -1,6 +1,6 @@
 import {Component, OnInit, OnDestroy, ViewChild, Input} from '@angular/core';
 
-import {VisTimelineService, VisTimelineItems, VisTimelineOptions} from 'ng2-vis/ng2-vis';
+import {VisTimelineService, VisTimelineItems, VisTimelineGroups, VisTimelineOptions} from 'ng2-vis/ng2-vis';
 import {PicasoOdsCmDataService} from "../service/picaso-data.service";
 import {PatientMedication} from "../model/patient-medication";
 
@@ -47,29 +47,42 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
   public visTimelineMedications: string = 'medicationTimelineGraph';
   public visTimelineItemsMedications: VisTimelineItems;
   public visTimelineMedicationsOptions: VisTimelineOptions;
+  public visTimelineGroups: VisTimelineGroups;
 
   public constructor(private visTimelineService: VisTimelineService,
                      private picasoDataService: PicasoOdsCmDataService) {
   }
 
   public ngOnInit(): void {
+
+    this.visTimelineGroups = new VisTimelineGroups();
+
+    this.visTimelineGroups.add({id: 1, content: "Prescriptions"});
+    this.visTimelineGroups.add({id: 2, content: "Intakes"});
+
     this.visTimelineMedicationsOptions = {
       selectable: true,
       autoResize: true,
       showCurrentTime: true,
       //zoomMax: 61556926000, //year
       zoomMin: 86400000, //day
-      clickToUse: true,
       rollingMode: null,//{follow:false, offset:0},
       start: this.dateRange.startDate,
       end: this.dateRange.endDate,
-      minHeight: 270,
+      //minHeight: 270,
+      maxHeight: 200,
       margin: {
         axis: 10,
         item: 10
       },
       showMajorLabels: true,
       showMinorLabels: true,
+
+      groupOrder: 'id',
+
+      clickToUse: false,
+      horizontalScroll: false,
+      verticalScroll: false,
       zoomable: true,
       zoomKey: 'altKey',
 
@@ -169,6 +182,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
           this.visTimelineItemsMedications.add(
             {
               id: item.id,
+              group: 1,
               style: this.isColourful ? ("background: " + item.color) : "",
 
               content: `<div>
@@ -185,6 +199,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
           this.visTimelineItemsMedications.add(
             {
               id: item.id,
+              group: 2,
               style: this.isColourful ? ("background: " + item.color) : "",
 
               content: `<div>
@@ -222,7 +237,8 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
             color: prescription.color,
             disease: prescription.disease,
             prescribedBy: prescription.prescribedBy,
-            type: "prescription"
+            type: "prescription",
+            typeId: 1
           }
         );
         //console.log("prescript:", this.medications);
@@ -247,7 +263,8 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
             color: prescription.color,
             disease: prescription.disease,
             prescribedBy: prescription.prescribedBy,
-            type: "intake"
+            type: "intake",
+            typeId: 2
           }
         );
         //console.log("intake:", this.medications);
