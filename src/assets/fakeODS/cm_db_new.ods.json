@@ -36992,33 +36992,40 @@
       "id": "ID1",
       "date": "2017-03-20T10:41:19.000Z",
       "careProfessional": "General Practitioner",
-      "color": "#ddabcd",
+      "color": "#00a46f",
       "result": ""
     },
     {
       "id": "ID1a",
-      "date": "2017-04-20T10:41:19.000Z",
+      "date": "2017-07-20T10:41:19.000Z",
       "careProfessional": "General Practitioner",
-      "color": "ddabcd",
+      "color": "#00a46f",
       "result": ""
     },
     {
       "id": "ID1b",
-      "date": "2017-06-20T10:41:19.000Z",
+      "date": "2017-08-20T10:41:19.000Z",
       "careProfessional": "General Practitioner",
-      "color": "#ddabcd",
+      "color": "#00a46f",
       "result": ""
     },
     {
       "id": "ID1c",
-      "date": "2017-06-26T10:41:19.000Z",
+      "date": "2017-09-26T10:41:19.000Z",
       "careProfessional": "General Practitioner",
-      "color": "#ddabcd",
+      "color": "#00a46f",
       "result": ""
     },
     {
       "id": "ID2d",
       "date": "2017-04-20T10:41:19.000Z",
+      "careProfessional": "Cardiologist",
+      "color": "#cfafda",
+      "result": ""
+    },
+    {
+      "id": "ID2dd",
+      "date": "2017-06-20T10:41:19.000Z",
       "careProfessional": "Cardiologist",
       "color": "#cfafda",
       "result": ""
@@ -37073,7 +37080,19 @@
           "result": ""
         }
       ],
-      "color": "yellow"
+      "color": "orangeß"
+    },
+    {
+      "id": "ID1",
+      "source": "RA_home",
+      "date": "2017-06-20T10:41:19.000Z",
+      "results": [
+        {
+          "type": "Myocardial scintigraphy",
+          "result": ""
+        }
+      ],
+      "color": "red"
     }
   ],
   "psychologicalNeurologicalTestsPerformed": [

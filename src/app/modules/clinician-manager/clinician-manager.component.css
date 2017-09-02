@@ -202,15 +202,7 @@
 
 :host /deep/ .vis-item .vis-item-content {
   padding: 0;
-}
-
-:host /deep/ .vis-item {
-  border-color: #67bc9a;
-  background: #e4e5e6;
-  color: black;
-
-  padding: 0;
-
+  cursor: pointer;
 }
 
 :host /deep/ .vis-inner, :host /deep/ .vis-minor, :host /deep/ .vis-major {
@@ -218,6 +210,21 @@
   font-weight: bold;
 
   padding: 0;
+
+}
+
+:host /deep/ .vis-item {
+  border-color: #67bc9a;
+  background: #e4e5e6;
+  color: black;
+  padding: 0;
+
+}
+
+:host /deep/ .vis-item.treatment-item, :host /deep/ .vis-item.vis-selected.treatment-item {
+
+  padding-top: 3px;
+  padding-bottom: 3px;
 
 }
 
@@ -237,12 +244,22 @@
   padding-top: 0.00rem;
   padding-bottom: 0.01rem;
   margin: 0;
-
 }
+
+:host /deep/ .timeline-even-group {
+  background: #d5d6d7;
+}
+
+:host /deep/ .timeline-odd-group {
+  background: #eff0f1;
+}
+
+
 
 :host /deep/ .timeline-item-header {
   font-family: "Lucida Sans Typewriter", "Lucida Console", Monaco, "Bitstream Vera Sans Mono", monospace;
   font-size: 0.5rem;
+  font-weight: bold;
   padding-left: 0.05rem;
   padding-right: 0.05rem;
   padding-top: 0.01rem;

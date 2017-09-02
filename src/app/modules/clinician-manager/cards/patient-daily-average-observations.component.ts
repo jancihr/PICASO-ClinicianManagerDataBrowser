@@ -36,6 +36,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   footerText: string;
 
   chartType: string = "line";
+  chartTypeR: string = "line";
 
   normaliseValues: boolean = false;
 
@@ -170,7 +171,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         margin: {
           top: 0,
           right: 50,
-          bottom: 20,
+          bottom: 21,
           left: 50
         },
 
@@ -576,7 +577,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           this.data.push({
             label: group.unit,
             name: group.name,
-            key: (this.chartType === undefined ? "line" : this.chartType) + group.unit + " (" + group.name + ")",
+            key: this.chartType + group.unit + " (" + group.name + ")",
             values: newGraphValues,
             color: this.isHighContrast && this.observationId === 'all' ? (isLeft ? "red" : "green") : group.color,
             //area: false,
@@ -584,7 +585,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             disabled: false,
             yAxis: isLeft ? 1 : 2,
             xAxis: 1,
-            type: this.chartType === undefined ? "line" : this.chartType//group.type ? group.type : 'line'
+            type: isLeft ? this.chartType : this.chartTypeR//group.type ? group.type : 'line'
           });
 
           //console.log("chartType: ", this.chartType);
@@ -886,11 +887,20 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   }
 
 
-  toggleChartType2(type: string) {
+  toggleChartType(type: string) {
 
     if (this.chartType !== type) {
       this.data = [];
       this.chartType = type;
+      this.callServiceToGetObservations();
+    }
+  }
+
+  toggleChartType2(type: string) {
+
+    if (this.chartTypeR !== type) {
+      this.data = [];
+      this.chartTypeR = type;
       this.callServiceToGetObservations();
     }
   }

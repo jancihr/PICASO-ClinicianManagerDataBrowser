@@ -57,8 +57,9 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
     this.visTimelineGroups = new VisTimelineGroups();
 
-    this.visTimelineGroups.add({id: 1, content: "Prescriptions"});
-    this.visTimelineGroups.add({id: 2, content: "Intakes"});
+    this.visTimelineGroups.add({id: 1, content: "Prescriptions", className: "timeline-odd-group"});
+    this.visTimelineGroups.add({id: 2, content: "Intakes", className: "timeline-even-group"});
+
 
     this.visTimelineMedicationsOptions = {
       selectable: true,
@@ -145,6 +146,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
     // now we can use the service to register on events
     this.visTimelineService.on(this.visTimelineMedications, 'click');
 
+
     this.visTimelineService.click
       .subscribe((eventData: any[]) => {
         if (eventData[0] === this.visTimelineMedications) {
@@ -183,10 +185,11 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
             {
               id: item.id,
               group: 1,
+              className: "medication-item",
               style: this.isColourful ? ("background: " + item.color) : "",
 
               content: `<div>
-                              <div class="timeline-item-header"><b>${item.name} INTAKE</b></div>
+                              <div class="timeline-item-header">${item.name} </div>
                               <div class="timeline-item-content">${item.dosage} </div>
                               </div>`
               ,
@@ -201,9 +204,10 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
               id: item.id,
               group: 2,
               style: this.isColourful ? ("background: " + item.color) : "",
+              className: "medication-item",
 
               content: `<div>
-                              <div class="timeline-item-header"><b>${item.name} PRESCRIPTION</b></div>
+                              <div class="timeline-item-header">${item.name}</div>
                               <div class="timeline-item-content">${item.dosage} - ${item.frequency} - ${item.stopReason}</div>
                               </div>`
               ,

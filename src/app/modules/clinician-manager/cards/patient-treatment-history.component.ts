@@ -88,13 +88,13 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this.visTimelineGroups = new VisTimelineGroups();
 
-    this.visTimelineGroups.add({id: 1, content: "Visits"});
-    this.visTimelineGroups.add({id: 2, content: "Imaging"});
-    this.visTimelineGroups.add({id: 3, content: "Lab Test"});
-    this.visTimelineGroups.add({id: 4, content: "Psych. Test"});
-    this.visTimelineGroups.add({id: 5, content: "Func. Diag."});
-    this.visTimelineGroups.add({id: 6, content: "Patient Rep."});
-    this.visTimelineGroups.add({id: 7, content: "Questionnaires"});
+    this.visTimelineGroups.add({id: 1, content: "Visits", className: "timeline-odd-group"});
+    this.visTimelineGroups.add({id: 2, content: "Imaging", className: "timeline-even-group"});
+    this.visTimelineGroups.add({id: 3, content: "Lab Test", className: "timeline-odd-group"});
+    this.visTimelineGroups.add({id: 4, content: "Psych. Test", className: "timeline-even-group"});
+    this.visTimelineGroups.add({id: 5, content: "Func. Diag.", className: "timeline-odd-group"});
+    this.visTimelineGroups.add({id: 6, content: "Patient Rep.", className: "timeline-even-group"});
+    this.visTimelineGroups.add({id: 7, content: "Questionnaires", className: "timeline-odd-group"});
 
 
     this.visTimelineTreatmentsOptions = {
@@ -229,6 +229,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
         this.visTimelineItemsTreatments.add({
           group: item.categoryId,
           id: item.id,
+          className: "treatment-item",
           style: this.isColourful ? ("background: " + item.color) : "",
           content: `<div>
                              <!-- <div class="timeline-item-header"><b>${item.category}</b></div>-->
@@ -242,6 +243,7 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
         this.visTimelineItemsTreatments.add({
           id: item.id,
           group: item.categoryId,
+          className: "treatment-item",
           content: `<div>
                              <!-- <div class="timeline-item-header"><b>${item.category}</b></div>-->
                               <div class="timeline-item-header">${item.visitReason} </div>
