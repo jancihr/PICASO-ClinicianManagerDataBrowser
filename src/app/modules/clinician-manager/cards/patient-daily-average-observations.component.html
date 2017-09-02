@@ -26,7 +26,7 @@
   <div *ngIf="observationGroups" class="card-block" style="overflow-x: hidden;">
 
     <div class="row">
-      <div class="">
+      <div>
 
         <div>
 
@@ -43,19 +43,19 @@
 
           <button type="button"
                   class="button-clear"
-                  (click)="toggleChartType2('line')">
+                  (click)="toggleChartType('line')">
             <i class="fa fa-line-chart">
             </i>
           </button>
           <button type="button"
                   class="button-clear"
-                  (click)="toggleChartType2('scatter')">
+                  (click)="toggleChartType('scatter')">
             <i class="fa fa-dot-circle-o">
             </i>
           </button>
           <button *ngIf="!(observationId==='all' && showAll)" type="button"
                   class="button-clear"
-                  (click)="toggleChartType2('bar')">
+                  (click)="toggleChartType('bar')">
             <i class="fa fa-bar-chart">
             </i>
           </button>
@@ -63,7 +63,7 @@
 
           <button *ngIf="!(showAll && observationId==='all') " type="button"
                   class="button-clear"
-                  (click)="toggleChartType2('area')">
+                  (click)="toggleChartType('area')">
             <i class="fa fa-area-chart">
             </i>
           </button>
@@ -81,8 +81,8 @@
              <span style="color:red"> <i class="fa fa-circle"></i></span>
              <span style="color: green"> <i class="fa fa-circle"></i></span>
            </span>
-            <span *ngIf="!isHighContrast">Original Colours</span>
-            <span *ngIf="isHighContrast">Contrast Colours</span>
+            <span *ngIf="!isHighContrast"> Colours</span>
+            <span *ngIf="isHighContrast"> Colours</span>
 
           </button>
 
@@ -99,7 +99,7 @@
 
 
           <button
-            *ngIf="((min1!==null && min1>0)|| (min2!== null && min2>0) || normaliseValues) && chartType!=='bar' && chartType!=='area'"
+            *ngIf="((min1!==null && min1>0)|| (min2!== null && min2>0) || normaliseValues) && ((chartType!=='bar' && chartType!=='area') || (chartTypeR!=='area' && chartTypeR!=='bar'))"
             type="button"
             class="button-clear"
             (click)="toggleZero()">
@@ -156,7 +156,35 @@
           <div class="" style=" margin-right: 0.25rem;">
             <span class="axis-buttons-legend">Right Axis</span>
 
-             <button *ngIf="observationGroups && observationGroups.length!==1"
+            <button type="button"
+                    class="button-clear"
+                    (click)="toggleChartType2('line')">
+              <i class="fa fa-line-chart">
+              </i>
+            </button>
+            <button type="button"
+                    class="button-clear"
+                    (click)="toggleChartType2('scatter')">
+              <i class="fa fa-dot-circle-o">
+              </i>
+            </button>
+            <button type="button"
+                    class="button-clear"
+                    (click)="toggleChartType2('bar')">
+              <i class="fa fa-bar-chart">
+              </i>
+            </button>
+
+
+            <button type="button"
+                    class="button-clear"
+                    (click)="toggleChartType2('area')">
+              <i class="fa fa-area-chart">
+              </i>
+            </button>
+
+
+            <button *ngIf="observationGroups && observationGroups.length!==1"
                      type="button"
                      class="button-clear"
                      (click)="clearRight()"><i class="fa fa-minus-circle"></i> Clear R
