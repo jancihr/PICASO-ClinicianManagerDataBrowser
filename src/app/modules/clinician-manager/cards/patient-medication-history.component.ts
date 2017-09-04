@@ -160,9 +160,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
 
     // HACK do not scroll vis timeline with mouse
     d3.selectAll("div.vis-panel.vis-center").on("wheel", function () {
-      //console.log("mousewheel");
       (d3.event as Event).stopPropagation();
-      //event.stopPropagation();
     }, true);
   }
 
