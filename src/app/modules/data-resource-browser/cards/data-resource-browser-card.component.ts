@@ -1001,7 +1001,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                     direction: 'UD'
                 }
             },*/
-            clickToUse: true,
+            clickToUse: false,
             interaction: {
                 hover: true,
                 navigationButtons: true,
@@ -1626,6 +1626,12 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
 
 // EVENTS handling (mouse, keyboard, zoom)
     public networkInitialized() {
+      // HACK do not scroll vis with mouse
+      d3.selectAll("div.network-canvas").on("wheel", function () {
+        //console.log("mousewheel");
+        (d3.event as Event).stopPropagation();
+        //event.stopPropagation();
+      }, true);
         //this.visNetworkService.redraw(this.visNetwork)
         // now we can use the service to register on events
         this.visNetworkService.on(this.visNetwork, 'click');
