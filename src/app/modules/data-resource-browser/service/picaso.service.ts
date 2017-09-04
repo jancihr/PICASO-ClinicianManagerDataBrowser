@@ -50,7 +50,7 @@ export class PicasoDataService {
       progressResult.total = progress.total;
       progressResult.loaded = progress.loaded;
     })
-      .get(this.PicasoDataServiceURL + 'api/v1/patient/' + patientId + '/overview?take=n')
+      .get(this.PicasoDataServiceURL + 'api/v1/patient/' + patientId + '/overview') //?take=n
       .map(response => {
         return this.extractObservationInfo(response);
       })
@@ -63,13 +63,14 @@ export class PicasoDataService {
     var resJson = res.json();
     var resNodesData: DataForNodes[]
     resNodesData = []
-    //console.log("extract data - observation: ", resJson.length, ' ', resJson)
-    for(var i = 0; i < resJson.length; i++){
+    console.log("extract data - observation: ", resJson.length, ' ', resJson)
+    var length = resJson.length
+    for(var i = 0; i < length; i++){
       //console.log("pieces: ", resJson[i].TypeId,' ',resJson[i].Timestamp, ' ',resJson[i] )
       console.log("pieces: ", resJson )
       let tableItems: TableItem[]
       tableItems = []
-      let measurements = resJson[i].Measurements
+      let measurements = resJson[i].measurements
       for(var j = 0; j < measurements.length; j++){
         tableItems.push({
           name: measurements[j].TypeId,
