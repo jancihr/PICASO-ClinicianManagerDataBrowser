@@ -411,7 +411,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
     //hide right y axis tick values
-    if (hideRight) {
+    if (hideRight || this.normaliseValues) {
       this.options.chart.yAxis2.tickFormat = function (d) {
         return null;
       };
@@ -494,7 +494,9 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           this.options.chart.yAxis1.axisLabel +=
             //"<span style='color:" + group.color + "' > <i class='fa fa-circle'></i> </span>" +
             (this.options.chart.yAxis1.axisLabel !== "" ? " | " : "") + group.name + " (" + group.unit + ")";
-        else
+        else if (isLeft) {
+          this.options.chart.yAxis1.axisLabel = "Combined Chart"
+        } else
           this.options.chart.yAxis2.axisLabel +=
             //"<span style='color:" + group.color + "' > <i class='fa fa-circle'></i> </span>" +
             (this.options.chart.yAxis2.axisLabel !== "" ? " | " : "") + group.name + " (" + group.unit + ")";
