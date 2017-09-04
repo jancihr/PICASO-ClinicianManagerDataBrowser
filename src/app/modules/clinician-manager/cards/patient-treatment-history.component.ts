@@ -149,6 +149,8 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
       }
     };
     this.getChecks();
+
+
   }
 
   getChecks() {
@@ -203,6 +205,14 @@ export class PatientTreatmentHistoryComponent implements OnInit, OnDestroy {
           if (eventData[1].item !== null) this.openDetail();
         }
       });
+
+
+    // HACK do not scroll vis timeline with mouse
+    d3.selectAll("div.vis-panel.vis-center").on("wheel", function () {
+      //console.log("mousewheel");
+      (d3.event as Event).stopPropagation();
+      //event.stopPropagation();
+    }, true);
 
   }
 

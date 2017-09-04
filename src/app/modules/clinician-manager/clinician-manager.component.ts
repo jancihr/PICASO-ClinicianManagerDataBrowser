@@ -86,6 +86,7 @@ export class ClinicianManagerComponent implements OnInit {
       this.cardToShow = 'all';
     }
 
+
   }
 
 

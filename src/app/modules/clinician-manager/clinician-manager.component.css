@@ -256,11 +256,11 @@
 }
 
 :host /deep/ .timeline-even-group {
-  background: #d5d6d7;
+  background: #f4f7f9;
 }
 
 :host /deep/ .timeline-odd-group {
-  background: #eff0f1;
+  background: #f7fafc;
 }
 
 
