@@ -42,27 +42,29 @@
 
 
           <button type="button"
-                  class="button-clear"
+                  class="button-clear {{chartType==='line'   ? 'button-clear-selected' : ''}}"
                   (click)="toggleChartType('line')">
             <i class="fa fa-line-chart">
             </i>
           </button>
           <button type="button"
-                  class="button-clear"
+                  class="button-clear {{chartType==='scatter'   ? 'button-clear-selected' : ''}}"
                   (click)="toggleChartType('scatter')">
             <i class="fa fa-dot-circle-o">
             </i>
           </button>
+          <!--
           <button *ngIf="!(observationId==='all' && showAll)" type="button"
-                  class="button-clear"
+                  class="picker-button {{chartType==='bar'   ? 'picker-button-selected' : ''}}"
                   (click)="toggleChartType('bar')">
             <i class="fa fa-bar-chart">
             </i>
           </button>
+-->
 
-
-          <button *ngIf="!(showAll && observationId==='all') " type="button"
-                  class="button-clear"
+          <button *ngIf="!(observationId==='all' && showAll)"
+                  type="button"
+                  class="button-clear {{chartType==='area'   ? 'button-clear-selected' : ''}}"
                   (click)="toggleChartType('area')">
             <i class="fa fa-area-chart">
             </i>
@@ -99,7 +101,7 @@
 
 
           <button
-            *ngIf="((min1!==null && min1>0)|| (min2!== null && min2>0) || normaliseValues) && ((chartType!=='bar' && chartType!=='area') || (chartTypeR!=='area' && chartTypeR!=='bar'))"
+
             type="button"
             class="button-clear"
             (click)="toggleZero()">
@@ -157,27 +159,30 @@
             <span class="axis-buttons-legend">Right Axis</span>
 
             <button type="button"
-                    class="button-clear"
+                    class="button-clear {{chartTypeR==='line'   ? 'button-clear-selected' : ''}}"
                     (click)="toggleChartType2('line')">
               <i class="fa fa-line-chart">
               </i>
             </button>
             <button type="button"
-                    class="button-clear"
+                    class="button-clear {{chartTypeR==='scatter'   ? 'button-clear-selected' : ''}}"
                     (click)="toggleChartType2('scatter')">
               <i class="fa fa-dot-circle-o">
               </i>
             </button>
+
+            <!--
             <button type="button"
                     class="button-clear"
                     (click)="toggleChartType2('bar')">
               <i class="fa fa-bar-chart">
               </i>
             </button>
+            -->
 
 
             <button type="button"
-                    class="button-clear"
+                    class="button-clear {{chartTypeR==='area'   ? 'button-clear-selected' : ''}}"
                     (click)="toggleChartType2('area')">
               <i class="fa fa-area-chart">
               </i>

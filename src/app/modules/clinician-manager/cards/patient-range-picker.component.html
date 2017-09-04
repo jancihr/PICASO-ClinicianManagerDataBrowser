@@ -61,13 +61,70 @@
               i18n="Last week">
         Last week
       </button>
+      <!--
 
+            <button type="button"
+                    class="picker-button {{range.range==='custom'   ? 'picker-button-selected' : ''}}"
+                    (click)="rangeChange('yearback')"
+                    i18n="<y">
+              -y
+            </button>
+
+            <button type="button"
+                    class="picker-button {{range.range==='custom'   ? 'picker-button-selected' : ''}}"
+                    (click)="rangeChange('monthback')"
+                    i18n="<m">
+              -m
+            </button>
+
+            <button type="button"
+                    class="picker-button {{range.range==='custom'   ? 'picker-button-selected' : ''}}"
+                    (click)="rangeChange('weekback')"
+                    i18n="<w">
+              -w
+            </button>
+            <button type="button"
+                    class="picker-button {{range.range==='custom'   ? 'picker-button-selected' : ''}}"
+                    (click)="rangeChange('dayback')"
+                    i18n="<d">
+              -d
+            </button>
+      -->
 
       <my-date-range-picker [options]="myDateRangePickerOptions"
                             (dateRangeChanged)="onDateRangeChanged($event)"
                             [selDateRange]="model">
       </my-date-range-picker>
 
+      <!--
+
+            <button type="button"
+                    class="picker-button {{range.range==='custom'   ? 'picker-button-selected' : ''}}"
+                    (click)="rangeChange('dayplus')"
+                    i18n="d">
+              +d
+            </button>
+
+
+            <button type="button"
+                    class="picker-button {{range.range==='custom'   ? 'picker-button-selected' : ''}}"
+                    (click)="rangeChange('weekplus')"
+                    i18n="w">
+              +w
+
+            </button>
+            <button type="button"
+                    class="picker-button {{range.range==='custom'   ? 'picker-button-selected' : ''}}"
+                    (click)="rangeChange('monthplus')"
+                    i18n="m">
+              +m
+            </button> <button type="button"
+                                        class="picker-button {{range.range==='custom'   ? 'picker-button-selected' : ''}}"
+                                        (click)="rangeChange('yearplus')"
+                                        i18n="y">
+            +y
+          </button>
+          -->
       <button type="button" style="margin-bottom: 20px"
               class="picker-button {{range.range==='next6months'   ? 'picker-button-selected' : ''}}"
               (click)="rangeChange('next6months')"

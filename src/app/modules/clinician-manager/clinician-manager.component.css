@@ -172,6 +172,15 @@
   display: inline-block;
 }
 
+:host /deep/ .button-clear-selected {
+  background-color: #67bc9a;
+  color: white;
+}
+
+:host /deep/ .picker-clear-selected:hover {
+  background-color: #67bc9a;
+}
+
 :host /deep/ .button-clear:hover {
   background-color: #cfd8dc;
 }

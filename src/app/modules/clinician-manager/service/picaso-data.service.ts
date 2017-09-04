@@ -77,7 +77,7 @@ export class PicasoOdsCmDataService {
   private extractDataInfo(res: Response) {
 
 
-    console.log("storing json:", res.json());
+    //console.log("storing json:", res.json());
     sessionStorage.setItem("temporaryCmServiceResult", JSON.stringify(res.json()));
     //console.log("after service getPatientResult");
 

@@ -161,7 +161,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         duration: 0,
 
         legendRightAxisHint: " ",
-        interpolate: "linear",
+        interpolate: "monotone",//"linear",
         showLegend: false,
         legend: {
           align: false
@@ -344,7 +344,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       this.headerText = "Measurements loading...";
 
     }
-    this.options.chart.noData = "Loading...";
+    this.options.chart.noData = "No data available ...";
     this.picasoDataService.getObservations(
       this.dateRange.startDate,
       this.dateRange.endDate, this.progress
@@ -564,6 +564,18 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           let newGraphValues = [];
 
           //var i = 0;
+
+          // HACK add null value at range start
+          newGraphValues.push({
+            observation: {
+              date: this.dateRange.startDate,
+              value: null,
+              calculatedMax: max
+            },
+            unit: group.unit,
+            name: group.name
+          });
+
           for (let observation of sortedValues) {
             //newValues.push({x: i++, y: i});
             newGraphValues.push({
@@ -572,6 +584,19 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
               name: group.name
             });
           }
+
+          // HACK add null value at range end
+          newGraphValues.push({
+            observation: {
+              date: this.dateRange.endDate,
+              value: null,
+              calculatedMax: max
+            },
+            unit: group.unit,
+            name: group.name
+          });
+
+
 
           //index++;
           this.data.push({

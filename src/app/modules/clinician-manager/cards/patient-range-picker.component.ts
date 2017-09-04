@@ -86,6 +86,49 @@ export class PatientRangePicker implements OnInit {
     var endDate = new Date();
     var startDate = new Date();
 
+
+    if (rangeStr === "dayback") {
+      endDate.setTime(this.range.endDate.getTime() - (1000 * 60 * 60 * 24));
+      startDate.setTime(this.range.startDate.getTime() - (1000 * 60 * 60 * 24));
+    }
+
+    if (rangeStr === "weekback") {
+      endDate.setTime(this.range.endDate.getTime() - 604800000);
+      startDate.setTime(this.range.startDate.getTime() - 604800000);
+    }
+
+    if (rangeStr === "monthback") {
+      endDate.setTime(this.range.endDate.getTime() - 2678400000);
+      startDate.setTime(this.range.startDate.getTime() - 2678400000);
+    }
+
+    if (rangeStr === "yearback") {
+      endDate.setTime(this.range.endDate.getTime() - 31556952000);
+      startDate.setTime(this.range.startDate.getTime() - 31556952000);
+    }
+
+
+    if (rangeStr === "dayplus") {
+      endDate.setTime(this.range.endDate.getTime() + (1000 * 60 * 60 * 24));
+      startDate.setTime(this.range.startDate.getTime() + (1000 * 60 * 60 * 24));
+    }
+
+    if (rangeStr === "weekplus") {
+      endDate.setTime(this.range.endDate.getTime() + 604800000);
+      startDate.setTime(this.range.startDate.getTime() + 604800000);
+    }
+
+    if (rangeStr === "monthplus") {
+      endDate.setTime(this.range.endDate.getTime() + 2678400000);
+      startDate.setTime(this.range.startDate.getTime() + 2678400000);
+    }
+
+    if (rangeStr === "yearplus") {
+      endDate.setTime(this.range.endDate.getTime() + 31556952000);
+      startDate.setTime(this.range.startDate.getTime() + 31556952000);
+    }
+
+
     if (rangeStr === "lastweek") {
 
       startDate.setTime(endDate.getTime() - 604800000);
@@ -110,6 +153,7 @@ export class PatientRangePicker implements OnInit {
 
       endDate.setTime(startDate.getTime() + 15778476000);
     }
+
 
     else if (rangeStr === 'lastyear') {
 
