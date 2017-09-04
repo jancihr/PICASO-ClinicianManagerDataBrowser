@@ -227,34 +227,37 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
               d.series.forEach(function (elem) {
                 if (!elem.key.startsWith("hide")) {
                   let date = new Date(elem.data.observation.date);
-                  html = html +
-                    "<span style='color:" + elem.color + "' > <i class='fa fa-circle'></i> </span> " +
-                    elem.data.name + " " +
-                    ("" + date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear() + " " + (date.getHours() < 10 ? "0" : "") + date.getHours() + ":" + (date.getMinutes() < 10 ? "0" : "") + date.getMinutes())
-                    + " <br> <span class='text-white'><i class='fa fa-circle-o'></i> </span>" +
-                    (
-                      elem.data.observation.value === null
-                        ?
-                        "<span class='w3-tag w3-round text-warning'>MISSING VALUE!</span>"
-                        :
-                        (elem.data.observation.outOfRange ? "<span class='w3-tag w3-round text-danger'>OUT OF RANGE! </span> " : "") + "<b>" + "<span class='w3-tag w3-round-medium'>" + elem.data.observation.value + " </span> " + "</b>"
-                    )
-                    + " " + elem.data.unit +
-                    (
-                      elem.value === null
-                        ?
-                        ""
-                        :
-                        (
-                          elem.data.observation.source
-                            ?
-                            (" <span class='w3-tag'>source: " + elem.data.observation.source + "</span>")
-                            :
-                            ""
-                        )
-                    )
-                    +
-                    "<br>";
+                  if (elem.data.name !== "hide") {
+
+                    html = html +
+                      "<span style='color:" + elem.color + "' > <i class='fa fa-circle'></i> </span> " +
+                      elem.data.name + " " +
+                      ("" + date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear() + " " + (date.getHours() < 10 ? "0" : "") + date.getHours() + ":" + (date.getMinutes() < 10 ? "0" : "") + date.getMinutes())
+                      + " <br> <span class='text-white'><i class='fa fa-circle-o'></i> </span>" +
+                      (
+                        elem.data.observation.value === null
+                          ?
+                          "<span class='w3-tag w3-round text-warning'>MISSING VALUE!</span>"
+                          :
+                          (elem.data.observation.outOfRange ? "<span class='w3-tag w3-round text-danger'>OUT OF RANGE! </span> " : "") + "<b>" + "<span class='w3-tag w3-round-medium'>" + elem.data.observation.value + " </span> " + "</b>"
+                      )
+                      + " " + elem.data.unit +
+                      (
+                        elem.value === null
+                          ?
+                          ""
+                          :
+                          (
+                            elem.data.observation.source
+                              ?
+                              (" <span class='w3-tag'>source: " + elem.data.observation.source + "</span>")
+                              :
+                              ""
+                          )
+                      )
+                      +
+                      "<br>";
+                  }
                 }
               });
               //console.log(JSON.stringify(d));
@@ -573,7 +576,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
               calculatedMax: max
             },
             unit: group.unit,
-            name: group.name
+            name: "hide"
           });
 
           for (let observation of sortedValues) {
@@ -593,9 +596,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
               calculatedMax: max
             },
             unit: group.unit,
-            name: group.name
+            name: "hide"
           });
-
 
 
           //index++;
@@ -737,14 +739,14 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       let newGraphValuesHackLeftAxis = [{
         observation: {
           date: this.dateRange.startDate,
-          value: this.forceYZero || this.chartType === "area" || this.chartType === "bar" ? 0 : min,
+          value: this.forceYZero || (isLeft && this.chartType === "bar" || !isLeft && this.chartTypeR === "bar") ? 0 : min,
           calculatedMax: max
         }
       },
         {
           observation: {
             date: this.dateRange.endDate,
-            value: this.forceYZero || this.chartType === "area" || this.chartType === "bar" ? 0 : min,
+            value: this.forceYZero || (isLeft && this.chartType === "bar" || !isLeft && this.chartTypeR === "bar") ? 0 : min,
             calculatedMax: max
           }
         }];
