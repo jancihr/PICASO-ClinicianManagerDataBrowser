@@ -237,6 +237,13 @@
 
 }
 
+:host /deep/ .vis-item.treatment-item.vis-dot, :host /deep/ .vis-item.vis-selected.treatment-item.vis-dot {
+
+  padding-top: 0px;
+  padding-bottom: 0px;
+
+}
+
 :host /deep/ .vis-item.vis-selected {
   border-color: #7093c5;
   background: #67bc9a;
