@@ -1,0 +1,82 @@
+[
+  {
+    "TypeId": "bloodpressure",
+    "timestamp": "2017-09-01T05:12:05.000Z",
+    "inputType": "AUTO",
+    "equipmentId": "5C313EFFFE5F4A37",
+    "measurements": [
+      {
+        "TypeId": "systolic",
+        "Value": "109",
+        "UnitCode": "mmHg"
+      },
+      {
+        "TypeId": "diastolic",
+        "Value": "74",
+        "UnitCode": "mmHg"
+      }
+    ],
+    "comment": null
+  },
+  {
+    "TypeId": "weighingscale",
+    "timestamp": "2017-09-01T05:04:31.000Z",
+    "inputType": "AUTO",
+    "equipmentId": "B4994CFFFE5AC384",
+    "measurements": [
+      {
+        "TypeId": "weight",
+        "Value": "81.1",
+        "UnitCode": "kg"
+      }
+    ],
+    "comment": null
+  },
+  {
+    "TypeId": "sleep",
+    "timestamp": "2017-09-04T03:58:00.000Z",
+    "inputType": "AUTO",
+    "equipmentId": "F84147FFFE2DF7F7",
+    "measurements": [
+      {
+        "TypeId": "sleep_minutes",
+        "Value": "368",
+        "UnitCode": "min"
+      }
+    ],
+    "comment": null
+  },
+  {
+    "TypeId": "stepcounter",
+    "timestamp": "2017-09-04T04:00:00.000Z",
+    "inputType": null,
+    "equipmentId": "F84147FFFE2DF7F7",
+    "measurements": [
+      {
+        "TypeId": "distance",
+        "Value": "48",
+        "UnitCode": "m"
+      },
+      {
+        "TypeId": "steps",
+        "Value": "64",
+        "UnitCode": ""
+      }
+    ],
+    "comment": null
+  },
+  {
+    "TypeId": "heartrate",
+    "timestamp": "2017-09-04T04:00:00.000Z",
+    "inputType": null,
+    "equipmentId": "F84147FFFE2DF7F7",
+    "measurements": [
+      {
+        "TypeId": "heartrate",
+        "Value": "51",
+        "UnitCode": "bpm"
+      }
+    ],
+    "comment": null
+  }
+]

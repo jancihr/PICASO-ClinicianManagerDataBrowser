@@ -1,0 +1,41 @@
+{
+  "UserAccountId": 0,
+  "Patient": {
+    "PatientId": "11892829",
+    "DateOfBirth": "1960-10-10T00:00:00",
+    "Gender": "M",
+    "Height": 180,
+    "Status": "Active",
+    "Age": 56
+  },
+  "Person": {
+    "FirstName": "Peter",
+    "LastName": "Rosengren",
+    "Phone": null,
+    "MobilePhone": null,
+    "Email": null,
+    "Address": "Svärdvägen 3B, 18233, Danderyd"
+  },
+  "Diabetes": null,
+  "Smoker": "N",
+  "Site": "CNET",
+  "Language": "en-GB",
+  "Times": {
+    "sleep_time": {
+      "fall_asleep": "23:00",
+      "awake": "07:30"
+    },
+    "meal_time": {
+      "breakfast": "07:30",
+      "lunch": "12:00",
+      "dinner": "18:00"
+    }
+  },
+  "Reminders": {
+    "Questionnaire": true,
+    "Medication": true,
+    "Measurement": true
+  },
+  "ManualInput": true,
+  "ManualDevice": true
+}

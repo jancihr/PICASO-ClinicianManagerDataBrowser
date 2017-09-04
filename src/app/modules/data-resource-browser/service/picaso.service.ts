@@ -18,9 +18,9 @@ import {TableItem} from "../model/table-item";
 @Injectable()
 export class PicasoDataService {
   //public resNodesData: DataForNodes[];
-
-  private PicasoDataServiceURL =
-    'http://212.214.80.143:32772/';  // URL to web api
+  private PicasoDataServiceURL = 'assets/fakeODS/graphHomeOds.json';
+  private PicasoDataServiceURL1 = 'assets/fakeODS/graphPatientInfo.json';
+  // TODO private PicasoDataServiceURL = 'http://212.214.80.143:32772/';  // URL to web api
   constructor(private http: ProgressHttp) {
   }
 
@@ -30,7 +30,7 @@ export class PicasoDataService {
       progressResult.total = progress.total;
       progressResult.loaded = progress.loaded;
     })
-      .get(this.PicasoDataServiceURL + 'api/v1/patient/' + patientId)
+      .get(this.PicasoDataServiceURL1 /*+ 'api/v1/patient/' + patientId*/)
       .map(response => {
         return this.extractPatientInfo(response);
       })
@@ -50,7 +50,7 @@ export class PicasoDataService {
       progressResult.total = progress.total;
       progressResult.loaded = progress.loaded;
     })
-      .get(this.PicasoDataServiceURL + 'api/v1/patient/' + patientId + '/overview') //?take=n
+      .get(this.PicasoDataServiceURL /*+ 'api/v1/patient/' + patientId + '/overview'*/) //?take=n
       .map(response => {
         return this.extractObservationInfo(response);
       })
