@@ -161,7 +161,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         duration: 0,
 
         legendRightAxisHint: " ",
-        interpolate: "monotone",//"linear",
+        interpolate: "linear",
         showLegend: false,
         legend: {
           align: false
@@ -533,15 +533,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
         if (filteredValues.length > 0) {
 
-          if (this.normaliseValues) {
-            max = Math.max.apply(Math, filteredValues.map(function (o) {
-              return o.value;
-            }));
-
-            if (this.showMinMidMax) {
-              max = Math.max(max, group.maxValue, group.minValue, group.midValue);
-            }
-          }
 
           //console.log("max for ", group.name)
           //console.log("max value ", max)
@@ -558,7 +549,31 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           }, Infinity);
 
           if (this.showMinMidMax) {
-            min = Math.min(min, group.maxValue, group.minValue, group.midValue);
+            if (group.maxValue !== null && group.maxValue !== undefined)
+              min = Math.min(min, group.maxValue)
+            if (group.minValue !== null && group.minValue !== undefined)
+              min = Math.min(min, group.minValue)
+            if (group.midValue !== null && group.midValue !== undefined)
+              min = Math.min(min, group.midValue)
+
+          }
+
+
+          if (this.normaliseValues) {
+            max = Math.max.apply(Math, filteredValues.map(function (o) {
+              return o.value;
+            }));
+
+            if (this.showMinMidMax) {
+              if (group.maxValue !== null && group.maxValue !== undefined)
+                max = Math.max(max, group.maxValue)
+              if (group.minValue !== null && group.minValue !== undefined)
+                max = Math.max(max, group.minValue)
+              if (group.midValue !== null && group.midValue !== undefined)
+                max = Math.max(max, group.midValue)
+
+
+            }
           }
 
           for (let i = 0; i < filteredValues.length; i++) {
