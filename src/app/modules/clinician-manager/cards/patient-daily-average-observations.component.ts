@@ -344,10 +344,10 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     if (this.observationId === "morisky") {
       this.headerText = "Morisky Scale results";
     } else {
-      this.headerText = "Measurements loading...";
+      this.headerText = "Measurements";
 
     }
-    this.options.chart.noData = "No data available ...";
+    this.options.chart.noData = "No data to show ...";
     this.picasoDataService.getObservations(
       this.dateRange.startDate,
       this.dateRange.endDate, this.progress
@@ -611,10 +611,11 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             color: this.isHighContrast && this.observationId === 'all' ? (isLeft ? "red" : "green") : group.color,
             //area: false,
             //mean: 120,
+            area: isLeft ? (this.chartType === "area") : (this.chartTypeR === "area"),
             disabled: false,
             yAxis: isLeft ? 1 : 2,
             xAxis: 1,
-            type: isLeft ? this.chartType : this.chartTypeR//group.type ? group.type : 'line'
+            type: isLeft ? (this.chartType === "area" ? "line" : this.chartType) : (this.chartTypeR === "area" ? "line" : this.chartTypeR)//group.type ? group.type : 'line'
           });
 
           //console.log("chartType: ", this.chartType);
@@ -790,32 +791,57 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   public toggleLeft(id: string, name: string) {
     this.data = [];
+    let wasAll = this.showAll;
     this.showAll = false;
 
     for (let i = 0; i < this.observationGroups.length; i++) {
-      if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
-        this.observationGroups[i].showLeft = true;//!this.observationGroups[i].showLeft;
 
+
+      if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
+        if (wasAll) {
+          this.observationGroups[i].showLeft = true;
+        } else {
+          this.observationGroups[i].showLeft = !this.observationGroups[i].showLeft;
+        }
       }
       else {
-        this.observationGroups[i].showLeft = false;
+
+        if ((id === "systolic" && this.observationGroups[i].id === "diastolic") ||
+          (id === "diastolic" && this.observationGroups[i].id === "systolic")) {
+        } else {
+          this.observationGroups[i].showLeft = false;
+        }
       }
+
     }
-    this.toggleNormalisedView(false);
-    this.callServiceToGetObservations()
+
+    this
+      .toggleNormalisedView(
+        false
+      );
+    this
+      .callServiceToGetObservations()
   }
 
-  public toggleRight(id: string, name: string) {
+
+  toggleRight(id: string, name: string) {
     this.data = [];
     for (let i = 0; i < this.observationGroups.length; i++) {
       if (this.normaliseValues) {
         //this.observationGroups[i].showLeft = false;
       }
       if (this.observationGroups[i].id === id && this.observationGroups[i].name === name) {
-        this.observationGroups[i].showRight = true;//!this.observationGroups[i].showRight;
+        this.observationGroups[i].showRight = !this.observationGroups[i].showRight;
       }
       else {
-        this.observationGroups[i].showRight = false;
+
+
+        if ((id === "systolic" && this.observationGroups[i].id === "diastolic") ||
+          (id === "diastolic" && this.observationGroups[i].id === "systolic")) {
+        } else {
+          this.observationGroups[i].showRight = false;
+        }
+
 
       }
     }
@@ -824,7 +850,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   }
 
 
-  public clearAll() {
+  clearAll() {
     for (var i = 0; i < this.observationGroups.length; i++) {
       this.observationGroups[i].showLeft = false;
       this.observationGroups[i].showRight = false;
@@ -832,12 +858,14 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     this.callServiceToGetObservations();
   }
 
-  public showHighContrast() {
+
+  showHighContrast() {
     this.isHighContrast = !this.isHighContrast;
     this.callServiceToGetObservations();
   }
 
-  public showAllRight() {
+
+  showAllRight() {
 
     for (var i = 0; i < this.observationGroups.length; i++) {
       this.observationGroups[i].showLeft = false;
@@ -847,7 +875,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   }
 
 
-  public showAllLeft() {
+  showAllLeft() {
     this.data = [];
 
     for (var i = 0; i < this.observationGroups.length; i++) {
@@ -867,8 +895,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   }
 
-
-  public clearRight() {
+  clearRight() {
     this.data = [];
 
     for (var i = 0; i < this.observationGroups.length; i++) {
@@ -880,7 +907,20 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   }
 
-  public enableInitialGraphs(oldOnOffData: any) {
+
+  clearLeft() {
+    this.data = [];
+
+    for (var i = 0; i < this.observationGroups.length; i++) {
+      this.observationGroups[i].showLeft = false;
+    }
+
+    this.callServiceToGetObservations();
+
+
+  }
+
+  enableInitialGraphs(oldOnOffData: any) {
     if (oldOnOffData.length > 1) {
       for (let i = 0; i < this.observationGroups.length; i++) {
         for (let oldGroup of oldOnOffData) {
@@ -908,8 +948,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     }
   }
 
-
-  public resetMinMidMax() {
+  resetMinMidMax() {
     this.showMinMidMax = !this.showMinMidMax;
     this.data = [];
     this.callServiceToGetObservations();
@@ -941,12 +980,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
   toggleZero() {
-
-
-
     //this.nvd3.chart.update();
-
-
     this.data = [];
     this.forceYZero = !this.forceYZero;
     this.callServiceToGetObservations()
@@ -967,7 +1001,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
   @HostListener("window:scroll", [])
 
 
-  //HACK to hide tooltips that stayed on screen when scrolling on mobile device
+//HACK to hide tooltips that stayed on screen when scrolling on mobile device
   onWindowScroll() {
     //console.log("scroll detected");
     this.hideTooltipElements();
