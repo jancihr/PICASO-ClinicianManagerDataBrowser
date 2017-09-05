@@ -41,18 +41,12 @@
           -->
 
 
-
-
-
-
-
-
         </div>
 
 
         <div
-             class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
-             style=" padding-right: 0.05rem; padding-bottom: 0.15rem;">
+          class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
+          style=" padding-right: 0.05rem; padding-bottom: 0.15rem;">
           <div class="" style=" margin-left: 0.25rem;">
 
             <!--
@@ -149,7 +143,8 @@
               <i class="fa fa-minus-circle"></i> Clear
             </button>
 
-            <span *ngFor="let group of observationGroups">
+            <span *ngIf="observationId==='all' && observationGroups && observationGroups.length!==1"><span
+              *ngFor="let group of observationGroups">
 
             <button type="button" class="button-clear"
                     (click)="toggleLeft(group.id, group.name)">
@@ -160,7 +155,7 @@
 
             </button>
 
-        </span>
+            </span></span>
           </div>
         </div>
 
@@ -206,7 +201,7 @@
                     type="button"
                     class="button-clear"
                     (click)="clearRight()"><i class="fa fa-minus-circle"></i> Clear
-             </button>
+            </button>
 
             <span *ngFor="let group of observationGroups">
 

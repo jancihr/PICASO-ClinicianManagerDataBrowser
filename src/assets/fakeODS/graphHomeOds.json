@@ -72,7 +72,7 @@
     "equipmentId": "F84147FFFE2DF7F7",
     "measurements": [
       {
-        "TypeId": "heartrate",
+        "TypeId": "heartrate_resting",
         "Value": "51",
         "UnitCode": "bpm"
       }
