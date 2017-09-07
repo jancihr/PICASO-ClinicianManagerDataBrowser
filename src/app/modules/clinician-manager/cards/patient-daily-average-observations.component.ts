@@ -77,7 +77,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
   constructor(private picasoDataService: PicasoOdsCmDataService, private activatedRoute: ActivatedRoute) {
-    this.setOptions();
+    //this.setOptions();
   };
 
   ngOnInit(): void {
@@ -86,12 +86,15 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
   ngOnChanges(changes: SimpleChanges) {
+    this.setOptions();
+
     const range: SimpleChange = changes.dateRange;
     if (range === undefined || (range.previousValue !== range.currentValue)) {
 
       this.callServiceToGetObservations();
       //this.printDate("ngOnChanges")
     }
+
 
   }
 
@@ -127,6 +130,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         // },
 
         lines1: {
+          clipVoronoi: true,
           dispatch: {
             renderEnd: function () {
 
@@ -134,6 +138,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           }
         },
         lines2: {
+          clipVoronoi: true,
           dispatch: {
             renderEnd: function () {
 
@@ -176,7 +181,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         },
 
         useInteractiveGuideline: true,
-        useVoronoi: true,
 
         x: function (d) {
           return new Date(d.observation.date);
@@ -202,26 +206,16 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         //xRange: [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()],
 
 
-        tooltip: {
-          contentGenerator: function (d) {
-            this.hideTooltipElements();
-            //console.log("tooltip", d);
-            var html = "";
-            html += "<br><span style='color:" + d.point.color + "' > <i class='fa fa-circle'></i> </span> " +
-              (d.point.value === null ? "<span class='badge badge-pill badge-warning'>MISSING VALUE!</span><br>" : d.point.value) + ' ' + d.series[0].key + '<br>' +
 
-              ("" + d.point.date.getDate() + "." + (d.point.date.getMonth() + 1) + "." + d.point.date.getFullYear() + " " + d.point.date.getHours() + ":" + d.point.date.getMinutes())
-
-
-              + '<br>';
-            return html;
-          }
-        },
         interactiveLayer: {
+          showGuideLine: this.observationId !== 'all',
+
           tooltip: {
+            gravity: "n",
             hideDelay: 0,
 
             contentGenerator: function (d) {
+              //this.hideTooltipElements();
               let html = ""; //d.value;
               //console.log("d", d);
               d.series.forEach(function (elem) {
@@ -315,8 +309,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         refreshDataOnly: true,
         callback: function (chart) {
 
-          this.chart = chart;//d3.selectAll('.nv-y1 text').style('fill','#123');
-
+          this.chart = chart;
+          //d3.selectAll('.nv-y1 text').style('fill','#123');
           //console.log("!!! lineChart callback !!!", chart);
         }
       }
@@ -630,6 +624,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             disabled: false,
             yAxis: isLeft ? 1 : 2,
             xAxis: 1,
+            classed: this.observationId === 'all' ? 'hide-highlight' : "",
             type: isLeft ? (this.chartType === "area" ? "line" : this.chartType) : (this.chartTypeR === "area" ? "line" : this.chartTypeR)//group.type ? group.type : 'line'
           });
 

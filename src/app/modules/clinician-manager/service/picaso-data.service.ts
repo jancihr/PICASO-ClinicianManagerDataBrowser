@@ -62,7 +62,9 @@ export class PicasoOdsCmDataService {
       progressResult.total = 0;
       progressResult.loaded = 0;
       return Observable.of((JSON.parse(tempStored)).infoResult);
-    } else
+    }
+    else
+
       return this.http.withDownloadProgressListener(progress => {
         progressResult.percentage = progress.percentage;
         progressResult.total = progress.total;
@@ -78,7 +80,7 @@ export class PicasoOdsCmDataService {
 
 
     //console.log("storing json:", res.json());
-    sessionStorage.setItem("temporaryCmServiceResult", JSON.stringify(res.json()));
+
     //console.log("after service getPatientResult");
 
     return res.json().infoResult;
@@ -168,6 +170,7 @@ export class PicasoOdsCmDataService {
 
   private extractDataClinicians(res: Response) {
 
+    sessionStorage.setItem("temporaryCmServiceResult", JSON.stringify(res.json()));
 
     return res.json().cliniciansResult;
   }
@@ -229,8 +232,6 @@ export class PicasoOdsCmDataService {
 
     return res.json().followUpsResult;
   }
-
-
 
 
   getMedicationIntakeHistory(startDate: Date, endDate: Date, progressResult: PatientLoadProgress): Observable<MedicationIntakesResult[]> {
@@ -499,10 +500,6 @@ export class PicasoOdsCmDataService {
     return res.json().questionaryFilled;
 
   }
-
-
-
-
 
 
   private handleError(error: Response | any) {

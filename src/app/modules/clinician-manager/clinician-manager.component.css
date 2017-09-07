@@ -337,8 +337,35 @@
   fill-opacity: 0.2 !important;
 }
 
+:host /deep/ .nvd3 .nv-groups .hide-highlight .nv-point.hover {
+  stroke-width: 0px !important;
+  stroke-opacity: 0% !important;
+  fill-opacity: 1 !important;
+}
 
+:host /deep/ .nvd3 .nv-scatter .nv-groups .hide-highlight .nv-point.hover {
+  stroke-width: 0px !important;
+  stroke-opacity: 0% !important;
+  fill-opacity: 1 !important;
 
+}
+
+:host /deep/ .nvd3 .nv-scatter .nv-groups .hide-highlight .nv-point {
+  stroke-width: 0px !important;
+  stroke-opacity: 0% !important;
+  fill-opacity: 1 !important;
+
+}
+
+/*
+
+:host /deep/ .nvd3 .nv-interactiveGuideLine {
+  stroke-width: 0px !important;
+  stroke-opacity: 0% !important;
+
+}
+
+*/
 
 :host /deep/ .dashed {
   stroke-dasharray: 3, 5 !important;
@@ -375,6 +402,7 @@
 :host /deep/ .nvd3 .nv-groups .dashed .nv-point {
   stroke-width: 0px !important;
   stroke-opacity: 0 !important;
+  fill-opacity: 0 !important;
 }
 
 :host /deep/ .nvd3 .nv-groups .dashed .nv-point.hover {
@@ -386,6 +414,7 @@
 :host /deep/ .nvd3 .nv-groups .not-dashed .nv-point {
   stroke-width: 0px !important;
   stroke-opacity: 0 !important;
+  fill-opacity: 0 !important;
 }
 
 :host /deep/ .nvd3 .nv-groups .not-dashed .nv-point.hover {
@@ -397,6 +426,7 @@
 :host /deep/ .nvd3 .nv-groups .dashed-long .nv-point {
   stroke-width: 0px !important;
   stroke-opacity: 0 !important;
+  fill-opacity: 0 !important;
 }
 
 :host /deep/ .nvd3 .nv-groups .dashed-long .nv-point.hover {
@@ -408,6 +438,7 @@
 :host /deep/ .nvd3 .nv-groups .hidden-line .nv-point {
   stroke-width: 0px !important;
   stroke-opacity: 0 !important;
+  fill-opacity: 0 !important;
 }
 
 :host /deep/ .nvd3 .nv-groups .hidden-line .nv-point.hover {
