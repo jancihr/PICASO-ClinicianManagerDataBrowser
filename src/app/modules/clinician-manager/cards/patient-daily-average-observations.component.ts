@@ -77,16 +77,19 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
 
   constructor(private picasoDataService: PicasoOdsCmDataService, private activatedRoute: ActivatedRoute) {
-    //this.setOptions();
+    this.setOptions();
   };
 
   ngOnInit(): void {
+
 
   }
 
 
   ngOnChanges(changes: SimpleChanges) {
-    this.setOptions();
+    this.options.chart.height = this.observationId === "morisky" || this.observationId !== 'all' ? 200 : 300;
+    // this.options.chart.interactiveLayer.showGuideLine = this.observationId !== 'all';
+    this.options.chart.duration = this.observationId === 'all' ? 0 : 0;
 
     const range: SimpleChange = changes.dateRange;
     if (range === undefined || (range.previousValue !== range.currentValue)) {
@@ -94,6 +97,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
       this.callServiceToGetObservations();
       //this.printDate("ngOnChanges")
     }
+    //this.initMyTooltipLine();
 
 
   }
@@ -130,15 +134,18 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         // },
 
         lines1: {
-          clipVoronoi: true,
+          interactiveUpdateDelay: 500,
+          duration: 500,
           dispatch: {
             renderEnd: function () {
+
 
             }
           }
         },
         lines2: {
-          clipVoronoi: true,
+          interactiveUpdateDelay: 500,
+          duration: 500,
           dispatch: {
             renderEnd: function () {
 
@@ -146,6 +153,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           }
         },
         scattter1: {
+          interactiveUpdateDelay: 0,
+          duration: 0,
           dispatch: {
             renderEnd: function () {
 
@@ -153,8 +162,11 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           }
         },
         scattter2: {
+          interactiveUpdateDelay: 0,
+          duration: 0,
           dispatch: {
             renderEnd: function () {
+
 
             }
           }
@@ -162,8 +174,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         noData: 'No data exists for selected dates and observations.',
         type: 'multiChart',
         height: this.observationId === "morisky" || this.observationId !== 'all' ? 200 : 300,
-        transitionDuration: 0,
-        duration: 0,
+
+        duration: 500,
 
         legendRightAxisHint: " ",
         interpolate: "linear",
@@ -206,11 +218,11 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         //xRange: [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()],
 
 
-
         interactiveLayer: {
-          showGuideLine: this.observationId !== 'all',
+          showGuideLine: true,//this.observationId !== 'all',
 
           tooltip: {
+            duration: 500,
             gravity: "n",
             hideDelay: 0,
 
@@ -309,8 +321,12 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         refreshDataOnly: true,
         callback: function (chart) {
 
+          //if (this.observationId === "all") {
+
+
+          //this.initMyTooltipLine();
+
           this.chart = chart;
-          //d3.selectAll('.nv-y1 text').style('fill','#123');
           //console.log("!!! lineChart callback !!!", chart);
         }
       }
@@ -348,6 +364,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     ).subscribe(
       observations => {
         this.reloadDataToGraph(observations);
+        //this.initMyTooltipLine();
 
         //this.options.chart.noData = "No measurements available";
 
@@ -1019,6 +1036,9 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   clearOldChart() {
     d3.selectAll("nvd3#" + this.observationId + "-cm-graph > svg > g > g > g > g.nv-wrap").remove();
+
+    //this.initMyTooltipLine();
+
   }
 
   stretchChartUpDown(toggle: boolean) {
@@ -1040,6 +1060,48 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           null : new Number(y.observation.value);
       }
     }
+
+  }
+
+  initMyTooltipLine() {
+    d3.selectAll("nvd3#all-cm-graph > svg > line").remove();
+
+
+    let vis = d3.select("nvd3#all-cm-graph > svg").on('mousemove', function (d) {
+      this.dispatch.elementMousemove({
+        data: d
+      });
+
+      let m = d3.mouse(this);
+
+      line.attr("x1", m[0])
+        .attr("x2", m[0]);
+    });
+
+
+    let line = vis.append("line")
+      .attr("x1", 200)
+      .attr("y1", 0)
+      .attr("x2", 200)
+      .attr("y2", 400)
+      .attr("style", "stroke:rgb(255,0,0);stroke-width:1;stroke-opacity:0.5;");
+
+
+    //let visrow = d3.select("div#all-chart-row").on("mousemove", mousemove);
+
+
+    //let visline = visrow.append("div")
+    //  .attr("style", "width:200px;height: 100px;border-right: 1px solid black;position: absolute; z-index: -100;");
+
+
+    function mousemove(ev) {
+
+
+
+      //this.emit("mousemove", this.getEventProperties(ev));
+      //console.log(e);
+    }
+
 
   }
 

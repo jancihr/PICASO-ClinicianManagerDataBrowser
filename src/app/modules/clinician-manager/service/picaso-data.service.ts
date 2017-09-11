@@ -79,6 +79,7 @@ export class PicasoOdsCmDataService {
   private extractDataInfo(res: Response) {
 
 
+    sessionStorage.setItem("temporaryCmServiceResult", JSON.stringify(res.json()));
     //console.log("storing json:", res.json());
 
     //console.log("after service getPatientResult");
@@ -169,8 +170,6 @@ export class PicasoOdsCmDataService {
   }
 
   private extractDataClinicians(res: Response) {
-
-    sessionStorage.setItem("temporaryCmServiceResult", JSON.stringify(res.json()));
 
     return res.json().cliniciansResult;
   }

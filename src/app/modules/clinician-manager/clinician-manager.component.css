@@ -357,21 +357,23 @@
 
 }
 
-/*
-
-:host /deep/ .nvd3 .nv-interactiveGuideLine {
-  stroke-width: 0px !important;
-  stroke-opacity: 0% !important;
+:host /deep/ .nvd3 .nv-guideline {
+  stroke: red;
 
 }
-
-*/
 
 :host /deep/ .dashed {
   stroke-dasharray: 3, 5 !important;
   stroke-opacity: 0.75 !important;
   stroke-width: 1px !important;
   fill-opacity: 0 !important;
+}
+
+:host /deep/ .tooltip-line {
+  fill: #bfbfbf;
+  stroke-opacity: 0.75 !important;
+  stroke-width: 1px !important;
+  fill-opacity: 1 !important;
 }
 
 :host /deep/ .dashed-long {
