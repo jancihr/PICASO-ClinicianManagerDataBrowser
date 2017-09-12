@@ -19,7 +19,7 @@
       "level": 2
     },
     {
-      "subGraphId": "home",
+      "subGraphId": "homeMeasurements",
       "parrentGraph": "core",
       "isDisplayed": false,
       "level": 2
@@ -103,6 +103,12 @@
       "level": 3
     },
     {
+      "subGraphId": "depression",
+      "parrentGraph": "psychoHealth",
+      "isDisplayed": false,
+      "level": 4
+    },
+    {
       "subGraphId": "executive",
       "parrentGraph": "psychoTest",
       "isDisplayed": false,
@@ -169,7 +175,7 @@
       "subGraphId": "core",
       "parrentGraph": "patient",
       "isDisplayed": true,
-      "id": "home",
+      "id": "homeMeasurements",
       "label": "Home \nmeasurements\n and recordings\n30.05.2017",
       "title": "Home monitoring data category\n - Click to see sub-categories",
       "group": "GroupHome",
@@ -442,7 +448,7 @@
       "y": 0
     },
     {
-      "subGraphId": "home",
+      "subGraphId": "homeMeasurements",
       "parrentGraph": "core",
       "isDisplayed":  false,
       "title": "",
@@ -454,7 +460,7 @@
       "y": 235
     },
     {
-      "subGraphId": "home",
+      "subGraphId": "homeMeasurements",
       "parrentGraph": "core",
       "isDisplayed":  false,
       "title": "",
@@ -466,7 +472,7 @@
       "y": 255
     },
     {
-      "subGraphId": "home",
+      "subGraphId": "homeMeasurements",
       "parrentGraph": "core",
       "isDisplayed":  false,
       "title": "",
@@ -478,7 +484,7 @@
       "y": 274
     },
     {
-      "subGraphId": "home",
+      "subGraphId": "homeMeasurements",
       "parrentGraph": "core",
       "isDisplayed":  false,
       "title": "",
@@ -490,7 +496,7 @@
       "y": 290
     },
     {
-      "subGraphId": "home",
+      "subGraphId": "homeMeasurements",
       "parrentGraph": "core",
       "isDisplayed":  false,
       "title": "",
@@ -502,7 +508,7 @@
       "y": 308
     },
     {
-      "subGraphId": "home",
+      "subGraphId": "homeMeasurements",
       "parrentGraph": "core",
       "isDisplayed":  false,
       "title": "",
@@ -514,7 +520,7 @@
       "y": 323
     },
     {
-      "subGraphId": "home",
+      "subGraphId": "homeMeasurements",
       "parrentGraph": "core",
       "isDisplayed":  false,
       "title": "",
@@ -526,11 +532,11 @@
       "y": 323
     },
     {
-      "subGraphId": "home",
+      "subGraphId": "homeMeasurements",
       "parrentGraph": "core",
       "isDisplayed":  false,
       "title": "",
-      "id": "stepcounter",
+      "id": "activitymonitor",
       "label": "Activity Monitoring (Home)",
       "group": "HomeActivity",
       "isLeaf": true,
@@ -538,7 +544,7 @@
       "y": 338
     },
     {
-      "subGraphId": "home",
+      "subGraphId": "homeMeasurements",
       "parrentGraph": "core",
       "isDisplayed":  false,
       "title": "",
@@ -550,7 +556,7 @@
       "y": 338
     },
     {
-      "subGraphId": "home",
+      "subGraphId": "homeMeasurements",
       "parrentGraph": "core",
       "isDisplayed":  false,
       "title": "",
@@ -563,7 +569,7 @@
     },
     {
       "subGraphId": "questionnaireHome",
-      "parrentGraph": "home",
+      "parrentGraph": "homeMeasurements",
       "isDisplayed":  false,
       "title": "",
       "id": "questionnaireFFbhHAQ",
@@ -575,7 +581,7 @@
     },
     {
       "subGraphId": "questionnaireHome",
-      "parrentGraph": "home",
+      "parrentGraph": "homeMeasurements",
       "isDisplayed":  false,
       "title": "",
       "id": "questionnaireRADAI",
@@ -587,7 +593,7 @@
     },
     {
       "subGraphId": "questionnaireHome",
-      "parrentGraph": "home",
+      "parrentGraph": "homeMeasurements",
       "isDisplayed":  false,
       "title": "",
       "id": "questionnaireMorisky",
@@ -868,6 +874,30 @@
       "id": "depression",
       "label": "Depression Tests\n 01.02.2016",
       "group": "PsychologicalTest",
+      "isLeaf": false,
+      "x": -310,
+      "y": -540
+    },
+    {
+      "subGraphId": "depression",
+      "parrentGraph": "psychoTest",
+      "isDisplayed":  true,
+      "title": "",
+      "id": "BDI",
+      "label": "Beck Depression Rating Scale (BDI)\n 01.02.2016",
+      "group": "PsychologicalTest",
+      "isLeaf": true,
+      "x": -310,
+      "y": -540
+    },
+    {
+      "subGraphId": "depression",
+      "parrentGraph": "psychoTest",
+      "isDisplayed":  true,
+      "title": "",
+      "id": "HDRS",
+      "label": "Depression Rating Scale (HDRS))\n 01.02.2016",
+      "group": "PsychologicalTest",
       "isLeaf": true,
       "x": -310,
       "y": -540
@@ -878,7 +908,7 @@
       "isDisplayed":  true,
       "title": "",
       "id": "anxiety",
-      "label": "Anxiety\n(Hamilton Anxiety Scale)\n 01.03.2016",
+      "label": "Hamilton Anxiety Rating Scale\n 01.03.2016",
       "group": "PsychologicalTest",
       "isLeaf": true,
       "x": -310,
@@ -1071,7 +1101,7 @@
       "isDisplayed":  true,
       "title": "",
       "id": "tomography",
-      "label": "Computer tomography\n 10.01.2017",
+      "label": "Computer tomography or CT\n 10.01.2017",
       "group": "GroupImage",
       "isLeaf": true,
       "x": -393,
@@ -1095,19 +1125,7 @@
       "isDisplayed":  true,
       "title": "",
       "id": "sonography",
-      "label": "Somography\n 10.01.2017",
-      "group": "GroupImage",
-      "isLeaf": true,
-      "x": -393,
-      "y": 75
-    },
-    {
-      "subGraphId": "image",
-      "parrentGraph": "core",
-      "isDisplayed":  true,
-      "title": "",
-      "id": "nuclear",
-      "label": "Nuclear medicine\n 10.01.2017",
+      "label": "Sonography\n 10.01.2017",
       "group": "GroupImage",
       "isLeaf": true,
       "x": -393,
