@@ -911,9 +911,9 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     }
 
     this.showAll = true;
-    if (this.chartType === 'bar' || this.chartType === 'area') {
-      this.chartType = 'line';
-    }
+    //if (this.chartType === 'bar' || this.chartType === 'area') {
+    //this.chartType = 'line';
+    // }
 
     this.toggleNormalisedView(true);
 
