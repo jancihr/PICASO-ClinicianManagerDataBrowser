@@ -23,21 +23,23 @@ export class PatientOverviewComponent implements OnInit {
 
   patientsList: string[];
 
-  progress: PatientLoadProgress = {
-    percentage: 0,
-    loaded: 0,
-    total: 0
-  };
+  progress: PatientLoadProgress;
 
   constructor(private picasoDataService: PicasoOdsCmDataService) {
+    this.progress = {
+      percentage: 0,
+      loaded: 0,
+      total: 0
+    };
   };
 
   ngOnInit(): void {
 
     //this.getToken("picasodemo", "password");
 
-    this.getPatients();
+    this.getPatient();
     //this.getPatientResult();
+
   }
 
 

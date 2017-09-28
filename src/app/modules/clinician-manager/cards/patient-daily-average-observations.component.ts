@@ -82,16 +82,23 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   ngOnInit(): void {
 
+
   }
 
 
   ngOnChanges(changes: SimpleChanges) {
+    this.options.chart.height = this.observationId === "morisky" || this.observationId !== 'all' ? 200 : 300;
+    // this.options.chart.interactiveLayer.showGuideLine = this.observationId !== 'all';
+    this.options.chart.duration = this.observationId === 'all' ? 0 : 0;
+
     const range: SimpleChange = changes.dateRange;
     if (range === undefined || (range.previousValue !== range.currentValue)) {
 
       this.callServiceToGetObservations();
       //this.printDate("ngOnChanges")
     }
+    //this.initMyTooltipLine();
+
 
   }
 
@@ -127,13 +134,18 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         // },
 
         lines1: {
+          interactiveUpdateDelay: 500,
+          duration: 500,
           dispatch: {
             renderEnd: function () {
+
 
             }
           }
         },
         lines2: {
+          interactiveUpdateDelay: 500,
+          duration: 500,
           dispatch: {
             renderEnd: function () {
 
@@ -141,6 +153,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           }
         },
         scattter1: {
+          interactiveUpdateDelay: 0,
+          duration: 0,
           dispatch: {
             renderEnd: function () {
 
@@ -148,8 +162,11 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           }
         },
         scattter2: {
+          interactiveUpdateDelay: 0,
+          duration: 0,
           dispatch: {
             renderEnd: function () {
+
 
             }
           }
@@ -157,11 +174,11 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         noData: 'No data exists for selected dates and observations.',
         type: 'multiChart',
         height: this.observationId === "morisky" || this.observationId !== 'all' ? 200 : 300,
-        transitionDuration: 0,
-        duration: 0,
+
+        duration: 500,
 
         legendRightAxisHint: " ",
-        interpolate: "monotone",//"linear",
+        interpolate: "linear",
         showLegend: false,
         legend: {
           align: false
@@ -176,7 +193,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         },
 
         useInteractiveGuideline: true,
-        useVoronoi: true,
 
         x: function (d) {
           return new Date(d.observation.date);
@@ -202,26 +218,16 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         //xRange: [this.dateRange.startDate.getTime(), this.dateRange.endDate.getTime()],
 
 
-        tooltip: {
-          contentGenerator: function (d) {
-            this.hideTooltipElements();
-            //console.log("tooltip", d);
-            var html = "";
-            html += "<br><span style='color:" + d.point.color + "' > <i class='fa fa-circle'></i> </span> " +
-              (d.point.value === null ? "<span class='badge badge-pill badge-warning'>MISSING VALUE!</span><br>" : d.point.value) + ' ' + d.series[0].key + '<br>' +
-
-              ("" + d.point.date.getDate() + "." + (d.point.date.getMonth() + 1) + "." + d.point.date.getFullYear() + " " + d.point.date.getHours() + ":" + d.point.date.getMinutes())
-
-
-              + '<br>';
-            return html;
-          }
-        },
         interactiveLayer: {
+          showGuideLine: true,//this.observationId !== 'all',
+
           tooltip: {
+            duration: 500,
+            gravity: "n",
             hideDelay: 0,
 
             contentGenerator: function (d) {
+              //this.hideTooltipElements();
               let html = ""; //d.value;
               //console.log("d", d);
               d.series.forEach(function (elem) {
@@ -315,8 +321,12 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         refreshDataOnly: true,
         callback: function (chart) {
 
-          this.chart = chart;//d3.selectAll('.nv-y1 text').style('fill','#123');
+          //if (this.observationId === "all") {
 
+
+          //this.initMyTooltipLine();
+
+          this.chart = chart;
           //console.log("!!! lineChart callback !!!", chart);
         }
       }
@@ -354,6 +364,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
     ).subscribe(
       observations => {
         this.reloadDataToGraph(observations);
+        //this.initMyTooltipLine();
 
         //this.options.chart.noData = "No measurements available";
 
@@ -533,15 +544,6 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
         if (filteredValues.length > 0) {
 
-          if (this.normaliseValues) {
-            max = Math.max.apply(Math, filteredValues.map(function (o) {
-              return o.value;
-            }));
-
-            if (this.showMinMidMax) {
-              max = Math.max(max, group.maxValue, group.minValue, group.midValue);
-            }
-          }
 
           //console.log("max for ", group.name)
           //console.log("max value ", max)
@@ -558,7 +560,31 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           }, Infinity);
 
           if (this.showMinMidMax) {
-            min = Math.min(min, group.maxValue, group.minValue, group.midValue);
+            if (group.maxValue !== null && group.maxValue !== undefined)
+              min = Math.min(min, group.maxValue)
+            if (group.minValue !== null && group.minValue !== undefined)
+              min = Math.min(min, group.minValue)
+            if (group.midValue !== null && group.midValue !== undefined)
+              min = Math.min(min, group.midValue)
+
+          }
+
+
+          if (this.normaliseValues) {
+            max = Math.max.apply(Math, filteredValues.map(function (o) {
+              return o.value;
+            }));
+
+            if (this.showMinMidMax) {
+              if (group.maxValue !== null && group.maxValue !== undefined)
+                max = Math.max(max, group.maxValue)
+              if (group.minValue !== null && group.minValue !== undefined)
+                max = Math.max(max, group.minValue)
+              if (group.midValue !== null && group.midValue !== undefined)
+                max = Math.max(max, group.midValue)
+
+
+            }
           }
 
           for (let i = 0; i < filteredValues.length; i++) {
@@ -615,6 +641,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
             disabled: false,
             yAxis: isLeft ? 1 : 2,
             xAxis: 1,
+            classed: this.observationId === 'all' ? 'hide-highlight' : "",
             type: isLeft ? (this.chartType === "area" ? "line" : this.chartType) : (this.chartTypeR === "area" ? "line" : this.chartTypeR)//group.type ? group.type : 'line'
           });
 
@@ -1009,6 +1036,9 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
   clearOldChart() {
     d3.selectAll("nvd3#" + this.observationId + "-cm-graph > svg > g > g > g > g.nv-wrap").remove();
+
+    //this.initMyTooltipLine();
+
   }
 
   stretchChartUpDown(toggle: boolean) {
@@ -1030,6 +1060,48 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           null : new Number(y.observation.value);
       }
     }
+
+  }
+
+  initMyTooltipLine() {
+    d3.selectAll("nvd3#all-cm-graph > svg > line").remove();
+
+
+    let vis = d3.select("nvd3#all-cm-graph > svg").on('mousemove', function (d) {
+      this.dispatch.elementMousemove({
+        data: d
+      });
+
+      let m = d3.mouse(this);
+
+      line.attr("x1", m[0])
+        .attr("x2", m[0]);
+    });
+
+
+    let line = vis.append("line")
+      .attr("x1", 200)
+      .attr("y1", 0)
+      .attr("x2", 200)
+      .attr("y2", 400)
+      .attr("style", "stroke:rgb(255,0,0);stroke-width:1;stroke-opacity:0.5;");
+
+
+    //let visrow = d3.select("div#all-chart-row").on("mousemove", mousemove);
+
+
+    //let visline = visrow.append("div")
+    //  .attr("style", "width:200px;height: 100px;border-right: 1px solid black;position: absolute; z-index: -100;");
+
+
+    function mousemove(ev) {
+
+
+
+      //this.emit("mousemove", this.getEventProperties(ev));
+      //console.log(e);
+    }
+
 
   }
 
