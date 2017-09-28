@@ -189,7 +189,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
           this.visTimelineItemsMedications.add(
             {
               id: item.id,
-              group: 1,
+              group: item.typeId,
               className: "medication-item",
               style: this.isColourful ? ("background: " + item.color) : "",
 
@@ -207,7 +207,7 @@ export class PatientMedicationHistoryComponent implements OnInit, OnDestroy {
           this.visTimelineItemsMedications.add(
             {
               id: item.id,
-              group: 2,
+              group: item.typeId,
               style: this.isColourful ? ("background: " + item.color) : "",
               className: "medication-item",
 

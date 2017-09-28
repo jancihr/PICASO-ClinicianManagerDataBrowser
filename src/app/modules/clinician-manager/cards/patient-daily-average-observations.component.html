@@ -45,7 +45,8 @@
 
 
         <div
-          class="col-xs-12 col-sm-6 col-md-6 col-lg-6 col-xl-6"
+          class="col-xs-12 col-sm-{{observationId!=='all'?'12':'6'}} col-md-{{observationId!=='all'?'12':'6'}}
+           col-lg-{{observationId!=='all'?'12':'6'}} col-xl-{{observationId!=='all'?'12':'6'}}"
           style=" padding-right: 0.05rem; padding-bottom: 0.15rem;">
           <div class="" style=" margin-left: 0.25rem;">
 
@@ -70,8 +71,8 @@
              <span style="color:red"> <i class="fa fa-circle"></i></span>
              <span style="color: green"> <i class="fa fa-circle"></i></span>
            </span>
-              <span *ngIf="!isHighContrast"> Colours</span>
-              <span *ngIf="isHighContrast"> Colours</span>
+              <span *ngIf="!isHighContrast"> Original Colours</span>
+              <span *ngIf="isHighContrast"> Contrast Colours</span>
 
             </button>
 
@@ -143,7 +144,10 @@
               <i class="fa fa-minus-circle"></i> Clear
             </button>
 
-            <span *ngIf="observationId==='all' && observationGroups && observationGroups.length!==1"><span
+
+            <span *ngIf="observationId==='all' && observationGroups && observationGroups.length!==1">
+              <br>
+              <span
               *ngFor="let group of observationGroups">
 
             <button type="button" class="button-clear"
@@ -202,6 +206,7 @@
                     class="button-clear"
                     (click)="clearRight()"><i class="fa fa-minus-circle"></i> Clear
             </button>
+            <br>
 
             <span *ngFor="let group of observationGroups">
 
