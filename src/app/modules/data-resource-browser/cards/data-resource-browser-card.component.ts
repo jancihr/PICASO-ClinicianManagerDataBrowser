@@ -78,7 +78,6 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         let subGraphNodesArray: GraphNodesDefinition[];
         let index: number;
         let subGraphInfo: GraphSetUp;
-        //this.nodesAsArray.sort()
         subGraphNodesArray = this.nodesAsArray.filter(item => item.subGraphId === subGraphName && item.isDisplayed === true)
          //console.log('dlzka 1:', subGraphNodesArray.length)
         if (subGraphNodesArray.length > 0 ) {
@@ -827,7 +826,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
             }
 
             //this.reflectToVisNetwork(this.subGraphsAsArray[index].subGraphId, false)
-            console.log('core subgraphs',subGraphsOnLevel)
+            //console.log('core subgraphs',subGraphsOnLevel)
         }
 
         // this.reflectToVisNetwork('patient', false)
@@ -956,7 +955,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
                     console.log(eventData[1].nodes, 'one: ', eventData[1]);
 
       });
-    // ********** DOUBLE CLICK ********* //
+    // ********** DOUBLE CLICK ********* TO DO prekopat double clicks//
     // open your console/dev tools to see the click params
     this.visNetworkService.doubleClick
       .subscribe((eventData: any[]) => {
@@ -1180,47 +1179,69 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
 
     // Get Graph/network data
     private getGraphNetworkData(): void {
+      this.picasoDataService.getDRBDataPerPatient(this.progress, "11892829").subscribe(
+        patientDRBInfo => {
+          this.picasoDataService.getPatientInfo(this.progress, "11892829").subscribe(
+            patientInfo => {
+              this.picasoDataService.getObservationsPerPatient(this.progress, "11892829").subscribe(
+                observations => {
+                  this.drbDataService.getGraphSetUp().subscribe(
+                    graphSetUp => {
+                      this.subGraphsAsArray = graphSetUp;
+                      this.drbDataService.getGraphNodes(this.progress).subscribe(
+                        node => {
+                          this.nodesAsArray = node;
+                          //console.log("Picaso name: ", patientInfo)
+                          let index = this.nodesAsArray.findIndex(item => item.id === "patient")
+                          this.nodesAsArray[index].label = patientInfo.toString()
 
-      this.picasoDataService.getPatientInfo(this.progress, "11892829").subscribe(
-        patientInfo => {
-          this.picasoDataService.getObservationsPerPatient(this.progress, "11892829").subscribe(
-            observations => {
-              this.drbDataService.getGraphSetUp().subscribe(
-                graphSetUp => {
-                  this.subGraphsAsArray = graphSetUp;
-                  this.drbDataService.getGraphNodes(this.progress).subscribe(
-                    node => {
-                      this.nodesAsArray = node;
-                      //console.log("Picaso name: ", patientInfo)
-                      let index = this.nodesAsArray.findIndex(item => item.id === "patient")
-                      this.nodesAsArray[index].label = patientInfo.toString()
-
-                      //TODO napojenie: id uzla - id observacie
-                      console.log('observaTIONS : ', observations/*.Measurements[0].TypeId*/)
-                      this.mapDataToGraph(observations)
-                      this.observations = observations
-                      //  console.log("result from service 1:", this.nodesAsArray)
-                      // this.mapSourceDataToNetworkData()
-                      this.readLastDispalyedGraphSetUp()
-                      this.displayLast();
+                          //TODO napojenie: id uzla - id observacie
+                          //console.log('observaTIONS : ', observations/*.Measurements[0].TypeId*/)
+                          this.mapDataToGraph(patientDRBInfo)
+                          //this.mapDataToGraph(observations)
+                          this.observations = patientDRBInfo
+                          //this.observations = observations
+                          //  console.log("result from service 1:", this.nodesAsArray)
+                          // this.mapSourceDataToNetworkData()
+                          this.readLastDispalyedGraphSetUp()
+                          this.displayLast();
+                        },
+                        error => this.errorMessage = <any>error);
                     },
                     error => this.errorMessage = <any>error);
                 },
                 error => this.errorMessage = <any>error);
             },
-            error => this.errorMessage = <any>error);
+        error => this.errorMessage = <any>error);
         },
-      )
-        //console.log(this.errorMessage);
+    )
+        //  console.log(this.errorMessage);
 
     }
 
-  private mapDataToGraph(observations: DataForNodes[]): void {
-    for(var i = 0; i < observations.length; i++){
-      //console.log("pieces: ", resJson[i].TypeId,' ',resJson[i].Timestamp, ' ',resJson[i] )
-      let index = this.nodesAsArray.findIndex(item => item.id ===  observations[i].id)
-      this.nodesAsArray[index].label = this.nodesAsArray[index].label + '\n' + observations[i].date
-      this.nodesAsArray[index].isDisplayed = true
+  private mapDataToGraph(dataForNodes: DataForNodes[]): void {
+    for(var i = 0; i < dataForNodes.length; i++){
+      //console.log("pieces: ", dataForNodes[i].id,' ',dataForNodes[i].date, ' ',dataForNodes[i] )
+      let index = this.nodesAsArray.findIndex(item => item.id ===  dataForNodes[i].id)
+       //console.log('index: ', index >= 0 ? '' : " !! NOT FOUND !!")
+      if(index >= 0) {
+        if (!(dataForNodes[i].date == null) && !(dataForNodes[i].date == "")) {
+          let dateForm = dataForNodes[i].date
+          this.nodesAsArray[index].label = this.nodesAsArray[index].label + '\n' + dateForm.substring(8, 10) + '.' + dateForm.substring(5, 7) + '.' + dateForm.substring(0, 4) //dataForNodes[i].date
+          this.nodesAsArray[index].isDisplayed = true
+          let subGraphInfo = this.subGraphsAsArray.find(item => item.subGraphId ===  this.nodesAsArray[index].subGraphId)
+          if(subGraphInfo && subGraphInfo.level>3){
+            console.log('subgraph info: ',subGraphInfo)
+            let index3plus = this.nodesAsArray.findIndex(item => item.id ===  this.nodesAsArray[index].subGraphId)
+            if(!this.nodesAsArray[index3plus].isDisplayed) {
+              this.nodesAsArray[index3plus].label = this.nodesAsArray[index3plus].label + '\n' + dateForm.substring(8, 10) + '.' + dateForm.substring(5, 7) + '.' + dateForm.substring(0, 4) //dataForNodes[i].date
+              this.nodesAsArray[index3plus].isDisplayed = true
+            }
+          }
+          //console.log(this.nodesAsArray[index].label)
+        }
+      }
+
 
 
     }
@@ -1236,7 +1257,7 @@ export class DataResourceBrowserCardComponent implements OnInit, OnDestroy {
         this.tableData = observForNode.content
       }
     }
-    //TODO in picaso service add substructure with data details as in the table
+    // in picaso service add substructure with data details as in the table
     // subscribe observations to local structure here
     // clear and then fill here table based on local scructure with relevant ID (nodeID = ID in observation structure)
     // if node is not leaf clear table but not fill it with content

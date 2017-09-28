@@ -1,0 +1,2434 @@
+
+{
+  "resultForDRB": {
+    "patient": {
+      "name": "Peter Rosengren",
+      "age": 56,
+      "gender": "M"
+    },
+    "homeMeasurements": [
+      {
+        "TypeId": "bloodpressure",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2017-08-01T07:58:53.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "79",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-01T07:58:53.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "105",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-02T07:13:44.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "75",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-02T07:13:44.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "103",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-06T16:43:13.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "75",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-06T16:43:13.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "114",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-07T07:07:56.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "78",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-07T07:07:56.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "122",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-08T07:39:18.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "66",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-08T07:39:18.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "111",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-09T07:24:52.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "72",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-09T07:24:52.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "104",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-11T07:44:23.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "81",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-11T07:44:23.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "126",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-12T08:19:43.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "83",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-12T08:19:43.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "120",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-13T07:07:43.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "83",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-13T07:07:43.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "126",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-14T09:04:54.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "72",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-14T09:04:54.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "112",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-15T06:45:38.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "71",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-15T06:45:38.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "108",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-16T07:04:03.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "79",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-16T07:04:03.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "112",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-17T04:58:00.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "82",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-17T04:58:00.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "112",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-18T04:58:11.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "73",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-18T04:58:11.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "110",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-21T06:59:45.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "81",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-21T06:59:45.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "125",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-22T05:59:08.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "68",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-22T05:59:08.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "104",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-23T05:42:47.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "77",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-23T05:42:47.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "119",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-24T05:45:32.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "73",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-24T05:45:32.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "116",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-25T04:31:17.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "76",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-25T04:31:17.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "117",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-26T10:50:50.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "83",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-26T10:50:50.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "119",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-28T04:47:53.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "81",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-28T04:47:53.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "120",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-29T05:06:21.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "75",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-29T05:06:21.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "119",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-30T04:53:05.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "78",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-30T04:53:05.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "110",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-31T04:55:09.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "79",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-08-31T04:55:09.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "120",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-09-01T05:12:05.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "74",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-09-01T05:12:05.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "109",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-09-05T06:08:51.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "67",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-09-05T06:08:51.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "104",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-09-06T05:48:01.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "83",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-09-06T05:48:01.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "124",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-09-07T06:05:43.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "83",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-09-07T06:05:43.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "120",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-09-08T05:36:25.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "82",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-09-08T05:36:25.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "110",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-09-09T17:06:18.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "60",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-09-09T17:06:18.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "92",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-09-11T05:04:38.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "74",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-09-11T05:04:38.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "120",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-09-12T05:52:11.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "72",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-09-12T05:52:11.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "105",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-09-13T03:47:33.000Z",
+            "TypeId": "diastolic",
+            "LOINC": "8480-4",
+            "Value": "73",
+            "UnitCode": "mmHg"
+          },
+          {
+            "Timestamp": "2017-09-13T03:47:33.000Z",
+            "TypeId": "systolic",
+            "LOINC": "8480-6",
+            "Value": "118",
+            "UnitCode": "mmHg"
+          }
+        ]
+      },
+      {
+        "TypeId": "weighingscale",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2017-08-01T07:38:07.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "84.9",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-02T07:04:19.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "83.9",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-06T16:41:33.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "83.6",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-06T16:41:34.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "83.5",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-06T16:41:34.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "83.5",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-07T07:06:30.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "85.5",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-08T07:37:46.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "85.4",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-09T07:22:52.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "85.5",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-11T07:38:28.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "85.8",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-11T16:46:45.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "84.6",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-12T07:37:05.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "85.0",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-13T07:05:37.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "85.8",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-14T08:11:06.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "84.9",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-15T06:28:54.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "83.9",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-15T06:46:15.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "83.8",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-16T06:11:59.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "84.1",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-17T04:33:56.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "83.9",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-17T18:49:06.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "83.8",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-18T04:36:37.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "83.4",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-21T20:12:33.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "82.9",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-22T05:35:14.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "82.3",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-23T04:37:12.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "83.1",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-24T04:46:38.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "83.1",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-25T04:25:47.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "83.3",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-26T09:39:04.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "82.4",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-27T08:22:30.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "83.6",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-28T04:43:39.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "83.9",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-29T04:52:19.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "83.1",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-30T04:47:25.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "83.5",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-31T04:45:04.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "82.7",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-08-31T18:10:43.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "80.7",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-09-01T05:04:31.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "81.1",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-09-05T05:23:03.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "82.4",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-09-05T05:35:49.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "82.3",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-09-06T05:07:48.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "82.9",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-09-07T05:45:16.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "82.4",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-09-08T05:34:45.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "82.1",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-09-09T16:48:35.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "82.4",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-09-11T04:46:06.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "83.3",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-09-12T05:39:45.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "82.9",
+            "UnitCode": "kg"
+          },
+          {
+            "Timestamp": "2017-09-13T03:43:21.000Z",
+            "TypeId": "weight",
+            "LOINC": "29463-7",
+            "Value": "83.1",
+            "UnitCode": "kg"
+          }
+        ]
+      },
+      {
+        "TypeId": "sleep",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2017-08-02T05:03:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "239",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-03T04:43:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "408",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-04T04:51:30.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "408",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-05T04:37:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "436",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-06T04:34:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "450",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-07T05:37:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "416",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-08T05:01:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "425",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-09T04:22:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "410",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-10T04:39:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "455",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-11T05:02:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "432",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-12T04:47:30.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "430",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-13T04:18:30.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "412",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-14T05:08:30.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "336",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-15T03:59:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "378",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-15T21:00:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "102",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-16T03:41:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "310",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-17T03:32:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "314",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-18T03:44:30.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "324",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-19T04:56:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "448",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-20T06:07:30.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "472",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-21T03:44:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "329",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-22T03:07:30.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "445",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-23T03:22:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "327",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-24T03:46:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "338",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-25T03:44:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "350",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-26T03:24:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "468",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-28T03:59:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "388",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-30T04:02:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "345",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-08-31T03:52:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "303",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-09-01T03:58:30.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "334",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-09-03T05:32:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "444",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-09-04T03:58:00.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "368",
+            "UnitCode": "min"
+          },
+          {
+            "Timestamp": "2017-09-05T03:58:30.000Z",
+            "TypeId": "sleep_minutes",
+            "SNOMED": "248263006",
+            "Value": "353",
+            "UnitCode": "min"
+          }
+        ]
+      },
+      {
+        "TypeId": "activitymonitor",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2017-08-01T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "0",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-01T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "0",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-02T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "16491",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-02T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "12253",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-03T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "7824",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-03T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "5814",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-04T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "24941",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-04T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "18530",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-05T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "18017",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-05T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "13386",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-06T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "13458",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-06T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "9999",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-07T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "10810",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-07T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "8033",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-08T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "17723",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-08T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "13165",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-09T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "19953",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-09T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "14822",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-10T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "11024",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-10T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "8193",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-11T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "14175",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-11T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "10534",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-15T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "14033",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-15T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "10425",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-16T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "8353",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-16T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "6206",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-12T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "8464",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-12T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "6288",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-13T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "7415",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-13T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "5511",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-14T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "5342",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-14T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "3968",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-19T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "20691",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-19T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "15373",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-20T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "6834",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-20T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "5077",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-21T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "19618",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-21T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "14575",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-22T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "12751",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-22T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "9472",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-23T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "15169",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-23T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "11270",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-17T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "9597",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-17T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "7130",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-18T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "6330",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-18T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "4705",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-24T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "731",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-24T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "542",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-25T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "142",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-25T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "106",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-26T04:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "8",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-26T04:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "6",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-27T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "0",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-27T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "0",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-28T04:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "8",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-28T04:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "6",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-29T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "0",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-29T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "0",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-30T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "107",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-30T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "80",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-08-31T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "20609",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-08-31T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "15312",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-09-01T04:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "37",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-09-01T04:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "27",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-09-02T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "185",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-09-02T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "137",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-09-03T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "860",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-09-03T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "639",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-09-04T23:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "64",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-09-04T23:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "48",
+            "UnitCode": "m"
+          },
+          {
+            "Timestamp": "2017-09-05T04:00:00.000Z",
+            "TypeId": "steps",
+            "LOINC": "55423-8",
+            "Value": "0",
+            "UnitCode": ""
+          },
+          {
+            "Timestamp": "2017-09-05T04:00:00.000Z",
+            "TypeId": "distance",
+            "Value": "0",
+            "UnitCode": "m"
+          }
+        ]
+      },
+      {
+        "TypeId": "heartrate",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2017-08-01T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "58",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-02T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "70",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-03T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "64",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-04T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "70",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-05T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "71",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-06T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "68",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-07T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "65",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-08T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "69",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-09T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "65",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-10T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "66",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-11T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "70",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-12T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "65",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-13T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "68",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-14T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "62",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-15T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "65",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-16T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "68",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-17T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "62",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-18T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "60",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-19T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "75",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-20T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "60",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-21T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "66",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-22T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "64",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-23T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "63",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-24T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "52",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-25T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "52",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-26T04:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "65",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-27T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "48",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-28T04:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "48",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-29T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "59",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-30T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "52",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-08-31T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "69",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-09-01T04:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "54",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-09-02T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "65",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-09-03T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "60",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-09-04T23:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "52",
+            "UnitCode": "bpm"
+          },
+          {
+            "Timestamp": "2017-09-05T04:00:00.000Z",
+            "TypeId": "heartrate",
+            "LOINC": "8867-4",
+            "Value": "50",
+            "UnitCode": "bpm"
+          }
+        ]
+      },
+      {
+        "TypeId": "questionnaireHome",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2017-08-16T10:59:00.000Z",
+            "TypeId": "ffbh",
+            "Value": "80",
+            "UnitCode": "score"
+          },
+          {
+            "Timestamp": "2017-08-16T10:59:00.000Z",
+            "TypeId": "haq",
+            "Value": "0.9",
+            "UnitCode": "score"
+          },
+          {
+            "Timestamp": "2017-08-16T10:59:00.000Z",
+            "TypeId": "radai",
+            "Value": "2.0",
+            "UnitCode": "score"
+          },
+          {
+            "Timestamp": "2017-08-16T10:59:00.000Z",
+            "TypeId": "morisky",
+            "Value": "7",
+            "UnitCode": "score"
+          },
+          {
+            "Timestamp": "2017-08-16T10:59:00.000Z",
+            "TypeId": "wellbeing",
+            "Value": "4",
+            "UnitCode": "score"
+          },
+          {
+            "Timestamp": "2017-08-24T10:01:53.000Z",
+            "TypeId": "morisky",
+            "Value": "3",
+            "UnitCode": "score"
+          },
+          {
+            "Timestamp": "2017-08-24T12:41:44.000Z",
+            "TypeId": "wellbeing",
+            "Value": "1",
+            "UnitCode": "score"
+          },
+          {
+            "Timestamp": "2017-08-24T12:44:54.000Z",
+            "TypeId": "radai",
+            "Value": "8.0",
+            "UnitCode": "score"
+          },
+          {
+            "Timestamp": "2017-08-24T12:56:38.000Z",
+            "TypeId": "ffbh",
+            "Value": "93",
+            "UnitCode": "score"
+          },
+          {
+            "Timestamp": "2017-08-24T12:56:38.000Z",
+            "TypeId": "haq",
+            "Value": "0.6",
+            "UnitCode": "score"
+          },
+          {
+            "Timestamp": "2017-09-08T12:27:43.000Z",
+            "TypeId": "wellbeing",
+            "Value": "3",
+            "UnitCode": "score"
+          }
+        ]
+      },
+      {
+        "TypeId": "sugarHistory",
+        "ListOfEntries": []
+      },
+      {
+        "TypeId": "saturationHistory",
+        "ListOfEntries": []
+      },
+      {
+        "TypeId": "lungHistory",
+        "ListOfEntries": []
+      },
+      {
+        "TypeId": "respirationHistory",
+        "ListOfEntries": []
+      }
+    ],
+    "carePlan": [
+      {
+        "TypeId": "active",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2017-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          },
+          {
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          }
+        ]
+      },
+      {
+        "TypeId": "completed",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2017-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          },
+          {
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UTV"
+          }
+        ]
+      },
+      {
+        "TypeId": "suspended",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2017-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          },
+          {
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          }
+        ]
+      }
+    ],
+    "funcDiagnostics": [
+      {
+        "TypeId": "EEG",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2017-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          },
+          {
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          }
+        ]
+      },
+      {
+        "TypeId": "ECG",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2017-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          },
+          {
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UTV"
+          }
+        ]
+      },
+      {
+        "TypeId": "lungFuncTest",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2017-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          }
+        ]
+      }
+    ],
+    "imaging": [
+      {
+        "TypeId": "MRI",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2017-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS radiology"
+          },
+          {
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          }
+        ]
+      },
+      {
+        "TypeId": "PET",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2017-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          },
+          {
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UTV"
+          }
+        ]
+      },
+      {
+        "TypeId": "DAT",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2017-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          },
+          {
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          }
+        ]
+      },
+      {
+        "TypeId": "sonography",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2017-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          },
+          {
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          }
+        ]
+      },
+      {
+        "TypeId": "tomography",
+        "ListOfEntries": [
+
+        ]
+      },
+      {
+        "TypeId": "nuclear",
+        "ListOfEntries": [
+
+        ]
+      },
+      {
+        "TypeId": "microcardial",
+        "ListOfEntries": [
+
+        ]
+      },
+      {
+        "TypeId": "conventional",
+        "ListOfEntries": [
+
+        ]
+      }
+    ],
+    "questionnaires": [
+      {
+        "TypeId": "raQuestionnaires",
+        "ListOfEntries": [
+          {
+            "TypeId": "radai",
+            "Timestamp": "2010-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "home"
+          },
+          {
+            "TypeId": "FFbH/HAQ",
+            "Timestamp": "2015-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          },
+          {
+            "TypeId": "FFbH/HAQ",
+            "Timestamp": "2014-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          },
+          {
+            "TypeId": "FFbH/HAQ",
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "home"
+          },
+          {
+            "TypeId": "EQ-5D",
+            "Timestamp": "2009-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "home"
+          }
+        ]
+      },
+
+      {
+        "TypeId": "pdQuestionnaires",
+        "ListOfEntries": [
+          {
+            "TypeId": "morisky",
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "055",
+            "Source": "UTV"
+          },
+          {
+            "TypeId": "morisky",
+            "Timestamp": "2011-08-11T21:00:00+00:00",
+            "ClinicianId": "055",
+            "Source": "home"
+          }
+          ]
+
+      }
+    ],
+    "labTest": [
+      {
+        "TypeId": "virology",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2012-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UTV"
+          }
+        ]
+      },
+      {
+        "TypeId": "microbiology",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2010-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UTV"
+          },
+          {
+            "Timestamp": "2011-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UTV"
+          }
+        ]
+      },
+      {
+        "TypeId": "urine",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UTV"
+          },
+          {
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          }
+        ]
+      },
+      {
+        "TypeId": "blood",
+        "ListOfEntries": [
+          {
+            "TypeId": "serology",
+            "Timestamp": "2011-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UTV"
+
+          },
+          {
+            "TypeId": "bloodCount",
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          },
+          {
+            "TypeId": "thyroid",
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UTV"
+          },
+          {
+            "TypeId": "thyroid",
+            "Timestamp": "2010-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UTV"
+          },
+          {
+            "TypeId": "haemostaseology",
+            "Timestamp": "",
+            "ClinicianId": "",
+            "Source": ""
+          }
+        ]
+      }
+    ],
+    "psychoTests": [
+      {
+        "TypeId": "psychoHealth",
+        "ListOfEntries": [
+          {
+            "TypeId": "BDI",
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "UTV"
+          },
+          {
+            "TypeId": "HDRS",
+            "Timestamp": "2010-08-11T21:00:00+00:00",
+            "ClinicianId": "055",
+            "Source": "Santa lucia"
+          },
+          {
+            "TypeId": "anxietyHamilton",
+            "Timestamp": "2012-08-11T21:00:00+00:00",
+            "ClinicianId": "055",
+            "Source": "UTV"
+          },
+          {
+            "TypeId": "anxietyHamilton",
+            "Timestamp": "2012-08-11T21:00:00+00:00",
+            "ClinicianId": "055",
+            "Source": "UTV"
+          },
+          {
+            "TypeId": "snaithHamiltonPleasure",
+            "Timestamp": "",
+            "ClinicianId": "",
+            "Source": ""
+          },
+          {
+            "TypeId": "parkinsonPsychosis",
+            "Timestamp": "2016-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "UTV"
+          },
+          {
+            "TypeId": "parkinsonPsychosis",
+            "Timestamp": "2015-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "UTV"
+          },
+          {
+            "TypeId": "parkinsonPsychosis",
+            "Timestamp": "2014-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "UTV"
+          },
+          {
+            "TypeId": "euroquol",
+            "Timestamp": "",
+            "ClinicianId": "",
+            "Source": ""
+          }
+        ]
+      },
+      {
+        "TypeId": "memory",
+        "ListOfEntries": [
+          {
+            "TypeId": "15words",
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "UTV"
+          },
+          {
+            "TypeId": "15words",
+            "Timestamp": "2010-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "Santa lucia"
+          },
+          {
+            "TypeId": "figureRecall",
+            "Timestamp": "2012-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "UTV"
+          },
+          {
+            "TypeId": "figureRecall",
+            "Timestamp": "2012-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "UTV"
+          },
+          {
+            "TypeId": "ravlt",
+            "Timestamp": "",
+            "ClinicianId": "",
+            "Source": ""
+          },
+          {
+            "TypeId": "roravlt",
+            "Timestamp": "2016-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "Santa Lucia"
+          }
+        ]
+      },
+      {
+        "TypeId": "language",
+        "ListOfEntries": [
+          {
+            "TypeId": "fluency",
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "UTV"
+          },
+          {
+            "TypeId": "fluency",
+            "Timestamp": "2010-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "Santa lucia"
+          },
+          {
+            "TypeId": "phonoFluency",
+            "Timestamp": "2012-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "UTV"
+          }
+        ]
+      },
+      {
+        "TypeId": "executive",
+        "ListOfEntries": [
+
+          {
+            "TypeId": "wisconsin",
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "UTV"
+          },
+          {
+            "TypeId": "wisconsin",
+            "Timestamp": "2012-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "UTV"
+          }
+
+        ]
+      },
+      {
+        "TypeId": "praxia",
+        "ListOfEntries": [
+          {
+            "TypeId": "reyosterreich",
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "UTV"
+          },
+          {
+            "TypeId": "reyosterreich",
+            "Timestamp": "2010-08-11T21:00:00+00:00",
+            "ClinicianId": "055",
+            "Source": "Santa Lucia"
+          }
+        ]
+      },
+      {
+        "TypeId": "globalCongnitive",
+        "ListOfEntries": [
+          {
+            "TypeId": "minimental",
+            "Timestamp": "2015-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "UTV"
+          },
+          {
+            "TypeId": "minimental",
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "UTV"
+          },
+          {
+            "TypeId": "minimental",
+            "Timestamp": "2012-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "UTV"
+          }
+        ]
+      },
+      {
+        "TypeId": "pdSeverity",
+        "ListOfEntries": [
+          {
+            "TypeId": "hyscore",
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "066",
+            "Source": "Santa lucia"
+          }
+        ]
+      }
+    ],
+
+    "careProfessionals": [
+      {
+        "TypeId": "cardiologist",
+        "TimestampLast": "2017-08-10T12:37:00.000Z",
+        "ListOfEntries": [
+          {
+            "ClinicianId": "T1"
+          }
+        ]
+      },
+      {
+        "TypeId": "rheumatologist",
+        "TimestampLast": "2017-09-04T15:35:54.000Z",
+        "ListOfEntries": [
+          {
+            "ClinicianId": "2001"
+          },
+          {
+            "ClinicianId": "2002"
+          }
+        ]
+      },
+      {
+        "TypeId": "neurologist",
+        "TimestampLast": "",
+        "ListOfEntries": []
+      },
+      {
+        "TypeId": "neuropschologist",
+        "TimestampLast": "",
+        "ListOfEntries": []
+      },
+      {
+        "TypeId": "radiologist",
+        "TimestampLast": "",
+        "ListOfEntries": []
+      },
+      {
+        "TypeId": "gp",
+        "TimestampLast": "",
+        "ListOfEntries": []
+      },
+      {
+        "TypeId": "dermatologist",
+        "TimestampLast": "",
+        "ListOfEntries": []
+      },
+      {
+        "TypeId": "occphysic",
+        "TimestampLast": "",
+        "ListOfEntries": []
+      },
+      {
+        "TypeId": "psychologist",
+        "TimestampLast": "",
+        "ListOfEntries": []
+      },
+      {
+        "TypeId": "psychiatrist",
+        "TimestampLast": "",
+        "ListOfEntries": []
+      },
+      {
+        "TypeId": "physiotherapist",
+        "TimestampLast": "",
+        "ListOfEntries": []
+      },
+      {
+        "TypeId": "occtherap",
+        "TimestampLast": "",
+        "ListOfEntries": []
+      }
+    ],
+    "patReported": [
+      {
+        "TypeId": "wellBeing",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2017-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          },
+          {
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          }
+        ]
+      },
+      {
+        "TypeId": "painRating",
+        "ListOfEntries": [
+          {
+            "Timestamp": "2017-09-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UDUS"
+          },
+          {
+            "Timestamp": "2013-08-11T21:00:00+00:00",
+            "ClinicianId": "077",
+            "Source": "UTV"
+          }
+        ]
+      }
+    ]
+  }
+}
