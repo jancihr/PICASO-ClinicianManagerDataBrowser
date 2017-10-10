@@ -251,11 +251,14 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                       (elem.data.observation.outOfRange ? "<i class='fa fa-exclamation-circle'></i>" : elem.data.observation.value === null ? "<i class='fa fa-question-circle'></i>" : "<i class='fa fa-circle'></i>") +
                       "</span> "
 
-                      + "<span class='w3-tag w3-round-medium'>"
+                      + ""
                       +
-                      elem.data.observation.value
+                      (
+                        elem.value === null
+                          ?
+                          "" : ("<span class='w3-tag w3-round-medium'>" + elem.data.observation.value + " </span> "))
 
-                      + " </span> " + "</b>" +
+                      + "</b>" +
 
 
                       (
