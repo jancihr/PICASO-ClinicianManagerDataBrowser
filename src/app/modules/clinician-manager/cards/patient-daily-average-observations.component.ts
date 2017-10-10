@@ -236,16 +236,35 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                   if (elem.data.name !== "hide") {
 
                     html = html +
-                      "<span style='color:" + elem.color + "' > <i class='fa fa-circle'></i> </span> " +
+
+                      "<div class='w3-border-black w3-border " + (elem.data.observation.outOfRange ? 'bg-danger' : (elem.data.observation.value === null ? 'bg-warning' : 'bg-success')) + "'>" +
+
+
                       elem.data.name + " " +
                       ("" + date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear() + " " + (date.getHours() < 10 ? "0" : "") + date.getHours() + ":" + (date.getMinutes() < 10 ? "0" : "") + date.getMinutes())
-                      + " <br> <span class='text-white'><i class='fa fa-circle-o'></i> </span>" +
+                      + " <br> " +
+
+                      "<b>"
+                      +
+
+                      "<span style='color:" + elem.color + "' > " +
+                      (elem.data.observation.outOfRange ? "<i class='fa fa-exclamation-circle'></i>" : elem.data.observation.value === null ? "<i class='fa fa-question-circle'></i>" : "<i class='fa fa-circle'></i>") +
+                      "</span> "
+
+                      + "<span class='w3-tag w3-round-medium'>"
+                      +
+                      elem.data.observation.value
+
+                      + " </span> " + "</b>" +
+
+
                       (
                         elem.data.observation.value === null
                           ?
-                          "<span class='w3-tag w3-round text-warning'>MISSING VALUE!</span>"
+                          " <span class='w3-tag w3-round text-warning'>missing value!</span>"
                           :
-                          (elem.data.observation.outOfRange ? "<span class='w3-tag w3-round text-danger'>OUT OF RANGE! </span> " : "") + "<b>" + "<span class='w3-tag w3-round-medium'>" + elem.data.observation.value + " </span> " + "</b>"
+                          (elem.data.observation.outOfRange ? "<span class='w3-tag w3-round text-danger'>" +
+                            "out of range! </span> " : "")
                       )
                       + " " + elem.data.unit +
                       (
@@ -262,7 +281,8 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
                           )
                       )
                       +
-                      "<br>";
+                      "</div> ";
+
                   }
                 }
               });
