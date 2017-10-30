@@ -1,5 +1,6 @@
 .my-animate-left {
   position: relative;
+  z-index: 100;
   -webkit-animation: myanimateleft 0.4s;
   animation: myanimateleft 0.4s
 }
@@ -28,6 +29,7 @@
 
 .my-animate-left2 {
   position: relative;
+  z-index: 100;
   -webkit-animation: myanimateleft2 0.4s;
   animation: myanimateleft2 0.4s
 }

@@ -134,6 +134,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
         // },
 
         lines1: {
+          pointShape: 'cross',
           interactiveUpdateDelay: 500,
           duration: 500,
           dispatch: {
@@ -144,6 +145,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
           }
         },
         lines2: {
+          pointShape: 'cross',
           interactiveUpdateDelay: 500,
           duration: 500,
           dispatch: {
@@ -177,7 +179,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
         duration: 500,
 
-        legendRightAxisHint: " ",
+        legendRightAxisHint: "",
         interpolate: "linear",
         showLegend: false,
         legend: {
@@ -223,7 +225,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
           tooltip: {
             duration: 500,
-            gravity: "n",
+            gravity: "s",
             hideDelay: 0,
 
             contentGenerator: function (d) {
@@ -237,7 +239,7 @@ export class PatientDailyAverageObservationsComponent implements OnInit {
 
                     html = html +
 
-                      "<div class='w3-border-black w3-border " + (elem.data.observation.outOfRange ? 'bg-danger' : (elem.data.observation.value === null ? 'bg-warning' : 'bg-success')) + "'>" +
+                      "<div class='w3-border-black  w3-border " + (elem.data.observation.outOfRange ? 'bg-danger' : (elem.data.observation.value === null ? 'bg-warning' : 'bg-success')) + " '>" +
 
 
                       elem.data.name + " " +

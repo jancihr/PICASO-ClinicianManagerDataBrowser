@@ -87,6 +87,7 @@
     "ts-jest": "20.0.6",
     "ts-node": "3.1.0",
     "tslint": "5.4.3",
-    "typescript": "2.4.0"
+    "typescript": "2.4.0",
+    "webpack": "3.4.1"
   }
 }
